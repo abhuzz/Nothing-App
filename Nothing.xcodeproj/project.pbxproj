@@ -13,6 +13,17 @@
 		1279B5E119FED4E700A7828C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1279B5E019FED4E700A7828C /* Images.xcassets */; };
 		1279B5E419FED4E700A7828C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1279B5E219FED4E700A7828C /* LaunchScreen.xib */; };
 		1279B5F019FED4E800A7828C /* NothingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5EF19FED4E800A7828C /* NothingTests.swift */; };
+		1279B60819FED64D00A7828C /* CDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5FB19FED64D00A7828C /* CDHelper.swift */; };
+		1279B60919FED64D00A7828C /* CDStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5FC19FED64D00A7828C /* CDStore.swift */; };
+		1279B60A19FED64D00A7828C /* NSManagedObject_E.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5FD19FED64D00A7828C /* NSManagedObject_E.swift */; };
+		1279B60B19FED64D00A7828C /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5FF19FED64D00A7828C /* Connection.swift */; };
+		1279B60C19FED64D00A7828C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60019FED64D00A7828C /* Contact.swift */; };
+		1279B60D19FED64D00A7828C /* Nothing.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */; };
+		1279B60E19FED64D00A7828C /* DateReminderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60319FED64D00A7828C /* DateReminderInfo.swift */; };
+		1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60419FED64D00A7828C /* LocationReminderInfo.swift */; };
+		1279B61019FED64D00A7828C /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60519FED64D00A7828C /* Place.swift */; };
+		1279B61119FED64D00A7828C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60619FED64D00A7828C /* Task.swift */; };
+		1279B61219FED64D00A7828C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60719FED64D00A7828C /* FileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +47,17 @@
 		1279B5E919FED4E700A7828C /* NothingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NothingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1279B5EE19FED4E800A7828C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1279B5EF19FED4E800A7828C /* NothingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NothingTests.swift; sourceTree = "<group>"; };
+		1279B5FB19FED64D00A7828C /* CDHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDHelper.swift; sourceTree = "<group>"; };
+		1279B5FC19FED64D00A7828C /* CDStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDStore.swift; sourceTree = "<group>"; };
+		1279B5FD19FED64D00A7828C /* NSManagedObject_E.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObject_E.swift; sourceTree = "<group>"; };
+		1279B5FF19FED64D00A7828C /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		1279B60019FED64D00A7828C /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		1279B60219FED64D00A7828C /* Nothing.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nothing.xcdatamodel; sourceTree = "<group>"; };
+		1279B60319FED64D00A7828C /* DateReminderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateReminderInfo.swift; sourceTree = "<group>"; };
+		1279B60419FED64D00A7828C /* LocationReminderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationReminderInfo.swift; sourceTree = "<group>"; };
+		1279B60519FED64D00A7828C /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		1279B60619FED64D00A7828C /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		1279B60719FED64D00A7828C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +99,8 @@
 		1279B5D619FED4E700A7828C /* Nothing */ = {
 			isa = PBXGroup;
 			children = (
+				1279B5F919FED64D00A7828C /* Core Data */,
+				1279B61319FED65300A7828C /* Cache */,
 				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
 				1279B5DB19FED4E700A7828C /* ViewController.swift */,
 				1279B5DD19FED4E700A7828C /* Main.storyboard */,
@@ -110,6 +134,47 @@
 				1279B5EE19FED4E800A7828C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1279B5F919FED64D00A7828C /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */,
+				1279B5FA19FED64D00A7828C /* Core */,
+				1279B5FE19FED64D00A7828C /* Model */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		1279B5FA19FED64D00A7828C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1279B5FB19FED64D00A7828C /* CDHelper.swift */,
+				1279B5FC19FED64D00A7828C /* CDStore.swift */,
+				1279B5FD19FED64D00A7828C /* NSManagedObject_E.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1279B5FE19FED64D00A7828C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1279B5FF19FED64D00A7828C /* Connection.swift */,
+				1279B60019FED64D00A7828C /* Contact.swift */,
+				1279B60319FED64D00A7828C /* DateReminderInfo.swift */,
+				1279B60419FED64D00A7828C /* LocationReminderInfo.swift */,
+				1279B60519FED64D00A7828C /* Place.swift */,
+				1279B60619FED64D00A7828C /* Task.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1279B61319FED65300A7828C /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				1279B60719FED64D00A7828C /* FileManager.swift */,
+			);
+			name = Cache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,8 +277,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1279B60919FED64D00A7828C /* CDStore.swift in Sources */,
+				1279B60D19FED64D00A7828C /* Nothing.xcdatamodeld in Sources */,
+				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
+				1279B60B19FED64D00A7828C /* Connection.swift in Sources */,
+				1279B61119FED64D00A7828C /* Task.swift in Sources */,
 				1279B5DC19FED4E700A7828C /* ViewController.swift in Sources */,
 				1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */,
+				1279B60A19FED64D00A7828C /* NSManagedObject_E.swift in Sources */,
+				1279B61219FED64D00A7828C /* FileManager.swift in Sources */,
+				1279B60819FED64D00A7828C /* CDHelper.swift in Sources */,
+				1279B60C19FED64D00A7828C /* Contact.swift in Sources */,
+				1279B61019FED64D00A7828C /* Place.swift in Sources */,
+				1279B60E19FED64D00A7828C /* DateReminderInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +491,20 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1279B60219FED64D00A7828C /* Nothing.xcdatamodel */,
+			);
+			currentVersion = 1279B60219FED64D00A7828C /* Nothing.xcdatamodel */;
+			name = Nothing.xcdatamodeld;
+			path = Model/Nothing.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1279B5CC19FED4E700A7828C /* Project object */;
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Connection" representedClassName="Connection" isAbstract="YES" syncable="YES">
+        <attribute name="thumbnailKey" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="connections" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="Contact" representedClassName="Contact" parentEntity="Connection" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="DateReminderInfo" representedClassName="DateReminderInfo" syncable="YES">
+        <attribute name="fireDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="repeatIntervalNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="dateReminderInfo" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="LocationReminderInfo" representedClassName="LocationReminderInfo" syncable="YES">
+        <attribute name="distanceNumber" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="onArriveBool" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="locationReminderInfos" inverseEntity="Place" syncable="YES"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="locationReminderInfo" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="Place" representedClassName="Place" parentEntity="Connection" syncable="YES">
+        <attribute name="customNameString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="originalName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="locationReminderInfos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocationReminderInfo" inverseName="place" inverseEntity="LocationReminderInfo" syncable="YES"/>
+    </entity>
+    <entity name="Task" representedClassName="Task" syncable="YES">
+        <attribute name="longDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stateNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="connections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Connection" inverseName="tasks" inverseEntity="Connection" syncable="YES"/>
+        <relationship name="dateReminderInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DateReminderInfo" inverseName="task" inverseEntity="DateReminderInfo" syncable="YES"/>
+        <relationship name="locationReminderInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationReminderInfo" inverseName="task" inverseEntity="LocationReminderInfo" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Connection" positionX="252" positionY="315" width="128" height="73"/>
+        <element name="Contact" positionX="25" positionY="207" width="128" height="88"/>
+        <element name="DateReminderInfo" positionX="-515" positionY="245" width="128" height="88"/>
+        <element name="LocationReminderInfo" positionX="-182" positionY="236" width="128" height="103"/>
+        <element name="Place" positionX="27" positionY="369" width="128" height="118"/>
+        <element name="Task" positionX="-342" positionY="18" width="128" height="133"/>
+    </elements>
+</model>
