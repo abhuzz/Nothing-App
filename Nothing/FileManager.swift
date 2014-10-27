@@ -33,34 +33,17 @@ class FileManager {
         }
     }
     
-    private func generateKey() -> String {
-        return NSUUID().UUIDString
-    }
-    
-    private func generateUniqueKey() -> String {
-        let mgr = NSFileManager.defaultManager()
-        var key: String!
-
-        do {
-            key = self.generateKey()
-        } while (mgr.fileExistsAtPath(self.pathToFile(key)))
-
-        return key
-    }
-    
-    private func pathToFile(key: String) -> String {
+    func pathToFile(key: String) -> String {
         return self.path.stringByAppendingPathComponent(key)
     }
     
     // write data on disk, return key
-    func write(data: NSData) -> String {
-        let key = generateUniqueKey()
-        data.writeToFile(self.pathToFile(key), atomically: true)
-        return key
+    func write(data: NSData, fileName: String) -> Bool {
+        return data.writeToFile(self.pathToFile(fileName), atomically: true)
     }
     
     /// read data from this, return data or nil
-    func read(key: String) -> NSData? {
-        return NSData(contentsOfFile: self.pathToFile(key))
+    func read(fileName: String) -> NSData? {
+        return NSData(contentsOfFile: self.pathToFile(fileName))
     }
 }

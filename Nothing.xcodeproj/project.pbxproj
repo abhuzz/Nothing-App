@@ -24,6 +24,7 @@
 		1279B61019FED64D00A7828C /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60519FED64D00A7828C /* Place.swift */; };
 		1279B61119FED64D00A7828C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60619FED64D00A7828C /* Task.swift */; };
 		1279B61219FED64D00A7828C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60719FED64D00A7828C /* FileManager.swift */; };
+		1279B61519FEDBD200A7828C /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B61419FEDBD200A7828C /* FileCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		1279B60519FED64D00A7828C /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		1279B60619FED64D00A7828C /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		1279B60719FED64D00A7828C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		1279B61419FEDBD200A7828C /* FileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +101,10 @@
 		1279B5D619FED4E700A7828C /* Nothing */ = {
 			isa = PBXGroup;
 			children = (
-				1279B5F919FED64D00A7828C /* Core Data */,
-				1279B61319FED65300A7828C /* Cache */,
 				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
 				1279B5DB19FED4E700A7828C /* ViewController.swift */,
+				1279B5F919FED64D00A7828C /* Core Data */,
+				1279B61319FED65300A7828C /* Cache */,
 				1279B5DD19FED4E700A7828C /* Main.storyboard */,
 				1279B5E019FED4E700A7828C /* Images.xcassets */,
 				1279B5E219FED4E700A7828C /* LaunchScreen.xib */,
@@ -172,6 +174,7 @@
 		1279B61319FED65300A7828C /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				1279B61419FEDBD200A7828C /* FileCache.swift */,
 				1279B60719FED64D00A7828C /* FileManager.swift */,
 			);
 			name = Cache;
@@ -279,6 +282,7 @@
 			files = (
 				1279B60919FED64D00A7828C /* CDStore.swift in Sources */,
 				1279B60D19FED64D00A7828C /* Nothing.xcdatamodeld in Sources */,
+				1279B61519FEDBD200A7828C /* FileCache.swift in Sources */,
 				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
 				1279B60B19FED64D00A7828C /* Connection.swift in Sources */,
 				1279B61119FED64D00A7828C /* Task.swift in Sources */,
