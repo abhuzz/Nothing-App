@@ -8,7 +8,17 @@
 
 import UIKit
 
+struct WordInstance: Equatable {
+    var text: String
+    var line: Int
+}
+
+func == (lhs: WordInstance, rhs: WordInstance) -> Bool {
+    return lhs.text == rhs.text && lhs.line == rhs.line
+}
+
 class TaskCell: UITableViewCell {
+    
     @IBOutlet private (set) weak var thumbnailView: UIImageView!
     @IBOutlet private (set) weak var titleLabel: UILabel!
     @IBOutlet private (set) weak var descriptionLabel: UILabel!
@@ -35,10 +45,18 @@ class TaskCell: UITableViewCell {
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
     }
     
+    private var wmController: WMController?
     func handleTap(recognizer: UITapGestureRecognizer) {
-        let point = recognizer.locationInView(self)
         if (recognizer.state == .Ended) {
-
+            let point = recognizer.locationInView(self.descriptionLabel)
+            if self.wmController == nil {
+                self.wmController = WMController(font: self.descriptionLabel.font, viewSize: self.descriptionLabel.bounds.size)
+                self.wmController!.map(self.descriptionLabel.text!)
+            }
+            
+            if let word = self.wmController?.wordForPoint(point) {
+                println("word = \(word.text)")
+            }
         }
     }
 }
