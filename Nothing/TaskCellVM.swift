@@ -28,7 +28,7 @@ class TaskCellVM: Equatable {
         
         let hashtagAttributes = [NSForegroundColorAttributeName: UIColor.appBlueColor()]
         
-        self.hashtags = HashtagParser(desc).parse() as [HashtagParser.Result]!
+        self.hashtags = HashtagDetector(desc).detect() as [HashtagDetector.Result]!
         for (text, range) in self.hashtags {
             attributedText.addAttributes(hashtagAttributes, range: range)
         }
@@ -36,7 +36,7 @@ class TaskCellVM: Equatable {
         return attributedText
     }
     
-    var hashtags: [HashtagParser.Result] = Array<HashtagParser.Result>()
+    var hashtags: [HashtagDetector.Result] = Array<HashtagDetector.Result>()
     
     var datePlaceDescription: String {
         var value = ""

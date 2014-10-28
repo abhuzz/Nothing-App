@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HashtagParser {
+class HashtagDetector {
     
     typealias Result = (text: String, range: NSRange)
     private let text: String
@@ -17,7 +17,7 @@ class HashtagParser {
         self.text = text
     }
     
-    func parse() -> [Result] {
+    func detect() -> [Result] {
         let matches = self.regexp.matchesInString(self.text, options: .ReportCompletion, range: NSMakeRange(0, countElements(self.text))) as [NSTextCheckingResult]
         
         var results = [Result]()
