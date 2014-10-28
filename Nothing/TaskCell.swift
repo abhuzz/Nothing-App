@@ -29,8 +29,11 @@ extension TaskCell {
 //        self.enableDebug()
         
         let radius = 0.5 * (CGRectGetWidth(self.thumbnailView.bounds) - 1)
+        self.thumbnailView.backgroundColor = UIColor.clearColor()
         self.thumbnailView.layer.cornerRadius = radius
         self.thumbnailView.layer.masksToBounds = true
+        self.thumbnailView.layer.borderColor = UIColor.appWhite216().CGColor
+        self.thumbnailView.layer.borderWidth = 1
     }
     
     func update(model: TaskCellVM) {
