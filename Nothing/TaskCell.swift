@@ -45,12 +45,12 @@ class TaskCell: UITableViewCell {
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
     }
     
-    private var wmController: WMController?
+    private var wmController: WMKit.Controller?
     func handleTap(recognizer: UITapGestureRecognizer) {
         if (recognizer.state == .Ended) {
             let point = recognizer.locationInView(self.descriptionLabel)
             if self.wmController == nil {
-                self.wmController = WMController(font: self.descriptionLabel.font, viewSize: self.descriptionLabel.bounds.size)
+                self.wmController = WMKit.Controller(font: self.descriptionLabel.font, viewSize: self.descriptionLabel.bounds.size)
                 self.wmController!.map(self.descriptionLabel.text!)
             }
             
