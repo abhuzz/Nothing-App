@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
-class TaskCellVM {
+func == (lhs: TaskCellVM, rhs: TaskCellVM) -> Bool {
+    return lhs.task == rhs.task
+}
+
+class TaskCellVM: Equatable {
     let task: Task
     init (_ task: Task) {
         self.task = task
@@ -24,13 +28,15 @@ class TaskCellVM {
         
         let hashtagAttributes = [NSForegroundColorAttributeName: UIColor.appBlueColor()]
         
-        let results = HashtagParser(desc).parse() as [HashtagParser.Result]!
-        for (text, range) in results {
+        self.hashtags = HashtagParser(desc).parse() as [HashtagParser.Result]!
+        for (text, range) in self.hashtags {
             attributedText.addAttributes(hashtagAttributes, range: range)
         }
         
         return attributedText
     }
+    
+    var hashtags: [HashtagParser.Result] = Array<HashtagParser.Result>()
     
     var datePlaceDescription: String {
         var value = ""

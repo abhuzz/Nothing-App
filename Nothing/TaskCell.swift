@@ -14,6 +14,33 @@ class TaskCell: UITableViewCell {
     @IBOutlet private (set) weak var descriptionLabel: UILabel!
     @IBOutlet private (set) weak var datePlaceLabel: UILabel!
     @IBOutlet weak var descriptionLabelHeight: NSLayoutConstraint!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //        self.enableDebug()
+        self.configureThumbnailView()
+        self.configureGestureRecognizer()
+    }
+    
+    private func configureThumbnailView() {
+        let radius = 0.5 * (CGRectGetWidth(self.thumbnailView.bounds) - 1)
+        self.thumbnailView.backgroundColor = UIColor.clearColor()
+        self.thumbnailView.layer.cornerRadius = radius
+        self.thumbnailView.layer.masksToBounds = true
+        self.thumbnailView.layer.borderColor = UIColor.appWhite216().CGColor
+        self.thumbnailView.layer.borderWidth = 1
+    }
+    
+    private func configureGestureRecognizer() {
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
+    }
+    
+    func handleTap(recognizer: UITapGestureRecognizer) {
+        let point = recognizer.locationInView(self)
+        if (recognizer.state == .Ended) {
+
+        }
+    }
 }
 
 extension TaskCell {
@@ -23,18 +50,6 @@ extension TaskCell {
 }
 
 extension TaskCell {
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-//        self.enableDebug()
-        
-        let radius = 0.5 * (CGRectGetWidth(self.thumbnailView.bounds) - 1)
-        self.thumbnailView.backgroundColor = UIColor.clearColor()
-        self.thumbnailView.layer.cornerRadius = radius
-        self.thumbnailView.layer.masksToBounds = true
-        self.thumbnailView.layer.borderColor = UIColor.appWhite216().CGColor
-        self.thumbnailView.layer.borderWidth = 1
-    }
     
     func update(model: TaskCellVM) {
         self.titleLabel.text = model.title
@@ -63,26 +78,5 @@ extension TaskCell {
         self.titleLabel.backgroundColor = UIColor.redColor()
         self.descriptionLabel.backgroundColor = UIColor.greenColor()
         self.datePlaceLabel.backgroundColor = UIColor.blueColor()
-    }
-}
-
-extension UILabel {
-    
-    class Attributes {
-        var font: UIFont?
-        var textColor: UIColor?
-        var numberOfLines: Int?
-        
-        init() {}
-    }
-    
-    var proposedHeight: CGFloat {
-        return self.sizeThatFits(CGSize(width: CGRectGetWidth(self.bounds), height: CGFloat.max)).height
-    }
-    
-    func update(attr: Attributes) {
-        if let font = attr.font { self.font = font }
-        if let textColor = attr.textColor { self.textColor = textColor }
-        if let numberOfLines = attr.numberOfLines { self.numberOfLines = numberOfLines }
     }
 }

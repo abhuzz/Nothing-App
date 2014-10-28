@@ -68,6 +68,7 @@
                     <constraint firstItem="lqk-kH-RIv" firstAttribute="trailing" secondItem="Ml6-Zs-A4j" secondAttribute="trailingMargin" id="pSi-HF-pGh"/>
                 </constraints>
             </tableViewCellContentView>
+            <gestureRecognizers/>
             <connections>
                 <outlet property="datePlaceLabel" destination="4nq-Wz-Gcr" id="e2U-Z4-yYw"/>
                 <outlet property="descriptionLabel" destination="lqk-kH-RIv" id="feT-Yb-hLY"/>
