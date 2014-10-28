@@ -11,20 +11,15 @@ import CoreData
 
 @objc(DateReminderInfo)
 class DateReminderInfo: NSManagedObject {
-    @NSManaged var fireDate: NSDate?
-    @NSManaged private var repeatIntervalNumber: NSNumber?
+    @NSManaged var fireDate: NSDate
+    @NSManaged private var repeatIntervalNumber: NSNumber
     @NSManaged private var task: Task?
 }
 
 extension DateReminderInfo {
-    var repeatInterval: NSCalendarUnit? {
-        get {
-            let value = self.repeatIntervalNumber?.unsignedLongValue
-            return value != nil ? NSCalendarUnit(value!) : nil
-        }
-        set {
-            let value: NSNumber? = (newValue != nil) ? NSNumber(unsignedLong: newValue!.rawValue) : nil
-            self.repeatIntervalNumber = value
-        }
+    
+    var repeatInterval: NSCalendarUnit {
+        get { return NSCalendarUnit(self.repeatIntervalNumber.unsignedLongValue) }
+        set { self.repeatIntervalNumber = NSNumber(unsignedLong: newValue.rawValue) }
     }
 }
