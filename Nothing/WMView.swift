@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension WMKit {
+extension WordMapKit {
     class WMView: UIView {
         var words: [WMWord] = [WMWord]()
         var font: UIFont = UIFont()

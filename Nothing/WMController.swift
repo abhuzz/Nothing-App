@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-class WMKit {
+typealias WMKit = WordMapKit
+class WordMapKit {
     typealias Controller = WMController
     
     /// internal struct
