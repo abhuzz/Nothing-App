@@ -53,7 +53,7 @@ class TaskCellVM {
         let attr = UILabel.Attributes()
         attr.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)!
         attr.textColor = UIColor.appBlack()
-        attr.numberOfLines = 2
+        attr.numberOfLines = 4
         return attr
     }()
     

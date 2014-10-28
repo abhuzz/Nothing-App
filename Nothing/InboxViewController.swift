@@ -41,13 +41,6 @@ class InboxViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        /*
-        let task = self.debug_tasks[indexPath.row]
-        let cell = TaskCell.nib().instantiateWithOwner(nil, options: nil).first as TaskCell
-        cell.update(TaskCellVM(task))
-        return 8 + 8 + self.sizeOfLabel(cell.titleLabel) + self.sizeOfLabel(cell.descriptionLabel) + self.sizeOfLabel(cell.datePlaceLabel)
-        */
-        
         let task = self.debug_tasks[indexPath.row]
         let cell = TaskCell.nib().instantiateWithOwner(nil, options: nil).first as TaskCell
         cell.update(TaskCellVM(task))
@@ -57,9 +50,8 @@ class InboxViewController: UITableViewController {
 
     lazy var debug_tasks: [Task] = {
         let t1: Task = Task.create(CDHelper.mainContext)
-        t1.title = "Task 1"
-//        t1.longDescription = "ABC DEF"
-        t1.longDescription = "This is one line description, and this is a second part of description in this title which should be more than 2 lines high"
+        t1.title = "Do lorem ipsum"
+        t1.longDescription = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever si."
         
         let drInfo: DateReminderInfo = DateReminderInfo.create(CDHelper.mainContext)
         drInfo.fireDate = NSDate()
