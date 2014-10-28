@@ -40,8 +40,9 @@ extension TaskCell {
         self.titleLabel.text = model.title
         self.titleLabel.update(model.titleLabelAttributes)
         
-        self.descriptionLabel.text = model.description
         self.descriptionLabel.update(model.descriptionLabelAttributes)
+        self.descriptionLabel.attributedText = model.description
+
         self.descriptionLabelHeight.constant = self.descriptionLabel.proposedHeight
 
         self.datePlaceLabel.text = model.datePlaceDescription

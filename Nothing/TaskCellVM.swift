@@ -17,7 +17,20 @@ class TaskCellVM {
     
     var title: String { return self.task.title }
     
-    var description: String { return self.task.longDescription ?? "" }
+    var description: NSAttributedString {
+        let desc = self.task.longDescription ?? ""
+        
+        var attributedText = NSMutableAttributedString(string: desc)
+        
+        let hashtagAttributes = [NSForegroundColorAttributeName: UIColor.appBlueColor()]
+        
+        let results = HashtagParser(desc).parse() as [HashtagParser.Result]!
+        for (text, range) in results {
+            attributedText.addAttributes(hashtagAttributes, range: range)
+        }
+        
+        return attributedText
+    }
     
     var datePlaceDescription: String {
         var value = ""

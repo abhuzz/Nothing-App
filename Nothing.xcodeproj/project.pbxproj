@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		123B6E2219FF86C4008E22DB /* HashtagParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2119FF86C4008E22DB /* HashtagParser.swift */; };
 		125593EC19FEE10A001EC477 /* UIColor_E.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593EB19FEE10A001EC477 /* UIColor_E.swift */; };
 		125593EF19FEF58D001EC477 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 125593EE19FEF58D001EC477 /* TaskCell.xib */; };
 		125593F219FEF7E0001EC477 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593F119FEF7E0001EC477 /* TaskCell.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		123B6E2119FF86C4008E22DB /* HashtagParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagParser.swift; sourceTree = "<group>"; };
 		125593EB19FEE10A001EC477 /* UIColor_E.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_E.swift; sourceTree = "<group>"; };
 		125593EE19FEF58D001EC477 /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		125593F119FEF7E0001EC477 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				1279B5F919FED64D00A7828C /* Core Data */,
 				1279B61319FED65300A7828C /* Cache */,
 				125593EB19FEE10A001EC477 /* UIColor_E.swift */,
+				123B6E2119FF86C4008E22DB /* HashtagParser.swift */,
 				125593ED19FEE133001EC477 /* Resources */,
 				1279B5D719FED4E700A7828C /* Supporting Files */,
 			);
@@ -319,6 +322,7 @@
 				1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */,
 				125593F419FEFA8D001EC477 /* TaskCellVM.swift in Sources */,
 				1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */,
+				123B6E2219FF86C4008E22DB /* HashtagParser.swift in Sources */,
 				1279B60A19FED64D00A7828C /* NSManagedObject_E.swift in Sources */,
 				1279B61219FED64D00A7828C /* FileManager.swift in Sources */,
 				1279B60819FED64D00A7828C /* CDHelper.swift in Sources */,
