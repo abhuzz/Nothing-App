@@ -71,7 +71,7 @@ class WMController {
         */
     }
     
-    func wordForPoint(point: CGPoint) -> WMWord? {
+    func wordForPoint(point: CGPoint) -> WMWordProxy? {
         if self.words.count == 0 {
             return nil
         }

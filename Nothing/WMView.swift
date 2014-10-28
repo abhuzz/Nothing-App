@@ -50,10 +50,10 @@ class WMView: UIView {
         }
     }
     
-    func wordForPoint(point: CGPoint) -> WMWord? {
+    func wordForPoint(point: CGPoint) -> WMWordProxy? {
         for view in self.subviews as [WMWordView] {
             if CGRectContainsPoint(view.frame, point) {
-                return view.word
+                return WMWordProxy(view.word)
             }
         }
         

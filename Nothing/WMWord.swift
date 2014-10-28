@@ -14,3 +14,11 @@ struct WMWord {
     var size: CGSize
     var line: Int
 }
+
+class WMWordProxy {
+    let text: String
+    
+    init(_ word: WMWord) {
+        self.text = word.text
+    }
+}
