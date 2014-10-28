@@ -9,32 +9,29 @@
 import UIKit
 
 class WMView: UIView {
-    let size: CGSize = CGSizeZero
     var words: [WMWord] = [WMWord]()
     var font: UIFont = UIFont()
     
     init(size: CGSize, words: [WMWord], font: UIFont) {
-        self.size = size
         self.words = words
         self.font = font
-        super.init(frame: CGRectMake(0, 0, self.size.width, self.size.height))
+        super.init(frame: CGRectMake(0, 0, size.width, size.height))
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
+    /// Call method before `wordForPoint:`.
     func prepare() {
         var offsetX: CGFloat = 0.0
-        var lastLine: Int = 0
+        var previousLine: Int = 0
+        
+        // Enumerate words, calculate rect, create view and draw word in created view
         for word in self.words {
             /// reset offset
-            if (lastLine != word.line) {
-                lastLine = word.line
+            if (previousLine != word.line) {
+                previousLine = word.line
                 offsetX = 0
             }
             
@@ -44,12 +41,12 @@ class WMView: UIView {
             offsetX = rect.maxX
             
             /// add view and draw text
-            let wordView = WMWordView(word: word, frame: rect, font: self.font)
-            wordView.drawWord()
+            let wordView = WMWordView(word: word, frame: rect)
             self.addSubview(wordView)
         }
     }
     
+    /// Return word as `WMWordProxy` if found, otherwise nil
     func wordForPoint(point: CGPoint) -> WMWordProxy? {
         for view in self.subviews as [WMWordView] {
             if CGRectContainsPoint(view.frame, point) {
@@ -60,21 +57,24 @@ class WMView: UIView {
         return nil
     }
     
+    /// Return snapshot of the view
     func snapshot() -> UIImage {
+        for view in self.subviews as [WMWordView] {
+            view.drawWord(self.font)
+        }
+        
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0.0)
         self.layer.renderInContext(UIGraphicsGetCurrentContext())
-        let img = UIGraphicsGetImageFromCurrentImageContext()
+        let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return img
+        return image
     }
 }
 
 private class WMWordView: UIImageView {
     var word: WMWord
-    var font: UIFont
-    init(word: WMWord, frame: CGRect, font: UIFont) {
+    init(word: WMWord, frame: CGRect) {
         self.word = word
-        self.font = font
         super.init(frame: frame)
     }
     
@@ -82,13 +82,22 @@ private class WMWordView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func drawWord() {
+    private var isDrawn = false
+    func drawWord(font: UIFont) {
+        /// check if already drawn
+        if self.isDrawn {
+            return
+        }
+        
+        self.isDrawn = true
+        /// create attributes
         let attr = [
-            NSFontAttributeName: self.font,
+            NSFontAttributeName: font,
             NSForegroundColorAttributeName: UIColor.blackColor(),
             NSBackgroundColorAttributeName: UIColor(white: 0.7, alpha: 1.0)
         ]
         
+        /// draw word
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0.0)
         (word.text as NSString).drawInRect(self.bounds, withAttributes: attr)
         let image = UIGraphicsGetImageFromCurrentImageContext()

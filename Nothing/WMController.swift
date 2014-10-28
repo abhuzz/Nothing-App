@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class WMController {
-    let font: UIFont
-    let viewSize: CGSize
+    private let font: UIFont
+    private let viewSize: CGSize
     private var words: [WMWord] = [WMWord]()
     private var view: WMView?
     
@@ -35,7 +35,7 @@ class WMController {
         var currentStringSize = CGSizeZero
         var currentLine = -1
         
-        var wmcWords = [WMWord]()
+        var wmWords = [WMWord]()
         for rawWord in rawWords {
             /// calculate size of whole text
             currentString += rawWord
@@ -45,30 +45,31 @@ class WMController {
                 whiteSpaceAdded = true
             }
             
+            /// save old size, get new and check if it matching to the same line or the new one
             let oldSize = currentStringSize
             currentStringSize = sizeForText(currentString)
             if currentStringSize.height > oldSize.height {
                 currentLine++
             }
             
-            let wmcWord = WMWord(text: rawWord, size: sizeForText(rawWord), line: currentLine)
-            wmcWords.append(wmcWord)
+            /// create word
+            let wmWord = WMWord(text: rawWord, size: sizeForText(rawWord), line: currentLine)
+            wmWords.append(wmWord)
             if (whiteSpaceAdded) {
+                /// create whitespace word
                 let wmcWord = WMWord(text: whitespace, size: sizeForText(whitespace), line: currentLine)
-                wmcWords.append(wmcWord)
+                wmWords.append(wmcWord)
             }
         }
         
         /// assign mapped words
-        self.words = wmcWords
+        self.words = wmWords
         
-        /*
-        /// debug view
-        let debugView = WMView(size: self.viewSize, words: self.words, font: self.font)
-        debugView.prepare()
-        let debugImage = debugView.snapshot()
-        println("debug snapshot")
-        */
+//        /// debug view
+//        let debugView = WMView(size: self.viewSize, words: self.words, font: self.font)
+//        debugView.prepare()
+//        let debugImage = debugView.snapshot()
+//        println("debug snapshot")
     }
     
     func wordForPoint(point: CGPoint) -> WMWordProxy? {
