@@ -42,6 +42,7 @@ class WMView: UIView {
             
             /// add view and draw text
             let wordView = WMWordView(word: word, frame: rect)
+            wordView.backgroundColor = UIColor.blueColor()
             self.addSubview(wordView)
         }
     }
@@ -49,7 +50,7 @@ class WMView: UIView {
     /// Return word as `WMWordProxy` if found, otherwise nil
     func wordForPoint(point: CGPoint) -> WMWordProxy? {
         for view in self.subviews as [WMWordView] {
-            if CGRectContainsPoint(view.frame, point) {
+            if CGRectContainsPoint(view.frame, point) && view.word.tappable {
                 return WMWordProxy(view.word)
             }
         }

@@ -53,7 +53,17 @@ class TaskCell: UITableViewCell {
             let point = recognizer.locationInView(self.descriptionLabel)
             if self.wordMapper == nil {
                 self.wordMapper = WordMapper(font: self.descriptionLabel.font, viewSize: self.descriptionLabel.bounds.size)
+                
+                // 1
                 self.wordMapper!.mapWordsSeparatedByWhiteSpaceAndNewLineCharacterSet(self.descriptionLabel.text!)
+                
+                // 2
+//                var ranges = [WMWordRange]()
+//                for result in self.model!.hashtags {
+//                    ranges.append(result.range)
+//                }
+//                
+//                self.wordMapper!.mapWordsUsingRanges(ranges, text: self.descriptionLabel.text!)
             }
             
             if let word = self.wordMapper?.wordForPoint(point) {
@@ -78,7 +88,7 @@ extension TaskCell {
         
         self.descriptionLabel.update(model.descriptionLabelAttributes)
         self.descriptionLabel.attributedText = model.description
-
+        self.descriptionLabel.backgroundColor = UIColor.yellowColor()
         self.descriptionLabelHeight.constant = self.descriptionLabel.proposedHeight
 
         self.datePlaceLabel.text = model.datePlaceDescription

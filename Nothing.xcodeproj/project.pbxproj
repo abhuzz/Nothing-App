@@ -16,6 +16,7 @@
 		125593F219FEF7E0001EC477 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593F119FEF7E0001EC477 /* TaskCell.swift */; };
 		125593F419FEFA8D001EC477 /* TaskCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593F319FEFA8D001EC477 /* TaskCellVM.swift */; };
 		125F83591A004EF600C4D4B7 /* WMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125F83581A004EF600C4D4B7 /* WMView.swift */; };
+		125F835E1A00BC8000C4D4B7 /* WMTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125F835D1A00BC8000C4D4B7 /* WMTypes.swift */; };
 		1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5D919FED4E700A7828C /* AppDelegate.swift */; };
 		1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5DB19FED4E700A7828C /* InboxViewController.swift */; };
 		1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1279B5DD19FED4E700A7828C /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		125593F119FEF7E0001EC477 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		125593F319FEFA8D001EC477 /* TaskCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellVM.swift; sourceTree = "<group>"; };
 		125F83581A004EF600C4D4B7 /* WMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMView.swift; sourceTree = "<group>"; };
+		125F835D1A00BC8000C4D4B7 /* WMTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMTypes.swift; sourceTree = "<group>"; };
 		1279B5D419FED4E700A7828C /* Nothing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nothing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1279B5D819FED4E700A7828C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1279B5D919FED4E700A7828C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				123B6E2B1A0034FE008E22DB /* WordMapper.swift */,
 				125F83581A004EF600C4D4B7 /* WMView.swift */,
+				125F835D1A00BC8000C4D4B7 /* WMTypes.swift */,
 			);
 			name = WMKit;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */,
 				125593F419FEFA8D001EC477 /* TaskCellVM.swift in Sources */,
 				1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */,
+				125F835E1A00BC8000C4D4B7 /* WMTypes.swift in Sources */,
 				123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */,
 				1279B60A19FED64D00A7828C /* NSManagedObject_E.swift in Sources */,
 				1279B61219FED64D00A7828C /* FileManager.swift in Sources */,
