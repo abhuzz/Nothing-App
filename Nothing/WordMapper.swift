@@ -34,7 +34,6 @@ class WordMapper {
     }
     
     func mapWordsSeparatedByWhiteSpaceAndNewLineCharacterSet(text: String) {
-        
         var words = [WMWord]()
         for line in self.mapLines(text) {
             for ref in line.refs {
@@ -52,31 +51,25 @@ class WordMapper {
     func mapWordsUsingRanges(ranges: [WMWordRange], text: String) {
         
         var words = [WMWord]()
-
-        /// map text to lines
-        let lines = self.mapLines(text)
-        
-        for range in ranges {
-            /// get a line
-            var line: WMLine!
-            for l in lines {
-                if l.range.containsRange(range) {
-                    line = l
-                    break
+        for line in self.mapLines(text) {
+            for ref in line.refs {
+                
+                var tappable = false
+                for range in ranges {
+                    tappable = ref.range == range
+                    if (tappable) {
+                        break
+                    }
                 }
+                
+                words.append(WMWord(text: ref.value,
+                    size: sizeForText(ref.value),
+                    line: line.number,
+                    tappable: tappable))
             }
-            
-            let wordString = (text as NSString).substringWithRange(range)
-            let word = WMWord(text: wordString , size: self.sizeForText(wordString), line: line.number, tappable: true)
-            words.append(word)
         }
         
-        
-//        let wholeText = WMWord(text: text, size: self.sizeForText(text), line: 0, tappable: false)
-//        self.words = [wholeText]
-        
         self.words = words
-        
         self.debug()
     }
     
@@ -213,7 +206,11 @@ class WordMapper {
     }
 }
 
-extension NSRange {
+public func == (lhs: NSRange, rhs: NSRange) -> Bool {
+    return lhs.location == rhs.location && lhs.length == rhs.length
+}
+
+extension NSRange: Equatable {
     func containsRange(r: NSRange) -> Bool {
         let start = self.location
         let end = start + self.length
