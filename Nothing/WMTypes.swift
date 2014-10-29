@@ -9,21 +9,6 @@
 import Foundation
 import UIKit
 
-protocol WMTextRef {
-    var value: String {get set}
-    var range: NSRange {get set}
-}
-
-struct WMWhitespaceRef: WMTextRef {
-    var value: String
-    var range: NSRange
-}
-
-struct WMWordRef: WMTextRef {
-    var value: String
-    var range: NSRange
-}
-
 class WMLine {
     var number = 0
     var range = NSMakeRange(0, 0)

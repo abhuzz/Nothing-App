@@ -73,62 +73,12 @@ class WordMapper {
         self.debug()
     }
     
-    private func textRefs(text: String) -> [WMTextRef] {
-        var wordStart: Int = 0
-        var wordEnd: Int = 0
-        var wordStarted = false
-        
-        /// get words and white spaces
-        var textRefs = [WMTextRef]()
-        for idx in 0..<countElements(text) {
-            let index = advance(text.startIndex, idx)
-            let character = text.substringWithRange(Range(start: index, end: index.successor()))
-            let trimmedCharacter = (character as NSString).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-            
-            if countElements(trimmedCharacter) > 0 {
-                if !wordStarted {
-                    wordStarted = true
-                    wordStart = idx
-                } else {
-                    wordEnd = idx+1
-                }
-            } else {
-                if wordStarted {
-                    wordStarted = false
-                    
-                    var range = NSMakeRange(wordStart, (wordEnd - wordStart > 0) ? wordEnd - wordStart : 1)
-                    let str = (text as NSString).substringWithRange(range)
-                    textRefs.append(WMWordRef(value: str, range: range))
-                    textRefs.append(WMWhitespaceRef(value: character, range: NSMakeRange(idx, 1)))
-                }
-            }
-            
-            if idx == countElements(text) - 1 {
-                wordEnd = idx+1
-                wordStarted = false
-                let range = NSMakeRange(wordStart, wordEnd - wordStart)
-                let str = (text as NSString).substringWithRange(range)
-                textRefs.append(WMWordRef(value: str, range: range))
-            }
-        }
-        
-        /// debug
-        var fullString = ""
-        for word in textRefs {
-            fullString += word.value
-        }
-        
-        println(fullString)
-
-        return textRefs
-    }
-    
     private func mapLines(text: String) -> [WMLine] {
         
         var lines = [WMLine]()
         
         var contentSize = CGSizeZero
-        for ref in self.textRefs(text) {
+        for ref in WMTextRefGenerator.textRefs(text) {
 //            println("ref = [\(ref.value)]")
             if lines.first == nil {
                 let line = WMLine()
