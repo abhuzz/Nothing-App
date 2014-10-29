@@ -68,8 +68,22 @@ class TaskCell: UITableViewCell {
             
             if let word = self.wordMapper?.wordForPoint(point) {
                 println("word = \(word.text)")
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    var alert = UIAlertView(title: nil, message: word.text, delegate: nil, cancelButtonTitle: nil)
+                    alert.show()
+                    
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                        alert.dismissWithClickedButtonIndex(0, animated: true)
+                    })
+                })
             }
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.wordMapper = nil
+        self.descriptionLabelHeight.constant = self.descriptionLabel.proposedHeight
     }
 }
 
@@ -88,7 +102,6 @@ extension TaskCell {
         
         self.descriptionLabel.update(model.descriptionLabelAttributes)
         self.descriptionLabel.attributedText = model.description
-        self.descriptionLabel.backgroundColor = UIColor.yellowColor()
         self.descriptionLabelHeight.constant = self.descriptionLabel.proposedHeight
 
         self.datePlaceLabel.text = model.datePlaceDescription

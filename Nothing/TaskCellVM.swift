@@ -29,6 +29,8 @@ class TaskCellVM: Equatable {
         let hashtagAttributes = [NSForegroundColorAttributeName: UIColor.appBlueColor()]
         
         self.hashtags = HashtagDetector(desc).detect() as [HashtagDetector.Result]!
+        
+        self.hashtagsAsString.removeAll(keepCapacity: true)
         for (text, range) in self.hashtags {
             attributedText.addAttributes(hashtagAttributes, range: range)
             self.hashtagsAsString.append(text)
