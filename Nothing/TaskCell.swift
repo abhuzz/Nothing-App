@@ -25,6 +25,8 @@ class TaskCell: UITableViewCell {
     @IBOutlet private (set) weak var datePlaceLabel: UILabel!
     @IBOutlet weak var descriptionLabelHeight: NSLayoutConstraint!
     
+    private var model: TaskCellVM?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         //        self.enableDebug()
@@ -45,16 +47,16 @@ class TaskCell: UITableViewCell {
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
     }
     
-    private var wmController: WMKit.Controller?
+    private var wordMapper: WordMapper?
     func handleTap(recognizer: UITapGestureRecognizer) {
         if (recognizer.state == .Ended) {
             let point = recognizer.locationInView(self.descriptionLabel)
-            if self.wmController == nil {
-                self.wmController = WMKit.Controller(font: self.descriptionLabel.font, viewSize: self.descriptionLabel.bounds.size)
-                self.wmController!.map(self.descriptionLabel.text!)
+            if self.wordMapper == nil {
+                self.wordMapper = WordMapper(font: self.descriptionLabel.font, viewSize: self.descriptionLabel.bounds.size)
+                self.wordMapper!.mapWordsSeparatedByWhiteSpaceAndNewLineCharacterSet(self.descriptionLabel.text!)
             }
             
-            if let word = self.wmController?.wordForPoint(point) {
+            if let word = self.wordMapper?.wordForPoint(point) {
                 println("word = \(word.text)")
             }
         }
@@ -70,6 +72,7 @@ extension TaskCell {
 extension TaskCell {
     
     func update(model: TaskCellVM) {
+        self.model = model
         self.titleLabel.text = model.title
         self.titleLabel.update(model.titleLabelAttributes)
         

@@ -34,7 +34,7 @@ class HashtagDetector {
     }
     
     private lazy var pattern: String = {
-        return "[#][^\\s]+"
+        return "[#][\\w]+"
     }()
     
     private lazy var regexp: NSRegularExpression = {

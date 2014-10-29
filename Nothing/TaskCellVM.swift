@@ -31,12 +31,14 @@ class TaskCellVM: Equatable {
         self.hashtags = HashtagDetector(desc).detect() as [HashtagDetector.Result]!
         for (text, range) in self.hashtags {
             attributedText.addAttributes(hashtagAttributes, range: range)
+            self.hashtagsAsString.append(text)
         }
         
         return attributedText
     }
     
     var hashtags: [HashtagDetector.Result] = Array<HashtagDetector.Result>()
+    var hashtagsAsString: [String] = [String]()
     
     var datePlaceDescription: String {
         var value = ""

@@ -10,7 +10,7 @@
 		123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2119FF86C4008E22DB /* HashtagDetector.swift */; };
 		123B6E2419FF909F008E22DB /* UILabel_E.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2319FF909F008E22DB /* UILabel_E.swift */; };
 		123B6E261A000249008E22DB /* TaskCellVMCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E251A000249008E22DB /* TaskCellVMCache.swift */; };
-		123B6E2C1A0034FE008E22DB /* WMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2B1A0034FE008E22DB /* WMController.swift */; };
+		123B6E2C1A0034FE008E22DB /* WordMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2B1A0034FE008E22DB /* WordMapper.swift */; };
 		125593EC19FEE10A001EC477 /* UIColor_E.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593EB19FEE10A001EC477 /* UIColor_E.swift */; };
 		125593EF19FEF58D001EC477 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 125593EE19FEF58D001EC477 /* TaskCell.xib */; };
 		125593F219FEF7E0001EC477 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593F119FEF7E0001EC477 /* TaskCell.swift */; };
@@ -50,7 +50,7 @@
 		123B6E2119FF86C4008E22DB /* HashtagDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagDetector.swift; sourceTree = "<group>"; };
 		123B6E2319FF909F008E22DB /* UILabel_E.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel_E.swift; sourceTree = "<group>"; };
 		123B6E251A000249008E22DB /* TaskCellVMCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellVMCache.swift; sourceTree = "<group>"; };
-		123B6E2B1A0034FE008E22DB /* WMController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMController.swift; sourceTree = "<group>"; };
+		123B6E2B1A0034FE008E22DB /* WordMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordMapper.swift; sourceTree = "<group>"; };
 		125593EB19FEE10A001EC477 /* UIColor_E.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_E.swift; sourceTree = "<group>"; };
 		125593EE19FEF58D001EC477 /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		125593F119FEF7E0001EC477 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		125F83571A004EDC00C4D4B7 /* WMKit */ = {
 			isa = PBXGroup;
 			children = (
-				123B6E2B1A0034FE008E22DB /* WMController.swift */,
+				123B6E2B1A0034FE008E22DB /* WordMapper.swift */,
 				125F83581A004EF600C4D4B7 /* WMView.swift */,
 			);
 			name = WMKit;
@@ -339,7 +339,7 @@
 				1279B61519FEDBD200A7828C /* FileCache.swift in Sources */,
 				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
 				1279B60B19FED64D00A7828C /* Connection.swift in Sources */,
-				123B6E2C1A0034FE008E22DB /* WMController.swift in Sources */,
+				123B6E2C1A0034FE008E22DB /* WordMapper.swift in Sources */,
 				1279B61119FED64D00A7828C /* Task.swift in Sources */,
 				1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */,
 				125593F419FEFA8D001EC477 /* TaskCellVM.swift in Sources */,
