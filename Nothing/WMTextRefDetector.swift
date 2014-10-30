@@ -23,7 +23,7 @@ struct WMWordRef: WMTextRef {
     var range: NSRange
 }
 
-class WMTextRefGenerator {
+class WMTextRefDetector {
     class func textRefs(text: String) -> [WMTextRef] {
         var wordStart: Int = 0
         var wordEnd: Int = 0

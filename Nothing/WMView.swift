@@ -8,12 +8,12 @@
 
 import UIKit
 
-class WMView: UIView {
-    var words: [WMWord] = [WMWord]()
+class WMInternaliew: UIView {
+    var texts: [WMTappableText] = [WMTappableText]()
     var font: UIFont = UIFont()
     
-    init(size: CGSize, words: [WMWord], font: UIFont) {
-        self.words = words
+    init(size: CGSize, texts: [WMTappableText], font: UIFont) {
+        self.texts = texts
         self.font = font
         super.init(frame: CGRectMake(0, 0, size.width, size.height))
     }
@@ -28,20 +28,21 @@ class WMView: UIView {
         var previousLine: Int = 0
         
         // Enumerate words, calculate rect, create view and draw word in created view
-        for word in self.words {
+        for tappableText in self.texts {
             /// reset offset
-            if (previousLine != word.line) {
-                previousLine = word.line
+            let tappableTextLine = tappableText.text.line
+            if (previousLine != tappableTextLine) {
+                previousLine = tappableTextLine
                 offsetX = 0
             }
             
             /// calculate rect
-            let y = CGFloat(word.size.height * CGFloat(word.line))
-            let rect = CGRectMake(offsetX, y, word.size.width, word.size.height)
+            let y = CGFloat(tappableText.text.size.height * CGFloat(tappableText.text.line))
+            let rect = CGRectMake(offsetX, y, tappableText.text.size.width, tappableText.text.size.height)
             offsetX = rect.maxX
             
             /// add view and draw text
-            let wordView = WMWordView(word: word, frame: rect)
+            let wordView = WMWordView(tappableText: tappableText, frame: rect)
             wordView.backgroundColor = UIColor.blueColor()
             self.addSubview(wordView)
         }
@@ -50,8 +51,8 @@ class WMView: UIView {
     /// Return word as `WMWordProxy` if found, otherwise nil
     func wordForPoint(point: CGPoint) -> WMWordProxy? {
         for view in self.subviews as [WMWordView] {
-            if CGRectContainsPoint(view.frame, point) && view.word.tappable {
-                return WMWordProxy(view.word)
+            if CGRectContainsPoint(view.frame, point) && view.tappableText.tappable {
+                return WMWordProxy(view.tappableText)
             }
         }
         
@@ -73,9 +74,9 @@ class WMView: UIView {
 }
 
 private class WMWordView: UIImageView {
-    var word: WMWord
-    init(word: WMWord, frame: CGRect) {
-        self.word = word
+    var tappableText: WMTappableText
+    init(tappableText: WMTappableText, frame: CGRect) {
+        self.tappableText = tappableText
         super.init(frame: frame)
     }
     
@@ -100,7 +101,7 @@ private class WMWordView: UIImageView {
         
         /// draw word
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0.0)
-        (word.text as NSString).drawInRect(self.bounds, withAttributes: attr)
+        (tappableText.text.ref.value as NSString).drawInRect(self.bounds, withAttributes: attr)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         self.image = image

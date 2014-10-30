@@ -9,21 +9,6 @@
 import Foundation
 import UIKit
 
-class WMLine {
-    var number = 0
-    var range = NSMakeRange(0, 0)
-    var refs = [WMTextRef]()
-
-    var textRefsStringRepresentation: String {
-        var output = ""
-        for ref in self.refs {
-            output += ref.value
-        }
-        
-        return output
-    }
-}
-
 /// internal struct
 struct WMWord {
     var text: String
@@ -34,14 +19,12 @@ struct WMWord {
 
 typealias WMWordRange = NSRange
 
-
-
 /// proxy of `WMWord` which contain returned text
 typealias WordProxy = WMWordProxy
 class WMWordProxy {
     let text: String
     
-    init(_ word: WMWord) {
-        self.text = word.text
+    init(_ word: WMTappableText) {
+        self.text = word.text.ref.value
     }
 }
