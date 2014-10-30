@@ -137,7 +137,7 @@
 				125F83581A004EF600C4D4B7 /* TSTextSceneView.swift */,
 				12CC1E9A1A02F9F900E437F7 /* TSTextNodeView.swift */,
 			);
-			name = TSTextMapper;
+			path = TSTextMapper;
 			sourceTree = "<group>";
 		};
 		1279B5CB19FED4E700A7828C = {
