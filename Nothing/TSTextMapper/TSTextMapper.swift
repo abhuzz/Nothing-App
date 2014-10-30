@@ -1,6 +1,5 @@
 //
-//  TappableLabelController.swift
-//  Nothing
+//  TSTextMapper.swift
 //
 //  Created by Tomasz Szulc on 28/10/14.
 //  Copyright (c) 2014 Tomasz Szulc. All rights reserved.

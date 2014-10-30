@@ -1,6 +1,5 @@
 //
 //  TSTextNodeView.swift
-//  Nothing
 //
 //  Created by Tomasz Szulc on 30/10/14.
 //  Copyright (c) 2014 Tomasz Szulc. All rights reserved.
