@@ -9,33 +9,21 @@
 import Foundation
 import UIKit
 
-struct WMWord {
-    var text: String
-    var size: CGSize
-    var line: Int
-    var tappable: Bool = false
-}
-
 typealias WMWordRange = NSRange
 
 typealias WordProxy = WMWordProxy
 class WMWordProxy {
-    let text: String
+    let value: String
     
-    init(_ word: WMTappableText) {
-        self.text = word.text.ref.value
+    init(_ text: WMText) {
+        self.value = text.ref.value
     }
-}
-
-struct WMTappableText {
-    let text: WMText
-    let tappable: Bool
 }
     
 class WordMapper {
     private let font: UIFont
     private let viewSize: CGSize
-    private var tappableTexts: [WMTappableText] = [WMTappableText]()
+    private var tappableTexts: [WMText] = [WMText]()
     private var view: WMInternaliew?
     
     init(font: UIFont, viewSize: CGSize) {
@@ -47,10 +35,10 @@ class WordMapper {
         let analyzer = WMTextAnalyzer(text: text, font: self.font, size: self.viewSize)
         let lines = analyzer.analize()
         
-        var objects = [WMTappableText]()
+        var objects = [WMText]()
         for line in lines {
             for text in line.texts {
-                objects.append(WMTappableText(text: text, tappable: text.isWord))
+                objects.append(text)
             }
         }
         
@@ -62,7 +50,7 @@ class WordMapper {
         let analyzer = WMTextAnalyzer(text: text, font: self.font, size: self.viewSize)
         let lines = analyzer.analize()
 
-        var objects = [WMTappableText]()
+        var objects = [WMText]()
         for line in lines {
             for text in line.texts {
                 var isTappable = false
@@ -73,7 +61,7 @@ class WordMapper {
                     }
                 }
                 
-                objects.append(WMTappableText(text: text, tappable: isTappable))
+                objects.append(text)
             }
         }
         

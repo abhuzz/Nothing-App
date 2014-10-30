@@ -67,9 +67,9 @@ class TaskCell: UITableViewCell {
             }
             
             if let word = self.wordMapper?.wordForPoint(point) {
-                println("word = \(word.text)")
+                println("word = \(word.value)")
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    var alert = UIAlertView(title: nil, message: word.text, delegate: nil, cancelButtonTitle: nil)
+                    var alert = UIAlertView(title: nil, message: word.value, delegate: nil, cancelButtonTitle: nil)
                     alert.show()
                     
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
