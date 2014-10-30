@@ -8,29 +8,34 @@
 
 import Foundation
 
-protocol TMTextRef {
+/// Types used internally
+
+/// Basic protocol
+protocol TSTextRef {
     var value: String {get set}
     var range: NSRange {get set}
 }
 
-struct TMWhitespaceRef: TMTextRef {
+/// Represents whitespace in presented text
+struct TSWhitespaceRef: TSTextRef {
     var value: String
     var range: NSRange
 }
 
-struct TMWordRef: TMTextRef {
+/// Represents word in presented text
+struct TSWordRef: TSTextRef {
     var value: String
     var range: NSRange
 }
 
-class WMTextRefDetector {
-    class func textRefs(text: String) -> [TMTextRef] {
+class TSTextRefDetector {
+    class func textRefs(text: String) -> [TSTextRef] {
         var wordStart: Int = 0
         var wordEnd: Int = 0
         var wordStarted = false
         
         /// get words and white spaces
-        var refs = [TMTextRef]()
+        var refs = [TSTextRef]()
         for idx in 0..<countElements(text) {
             let index = advance(text.startIndex, idx)
             let character = text.substringWithRange(Range(start: index, end: index.successor()))
@@ -49,8 +54,8 @@ class WMTextRefDetector {
                     
                     var range = NSMakeRange(wordStart, (wordEnd - wordStart > 0) ? wordEnd - wordStart : 1)
                     let str = (text as NSString).substringWithRange(range)
-                    refs.append(TMWordRef(value: str, range: range))
-                    refs.append(TMWhitespaceRef(value: character, range: NSMakeRange(idx, 1)))
+                    refs.append(TSWordRef(value: str, range: range))
+                    refs.append(TSWhitespaceRef(value: character, range: NSMakeRange(idx, 1)))
                 }
             }
             
@@ -59,7 +64,7 @@ class WMTextRefDetector {
                 wordStarted = false
                 let range = NSMakeRange(wordStart, wordEnd - wordStart)
                 let str = (text as NSString).substringWithRange(range)
-                refs.append(TMWordRef(value: str, range: range))
+                refs.append(TSWordRef(value: str, range: range))
             }
         }
         
@@ -67,7 +72,7 @@ class WMTextRefDetector {
         return refs
     }
     
-    private class func debug(refs: [TMTextRef]) {
+    private class func debug(refs: [TSTextRef]) {
         var fullString = ""
         for ref in refs {
             fullString += ref.value

@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 
-class TMTextSize {
+class TSTextSize {
     class func size(text: NSString, font: UIFont, size: CGSize) -> CGSize {
+        /// create label, set parameters used to draw text and calculate the size
         var label = UILabel(frame: CGRectZero)
         label.font = font
         label.text = text

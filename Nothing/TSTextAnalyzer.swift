@@ -9,27 +9,29 @@
 import Foundation
 import UIKit
 
-class TMText {
-    let ref: TMTextRef
+/// type used internally - represent a word or a whitespace
+class TSText {
+    let ref: TSTextRef
     let size: CGSize
     var line: Int
     
-    init(ref: TMTextRef, size: CGSize, line: Int = 0) {
+    init(ref: TSTextRef, size: CGSize, line: Int = 0) {
         self.ref = ref
         self.size = size
         self.line = line
     }
     
-    /// is word or whitespace
+    /// is a word or a whitespace
     var isWord: Bool {
-        return (self.ref is TMWordRef)
+        return (self.ref is TSWordRef)
     }
 }
 
-class TMLine {
+/// internal type represents a line of text
+class TSTextLine {
     var number = 0
     var range = NSMakeRange(0, 0)
-    var texts = [TMText]()
+    var texts = [TSText]()
     
     var textRefsStringRepresentation: String {
         var output = ""
@@ -41,7 +43,7 @@ class TMLine {
     }
 }
 
-class TMAnalyzer {
+class TSTextAnalyzer {
     /// text to be analized
     private var text: String
     
@@ -57,19 +59,19 @@ class TMAnalyzer {
         self.size = size
     }
     
-    func analize() -> [TMLine] {
+    func analize() -> [TSTextLine] {
         return self.mapLines(self.text, font: self.font, size: self.size)
     }
     
-    private func mapLines(text: String, font: UIFont, size: CGSize) -> [TMLine] {
+    private func mapLines(text: String, font: UIFont, size: CGSize) -> [TSTextLine] {
         
-        var lines = [TMLine]()
+        var lines = [TSTextLine]()
         
         var contentSize = CGSizeZero
-        for ref in WMTextRefDetector.textRefs(text) {
+        for ref in TSTextRefDetector.textRefs(text) {
             /// create first line if not exist
             if lines.first == nil {
-                let line = TMLine()
+                let line = TSTextLine()
                 line.number = 0
                 lines.append(line)
             }
@@ -78,14 +80,14 @@ class TMAnalyzer {
             let lastLine = lines.last!
             
             /// create object with text ref
-            let wmText = TMText(ref: ref, size: TMTextSize.size(ref.value, font: self.font, size: self.size), line: lastLine.number)
+            let wmText = TSText(ref: ref, size: TSTextSize.size(ref.value, font: self.font, size: self.size), line: lastLine.number)
             
             /// add it to the line
             lastLine.texts.append(wmText)
             
             /// calculate size of the line in with current words
             var entireString = lastLine.textRefsStringRepresentation
-            var newContentSize = TMTextSize.size(entireString, font: font, size: size)
+            var newContentSize = TSTextSize.size(entireString, font: font, size: size)
             
             /// if content size is not set, set it and jump to next step
             if contentSize == CGSizeZero {
@@ -103,7 +105,7 @@ class TMAnalyzer {
                 contentSize = newContentSize
                 
                 /// create new line
-                var newLine = TMLine()
+                var newLine = TSTextLine()
                 newLine.number = lines.last!.number + 1
                 
                 /// get number of objects to move to the new line
@@ -114,7 +116,7 @@ class TMAnalyzer {
                 }
                 
                 /// remove objects from last line and store it in array
-                var objectsToMove = [TMText]()
+                var objectsToMove = [TSText]()
                 for i in 0..<numberOfObjectsToMove {
                     objectsToMove.append(lastLine.texts.last!)
                     lastLine.texts.removeLast()
@@ -126,7 +128,7 @@ class TMAnalyzer {
                 }
                 
                 /// reverse objects
-                for object in objectsToMove.reverse() as [TMText] {
+                for object in objectsToMove.reverse() as [TSText] {
                     object.line = newLine.number
                     newLine.texts.append(object)
                 }
@@ -141,7 +143,7 @@ class TMAnalyzer {
         return lines
     }
     
-    private func debug(lines: [TMLine]) {
+    private func debug(lines: [TSTextLine]) {
         for line in lines {
             println("\(line.number):, \(line.textRefsStringRepresentation)")
         }

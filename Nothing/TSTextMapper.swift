@@ -9,17 +9,19 @@
 import Foundation
 import UIKit
 
-typealias TMTextRange = NSRange
-
-class TMTextProxy {
+class TSTextProxy {
     let value: String
     
-    init(_ text: TMText) {
+    init(_ text: TSText) {
         self.value = text.ref.value
+    }
+    
+    init(_ text: String) {
+        self.value = text
     }
 }
     
-class TMMapper {
+class TSTextMapper {
     
     private enum Method {
         case All
@@ -36,19 +38,19 @@ class TMMapper {
     Internal view where analyzed text is drawed,
     Coordinates of taps are used to detect which text is tapped
     */
-    private var view: WMInternaliew?
+    private var view: TSTextSceneView?
     
     /// lines of analyzed text. Lines contain words
-    private var lines: [TMLine] = [TMLine]()
+    private var lines: [TSTextLine] = [TSTextLine]()
     
     /// ranges specified by user. Text in ranges is able to be selected
-    private var ranges: [TMTextRange] = [TMTextRange]()
+    private var ranges: [NSRange] = [NSRange]()
     
     /// specifies which method is used
     private var method: Method = .All
     
-    private var texts: [TMText] {
-        var objects = [TMText]()
+    private var texts: [TSText] {
+        var objects = [TSText]()
         for line in lines {
             for text in line.texts {
                 objects.append(text)
@@ -68,70 +70,67 @@ class TMMapper {
         self.map(text)
     }
     
-    func mapTextWithTappableRanges(ranges: [TMTextRange], text: String) {
+    func mapTextWithTappableRanges(ranges: [NSRange], text: String) {
         self.method = .Ranges
         self.map(text)
         self.ranges = ranges
     }
     
     private func map(text: String) {
-        let analyzer = TMAnalyzer(text: text, font: self.font, size: self.viewSize)
+        let analyzer = TSTextAnalyzer(text: text, font: self.font, size: self.viewSize)
         self.lines = analyzer.analize()
         self.debug()
     }
     
     private func debug() {
-        let debugView = WMInternaliew(size: self.viewSize, texts: self.texts, font: self.font)
+        let debugView = TSTextSceneView(size: self.viewSize, texts: self.texts, font: self.font)
         debugView.prepare()
         let debugImage = debugView.snapshot()
         println("debug")
     }
     
-    func textForPoint(point: CGPoint) -> TMTextProxy? {
+    func textForPoint(point: CGPoint) -> TSTextProxy? {
         if self.texts.count == 0 {
             return nil
         }
         
         if self.view == nil {
-            self.view = WMInternaliew(size: self.viewSize, texts: self.texts, font: self.font)
+            self.view = TSTextSceneView(size: self.viewSize, texts: self.texts, font: self.font)
             self.view!.prepare()
         }
         
-        if let textView = self.view!.textViewForPoint(point) {
+        if let node = self.view!.nodeForPoint(point) {
             
             switch self.method {
             case .All:
-                return TMTextProxy(textView.text)
+                /// if .All method is selected return tapped text
+                return TSTextProxy(node.text)
             case .Ranges:
+                /// Find range contained inside tapped node
                 var selectedRange: NSRange?
                 for r in self.ranges {
-                    if textView.text.ref.range.containsRange(r) {
+                    if node.text.ref.range.containsRange(r) {
                         selectedRange = r
                         break
                     }
                 }
-                
+        
                 if let range = selectedRange {
-                    println("tapped point = \(point)")
-                    println("tapped range = \(textView.text.ref.range)")
-                    println("matching range = \(range)")
-                    println("view frame = \(textView.frame)")
-                    
-                    let text = (textView.text.ref.value as NSString)
-                    let location = range.location - textView.text.ref.range.location
+                    /// range matches the node, get text, translate selected range to match range in the node.
+                    let text = (node.text.ref.value as NSString)
+                    let location = range.location - node.text.ref.range.location
                     let length = range.length - location
                     
                     if length > 0 {
-                        /// text of interest
-                        let toi = text.substringWithRange(NSMakeRange(location, length))
-                        println("toi = \(toi)")
-                        let toiSize = TMTextSize.size(toi, font: self.font, size: self.viewSize)
-                        println("toi size = \(toiSize)")
-                        let toiViewSize = CGRectMake(textView.frame.minX, textView.frame.minY, toiSize.width, toiSize.height)
-                        if CGRectContainsPoint(toiViewSize, point) {
-                            return TMTextProxy(textView.text)
-                        }
+                        /// get the text with the new range
+                        let textInRange = text.substringWithRange(NSMakeRange(location, length))
+                        let textSize = TSTextSize.size(textInRange, font: self.font, size: self.viewSize)
                         
+                        /// simulate frame of node with `textInRange` and check if it contains touched point
+                        let textInRangeNodeFrame = CGRectMake(node.frame.minX, node.frame.minY, textSize.width, textSize.height)
+                        if CGRectContainsPoint(textInRangeNodeFrame, point) {
+                            return TSTextProxy(textInRange)
+                        }
                     }
                 }
                 

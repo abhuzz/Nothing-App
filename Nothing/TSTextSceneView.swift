@@ -8,11 +8,11 @@
 
 import UIKit
 
-class WMInternaliew: UIView {
-    var texts: [TMText] = [TMText]()
-    var font: UIFont = UIFont()
+class TSTextSceneView: UIView {
+    let texts: [TSText] = [TSText]()
+    let font: UIFont = UIFont()
     
-    init(size: CGSize, texts: [TMText], font: UIFont) {
+    init(size: CGSize, texts: [TSText], font: UIFont) {
         self.texts = texts
         self.font = font
         super.init(frame: CGRectMake(0, 0, size.width, size.height))
@@ -42,15 +42,15 @@ class WMInternaliew: UIView {
             offsetX = rect.maxX
             
             /// add view and draw text
-            let wordView = TMInternalTextView(text: text, frame: rect)
-            wordView.backgroundColor = UIColor.blueColor()
-            self.addSubview(wordView)
+            let node = TSTextNodeView(text: text, frame: rect)
+            node.backgroundColor = UIColor.blueColor()
+            self.addSubview(node)
         }
     }
     
     /// Return text as `WMWordProxy` if found, otherwise nil
-    func textViewForPoint(point: CGPoint) -> TMInternalTextView? {
-        for view in self.subviews as [TMInternalTextView] {
+    func nodeForPoint(point: CGPoint) -> TSTextNodeView? {
+        for view in self.subviews as [TSTextNodeView] {
             if CGRectContainsPoint(view.frame, point) {
                 return view
             }
@@ -61,7 +61,7 @@ class WMInternaliew: UIView {
     
     /// Return snapshot of the view
     func snapshot() -> UIImage {
-        for view in self.subviews as [TMInternalTextView] {
+        for view in self.subviews as [TSTextNodeView] {
             view.drawWord(self.font)
         }
         
@@ -72,39 +72,3 @@ class WMInternaliew: UIView {
         return image
     }
 }
-
-class TMInternalTextView: UIImageView {
-    var text: TMText
-    init(text: TMText, frame: CGRect) {
-        self.text = text
-        super.init(frame: frame)
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private var isDrawn = false
-    func drawWord(font: UIFont) {
-        /// check if already drawn
-        if self.isDrawn {
-            return
-        }
-        
-        self.isDrawn = true
-        /// create attributes
-        let attr = [
-            NSFontAttributeName: font,
-            NSForegroundColorAttributeName: UIColor.blackColor(),
-            NSBackgroundColorAttributeName: UIColor(white: 0.7, alpha: 1.0)
-        ]
-        
-        /// draw text
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0.0)
-        (self.text.ref.value as NSString).drawInRect(self.bounds, withAttributes: attr)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        self.image = image
-    }
-}
-
