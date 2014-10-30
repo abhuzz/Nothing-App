@@ -49,10 +49,10 @@ class WMInternaliew: UIView {
     }
     
     /// Return text as `WMWordProxy` if found, otherwise nil
-    func textForPoint(point: CGPoint) -> TMText? {
+    func textViewForPoint(point: CGPoint) -> TMInternalTextView? {
         for view in self.subviews as [TMInternalTextView] {
             if CGRectContainsPoint(view.frame, point) {
-                return view.text
+                return view
             }
         }
         
@@ -73,7 +73,7 @@ class WMInternaliew: UIView {
     }
 }
 
-private class TMInternalTextView: UIImageView {
+class TMInternalTextView: UIImageView {
     var text: TMText
     init(text: TMText, frame: CGRect) {
         self.text = text

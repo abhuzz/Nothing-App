@@ -78,14 +78,14 @@ class TMAnalyzer {
             let lastLine = lines.last!
             
             /// create object with text ref
-            let wmText = TMText(ref: ref, size: self.sizeForText(ref.value, font: self.font, size: self.size), line: lastLine.number)
+            let wmText = TMText(ref: ref, size: TMTextSize.size(ref.value, font: self.font, size: self.size), line: lastLine.number)
             
             /// add it to the line
             lastLine.texts.append(wmText)
             
             /// calculate size of the line in with current words
             var entireString = lastLine.textRefsStringRepresentation
-            var newContentSize = self.sizeForText(entireString, font: font, size: size)
+            var newContentSize = TMTextSize.size(entireString, font: font, size: size)
             
             /// if content size is not set, set it and jump to next step
             if contentSize == CGSizeZero {
@@ -139,14 +139,6 @@ class TMAnalyzer {
         
         self.debug(lines)
         return lines
-    }
-    
-    private func sizeForText(text: NSString, font: UIFont, size: CGSize) -> CGSize {
-        var label = UILabel(frame: CGRectZero)
-        label.font = font
-        label.text = text
-        label.sizeToFit()
-        return label.bounds.size
     }
     
     private func debug(lines: [TMLine]) {
