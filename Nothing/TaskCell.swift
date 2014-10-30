@@ -47,12 +47,12 @@ class TaskCell: UITableViewCell {
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
     }
     
-    private var textMapper: TextMapper?
+    private var textMapper: TMMapper?
     func handleTap(recognizer: UITapGestureRecognizer) {
         if (recognizer.state == .Ended) {
             let point = recognizer.locationInView(self.descriptionLabel)
             if self.textMapper == nil {
-                self.textMapper = TextMapper(font: self.descriptionLabel.font, viewSize: self.descriptionLabel.bounds.size)
+                self.textMapper = TMMapper(font: self.descriptionLabel.font, viewSize: self.descriptionLabel.bounds.size)
                 
                 // 1
 //                self.wordMapper!.mapTextAndMakeAllTappable(self.descriptionLabel.text!)

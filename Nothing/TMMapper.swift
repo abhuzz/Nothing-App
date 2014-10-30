@@ -19,7 +19,7 @@ class TMTextProxy {
     }
 }
     
-class TextMapper {
+class TMMapper {
     /// font of text
     private let font: UIFont
     
