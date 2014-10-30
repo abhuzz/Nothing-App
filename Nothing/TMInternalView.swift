@@ -9,10 +9,10 @@
 import UIKit
 
 class WMInternaliew: UIView {
-    var texts: [WMText] = [WMText]()
+    var texts: [TMText] = [TMText]()
     var font: UIFont = UIFont()
     
-    init(size: CGSize, texts: [WMText], font: UIFont) {
+    init(size: CGSize, texts: [TMText], font: UIFont) {
         self.texts = texts
         self.font = font
         super.init(frame: CGRectMake(0, 0, size.width, size.height))
@@ -27,7 +27,7 @@ class WMInternaliew: UIView {
         var offsetX: CGFloat = 0.0
         var previousLine: Int = 0
         
-        // Enumerate words, calculate rect, create view and draw word in created view
+        // Enumerate texts, calculate rect, create view and draw text in created view
         for text in self.texts {
             /// reset offset
             let tappableTextLine = text.line
@@ -42,17 +42,17 @@ class WMInternaliew: UIView {
             offsetX = rect.maxX
             
             /// add view and draw text
-            let wordView = WMTextView(tappableText: text, frame: rect)
+            let wordView = TMInternalTextView(text: text, frame: rect)
             wordView.backgroundColor = UIColor.blueColor()
             self.addSubview(wordView)
         }
     }
     
-    /// Return word as `WMWordProxy` if found, otherwise nil
-    func wordForPoint(point: CGPoint) -> WMWordProxy? {
-        for view in self.subviews as [WMTextView] {
+    /// Return text as `WMWordProxy` if found, otherwise nil
+    func textForPoint(point: CGPoint) -> TMText? {
+        for view in self.subviews as [TMInternalTextView] {
             if CGRectContainsPoint(view.frame, point) {
-                return WMWordProxy(view.text)
+                return view.text
             }
         }
         
@@ -61,7 +61,7 @@ class WMInternaliew: UIView {
     
     /// Return snapshot of the view
     func snapshot() -> UIImage {
-        for view in self.subviews as [WMTextView] {
+        for view in self.subviews as [TMInternalTextView] {
             view.drawWord(self.font)
         }
         
@@ -73,10 +73,10 @@ class WMInternaliew: UIView {
     }
 }
 
-private class WMTextView: UIImageView {
-    var text: WMText
-    init(tappableText: WMText, frame: CGRect) {
-        self.text = tappableText
+private class TMInternalTextView: UIImageView {
+    var text: TMText
+    init(text: TMText, frame: CGRect) {
+        self.text = text
         super.init(frame: frame)
     }
     
@@ -99,7 +99,7 @@ private class WMTextView: UIImageView {
             NSBackgroundColorAttributeName: UIColor(white: 0.7, alpha: 1.0)
         ]
         
-        /// draw word
+        /// draw text
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0.0)
         (self.text.ref.value as NSString).drawInRect(self.bounds, withAttributes: attr)
         let image = UIGraphicsGetImageFromCurrentImageContext()

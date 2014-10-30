@@ -47,29 +47,29 @@ class TaskCell: UITableViewCell {
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
     }
     
-    private var wordMapper: WordMapper?
+    private var textMapper: TextMapper?
     func handleTap(recognizer: UITapGestureRecognizer) {
         if (recognizer.state == .Ended) {
             let point = recognizer.locationInView(self.descriptionLabel)
-            if self.wordMapper == nil {
-                self.wordMapper = WordMapper(font: self.descriptionLabel.font, viewSize: self.descriptionLabel.bounds.size)
+            if self.textMapper == nil {
+                self.textMapper = TextMapper(font: self.descriptionLabel.font, viewSize: self.descriptionLabel.bounds.size)
                 
                 // 1
-//                self.wordMapper!.mapWordsSeparatedByWhiteSpaceAndNewLineCharacterSet(self.descriptionLabel.text!)
+//                self.wordMapper!.mapTextAndMakeAllTappable(self.descriptionLabel.text!)
                 
                 // 2
-                var ranges = [WMWordRange]()
+                var ranges = [TMTextRange]()
                 for result in self.model!.hashtags {
                     ranges.append(result.range)
                 }
                 
-                self.wordMapper!.mapWordsUsingRanges(ranges, text: self.descriptionLabel.text!)
+                self.textMapper!.mapTextWithTappableRanges(ranges, text: self.descriptionLabel.text!)
             }
             
-            if let word = self.wordMapper?.wordForPoint(point) {
-                println("word = \(word.value)")
+            if let text = self.textMapper?.textForPoint(point) {
+                println("text = \(text.value)")
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    var alert = UIAlertView(title: nil, message: word.value, delegate: nil, cancelButtonTitle: nil)
+                    var alert = UIAlertView(title: nil, message: text.value, delegate: nil, cancelButtonTitle: nil)
                     alert.show()
                     
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
@@ -82,7 +82,7 @@ class TaskCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.wordMapper = nil
+        self.textMapper = nil
         self.descriptionLabelHeight.constant = self.descriptionLabel.proposedHeight
     }
 }

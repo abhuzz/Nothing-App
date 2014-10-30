@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class WMText {
-    let ref: WMTextRef
+class TMText {
+    let ref: TMTextRef
     let size: CGSize
     var line: Int
     
-    init(ref: WMTextRef, size: CGSize, line: Int = 0) {
+    init(ref: TMTextRef, size: CGSize, line: Int = 0) {
         self.ref = ref
         self.size = size
         self.line = line
@@ -22,14 +22,14 @@ class WMText {
     
     /// is word or whitespace
     var isWord: Bool {
-        return (self.ref is WMWordRef)
+        return (self.ref is TMWordRef)
     }
 }
 
-class WMLine {
+class TMLine {
     var number = 0
     var range = NSMakeRange(0, 0)
-    var texts = [WMText]()
+    var texts = [TMText]()
     
     var textRefsStringRepresentation: String {
         var output = ""
@@ -41,7 +41,7 @@ class WMLine {
     }
 }
 
-class WMTextAnalyzer {
+class TMAnalyzer {
     /// text to be analized
     private var text: String
     
@@ -57,19 +57,19 @@ class WMTextAnalyzer {
         self.size = size
     }
     
-    func analize() -> [WMLine] {
+    func analize() -> [TMLine] {
         return self.mapLines(self.text, font: self.font, size: self.size)
     }
     
-    private func mapLines(text: String, font: UIFont, size: CGSize) -> [WMLine] {
+    private func mapLines(text: String, font: UIFont, size: CGSize) -> [TMLine] {
         
-        var lines = [WMLine]()
+        var lines = [TMLine]()
         
         var contentSize = CGSizeZero
         for ref in WMTextRefDetector.textRefs(text) {
             /// create first line if not exist
             if lines.first == nil {
-                let line = WMLine()
+                let line = TMLine()
                 line.number = 0
                 lines.append(line)
             }
@@ -78,7 +78,7 @@ class WMTextAnalyzer {
             let lastLine = lines.last!
             
             /// create object with text ref
-            let wmText = WMText(ref: ref, size: self.sizeForText(ref.value, font: self.font, size: self.size), line: lastLine.number)
+            let wmText = TMText(ref: ref, size: self.sizeForText(ref.value, font: self.font, size: self.size), line: lastLine.number)
             
             /// add it to the line
             lastLine.texts.append(wmText)
@@ -103,7 +103,7 @@ class WMTextAnalyzer {
                 contentSize = newContentSize
                 
                 /// create new line
-                var newLine = WMLine()
+                var newLine = TMLine()
                 newLine.number = lines.last!.number + 1
                 
                 /// get number of objects to move to the new line
@@ -114,7 +114,7 @@ class WMTextAnalyzer {
                 }
                 
                 /// remove objects from last line and store it in array
-                var objectsToMove = [WMText]()
+                var objectsToMove = [TMText]()
                 for i in 0..<numberOfObjectsToMove {
                     objectsToMove.append(lastLine.texts.last!)
                     lastLine.texts.removeLast()
@@ -126,7 +126,7 @@ class WMTextAnalyzer {
                 }
                 
                 /// reverse objects
-                for object in objectsToMove.reverse() as [WMText] {
+                for object in objectsToMove.reverse() as [TMText] {
                     object.line = newLine.number
                     newLine.texts.append(object)
                 }
@@ -149,7 +149,7 @@ class WMTextAnalyzer {
         return label.bounds.size
     }
     
-    private func debug(lines: [WMLine]) {
+    private func debug(lines: [TMLine]) {
         for line in lines {
             println("\(line.number):, \(line.textRefsStringRepresentation)")
         }
