@@ -62,7 +62,9 @@ class InboxViewController: UITableViewController {
         /// first
         let t1: Task = Task.create(CDHelper.mainContext)
         t1.title = "Do lorem ipsum"
-        t1.longDescription = "Lorem Ipsum is #simply dummy #text abc of-the printing and #typesetting x industry lorem #Ipsum has been the industry's standard dummy text ever si."
+//        t1.longDescription = "Lorem Ipsum is #simply dummy #text abc of-the printing and #typesetting x industry lorem #Ipsum has been the industry's standard dummy text ever si."
+//        t1.longDescription = "to jest jakis tam tekst, #musze isc do punktu #A i #spotkać się z osobą B żeby pogadać o czymś C";
+        t1.longDescription = "To jest jakiś #tam inny tekst, #który będzie opowiadał o osobie #A mieszkającej w punkcie B, gdzie ta osoba pracuje. #Osoba C ma #samochód marki #D, którym #jeździ"
         
         let drInfo: DateReminderInfo = DateReminderInfo.create(CDHelper.mainContext)
         drInfo.fireDate = NSDate()

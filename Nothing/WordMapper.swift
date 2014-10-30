@@ -9,6 +9,24 @@
 import Foundation
 import UIKit
 
+struct WMWord {
+    var text: String
+    var size: CGSize
+    var line: Int
+    var tappable: Bool = false
+}
+
+typealias WMWordRange = NSRange
+
+typealias WordProxy = WMWordProxy
+class WMWordProxy {
+    let text: String
+    
+    init(_ word: WMTappableText) {
+        self.text = word.text.ref.value
+    }
+}
+
 struct WMTappableText {
     let text: WMText
     let tappable: Bool
@@ -37,7 +55,7 @@ class WordMapper {
         }
         
         self.tappableTexts = objects
-        self.debug()
+//        self.debug()
     }
     
     func mapWordsUsingRanges(ranges: [WMWordRange], text: String) {
@@ -67,7 +85,7 @@ class WordMapper {
         let debugView = WMInternaliew(size: self.viewSize, texts: self.tappableTexts, font: self.font)
         debugView.prepare()
         let debugImage = debugView.snapshot()
-        println("debug snapshot")
+        println("debug")
     }
     
     func wordForPoint(point: CGPoint) -> WordProxy? {

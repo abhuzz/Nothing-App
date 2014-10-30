@@ -42,7 +42,7 @@ class WMInternaliew: UIView {
             offsetX = rect.maxX
             
             /// add view and draw text
-            let wordView = WMWordView(tappableText: tappableText, frame: rect)
+            let wordView = WMTappableTextView(tappableText: tappableText, frame: rect)
             wordView.backgroundColor = UIColor.blueColor()
             self.addSubview(wordView)
         }
@@ -50,7 +50,7 @@ class WMInternaliew: UIView {
     
     /// Return word as `WMWordProxy` if found, otherwise nil
     func wordForPoint(point: CGPoint) -> WMWordProxy? {
-        for view in self.subviews as [WMWordView] {
+        for view in self.subviews as [WMTappableTextView] {
             if CGRectContainsPoint(view.frame, point) && view.tappableText.tappable {
                 return WMWordProxy(view.tappableText)
             }
@@ -61,7 +61,7 @@ class WMInternaliew: UIView {
     
     /// Return snapshot of the view
     func snapshot() -> UIImage {
-        for view in self.subviews as [WMWordView] {
+        for view in self.subviews as [WMTappableTextView] {
             view.drawWord(self.font)
         }
         
@@ -73,7 +73,7 @@ class WMInternaliew: UIView {
     }
 }
 
-private class WMWordView: UIImageView {
+private class WMTappableTextView: UIImageView {
     var tappableText: WMTappableText
     init(tappableText: WMTappableText, frame: CGRect) {
         self.tappableText = tappableText
