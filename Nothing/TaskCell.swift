@@ -76,6 +76,21 @@ class TaskCell: UITableViewCell {
         }
     }
     
+    private var index = 0
+    private var images = [UIImage]()
+    private func animateImages() {
+        if self.index + 1 < self.images.count {
+            self.index++
+        } else {
+            self.index = 0
+        }
+        UIView.transitionWithView(self.thumbnailView, duration: 2.0, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+            self.thumbnailView.image = self.images[self.index]
+            }) { (finished) -> Void in
+                self.animateImages()
+        }
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         self.textMapper = nil
@@ -102,6 +117,11 @@ extension TaskCell {
 
         self.datePlaceLabel.text = model.datePlaceDescription
         self.datePlaceLabel.update(model.datePlaceLabelAttributes)
+        
+        self.images = model.images
+        if self.images.count > 0 {
+            self.animateImages()
+        }
         
         self.thumbnailView.image = model.images.first
         
