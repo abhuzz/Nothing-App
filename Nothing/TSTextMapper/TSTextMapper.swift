@@ -99,18 +99,16 @@ class TSTextMapper {
         }
         
         if let node = self.view!.nodeForPoint(point) {
-            
+//            println("node = \(node.text.value), \(node.text.range.location), \(node.text.range.length)")
             switch self.method {
             case .All:
-                /// if .All method is selected return tapped text
-                return TSTextProxy(node.text)
+                return TSTextProxy(node.text) /// if .All method is selected return tapped text
+            
             case .Ranges:
                 /// Find range contained inside tapped node
-//                println("node = \(node.text.value), \(node.text.range.location), \(node.text.range.length)")
 
                 var selectedRange: NSRange?
                 for r in self.ranges {
-//                    println("range = \(r.location), \(r.length)")
                     if node.text.range.containsRange(r) {
                         selectedRange = r
                         break
