@@ -32,6 +32,12 @@
 		1279B61119FED64D00A7828C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60619FED64D00A7828C /* Task.swift */; };
 		1279B61219FED64D00A7828C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60719FED64D00A7828C /* FileManager.swift */; };
 		1279B61519FEDBD200A7828C /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B61419FEDBD200A7828C /* FileCache.swift */; };
+		12E215921A037E4F0038AD45 /* TSTextAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158C1A037E4F0038AD45 /* TSTextAnalyzer.swift */; };
+		12E215931A037E4F0038AD45 /* TSTextMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158D1A037E4F0038AD45 /* TSTextMapper.swift */; };
+		12E215941A037E4F0038AD45 /* TSTextNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158E1A037E4F0038AD45 /* TSTextNodeView.swift */; };
+		12E215951A037E4F0038AD45 /* TSTextRefDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158F1A037E4F0038AD45 /* TSTextRefDetector.swift */; };
+		12E215961A037E4F0038AD45 /* TSTextSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215901A037E4F0038AD45 /* TSTextSceneView.swift */; };
+		12E215971A037E4F0038AD45 /* TSTextSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215911A037E4F0038AD45 /* TSTextSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +80,12 @@
 		1279B60619FED64D00A7828C /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		1279B60719FED64D00A7828C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1279B61419FEDBD200A7828C /* FileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
+		12E2158C1A037E4F0038AD45 /* TSTextAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextAnalyzer.swift; path = External/TSTextMapper/Classes/TSTextAnalyzer.swift; sourceTree = "<group>"; };
+		12E2158D1A037E4F0038AD45 /* TSTextMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextMapper.swift; path = External/TSTextMapper/Classes/TSTextMapper.swift; sourceTree = "<group>"; };
+		12E2158E1A037E4F0038AD45 /* TSTextNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextNodeView.swift; path = External/TSTextMapper/Classes/TSTextNodeView.swift; sourceTree = "<group>"; };
+		12E2158F1A037E4F0038AD45 /* TSTextRefDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextRefDetector.swift; path = External/TSTextMapper/Classes/TSTextRefDetector.swift; sourceTree = "<group>"; };
+		12E215901A037E4F0038AD45 /* TSTextSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextSceneView.swift; path = External/TSTextMapper/Classes/TSTextSceneView.swift; sourceTree = "<group>"; };
+		12E215911A037E4F0038AD45 /* TSTextSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextSize.swift; path = External/TSTextMapper/Classes/TSTextSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,8 +233,22 @@
 		12E2158B1A037C9C0038AD45 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				12E215981A037E540038AD45 /* TSTextMaper */,
 			);
 			name = External;
+			sourceTree = "<group>";
+		};
+		12E215981A037E540038AD45 /* TSTextMaper */ = {
+			isa = PBXGroup;
+			children = (
+				12E2158C1A037E4F0038AD45 /* TSTextAnalyzer.swift */,
+				12E2158D1A037E4F0038AD45 /* TSTextMapper.swift */,
+				12E2158E1A037E4F0038AD45 /* TSTextNodeView.swift */,
+				12E2158F1A037E4F0038AD45 /* TSTextRefDetector.swift */,
+				12E215901A037E4F0038AD45 /* TSTextSceneView.swift */,
+				12E215911A037E4F0038AD45 /* TSTextSize.swift */,
+			);
+			name = TSTextMaper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,24 +352,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12E215971A037E4F0038AD45 /* TSTextSize.swift in Sources */,
 				1279B60919FED64D00A7828C /* CDStore.swift in Sources */,
 				125593EC19FEE10A001EC477 /* UIColor_E.swift in Sources */,
 				1279B60D19FED64D00A7828C /* Nothing.xcdatamodeld in Sources */,
 				123B6E2419FF909F008E22DB /* UILabel_E.swift in Sources */,
 				1279B61519FEDBD200A7828C /* FileCache.swift in Sources */,
 				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
+				12E215961A037E4F0038AD45 /* TSTextSceneView.swift in Sources */,
 				1279B60B19FED64D00A7828C /* Connection.swift in Sources */,
 				1279B61119FED64D00A7828C /* Task.swift in Sources */,
 				1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */,
 				125593F419FEFA8D001EC477 /* TaskCellVM.swift in Sources */,
 				1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */,
 				123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */,
+				12E215921A037E4F0038AD45 /* TSTextAnalyzer.swift in Sources */,
+				12E215941A037E4F0038AD45 /* TSTextNodeView.swift in Sources */,
 				1279B60A19FED64D00A7828C /* NSManagedObject_E.swift in Sources */,
 				1279B61219FED64D00A7828C /* FileManager.swift in Sources */,
 				1279B60819FED64D00A7828C /* CDHelper.swift in Sources */,
+				12E215931A037E4F0038AD45 /* TSTextMapper.swift in Sources */,
 				125593F219FEF7E0001EC477 /* TaskCell.swift in Sources */,
 				1279B60C19FED64D00A7828C /* Contact.swift in Sources */,
 				1279B61019FED64D00A7828C /* Place.swift in Sources */,
+				12E215951A037E4F0038AD45 /* TSTextRefDetector.swift in Sources */,
 				123B6E261A000249008E22DB /* TaskCellVMCache.swift in Sources */,
 				1279B60E19FED64D00A7828C /* DateReminderInfo.swift in Sources */,
 			);

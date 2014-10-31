@@ -52,12 +52,8 @@ class TaskCell: UITableViewCell {
         if (recognizer.state == .Ended) {
             let point = recognizer.locationInView(self.descriptionLabel)
             if self.textMapper == nil {
-                self.textMapper = TSTextMapper(font: self.descriptionLabel.font, viewSize: self.descriptionLabel.bounds.size)
-                
-                // 1
-//                self.textMapper!.mapTextAndMakeAllTappable(self.descriptionLabel.text!)
-                
-                // 2
+                self.textMapper = TSTextMapper(self.descriptionLabel)
+
                 var ranges = [NSRange]()
                 for result in self.model!.hashtags {
                     ranges.append(result.range)
