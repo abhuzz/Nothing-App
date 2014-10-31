@@ -80,6 +80,11 @@ class InboxViewController: UITableViewController {
         place.originalName = "U wojtka"
         place.customName = "home"
         
+        let info1 = ThumbnailCache.sharedInstance.write(UIImagePNGRepresentation(UIImage(named: "city2")))
+        place.thumbnailKey = info1.key
+        t1.connections.addObject(place)
+
+        
         let lcInfo: LocationReminderInfo = LocationReminderInfo.create(CDHelper.mainContext)
         lcInfo.place = place
         lcInfo.distance = 100.0
