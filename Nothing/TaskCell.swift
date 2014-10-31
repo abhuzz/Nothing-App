@@ -55,7 +55,7 @@ class TaskCell: UITableViewCell {
                 self.textMapper = TSTextMapper(font: self.descriptionLabel.font, viewSize: self.descriptionLabel.bounds.size)
                 
                 // 1
-//                self.wordMapper!.mapTextAndMakeAllTappable(self.descriptionLabel.text!)
+//                self.textMapper!.mapTextAndMakeAllTappable(self.descriptionLabel.text!)
                 
                 // 2
                 var ranges = [NSRange]()

@@ -68,7 +68,7 @@ class TSTextSceneView: UIView {
         if self.texts.count > 0 {
             UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0.0)
             self.layer.renderInContext(UIGraphicsGetCurrentContext())
-            var image = UIGraphicsGetImageFromCurrentImageContext()
+            image = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
         }
         

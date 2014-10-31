@@ -39,7 +39,7 @@ class TSTextNodeView: UIImageView {
         
         /// draw text
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0.0)
-        (self.text.ref.value as NSString).drawInRect(self.bounds, withAttributes: attr)
+        (self.text.value as NSString).drawInRect(self.bounds, withAttributes: attr)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         self.image = image

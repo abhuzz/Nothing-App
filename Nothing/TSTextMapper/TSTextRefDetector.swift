@@ -28,7 +28,7 @@ struct TSWordRef: TSTextRef {
 }
 
 class TSTextRefDetector {
-    class func textRefs(text: String) -> [TSTextRef] {
+    class func textRefs(text: String, rangeOffset: Int) -> [TSTextRef] {
         var wordStart: Int = 0
         var wordEnd: Int = 0
         var wordStarted = false
@@ -50,19 +50,22 @@ class TSTextRefDetector {
             } else {
                 if wordStarted {
                     wordStarted = false
-                    
                     var range = NSMakeRange(wordStart, (wordEnd - wordStart > 0) ? wordEnd - wordStart : 1)
                     let str = (text as NSString).substringWithRange(range)
+                    range.location += rangeOffset
+
                     refs.append(TSWordRef(value: str, range: range))
-                    refs.append(TSWhitespaceRef(value: character, range: NSMakeRange(idx, 1)))
+                    refs.append(TSWhitespaceRef(value: character, range: NSMakeRange(idx + rangeOffset, 1)))
                 }
             }
             
             if idx == countElements(text) - 1 {
                 wordEnd = idx+1
                 wordStarted = false
-                let range = NSMakeRange(wordStart, wordEnd - wordStart)
+                var range = NSMakeRange(wordStart, wordEnd - wordStart)
                 let str = (text as NSString).substringWithRange(range)
+                range.location += rangeOffset
+                
                 refs.append(TSWordRef(value: str, range: range))
             }
         }

@@ -12,7 +12,7 @@ class TSTextProxy {
     let value: String
     
     init(_ text: TSText) {
-        self.value = text.ref.value
+        self.value = text.value
     }
     
     init(_ text: String) {
@@ -106,9 +106,12 @@ class TSTextMapper {
                 return TSTextProxy(node.text)
             case .Ranges:
                 /// Find range contained inside tapped node
+//                println("node = \(node.text.value), \(node.text.range.location), \(node.text.range.length)")
+
                 var selectedRange: NSRange?
                 for r in self.ranges {
-                    if node.text.ref.range.containsRange(r) {
+//                    println("range = \(r.location), \(r.length)")
+                    if node.text.range.containsRange(r) {
                         selectedRange = r
                         break
                     }
@@ -116,8 +119,8 @@ class TSTextMapper {
         
                 if let range = selectedRange {
                     /// range matches the node, get text, translate selected range to match range in the node.
-                    let text = (node.text.ref.value as NSString)
-                    let location = range.location - node.text.ref.range.location
+                    let text = (node.text.value as NSString)
+                    let location = range.location - node.text.range.location
                     let length = range.length - location
                     
                     if length > 0 {
