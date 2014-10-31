@@ -59,6 +59,20 @@ class TaskCellVM: Equatable {
         return value
     }
     
+    var images: [UIImage] {
+        var images = [UIImage]()
+        for connection in self.task.connections.allObjects as [Connection] {
+            if let key = connection.thumbnailKey {
+                if let data = ThumbnailCache.sharedInstance.read(key) {
+                    let image = UIImage(data: data)
+                    images.append(image!)
+                }
+            }
+        }
+        
+        return images
+    }
+    
     lazy var dateFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "dd MMM yyyy hh:mm"

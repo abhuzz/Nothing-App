@@ -62,7 +62,10 @@ class InboxViewController: UITableViewController {
         cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250()
     }
 
+    
+    /// DEBUG
     lazy var debug_tasks: [Task] = {
+        
         /// first
         let t1: Task = Task.create(CDHelper.mainContext)
         t1.title = "Handwriting"
@@ -101,8 +104,21 @@ class InboxViewController: UITableViewController {
         t2.locationReminderInfo = lcInfo2
         
         let t3: Task = Task.create(CDHelper.mainContext)
-        t3.title = "Call Declan W."
+        t3.title = "Call Tomasz"
         t3.longDescription = "Talk about job opportunities in #London"
+        
+        let contact: Contact = Contact.create(CDHelper.mainContext)
+        let image = UIImage(named: "avatar")
+        
+        let t3place: Place = Place.create(CDHelper.mainContext)
+        let t3placeImage = UIImage(named: "city")
+        let (_, placeKey) = ThumbnailCache.sharedInstance.write(UIImagePNGRepresentation(t3placeImage))
+        t3place.thumbnailKey = placeKey
+        t3.connections.addObject(t3place)
+        
+        let (_, key) = ThumbnailCache.sharedInstance.write(UIImagePNGRepresentation(image))
+        contact.thumbnailKey = key
+        t3.connections.addObject(contact)
         
         let t4: Task = Task.create(CDHelper.mainContext)
         t4.title = "Get rid of old stuff"

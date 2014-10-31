@@ -103,6 +103,12 @@ extension TaskCell {
         self.datePlaceLabel.text = model.datePlaceDescription
         self.datePlaceLabel.update(model.datePlaceLabelAttributes)
         
+        self.thumbnailView.image = model.images.first
+        
+        if self.thumbnailView.image != nil {
+            self.thumbnailView.layer.borderWidth = 0.0
+        }
+        
         self.layoutSubviews()
     }
     

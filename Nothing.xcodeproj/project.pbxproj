@@ -38,6 +38,7 @@
 		12E215951A037E4F0038AD45 /* TSTextRefDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158F1A037E4F0038AD45 /* TSTextRefDetector.swift */; };
 		12E215961A037E4F0038AD45 /* TSTextSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215901A037E4F0038AD45 /* TSTextSceneView.swift */; };
 		12E215971A037E4F0038AD45 /* TSTextSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215911A037E4F0038AD45 /* TSTextSize.swift */; };
+		12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215991A03A9840038AD45 /* ThumbnailCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		12E2158F1A037E4F0038AD45 /* TSTextRefDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextRefDetector.swift; path = External/TSTextMapper/Classes/TSTextRefDetector.swift; sourceTree = "<group>"; };
 		12E215901A037E4F0038AD45 /* TSTextSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextSceneView.swift; path = External/TSTextMapper/Classes/TSTextSceneView.swift; sourceTree = "<group>"; };
 		12E215911A037E4F0038AD45 /* TSTextSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextSize.swift; path = External/TSTextMapper/Classes/TSTextSize.swift; sourceTree = "<group>"; };
+		12E215991A03A9840038AD45 /* ThumbnailCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 		1279B61319FED65300A7828C /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				12E215991A03A9840038AD45 /* ThumbnailCache.swift */,
 				1279B61419FEDBD200A7828C /* FileCache.swift */,
 				1279B60719FED64D00A7828C /* FileManager.swift */,
 			);
@@ -372,6 +375,7 @@
 				1279B61219FED64D00A7828C /* FileManager.swift in Sources */,
 				1279B60819FED64D00A7828C /* CDHelper.swift in Sources */,
 				12E215931A037E4F0038AD45 /* TSTextMapper.swift in Sources */,
+				12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */,
 				125593F219FEF7E0001EC477 /* TaskCell.swift in Sources */,
 				1279B60C19FED64D00A7828C /* Contact.swift in Sources */,
 				1279B61019FED64D00A7828C /* Place.swift in Sources */,
