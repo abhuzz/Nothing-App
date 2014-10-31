@@ -57,6 +57,10 @@ class InboxViewController: UITableViewController {
         cell.update(model!)
         return cell.estimatedHeight
     }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250()
+    }
 
     lazy var debug_tasks: [Task] = {
         /// first
@@ -96,7 +100,15 @@ class InboxViewController: UITableViewController {
         
         t2.locationReminderInfo = lcInfo2
         
-        return [t1]
+        let t3: Task = Task.create(CDHelper.mainContext)
+        t3.title = "Call Declan W."
+        t3.longDescription = "Talk about job opportunities in #London"
+        
+        let t4: Task = Task.create(CDHelper.mainContext)
+        t4.title = "Get rid of old stuff"
+        t4.longDescription = "Cannot look at this anymoaaaar!"
+        
+        return [t1, t2, t3, t4]
     }()
 }
 
