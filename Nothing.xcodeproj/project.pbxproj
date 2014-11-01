@@ -32,7 +32,6 @@
 		1279B61119FED64D00A7828C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60619FED64D00A7828C /* Task.swift */; };
 		1279B61219FED64D00A7828C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60719FED64D00A7828C /* FileManager.swift */; };
 		1279B61519FEDBD200A7828C /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B61419FEDBD200A7828C /* FileCache.swift */; };
-		129369BA1A04E76500724127 /* TSTextLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129369B91A04E76500724127 /* TSTextLine.swift */; };
 		12E215921A037E4F0038AD45 /* TSTextAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158C1A037E4F0038AD45 /* TSTextAnalyzer.swift */; };
 		12E215931A037E4F0038AD45 /* TSTextMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158D1A037E4F0038AD45 /* TSTextMapper.swift */; };
 		12E215941A037E4F0038AD45 /* TSTextNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158E1A037E4F0038AD45 /* TSTextNodeView.swift */; };
@@ -82,7 +81,6 @@
 		1279B60619FED64D00A7828C /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		1279B60719FED64D00A7828C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1279B61419FEDBD200A7828C /* FileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
-		129369B91A04E76500724127 /* TSTextLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSTextLine.swift; sourceTree = "<group>"; };
 		12E2158C1A037E4F0038AD45 /* TSTextAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextAnalyzer.swift; path = External/TSTextMapper/Classes/TSTextAnalyzer.swift; sourceTree = "<group>"; };
 		12E2158D1A037E4F0038AD45 /* TSTextMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextMapper.swift; path = External/TSTextMapper/Classes/TSTextMapper.swift; sourceTree = "<group>"; };
 		12E2158E1A037E4F0038AD45 /* TSTextNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextNodeView.swift; path = External/TSTextMapper/Classes/TSTextNodeView.swift; sourceTree = "<group>"; };
@@ -252,7 +250,6 @@
 				12E2158F1A037E4F0038AD45 /* TSTextRefDetector.swift */,
 				12E215901A037E4F0038AD45 /* TSTextSceneView.swift */,
 				12E215911A037E4F0038AD45 /* TSTextSize.swift */,
-				129369B91A04E76500724127 /* TSTextLine.swift */,
 			);
 			name = TSTextMaper;
 			sourceTree = "<group>";
@@ -377,7 +374,6 @@
 				1279B60A19FED64D00A7828C /* NSManagedObject_E.swift in Sources */,
 				1279B61219FED64D00A7828C /* FileManager.swift in Sources */,
 				1279B60819FED64D00A7828C /* CDHelper.swift in Sources */,
-				129369BA1A04E76500724127 /* TSTextLine.swift in Sources */,
 				12E215931A037E4F0038AD45 /* TSTextMapper.swift in Sources */,
 				12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */,
 				125593F219FEF7E0001EC477 /* TaskCell.swift in Sources */,
