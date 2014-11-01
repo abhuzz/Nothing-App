@@ -20,7 +20,9 @@ extension UILabel {
     }
     
     var proposedHeight: CGFloat {
-        return self.sizeThatFits(CGSize(width: CGRectGetWidth(self.bounds), height: CGFloat.max)).height
+        var sizeToFit = CGSize(width: self.bounds.size.width, height: CGFloat.max)
+        println("\(sizeToFit.width), \(self.text)")
+        return self.sizeThatFits(sizeToFit).height
     }
     
     func update(attr: Attributes) {

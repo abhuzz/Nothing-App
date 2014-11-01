@@ -1,3 +1,4 @@
+
 //
 //  TaskCell.swift
 //  Nothing
@@ -26,12 +27,30 @@ class TaskCell: UITableViewCell {
     @IBOutlet weak var descriptionLabelHeight: NSLayoutConstraint!
     
     private var model: TaskCellVM?
+
+    private var tapGesture: UITapGestureRecognizer!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.titleLabel.text = ""
+        self.descriptionLabel.text = ""
+        self.datePlaceLabel.text = ""
+
+        self.layoutIfNeeded()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //        self.enableDebug()
+        self.clipsToBounds = true
+//        self.enableDebug()
         self.configureThumbnailView()
-        self.configureGestureRecognizer()
+        self.configureSelectionBackgroundView()
+    }
+    
+    private func configureSelectionBackgroundView() {
+        let view = UIView()
+        view.backgroundColor = UIColor.appBlueColorAlpha50()
+        self.selectedBackgroundView = view
     }
     
     private func configureThumbnailView() {
@@ -43,37 +62,34 @@ class TaskCell: UITableViewCell {
         self.thumbnailView.layer.borderWidth = 1
     }
     
-    private func configureGestureRecognizer() {
-        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
-    }
-    
     private var textMapper: TSTextMapper?
-    func handleTap(recognizer: UITapGestureRecognizer) {
-        if (recognizer.state == .Ended) {
-            let point = recognizer.locationInView(self.descriptionLabel)
-            if self.textMapper == nil {
-                self.textMapper = TSTextMapper(self.descriptionLabel)
+    func handleTap(point: CGPoint) -> Bool {
+        var success = false
+        if self.textMapper == nil {
+            self.textMapper = TSTextMapper(self.descriptionLabel)
 
-                var ranges = [NSRange]()
-                for result in self.model!.hashtags {
-                    ranges.append(result.range)
-                }
-                
-                self.textMapper!.mapTextWithTappableRanges(ranges, text: self.descriptionLabel.text!)
+            var ranges = [NSRange]()
+            for result in self.model!.hashtags {
+                ranges.append(result.range)
             }
             
-            if let text = self.textMapper?.textForPoint(point) {
-                println("text = \(text.value)")
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    var alert = UIAlertView(title: nil, message: text.value, delegate: nil, cancelButtonTitle: nil)
-                    alert.show()
-                    
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-                        alert.dismissWithClickedButtonIndex(0, animated: true)
-                    })
-                })
-            }
+            self.textMapper!.mapTextWithTappableRanges(ranges, text: self.descriptionLabel.text!)
         }
+        
+        if let text = self.textMapper?.textForPoint(point) {
+            success = true
+            println("text = \(text.value)")
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                var alert = UIAlertView(title: nil, message: text.value, delegate: nil, cancelButtonTitle: nil)
+                alert.show()
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                    alert.dismissWithClickedButtonIndex(0, animated: true)
+                })
+            })
+        }
+        
+        return success
     }
     
     private var index = 0
@@ -95,6 +111,40 @@ class TaskCell: UITableViewCell {
         super.layoutSubviews()
         self.textMapper = nil
         self.descriptionLabelHeight.constant = self.descriptionLabel.proposedHeight
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        
+        var wordTapped = false
+        if let touch: AnyObject = event.allTouches()?.anyObject() {
+            wordTapped = self.handleTap((touch as UITouch).locationInView(self.descriptionLabel))
+        }
+        
+        if !wordTapped {
+            super.touchesBegan(touches, withEvent: event)
+        }
+    }
+}
+
+extension TaskCell {
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        if selected {
+            self.didSelect()
+        }
+    }
+    
+    func didSelect() {
+        let animation = CABasicAnimation(keyPath: "transform")
+        animation.fromValue = 10
+        animation.toValue = 0
+        animation.fromValue = NSValue(CATransform3D: CATransform3DIdentity)
+        animation.toValue = NSValue(CATransform3D: CATransform3DMakeScale(0.95, 0.95, 1.0))
+        animation.duration = 0.2
+        animation.autoreverses = true
+        self.layer.addAnimation(animation, forKey: nil)
+        self.setSelected(false, animated: true)
     }
 }
 
@@ -133,9 +183,19 @@ extension TaskCell {
     }
     
     var estimatedHeight: CGFloat {
-        return 2 * CGRectGetMinY(self.titleLabel.frame) + self.titleLabel.proposedHeight + self.descriptionLabel.proposedHeight + self.datePlaceLabel.proposedHeight
+        println("-----")
+        self.layoutSubviews()
+        self.layoutIfNeeded()
+        self.updateConstraintsIfNeeded()
+        println("cell = \(self.bounds.size)")
+        println("title = \(self.titleLabel.bounds.size)")
+        println("dest = \(self.descriptionLabel.bounds.size)")
+        
+        var margins = 2 * CGRectGetMinY(self.titleLabel.frame)
+        return margins + self.titleLabel.proposedHeight + self.descriptionLabel.proposedHeight + self.datePlaceLabel.proposedHeight
     }
 }
+
 
 extension TaskCell {
 

@@ -98,6 +98,7 @@ class TaskCellVM: Equatable {
         let attr = UILabel.Attributes()
         attr.font = UIFont(name: "HelveticaNeue-Light", size: 14.0)!
         attr.textColor = UIColor.appWhite186()
+        attr.numberOfLines = 0
         return attr
     }()
 }

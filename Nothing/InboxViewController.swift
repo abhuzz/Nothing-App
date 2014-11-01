@@ -40,6 +40,7 @@ class InboxViewController: UITableViewController {
         }
         
         cell.update(model!)
+        println("cellforrow: \(cell.bounds)")
         return cell
     }
     
@@ -53,7 +54,13 @@ class InboxViewController: UITableViewController {
         }
         
         let cell = TaskCell.nib().instantiateWithOwner(nil, options: nil).first as TaskCell
-
+        var frame = cell.frame
+        frame.size.width = tableView.bounds.width
+        cell.frame = frame
+        
+        cell.setNeedsUpdateConstraints()
+        cell.updateConstraintsIfNeeded()
+        
         cell.update(model!)
         return cell.estimatedHeight
     }
@@ -127,7 +134,7 @@ class InboxViewController: UITableViewController {
         
         let t4: Task = Task.create(CDHelper.mainContext)
         t4.title = "Get rid of old stuff"
-        t4.longDescription = "Cannot look at this anymoaaaar!"
+        t4.longDescription = "Cannot look on this anymoaaaar!"
         
         return [t1, t2, t3, t4]
     }()
