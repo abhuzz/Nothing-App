@@ -9,10 +9,11 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet private weak var navigationBar: UINavigationBar!
+    @IBOutlet private weak var navBarVerticalSpace: NSLayoutConstraint!
+    private var searchBar: UISearchBar!
     
-    @IBOutlet weak var navBarVerticalSpace: NSLayoutConstraint!
-    var searchBar: UISearchBar!
+    var searchBarText: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +33,13 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.searchBar.becomeFirstResponder()
+        self.searchBar.text = self.searchBarText
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.navBarVerticalSpace.constant = 0
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animateWithDuration(0.1, animations: {
             self.navigationBar.layoutIfNeeded()
         })
     }

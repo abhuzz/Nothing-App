@@ -17,6 +17,10 @@ class InboxViewController: UITableViewController {
         case TaskCell = "TaskCell"
     }
     
+    enum SegueIdentifier: String {
+        case Search = "Search"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.registerNib(TaskCell.nib(), forCellReuseIdentifier: Identifiers.TaskCell.rawValue)
@@ -42,6 +46,12 @@ class InboxViewController: UITableViewController {
         }
         
         cell.update(model!)
+        cell.hashtagSelectedBlock = { hashtag in
+            dispatch_async(dispatch_get_main_queue(), { [self]
+                self.performSegueWithIdentifier(SegueIdentifier.Search.rawValue, sender: hashtag)
+            })
+        }
+        
         println("cellforrow: \(cell.bounds)")
         return cell
     }
@@ -70,17 +80,16 @@ class InboxViewController: UITableViewController {
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250()
     }
-
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("Search", sender: nil)
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         
-        let vc = segue.destinationViewController as SearchViewController
-        vc.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-        self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        if segue.identifier! == SegueIdentifier.Search.rawValue {
+            let vc = segue.destinationViewController as SearchViewController
+            vc.searchBarText = sender as String
+            vc.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+            self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        }
     }
     
     /// DEBUG

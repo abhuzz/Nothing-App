@@ -20,15 +20,18 @@ func == (lhs: WordInstance, rhs: WordInstance) -> Bool {
 
 class TaskCell: UITableViewCell {
     
+    typealias HashtagSelectedBlock = (String) -> ()
+    
     @IBOutlet private (set) weak var thumbnailView: UIImageView!
     @IBOutlet private (set) weak var titleLabel: UILabel!
     @IBOutlet private (set) weak var descriptionLabel: UILabel!
     @IBOutlet private (set) weak var datePlaceLabel: UILabel!
-    @IBOutlet weak var descriptionLabelHeight: NSLayoutConstraint!
+    @IBOutlet private weak var descriptionLabelHeight: NSLayoutConstraint!
     
     private var model: TaskCellVM?
-
     private var tapGesture: UITapGestureRecognizer!
+    
+    var hashtagSelectedBlock: HashtagSelectedBlock?
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -78,14 +81,8 @@ class TaskCell: UITableViewCell {
         
         if let text = self.textMapper?.textForPoint(point) {
             success = true
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                var alert = UIAlertView(title: nil, message: text.value, delegate: nil, cancelButtonTitle: nil)
-                alert.show()
-                
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-                    alert.dismissWithClickedButtonIndex(0, animated: true)
-                })
-            })
+            
+            self.hashtagSelectedBlock?(text.value)
         }
         
         return success
