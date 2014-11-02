@@ -136,8 +136,8 @@
 		1279B5CB19FED4E700A7828C = {
 			isa = PBXGroup;
 			children = (
-				12E2158B1A037C9C0038AD45 /* External */,
 				1279B5D619FED4E700A7828C /* Nothing */,
+				12E2158B1A037C9C0038AD45 /* External */,
 				1279B5EC19FED4E700A7828C /* NothingTests */,
 				1279B5D519FED4E700A7828C /* Products */,
 			);

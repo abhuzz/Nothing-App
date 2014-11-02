@@ -93,11 +93,22 @@
                                     <navigationItem title="Title" id="bWb-oH-3xu"/>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Pqp-5W-nAe">
+                                <rect key="frame" x="0.0" y="2" width="600" height="598"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="CYv-FT-RG8" id="Z3w-8Y-SIj"/>
+                                    <outlet property="delegate" destination="CYv-FT-RG8" id="etm-l7-ayx"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Pqp-5W-nAe" firstAttribute="top" secondItem="EDB-uW-6A0" secondAttribute="bottom" id="Po6-Sp-Xpe"/>
                             <constraint firstItem="EDB-uW-6A0" firstAttribute="leading" secondItem="Buq-hm-OSG" secondAttribute="leading" id="bHi-Ol-Dx4"/>
                             <constraint firstAttribute="trailing" secondItem="EDB-uW-6A0" secondAttribute="trailing" id="bIj-c8-VZv"/>
+                            <constraint firstItem="CQv-8I-GRD" firstAttribute="top" secondItem="Pqp-5W-nAe" secondAttribute="bottom" id="esX-a7-l5v"/>
+                            <constraint firstAttribute="trailing" secondItem="Pqp-5W-nAe" secondAttribute="trailing" id="ola-Mv-5xh"/>
+                            <constraint firstItem="Pqp-5W-nAe" firstAttribute="leading" secondItem="Buq-hm-OSG" secondAttribute="leading" id="r60-OR-V4x"/>
                             <constraint firstItem="EDB-uW-6A0" firstAttribute="top" secondItem="Buq-hm-OSG" secondAttribute="top" constant="-64" id="x09-mR-uiT"/>
                         </constraints>
                     </view>
@@ -105,6 +116,7 @@
                     <connections>
                         <outlet property="navBarVerticalSpace" destination="x09-mR-uiT" id="cEh-3G-se8"/>
                         <outlet property="navigationBar" destination="EDB-uW-6A0" id="ULs-if-Qaf"/>
+                        <outlet property="tableView" destination="Pqp-5W-nAe" id="bbg-TJ-GDX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQY-T7-HC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
