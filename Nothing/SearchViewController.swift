@@ -39,7 +39,7 @@ class SearchViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.navBarVerticalSpace.constant = 0
-        UIView.animateWithDuration(0.1, animations: {
+        UIView.animateWithDuration(0.2, animations: {
             self.navigationBar.layoutIfNeeded()
         })
     }
