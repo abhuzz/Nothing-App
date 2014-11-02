@@ -22,6 +22,8 @@ class InboxViewController: UITableViewController {
         self.tableView.registerNib(TaskCell.nib(), forCellReuseIdentifier: Identifiers.TaskCell.rawValue)
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
+
+        self.searchDisplayController?.searchResultsTableView.registerNib(TaskCell.nib(), forCellReuseIdentifier: Identifiers.TaskCell.rawValue)
     }
     
     /// Mark: UITableViewDelegate & UITableViewDataSource
@@ -69,6 +71,17 @@ class InboxViewController: UITableViewController {
         cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250()
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("Search", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        
+        let vc = segue.destinationViewController as SearchViewController
+        vc.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+    }
     
     /// DEBUG
     lazy var debug_tasks: [Task] = {

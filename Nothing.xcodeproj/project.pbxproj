@@ -32,6 +32,7 @@
 		1279B61119FED64D00A7828C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60619FED64D00A7828C /* Task.swift */; };
 		1279B61219FED64D00A7828C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60719FED64D00A7828C /* FileManager.swift */; };
 		1279B61519FEDBD200A7828C /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B61419FEDBD200A7828C /* FileCache.swift */; };
+		129369BE1A06B09F00724127 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129369BD1A06B09F00724127 /* SearchViewController.swift */; };
 		12E215921A037E4F0038AD45 /* TSTextAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158C1A037E4F0038AD45 /* TSTextAnalyzer.swift */; };
 		12E215931A037E4F0038AD45 /* TSTextMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158D1A037E4F0038AD45 /* TSTextMapper.swift */; };
 		12E215941A037E4F0038AD45 /* TSTextNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158E1A037E4F0038AD45 /* TSTextNodeView.swift */; };
@@ -81,6 +82,7 @@
 		1279B60619FED64D00A7828C /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		1279B60719FED64D00A7828C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1279B61419FEDBD200A7828C /* FileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
+		129369BD1A06B09F00724127 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		12E2158C1A037E4F0038AD45 /* TSTextAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextAnalyzer.swift; path = External/TSTextMapper/Classes/TSTextAnalyzer.swift; sourceTree = "<group>"; };
 		12E2158D1A037E4F0038AD45 /* TSTextMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextMapper.swift; path = External/TSTextMapper/Classes/TSTextMapper.swift; sourceTree = "<group>"; };
 		12E2158E1A037E4F0038AD45 /* TSTextNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextNodeView.swift; path = External/TSTextMapper/Classes/TSTextNodeView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				1279B5DB19FED4E700A7828C /* InboxViewController.swift */,
+				129369BD1A06B09F00724127 /* SearchViewController.swift */,
 				125593F019FEF7CD001EC477 /* Views */,
 				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
 				1279B5F919FED64D00A7828C /* Core Data */,
@@ -377,6 +380,7 @@
 				12E215931A037E4F0038AD45 /* TSTextMapper.swift in Sources */,
 				12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */,
 				125593F219FEF7E0001EC477 /* TaskCell.swift in Sources */,
+				129369BE1A06B09F00724127 /* SearchViewController.swift in Sources */,
 				1279B60C19FED64D00A7828C /* Contact.swift in Sources */,
 				1279B61019FED64D00A7828C /* Place.swift in Sources */,
 				12E215951A037E4F0038AD45 /* TSTextRefDetector.swift in Sources */,

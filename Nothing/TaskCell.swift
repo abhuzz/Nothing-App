@@ -78,7 +78,6 @@ class TaskCell: UITableViewCell {
         
         if let text = self.textMapper?.textForPoint(point) {
             success = true
-            println("text = \(text.value)")
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 var alert = UIAlertView(title: nil, message: text.value, delegate: nil, cancelButtonTitle: nil)
                 alert.show()
@@ -183,13 +182,9 @@ extension TaskCell {
     }
     
     var estimatedHeight: CGFloat {
-        println("-----")
         self.layoutSubviews()
         self.layoutIfNeeded()
         self.updateConstraintsIfNeeded()
-        println("cell = \(self.bounds.size)")
-        println("title = \(self.titleLabel.bounds.size)")
-        println("dest = \(self.descriptionLabel.bounds.size)")
         
         var margins = 2 * CGRectGetMinY(self.titleLabel.frame)
         return margins + self.titleLabel.proposedHeight + self.descriptionLabel.proposedHeight + self.datePlaceLabel.proposedHeight
