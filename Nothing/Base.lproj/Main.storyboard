@@ -45,7 +45,13 @@
                             <outlet property="delegate" destination="jAd-mj-KVF" id="c82-pG-NO2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Inbox" id="p4g-dj-1yh"/>
+                    <navigationItem key="navigationItem" title="Inbox" id="p4g-dj-1yh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="J4H-si-k8C">
+                            <connections>
+                                <action selector="searchPressed:" destination="jAd-mj-KVF" id="ixl-M8-7bY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="8sJ-gZ-VrE" id="rKx-ju-yzT"/>
@@ -101,7 +107,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Pqp-5W-nAe" firstAttribute="top" secondItem="EDB-uW-6A0" secondAttribute="bottom" constant="1" id="Po6-Sp-Xpe"/>
                             <constraint firstItem="EDB-uW-6A0" firstAttribute="leading" secondItem="Buq-hm-OSG" secondAttribute="leading" id="bHi-Ol-Dx4"/>

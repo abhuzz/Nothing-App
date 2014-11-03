@@ -95,10 +95,18 @@ class InboxViewController: UITableViewController {
         
         if segue.identifier! == SegueIdentifier.Search.rawValue {
             let vc = segue.destinationViewController as SearchViewController
-            vc.searchBarText = sender as String
+            
+            if sender != nil {
+                vc.searchBarText = sender as String
+            }
+            
             vc.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
             self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
         }
+    }
+
+    @IBAction func searchPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier(SegueIdentifier.Search.rawValue, sender: nil)
     }
 }
 
