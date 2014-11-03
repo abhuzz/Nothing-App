@@ -111,17 +111,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         cell.update(model!)
-        /*
-        cell.hashtagSelectedBlock = { hashtag in
-            dispatch_async(dispatch_get_main_queue(), { [self]
-                let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                let nextVC = storyboard.instantiateViewControllerWithIdentifier("SearchViewController") as SearchViewController
-                nextVC.searchBarText = hashtag
-                self.presentViewController(nextVC, animated: false, completion: nil)
-            })
-        }
-        */
-        
         return cell
     }
     

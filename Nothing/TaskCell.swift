@@ -88,19 +88,31 @@ class TaskCell: UITableViewCell {
         return success
     }
     
-    private var index = 0
-    private var images = [UIImage]()
-    private func animateImages() {
-        if self.index + 1 < self.images.count {
-            self.index++
-        } else {
-            self.index = 0
-        }
-        UIView.transitionWithView(self.thumbnailView, duration: 2.0, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
-            self.thumbnailView.image = self.images[self.index]
-            }) { (finished) -> Void in
-                self.animateImages()
-        }
+    private var currentThumbnailImageIndex = 0
+    private var thumbnailImages = [UIImage]()
+    private var thumbnailTimer: NSTimer?
+    private func startThumbnailAnimation() {
+        self.stopThumbnailAnimation()
+        self.thumbnailTimer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "updateThumbnail", userInfo: nil, repeats: true)
+    }
+    
+    func updateThumbnail() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            if self.currentThumbnailImageIndex + 1 < self.thumbnailImages.count {
+                self.currentThumbnailImageIndex++
+            } else {
+                self.currentThumbnailImageIndex = 0
+            }
+            
+            UIView.transitionWithView(self.thumbnailView, duration: 2.0, options: .TransitionCrossDissolve, animations: {
+                self.thumbnailView.image = self.thumbnailImages[self.currentThumbnailImageIndex]
+            }, completion: nil)
+        })
+    }
+    
+    private func stopThumbnailAnimation() {
+        self.thumbnailTimer?.invalidate()
+        self.thumbnailTimer = nil
     }
     
     override func layoutSubviews() {
@@ -132,14 +144,7 @@ extension TaskCell {
     }
     
     func didSelect() {
-        let animation = CABasicAnimation(keyPath: "transform")
-        animation.fromValue = 10
-        animation.toValue = 0
-        animation.fromValue = NSValue(CATransform3D: CATransform3DIdentity)
-        animation.toValue = NSValue(CATransform3D: CATransform3DMakeScale(0.95, 0.95, 1.0))
-        animation.duration = 0.2
-        animation.autoreverses = true
-        self.layer.addAnimation(animation, forKey: nil)
+        self.animatePushViewInside()
         self.setSelected(false, animated: true)
     }
 }
@@ -164,9 +169,9 @@ extension TaskCell {
         self.datePlaceLabel.text = model.datePlaceDescription
         self.datePlaceLabel.update(model.datePlaceLabelAttributes)
         
-        self.images = model.images
-        if self.images.count > 0 {
-            self.animateImages()
+        self.thumbnailImages = model.images
+        if self.thumbnailImages.count > 0 {
+            self.startThumbnailAnimation()
         }
         
         self.thumbnailView.image = model.images.first

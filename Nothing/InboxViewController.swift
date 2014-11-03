@@ -14,7 +14,9 @@ class InboxViewController: UITableViewController {
     private var modelCache = TaskCellVMCache()
     private var tasks: [Task] = [Task]() {
         didSet {
-            self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
         }
     }
     
