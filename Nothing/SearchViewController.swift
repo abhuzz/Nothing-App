@@ -11,18 +11,14 @@ import UIKit
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UISearchBarDelegate {
     @IBOutlet private weak var navigationBar: UINavigationBar!
     @IBOutlet private weak var navBarVerticalSpace: NSLayoutConstraint!
+    @IBOutlet weak var navBarHeight: NSLayoutConstraint!
     @IBOutlet private weak var tableView: UITableView!
     
     private var searchBar: UISearchBar!
     
     var searchBarText: String = ""
     
-    private var tasks: [Task] = [Task]() {
-        didSet {
-            self.tableView.reloadData()
-            self.tableView.backgroundColor = tasks.count > 0 ? UIColor.whiteColor() : UIColor.clearColor()
-        }
-    }
+    private var tasks: [Task] = [Task]()
     
     enum Identifiers: String {
         case TaskCell = "TaskCell"
@@ -36,6 +32,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tableView.registerNib(TaskCell.nib(), forCellReuseIdentifier: Identifiers.TaskCell.rawValue)
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.backgroundColor = UIColor.appWhite255()
         
         self.configureSearchBar()
     }
@@ -56,17 +53,46 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.searchBar.becomeFirstResponder()
         self.searchBar.text = self.searchBarText
-        self.performSearch(self.searchBar.text)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.present() { [self]
+            self.searchBar.becomeFirstResponder()
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.performSearch(self.searchBar.text)
+            })
+        }
+    }
+    
+    typealias AnimationCompletionBlock = () -> Void
+    private func present(completion: AnimationCompletionBlock?) {
         self.navBarVerticalSpace.constant = 0
         UIView.animateWithDuration(0.2, animations: {
+            self.tableView.alpha = 1.0
             self.navigationBar.layoutIfNeeded()
-        })
+            }, completion: { finished in
+                if completion != nil {
+                    completion!()
+                }
+            }
+        )
+    }
+    
+    private func dismiss(completion: AnimationCompletionBlock?) {
+        self.navBarVerticalSpace.constant = -64
+        UIView.animateWithDuration(0.2, animations: {
+            self.navigationBar.layoutIfNeeded()
+            self.tableView.layoutIfNeeded()
+            self.tableView.alpha = 0.0
+            }, completion: { finished in
+                if completion != nil {
+                    completion!()
+                }
+            }
+        )
     }
     
     /// Mark: UITableViewDataSource
@@ -85,13 +111,17 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         cell.update(model!)
+        /*
         cell.hashtagSelectedBlock = { hashtag in
-//            dispatch_async(dispatch_get_main_queue(), { [self]
-//                self.performSegueWithIdentifier(SegueIdentifier.Search.rawValue, sender: hashtag)
-//            })
+            dispatch_async(dispatch_get_main_queue(), { [self]
+                let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                let nextVC = storyboard.instantiateViewControllerWithIdentifier("SearchViewController") as SearchViewController
+                nextVC.searchBarText = hashtag
+                self.presentViewController(nextVC, animated: false, completion: nil)
+            })
         }
+        */
         
-        println("cellforrow: \(cell.bounds)")
         return cell
     }
     
@@ -122,7 +152,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     /// Mark: UISearchBarDelegate
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss {
+            self.dismissViewControllerAnimated(false, completion: nil)
+        }
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -136,10 +168,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func performSearch(text: String) {
         if text == "" {
             self.tasks = [Task]()
-            return
+        } else {
+            self.tasks = ModelController().tasksMatching(text)
         }
         
-        self.tasks = ModelController().tasksMatching(text)
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+            self.tableView.backgroundColor = self.tasks.count == 0 ? UIColor.clearColor() : UIColor.appWhite255()
+        })
     }
     
     /// Mark: UIScrollViewDelegate

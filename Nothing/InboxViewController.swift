@@ -62,7 +62,6 @@ class InboxViewController: UITableViewController {
             })
         }
         
-        println("cellforrow: \(cell.bounds)")
         return cell
     }
     

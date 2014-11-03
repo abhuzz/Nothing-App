@@ -22,15 +22,6 @@ class Task: NSManagedObject {
 
 extension Task {
     
-    override func awakeFromInsert() {
-        super.awakeFromInsert()
-    }
-    
-    override func awakeFromFetch() {
-        super.awakeFromFetch()
-        println("fetch")
-    }
-    
     enum State: Int {
         case Active = 0
         case Done

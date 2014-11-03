@@ -75,7 +75,7 @@
         <!--Search View Controller-->
         <scene sceneID="24t-Mr-Jjh">
             <objects>
-                <viewController id="CYv-FT-RG8" customClass="SearchViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="CYv-FT-RG8" customClass="SearchViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gzE-ZK-G6g"/>
                         <viewControllerLayoutGuide type="bottom" id="CQv-8I-GRD"/>
@@ -85,16 +85,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EDB-uW-6A0">
-                                <rect key="frame" x="0.0" y="-64" width="600" height="66"/>
+                                <rect key="frame" x="0.0" y="-64" width="600" height="64"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="8qA-OO-cM7"/>
+                                    <constraint firstAttribute="height" constant="64" id="8qA-OO-cM7"/>
                                 </constraints>
                                 <items>
                                     <navigationItem title="Title" id="bWb-oH-3xu"/>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Pqp-5W-nAe">
-                                <rect key="frame" x="0.0" y="2" width="600" height="598"/>
+                                <rect key="frame" x="0.0" y="1" width="600" height="599"/>
                                 <connections>
                                     <outlet property="dataSource" destination="CYv-FT-RG8" id="Z3w-8Y-SIj"/>
                                     <outlet property="delegate" destination="CYv-FT-RG8" id="etm-l7-ayx"/>
@@ -103,7 +103,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Pqp-5W-nAe" firstAttribute="top" secondItem="EDB-uW-6A0" secondAttribute="bottom" id="Po6-Sp-Xpe"/>
+                            <constraint firstItem="Pqp-5W-nAe" firstAttribute="top" secondItem="EDB-uW-6A0" secondAttribute="bottom" constant="1" id="Po6-Sp-Xpe"/>
                             <constraint firstItem="EDB-uW-6A0" firstAttribute="leading" secondItem="Buq-hm-OSG" secondAttribute="leading" id="bHi-Ol-Dx4"/>
                             <constraint firstAttribute="trailing" secondItem="EDB-uW-6A0" secondAttribute="trailing" id="bIj-c8-VZv"/>
                             <constraint firstItem="CQv-8I-GRD" firstAttribute="top" secondItem="Pqp-5W-nAe" secondAttribute="bottom" id="esX-a7-l5v"/>
@@ -114,6 +114,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="navBarHeight" destination="8qA-OO-cM7" id="5sn-wW-BtQ"/>
                         <outlet property="navBarVerticalSpace" destination="x09-mR-uiT" id="cEh-3G-se8"/>
                         <outlet property="navigationBar" destination="EDB-uW-6A0" id="ULs-if-Qaf"/>
                         <outlet property="tableView" destination="Pqp-5W-nAe" id="bbg-TJ-GDX"/>
