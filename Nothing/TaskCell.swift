@@ -28,13 +28,15 @@ class TaskCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.thumbnailTimer?.invalidate()
+        self.thumbnailTimer = nil
+
         self.titleLabel.text = ""
         self.descriptionLabel.text = ""
         self.datePlaceLabel.text = ""
-
-        self.layoutIfNeeded()
-        
         self.configureThumbnailView()
+
+        self.layoutIfNeeded()        
     }
     
     override func awakeFromNib() {

@@ -58,16 +58,16 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.searchBar.text = self.searchBarText
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.present() { [self]
-            self.searchBar.text = self.searchBarText
             self.searchBar.becomeFirstResponder()
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.startSearchTimer(self.searchBar.text)
+                self.startSearchTimer(self.searchBar.text, delay: 0.0)
             })
         }
     }
@@ -157,7 +157,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        self.startSearchTimer(searchBar.text)
+        self.startSearchTimer(searchBar.text, delay: 0.0)
     }
     
     func performSearch(timer: NSTimer) {
@@ -189,10 +189,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
     }
     
-    func startSearchTimer(phrase: String) {
+    func startSearchTimer(phrase: String, delay: NSTimeInterval = 0.3) {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.cancelSearchTimer()
-            self.searchTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "performSearch:", userInfo: ["phrase": phrase], repeats: false)
+            self.searchTimer = NSTimer.scheduledTimerWithTimeInterval(delay, target: self, selector: "performSearch:", userInfo: ["phrase": phrase], repeats: false)
         })
     }
     
