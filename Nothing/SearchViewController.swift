@@ -13,6 +13,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet private weak var navBarVerticalSpace: NSLayoutConstraint!
     @IBOutlet weak var navBarHeight: NSLayoutConstraint!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var noSearchResultsLabel: UILabel!
     
     private var searchBar: UISearchBar!
     
@@ -35,6 +36,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tableView.backgroundColor = UIColor.clearColor()
         
         self.configureSearchBar()
+        self.configureNoSearchResultsLabel()
+    }
+    
+    func configureNoSearchResultsLabel() {
+        self.noSearchResultsLabel.textColor = UIColor.appWhite216()
     }
     
     func configureSearchBar() {
@@ -155,15 +161,24 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func performSearch(text: String) {
+        var backgroundColor = UIColor.clearColor()
         if text == "" {
             self.tasks = [Task]()
-        } else {
+        } else if countElements(text) > 0 {
+            backgroundColor = UIColor.appWhite255()
             self.tasks = ModelController().tasksMatching(text)
+            
+            if self.tasks.count > 0 {
+                self.noSearchResultsLabel.removeFromSuperview()
+            } else {
+                self.noSearchResultsLabel.frame = self.tableView.bounds
+                (self.tableView as UIScrollView).insertSubview(self.noSearchResultsLabel, atIndex: 10)
+            }
         }
         
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
-            self.tableView.backgroundColor = self.tasks.count == 0 ? UIColor.clearColor() : UIColor.appWhite255()
+            self.tableView.backgroundColor = backgroundColor
         })
     }
     
