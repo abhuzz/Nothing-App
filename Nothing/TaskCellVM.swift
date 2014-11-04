@@ -59,7 +59,7 @@ class TaskCellVM: Equatable {
         return value
     }
     
-    var images: [UIImage] {
+    lazy var images: [UIImage] = {
         var images = [UIImage]()
         for connection in self.task.allConnections.allObjects as [Connection] {
             if let key = connection.thumbnailKey {
@@ -71,7 +71,7 @@ class TaskCellVM: Equatable {
         }
         
         return images
-    }
+    }()
     
     lazy var dateFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()

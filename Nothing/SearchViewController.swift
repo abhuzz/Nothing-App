@@ -16,34 +16,33 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var noSearchResultsLabel: UILabel!
     
     private var searchBar: UISearchBar!
+    private var tasks: [Task] = [Task]()
+    private var viewModelCache = TaskCellVMCache()
+    private var allTasks: [Task] = ModelController().allTasks()
+    private var searchTimer: NSTimer?
     
     var searchBarText: String = ""
     
-    private var tasks: [Task] = [Task]()
+    enum Identifiers: String { case TaskCell = "TaskCell" }
     
-    enum Identifiers: String {
-        case TaskCell = "TaskCell"
-    }
-    
-    private var modelCache = TaskCellVMCache()
+    typealias AnimationCompletionBlock = () -> Void
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.configureUI()
+    }
+    
+    private func configureUI() {
+        /// configure table view
         self.tableView.registerNib(TaskCell.nib(), forCellReuseIdentifier: Identifiers.TaskCell.rawValue)
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.backgroundColor = UIColor.clearColor()
         
-        self.configureSearchBar()
-        self.configureNoSearchResultsLabel()
-    }
-    
-    func configureNoSearchResultsLabel() {
+        /// configure no results label
         self.noSearchResultsLabel.textColor = UIColor.appWhite216()
-    }
-    
-    func configureSearchBar() {
+
+        /// configure search bar
         let windowWidth = UIApplication.sharedApplication().keyWindow!.bounds.width
         let navigationBarContainer = UIView(frame: CGRect(x: 0, y: 0, width: windowWidth, height: self.navigationBar.bounds.height - 20))
         
@@ -59,22 +58,22 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.searchBar.text = self.searchBarText
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.present() { [self]
+            self.searchBar.text = self.searchBarText
             self.searchBar.becomeFirstResponder()
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.performSearch(self.searchBar.text)
+                self.startSearchTimer(self.searchBar.text)
             })
         }
     }
     
-    typealias AnimationCompletionBlock = () -> Void
     private func present(completion: AnimationCompletionBlock?) {
+        self.navigationBar.alpha = 1.0
         self.navBarVerticalSpace.constant = 0
         UIView.animateWithDuration(0.2, animations: {
             self.tableView.alpha = 1.0
@@ -90,6 +89,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private func dismiss(completion: AnimationCompletionBlock?) {
         self.navBarVerticalSpace.constant = -64
         UIView.animateWithDuration(0.2, animations: {
+            self.navigationBar.alpha = 0.3
             self.navigationBar.layoutIfNeeded()
             self.tableView.layoutIfNeeded()
             self.tableView.alpha = 0.0
@@ -108,12 +108,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let task = self.tasks[indexPath.row]
-        var model = self.modelCache.model(task)
+        var model = self.viewModelCache.model(task)
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.TaskCell.rawValue, forIndexPath: indexPath) as TaskCell
         if model == nil {
             model = TaskCellVM(task)
-            self.modelCache.add(model!)
+            self.viewModelCache.add(model!)
         }
         
         cell.update(model!)
@@ -123,10 +123,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let task = self.tasks[indexPath.row]
         
-        var model = self.modelCache.model(task)
+        var model = self.viewModelCache.model(task)
         if (model == nil) {
             model = TaskCellVM(task)
-            self.modelCache.add(model!)
+            self.viewModelCache.add(model!)
         }
         
         let cell = TaskCell.nib().instantiateWithOwner(nil, options: nil).first as TaskCell
@@ -153,33 +153,54 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        self.performSearch(searchText)
+        self.startSearchTimer(searchText)
     }
 
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        self.performSearch(searchBar.text)
+        self.startSearchTimer(searchBar.text)
     }
     
-    func performSearch(text: String) {
+    func performSearch(timer: NSTimer) {
+        let text = timer.userInfo!["phrase"] as String
         var backgroundColor = UIColor.clearColor()
-        if text == "" {
-            self.tasks = [Task]()
-        } else if countElements(text) > 0 {
+        
+        var results = [Task]()
+        
+        if countElements(text) > 0 {
             backgroundColor = UIColor.appWhite255()
-            self.tasks = ModelController().tasksMatching(text)
             
-            if self.tasks.count > 0 {
+            let titlePredicate = NSPredicate(format: "self.title CONTAINS[cd] %@", text)!
+            let descriptionPredicate = NSPredicate(format: "self.longDescription CONTAINS[cd] %@", text)!
+            let orPredicate = NSCompoundPredicate.orPredicateWithSubpredicates([titlePredicate, descriptionPredicate])
+            results = (self.allTasks as NSArray).filteredArrayUsingPredicate(orPredicate) as [Task]
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            if results.count > 0 || text == "" {
                 self.noSearchResultsLabel.removeFromSuperview()
             } else {
                 self.noSearchResultsLabel.frame = self.tableView.bounds
                 (self.tableView as UIScrollView).insertSubview(self.noSearchResultsLabel, atIndex: 10)
             }
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
+            self.tasks = results
             self.tableView.backgroundColor = backgroundColor
+            
+            self.tableView.reloadData()
         })
+    }
+    
+    func startSearchTimer(phrase: String) {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.cancelSearchTimer()
+            self.searchTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "performSearch:", userInfo: ["phrase": phrase], repeats: false)
+        })
+    }
+    
+    func cancelSearchTimer() {
+        if let timer = self.searchTimer {
+            timer.invalidate()
+            self.searchTimer = nil
+        }
     }
     
     /// Mark: UIScrollViewDelegate

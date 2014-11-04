@@ -9,15 +9,6 @@
 
 import UIKit
 
-struct WordInstance: Equatable {
-    var text: String
-    var line: Int
-}
-
-func == (lhs: WordInstance, rhs: WordInstance) -> Bool {
-    return lhs.text == rhs.text && lhs.line == rhs.line
-}
-
 class TaskCell: UITableViewCell {
     
     typealias HashtagSelectedBlock = (String) -> ()
@@ -31,6 +22,8 @@ class TaskCell: UITableViewCell {
     private var model: TaskCellVM?
     private var tapGesture: UITapGestureRecognizer!
     
+    private var cachedEstimatedHeight: CGFloat? = nil
+
     var hashtagSelectedBlock: HashtagSelectedBlock?
     
     override func prepareForReuse() {
@@ -40,6 +33,8 @@ class TaskCell: UITableViewCell {
         self.datePlaceLabel.text = ""
 
         self.layoutIfNeeded()
+        
+        self.configureThumbnailView()
     }
     
     override func awakeFromNib() {
@@ -93,7 +88,7 @@ class TaskCell: UITableViewCell {
     private var thumbnailTimer: NSTimer?
     private func startThumbnailAnimation() {
         self.stopThumbnailAnimation()
-        self.thumbnailTimer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "updateThumbnail", userInfo: nil, repeats: true)
+        self.thumbnailTimer = NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: "updateThumbnail", userInfo: nil, repeats: true)
     }
     
     func updateThumbnail() {
@@ -104,7 +99,7 @@ class TaskCell: UITableViewCell {
                 self.currentThumbnailImageIndex = 0
             }
             
-            UIView.transitionWithView(self.thumbnailView, duration: 2.0, options: .TransitionCrossDissolve, animations: {
+            UIView.transitionWithView(self.thumbnailView, duration: 5.0, options: .TransitionCrossDissolve, animations: {
                 self.thumbnailView.image = self.thumbnailImages[self.currentThumbnailImageIndex]
             }, completion: nil)
         })
@@ -159,6 +154,7 @@ extension TaskCell {
     
     func update(model: TaskCellVM) {
         self.model = model
+        self.cachedEstimatedHeight = nil
         self.titleLabel.text = model.title
         self.titleLabel.update(model.titleLabelAttributes)
         
@@ -183,13 +179,19 @@ extension TaskCell {
         self.layoutSubviews()
     }
     
-    var estimatedHeight: CGFloat {
+     var estimatedHeight: CGFloat {
+        if self.cachedEstimatedHeight != nil {
+            return self.cachedEstimatedHeight!
+        }
+        
         self.layoutSubviews()
         self.layoutIfNeeded()
         self.updateConstraintsIfNeeded()
         
         var margins = 2 * CGRectGetMinY(self.titleLabel.frame)
-        return margins + self.titleLabel.proposedHeight + self.descriptionLabel.proposedHeight + self.datePlaceLabel.proposedHeight
+        self.cachedEstimatedHeight = margins + self.titleLabel.proposedHeight + self.descriptionLabel.proposedHeight + self.datePlaceLabel.proposedHeight
+        
+        return self.cachedEstimatedHeight!
     }
 }
 

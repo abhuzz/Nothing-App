@@ -35,6 +35,7 @@
 		129369BE1A06B09F00724127 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129369BD1A06B09F00724127 /* SearchViewController.swift */; };
 		12BEB0F41A06DC9300643860 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BEB0F31A06DC9300643860 /* ModelController.swift */; };
 		12CEF17F1A083832004DE156 /* UIView_E.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEF17E1A083832004DE156 /* UIView_E.swift */; };
+		12CEF1811A083C24004DE156 /* LoopImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEF1801A083C24004DE156 /* LoopImageView.swift */; };
 		12E215921A037E4F0038AD45 /* TSTextAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158C1A037E4F0038AD45 /* TSTextAnalyzer.swift */; };
 		12E215931A037E4F0038AD45 /* TSTextMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158D1A037E4F0038AD45 /* TSTextMapper.swift */; };
 		12E215941A037E4F0038AD45 /* TSTextNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158E1A037E4F0038AD45 /* TSTextNodeView.swift */; };
@@ -87,6 +88,7 @@
 		129369BD1A06B09F00724127 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		12BEB0F31A06DC9300643860 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		12CEF17E1A083832004DE156 /* UIView_E.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_E.swift; sourceTree = "<group>"; };
+		12CEF1801A083C24004DE156 /* LoopImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoopImageView.swift; sourceTree = "<group>"; };
 		12E2158C1A037E4F0038AD45 /* TSTextAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextAnalyzer.swift; path = External/TSTextMapper/Classes/TSTextAnalyzer.swift; sourceTree = "<group>"; };
 		12E2158D1A037E4F0038AD45 /* TSTextMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextMapper.swift; path = External/TSTextMapper/Classes/TSTextMapper.swift; sourceTree = "<group>"; };
 		12E2158E1A037E4F0038AD45 /* TSTextNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextNodeView.swift; path = External/TSTextMapper/Classes/TSTextNodeView.swift; sourceTree = "<group>"; };
@@ -125,14 +127,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		125593F019FEF7CD001EC477 /* Views */ = {
+		125593F019FEF7CD001EC477 /* Task Cell */ = {
 			isa = PBXGroup;
 			children = (
 				125593F119FEF7E0001EC477 /* TaskCell.swift */,
 				125593F319FEFA8D001EC477 /* TaskCellVM.swift */,
 				123B6E251A000249008E22DB /* TaskCellVMCache.swift */,
+				12CEF1801A083C24004DE156 /* LoopImageView.swift */,
 			);
-			name = Views;
+			name = "Task Cell";
 			sourceTree = "<group>";
 		};
 		1279B5CB19FED4E700A7828C = {
@@ -160,7 +163,7 @@
 				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
 				1279B5DB19FED4E700A7828C /* InboxViewController.swift */,
 				129369BD1A06B09F00724127 /* SearchViewController.swift */,
-				125593F019FEF7CD001EC477 /* Views */,
+				125593F019FEF7CD001EC477 /* Task Cell */,
 				1279B5F919FED64D00A7828C /* Core Data */,
 				1279B61319FED65300A7828C /* Cache */,
 				123B6E2119FF86C4008E22DB /* HashtagDetector.swift */,
@@ -394,6 +397,7 @@
 				12E215951A037E4F0038AD45 /* TSTextRefDetector.swift in Sources */,
 				123B6E261A000249008E22DB /* TaskCellVMCache.swift in Sources */,
 				1279B60E19FED64D00A7828C /* DateReminderInfo.swift in Sources */,
+				12CEF1811A083C24004DE156 /* LoopImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
