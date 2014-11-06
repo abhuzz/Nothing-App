@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func applicationDidFinishLaunching(application: UIApplication) {
+        UISwitch.appearance().onTintColor = UIColor.appBlueColor()
 //        self.populateData()
     }
     

@@ -26,6 +26,7 @@ class InboxViewController: UITableViewController {
     
     enum SegueIdentifier: String {
         case Search = "Search"
+        case Create = "Create"
     }
     
     override func viewDidLoad() {
@@ -109,6 +110,10 @@ class InboxViewController: UITableViewController {
 
     @IBAction func searchPressed(sender: AnyObject) {
         self.performSegueWithIdentifier(SegueIdentifier.Search.rawValue, sender: nil)
+    }
+    
+    @IBAction func createPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier(SegueIdentifier.Create.rawValue, sender: nil)
     }
 }
 
