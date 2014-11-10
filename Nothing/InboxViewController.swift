@@ -9,93 +9,39 @@
 import UIKit
 import CoreLocation
 
-class InboxViewController: UITableViewController {
+class InboxViewController: UIViewController {
     
-    private var modelCache = TaskCellVMCache()
-    private var tasks: [Task] = [Task]() {
-        didSet {
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadData()
-            })
-        }
-    }
+    @IBOutlet private weak var tableView: UITableView!
     
     enum Identifiers: String {
         case TaskCell = "TaskCell"
+        case SearchSegue = "Search"
     }
     
-    enum SegueIdentifier: String {
-        case Search = "Search"
-    }
+    private var tasks = [Task]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureTableView()
+        self.navigationItem.title = "Inbox"
+    }
+    
+    private func configureTableView() {
         self.tableView.registerNib(TaskCell.nib(), forCellReuseIdentifier: Identifiers.TaskCell.rawValue)
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
-
-        self.searchDisplayController?.searchResultsTableView.registerNib(TaskCell.nib(), forCellReuseIdentifier: Identifiers.TaskCell.rawValue)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tasks = ModelController().allTasks()
-    }
-    
-    /// Mark: UITableViewDelegate & UITableViewDataSource
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tasks.count
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let task = self.tasks[indexPath.row]
-        var model = self.modelCache.model(task)
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.TaskCell.rawValue, forIndexPath: indexPath) as TaskCell
-        if model == nil {
-            model = TaskCellVM(task)
-            self.modelCache.add(model!)
-        }
-        
-        cell.update(model!)
-        cell.hashtagSelectedBlock = { hashtag in
-            dispatch_async(dispatch_get_main_queue(), { [self]
-                self.performSegueWithIdentifier(SegueIdentifier.Search.rawValue, sender: hashtag)
-            })
-        }
-        
-        return cell
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let task = self.tasks[indexPath.row]
-        
-        var model = self.modelCache.model(task)
-        if (model == nil) {
-            model = TaskCellVM(task)
-            self.modelCache.add(model!)
-        }
-        
-        let cell = TaskCell.nib().instantiateWithOwner(nil, options: nil).first as TaskCell
-        var frame = cell.frame
-        frame.size.width = tableView.bounds.width
-        cell.frame = frame
-        
-        cell.setNeedsUpdateConstraints()
-        cell.updateConstraintsIfNeeded()
-        
-        cell.update(model!)
-        return cell.estimatedHeight
-    }
-    
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250()
+        self.tableView.reloadData()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         
-        if segue.identifier! == SegueIdentifier.Search.rawValue {
+        if segue.identifier! == Identifiers.SearchSegue.rawValue {
             let vc = segue.destinationViewController as SearchViewController
             
             if sender != nil {
@@ -108,7 +54,46 @@ class InboxViewController: UITableViewController {
     }
 
     @IBAction func searchPressed(sender: AnyObject) {
-        self.performSegueWithIdentifier(SegueIdentifier.Search.rawValue, sender: nil)
+        self.performSegueWithIdentifier(Identifiers.SearchSegue.rawValue, sender: nil)
+    }
+    
+    /// Mark: UITableViewDelegate & UITableViewDataSource
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tasks.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let task = self.tasks[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.TaskCell.rawValue, forIndexPath: indexPath) as TaskCell
+        
+        cell.update(TaskCellVM(task))
+        cell.hashtagSelectedBlock = { hashtag in
+            dispatch_async(dispatch_get_main_queue(), { [self]
+                self.performSegueWithIdentifier(Identifiers.SearchSegue.rawValue, sender: hashtag)
+            })
+        }
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let task = self.tasks[indexPath.row]
+        
+        let cell = TaskCell.nib().instantiateWithOwner(nil, options: nil).first as TaskCell
+        var frame = cell.frame
+        frame.size.width = tableView.bounds.width
+        cell.frame = frame
+        
+        cell.setNeedsUpdateConstraints()
+        cell.updateConstraintsIfNeeded()
+        
+        cell.update(TaskCellVM(task))
+        return cell.estimatedHeight
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250()
     }
 }
 
