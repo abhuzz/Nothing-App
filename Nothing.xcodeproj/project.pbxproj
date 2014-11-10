@@ -33,8 +33,6 @@
 		1279B61219FED64D00A7828C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60719FED64D00A7828C /* FileManager.swift */; };
 		1279B61519FEDBD200A7828C /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B61419FEDBD200A7828C /* FileCache.swift */; };
 		129369BE1A06B09F00724127 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129369BD1A06B09F00724127 /* SearchViewController.swift */; };
-		129E3B001A0C20FA00931895 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129E3AFF1A0C20FA00931895 /* TaskViewController.swift */; };
-		129E3B021A0C274100931895 /* TaskViewCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129E3B011A0C274100931895 /* TaskViewCustomCell.swift */; };
 		12BEB0F41A06DC9300643860 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BEB0F31A06DC9300643860 /* ModelController.swift */; };
 		12CEF17F1A083832004DE156 /* UIView_E.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEF17E1A083832004DE156 /* UIView_E.swift */; };
 		12CEF1811A083C24004DE156 /* LoopImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEF1801A083C24004DE156 /* LoopImageView.swift */; };
@@ -88,8 +86,6 @@
 		1279B60719FED64D00A7828C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1279B61419FEDBD200A7828C /* FileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		129369BD1A06B09F00724127 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		129E3AFF1A0C20FA00931895 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
-		129E3B011A0C274100931895 /* TaskViewCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewCustomCell.swift; sourceTree = "<group>"; };
 		12BEB0F31A06DC9300643860 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		12CEF17E1A083832004DE156 /* UIView_E.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_E.swift; sourceTree = "<group>"; };
 		12CEF1801A083C24004DE156 /* LoopImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoopImageView.swift; sourceTree = "<group>"; };
@@ -126,7 +122,6 @@
 				1279B5DD19FED4E700A7828C /* Main.storyboard */,
 				1279B5E019FED4E700A7828C /* Images.xcassets */,
 				1279B5E219FED4E700A7828C /* LaunchScreen.xib */,
-				125593EE19FEF58D001EC477 /* TaskCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -134,6 +129,7 @@
 		125593F019FEF7CD001EC477 /* Task Cell */ = {
 			isa = PBXGroup;
 			children = (
+				125593EE19FEF58D001EC477 /* TaskCell.xib */,
 				125593F119FEF7E0001EC477 /* TaskCell.swift */,
 				125593F319FEFA8D001EC477 /* TaskCellVM.swift */,
 				123B6E251A000249008E22DB /* TaskCellVMCache.swift */,
@@ -167,8 +163,6 @@
 				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
 				1279B5DB19FED4E700A7828C /* InboxViewController.swift */,
 				129369BD1A06B09F00724127 /* SearchViewController.swift */,
-				129E3AFF1A0C20FA00931895 /* TaskViewController.swift */,
-				129E3B011A0C274100931895 /* TaskViewCustomCell.swift */,
 				125593F019FEF7CD001EC477 /* Task Cell */,
 				1279B5F919FED64D00A7828C /* Core Data */,
 				1279B61319FED65300A7828C /* Cache */,
@@ -377,9 +371,7 @@
 				12E215971A037E4F0038AD45 /* TSTextSize.swift in Sources */,
 				1279B60919FED64D00A7828C /* CDStore.swift in Sources */,
 				125593EC19FEE10A001EC477 /* UIColor_E.swift in Sources */,
-				129E3B021A0C274100931895 /* TaskViewCustomCell.swift in Sources */,
 				1279B60D19FED64D00A7828C /* Nothing.xcdatamodeld in Sources */,
-				129E3B001A0C20FA00931895 /* TaskViewController.swift in Sources */,
 				123B6E2419FF909F008E22DB /* UILabel_E.swift in Sources */,
 				1279B61519FEDBD200A7828C /* FileCache.swift in Sources */,
 				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
