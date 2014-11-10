@@ -12,7 +12,8 @@ import CoreLocation
 class InboxViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet weak var insertContainer: QuickInsertView!
+    @IBOutlet weak var quickInsertView: QuickInsertView!
+    @IBOutlet private weak var bottomGuide: NSLayoutConstraint!
     
     enum Identifiers: String {
         case TaskCell = "TaskCell"
@@ -23,6 +24,7 @@ class InboxViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.observeKeyboard()
         self.configureTableView()
         self.configureInsertContainer()
         self.navigationItem.title = "Inbox"
@@ -35,7 +37,57 @@ class InboxViewController: UIViewController {
     }
     
     private func configureInsertContainer() {
-        self.insertContainer.backgroundColor = UIColor.appWhite250()
+        self.quickInsertView.submitButton.enabled = false
+        self.quickInsertView.backgroundColor = UIColor.appWhite250()
+        self.quickInsertView.textField.placeholder = "What's in your mind"
+        self.quickInsertView.submitButton.setTitle("Add", forState: .Normal)
+        self.quickInsertView.didSubmitBlock = { title in [self]
+            let task: Task = Task.create(CDHelper.mainContext)
+            task.title = title
+            CDHelper.mainContext.save(nil)
+            
+            self.quickInsertView.reset()
+            self.tasks = ModelController().allTasks()
+            self.tableView.reloadData()
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        self.stopObservingKeyboard()
+    }
+    
+    private func observeKeyboard() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    private func stopObservingKeyboard() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let info = notification.userInfo {
+            let kbFrame = info[UIKeyboardFrameEndUserInfoKey]!.CGRectValue()
+            let animDuration = info[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue
+            
+            self.bottomGuide.constant = kbFrame.height
+            UIView.animateWithDuration(animDuration, animations: {
+                self.quickInsertView.layoutIfNeeded()
+                self.tableView.layoutIfNeeded()
+            })
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let info = notification.userInfo {
+            let animDuration = info[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue
+            self.bottomGuide.constant = 0
+            UIView.animateWithDuration(animDuration, animations: {
+                self.quickInsertView.layoutIfNeeded()
+                self.tableView.layoutIfNeeded()
+            })
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -70,7 +70,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="insertContainer" destination="SiQ-MJ-5a3" id="4br-Ct-Vll"/>
+                        <outlet property="bottomGuide" destination="jXP-fM-QcW" id="4O2-gD-9bX"/>
+                        <outlet property="quickInsertView" destination="SiQ-MJ-5a3" id="Mkn-KZ-gay"/>
                         <outlet property="tableView" destination="Ahl-qW-HvN" id="LGV-CQ-zmu"/>
                         <segue destination="CYv-FT-RG8" kind="presentation" identifier="Search" animates="NO" id="Uv3-Bj-ees"/>
                     </connections>
