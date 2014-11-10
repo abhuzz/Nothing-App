@@ -43,6 +43,8 @@
 		12E215961A037E4F0038AD45 /* TSTextSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215901A037E4F0038AD45 /* TSTextSceneView.swift */; };
 		12E215971A037E4F0038AD45 /* TSTextSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215911A037E4F0038AD45 /* TSTextSize.swift */; };
 		12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215991A03A9840038AD45 /* ThumbnailCache.swift */; };
+		12FE325F1A10D75F00FAB243 /* QuickInsertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */; };
+		12FE32611A10D76900FAB243 /* QuickInsertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12FE32601A10D76900FAB243 /* QuickInsertView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		12E215901A037E4F0038AD45 /* TSTextSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextSceneView.swift; path = External/TSTextMapper/Classes/TSTextSceneView.swift; sourceTree = "<group>"; };
 		12E215911A037E4F0038AD45 /* TSTextSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextSize.swift; path = External/TSTextMapper/Classes/TSTextSize.swift; sourceTree = "<group>"; };
 		12E215991A03A9840038AD45 /* ThumbnailCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCache.swift; sourceTree = "<group>"; };
+		12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickInsertView.swift; sourceTree = "<group>"; };
+		12FE32601A10D76900FAB243 /* QuickInsertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuickInsertView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +176,8 @@
 				12CEF17E1A083832004DE156 /* UIView_Extension.swift */,
 				125593ED19FEE133001EC477 /* Resources */,
 				1279B5D719FED4E700A7828C /* Supporting Files */,
+				12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */,
+				12FE32601A10D76900FAB243 /* QuickInsertView.xib */,
 			);
 			path = Nothing;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12FE32611A10D76900FAB243 /* QuickInsertView.xib in Resources */,
 				125593EF19FEF58D001EC477 /* TaskCell.xib in Resources */,
 				1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */,
 				1279B5E419FED4E700A7828C /* LaunchScreen.xib in Resources */,
@@ -385,6 +392,7 @@
 				12E215921A037E4F0038AD45 /* TSTextAnalyzer.swift in Sources */,
 				12E215941A037E4F0038AD45 /* TSTextNodeView.swift in Sources */,
 				1279B60A19FED64D00A7828C /* NSManagedObject_E.swift in Sources */,
+				12FE325F1A10D75F00FAB243 /* QuickInsertView.swift in Sources */,
 				1279B61219FED64D00A7828C /* FileManager.swift in Sources */,
 				1279B60819FED64D00A7828C /* CDHelper.swift in Sources */,
 				12E215931A037E4F0038AD45 /* TSTextMapper.swift in Sources */,

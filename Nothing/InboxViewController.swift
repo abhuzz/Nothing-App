@@ -12,6 +12,7 @@ import CoreLocation
 class InboxViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var insertContainer: QuickInsertView!
     
     enum Identifiers: String {
         case TaskCell = "TaskCell"
@@ -23,6 +24,7 @@ class InboxViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTableView()
+        self.configureInsertContainer()
         self.navigationItem.title = "Inbox"
     }
     
@@ -30,6 +32,10 @@ class InboxViewController: UIViewController {
         self.tableView.registerNib(TaskCell.nib(), forCellReuseIdentifier: Identifiers.TaskCell.rawValue)
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    private func configureInsertContainer() {
+        self.insertContainer.backgroundColor = UIColor.appWhite250()
     }
     
     override func viewWillAppear(animated: Bool) {

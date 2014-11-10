@@ -36,20 +36,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ahl-qW-HvN">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Nc0-Yv-JIZ" id="Tzv-hN-WTF"/>
                                     <outlet property="delegate" destination="Nc0-Yv-JIZ" id="ghs-7y-uDh"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SiQ-MJ-5a3" userLabel="Quick Insert Container" customClass="QuickInsertView" customModule="Nothing" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <color key="backgroundColor" red="0.99119100770000002" green="0.99119100770000002" blue="0.99119100770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="akD-2B-6HA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qHR-CB-ENn" firstAttribute="top" secondItem="Ahl-qW-HvN" secondAttribute="bottom" id="6AO-nL-ST4"/>
-                            <constraint firstItem="Ahl-qW-HvN" firstAttribute="leading" secondItem="hFT-Cm-704" secondAttribute="leading" id="GRS-Hd-LgN"/>
-                            <constraint firstAttribute="trailing" secondItem="Ahl-qW-HvN" secondAttribute="trailing" id="N5Y-2s-hIm"/>
-                            <constraint firstItem="Ahl-qW-HvN" firstAttribute="top" secondItem="hFT-Cm-704" secondAttribute="top" id="mSv-WJ-Qbj"/>
+                            <constraint firstAttribute="trailing" secondItem="Ahl-qW-HvN" secondAttribute="trailing" id="722-SM-CFB"/>
+                            <constraint firstItem="Ahl-qW-HvN" firstAttribute="leading" secondItem="hFT-Cm-704" secondAttribute="leading" id="EKB-Oi-1n5"/>
+                            <constraint firstItem="SiQ-MJ-5a3" firstAttribute="leading" secondItem="hFT-Cm-704" secondAttribute="leading" id="Ghe-Bn-xVI"/>
+                            <constraint firstItem="Ahl-qW-HvN" firstAttribute="top" secondItem="hFT-Cm-704" secondAttribute="top" id="bGi-br-Ph4"/>
+                            <constraint firstAttribute="trailing" secondItem="SiQ-MJ-5a3" secondAttribute="trailing" id="blH-GJ-zcA"/>
+                            <constraint firstItem="qHR-CB-ENn" firstAttribute="top" secondItem="SiQ-MJ-5a3" secondAttribute="bottom" id="jXP-fM-QcW"/>
+                            <constraint firstItem="SiQ-MJ-5a3" firstAttribute="top" secondItem="Ahl-qW-HvN" secondAttribute="bottom" id="y2u-Kt-hCt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uSg-eB-Fh2">
@@ -60,6 +70,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="insertContainer" destination="SiQ-MJ-5a3" id="4br-Ct-Vll"/>
                         <outlet property="tableView" destination="Ahl-qW-HvN" id="LGV-CQ-zmu"/>
                         <segue destination="CYv-FT-RG8" kind="presentation" identifier="Search" animates="NO" id="Uv3-Bj-ees"/>
                     </connections>
