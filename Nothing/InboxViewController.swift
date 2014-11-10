@@ -42,13 +42,18 @@ class InboxViewController: UIViewController {
         self.quickInsertView.textField.placeholder = "What's in your mind"
         self.quickInsertView.submitButton.setTitle("Add", forState: .Normal)
         self.quickInsertView.didSubmitBlock = { title in [self]
+            /// create new task
             let task: Task = Task.create(CDHelper.mainContext)
             task.title = title
             CDHelper.mainContext.save(nil)
             
-            self.quickInsertView.reset()
             self.tasks = ModelController().allTasks()
-            self.tableView.reloadData()
+            
+            /// refresh ui
+            dispatch_async(dispatch_get_main_queue(), {
+                self.quickInsertView.finish()
+                self.tableView.reloadData()
+            })
         }
     }
     

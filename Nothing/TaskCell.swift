@@ -191,7 +191,7 @@ extension TaskCell {
         self.updateConstraintsIfNeeded()
         
         var margins = 2 * CGRectGetMinY(self.titleLabel.frame)
-        self.cachedEstimatedHeight = margins + self.titleLabel.proposedHeight + self.descriptionLabel.proposedHeight + self.datePlaceLabel.proposedHeight
+        self.cachedEstimatedHeight = max(margins + self.titleLabel.proposedHeight + self.descriptionLabel.proposedHeight + self.datePlaceLabel.proposedHeight, margins + self.thumbnailView.bounds.height)
         
         return self.cachedEstimatedHeight!
     }

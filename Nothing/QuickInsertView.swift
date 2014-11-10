@@ -43,6 +43,11 @@ class QuickInsertView: UIView, UITextFieldDelegate {
         self.validateSubmitButton()
     }
     
+    func finish() {
+        self.reset()
+        self.textField.resignFirstResponder()
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if countElements(self.textField.text) > 0 {
             self.didSubmitBlock?(text: self.textField.text)
