@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2119FF86C4008E22DB /* HashtagDetector.swift */; };
-		123B6E2419FF909F008E22DB /* UILabel_E.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2319FF909F008E22DB /* UILabel_E.swift */; };
+		123B6E2419FF909F008E22DB /* UILabel_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2319FF909F008E22DB /* UILabel_Extension.swift */; };
 		123B6E261A000249008E22DB /* TaskCellVMCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E251A000249008E22DB /* TaskCellVMCache.swift */; };
-		125593EC19FEE10A001EC477 /* UIColor_E.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593EB19FEE10A001EC477 /* UIColor_E.swift */; };
+		125593EC19FEE10A001EC477 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593EB19FEE10A001EC477 /* UIColor_Extension.swift */; };
 		125593EF19FEF58D001EC477 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 125593EE19FEF58D001EC477 /* TaskCell.xib */; };
 		125593F219FEF7E0001EC477 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593F119FEF7E0001EC477 /* TaskCell.swift */; };
 		125593F419FEFA8D001EC477 /* TaskCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593F319FEFA8D001EC477 /* TaskCellVM.swift */; };
@@ -34,7 +34,7 @@
 		1279B61519FEDBD200A7828C /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B61419FEDBD200A7828C /* FileCache.swift */; };
 		129369BE1A06B09F00724127 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129369BD1A06B09F00724127 /* SearchViewController.swift */; };
 		12BEB0F41A06DC9300643860 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BEB0F31A06DC9300643860 /* ModelController.swift */; };
-		12CEF17F1A083832004DE156 /* UIView_E.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEF17E1A083832004DE156 /* UIView_E.swift */; };
+		12CEF17F1A083832004DE156 /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEF17E1A083832004DE156 /* UIView_Extension.swift */; };
 		12CEF1811A083C24004DE156 /* LoopImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEF1801A083C24004DE156 /* LoopImageView.swift */; };
 		12E215921A037E4F0038AD45 /* TSTextAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158C1A037E4F0038AD45 /* TSTextAnalyzer.swift */; };
 		12E215931A037E4F0038AD45 /* TSTextMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158D1A037E4F0038AD45 /* TSTextMapper.swift */; };
@@ -57,9 +57,9 @@
 
 /* Begin PBXFileReference section */
 		123B6E2119FF86C4008E22DB /* HashtagDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagDetector.swift; sourceTree = "<group>"; };
-		123B6E2319FF909F008E22DB /* UILabel_E.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel_E.swift; sourceTree = "<group>"; };
+		123B6E2319FF909F008E22DB /* UILabel_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel_Extension.swift; sourceTree = "<group>"; };
 		123B6E251A000249008E22DB /* TaskCellVMCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellVMCache.swift; sourceTree = "<group>"; };
-		125593EB19FEE10A001EC477 /* UIColor_E.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_E.swift; sourceTree = "<group>"; };
+		125593EB19FEE10A001EC477 /* UIColor_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
 		125593EE19FEF58D001EC477 /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		125593F119FEF7E0001EC477 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		125593F319FEFA8D001EC477 /* TaskCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellVM.swift; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		1279B61419FEDBD200A7828C /* FileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		129369BD1A06B09F00724127 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		12BEB0F31A06DC9300643860 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
-		12CEF17E1A083832004DE156 /* UIView_E.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_E.swift; sourceTree = "<group>"; };
+		12CEF17E1A083832004DE156 /* UIView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
 		12CEF1801A083C24004DE156 /* LoopImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoopImageView.swift; sourceTree = "<group>"; };
 		12E2158C1A037E4F0038AD45 /* TSTextAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextAnalyzer.swift; path = External/TSTextMapper/Classes/TSTextAnalyzer.swift; sourceTree = "<group>"; };
 		12E2158D1A037E4F0038AD45 /* TSTextMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextMapper.swift; path = External/TSTextMapper/Classes/TSTextMapper.swift; sourceTree = "<group>"; };
@@ -167,9 +167,9 @@
 				1279B5F919FED64D00A7828C /* Core Data */,
 				1279B61319FED65300A7828C /* Cache */,
 				123B6E2119FF86C4008E22DB /* HashtagDetector.swift */,
-				125593EB19FEE10A001EC477 /* UIColor_E.swift */,
-				123B6E2319FF909F008E22DB /* UILabel_E.swift */,
-				12CEF17E1A083832004DE156 /* UIView_E.swift */,
+				125593EB19FEE10A001EC477 /* UIColor_Extension.swift */,
+				123B6E2319FF909F008E22DB /* UILabel_Extension.swift */,
+				12CEF17E1A083832004DE156 /* UIView_Extension.swift */,
 				125593ED19FEE133001EC477 /* Resources */,
 				1279B5D719FED4E700A7828C /* Supporting Files */,
 			);
@@ -367,12 +367,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12CEF17F1A083832004DE156 /* UIView_E.swift in Sources */,
+				12CEF17F1A083832004DE156 /* UIView_Extension.swift in Sources */,
 				12E215971A037E4F0038AD45 /* TSTextSize.swift in Sources */,
 				1279B60919FED64D00A7828C /* CDStore.swift in Sources */,
-				125593EC19FEE10A001EC477 /* UIColor_E.swift in Sources */,
+				125593EC19FEE10A001EC477 /* UIColor_Extension.swift in Sources */,
 				1279B60D19FED64D00A7828C /* Nothing.xcdatamodeld in Sources */,
-				123B6E2419FF909F008E22DB /* UILabel_E.swift in Sources */,
+				123B6E2419FF909F008E22DB /* UILabel_Extension.swift in Sources */,
 				1279B61519FEDBD200A7828C /* FileCache.swift in Sources */,
 				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
 				12E215961A037E4F0038AD45 /* TSTextSceneView.swift in Sources */,
