@@ -9,34 +9,34 @@
 
 import UIKit
 
-struct WordInstance: Equatable {
-    var text: String
-    var line: Int
-}
-
-func == (lhs: WordInstance, rhs: WordInstance) -> Bool {
-    return lhs.text == rhs.text && lhs.line == rhs.line
-}
-
 class TaskCell: UITableViewCell {
+    
+    typealias HashtagSelectedBlock = (String) -> ()
     
     @IBOutlet private (set) weak var thumbnailView: UIImageView!
     @IBOutlet private (set) weak var titleLabel: UILabel!
     @IBOutlet private (set) weak var descriptionLabel: UILabel!
     @IBOutlet private (set) weak var datePlaceLabel: UILabel!
-    @IBOutlet weak var descriptionLabelHeight: NSLayoutConstraint!
+    @IBOutlet private weak var descriptionLabelHeight: NSLayoutConstraint!
     
     private var model: TaskCellVM?
-
     private var tapGesture: UITapGestureRecognizer!
+    
+    private var cachedEstimatedHeight: CGFloat? = nil
+
+    var hashtagSelectedBlock: HashtagSelectedBlock?
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.thumbnailTimer?.invalidate()
+        self.thumbnailTimer = nil
+
         self.titleLabel.text = ""
         self.descriptionLabel.text = ""
         self.datePlaceLabel.text = ""
+        self.configureThumbnailView()
 
-        self.layoutIfNeeded()
+        self.layoutIfNeeded()        
     }
     
     override func awakeFromNib() {
@@ -78,33 +78,38 @@ class TaskCell: UITableViewCell {
         
         if let text = self.textMapper?.textForPoint(point) {
             success = true
-            println("text = \(text.value)")
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                var alert = UIAlertView(title: nil, message: text.value, delegate: nil, cancelButtonTitle: nil)
-                alert.show()
-                
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-                    alert.dismissWithClickedButtonIndex(0, animated: true)
-                })
-            })
+            
+            self.hashtagSelectedBlock?(text.value)
         }
         
         return success
     }
     
-    private var index = 0
-    private var images = [UIImage]()
-    private func animateImages() {
-        if self.index + 1 < self.images.count {
-            self.index++
-        } else {
-            self.index = 0
-        }
-        UIView.transitionWithView(self.thumbnailView, duration: 2.0, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
-            self.thumbnailView.image = self.images[self.index]
-            }) { (finished) -> Void in
-                self.animateImages()
-        }
+    private var currentThumbnailImageIndex = 0
+    private var thumbnailImages = [UIImage]()
+    private var thumbnailTimer: NSTimer?
+    private func startThumbnailAnimation() {
+        self.stopThumbnailAnimation()
+        self.thumbnailTimer = NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: "updateThumbnail", userInfo: nil, repeats: true)
+    }
+    
+    func updateThumbnail() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            if self.currentThumbnailImageIndex + 1 < self.thumbnailImages.count {
+                self.currentThumbnailImageIndex++
+            } else {
+                self.currentThumbnailImageIndex = 0
+            }
+            
+            UIView.transitionWithView(self.thumbnailView, duration: 5.0, options: .TransitionCrossDissolve, animations: {
+                self.thumbnailView.image = self.thumbnailImages[self.currentThumbnailImageIndex]
+            }, completion: nil)
+        })
+    }
+    
+    private func stopThumbnailAnimation() {
+        self.thumbnailTimer?.invalidate()
+        self.thumbnailTimer = nil
     }
     
     override func layoutSubviews() {
@@ -136,14 +141,7 @@ extension TaskCell {
     }
     
     func didSelect() {
-        let animation = CABasicAnimation(keyPath: "transform")
-        animation.fromValue = 10
-        animation.toValue = 0
-        animation.fromValue = NSValue(CATransform3D: CATransform3DIdentity)
-        animation.toValue = NSValue(CATransform3D: CATransform3DMakeScale(0.95, 0.95, 1.0))
-        animation.duration = 0.2
-        animation.autoreverses = true
-        self.layer.addAnimation(animation, forKey: nil)
+        self.animatePushViewInside()
         self.setSelected(false, animated: true)
     }
 }
@@ -158,6 +156,7 @@ extension TaskCell {
     
     func update(model: TaskCellVM) {
         self.model = model
+        self.cachedEstimatedHeight = nil
         self.titleLabel.text = model.title
         self.titleLabel.update(model.titleLabelAttributes)
         
@@ -168,9 +167,9 @@ extension TaskCell {
         self.datePlaceLabel.text = model.datePlaceDescription
         self.datePlaceLabel.update(model.datePlaceLabelAttributes)
         
-        self.images = model.images
-        if self.images.count > 0 {
-            self.animateImages()
+        self.thumbnailImages = model.images
+        if self.thumbnailImages.count > 0 {
+            self.startThumbnailAnimation()
         }
         
         self.thumbnailView.image = model.images.first
@@ -182,17 +181,19 @@ extension TaskCell {
         self.layoutSubviews()
     }
     
-    var estimatedHeight: CGFloat {
-        println("-----")
+     var estimatedHeight: CGFloat {
+        if self.cachedEstimatedHeight != nil {
+            return self.cachedEstimatedHeight!
+        }
+        
         self.layoutSubviews()
         self.layoutIfNeeded()
         self.updateConstraintsIfNeeded()
-        println("cell = \(self.bounds.size)")
-        println("title = \(self.titleLabel.bounds.size)")
-        println("dest = \(self.descriptionLabel.bounds.size)")
         
         var margins = 2 * CGRectGetMinY(self.titleLabel.frame)
-        return margins + self.titleLabel.proposedHeight + self.descriptionLabel.proposedHeight + self.datePlaceLabel.proposedHeight
+        self.cachedEstimatedHeight = margins + self.titleLabel.proposedHeight + self.descriptionLabel.proposedHeight + self.datePlaceLabel.proposedHeight
+        
+        return self.cachedEstimatedHeight!
     }
 }
 

@@ -21,7 +21,6 @@ extension UILabel {
     
     var proposedHeight: CGFloat {
         var sizeToFit = CGSize(width: self.bounds.size.width, height: CGFloat.max)
-        println("\(sizeToFit.width), \(self.text)")
         return self.sizeThatFits(sizeToFit).height
     }
     

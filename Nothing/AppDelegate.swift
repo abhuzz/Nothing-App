@@ -7,40 +7,98 @@
 //
 
 import UIKit
+import CoreData
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
+    func applicationDidFinishLaunching(application: UIApplication) {
+        UISwitch.appearance().onTintColor = UIColor.appBlueColor()
+//        self.populateData()
     }
-
-    func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    /// Mark: Debug
+    private func taskWithTitle(title: String, description: String) -> Task {
+        let task: Task = Task.create(CDHelper.mainContext)
+        task.title = title
+        task.longDescription = description
+        return task
     }
-
-    func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    private func place(coordinate: CLLocationCoordinate2D, title: String, thumbnailKey: String?) -> Place {
+        let place: Place = Place.create(CDHelper.mainContext)
+        place.coordinate = coordinate
+        place.originalName = title
+        place.thumbnailKey = thumbnailKey
+        return place
     }
-
-    func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    private func contact(name: String, email: String, thumbnailKey: String) -> Contact {
+        let contact: Contact = Contact.create(CDHelper.mainContext)
+        contact.name = name
+        contact.email = email
+        contact.thumbnailKey = thumbnailKey
+        return contact
     }
-
-    func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    private func dateReminder(date: NSDate, repeatInterval: NSCalendarUnit) -> DateReminderInfo {
+        let info: DateReminderInfo = DateReminderInfo.create(CDHelper.mainContext)
+        info.fireDate = date
+        info.repeatInterval = repeatInterval
+        return info
     }
-
-    func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    private func locationReminder(place: Place, distance: Float) -> LocationReminderInfo {
+        let info: LocationReminderInfo = LocationReminderInfo.create(CDHelper.mainContext)
+        info.place = place
+        info.distance = distance
+        return info
     }
+    
+    private func populateData() {
+        
+        /// cache images
+        let c1Image = UIImage(named: "avatar")
+        let p1Image = UIImage(named: "city")
+        let p2Image = UIImage(named: "city2")
+        
+        let (_, c1Key) = ThumbnailCache.sharedInstance.write(UIImagePNGRepresentation(c1Image))
+        let (_, p1Key) = ThumbnailCache.sharedInstance.write(UIImagePNGRepresentation(p1Image))
+        let (_, p2Key) = ThumbnailCache.sharedInstance.write(UIImagePNGRepresentation(p2Image))
+        
+        let c1 = self.contact("Tomasz Szulc", email: "mail@szulctomasz.com", thumbnailKey: c1Key)
+        let p1 = self.place(CLLocationCoordinate2DMake(0, 0), title: "Home", thumbnailKey: p1Key)
+        let p2 = self.place(CLLocationCoordinate2DMake(10, 10), title: "Office", thumbnailKey: p2Key)
+        let p3 = self.place(CLLocationCoordinate2DMake(20, 20), title: "Grocery shop", thumbnailKey: nil)
 
-
+        /// 1
+        let t1 = self.taskWithTitle("Handwriting", description: "I was #sifting through my #dead-tree postal #mail and tossing #junk in the recycling bin. Nearly #everything that arrives in my #mailbox is #junk, so I was #tossing.")
+        
+        let date = NSDate()
+        t1.dateReminder = self.dateReminder(date, repeatInterval: NSCalendarUnit.allZeros)
+        t1.locationReminder = self.locationReminder(p1, distance: 1000)
+        t1.addConnection(c1)
+        
+        /// 2
+        let t2 = self.taskWithTitle("Buy a milk", description: "#shoppinglist")
+        t2.locationReminder = self.locationReminder(p3, distance: 1500)
+        
+        /// 3
+        let t3 = self.taskWithTitle("Call Tomasz", description: "Talk about job opportunities in #London")
+        t3.addConnection(c1)
+        t3.addConnection(p2)
+        
+        /// 4
+        let t4 = self.taskWithTitle("Get rid of the old stuff", description: "Cannot look on this anymoaaaar!!!")
+        t4.addConnection(c1)
+        t4.addConnection(p1)
+        t4.addConnection(p2)
+        t4.addConnection(p3)
+        
+        CDHelper.mainContext.save(nil)
+    }
 }
 

@@ -44,11 +44,11 @@ class TaskCellVM: Equatable {
     
     var datePlaceDescription: String {
         var value = ""
-        if let reminder = self.task.dateReminderInfo {
+        if let reminder = self.task.dateReminder {
             value += self.dateFormatter.stringFromDate(reminder.fireDate)
         }
         
-        if let reminder = self.task.locationReminderInfo {
+        if let reminder = self.task.locationReminder {
             if countElements(value) > 0 {
                 value += " "
             }
@@ -59,9 +59,9 @@ class TaskCellVM: Equatable {
         return value
     }
     
-    var images: [UIImage] {
+    lazy var images: [UIImage] = {
         var images = [UIImage]()
-        for connection in self.task.connections.allObjects as [Connection] {
+        for connection in self.task.allConnections.allObjects as [Connection] {
             if let key = connection.thumbnailKey {
                 if let data = ThumbnailCache.sharedInstance.read(key) {
                     let image = UIImage(data: data)
@@ -71,7 +71,7 @@ class TaskCellVM: Equatable {
         }
         
         return images
-    }
+    }()
     
     lazy var dateFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
