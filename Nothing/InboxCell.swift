@@ -75,14 +75,14 @@ class InboxCell: UITableViewCell {
         if self.superview != nil {
             
             var images = model.connectionsImages()
-            if images.count > 0 {
-                self.thumbnail.layer.borderWidth = 0
-                self.thumbnail.animationImages = images
-                self.thumbnail.animationDuration = NSTimeInterval(images.count)
+//            if images.count > 0 {
+//                self.thumbnail.layer.borderWidth = 0
+//                self.thumbnail.animationImages = images
+//                self.thumbnail.animationDuration = NSTimeInterval(images.count)
 //                self.thumbnail.startAnimating()
-            } else {
-                self.thumbnail.layer.borderWidth = 1.0
-            }
+//            } else {
+//                self.thumbnail.layer.borderWidth = 1.0
+//            }
             
             if self.longDescriptionHeight.constant == 0 && self.datePlaceHeight.constant == 0 {
                 self.topGuide.constant = self.bounds.midY - self.titleLabel.bounds.midY
