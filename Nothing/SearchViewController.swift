@@ -19,7 +19,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private var tasks: [Task] = [Task]()
     private var allTasks: [Task] = ModelController().allTasks()
     private var searchTimer: NSTimer?
-    
+    private var heights = [NSIndexPath: CGFloat]()
+
     var searchBarText: String = ""
     
     enum Identifiers: String { case InboxCell = "InboxCell" }
@@ -118,6 +119,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     private var tmpCell: InboxCell!
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if let height = self.heights[indexPath] {
+            return height
+        }
+
         let task = self.tasks[indexPath.row]
         
         if (tmpCell == nil) {
@@ -126,11 +131,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         tmpCell.update(InboxCellVM(task))
-        return tmpCell.estimatedHeight
+        var height = tmpCell.estimatedHeight
+        self.heights[indexPath] = height
+        return height
     }
 
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250()
+        (cell as InboxCell).update(indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250())
     }
 
     /// Mark: UISearchBarDelegate

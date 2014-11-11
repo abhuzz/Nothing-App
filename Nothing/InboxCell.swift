@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InboxCell: UITableViewCell {
+class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
     @IBOutlet private weak var thumbnail: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var longDescriptionTextView: UITextView!
@@ -26,12 +26,24 @@ class InboxCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.configureTapRecognizer()
         self.setup()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         self.setup()
+    }
+
+    private var tapRecognizer: UITapGestureRecognizer!
+    private func configureTapRecognizer() {
+        self.tapRecognizer = UITapGestureRecognizer(target: self, action:"handleTapGesture:")
+        self.tapRecognizer.delegate = self
+        self.addGestureRecognizer(self.tapRecognizer)
+    }
+    
+    func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        /// do nothing here, all action is taken in delegate method
     }
     
     private func setup() {
@@ -53,6 +65,7 @@ class InboxCell: UITableViewCell {
         self.longDescriptionTextView.textContainerInset = UIEdgeInsetsZero
         self.longDescriptionTextView.font = UIFont(name: "HelveticaNeue-Light", size: 17.0)
         self.longDescriptionTextView.textColor = UIColor.appBlack()
+        self.longDescriptionTextView.opaque = true
         
         self.datePlaceLabel.font = UIFont(name: "HelveticaNeue-Light", size: 14.0)
         self.datePlaceLabel.textColor = UIColor.appWhite186()
@@ -116,6 +129,13 @@ class InboxCell: UITableViewCell {
         }
     }
     
+    func update(backgroundColor: UIColor) {
+        self.backgroundColor = backgroundColor
+        self.titleLabel.backgroundColor = backgroundColor
+        self.longDescriptionTextView.backgroundColor = backgroundColor
+        self.datePlaceLabel.backgroundColor = backgroundColor
+    }
+    
     var estimatedHeight: CGFloat {
         let titleHeight = self.titleLabel.proposedHeight
         let longDescriptionHeight = self.longDescriptionHeight.constant
@@ -129,18 +149,6 @@ class InboxCell: UITableViewCell {
         }
         
         return proposed
-    }
-    
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        
-        var wordTapped = false
-        if let touch: AnyObject = event.allTouches()?.anyObject() {
-            wordTapped = self.handleTap((touch as UITouch).locationInView(self.longDescriptionTextView))
-        }
-        
-        if !wordTapped {
-            super.touchesBegan(touches, withEvent: event)
-        }
     }
     
     func handleTap(point: CGPoint) -> Bool {
@@ -166,6 +174,18 @@ class InboxCell: UITableViewCell {
         }
         
         return string != nil
+    }
+    
+    override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if !(gestureRecognizer is UITapGestureRecognizer) {
+            return false
+        }
+        
+        if self.handleTap(touch.locationInView(self.longDescriptionTextView)) {
+            return true
+        }
+        
+        return false
     }
 }
 

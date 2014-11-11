@@ -21,6 +21,7 @@ class InboxViewController: UIViewController {
     }
     
     private var tasks = [Task]()
+    private var heights = [NSIndexPath: CGFloat]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +56,7 @@ class InboxViewController: UIViewController {
             dispatch_async(dispatch_get_main_queue(), {
                 self.quickInsertView.finish()
                 self.tableView.reloadData()
+
             })
         }
     }
@@ -80,6 +82,7 @@ class InboxViewController: UIViewController {
             
             self.bottomGuide.constant = kbFrame.height
             UIView.animateWithDuration(animDuration, animations: {
+                self.heights.removeAll(keepCapacity: false)
                 self.quickInsertView.layoutIfNeeded()
                 self.tableView.layoutIfNeeded()
             })
@@ -143,6 +146,10 @@ class InboxViewController: UIViewController {
     
     private var tmpCell: InboxCell!
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if let height = self.heights[indexPath] {
+            return height
+        }
+        
         let task = self.tasks[indexPath.row]
         
         if (tmpCell == nil) {
@@ -151,11 +158,14 @@ class InboxViewController: UIViewController {
         }
         
         tmpCell.update(InboxCellVM(task))
-        return tmpCell.estimatedHeight
+        var height = tmpCell.estimatedHeight
+        self.heights[indexPath] = height
+        
+        return height
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250()
+        (cell as InboxCell).update(indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250())
     }
 }
 
