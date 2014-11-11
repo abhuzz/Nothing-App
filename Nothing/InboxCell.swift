@@ -146,8 +146,12 @@ class InboxCell: UITableViewCell {
     func handleTap(point: CGPoint) -> Bool {
         var string: String? = nil
 
-        var index = self.longDescriptionTextView.layoutManager.characterIndexForPoint(point, inTextContainer: self.longDescriptionTextView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        if !CGRectContainsPoint(self.longDescriptionTextView.bounds, point) {
+            return false
+        }
         
+        var index = self.longDescriptionTextView.layoutManager.characterIndexForPoint(point, inTextContainer: self.longDescriptionTextView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+
         if index < self.longDescriptionTextView.textStorage.length {
             for (text, range) in self.model!.hashtags {
                 if NSLocationInRange(index, range) {
