@@ -70,30 +70,34 @@ class InboxCell: UITableViewCell {
         
         self.longDescriptionHeight.constant = self.longDescriptionTextView.proposedHeight
         self.datePlaceHeight.constant = self.datePlaceLabel.proposedHeight
-
-        var images = model.connectionsImages()
-        if images.count > 0 {
-            self.thumbnail.layer.borderWidth = 0
-            self.thumbnail.animationImages = images
-            self.thumbnail.animationDuration = NSTimeInterval(images.count)
-            self.thumbnail.startAnimating()
-        } else {
-            self.thumbnail.layer.borderWidth = 1.0
-        }
         
-        if self.longDescriptionHeight.constant == 0 && self.datePlaceHeight.constant == 0 {
-            self.topGuide.constant = self.bounds.midY - self.titleLabel.bounds.midY
-        } else {
-            self.topGuide.constant = self.initialTopGuideConstant
+        // do only if cell is added to the table view
+        if self.superview != nil {
+            
+            var images = model.connectionsImages()
+            if images.count > 0 {
+                self.thumbnail.layer.borderWidth = 0
+                self.thumbnail.animationImages = images
+                self.thumbnail.animationDuration = NSTimeInterval(images.count)
+//                self.thumbnail.startAnimating()
+            } else {
+                self.thumbnail.layer.borderWidth = 1.0
+            }
+            
+            if self.longDescriptionHeight.constant == 0 && self.datePlaceHeight.constant == 0 {
+                self.topGuide.constant = self.bounds.midY - self.titleLabel.bounds.midY
+            } else {
+                self.topGuide.constant = self.initialTopGuideConstant
+            }
+            
+            self.layoutSubviews()
         }
-        
-        self.layoutSubviews()
     }
     
     var estimatedHeight: CGFloat {
         let titleHeight = self.titleLabel.proposedHeight
-        let longDescriptionHeight = self.longDescriptionTextView.proposedHeight
-        let datePlaceHeight = self.datePlaceLabel.proposedHeight
+        let longDescriptionHeight = self.longDescriptionHeight.constant
+        let datePlaceHeight = self.datePlaceHeight.constant
         
         var margins = (2 * self.initialTopGuideConstant)
         var proposed = titleHeight + longDescriptionHeight + datePlaceHeight + margins

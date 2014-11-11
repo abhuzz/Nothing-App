@@ -137,19 +137,17 @@ class InboxViewController: UIViewController {
         return cell
     }
     
+    private var tmpCell: InboxCell!
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let task = self.tasks[indexPath.row]
-
-        let cell = InboxCell.nib().instantiateWithOwner(nil, options: nil).first as InboxCell
-        var frame = cell.frame
-        frame.size.width = tableView.bounds.width
-        cell.frame = frame
-
-        cell.setNeedsUpdateConstraints()
-        cell.updateConstraintsIfNeeded()
-
-        cell.update(InboxCellVM(task))
-        return cell.estimatedHeight
+        
+        if (tmpCell == nil) {
+            tmpCell = InboxCell.nib().instantiateWithOwner(nil, options: nil).first as InboxCell
+            tmpCell.frame.size.width = tableView.bounds.width
+        }
+        
+        tmpCell.update(InboxCellVM(task))
+        return tmpCell.estimatedHeight
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

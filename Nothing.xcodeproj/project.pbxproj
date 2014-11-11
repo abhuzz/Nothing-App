@@ -37,6 +37,7 @@
 		12CC22231A1210A800DF8EE0 /* InboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC22221A1210A800DF8EE0 /* InboxCell.swift */; };
 		12CC22251A1210DD00DF8EE0 /* InboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12CC22241A1210DD00DF8EE0 /* InboxCell.xib */; };
 		12CC22271A12207300DF8EE0 /* InboxCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC22261A12207300DF8EE0 /* InboxCellVM.swift */; };
+		12CC222B1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */; };
 		12CEF17F1A083832004DE156 /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEF17E1A083832004DE156 /* UIView_Extension.swift */; };
 		12CEF1811A083C24004DE156 /* LoopImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEF1801A083C24004DE156 /* LoopImageView.swift */; };
 		12E215921A037E4F0038AD45 /* TSTextAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2158C1A037E4F0038AD45 /* TSTextAnalyzer.swift */; };
@@ -95,6 +96,7 @@
 		12CC22221A1210A800DF8EE0 /* InboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxCell.swift; sourceTree = "<group>"; };
 		12CC22241A1210DD00DF8EE0 /* InboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InboxCell.xib; sourceTree = "<group>"; };
 		12CC22261A12207300DF8EE0 /* InboxCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxCellVM.swift; sourceTree = "<group>"; };
+		12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateFormatter_Extension.swift; sourceTree = "<group>"; };
 		12CEF17E1A083832004DE156 /* UIView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
 		12CEF1801A083C24004DE156 /* LoopImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoopImageView.swift; sourceTree = "<group>"; };
 		12E2158C1A037E4F0038AD45 /* TSTextAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSTextAnalyzer.swift; path = External/TSTextMapper/Classes/TSTextAnalyzer.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				123B6E2319FF909F008E22DB /* UILabel_Extension.swift */,
 				12CEF17E1A083832004DE156 /* UIView_Extension.swift */,
 				1279B5FD19FED64D00A7828C /* NSManagedObject_Extension.swift */,
+				12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */,
 				125593ED19FEE133001EC477 /* Resources */,
 				1279B5D719FED4E700A7828C /* Supporting Files */,
 				12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */,
@@ -333,6 +336,7 @@
 		1279B5CC19FED4E700A7828C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = NTH;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Tomasz Szulc";
 				TargetAttributes = {
@@ -414,6 +418,7 @@
 				12CC22231A1210A800DF8EE0 /* InboxCell.swift in Sources */,
 				12FE325F1A10D75F00FAB243 /* QuickInsertView.swift in Sources */,
 				1279B61219FED64D00A7828C /* FileManager.swift in Sources */,
+				12CC222B1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift in Sources */,
 				1279B60819FED64D00A7828C /* CDHelper.swift in Sources */,
 				12E215931A037E4F0038AD45 /* TSTextMapper.swift in Sources */,
 				12BEB0F41A06DC9300643860 /* ModelController.swift in Sources */,

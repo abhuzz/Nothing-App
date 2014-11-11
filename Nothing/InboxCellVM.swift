@@ -27,9 +27,7 @@ class InboxCellVM {
     func dateAndPlace() -> String {
         var value = ""
         if let reminder = self.task.dateReminder {
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = "dd MMM yyyy hh:mm"
-            value += formatter.stringFromDate(reminder.fireDate)
+            value += NSDateFormatter.NTHStringFromDate(reminder.fireDate)
         }
         
         if let reminder = self.task.locationReminder {
