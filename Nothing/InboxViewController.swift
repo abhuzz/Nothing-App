@@ -16,7 +16,7 @@ class InboxViewController: UIViewController {
     @IBOutlet private weak var bottomGuide: NSLayoutConstraint!
     
     enum Identifiers: String {
-        case TaskCell = "TaskCell"
+        case InboxCell = "InboxCell"
         case SearchSegue = "Search"
     }
     
@@ -31,9 +31,11 @@ class InboxViewController: UIViewController {
     }
     
     private func configureTableView() {
-        self.tableView.registerNib(TaskCell.nib(), forCellReuseIdentifier: Identifiers.TaskCell.rawValue)
+        self.tableView.registerNib(InboxCell.nib(), forCellReuseIdentifier: Identifiers.InboxCell.rawValue)
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.separatorInset = UIEdgeInsetsZero
+        self.tableView.layoutMargins = UIEdgeInsetsZero
     }
     
     private func configureInsertContainer() {
@@ -128,30 +130,25 @@ class InboxViewController: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let task = self.tasks[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.TaskCell.rawValue, forIndexPath: indexPath) as TaskCell
-        
-        cell.update(TaskCellVM(task))
-        cell.hashtagSelectedBlock = { hashtag in
-            dispatch_async(dispatch_get_main_queue(), { [self]
-                self.performSegueWithIdentifier(Identifiers.SearchSegue.rawValue, sender: hashtag)
-            })
-        }
-        
+        let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.InboxCell.rawValue, forIndexPath: indexPath) as InboxCell
+        let inboxViewModel = InboxCellVM(task)
+        cell.update(inboxViewModel)
+
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let task = self.tasks[indexPath.row]
-        
-        let cell = TaskCell.nib().instantiateWithOwner(nil, options: nil).first as TaskCell
+
+        let cell = InboxCell.nib().instantiateWithOwner(nil, options: nil).first as InboxCell
         var frame = cell.frame
         frame.size.width = tableView.bounds.width
         cell.frame = frame
-        
+
         cell.setNeedsUpdateConstraints()
         cell.updateConstraintsIfNeeded()
-        
-        cell.update(TaskCellVM(task))
+
+        cell.update(InboxCellVM(task))
         return cell.estimatedHeight
     }
     

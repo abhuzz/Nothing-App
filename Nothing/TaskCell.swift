@@ -155,6 +155,7 @@ extension TaskCell {
 extension TaskCell {
     
     func update(model: TaskCellVM) {
+        
         self.model = model
         self.cachedEstimatedHeight = nil
         self.titleLabel.text = model.title
