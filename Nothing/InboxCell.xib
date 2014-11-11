@@ -27,8 +27,9 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Some text here" translatesAutoresizingMaskIntoConstraints="NO" id="kQJ-Dd-DRK">
+                    <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Some text here" translatesAutoresizingMaskIntoConstraints="NO" id="kQJ-Dd-DRK">
                         <rect key="frame" x="56" y="28" width="256" height="25.5"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25.5" id="hVQ-9g-Dea"/>
                         </constraints>

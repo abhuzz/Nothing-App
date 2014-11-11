@@ -11,6 +11,7 @@ import UIKit
 
 class InboxCellVM {
     let task: Task
+    var hashtags = Array<HashtagDetector.Result>()
 
     init(_ task: Task) {
         self.task = task
@@ -24,12 +25,11 @@ class InboxCellVM {
         let desc = self.task.longDescription ?? ""
         
         var attributedText = NSMutableAttributedString(string: desc, attributes: [NSFontAttributeName: font])
-        
         let hashtagAttributes = [NSForegroundColorAttributeName: UIColor.appBlueColor(), NSFontAttributeName: font]
         
-        var hashtags = HashtagDetector(desc).detect() as [HashtagDetector.Result]!
+        self.hashtags = HashtagDetector(desc).detect() as [HashtagDetector.Result]!
         
-        for (text, range) in hashtags {
+        for (text, range) in self.hashtags {
             attributedText.addAttributes(hashtagAttributes, range: range)
         }
         

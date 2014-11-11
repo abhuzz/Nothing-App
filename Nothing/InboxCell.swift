@@ -9,16 +9,20 @@
 import UIKit
 
 class InboxCell: UITableViewCell {
-    @IBOutlet weak var thumbnail: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var longDescriptionTextView: UITextView!
-    @IBOutlet weak var datePlaceLabel: UILabel!
+    @IBOutlet private weak var thumbnail: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var longDescriptionTextView: UITextView!
+    @IBOutlet private weak var datePlaceLabel: UILabel!
     
-    @IBOutlet weak var longDescriptionHeight: NSLayoutConstraint!
-    @IBOutlet weak var datePlaceHeight: NSLayoutConstraint!
-    @IBOutlet weak var topGuide: NSLayoutConstraint!
+    @IBOutlet private weak var longDescriptionHeight: NSLayoutConstraint!
+    @IBOutlet private weak var datePlaceHeight: NSLayoutConstraint!
+    @IBOutlet private weak var topGuide: NSLayoutConstraint!
     
     private var initialTopGuideConstant: CGFloat = 0.0
+    private var model: InboxCellVM?
+    
+    typealias HashtagSelectedBlock = (String) -> ()
+    var hashtagSelectedBlock: HashtagSelectedBlock?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +35,10 @@ class InboxCell: UITableViewCell {
     }
     
     private func setup() {
+        let selectedBackgroundView = UIView()
+        selectedBackgroundView.backgroundColor = UIColor.appBlueColorAlpha50()
+        self.selectedBackgroundView = selectedBackgroundView
+        
         if self.initialTopGuideConstant == 0.0 {
             self.initialTopGuideConstant = self.topGuide.constant
         }
@@ -63,7 +71,21 @@ class InboxCell: UITableViewCell {
         self.thumbnail.layer.borderWidth = 1
     }
     
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        if selected {
+            self.didSelect()
+        }
+    }
+    
+    func didSelect() {
+        self.animatePushViewInside()
+        self.setSelected(false, animated: true)
+    }
+    
     func update(model: InboxCellVM) {
+        self.model = model
+        
         self.titleLabel.text = model.title()
         self.longDescriptionTextView.attributedText = model.longDescription(self.longDescriptionTextView.font)
         self.datePlaceLabel.text = model.dateAndPlace()
@@ -107,6 +129,39 @@ class InboxCell: UITableViewCell {
         }
         
         return proposed
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        
+        var wordTapped = false
+        if let touch: AnyObject = event.allTouches()?.anyObject() {
+            wordTapped = self.handleTap((touch as UITouch).locationInView(self.longDescriptionTextView))
+        }
+        
+        if !wordTapped {
+            super.touchesBegan(touches, withEvent: event)
+        }
+    }
+    
+    func handleTap(point: CGPoint) -> Bool {
+        var string: String? = nil
+
+        var index = self.longDescriptionTextView.layoutManager.characterIndexForPoint(point, inTextContainer: self.longDescriptionTextView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        
+        if index < self.longDescriptionTextView.textStorage.length {
+            for (text, range) in self.model!.hashtags {
+                if NSLocationInRange(index, range) {
+                    string = text
+                    break
+                }
+            }
+        }
+        
+        if let hashtag = string {
+            self.hashtagSelectedBlock?(hashtag)
+        }
+        
+        return string != nil
     }
 }
 

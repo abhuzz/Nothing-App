@@ -131,6 +131,10 @@ class InboxViewController: UIViewController {
         let task = self.tasks[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.InboxCell.rawValue, forIndexPath: indexPath) as InboxCell
+        cell.hashtagSelectedBlock = { hashtag in
+            self.performSegueWithIdentifier(Identifiers.SearchSegue.rawValue, sender: hashtag)
+        }
+        
         let inboxViewModel = InboxCellVM(task)
         cell.update(inboxViewModel)
 
