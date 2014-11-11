@@ -17,13 +17,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     private var searchBar: UISearchBar!
     private var tasks: [Task] = [Task]()
-    private var viewModelCache = TaskCellVMCache()
     private var allTasks: [Task] = ModelController().allTasks()
     private var searchTimer: NSTimer?
     
     var searchBarText: String = ""
     
-    enum Identifiers: String { case TaskCell = "TaskCell" }
+    enum Identifiers: String { case InboxCell = "InboxCell" }
     
     typealias AnimationCompletionBlock = () -> Void
 
@@ -34,7 +33,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     private func configureUI() {
         /// configure table view
-        self.tableView.registerNib(TaskCell.nib(), forCellReuseIdentifier: Identifiers.TaskCell.rawValue)
+        self.tableView.registerNib(InboxCell.nib(), forCellReuseIdentifier: Identifiers.InboxCell.rawValue)
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.backgroundColor = UIColor.clearColor()
@@ -108,37 +107,26 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let task = self.tasks[indexPath.row]
-        var model = self.viewModelCache.model(task)
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.TaskCell.rawValue, forIndexPath: indexPath) as TaskCell
-        if model == nil {
-            model = TaskCellVM(task)
-            self.viewModelCache.add(model!)
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.InboxCell.rawValue, forIndexPath: indexPath) as InboxCell
         
-        cell.update(model!)
+        let inboxViewModel = InboxCellVM(task)
+        cell.update(inboxViewModel)
+        
         return cell
     }
     
+    private var tmpCell: InboxCell!
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let task = self.tasks[indexPath.row]
         
-        var model = self.viewModelCache.model(task)
-        if (model == nil) {
-            model = TaskCellVM(task)
-            self.viewModelCache.add(model!)
+        if (tmpCell == nil) {
+            tmpCell = InboxCell.nib().instantiateWithOwner(nil, options: nil).first as InboxCell
+            tmpCell.frame.size.width = tableView.bounds.width
         }
         
-        let cell = TaskCell.nib().instantiateWithOwner(nil, options: nil).first as TaskCell
-        var frame = cell.frame
-        frame.size.width = tableView.bounds.width
-        cell.frame = frame
-        
-        cell.setNeedsUpdateConstraints()
-        cell.updateConstraintsIfNeeded()
-        
-        cell.update(model!)
-        return cell.estimatedHeight
+        tmpCell.update(InboxCellVM(task))
+        return tmpCell.estimatedHeight
     }
 
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
