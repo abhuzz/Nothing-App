@@ -11,9 +11,20 @@ import UIKit
 class QuickInsertView: UIView, UITextFieldDelegate {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
-
+    @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet private weak var moreButtonLeading: NSLayoutConstraint!
+    
+    private var initialMoreButtonLeadingConstant: CGFloat?
+    
     typealias DidSubmitBlock = (text: String) -> Void
+    typealias DidTapMoreBlock = () -> Void
+    
     var didSubmitBlock: DidSubmitBlock?
+    var didTapMoreBlock: DidTapMoreBlock?
+    
+    var text: String {
+        return self.textField.text
+    }
     
     override func awakeAfterUsingCoder(aDecoder: NSCoder) -> AnyObject? {
         if self.subviews.count == 0 {
@@ -26,26 +37,55 @@ class QuickInsertView: UIView, UITextFieldDelegate {
         return self
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if (self.initialMoreButtonLeadingConstant == nil) {
+            self.initialMoreButtonLeadingConstant = self.moreButtonLeading.constant
+        }
+        
+        self.reset()
+    }
+    
     @IBAction func onSubmitPressed(sender: AnyObject) {
         self.didSubmitBlock?(text: self.textField.text)
     }
     
     @IBAction func textDidChange(sender: AnyObject) {
-        self.validateSubmitButton()
+        self.updateView()
     }
     
-    private func validateSubmitButton() {
-        self.submitButton.enabled = countElements(self.textField.text) > 0
+    private func updateView() {
+        let enabled = countElements(self.textField.text) > 0
+        self.submitButton.enabled = enabled
+        
+        enabled ? self.showMoreAnimated(true) : self.hideMoreAnimated(true)
     }
     
-    func reset() {
+    func reset(animated: Bool = false) {
+        self.hideMoreAnimated(animated)
         self.textField.text = ""
-        self.validateSubmitButton()
+        self.updateView()
     }
     
     func finish() {
         self.reset()
         self.textField.resignFirstResponder()
+    }
+    
+    func showMoreAnimated(animated: Bool) {
+        self.moreButtonLeading.constant = self.initialMoreButtonLeadingConstant!
+        UIView.animateWithDuration(animated ? 0.1 : 0.0, animations: {
+            self.moreButton.layoutIfNeeded()
+            self.textField.layoutIfNeeded()
+        })
+    }
+    
+    func hideMoreAnimated(animated: Bool) {
+        self.moreButtonLeading.constant = -self.moreButton.frame.width
+        UIView.animateWithDuration(animated ? 0.1 : 0.0, animations: {
+            self.moreButton.layoutIfNeeded()
+            self.textField.layoutIfNeeded()
+        })
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -55,5 +95,9 @@ class QuickInsertView: UIView, UITextFieldDelegate {
         
         self.textField.resignFirstResponder()
         return true
+    }
+    
+    @IBAction func onMorePressed(sender: AnyObject) {
+        self.didTapMoreBlock?()
     }
 }

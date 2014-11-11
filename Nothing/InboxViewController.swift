@@ -59,6 +59,11 @@ class InboxViewController: UIViewController {
 
             })
         }
+        
+        self.quickInsertView.didTapMoreBlock = { [self]
+            let text = self.quickInsertView.text
+            self.quickInsertView.finish()
+        }
     }
     
     override func didReceiveMemoryWarning() {
