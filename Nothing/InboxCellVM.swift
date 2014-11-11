@@ -20,8 +20,20 @@ class InboxCellVM {
         return self.task.title
     }
     
-    func longDescription() -> String {
-        return self.task.longDescription ?? ""
+    func longDescription(font: UIFont) -> NSAttributedString {
+        let desc = self.task.longDescription ?? ""
+        
+        var attributedText = NSMutableAttributedString(string: desc, attributes: [NSFontAttributeName: font])
+        
+        let hashtagAttributes = [NSForegroundColorAttributeName: UIColor.appBlueColor(), NSFontAttributeName: font]
+        
+        var hashtags = HashtagDetector(desc).detect() as [HashtagDetector.Result]!
+        
+        for (text, range) in hashtags {
+            attributedText.addAttributes(hashtagAttributes, range: range)
+        }
+        
+        return attributedText
     }
     
     func dateAndPlace() -> String {

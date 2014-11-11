@@ -65,7 +65,7 @@ class InboxCell: UITableViewCell {
     
     func update(model: InboxCellVM) {
         self.titleLabel.text = model.title()
-        self.longDescriptionTextView.text = model.longDescription()
+        self.longDescriptionTextView.attributedText = model.longDescription(self.longDescriptionTextView.font)
         self.datePlaceLabel.text = model.dateAndPlace()
         
         self.longDescriptionHeight.constant = self.longDescriptionTextView.proposedHeight
@@ -74,7 +74,7 @@ class InboxCell: UITableViewCell {
         // do only if cell is added to the table view
         if self.superview != nil {
             
-            var images = model.connectionsImages()
+//            var images = model.connectionsImages()
 //            if images.count > 0 {
 //                self.thumbnail.layer.borderWidth = 0
 //                self.thumbnail.animationImages = images
