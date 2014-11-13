@@ -48,7 +48,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             /// create new task
             let task: Task = Task.create(CDHelper.mainContext)
             task.title = title
-            CDHelper.mainContext.save(nil)
+//            CDHelper.mainContext.save(nil)
             
             self.tasks = ModelController().allTasks()
             
