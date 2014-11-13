@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class InboxViewController: UIViewController {
+class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var quickInsertView: QuickInsertView!
@@ -171,6 +171,16 @@ class InboxViewController: UIViewController {
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         (cell as InboxCell).update(indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250())
+    }
+    
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as InboxCell
+        if !cell.canSelect {
+            cell.canSelect = true
+            return nil
+        }
+
+        return indexPath
     }
 }
 

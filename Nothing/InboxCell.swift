@@ -20,13 +20,13 @@ class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
     
     private var initialTopGuideConstant: CGFloat = 0.0
     private var model: InboxCellVM?
+    var canSelect: Bool = true
     
     typealias HashtagSelectedBlock = (String) -> ()
     var hashtagSelectedBlock: HashtagSelectedBlock?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.configureTapRecognizer()
         self.setup()
     }
     
@@ -34,21 +34,10 @@ class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
         super.prepareForReuse()
         self.setup()
     }
-
-    private var tapRecognizer: UITapGestureRecognizer!
-    private func configureTapRecognizer() {
-        self.tapRecognizer = UITapGestureRecognizer(target: self, action:"handleTapGesture:")
-        self.tapRecognizer.delegate = self
-        self.addGestureRecognizer(self.tapRecognizer)
-    }
-    
-    func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        /// do nothing here, all action is taken in delegate method
-    }
     
     private func setup() {
         let selectedBackgroundView = UIView()
-        selectedBackgroundView.backgroundColor = UIColor.appBlueColorAlpha50()
+        selectedBackgroundView.backgroundColor = UIColor.clearColor()//UIColor.appBlueColorAlpha50()
         self.selectedBackgroundView = selectedBackgroundView
         
         if self.initialTopGuideConstant == 0.0 {
@@ -177,15 +166,21 @@ class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
     }
     
     override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        if !(gestureRecognizer is UITapGestureRecognizer) {
-            return false
-        }
-        
-        if self.handleTap(touch.locationInView(self.longDescriptionTextView)) {
-            return true
-        }
-        
         return false
+    }
+    
+    
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        var wordTapped = false
+        if let touch: AnyObject = event.allTouches()?.anyObject() {
+            wordTapped = self.handleTap((touch as UITouch).locationInView(self.longDescriptionTextView))
+        }
+        
+        if (wordTapped) {
+            self.canSelect = false
+        }
+        
+        super.touchesEnded(touches, withEvent: event)
     }
 }
 
