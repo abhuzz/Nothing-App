@@ -162,5 +162,9 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         (cell as InboxCell).update(indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250())
     }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        self.quickInsertView.finish()
+    }
 }
 
