@@ -42,19 +42,19 @@ class InboxCellVM {
         return value
     }
     
-    /*
-    func connectionsImages() -> [UIImage] {
-        var images = [UIImage]()
-        for connection in self.task.allConnections.allObjects as [Connection] {
-            if let key = connection.thumbnailKey {
-                if let data = ThumbnailCache.sharedInstance.read(key) {
-                    let image = UIImage(data: data)
-                    images.append(image!)
-                }
-            }
-        }
-        
-        return images
+    private var isDone: Bool {
+        return self.task.state == .Done
     }
-*/
+    
+    var stateButtonImage : UIImage {
+        return self.isDone ? self.doneStateImage : self.undoneStateImage
+    }
+    
+    var undoneStateImage : UIImage {
+        return UIImage(named: "task-state-undone")!
+    }
+    
+    var doneStateImage : UIImage {
+        return UIImage(named: "task-state-done")!
+    }
 }

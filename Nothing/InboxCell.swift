@@ -8,18 +8,23 @@
 
 import UIKit
 
+protocol InboxCellDelegate {
+    func cellDidTapActionButton(cell: InboxCell)
+}
+
 class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
-    @IBOutlet private weak var thumbnail: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet weak var longDescriptionLabel: UILabel!
-//    @IBOutlet private weak var longDescriptionTextView: UITextView!
     @IBOutlet private weak var datePlaceLabel: UILabel!
+    @IBOutlet weak var actionButton: UIButton!
     
     @IBOutlet private weak var longDescriptionHeight: NSLayoutConstraint!
     @IBOutlet private weak var datePlaceHeight: NSLayoutConstraint!
     @IBOutlet private weak var topGuide: NSLayoutConstraint!
     
     private var initialTopGuideConstant: CGFloat = 0.0
+    
+    var delegate: InboxCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,8 +44,6 @@ class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
         if self.initialTopGuideConstant == 0.0 {
             self.initialTopGuideConstant = self.topGuide.constant
         }
-
-        self.thumbnail.animationImages = nil
         
         self.titleLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 17.0)
         self.titleLabel.textColor = UIColor.appBlack()
@@ -48,28 +51,15 @@ class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
         self.longDescriptionLabel.font = UIFont(name: "HelveticaNeue-Light", size: 17.0)
         self.longDescriptionLabel.textColor = UIColor.appBlack()
         self.longDescriptionLabel.opaque = true
-//        self.longDescriptionTextView.layoutMargins = UIEdgeInsetsZero
-//        self.longDescriptionTextView.contentInset = UIEdgeInsetsMake(0, -4, 0, -20)
-//        self.longDescriptionTextView.textContainerInset = UIEdgeInsetsZero
-//        self.longDescriptionTextView.font = UIFont(name: "HelveticaNeue-Light", size: 17.0)
-//        self.longDescriptionTextView.textColor = UIColor.appBlack()
-//        self.longDescriptionTextView.opaque = true
         
         self.datePlaceLabel.font = UIFont(name: "HelveticaNeue-Light", size: 14.0)
         self.datePlaceLabel.textColor = UIColor.appWhite186()
         
         self.layoutMargins = UIEdgeInsetsZero
-        
-        self.configureThumbnailView()
     }
     
-    private func configureThumbnailView() {
-        let radius = 0.5 * (CGRectGetWidth(self.thumbnail.bounds) - 1)
-        self.thumbnail.backgroundColor = UIColor.clearColor()
-        self.thumbnail.layer.cornerRadius = radius
-        self.thumbnail.layer.masksToBounds = true
-        self.thumbnail.layer.borderColor = UIColor.appWhite216().CGColor
-        self.thumbnail.layer.borderWidth = 1
+    @IBAction func onActionButtonPressed(sender: AnyObject) {
+        self.delegate?.cellDidTapActionButton(self)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -87,11 +77,12 @@ class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
     func update(model: InboxCellVM) {        
         self.titleLabel.text = model.title()
         self.longDescriptionLabel.text = model.longDescription()
-//        self.longDescriptionTextView.text = model.longDescription()
         self.datePlaceLabel.text = model.dateAndPlace()
         
         self.longDescriptionHeight.constant = self.longDescriptionLabel.proposedHeight
         self.datePlaceHeight.constant = self.datePlaceLabel.proposedHeight
+        
+        self.actionButton.setImage(model.stateButtonImage, forState: UIControlState.Normal)
         
         // do only if cell is added to the table view
         if self.superview != nil {
@@ -109,7 +100,6 @@ class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
         self.backgroundColor = backgroundColor
         self.titleLabel.backgroundColor = backgroundColor
         self.longDescriptionLabel.backgroundColor = backgroundColor
-//        self.longDescriptionTextView.backgroundColor = backgroundColor
         self.datePlaceLabel.backgroundColor = backgroundColor
     }
     
@@ -122,7 +112,7 @@ class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
         var proposed = titleHeight + longDescriptionHeight + datePlaceHeight + margins
         
         if longDescriptionHeight == 0 && datePlaceHeight == 0 {
-            proposed = margins + self.thumbnail.bounds.height
+            proposed = margins + self.actionButton.bounds.height
         }
         
         return proposed

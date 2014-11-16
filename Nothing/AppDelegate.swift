@@ -100,5 +100,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         CDHelper.mainContext.save(nil)
     }
+    
+    func applicationDidEnterBackground(application: UIApplication) {
+        CDHelper.mainContext.save(nil)
+    }
 }
 

@@ -13,22 +13,14 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ySW-uu-El9" id="3Ij-Ah-ThX">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Gg-dU-sjr">
-                        <rect key="frame" x="8" y="20" width="40" height="40"/>
-                        <color key="backgroundColor" red="1" green="0.86094262359999996" blue="0.2075909249" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="RC7-Xy-b3J"/>
-                            <constraint firstAttribute="width" constant="40" id="Zav-Nk-4vp"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJ8-Mk-PKq">
-                        <rect key="frame" x="56" y="8" width="256" height="21"/>
+                        <rect key="frame" x="57" y="8" width="255" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="place &amp; date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDv-52-8Z9">
-                        <rect key="frame" x="56" y="52" width="256" height="21"/>
+                        <rect key="frame" x="57" y="52" width="255" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20.5" id="YMV-hH-rS5"/>
                         </constraints>
@@ -37,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ur-wF-8sh">
-                        <rect key="frame" x="56" y="29" width="256" height="21"/>
+                        <rect key="frame" x="57" y="29" width="255" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="EvS-xo-Kbg"/>
                         </constraints>
@@ -45,20 +37,33 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rb2-Nl-tmZ">
+                        <rect key="frame" x="8" y="20" width="41" height="41"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="41" id="Fol-1Q-C2z"/>
+                            <constraint firstAttribute="width" constant="41" id="aSv-iI-PmT"/>
+                        </constraints>
+                        <state key="normal" image="task-state-undone">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="onActionButtonPressed:" destination="ySW-uu-El9" eventType="touchUpInside" id="POL-nP-jjI"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="GDv-52-8Z9" firstAttribute="trailing" secondItem="3Ij-Ah-ThX" secondAttribute="trailingMargin" id="1Xv-gi-WUL"/>
-                    <constraint firstItem="pJ8-Mk-PKq" firstAttribute="leading" secondItem="6Gg-dU-sjr" secondAttribute="trailing" constant="8" id="2oc-oF-DZM"/>
+                    <constraint firstItem="2Ur-wF-8sh" firstAttribute="leading" secondItem="rb2-Nl-tmZ" secondAttribute="trailing" constant="8" id="3XV-bz-Eng"/>
                     <constraint firstItem="2Ur-wF-8sh" firstAttribute="top" secondItem="pJ8-Mk-PKq" secondAttribute="bottom" constant="1" id="6fi-Zm-kOr"/>
+                    <constraint firstItem="rb2-Nl-tmZ" firstAttribute="leading" secondItem="3Ij-Ah-ThX" secondAttribute="leadingMargin" id="FP8-oW-gdT"/>
                     <constraint firstAttribute="bottomMargin" secondItem="GDv-52-8Z9" secondAttribute="bottom" constant="-1" id="OCs-JZ-FdJ"/>
                     <constraint firstItem="pJ8-Mk-PKq" firstAttribute="top" secondItem="3Ij-Ah-ThX" secondAttribute="top" constant="8" id="Pek-1K-ldb"/>
                     <constraint firstItem="2Ur-wF-8sh" firstAttribute="trailing" secondItem="3Ij-Ah-ThX" secondAttribute="trailingMargin" id="QAL-2y-bfK"/>
-                    <constraint firstItem="GDv-52-8Z9" firstAttribute="leading" secondItem="6Gg-dU-sjr" secondAttribute="trailing" constant="8" id="QXs-Py-cKF"/>
                     <constraint firstItem="GDv-52-8Z9" firstAttribute="top" secondItem="2Ur-wF-8sh" secondAttribute="bottom" constant="2" id="YwQ-W2-7uu"/>
-                    <constraint firstItem="6Gg-dU-sjr" firstAttribute="leading" secondItem="3Ij-Ah-ThX" secondAttribute="leadingMargin" id="dE1-sh-ViC"/>
+                    <constraint firstItem="pJ8-Mk-PKq" firstAttribute="leading" secondItem="rb2-Nl-tmZ" secondAttribute="trailing" constant="8" id="d5n-W9-598"/>
                     <constraint firstItem="pJ8-Mk-PKq" firstAttribute="trailing" secondItem="3Ij-Ah-ThX" secondAttribute="trailingMargin" id="er0-Fx-9fz"/>
-                    <constraint firstItem="2Ur-wF-8sh" firstAttribute="leading" secondItem="6Gg-dU-sjr" secondAttribute="trailing" constant="8" id="hkh-xT-yEA"/>
-                    <constraint firstAttribute="centerY" secondItem="6Gg-dU-sjr" secondAttribute="centerY" id="ukz-j5-xch"/>
+                    <constraint firstItem="GDv-52-8Z9" firstAttribute="leading" secondItem="rb2-Nl-tmZ" secondAttribute="trailing" constant="8" id="n6p-jD-4Lu"/>
+                    <constraint firstAttribute="centerY" secondItem="rb2-Nl-tmZ" secondAttribute="centerY" constant="-0.5" id="yJk-Mf-wIe"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -68,15 +73,18 @@
             </tableViewCellContentView>
             <gestureRecognizers/>
             <connections>
+                <outlet property="actionButton" destination="rb2-Nl-tmZ" id="chb-hx-xOg"/>
                 <outlet property="datePlaceHeight" destination="YMV-hH-rS5" id="nBs-on-U5V"/>
                 <outlet property="datePlaceLabel" destination="GDv-52-8Z9" id="4NS-Ov-n6Z"/>
                 <outlet property="longDescriptionHeight" destination="EvS-xo-Kbg" id="mNC-BV-KrM"/>
                 <outlet property="longDescriptionLabel" destination="2Ur-wF-8sh" id="SJ5-rB-CMr"/>
-                <outlet property="thumbnail" destination="6Gg-dU-sjr" id="ixI-jF-uOo"/>
                 <outlet property="titleLabel" destination="pJ8-Mk-PKq" id="WqQ-b2-AGc"/>
                 <outlet property="topGuide" destination="Pek-1K-ldb" id="JKI-0A-PAl"/>
             </connections>
             <point key="canvasLocation" x="108" y="241.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="task-state-undone" width="41" height="41"/>
+    </resources>
 </document>

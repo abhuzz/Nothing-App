@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, InboxCellDelegate {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var quickInsertView: QuickInsertView!
@@ -142,6 +142,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.InboxCell.rawValue, forIndexPath: indexPath) as InboxCell
         let inboxViewModel = InboxCellVM(task)
         cell.update(inboxViewModel)
+        cell.delegate = self
 
         return cell
     }
@@ -165,6 +166,15 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         self.quickInsertView.finish()
+    }
+    
+    /// Mark: InboxCellDelegate
+    func cellDidTapActionButton(cell: InboxCell) {
+        if let indexPath = self.tableView.indexPathForCell(cell) {
+            let task = self.tasks[indexPath.row]
+            task.changeState();
+            cell.update(InboxCellVM(task))
+        }
     }
 }
 

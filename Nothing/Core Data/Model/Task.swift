@@ -84,4 +84,12 @@ extension Task {
     var allConnections: NSSet {        
         return NSSet(set: self.connections)
     }
+    
+    func changeState() {
+        if self.state == .Active {
+            self.state = .Done
+        } else {
+            self.state = .Active
+        }
+    }
 }
