@@ -21,19 +21,8 @@ class InboxCellVM {
         return self.task.title
     }
     
-    func longDescription(font: UIFont) -> NSAttributedString {
-        let desc = self.task.longDescription ?? ""
-        
-        var attributedText = NSMutableAttributedString(string: desc, attributes: [NSFontAttributeName: font])
-        let hashtagAttributes = [NSForegroundColorAttributeName: UIColor.appBlueColor(), NSFontAttributeName: font]
-        
-        self.hashtags = HashtagDetector(desc).detect() as [HashtagDetector.Result]!
-        
-        for (text, range) in self.hashtags {
-            attributedText.addAttributes(hashtagAttributes, range: range)
-        }
-        
-        return attributedText
+    func longDescription() -> String {
+        return self.task.longDescription ?? ""
     }
     
     func dateAndPlace() -> String {
@@ -53,6 +42,7 @@ class InboxCellVM {
         return value
     }
     
+    /*
     func connectionsImages() -> [UIImage] {
         var images = [UIImage]()
         for connection in self.task.allConnections.allObjects as [Connection] {
@@ -66,4 +56,5 @@ class InboxCellVM {
         
         return images
     }
+*/
 }

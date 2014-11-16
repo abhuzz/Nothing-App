@@ -19,7 +19,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private var tasks: [Task] = [Task]()
     private var allTasks: [Task] = ModelController().allTasks()
     private var searchTimer: NSTimer?
-    private var heights = [NSIndexPath: CGFloat]()
 
     var searchBarText: String = ""
     
@@ -119,10 +118,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     private var tmpCell: InboxCell!
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if let height = self.heights[indexPath] {
-            return height
-        }
-
         let task = self.tasks[indexPath.row]
         
         if (tmpCell == nil) {
@@ -131,9 +126,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         tmpCell.update(InboxCellVM(task))
-        var height = tmpCell.estimatedHeight
-        self.heights[indexPath] = height
-        return height
+        return tmpCell.estimatedHeight
     }
 
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

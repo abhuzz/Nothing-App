@@ -19,11 +19,6 @@ class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
     @IBOutlet private weak var topGuide: NSLayoutConstraint!
     
     private var initialTopGuideConstant: CGFloat = 0.0
-    private var model: InboxCellVM?
-    var canSelect: Bool = true
-    
-    typealias HashtagSelectedBlock = (String) -> ()
-    var hashtagSelectedBlock: HashtagSelectedBlock?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,7 +32,7 @@ class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
     
     private func setup() {
         let selectedBackgroundView = UIView()
-        selectedBackgroundView.backgroundColor = UIColor.clearColor()//UIColor.appBlueColorAlpha50()
+        selectedBackgroundView.backgroundColor = UIColor.appBlueColorAlpha50()
         self.selectedBackgroundView = selectedBackgroundView
         
         if self.initialTopGuideConstant == 0.0 {
@@ -85,11 +80,9 @@ class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
         self.setSelected(false, animated: true)
     }
     
-    func update(model: InboxCellVM) {
-        self.model = model
-        
+    func update(model: InboxCellVM) {        
         self.titleLabel.text = model.title()
-        self.longDescriptionTextView.attributedText = model.longDescription(self.longDescriptionTextView.font)
+        self.longDescriptionTextView.text = model.longDescription()
         self.datePlaceLabel.text = model.dateAndPlace()
         
         self.longDescriptionHeight.constant = self.longDescriptionTextView.proposedHeight
@@ -97,17 +90,6 @@ class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
         
         // do only if cell is added to the table view
         if self.superview != nil {
-            /*
-            var images = model.connectionsImages()
-            if images.count > 0 {
-                self.thumbnail.layer.borderWidth = 0
-                self.thumbnail.animationImages = images
-                self.thumbnail.animationDuration = NSTimeInterval(images.count)
-                self.thumbnail.startAnimating()
-            } else {
-                self.thumbnail.layer.borderWidth = 1.0
-            }
-            */
             if self.longDescriptionHeight.constant == 0 && self.datePlaceHeight.constant == 0 {
                 self.topGuide.constant = self.bounds.midY - self.titleLabel.bounds.midY
             } else {
@@ -138,49 +120,6 @@ class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
         }
         
         return proposed
-    }
-    
-    func handleTap(point: CGPoint) -> Bool {
-        var string: String? = nil
-
-        if !CGRectContainsPoint(self.longDescriptionTextView.bounds, point) {
-            return false
-        }
-        
-        var index = self.longDescriptionTextView.layoutManager.characterIndexForPoint(point, inTextContainer: self.longDescriptionTextView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
-
-        if index < self.longDescriptionTextView.textStorage.length {
-            for (text, range) in self.model!.hashtags {
-                if NSLocationInRange(index, range) {
-                    string = text
-                    break
-                }
-            }
-        }
-        
-        if let hashtag = string {
-            self.hashtagSelectedBlock?(hashtag)
-        }
-        
-        return string != nil
-    }
-    
-    override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        return false
-    }
-    
-    
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        var wordTapped = false
-        if let touch: AnyObject = event.allTouches()?.anyObject() {
-            wordTapped = self.handleTap((touch as UITouch).locationInView(self.longDescriptionTextView))
-        }
-        
-        if (wordTapped) {
-            self.canSelect = false
-        }
-        
-        super.touchesEnded(touches, withEvent: event)
     }
 }
 

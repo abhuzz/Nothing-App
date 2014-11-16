@@ -21,7 +21,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     private var tasks = [Task]()
-    private var heights = [NSIndexPath: CGFloat]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,15 +47,18 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             /// create new task
             let task: Task = Task.create(CDHelper.mainContext)
             task.title = title
-//            CDHelper.mainContext.save(nil)
             
             self.tasks = ModelController().allTasks()
             
             /// refresh ui
-            dispatch_async(dispatch_get_main_queue(), {
+            dispatch_async(dispatch_get_main_queue(), { [self, task]
                 self.quickInsertView.finish()
                 self.tableView.reloadData()
 
+                let index = (self.tasks as NSArray).indexOfObject(task)
+                if (index != NSNotFound) {
+                    self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+                }
             })
         }
         
@@ -87,7 +89,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             self.bottomGuide.constant = kbFrame.height
             UIView.animateWithDuration(animDuration, animations: {
-                self.heights.removeAll(keepCapacity: false)
                 self.quickInsertView.layoutIfNeeded()
                 self.tableView.layoutIfNeeded()
             })
@@ -139,10 +140,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let task = self.tasks[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.InboxCell.rawValue, forIndexPath: indexPath) as InboxCell
-        cell.hashtagSelectedBlock = { hashtag in
-            self.performSegueWithIdentifier(Identifiers.SearchSegue.rawValue, sender: hashtag)
-        }
-        
         let inboxViewModel = InboxCellVM(task)
         cell.update(inboxViewModel)
 
@@ -151,10 +148,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     private var tmpCell: InboxCell!
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if let height = self.heights[indexPath] {
-            return height
-        }
-        
         let task = self.tasks[indexPath.row]
         
         if (tmpCell == nil) {
@@ -163,24 +156,11 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         tmpCell.update(InboxCellVM(task))
-        var height = tmpCell.estimatedHeight
-        self.heights[indexPath] = height
-        
-        return height
+        return tmpCell.estimatedHeight
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         (cell as InboxCell).update(indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250())
-    }
-    
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as InboxCell
-        if !cell.canSelect {
-            cell.canSelect = true
-            return nil
-        }
-
-        return indexPath
     }
 }
 
