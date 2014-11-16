@@ -16,67 +16,69 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="jAd-mj-KVF" kind="relationship" relationship="rootViewController" id="PkN-4U-kXM"/>
+                        <segue destination="Nc0-Yv-JIZ" kind="relationship" relationship="rootViewController" id="ORw-tZ-8Lf"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2sV-6f-Q54" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1308" y="437"/>
         </scene>
-        <!--Inbox-->
-        <scene sceneID="Ig5-i9-s6V">
+        <!--Inbox View Controller-->
+        <scene sceneID="JK8-62-5xE">
             <objects>
-                <tableViewController id="jAd-mj-KVF" customClass="InboxViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mVq-FX-Xhs">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                <viewController id="Nc0-Yv-JIZ" customClass="InboxViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Eyc-1W-u7M"/>
+                        <viewControllerLayoutGuide type="bottom" id="qHR-CB-ENn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hFT-Cm-704">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ahl-qW-HvN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Nc0-Yv-JIZ" id="Tzv-hN-WTF"/>
+                                    <outlet property="delegate" destination="Nc0-Yv-JIZ" id="ghs-7y-uDh"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SiQ-MJ-5a3" userLabel="Quick Insert Container" customClass="QuickInsertView" customModule="Nothing" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <color key="backgroundColor" red="0.99119100770000002" green="0.99119100770000002" blue="0.99119100770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="akD-2B-6HA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ve7-By-wol">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ve7-By-wol" id="LTp-Zd-Erz">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="jAd-mj-KVF" id="IKw-fT-KKI"/>
-                            <outlet property="delegate" destination="jAd-mj-KVF" id="c82-pG-NO2"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Inbox" id="p4g-dj-1yh">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="J4H-si-k8C">
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ahl-qW-HvN" secondAttribute="trailing" id="722-SM-CFB"/>
+                            <constraint firstItem="Ahl-qW-HvN" firstAttribute="leading" secondItem="hFT-Cm-704" secondAttribute="leading" id="EKB-Oi-1n5"/>
+                            <constraint firstItem="SiQ-MJ-5a3" firstAttribute="leading" secondItem="hFT-Cm-704" secondAttribute="leading" id="Ghe-Bn-xVI"/>
+                            <constraint firstItem="Ahl-qW-HvN" firstAttribute="top" secondItem="hFT-Cm-704" secondAttribute="top" id="bGi-br-Ph4"/>
+                            <constraint firstAttribute="trailing" secondItem="SiQ-MJ-5a3" secondAttribute="trailing" id="blH-GJ-zcA"/>
+                            <constraint firstItem="qHR-CB-ENn" firstAttribute="top" secondItem="SiQ-MJ-5a3" secondAttribute="bottom" id="jXP-fM-QcW"/>
+                            <constraint firstItem="SiQ-MJ-5a3" firstAttribute="top" secondItem="Ahl-qW-HvN" secondAttribute="bottom" id="y2u-Kt-hCt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uSg-eB-Fh2">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="w1y-Zh-7pD">
                             <connections>
-                                <action selector="searchPressed:" destination="jAd-mj-KVF" id="ixl-M8-7bY"/>
+                                <action selector="searchPressed:" destination="Nc0-Yv-JIZ" id="XLf-9z-Gae"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="searchDisplayController" destination="8sJ-gZ-VrE" id="rKx-ju-yzT"/>
-                        <segue destination="CYv-FT-RG8" kind="modal" identifier="Search" animates="NO" id="tgQ-ZR-7LR"/>
+                        <outlet property="bottomGuide" destination="jXP-fM-QcW" id="4O2-gD-9bX"/>
+                        <outlet property="quickInsertView" destination="SiQ-MJ-5a3" id="Mkn-KZ-gay"/>
+                        <outlet property="tableView" destination="Ahl-qW-HvN" id="LGV-CQ-zmu"/>
+                        <segue destination="CYv-FT-RG8" kind="presentation" identifier="Search" animates="NO" id="Uv3-Bj-ees"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ba7-YT-coF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="RDG-wa-HmP">
-                    <connections>
-                        <outlet property="delegate" destination="jAd-mj-KVF" id="mI6-CU-aYA"/>
-                        <outlet property="searchContentsController" destination="jAd-mj-KVF" id="q1L-06-S6n"/>
-                        <outlet property="searchResultsDataSource" destination="jAd-mj-KVF" id="ipL-Kd-Y0b"/>
-                        <outlet property="searchResultsDelegate" destination="jAd-mj-KVF" id="K6N-Mq-Hmt"/>
-                    </connections>
-                </searchDisplayController>
-                <searchDisplayController id="8sJ-gZ-VrE">
-                    <connections>
-                        <outlet property="delegate" destination="jAd-mj-KVF" id="ME1-hb-Phy"/>
-                        <outlet property="searchContentsController" destination="jAd-mj-KVF" id="F4s-Pp-agN"/>
-                        <outlet property="searchResultsDataSource" destination="jAd-mj-KVF" id="nga-cD-xcR"/>
-                        <outlet property="searchResultsDelegate" destination="jAd-mj-KVF" id="mEb-N3-PE7"/>
-                    </connections>
-                </searchDisplayController>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pOv-Nc-IrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2074" y="437"/>
+            <point key="canvasLocation" x="2038" y="437"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="24t-Mr-Jjh">

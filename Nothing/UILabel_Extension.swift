@@ -30,3 +30,14 @@ extension UILabel {
         if let numberOfLines = attr.numberOfLines { self.numberOfLines = numberOfLines }
     }
 }
+
+extension UITextView {
+    var proposedHeight: CGFloat {
+        if (self.text == "") {
+            return 0
+        }
+        
+        var sizeToFit = CGSize(width: self.bounds.size.width, height: CGFloat.max)
+        return self.sizeThatFits(sizeToFit).height
+    }
+}
