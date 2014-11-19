@@ -29,4 +29,29 @@ class DetailModelView {
         }
         return false
     }
+    
+    var locationReminderDescription : String {
+        if let reminder = self.task.locationReminder {
+            var arriveOrLeaveString = (reminder.onArrive ? "Arrive" : "Leave")
+        
+            var distanceString = ""
+            if reminder.distance >= 1000 {
+                distanceString = "\(reminder.distance / 1000.0) km"
+            } else {
+                distanceString = "\(reminder.distance) m"
+            }
+            
+            return arriveOrLeaveString + "(" + distanceString + ")" + ":" + reminder.place.customName
+        }
+        
+        return "Location is not set"
+    }
+    
+    var isDateReminder : Bool {
+        return self.task.dateReminder != nil
+    }
+    
+    var isLocationReminder : Bool {
+        return self.task.locationReminder != nil
+    }
 }

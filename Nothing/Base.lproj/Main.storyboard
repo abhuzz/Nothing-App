@@ -100,28 +100,47 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tf2-u1-dsT" userLabel="Title View">
-                                                <rect key="frame" x="5" y="75" width="590" height="90"/>
+                                                <rect key="frame" x="5" y="75" width="590" height="89.5"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore maa.</string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxb-5u-SJN" userLabel="Title View">
-                                                <rect key="frame" x="5" y="174" width="590" height="57"/>
+                                                <rect key="frame" x="5" y="174.5" width="590" height="57"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore maa.</string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRJ-vg-MnO">
+                                                <rect key="frame" x="10" y="261.5" width="580" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="F1a-kZ-Rgt"/>
+                                                </constraints>
+                                            </mapView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/10/14 10:14 @ office" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUj-18-Q2z">
+                                                <rect key="frame" x="10" y="420.5" width="580" height="20"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="yxb-5u-SJN" secondAttribute="trailing" constant="5" id="2B1-eH-Wj1"/>
+                                            <constraint firstItem="eUj-18-Q2z" firstAttribute="leading" secondItem="rFG-NH-OQT" secondAttribute="leading" constant="10" id="4SX-Pm-tqD"/>
+                                            <constraint firstItem="eUj-18-Q2z" firstAttribute="top" secondItem="KRJ-vg-MnO" secondAttribute="bottom" constant="9" id="4by-sZ-gg0"/>
+                                            <constraint firstItem="KRJ-vg-MnO" firstAttribute="leading" secondItem="rFG-NH-OQT" secondAttribute="leading" constant="10" id="BUw-iz-PXY"/>
                                             <constraint firstItem="yxb-5u-SJN" firstAttribute="top" secondItem="tf2-u1-dsT" secondAttribute="bottom" constant="10" id="Bd3-yO-DVc"/>
                                             <constraint firstAttribute="trailing" secondItem="tf2-u1-dsT" secondAttribute="trailing" constant="5" id="CE9-RW-MWp"/>
+                                            <constraint firstItem="eUj-18-Q2z" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yxb-5u-SJN" secondAttribute="bottom" constant="10" id="CPc-Wu-vwb"/>
                                             <constraint firstItem="tf2-u1-dsT" firstAttribute="top" secondItem="rFG-NH-OQT" secondAttribute="top" constant="75" id="Ke5-dX-NYA"/>
                                             <constraint firstAttribute="width" constant="600" id="MFw-MA-pmp"/>
                                             <constraint firstAttribute="height" constant="600" id="bbw-KV-a8y"/>
+                                            <constraint firstAttribute="trailing" secondItem="eUj-18-Q2z" secondAttribute="trailing" constant="10" id="ce9-qk-gX0"/>
                                             <constraint firstItem="yxb-5u-SJN" firstAttribute="leading" secondItem="rFG-NH-OQT" secondAttribute="leading" constant="5" id="fva-8o-aP3"/>
+                                            <constraint firstItem="KRJ-vg-MnO" firstAttribute="top" secondItem="yxb-5u-SJN" secondAttribute="bottom" constant="30" id="l4J-21-CM4"/>
                                             <constraint firstItem="tf2-u1-dsT" firstAttribute="leading" secondItem="rFG-NH-OQT" secondAttribute="leading" constant="5" id="lUS-Dy-z7x"/>
+                                            <constraint firstAttribute="trailing" secondItem="KRJ-vg-MnO" secondAttribute="trailing" constant="10" id="uf8-ba-PTY"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -193,7 +212,11 @@
                         <outlet property="closeButton" destination="pMT-Le-Rtu" id="pa9-TU-xo9"/>
                         <outlet property="containerHeight" destination="bbw-KV-a8y" id="4Jh-rC-XB4"/>
                         <outlet property="containerWidth" destination="MFw-MA-pmp" id="wFU-Nk-ppz"/>
+                        <outlet property="locationLabel" destination="eUj-18-Q2z" id="0DR-hB-eps"/>
                         <outlet property="longDescriptionTextView" destination="yxb-5u-SJN" id="Jxg-n2-JUQ"/>
+                        <outlet property="mapHeight" destination="F1a-kZ-Rgt" id="b9d-cB-eBD"/>
+                        <outlet property="mapView" destination="KRJ-vg-MnO" id="oLY-dY-IWr"/>
+                        <outlet property="mapViewTopSpace" destination="l4J-21-CM4" id="DUu-Dd-WYv"/>
                         <outlet property="navigationBar" destination="xIU-CI-MZm" id="lKu-RS-EuX"/>
                         <outlet property="navigationBarHeight" destination="jA7-1h-Ub1" id="wrR-dB-1Ai"/>
                         <outlet property="titleTextView" destination="tf2-u1-dsT" id="KjO-i6-KH8"/>
