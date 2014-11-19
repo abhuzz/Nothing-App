@@ -20,6 +20,13 @@ class DetailModelView {
     }
     
     var longDescription : String {
-        return self.task.longDescription ?? ""
+        return self.task.longDescription ?? "No description"
+    }
+    
+    var isDescription : Bool {
+        if let value = self.task.longDescription {
+            return countElements(value) > 0
+        }
+        return false
     }
 }

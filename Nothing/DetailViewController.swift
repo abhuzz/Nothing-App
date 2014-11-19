@@ -24,15 +24,15 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBarHeight.constant = 64.0;
-        self.containerWidth.constant = self.view.bounds.width
-        self.containerHeight.constant = self.view.bounds.height
         self.configureViews()
         self.update()
-        println(self.navigationBar)
     }
     
     func configureViews() {
+        self.view.backgroundColor = UIColor.appWhite250()
+        self.navigationBarHeight.constant = 64.0;
+        self.containerWidth.constant = self.view.bounds.width
+        self.containerHeight.constant = self.view.bounds.height
         self.titleTextView.textContainerInset = UIEdgeInsetsZero
         self.longDescriptionTextView.textContainerInset = UIEdgeInsetsZero
     }
@@ -41,6 +41,9 @@ class DetailViewController: UIViewController {
         let model = DetailModelView(self.task)
         
         self.titleTextView.text = model.title
+        
+        self.longDescriptionTextView.text = model.longDescription
+        self.longDescriptionTextView.textColor = model.isDescription ? UIColor.appBlack() : UIColor.appWhite216()
         
         self.view.updateConstraintsIfNeeded()
     }
