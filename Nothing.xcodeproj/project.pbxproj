@@ -12,7 +12,6 @@
 		124ADC991A19467600750816 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124ADC981A19467600750816 /* DetailViewController.swift */; };
 		124ADC9B1A19493C00750816 /* DetailModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124ADC9A1A19493C00750816 /* DetailModelView.swift */; };
 		125593EC19FEE10A001EC477 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593EB19FEE10A001EC477 /* UIColor_Extension.swift */; };
-		126C98B91A1D035000DC40D2 /* UIImage_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126C98B81A1D035000DC40D2 /* UIImage_Extension.swift */; };
 		1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5D919FED4E700A7828C /* AppDelegate.swift */; };
 		1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5DB19FED4E700A7828C /* InboxViewController.swift */; };
 		1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1279B5DD19FED4E700A7828C /* Main.storyboard */; };
@@ -59,7 +58,6 @@
 		124ADC981A19467600750816 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		124ADC9A1A19493C00750816 /* DetailModelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailModelView.swift; sourceTree = "<group>"; };
 		125593EB19FEE10A001EC477 /* UIColor_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
-		126C98B81A1D035000DC40D2 /* UIImage_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage_Extension.swift; sourceTree = "<group>"; };
 		1279B5D419FED4E700A7828C /* Nothing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nothing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1279B5D819FED4E700A7828C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1279B5D919FED4E700A7828C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 				12CEF17E1A083832004DE156 /* UIView_Extension.swift */,
 				1279B5FD19FED64D00A7828C /* NSManagedObject_Extension.swift */,
 				12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */,
-				126C98B81A1D035000DC40D2 /* UIImage_Extension.swift */,
 				125593ED19FEE133001EC477 /* Resources */,
 				1279B5D719FED4E700A7828C /* Supporting Files */,
 				12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */,
@@ -366,7 +363,6 @@
 				1279B61119FED64D00A7828C /* Task.swift in Sources */,
 				12CC22271A12207300DF8EE0 /* InboxCellViewModel.swift in Sources */,
 				1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */,
-				126C98B91A1D035000DC40D2 /* UIImage_Extension.swift in Sources */,
 				1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */,
 				123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */,
 				124ADC991A19467600750816 /* DetailViewController.swift in Sources */,

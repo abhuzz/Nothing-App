@@ -106,7 +106,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxb-5u-SJN" userLabel="Title View">
-                                                <rect key="frame" x="5" y="175" width="590" height="57"/>
+                                                <rect key="frame" x="5" y="174" width="590" height="57"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore maa.</string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -151,7 +151,7 @@
                                         <rect key="frame" x="0.0" y="21" width="600" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMT-Le-Rtu" userLabel="close button">
-                                                <rect key="frame" x="10" y="9" width="28" height="27"/>
+                                                <rect key="frame" x="10" y="10" width="25" height="25"/>
                                                 <state key="normal" backgroundImage="close-modal">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -266,7 +266,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="close-modal" width="28" height="27"/>
+        <image name="close-modal" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Jak-oe-LP5"/>

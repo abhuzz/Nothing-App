@@ -33,8 +33,6 @@ class DetailViewController: UIViewController {
     }
     
     func configureViews() {
-        self.closeButton .setBackgroundImage(self.closeButton.backgroundImageForState(UIControlState.Normal)?.maskWithColor(UIColor.appBlueColor()), forState: UIControlState.Normal)
-
         self.titleTextView.textContainerInset = UIEdgeInsetsZero
         self.longDescriptionTextView.textContainerInset = UIEdgeInsetsZero
     }
