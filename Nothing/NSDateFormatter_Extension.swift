@@ -19,8 +19,8 @@ extension NSDateFormatter {
     
     class func NTHStringFromDate(date: NSDate) -> String {
         var instance = NSDateFormatter.NTHSharedInstance
-        if instance.dateFormat != "" {
-            instance.dateFormat = "dd MMM yyyy hh:mm"
+        if instance.dateFormat == "" {
+            instance.dateFormat = "dd/MM/yy hh:mm"
         }
         
         return instance.stringFromDate(date)

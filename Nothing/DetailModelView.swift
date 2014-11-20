@@ -41,10 +41,26 @@ class DetailModelView {
                 distanceString = "\(reminder.distance) m"
             }
             
-            return arriveOrLeaveString + "(" + distanceString + ")" + ":" + reminder.place.customName
+            return arriveOrLeaveString + " (" + distanceString + ") " + "- " + reminder.place.customName
         }
         
+        return ""
+    }
+    
+    var noLocationReminderDescription : String {
         return "Location is not set"
+    }
+    
+    var dateReminderDescription : String {
+        if let reminder = self.task.dateReminder {
+            return NSDateFormatter.NTHStringFromDate(reminder.fireDate)
+        }
+        
+        return ""
+    }
+    
+    var noDateReminderDescription : String {
+        return "Date is not set"
     }
     
     var isDateReminder : Bool {
