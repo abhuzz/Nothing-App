@@ -11,7 +11,9 @@ import MapKit
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var task: Task!
-
+    var delegate: DetailViewControllerDelegate?
+    private var model: DetailModelView?
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -94,8 +96,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func update() {
         let model = DetailModelView(self.task)
         self.titleCell.textView.text = model.title
-        self.longDescriptionCell.textView.text = model.longDescription
-        self.longDescriptionCell.textView.textColor = model.isDescription ? UIColor.appBlack() : UIColor.appWhite186()
+        
+        if model.isDescription {
+            self.longDescriptionCell.textView.textColor = UIColor.appBlack()
+            self.longDescriptionCell.textView.attributedText = model.longDescription(self.longDescriptionCell.textView.font)
+        } else {
+            self.longDescriptionCell.textView.text = model.noLongDescription
+            self.longDescriptionCell.textView.textColor = UIColor.appWhite186()
+        }
         
         if !model.isLocationReminder {
             self.locationReminderDescriptionCell.textView.text = model.noLocationReminderDescription
@@ -118,6 +126,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         self.tableView.beginUpdates()
         self.tableView.endUpdates()
+        
+        self.model = model
     }
     
     private func updateChangeStateButton() {
@@ -133,6 +143,28 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.updateChangeStateButton()
     }
     
+    @IBAction func handleTapGesture(sender: UITapGestureRecognizer) {
+        var touchPoint = sender.locationInView(self.longDescriptionCell.textView)
+        touchPoint.y -= self.longDescriptionCell.textView.textContainerInset.top
+        touchPoint.x -= self.longDescriptionCell.textView.textContainerInset.left
+        
+        var string: String? = nil
+        
+        var index = self.longDescriptionCell.textView.layoutManager.characterIndexForPoint(touchPoint, inTextContainer: self.longDescriptionCell.textView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        
+        if index < self.longDescriptionCell.textView.textStorage.length {
+            for (text, range) in self.model!.hashtags {
+                if NSLocationInRange(index, range) {
+                    string = text
+                    break
+                }
+            }
+        }
+
+        if string != nil {
+            self.delegate?.viewControllerDidSelectHashtag(self, hashtag: string!)
+        }
+    }
     
     /// Mark: UITableViewDataSource
     private var cells: [UITableViewCell] {
@@ -173,4 +205,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         return 50.0
     }
+}
+
+protocol DetailViewControllerDelegate {
+    func viewControllerDidSelectHashtag(viewController: DetailViewController, hashtag: String)
 }

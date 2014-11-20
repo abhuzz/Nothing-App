@@ -11,7 +11,6 @@ import UIKit
 
 class InboxCellViewModel {
     let task: Task
-    var hashtags = Array<HashtagDetector.Result>()
 
     init(_ task: Task) {
         self.task = task

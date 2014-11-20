@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, InboxCellDelegate {
+class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, InboxCellDelegate, DetailViewControllerDelegate {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var quickInsertView: QuickInsertView!
@@ -128,6 +128,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else if segue.identifier! == Identifiers.TaskDetailSegue.rawValue {
             let vc = segue.destinationViewController as DetailViewController
             vc.task = sender as Task
+            vc.delegate = self
         }
     }
 
@@ -184,6 +185,13 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             task.changeState();
             cell.update(InboxCellViewModel(task))
         }
+    }
+    
+    /// Mark: DetailViewControllerDelegate
+    func viewControllerDidSelectHashtag(viewController: DetailViewController, hashtag: String) {
+        viewController.dismissViewControllerAnimated(true, completion: { () -> Void in
+            self.performSegueWithIdentifier(Identifiers.SearchSegue.rawValue, sender: hashtag)
+        })
     }
 }
 
