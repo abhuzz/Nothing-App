@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class InboxCellVM {
+class InboxCellViewModel {
     let task: Task
     var hashtags = Array<HashtagDetector.Result>()
 

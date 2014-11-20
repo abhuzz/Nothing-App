@@ -110,7 +110,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.InboxCell.rawValue, forIndexPath: indexPath) as InboxCell
         
-        let inboxViewModel = InboxCellVM(task)
+        let inboxViewModel = InboxCellViewModel(task)
         cell.update(inboxViewModel)
         
         return cell
@@ -125,7 +125,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tmpCell.frame.size.width = tableView.bounds.width
         }
         
-        tmpCell.update(InboxCellVM(task))
+        tmpCell.update(InboxCellViewModel(task))
         return tmpCell.estimatedHeight
     }
 

@@ -74,7 +74,7 @@ class InboxCell: UITableViewCell, UIGestureRecognizerDelegate {
         self.setSelected(false, animated: true)
     }
     
-    func update(model: InboxCellVM) {        
+    func update(model: InboxCellViewModel) {
         self.titleLabel.text = model.title()
         self.longDescriptionLabel.text = model.longDescription()
         self.datePlaceLabel.text = model.dateAndPlace()

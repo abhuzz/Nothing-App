@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let (_, p2Key) = ThumbnailCache.sharedInstance.write(UIImagePNGRepresentation(p2Image))
         
         let c1 = self.contact("Tomasz Szulc", email: "mail@szulctomasz.com", thumbnailKey: c1Key)
-        let p1 = self.place(CLLocationCoordinate2DMake(0, 0), title: "Home", thumbnailKey: p1Key)
+        let p1 = self.place(CLLocationCoordinate2DMake(53.445152, 14.557538), title: "Home", thumbnailKey: p1Key)
         let p2 = self.place(CLLocationCoordinate2DMake(10, 10), title: "Office", thumbnailKey: p2Key)
         let p3 = self.place(CLLocationCoordinate2DMake(20, 20), title: "Grocery shop", thumbnailKey: nil)
 

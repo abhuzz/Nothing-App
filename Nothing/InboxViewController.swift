@@ -18,6 +18,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     enum Identifiers: String {
         case InboxCell = "InboxCell"
         case SearchSegue = "Search"
+        case TaskDetailSegue = "TaskDetail"
     }
     
     private var tasks = [Task]()
@@ -124,6 +125,9 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             vc.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
             self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        } else if segue.identifier! == Identifiers.TaskDetailSegue.rawValue {
+            let vc = segue.destinationViewController as DetailViewController
+            vc.task = sender as Task
         }
     }
 
@@ -140,7 +144,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let task = self.tasks[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.InboxCell.rawValue, forIndexPath: indexPath) as InboxCell
-        let inboxViewModel = InboxCellVM(task)
+        let inboxViewModel = InboxCellViewModel(task)
         cell.update(inboxViewModel)
         cell.delegate = self
 
@@ -156,12 +160,17 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             tmpCell.frame.size.width = tableView.bounds.width
         }
         
-        tmpCell.update(InboxCellVM(task))
+        tmpCell.update(InboxCellViewModel(task))
         return tmpCell.estimatedHeight
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         (cell as InboxCell).update(indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250())
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.performSegueWithIdentifier(Identifiers.TaskDetailSegue.rawValue, sender: self.tasks[indexPath.row])
     }
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
@@ -173,7 +182,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if let indexPath = self.tableView.indexPathForCell(cell) {
             let task = self.tasks[indexPath.row]
             task.changeState();
-            cell.update(InboxCellVM(task))
+            cell.update(InboxCellViewModel(task))
         }
     }
 }
