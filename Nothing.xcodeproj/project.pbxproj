@@ -30,6 +30,8 @@
 		1279B61119FED64D00A7828C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60619FED64D00A7828C /* Task.swift */; };
 		1279B61219FED64D00A7828C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60719FED64D00A7828C /* FileManager.swift */; };
 		1279B61519FEDBD200A7828C /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B61419FEDBD200A7828C /* FileCache.swift */; };
+		128B298A1A1EA842005C93DF /* SeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128B29891A1EA842005C93DF /* SeparatorCell.xib */; };
+		128B298C1A1EA862005C93DF /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128B298B1A1EA862005C93DF /* SeparatorCell.swift */; };
 		129369BE1A06B09F00724127 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129369BD1A06B09F00724127 /* SearchViewController.swift */; };
 		129A555A1A1E69F100ED249D /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 129A55591A1E69F100ED249D /* TextViewCell.xib */; };
 		129A555C1A1E6A0800ED249D /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129A555B1A1E6A0800ED249D /* TextViewCell.swift */; };
@@ -84,6 +86,8 @@
 		1279B60619FED64D00A7828C /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		1279B60719FED64D00A7828C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1279B61419FEDBD200A7828C /* FileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
+		128B29891A1EA842005C93DF /* SeparatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorCell.xib; sourceTree = "<group>"; };
+		128B298B1A1EA862005C93DF /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
 		129369BD1A06B09F00724127 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		129A55591A1E69F100ED249D /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
 		129A555B1A1E6A0800ED249D /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 				129A555D1A1E825500ED249D /* MapCell.swift */,
 				129A55591A1E69F100ED249D /* TextViewCell.xib */,
 				129A555B1A1E6A0800ED249D /* TextViewCell.swift */,
+				128B29891A1EA842005C93DF /* SeparatorCell.xib */,
+				128B298B1A1EA862005C93DF /* SeparatorCell.swift */,
 			);
 			name = Details;
 			sourceTree = "<group>";
@@ -353,6 +359,7 @@
 				12FE32611A10D76900FAB243 /* QuickInsertView.xib in Resources */,
 				1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */,
 				1279B5E419FED4E700A7828C /* LaunchScreen.xib in Resources */,
+				128B298A1A1EA842005C93DF /* SeparatorCell.xib in Resources */,
 				12CC22251A1210DD00DF8EE0 /* InboxCell.xib in Resources */,
 				1279B5E119FED4E700A7828C /* Images.xcassets in Resources */,
 				129A55601A1E826A00ED249D /* MapCell.xib in Resources */,
@@ -389,6 +396,7 @@
 				123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */,
 				129A555C1A1E6A0800ED249D /* TextViewCell.swift in Sources */,
 				124ADC991A19467600750816 /* DetailViewController.swift in Sources */,
+				128B298C1A1EA862005C93DF /* SeparatorCell.swift in Sources */,
 				1279B60A19FED64D00A7828C /* NSManagedObject_Extension.swift in Sources */,
 				12CC22231A1210A800DF8EE0 /* InboxCell.swift in Sources */,
 				129A555E1A1E825500ED249D /* MapCell.swift in Sources */,

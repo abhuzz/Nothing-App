@@ -73,6 +73,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         return _dateReminderDescriptionCell!
     }
+    
+    private func separatorCell() -> SeparatorCell {
+        return (self.tableView.dequeueReusableCellWithIdentifier("SeparatorCell") as SeparatorCell)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +88,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let mapCellNib = UINib(nibName: "MapCell", bundle: nil)
         self.tableView.registerNib(mapCellNib, forCellReuseIdentifier: "MapCell")
+        
+        let separatorCellNib = UINib(nibName: "SeparatorCell", bundle: nil)
+        self.tableView.registerNib(separatorCellNib, forCellReuseIdentifier: "SeparatorCell")
         
         self.tableView.tableFooterView = UIView()
         self.tableView.contentInset = UIEdgeInsets(top: self.navigationBarHeight.constant, left: 0, bottom: 0, right: 0)
@@ -167,40 +174,48 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     /// Mark: UITableViewDataSource
-    private var cells: [UITableViewCell] {
-        var cells = [UITableViewCell]()
-        cells.append(self.titleCell)
-        cells.append(self.longDescriptionCell)
+    private var sections: [[UITableViewCell]] {
+        var sections = [[UITableViewCell]]()
+        
+        /// section 1
+        sections.append([self.separatorCell(), self.titleCell])
+        
+        /// section 2
+        sections.append([self.separatorCell(), self.longDescriptionCell])
+        
+        /// section 3
         if self.task.locationReminder != nil {
-            cells.append(self.locationCell)
-            cells.append(self.locationReminderDescriptionCell)
+            sections.append([self.separatorCell(), self.locationCell, self.locationReminderDescriptionCell])
         } else {
-            cells.append(self.locationReminderDescriptionCell)
+            sections.append([self.separatorCell(), self.locationReminderDescriptionCell])
         }
         
-        cells.append(self.dateReminderDescriptionCell)
+        /// section 4
+        sections.append([self.separatorCell(), self.dateReminderDescriptionCell])
         
-        return cells
+        return sections
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.cells.count
+        return self.sections.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.sections[section].count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return self.cells[indexPath.section]
+        return self.sections[indexPath.section][indexPath.row]
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let cell = self.cells[indexPath.section]
+        let cell = self.sections[indexPath.section][indexPath.row]
         if (cell is TextViewCell) {
             return (cell as TextViewCell).textView.proposedHeight
         } else if (cell is MapCell) {
             return 150.0
+        } else if (cell is SeparatorCell) {
+            return 20.0
         }
         
         return 50.0
