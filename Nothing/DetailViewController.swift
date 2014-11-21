@@ -20,84 +20,72 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var navigationBarHeight: NSLayoutConstraint!
     @IBOutlet weak var changeStateButton: UIButton!
     
+    private enum CellIdentifier: String {
+        case TextViewCell = "TextViewCell"
+        case MapCell = "MapCell"
+        case SeparatorCell = "SeparatorCell"
+    }
+    
     /// cells
-    private var _titleCell: TextViewCell?
-    private var titleCell: TextViewCell {
-        if _titleCell == nil {
-            _titleCell = self.tableView.dequeueReusableCellWithIdentifier("TextViewCell") as? TextViewCell
-            _titleCell!.textView.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
-            _titleCell!.textView.textContainerInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
-        }
-        
-        return _titleCell!
-    }
+    lazy private var titleCell: TextViewCell = {
+        let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier.TextViewCell.rawValue) as TextViewCell
+        cell.textView.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
+        cell.textView.textContainerInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
+        return cell
+    }()
     
-    private var _longDescriptionCell: TextViewCell?
-    private var longDescriptionCell: TextViewCell {
-        if _longDescriptionCell == nil {
-            _longDescriptionCell = self.tableView.dequeueReusableCellWithIdentifier("TextViewCell") as? TextViewCell
-            _longDescriptionCell!.textView.font = UIFont(name: "HelveticaNeue-Thin", size: 17.0)
-            _longDescriptionCell!.textView.textContainerInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
-        }
-        
-        return _longDescriptionCell!
-    }
+    lazy private var longDescriptionCell: TextViewCell = {
+        let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier.TextViewCell.rawValue) as TextViewCell
+        cell.textView.font = UIFont(name: "HelveticaNeue-Thin", size: 17.0)
+        cell.textView.textContainerInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
+        return cell
+    }()
     
-    private var _locationReminderDescriptionCell: TextViewCell?
-    private var locationReminderDescriptionCell: TextViewCell {
-        if _locationReminderDescriptionCell == nil {
-            _locationReminderDescriptionCell = self.tableView.dequeueReusableCellWithIdentifier("TextViewCell") as? TextViewCell
-            _locationReminderDescriptionCell!.textView.font = UIFont(name: "HelveticaNeue-Thin", size: 17.0)
-            _locationReminderDescriptionCell!.textView.textContainerInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
-        }
-        
-        return _locationReminderDescriptionCell!
-    }
+    lazy private var locationReminderDescriptionCell: TextViewCell = {
+        let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier.TextViewCell.rawValue) as TextViewCell
+        cell.textView.font = UIFont(name: "HelveticaNeue-Thin", size: 17.0)
+        cell.textView.textContainerInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
+        return cell
+    }()
     
-    private var _locationCell: MapCell?
-    private var locationCell: MapCell {
-        if _locationCell == nil {
-            _locationCell = self.tableView.dequeueReusableCellWithIdentifier("MapCell") as? MapCell
-        }
-        
-        return _locationCell!
-    }
+    lazy private var locationCell: MapCell = {
+        return self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier.MapCell.rawValue) as MapCell
+    }()
     
-    private var _dateReminderDescriptionCell: TextViewCell?
-    private var dateReminderDescriptionCell: TextViewCell {
-        if _dateReminderDescriptionCell == nil {
-            _dateReminderDescriptionCell = self.tableView.dequeueReusableCellWithIdentifier("TextViewCell") as? TextViewCell
-            _dateReminderDescriptionCell!.textView.font = UIFont(name: "HelveticaNeue-Thin", size: 17.0)
-            _dateReminderDescriptionCell!.textView.textContainerInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
-        }
-        
-        return _dateReminderDescriptionCell!
-    }
+    lazy private var dateReminderDescriptionCell: TextViewCell = {
+        let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier.TextViewCell.rawValue) as TextViewCell
+        cell.textView.font = UIFont(name: "HelveticaNeue-Thin", size: 17.0)
+        cell.textView.textContainerInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
+        return cell
+    }()
     
-    private func separatorCell() -> SeparatorCell {
-        return (self.tableView.dequeueReusableCellWithIdentifier("SeparatorCell") as SeparatorCell)
+    private func createSeparatorCell() -> SeparatorCell {
+        return (self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier.SeparatorCell.rawValue) as SeparatorCell)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.backgroundColor = UIColor.appWhite250()
         self.navigationBarHeight.constant = 64.0;
+        self.configureTableView()
+        self.update()
+    }
+    
+    private func configureTableView() {
+        self.tableView.backgroundColor = UIColor.appWhite250()
 
-        let textViewCellNib = UINib(nibName: "TextViewCell", bundle: nil)
-        self.tableView.registerNib(textViewCellNib, forCellReuseIdentifier: "TextViewCell")
+        let textViewCellNib = UINib(nibName: CellIdentifier.TextViewCell.rawValue, bundle: nil)
+        self.tableView.registerNib(textViewCellNib, forCellReuseIdentifier: CellIdentifier.TextViewCell.rawValue)
         
-        let mapCellNib = UINib(nibName: "MapCell", bundle: nil)
-        self.tableView.registerNib(mapCellNib, forCellReuseIdentifier: "MapCell")
+        let mapCellNib = UINib(nibName: CellIdentifier.MapCell.rawValue, bundle: nil)
+        self.tableView.registerNib(mapCellNib, forCellReuseIdentifier: CellIdentifier.MapCell.rawValue)
         
-        let separatorCellNib = UINib(nibName: "SeparatorCell", bundle: nil)
-        self.tableView.registerNib(separatorCellNib, forCellReuseIdentifier: "SeparatorCell")
+        let separatorCellNib = UINib(nibName: CellIdentifier.SeparatorCell.rawValue, bundle: nil)
+        self.tableView.registerNib(separatorCellNib, forCellReuseIdentifier: CellIdentifier.SeparatorCell.rawValue)
         
         self.tableView.tableFooterView = UIView()
         self.tableView.contentInset = UIEdgeInsets(top: self.navigationBarHeight.constant, left: 0, bottom: 0, right: 0)
         self.tableView.layoutMargins = UIEdgeInsetsZero
         self.tableView.separatorInset = UIEdgeInsetsZero
-        
-        self.update()
     }
     
     func update() {
@@ -155,20 +143,20 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var sections = [[UITableViewCell]]()
         
         /// section 1
-        sections.append([self.separatorCell(), self.titleCell])
+        sections.append([self.createSeparatorCell(), self.titleCell])
         
         /// section 2
-        sections.append([self.separatorCell(), self.longDescriptionCell])
+        sections.append([self.createSeparatorCell(), self.longDescriptionCell])
         
         /// section 3
         if self.task.locationReminder != nil {
-            sections.append([self.separatorCell(), self.locationCell, self.locationReminderDescriptionCell])
+            sections.append([self.createSeparatorCell(), self.locationCell, self.locationReminderDescriptionCell])
         } else {
-            sections.append([self.separatorCell(), self.locationReminderDescriptionCell])
+            sections.append([self.createSeparatorCell(), self.locationReminderDescriptionCell])
         }
         
         /// section 4
-        sections.append([self.separatorCell(), self.dateReminderDescriptionCell])
+        sections.append([self.createSeparatorCell(), self.dateReminderDescriptionCell])
         
         return sections
     }
