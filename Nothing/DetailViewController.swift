@@ -106,7 +106,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if model.isDescription {
             self.longDescriptionCell.textView.textColor = UIColor.appBlack()
-            self.longDescriptionCell.textView.attributedText = model.longDescription(self.longDescriptionCell.textView.font)
+            self.longDescriptionCell.textView.text = model.longDescription
         } else {
             self.longDescriptionCell.textView.text = model.noLongDescription
             self.longDescriptionCell.textView.textColor = UIColor.appWhite186()
@@ -148,29 +148,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func changeStatePressed(sender: AnyObject) {
         self.task.changeState()
         self.updateChangeStateButton()
-    }
-    
-    @IBAction func handleTapGesture(sender: UITapGestureRecognizer) {
-        var touchPoint = sender.locationInView(self.longDescriptionCell.textView)
-        touchPoint.y -= self.longDescriptionCell.textView.textContainerInset.top
-        touchPoint.x -= self.longDescriptionCell.textView.textContainerInset.left
-        
-        var string: String? = nil
-        
-        var index = self.longDescriptionCell.textView.layoutManager.characterIndexForPoint(touchPoint, inTextContainer: self.longDescriptionCell.textView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
-        
-        if index < self.longDescriptionCell.textView.textStorage.length {
-            for (text, range) in self.model!.hashtags {
-                if NSLocationInRange(index, range) {
-                    string = text
-                    break
-                }
-            }
-        }
-
-        if string != nil {
-            self.delegate?.viewControllerDidSelectHashtag(self, hashtag: string!)
-        }
     }
     
     /// Mark: UITableViewDataSource

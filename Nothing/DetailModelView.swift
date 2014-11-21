@@ -27,23 +27,7 @@ class DetailModelView {
     var noLongDescription : String {
         return "No description"
     }
-    
-    var hashtags = Array<HashtagDetector.Result>()
-    func longDescription(font: UIFont) -> NSAttributedString {
-        let desc = self.task.longDescription ?? ""
-        
-        var attributedText = NSMutableAttributedString(string: desc, attributes: [NSFontAttributeName: font])
-        let hashtagAttributes = [NSForegroundColorAttributeName: UIColor.appBlueColor(), NSFontAttributeName: font]
-        
-        self.hashtags = HashtagDetector(desc).detect() as [HashtagDetector.Result]!
-        for (text, range) in self.hashtags {
-            attributedText.addAttributes(hashtagAttributes, range: range)
-        }
-        
-        return attributedText
-    }
 
-    
     var isDescription : Bool {
         if let value = self.task.longDescription {
             return countElements(value) > 0

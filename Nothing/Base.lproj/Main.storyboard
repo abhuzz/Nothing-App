@@ -99,7 +99,6 @@
                                 <connections>
                                     <outlet property="dataSource" destination="alM-ag-qSo" id="AxC-mt-65n"/>
                                     <outlet property="delegate" destination="alM-ag-qSo" id="6Ps-f9-9No"/>
-                                    <outletCollection property="gestureRecognizers" destination="wEk-lX-XdM" appends="YES" id="caj-Xe-T8R"/>
                                 </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIU-CI-MZm">
@@ -187,11 +186,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H93-5r-PcN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="wEk-lX-XdM">
-                    <connections>
-                        <action selector="handleTapGesture:" destination="alM-ag-qSo" id="myX-wW-zvJ"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="wEk-lX-XdM"/>
             </objects>
             <point key="canvasLocation" x="2477" y="1186"/>
         </scene>
