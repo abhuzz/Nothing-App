@@ -44,6 +44,8 @@
 		12CC222B1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */; };
 		12CEF17F1A083832004DE156 /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEF17E1A083832004DE156 /* UIView_Extension.swift */; };
 		12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215991A03A9840038AD45 /* ThumbnailCache.swift */; };
+		12EDE7871A1FBD1E0020D549 /* CreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */; };
+		12EDE7891A1FBDC20020D549 /* NTHTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */; };
 		12FE325F1A10D75F00FAB243 /* QuickInsertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */; };
 		12FE32611A10D76900FAB243 /* QuickInsertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12FE32601A10D76900FAB243 /* QuickInsertView.xib */; };
 /* End PBXBuildFile section */
@@ -100,6 +102,8 @@
 		12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateFormatter_Extension.swift; sourceTree = "<group>"; };
 		12CEF17E1A083832004DE156 /* UIView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
 		12E215991A03A9840038AD45 /* ThumbnailCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCache.swift; sourceTree = "<group>"; };
+		12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditViewController.swift; sourceTree = "<group>"; };
+		12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTableViewController.swift; sourceTree = "<group>"; };
 		12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickInsertView.swift; sourceTree = "<group>"; };
 		12FE32601A10D76900FAB243 /* QuickInsertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuickInsertView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,7 +161,7 @@
 				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
 				12CC22211A12109400DF8EE0 /* Inbox */,
 				129369BD1A06B09F00724127 /* SearchViewController.swift */,
-				128B29881A1E96AD005C93DF /* Details */,
+				128B298D1A1FB060005C93DF /* Create / Edit / Browse */,
 				1279B5F919FED64D00A7828C /* Core Data */,
 				1279B61319FED65300A7828C /* Cache */,
 				123B6E2119FF86C4008E22DB /* HashtagDetector.swift */,
@@ -255,6 +259,16 @@
 				128B298B1A1EA862005C93DF /* SeparatorCell.swift */,
 			);
 			name = Details;
+			sourceTree = "<group>";
+		};
+		128B298D1A1FB060005C93DF /* Create / Edit / Browse */ = {
+			isa = PBXGroup;
+			children = (
+				12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */,
+				12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */,
+				128B29881A1E96AD005C93DF /* Details */,
+			);
+			name = "Create / Edit / Browse";
 			sourceTree = "<group>";
 		};
 		12CC22211A12109400DF8EE0 /* Inbox */ = {
@@ -389,11 +403,13 @@
 				1279B61519FEDBD200A7828C /* FileCache.swift in Sources */,
 				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
 				1279B60B19FED64D00A7828C /* Connection.swift in Sources */,
+				12EDE7891A1FBDC20020D549 /* NTHTableViewController.swift in Sources */,
 				1279B61119FED64D00A7828C /* Task.swift in Sources */,
 				12CC22271A12207300DF8EE0 /* InboxCellViewModel.swift in Sources */,
 				1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */,
 				1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */,
 				123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */,
+				12EDE7871A1FBD1E0020D549 /* CreateEditViewController.swift in Sources */,
 				129A555C1A1E6A0800ED249D /* TextViewCell.swift in Sources */,
 				124ADC991A19467600750816 /* DetailViewController.swift in Sources */,
 				128B298C1A1EA862005C93DF /* SeparatorCell.swift in Sources */,

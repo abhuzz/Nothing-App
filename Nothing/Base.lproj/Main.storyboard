@@ -125,7 +125,7 @@
                                                     <constraint firstAttribute="height" constant="44" id="TzU-DH-5OB"/>
                                                     <constraint firstAttribute="width" constant="44" id="e0R-o3-XAy"/>
                                                 </constraints>
-                                                <state key="normal" image="close">
+                                                <state key="normal" image="back">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -253,7 +253,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="close" width="20" height="20"/>
+        <image name="back" width="16" height="25"/>
         <image name="mark-done" width="26" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>

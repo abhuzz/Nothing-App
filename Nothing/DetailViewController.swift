@@ -9,12 +9,11 @@
 import UIKit
 import MapKit
 
-class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DetailViewController: NTHTableViewController {
     var task: Task!
     var delegate: DetailViewControllerDelegate?
     private var model: DetailModelView?
     
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var navigationBarHeight: NSLayoutConstraint!
@@ -28,64 +27,30 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     /// cells
     lazy private var titleCell: TextViewCell = {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier.TextViewCell.rawValue) as TextViewCell
-        cell.textView.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
-        cell.textView.textContainerInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
-        return cell
+        return self.createTitleCell()
     }()
     
     lazy private var longDescriptionCell: TextViewCell = {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier.TextViewCell.rawValue) as TextViewCell
-        cell.textView.font = UIFont(name: "HelveticaNeue-Thin", size: 17.0)
-        cell.textView.textContainerInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
-        return cell
+        return self.createLongDescriptionCell()
     }()
     
     lazy private var locationReminderDescriptionCell: TextViewCell = {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier.TextViewCell.rawValue) as TextViewCell
-        cell.textView.font = UIFont(name: "HelveticaNeue-Thin", size: 17.0)
-        cell.textView.textContainerInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
-        return cell
+        return self.createLocationReminderDescriptionCell()
     }()
     
     lazy private var locationCell: MapCell = {
-        return self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier.MapCell.rawValue) as MapCell
+        return self.createLocationCell()
     }()
     
     lazy private var dateReminderDescriptionCell: TextViewCell = {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier.TextViewCell.rawValue) as TextViewCell
-        cell.textView.font = UIFont(name: "HelveticaNeue-Thin", size: 17.0)
-        cell.textView.textContainerInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
-        return cell
+        return self.createDateReminderDescriptionCell()
     }()
-    
-    private func createSeparatorCell() -> SeparatorCell {
-        return (self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier.SeparatorCell.rawValue) as SeparatorCell)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBarHeight.constant = 64.0;
-        self.configureTableView()
-        self.update()
-    }
-    
-    private func configureTableView() {
-        self.tableView.backgroundColor = UIColor.appWhite250()
-
-        let textViewCellNib = UINib(nibName: CellIdentifier.TextViewCell.rawValue, bundle: nil)
-        self.tableView.registerNib(textViewCellNib, forCellReuseIdentifier: CellIdentifier.TextViewCell.rawValue)
-        
-        let mapCellNib = UINib(nibName: CellIdentifier.MapCell.rawValue, bundle: nil)
-        self.tableView.registerNib(mapCellNib, forCellReuseIdentifier: CellIdentifier.MapCell.rawValue)
-        
-        let separatorCellNib = UINib(nibName: CellIdentifier.SeparatorCell.rawValue, bundle: nil)
-        self.tableView.registerNib(separatorCellNib, forCellReuseIdentifier: CellIdentifier.SeparatorCell.rawValue)
-        
-        self.tableView.tableFooterView = UIView()
         self.tableView.contentInset = UIEdgeInsets(top: self.navigationBarHeight.constant, left: 0, bottom: 0, right: 0)
-        self.tableView.layoutMargins = UIEdgeInsetsZero
-        self.tableView.separatorInset = UIEdgeInsetsZero
+        self.update()
     }
     
     func update() {
@@ -161,15 +126,15 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return sections
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.sections.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.sections[section].count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return self.sections[indexPath.section][indexPath.row]
     }
     
