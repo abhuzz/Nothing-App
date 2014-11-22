@@ -32,6 +32,10 @@ class CreateEditViewController: NTHTableViewController {
         self.tableView.endUpdates()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     @IBAction func closePressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -94,6 +98,12 @@ class CreateEditViewController: NTHTableViewController {
         if (segue.identifier == Segue.TextEditor.rawValue) {
             let vc = segue.destinationViewController as TextEditorViewController
             vc.text = sender as? String
+            vc.confirmBlock = { value in [self, vc]
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    self.titleCell.setText(value)
+                    self.tableView.reloadData()
+                })
+            }
         }
     }
 }
