@@ -46,6 +46,7 @@
 		12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215991A03A9840038AD45 /* ThumbnailCache.swift */; };
 		12EDE7871A1FBD1E0020D549 /* CreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */; };
 		12EDE7891A1FBDC20020D549 /* NTHTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */; };
+		12EDE78D1A1FC6770020D549 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE78C1A1FC6770020D549 /* TextEditorViewController.swift */; };
 		12FE325F1A10D75F00FAB243 /* QuickInsertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */; };
 		12FE32611A10D76900FAB243 /* QuickInsertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12FE32601A10D76900FAB243 /* QuickInsertView.xib */; };
 /* End PBXBuildFile section */
@@ -104,6 +105,7 @@
 		12E215991A03A9840038AD45 /* ThumbnailCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCache.swift; sourceTree = "<group>"; };
 		12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditViewController.swift; sourceTree = "<group>"; };
 		12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTableViewController.swift; sourceTree = "<group>"; };
+		12EDE78C1A1FC6770020D549 /* TextEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
 		12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickInsertView.swift; sourceTree = "<group>"; };
 		12FE32601A10D76900FAB243 /* QuickInsertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuickInsertView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +163,7 @@
 				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
 				12CC22211A12109400DF8EE0 /* Inbox */,
 				129369BD1A06B09F00724127 /* SearchViewController.swift */,
+				12EDE78B1A1FC65B0020D549 /* Dialogs */,
 				128B298D1A1FB060005C93DF /* Create / Edit / Browse */,
 				1279B5F919FED64D00A7828C /* Core Data */,
 				1279B61319FED65300A7828C /* Cache */,
@@ -265,7 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */,
-				12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */,
+				12EDE78A1A1FC2BB0020D549 /* Create */,
 				128B29881A1E96AD005C93DF /* Details */,
 			);
 			name = "Create / Edit / Browse";
@@ -287,6 +290,22 @@
 			children = (
 			);
 			name = External;
+			sourceTree = "<group>";
+		};
+		12EDE78A1A1FC2BB0020D549 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */,
+			);
+			name = Create;
+			sourceTree = "<group>";
+		};
+		12EDE78B1A1FC65B0020D549 /* Dialogs */ = {
+			isa = PBXGroup;
+			children = (
+				12EDE78C1A1FC6770020D549 /* TextEditorViewController.swift */,
+			);
+			name = Dialogs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,6 +422,7 @@
 				1279B61519FEDBD200A7828C /* FileCache.swift in Sources */,
 				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
 				1279B60B19FED64D00A7828C /* Connection.swift in Sources */,
+				12EDE78D1A1FC6770020D549 /* TextEditorViewController.swift in Sources */,
 				12EDE7891A1FBDC20020D549 /* NTHTableViewController.swift in Sources */,
 				1279B61119FED64D00A7828C /* Task.swift in Sources */,
 				12CC22271A12207300DF8EE0 /* InboxCellViewModel.swift in Sources */,

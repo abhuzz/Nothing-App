@@ -91,7 +91,7 @@ class DetailViewController: NTHTableViewController {
     }
     
     private func updateChangeStateButton() {
-        self.changeStateButton .setImage(UIImage(named: self.task.state == Task.State.Active ? "mark-undone" : "mark-done"), forState: UIControlState.Normal)
+        self.changeStateButton .setImage(UIImage(named: self.task.state == Task.State.Active ? "task-undone" : "task-done"), forState: UIControlState.Normal)
     }
     
     @IBAction func closePressed(sender: AnyObject) {
