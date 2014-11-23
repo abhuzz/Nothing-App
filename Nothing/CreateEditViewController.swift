@@ -96,7 +96,8 @@ class CreateEditViewController: NTHTableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == Segue.TextEditor.rawValue) {
-            let vc = segue.destinationViewController as TextEditorViewController
+            let navVC = segue.destinationViewController as UINavigationController
+            let vc = navVC.topViewController as TextEditorViewController
             vc.text = sender as? String
             vc.confirmBlock = { value in [self, vc]
                 self.dismissViewControllerAnimated(true, completion: { () -> Void in
