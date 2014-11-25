@@ -90,7 +90,7 @@ class CreateEditViewController: NTHTableViewController {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         if (cell == self.titleCell) {
-            self.performSegueWithIdentifier(Segue.TextEditor.rawValue, sender: self.titleCell.textView.text)
+            self.performSegueWithIdentifier(Segue.TextEditor.rawValue, sender: self.titleCell)
         }
     }
     
@@ -98,13 +98,19 @@ class CreateEditViewController: NTHTableViewController {
         if (segue.identifier == Segue.TextEditor.rawValue) {
             let navVC = segue.destinationViewController as UINavigationController
             let vc = navVC.topViewController as TextEditorViewController
-            vc.text = sender as? String
-            vc.confirmBlock = { value in [self, vc]
-                self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                    self.titleCell.setText(value)
-                    self.tableView.reloadData()
-                })
+            if (sender is TextViewCell) {
+                let cell = sender as TextViewCell
+                if (cell == self.titleCell) {
+                    vc.title = "Title"
+                    vc.text = self.titleCell.textView.text
+                    vc.confirmBlock = { value in [self, vc]
+                        self.titleCell.setText(value)
+                        self.tableView.reloadData()
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                }
             }
+            
         }
     }
 }

@@ -13,9 +13,6 @@ class TextEditorViewController: UIViewController {
     typealias ConfirmBlock = (value: String) -> Void
     
     @IBOutlet private weak var textView: UITextView!
-    @IBOutlet private weak var closeButton: UIButton!
-    @IBOutlet private weak var navigationBar: UINavigationBar!
-    @IBOutlet private weak var navigationBarHeight: NSLayoutConstraint!
     @IBOutlet private weak var bottomGuide: NSLayoutConstraint!
     
     var text: String?
@@ -23,17 +20,26 @@ class TextEditorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBarHeight.constant = 64.0;
+        self.configureNavigationBar()
         
-        self.textView.contentInset = UIEdgeInsets(top: self.navigationBarHeight.constant, left: 0, bottom: 0, right: 0)
+//        self.textView.contentInset = UIEdgeInsets(top: self.navigationController!.navigationBar.bounds.height, left: 0, bottom: 0, right: 0)
         self.textView.text = self.text
         
         self.observeKeyboard()
     }
     
+    private func configureNavigationBar() {
+        let backButton = UIBarButtonItem(image: UIImage(named: "back"), style: UIBarButtonItemStyle.Plain, target: self, action: "closePressed")
+        self.navigationController?.navigationBar.topItem?.setLeftBarButtonItem(backButton, animated: false)
+        
+        let saveButton = UIBarButtonItem(image: UIImage(named: "confirm-enabled"), style: UIBarButtonItemStyle.Plain, target: self, action: "onConfirmPressed")
+        self.navigationController?.navigationBar.topItem?.setRightBarButtonItem(saveButton, animated: false)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.textView.becomeFirstResponder()
+        self.navigationController?.navigationBar.topItem?.title = self.title
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -78,11 +84,11 @@ class TextEditorViewController: UIViewController {
     }
 
     
-    @IBAction func closePressed(sender: AnyObject) {
+    func closePressed() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func onConfirmPressed(sender: AnyObject) {
+    func onConfirmPressed() {
         self.confirmBlock?(value: self.textView.text)
     }
 }
