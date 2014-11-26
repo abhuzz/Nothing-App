@@ -75,7 +75,7 @@
                         <outlet property="tableView" destination="Ahl-qW-HvN" id="LGV-CQ-zmu"/>
                         <segue destination="CYv-FT-RG8" kind="presentation" identifier="Search" animates="NO" id="Uv3-Bj-ees"/>
                         <segue destination="alM-ag-qSo" kind="presentation" identifier="TaskDetail" id="Jak-oe-LP5"/>
-                        <segue destination="pbP-Tj-DlG" kind="presentation" identifier="CreateTask" id="599-EY-6qi"/>
+                        <segue destination="1ft-Da-uly" kind="presentation" identifier="CreateTask" id="599-EY-6qi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOv-Nc-IrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -272,86 +272,17 @@
                                     <outlet property="delegate" destination="pbP-Tj-DlG" id="66v-Km-dUo"/>
                                 </connections>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LnH-zP-CBF">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="9Z1-2D-km6"/>
-                                </constraints>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem id="uH4-lt-pKr"/>
-                                </items>
-                            </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zSf-0k-ag8" userLabel="Custom navigation">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfQ-73-8DR" userLabel="Navigation container">
-                                        <rect key="frame" x="0.0" y="21" width="600" height="44"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5e-2a-vM2" userLabel="close button">
-                                                <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="Grq-sZ-7Ed"/>
-                                                    <constraint firstAttribute="width" constant="44" id="MTM-WV-VUB"/>
-                                                </constraints>
-                                                <state key="normal" image="back">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="closePressed:" destination="pbP-Tj-DlG" eventType="touchUpInside" id="bYq-qL-IqE"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJO-SO-fJg" userLabel="close button">
-                                                <rect key="frame" x="556" y="0.0" width="44" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="44" id="U5u-iu-7bb"/>
-                                                </constraints>
-                                                <state key="normal" image="confirm-enabled">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="closePressed:" destination="pbP-Tj-DlG" eventType="touchUpInside" id="in9-XP-c8N"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="centerY" secondItem="X5e-2a-vM2" secondAttribute="centerY" id="8f0-Ge-rzu"/>
-                                            <constraint firstAttribute="bottom" secondItem="MJO-SO-fJg" secondAttribute="bottom" id="KYy-nf-nTk"/>
-                                            <constraint firstAttribute="trailing" secondItem="MJO-SO-fJg" secondAttribute="trailing" id="N2n-5X-1dU"/>
-                                            <constraint firstAttribute="height" constant="44" id="Zet-2o-c9G"/>
-                                            <constraint firstItem="MJO-SO-fJg" firstAttribute="top" secondItem="sfQ-73-8DR" secondAttribute="top" id="veX-My-8O5"/>
-                                            <constraint firstItem="X5e-2a-vM2" firstAttribute="leading" secondItem="sfQ-73-8DR" secondAttribute="leading" id="yQE-hW-y3V"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="sfQ-73-8DR" secondAttribute="trailing" id="JLb-j8-0Ra"/>
-                                    <constraint firstItem="sfQ-73-8DR" firstAttribute="leading" secondItem="zSf-0k-ag8" secondAttribute="leading" id="Wl2-Zi-Exe"/>
-                                    <constraint firstAttribute="bottom" secondItem="sfQ-73-8DR" secondAttribute="bottom" id="bch-uL-IHh"/>
-                                    <constraint firstAttribute="height" constant="65" id="w2h-A4-nia"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cgX-f5-Pwa" firstAttribute="top" secondItem="n9b-b8-g7K" secondAttribute="top" id="2TV-sP-e9H"/>
                             <constraint firstItem="cgX-f5-Pwa" firstAttribute="leading" secondItem="n9b-b8-g7K" secondAttribute="leading" id="7gB-d6-tci"/>
-                            <constraint firstAttribute="trailing" secondItem="zSf-0k-ag8" secondAttribute="trailing" id="9oH-Je-X3M"/>
                             <constraint firstAttribute="trailing" secondItem="cgX-f5-Pwa" secondAttribute="trailing" id="AHU-k9-0c9"/>
-                            <constraint firstItem="LnH-zP-CBF" firstAttribute="top" secondItem="n9b-b8-g7K" secondAttribute="top" id="GNk-cu-jyP"/>
-                            <constraint firstAttribute="trailing" secondItem="LnH-zP-CBF" secondAttribute="trailing" id="TXr-Ak-Wxw"/>
-                            <constraint firstItem="zSf-0k-ag8" firstAttribute="leading" secondItem="n9b-b8-g7K" secondAttribute="leading" id="VOt-sx-CaG"/>
-                            <constraint firstItem="LnH-zP-CBF" firstAttribute="leading" secondItem="n9b-b8-g7K" secondAttribute="leading" id="WoM-su-dHD"/>
-                            <constraint firstItem="zSf-0k-ag8" firstAttribute="top" secondItem="n9b-b8-g7K" secondAttribute="top" id="ifA-cV-mfy"/>
                             <constraint firstItem="55Q-31-iln" firstAttribute="top" secondItem="cgX-f5-Pwa" secondAttribute="bottom" id="vlN-kk-fgc"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="J1d-zu-3hZ"/>
                     <connections>
-                        <outlet property="closeButton" destination="X5e-2a-vM2" id="mP5-qC-jiR"/>
-                        <outlet property="navigationBar" destination="LnH-zP-CBF" id="K0N-T0-2Om"/>
-                        <outlet property="navigationBarHeight" destination="9Z1-2D-km6" id="0nY-n3-inW"/>
                         <outlet property="tableView" destination="cgX-f5-Pwa" id="4Ih-S6-w9D"/>
                         <segue destination="78D-SZ-BW2" kind="presentation" identifier="TextEditor" id="hwk-7n-VuQ"/>
                     </connections>
@@ -359,7 +290,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zIH-0w-9e6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="vYw-zX-2vL"/>
             </objects>
-            <point key="canvasLocation" x="3115" y="1186"/>
+            <point key="canvasLocation" x="3927" y="1186"/>
         </scene>
         <!--Text Editor View Controller-->
         <scene sceneID="FUY-Pi-9vm">
@@ -417,10 +348,27 @@
             </objects>
             <point key="canvasLocation" x="2811" y="1984"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1Mh-xx-UKt">
+            <objects>
+                <navigationController storyboardIdentifier="CreateEditNC" automaticallyAdjustsScrollViewInsets="NO" id="1ft-Da-uly" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rHe-wQ-lsO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pbP-Tj-DlG" kind="relationship" relationship="rootViewController" id="Awi-kl-eWH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fdk-6d-srw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3115" y="1186"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back" width="16" height="25"/>
-        <image name="confirm-enabled" width="26" height="21"/>
         <image name="task-done" width="24" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -131,7 +131,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             vc.task = sender as Task
             vc.delegate = self
         } else if segue.identifier! == Identifiers.CreateTask.rawValue {
-            let vc = segue.destinationViewController as CreateEditViewController
+            let navVC = segue.destinationViewController as UINavigationController
+            let vc = navVC.topViewController as CreateEditViewController
             vc.taskTitle = sender as? String
         }
     }

@@ -21,19 +21,14 @@ class TextEditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureNavigationBar()
-        
-//        self.textView.contentInset = UIEdgeInsets(top: self.navigationController!.navigationBar.bounds.height, left: 0, bottom: 0, right: 0)
         self.textView.text = self.text
         
         self.observeKeyboard()
     }
     
     private func configureNavigationBar() {
-        let backButton = UIBarButtonItem(image: UIImage(named: "back"), style: UIBarButtonItemStyle.Plain, target: self, action: "closePressed")
-        self.navigationController?.navigationBar.topItem?.setLeftBarButtonItem(backButton, animated: false)
-        
-        let saveButton = UIBarButtonItem(image: UIImage(named: "confirm-enabled"), style: UIBarButtonItemStyle.Plain, target: self, action: "onConfirmPressed")
-        self.navigationController?.navigationBar.topItem?.setRightBarButtonItem(saveButton, animated: false)
+        self.navigationController?.navigationBar.topItem?.setLeftBarButtonItem(UIBarButtonItem.backButton(self, action: "closePressed"), animated: false)
+        self.navigationController?.navigationBar.topItem?.setRightBarButtonItem(UIBarButtonItem.saveButton(self, action: "onConfirmPressed"), animated: false)
     }
     
     override func viewWillAppear(animated: Bool) {

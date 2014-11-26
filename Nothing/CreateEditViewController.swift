@@ -10,10 +10,6 @@ import UIKit
 
 class CreateEditViewController: NTHTableViewController {
     
-    @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var navigationBarHeight: NSLayoutConstraint!
-    
     var taskTitle: String?
     
     private enum Segue: String {
@@ -22,8 +18,7 @@ class CreateEditViewController: NTHTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBarHeight.constant = 64.0;
-        self.tableView.contentInset = UIEdgeInsets(top: self.navigationBarHeight.constant, left: 0, bottom: 0, right: 0)
+        self.configureNavigationBar()
         
         /// use `taskTitle` if set already
         self.titleCell.textView.text = taskTitle
@@ -32,12 +27,22 @@ class CreateEditViewController: NTHTableViewController {
         self.tableView.endUpdates()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    private func configureNavigationBar() {
+        self.navigationController?.navigationBar.topItem?.setLeftBarButtonItem(UIBarButtonItem.backButton(self, action: "closePressed"), animated: false)
+        self.navigationController?.navigationBar.topItem?.setRightBarButtonItem(UIBarButtonItem.saveButton(self, action: "onConfirmPressed"), animated: false)
     }
     
-    @IBAction func closePressed(sender: AnyObject) {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.topItem?.title = "New Task"
+    }
+    
+    func closePressed() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func onConfirmPressed() {
+        
     }
     
     lazy private var titleCell : TextViewCell = {
