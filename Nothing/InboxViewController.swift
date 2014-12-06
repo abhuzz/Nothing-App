@@ -19,6 +19,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         case InboxCell = "InboxCell"
         case SearchSegue = "Search"
         case TaskDetailSegue = "TaskDetail"
+        case CreateTask = "CreateTask"
     }
     
     private var tasks = [Task]()
@@ -64,7 +65,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         self.quickInsertView.didTapMoreBlock = { [self]
-            let text = self.quickInsertView.text
+            self.performSegueWithIdentifier(Identifiers.CreateTask.rawValue, sender: self.quickInsertView.text)
             self.quickInsertView.finish()
         }
     }
@@ -126,9 +127,14 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             vc.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
             self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
         } else if segue.identifier! == Identifiers.TaskDetailSegue.rawValue {
-            let vc = segue.destinationViewController as DetailViewController
+            let navVC = segue.destinationViewController as UINavigationController
+            let vc = navVC.topViewController as DetailViewController
             vc.task = sender as Task
             vc.delegate = self
+        } else if segue.identifier! == Identifiers.CreateTask.rawValue {
+            let navVC = segue.destinationViewController as UINavigationController
+            let vc = navVC.topViewController as CreateEditViewController
+            vc.taskTitle = sender as? String
         }
     }
 

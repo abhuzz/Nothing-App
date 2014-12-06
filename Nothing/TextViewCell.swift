@@ -21,4 +21,14 @@ class TextViewCell: UITableViewCell {
         self.textView.text = ""
         self.textView.textColor = UIColor.appBlack()
     }
+    
+    var preferredHeight: CGFloat {
+        return self.textView.proposedHeight
+    }
+    
+    func setText(text: String) {
+        self.textView.text = text
+        self.updateConstraintsIfNeeded()
+        self.textView.sizeToFit()
+    }
 }

@@ -14,10 +14,7 @@ class DetailViewController: NTHTableViewController {
     var delegate: DetailViewControllerDelegate?
     private var model: DetailModelView?
     
-    @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var navigationBarHeight: NSLayoutConstraint!
-    @IBOutlet weak var changeStateButton: UIButton!
+    private var changeStateButton: UIBarButtonItem!
     
     private enum CellIdentifier: String {
         case TextViewCell = "TextViewCell"
@@ -48,9 +45,33 @@ class DetailViewController: NTHTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBarHeight.constant = 64.0;
-        self.tableView.contentInset = UIEdgeInsets(top: self.navigationBarHeight.constant, left: 0, bottom: 0, right: 0)
+        self.configureNavigationBar()
         self.update()
+    }
+    
+    private func configureNavigationBar() {
+        self.navigationController?.navigationBar.topItem?.setLeftBarButtonItem(UIBarButtonItem.backButton(self, action: "closePressed"), animated: false)
+        
+        var rightButtons = [UIBarButtonItem]()
+        rightButtons.append(UIBarButtonItem.changeStateButton(self, action: "changeStatePressed"))
+        self.navigationController?.navigationBar.topItem?.setRightBarButtonItems(rightButtons, animated: false)
+    }
+ 
+    func editPressed() {
+        
+    }
+    
+    func changeStatePressed(sender: AnyObject) {
+        self.task.changeState()
+        self.updateChangeStateButton()
+    }
+    
+    private func updateChangeStateButton() {
+//        self.changeStateButton .setImage(UIImage(named: self.task.state == Task.State.Active ? "task-undone" : "task-done"), forState: UIControlState.Normal)
+    }
+    
+    func closePressed() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func update() {
@@ -88,19 +109,6 @@ class DetailViewController: NTHTableViewController {
         self.tableView.endUpdates()
         
         self.model = model
-    }
-    
-    private func updateChangeStateButton() {
-        self.changeStateButton .setImage(UIImage(named: self.task.state == Task.State.Active ? "mark-undone" : "mark-done"), forState: UIControlState.Normal)
-    }
-    
-    @IBAction func closePressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func changeStatePressed(sender: AnyObject) {
-        self.task.changeState()
-        self.updateChangeStateButton()
     }
     
     /// Mark: UITableViewDataSource
