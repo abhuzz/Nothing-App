@@ -45,22 +45,34 @@ class CreateEditViewController: NTHTableViewController {
         
     }
     
-    lazy private var titleCell : TextViewCell = {
+    lazy private var titleCell: TextViewCell = {
         let cell = self.createTitleCell()
+        CreateEditViewController.addSelectionViewToCell(cell)
+        return cell
+    }()
+    
+    lazy private var longDescriptionCell: TextViewCell = {
+        let cell = self.createLongDescriptionCell()
+        CreateEditViewController.addSelectionViewToCell(cell)
+        return cell
+    }()
+    
+    class private func addSelectionViewToCell(cell: UITableViewCell) {
         cell.selectionStyle = UITableViewCellSelectionStyle.Default
-        
+
         let selectedView = UIView()
         selectedView.backgroundColor = UIColor.appBlueColorAlpha50()
         cell.selectedBackgroundView = selectedView
-        
-        return cell
-    }()
+    }
     
     private var sections: [[UITableViewCell]] {
         var sections = [[UITableViewCell]]()
     
         /// section 1
         sections.append([self.createSeparatorCell(), self.titleCell])
+        
+        /// section 2
+        sections.append([self.createSeparatorCell(), self.longDescriptionCell])
         
         return sections
     }

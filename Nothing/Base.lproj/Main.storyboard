@@ -74,7 +74,7 @@
                         <outlet property="quickInsertView" destination="SiQ-MJ-5a3" id="Mkn-KZ-gay"/>
                         <outlet property="tableView" destination="Ahl-qW-HvN" id="LGV-CQ-zmu"/>
                         <segue destination="CYv-FT-RG8" kind="presentation" identifier="Search" animates="NO" id="Uv3-Bj-ees"/>
-                        <segue destination="alM-ag-qSo" kind="presentation" identifier="TaskDetail" id="Jak-oe-LP5"/>
+                        <segue destination="i1q-BV-nqS" kind="presentation" identifier="TaskDetail" id="Jak-oe-LP5"/>
                         <segue destination="1ft-Da-uly" kind="presentation" identifier="CreateTask" id="599-EY-6qi"/>
                     </connections>
                 </viewController>
@@ -102,94 +102,24 @@
                                     <outlet property="delegate" destination="alM-ag-qSo" id="6Ps-f9-9No"/>
                                 </connections>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIU-CI-MZm">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="jA7-1h-Ub1"/>
-                                </constraints>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem id="fGZ-TA-8YV"/>
-                                </items>
-                            </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SVd-Jt-d2S" userLabel="Custom navigation">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4w-Jl-Uk0" userLabel="Navigation container">
-                                        <rect key="frame" x="0.0" y="21" width="600" height="44"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMT-Le-Rtu" userLabel="close button">
-                                                <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="TzU-DH-5OB"/>
-                                                    <constraint firstAttribute="width" constant="44" id="e0R-o3-XAy"/>
-                                                </constraints>
-                                                <state key="normal" image="back">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="closePressed:" destination="alM-ag-qSo" eventType="touchUpInside" id="wd7-fx-eez"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2BB-ec-zw2" userLabel="close button">
-                                                <rect key="frame" x="556" y="0.0" width="44" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="44" id="xOE-Jv-yn6"/>
-                                                </constraints>
-                                                <state key="normal" image="task-done">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="changeStatePressed:" destination="alM-ag-qSo" eventType="touchUpInside" id="pGM-A1-Msy"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="pMT-Le-Rtu" firstAttribute="leading" secondItem="V4w-Jl-Uk0" secondAttribute="leading" id="IGk-pT-zUp"/>
-                                            <constraint firstAttribute="bottom" secondItem="2BB-ec-zw2" secondAttribute="bottom" id="Qns-DL-gVd"/>
-                                            <constraint firstItem="2BB-ec-zw2" firstAttribute="top" secondItem="V4w-Jl-Uk0" secondAttribute="top" id="nKW-oH-g4b"/>
-                                            <constraint firstAttribute="centerY" secondItem="pMT-Le-Rtu" secondAttribute="centerY" id="qmP-kb-ccP"/>
-                                            <constraint firstAttribute="trailing" secondItem="2BB-ec-zw2" secondAttribute="trailing" id="s5X-mj-MOX"/>
-                                            <constraint firstAttribute="height" constant="44" id="tEf-ob-fqP"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="V4w-Jl-Uk0" secondAttribute="trailing" id="8WH-5O-YMZ"/>
-                                    <constraint firstAttribute="height" constant="65" id="K4V-bN-iCG"/>
-                                    <constraint firstAttribute="bottom" secondItem="V4w-Jl-Uk0" secondAttribute="bottom" id="X2J-O3-Hbk"/>
-                                    <constraint firstItem="V4w-Jl-Uk0" firstAttribute="leading" secondItem="SVd-Jt-d2S" secondAttribute="leading" id="z7K-Pg-AqO"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dSf-TN-mBj" firstAttribute="top" secondItem="HiQ-0e-eI3" secondAttribute="bottom" id="3dp-5j-m84"/>
-                            <constraint firstItem="SVd-Jt-d2S" firstAttribute="leading" secondItem="s3R-pB-s4A" secondAttribute="leading" id="BWe-8l-gfv"/>
                             <constraint firstItem="HiQ-0e-eI3" firstAttribute="leading" secondItem="s3R-pB-s4A" secondAttribute="leading" id="EFj-YV-7TV"/>
-                            <constraint firstItem="xIU-CI-MZm" firstAttribute="leading" secondItem="s3R-pB-s4A" secondAttribute="leading" id="TQo-ty-9vO"/>
-                            <constraint firstAttribute="trailing" secondItem="xIU-CI-MZm" secondAttribute="trailing" id="UWs-Ni-NCN"/>
-                            <constraint firstItem="SVd-Jt-d2S" firstAttribute="top" secondItem="s3R-pB-s4A" secondAttribute="top" id="YHw-h2-sez"/>
                             <constraint firstAttribute="trailing" secondItem="HiQ-0e-eI3" secondAttribute="trailing" id="jsk-eT-SJF"/>
                             <constraint firstItem="HiQ-0e-eI3" firstAttribute="top" secondItem="s3R-pB-s4A" secondAttribute="top" id="oj6-wl-nBs"/>
-                            <constraint firstAttribute="trailing" secondItem="SVd-Jt-d2S" secondAttribute="trailing" id="rBX-Rm-LEC"/>
-                            <constraint firstItem="xIU-CI-MZm" firstAttribute="top" secondItem="s3R-pB-s4A" secondAttribute="top" id="rzN-al-GbR"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="3FN-sJ-v3R"/>
                     <connections>
-                        <outlet property="changeStateButton" destination="2BB-ec-zw2" id="UO2-Gi-kkA"/>
-                        <outlet property="closeButton" destination="pMT-Le-Rtu" id="pa9-TU-xo9"/>
-                        <outlet property="navigationBar" destination="xIU-CI-MZm" id="lKu-RS-EuX"/>
-                        <outlet property="navigationBarHeight" destination="jA7-1h-Ub1" id="wrR-dB-1Ai"/>
                         <outlet property="tableView" destination="HiQ-0e-eI3" id="t7p-c0-WOU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H93-5r-PcN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="wEk-lX-XdM"/>
             </objects>
-            <point key="canvasLocation" x="2477" y="1186"/>
+            <point key="canvasLocation" x="3289" y="1186"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="24t-Mr-Jjh">
@@ -238,7 +168,7 @@
                         <outlet property="navigationBar" destination="EDB-uW-6A0" id="ULs-if-Qaf"/>
                         <outlet property="noSearchResultsLabel" destination="cxp-te-QkT" id="ol8-JQ-obu"/>
                         <outlet property="tableView" destination="Pqp-5W-nAe" id="bbg-TJ-GDX"/>
-                        <segue destination="alM-ag-qSo" kind="presentation" identifier="TaskDetail" id="Jst-p2-dh1"/>
+                        <segue destination="i1q-BV-nqS" kind="presentation" identifier="TaskDetail" id="Jst-p2-dh1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQY-T7-HC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -290,7 +220,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zIH-0w-9e6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="vYw-zX-2vL"/>
             </objects>
-            <point key="canvasLocation" x="3927" y="1186"/>
+            <point key="canvasLocation" x="4739" y="1186"/>
         </scene>
         <!--Text Editor View Controller-->
         <scene sceneID="FUY-Pi-9vm">
@@ -364,14 +294,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdk-6d-srw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3115" y="1186"/>
+            <point key="canvasLocation" x="3927" y="1186"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TBU-DR-5C9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i1q-BV-nqS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yjQ-Ov-39b">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="alM-ag-qSo" kind="relationship" relationship="rootViewController" id="dbf-fF-XIh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WFG-cp-8cj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2477" y="1186"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="back" width="16" height="25"/>
-        <image name="task-done" width="24" height="22"/>
-    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jak-oe-LP5"/>
+        <segue reference="Jst-p2-dh1"/>
     </inferredMetricsTieBreakers>
 </document>

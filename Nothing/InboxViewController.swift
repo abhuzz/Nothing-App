@@ -127,7 +127,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             vc.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
             self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
         } else if segue.identifier! == Identifiers.TaskDetailSegue.rawValue {
-            let vc = segue.destinationViewController as DetailViewController
+            let navVC = segue.destinationViewController as UINavigationController
+            let vc = navVC.topViewController as DetailViewController
             vc.task = sender as Task
             vc.delegate = self
         } else if segue.identifier! == Identifiers.CreateTask.rawValue {
