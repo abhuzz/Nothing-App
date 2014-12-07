@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12059DCA1A34FDA2007F5E7C /* NTHColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DC91A34FDA2007F5E7C /* NTHColors.swift */; };
 		123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2119FF86C4008E22DB /* HashtagDetector.swift */; };
 		123B6E2419FF909F008E22DB /* UILabel_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2319FF909F008E22DB /* UILabel_Extension.swift */; };
 		123F11C51A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123F11C41A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12059DC91A34FDA2007F5E7C /* NTHColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHColors.swift; sourceTree = "<group>"; };
 		123B6E2119FF86C4008E22DB /* HashtagDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagDetector.swift; sourceTree = "<group>"; };
 		123B6E2319FF909F008E22DB /* UILabel_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel_Extension.swift; sourceTree = "<group>"; };
 		123F11C41A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem_Extension.swift; sourceTree = "<group>"; };
@@ -130,6 +132,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12059DCB1A34FDAC007F5E7C /* Nothing2 */ = {
+			isa = PBXGroup;
+			children = (
+				12059DC91A34FDA2007F5E7C /* NTHColors.swift */,
+			);
+			name = Nothing2;
+			sourceTree = "<group>";
+		};
 		125593ED19FEE133001EC477 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +153,7 @@
 		1279B5CB19FED4E700A7828C = {
 			isa = PBXGroup;
 			children = (
+				12059DCB1A34FDAC007F5E7C /* Nothing2 */,
 				1279B5D619FED4E700A7828C /* Nothing */,
 				12E2158B1A037C9C0038AD45 /* External */,
 				1279B5EC19FED4E700A7828C /* NothingTests */,
@@ -432,6 +443,7 @@
 				1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */,
 				1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */,
 				123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */,
+				12059DCA1A34FDA2007F5E7C /* NTHColors.swift in Sources */,
 				12EDE7871A1FBD1E0020D549 /* CreateEditViewController.swift in Sources */,
 				129A555C1A1E6A0800ED249D /* TextViewCell.swift in Sources */,
 				124ADC991A19467600750816 /* DetailViewController.swift in Sources */,
