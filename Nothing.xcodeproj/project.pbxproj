@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12059DCA1A34FDA2007F5E7C /* NTHColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DC91A34FDA2007F5E7C /* NTHColors.swift */; };
+		12059DCD1A34FF5C007F5E7C /* NTHFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */; };
 		123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2119FF86C4008E22DB /* HashtagDetector.swift */; };
 		123B6E2419FF909F008E22DB /* UILabel_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2319FF909F008E22DB /* UILabel_Extension.swift */; };
 		123F11C51A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123F11C41A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		12059DC91A34FDA2007F5E7C /* NTHColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHColors.swift; sourceTree = "<group>"; };
+		12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHFonts.swift; sourceTree = "<group>"; };
 		123B6E2119FF86C4008E22DB /* HashtagDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagDetector.swift; sourceTree = "<group>"; };
 		123B6E2319FF909F008E22DB /* UILabel_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel_Extension.swift; sourceTree = "<group>"; };
 		123F11C41A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem_Extension.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				12059DC91A34FDA2007F5E7C /* NTHColors.swift */,
+				12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */,
 			);
 			name = Nothing2;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				1279B61119FED64D00A7828C /* Task.swift in Sources */,
 				12CC22271A12207300DF8EE0 /* InboxCellViewModel.swift in Sources */,
 				1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */,
+				12059DCD1A34FF5C007F5E7C /* NTHFonts.swift in Sources */,
 				1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */,
 				123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */,
 				12059DCA1A34FDA2007F5E7C /* NTHColors.swift in Sources */,
