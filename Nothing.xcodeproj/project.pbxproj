@@ -38,14 +38,11 @@
 		1279B61519FEDBD200A7828C /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B61419FEDBD200A7828C /* FileCache.swift */; };
 		128B298A1A1EA842005C93DF /* SeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128B29891A1EA842005C93DF /* SeparatorCell.xib */; };
 		128B298C1A1EA862005C93DF /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128B298B1A1EA862005C93DF /* SeparatorCell.swift */; };
-		129369BE1A06B09F00724127 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129369BD1A06B09F00724127 /* SearchViewController.swift */; };
 		129A555A1A1E69F100ED249D /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 129A55591A1E69F100ED249D /* TextViewCell.xib */; };
 		129A555C1A1E6A0800ED249D /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129A555B1A1E6A0800ED249D /* TextViewCell.swift */; };
 		129A555E1A1E825500ED249D /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129A555D1A1E825500ED249D /* MapCell.swift */; };
 		129A55601A1E826A00ED249D /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 129A555F1A1E826A00ED249D /* MapCell.xib */; };
 		12BEB0F41A06DC9300643860 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BEB0F31A06DC9300643860 /* ModelController.swift */; };
-		12CC22231A1210A800DF8EE0 /* InboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC22221A1210A800DF8EE0 /* InboxCell.swift */; };
-		12CC22251A1210DD00DF8EE0 /* InboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12CC22241A1210DD00DF8EE0 /* InboxCell.xib */; };
 		12CC22271A12207300DF8EE0 /* InboxCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC22261A12207300DF8EE0 /* InboxCellViewModel.swift */; };
 		12CC222B1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */; };
 		12CEF17F1A083832004DE156 /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEF17E1A083832004DE156 /* UIView_Extension.swift */; };
@@ -82,7 +79,7 @@
 		1279B5D419FED4E700A7828C /* Nothing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nothing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1279B5D819FED4E700A7828C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1279B5D919FED4E700A7828C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1279B5DB19FED4E700A7828C /* InboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
+		1279B5DB19FED4E700A7828C /* InboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InboxViewController.swift; path = Nothing/InboxViewController.swift; sourceTree = "<group>"; };
 		1279B5DE19FED4E700A7828C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1279B5E019FED4E700A7828C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1279B5E319FED4E700A7828C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -103,14 +100,11 @@
 		1279B61419FEDBD200A7828C /* FileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		128B29891A1EA842005C93DF /* SeparatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorCell.xib; sourceTree = "<group>"; };
 		128B298B1A1EA862005C93DF /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
-		129369BD1A06B09F00724127 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		129A55591A1E69F100ED249D /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
 		129A555B1A1E6A0800ED249D /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		129A555D1A1E825500ED249D /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 		129A555F1A1E826A00ED249D /* MapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
 		12BEB0F31A06DC9300643860 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
-		12CC22221A1210A800DF8EE0 /* InboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxCell.swift; sourceTree = "<group>"; };
-		12CC22241A1210DD00DF8EE0 /* InboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InboxCell.xib; sourceTree = "<group>"; };
 		12CC22261A12207300DF8EE0 /* InboxCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxCellViewModel.swift; sourceTree = "<group>"; };
 		12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateFormatter_Extension.swift; sourceTree = "<group>"; };
 		12CEF17E1A083832004DE156 /* UIView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
@@ -118,8 +112,8 @@
 		12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditViewController.swift; sourceTree = "<group>"; };
 		12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTableViewController.swift; sourceTree = "<group>"; };
 		12EDE78C1A1FC6770020D549 /* TextEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
-		12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickInsertView.swift; sourceTree = "<group>"; };
-		12FE32601A10D76900FAB243 /* QuickInsertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuickInsertView.xib; sourceTree = "<group>"; };
+		12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuickInsertView.swift; path = Nothing/QuickInsertView.swift; sourceTree = "<group>"; };
+		12FE32601A10D76900FAB243 /* QuickInsertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuickInsertView.xib; path = Nothing/QuickInsertView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,9 +139,8 @@
 			children = (
 				12059DC91A34FDA2007F5E7C /* NTHColors.swift */,
 				12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */,
-				12059DD01A350476007F5E7C /* NTHInboxCell.swift */,
-				12059DCE1A350153007F5E7C /* NTHInboxCell.xib */,
-				12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */,
+				127400371A365A13004D96D3 /* Inbox */,
+				127400361A36593F004D96D3 /* QuickInsertView */,
 			);
 			name = Nothing2;
 			sourceTree = "<group>";
@@ -160,6 +153,26 @@
 				1279B5E219FED4E700A7828C /* LaunchScreen.xib */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		127400361A36593F004D96D3 /* QuickInsertView */ = {
+			isa = PBXGroup;
+			children = (
+				12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */,
+				12FE32601A10D76900FAB243 /* QuickInsertView.xib */,
+			);
+			name = QuickInsertView;
+			sourceTree = "<group>";
+		};
+		127400371A365A13004D96D3 /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				12059DD01A350476007F5E7C /* NTHInboxCell.swift */,
+				12059DCE1A350153007F5E7C /* NTHInboxCell.xib */,
+				1279B5DB19FED4E700A7828C /* InboxViewController.swift */,
+				12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */,
+			);
+			name = Inbox;
 			sourceTree = "<group>";
 		};
 		1279B5CB19FED4E700A7828C = {
@@ -187,7 +200,6 @@
 			children = (
 				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
 				12CC22211A12109400DF8EE0 /* Inbox */,
-				129369BD1A06B09F00724127 /* SearchViewController.swift */,
 				12EDE78B1A1FC65B0020D549 /* Dialogs */,
 				128B298D1A1FB060005C93DF /* Create / Edit / Browse */,
 				1279B5F919FED64D00A7828C /* Core Data */,
@@ -201,8 +213,6 @@
 				123F11C41A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift */,
 				125593ED19FEE133001EC477 /* Resources */,
 				1279B5D719FED4E700A7828C /* Supporting Files */,
-				12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */,
-				12FE32601A10D76900FAB243 /* QuickInsertView.xib */,
 			);
 			path = Nothing;
 			sourceTree = "<group>";
@@ -303,9 +313,6 @@
 		12CC22211A12109400DF8EE0 /* Inbox */ = {
 			isa = PBXGroup;
 			children = (
-				1279B5DB19FED4E700A7828C /* InboxViewController.swift */,
-				12CC22221A1210A800DF8EE0 /* InboxCell.swift */,
-				12CC22241A1210DD00DF8EE0 /* InboxCell.xib */,
 				12CC22261A12207300DF8EE0 /* InboxCellViewModel.swift */,
 			);
 			name = Inbox;
@@ -419,7 +426,6 @@
 				1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */,
 				1279B5E419FED4E700A7828C /* LaunchScreen.xib in Resources */,
 				128B298A1A1EA842005C93DF /* SeparatorCell.xib in Resources */,
-				12CC22251A1210DD00DF8EE0 /* InboxCell.xib in Resources */,
 				1279B5E119FED4E700A7828C /* Images.xcassets in Resources */,
 				12059DCF1A350153007F5E7C /* NTHInboxCell.xib in Resources */,
 				129A55601A1E826A00ED249D /* MapCell.xib in Resources */,
@@ -465,7 +471,6 @@
 				124ADC991A19467600750816 /* DetailViewController.swift in Sources */,
 				128B298C1A1EA862005C93DF /* SeparatorCell.swift in Sources */,
 				1279B60A19FED64D00A7828C /* NSManagedObject_Extension.swift in Sources */,
-				12CC22231A1210A800DF8EE0 /* InboxCell.swift in Sources */,
 				129A555E1A1E825500ED249D /* MapCell.swift in Sources */,
 				12FE325F1A10D75F00FAB243 /* QuickInsertView.swift in Sources */,
 				1279B61219FED64D00A7828C /* FileManager.swift in Sources */,
@@ -473,7 +478,6 @@
 				1279B60819FED64D00A7828C /* CDHelper.swift in Sources */,
 				12BEB0F41A06DC9300643860 /* ModelController.swift in Sources */,
 				12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */,
-				129369BE1A06B09F00724127 /* SearchViewController.swift in Sources */,
 				124ADC9B1A19493C00750816 /* DetailModelView.swift in Sources */,
 				123F11C51A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift in Sources */,
 				1279B60C19FED64D00A7828C /* Contact.swift in Sources */,

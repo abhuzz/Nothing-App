@@ -64,6 +64,10 @@ class QuickInsertView: UIView, UITextFieldDelegate {
     func reset(animated: Bool = false) {
         self.hideMoreAnimated(animated)
         self.textField.text = ""
+        self.submitButton.titleLabel!.font = UIFont.NTHQuickInsertBoldFont()
+        self.submitButton.setTitleColor(UIColor.NTHLinkWaterColor(), forState: .Disabled)
+        self.submitButton.setTitleColor(UIColor.NTHMoodyBlueColor(), forState: .Normal)
+        self.moreButton.setTitleColor(UIColor.NTHMoodyBlueColor(), forState: .Normal)
         self.updateView()
     }
     

@@ -26,6 +26,10 @@ extension UIFont {
         return "HelveticaNeue-Medium"
     }
     
+    private class func NTHBoldFontName() -> String {
+        return "HelveticaNeue-Bold"
+    }
+    
     /**
         Fonts
     */
@@ -40,5 +44,9 @@ extension UIFont {
     
     class func NTHNavigationBarTitleFont() -> UIFont {
         return UIFont(name: NTHLightFontName(), size: 17)!
+    }
+    
+    class func NTHQuickInsertBoldFont() -> UIFont {
+        return UIFont(name: NTHBoldFontName(), size: 14)!
     }
 }

@@ -21,25 +21,20 @@
                             <constraint firstAttribute="width" constant="10" id="phN-dB-0lU"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICc-5Y-394">
-                        <rect key="frame" x="364" y="15" width="30" height="30"/>
-                        <color key="backgroundColor" red="1" green="0.86094262359999996" blue="0.2075909249" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="30" id="aIT-fS-cMd"/>
-                            <constraint firstAttribute="height" constant="30" id="uOd-Ga-7Ku"/>
-                        </constraints>
-                        <state key="normal" title="Button">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICc-5Y-394">
+                        <rect key="frame" x="374" y="19" width="20" height="22"/>
+                        <state key="normal" image="more-actions-button">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Talk to Phil about plans" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToF-gX-vUT">
-                        <rect key="frame" x="40" y="10" width="309" height="19.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Talk to Phil about plans" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToF-gX-vUT">
+                        <rect key="frame" x="40" y="10" width="319" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find few minutes to talk with Phil" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4t-y1-Cbv">
-                        <rect key="frame" x="40" y="35" width="309" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Find few minutes to talk with Phil" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4t-y1-Cbv">
+                        <rect key="frame" x="40" y="33" width="319" height="14.5"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -49,13 +44,11 @@
                     <constraint firstItem="ToF-gX-vUT" firstAttribute="bottom" secondItem="GUp-BJ-c35" secondAttribute="centerY" id="4H8-5J-JYf"/>
                     <constraint firstItem="P4t-y1-Cbv" firstAttribute="leading" secondItem="GUp-BJ-c35" secondAttribute="trailing" constant="15" id="4Su-uB-irx"/>
                     <constraint firstItem="GUp-BJ-c35" firstAttribute="leading" secondItem="5WV-dq-W1F" secondAttribute="leadingMargin" constant="7" id="7aD-o6-JSf"/>
-                    <constraint firstAttribute="centerY" secondItem="ICc-5Y-394" secondAttribute="centerY" id="HcO-7C-med"/>
+                    <constraint firstAttribute="centerY" secondItem="ICc-5Y-394" secondAttribute="centerY" constant="-0.25" id="DYu-72-RzE"/>
                     <constraint firstAttribute="centerY" secondItem="GUp-BJ-c35" secondAttribute="centerY" constant="0.25" id="PcV-hQ-cka"/>
-                    <constraint firstItem="ICc-5Y-394" firstAttribute="leading" secondItem="P4t-y1-Cbv" secondAttribute="trailing" constant="15" id="PlV-qM-Ze6"/>
-                    <constraint firstAttribute="trailing" secondItem="ICc-5Y-394" secondAttribute="trailing" constant="10" id="Qmn-aP-EfW"/>
-                    <constraint firstItem="ICc-5Y-394" firstAttribute="leading" secondItem="ToF-gX-vUT" secondAttribute="trailing" constant="15" id="WvL-PT-Ucl"/>
                     <constraint firstItem="ToF-gX-vUT" firstAttribute="leading" secondItem="GUp-BJ-c35" secondAttribute="trailing" constant="15" id="ZmE-re-LCn"/>
-                    <constraint firstItem="P4t-y1-Cbv" firstAttribute="top" secondItem="GUp-BJ-c35" secondAttribute="bottom" id="jq9-Dm-ZQi"/>
+                    <constraint firstAttribute="trailing" secondItem="ICc-5Y-394" secondAttribute="trailing" constant="10" id="bzN-dv-yv5"/>
+                    <constraint firstItem="P4t-y1-Cbv" firstAttribute="top" secondItem="GUp-BJ-c35" secondAttribute="bottom" constant="-2" id="jq9-Dm-ZQi"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -68,4 +61,7 @@
             <point key="canvasLocation" x="345" y="406"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="more-actions-button" width="20" height="5"/>
+    </resources>
 </document>

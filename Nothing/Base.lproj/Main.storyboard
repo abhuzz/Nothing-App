@@ -62,13 +62,7 @@
                             <constraint firstItem="SiQ-MJ-5a3" firstAttribute="top" secondItem="Ahl-qW-HvN" secondAttribute="bottom" id="y2u-Kt-hCt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="uSg-eB-Fh2">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="w1y-Zh-7pD">
-                            <connections>
-                                <action selector="searchPressed:" destination="Nc0-Yv-JIZ" id="XLf-9z-Gae"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="uSg-eB-Fh2"/>
                     <connections>
                         <outlet property="bottomGuide" destination="jXP-fM-QcW" id="4O2-gD-9bX"/>
                         <outlet property="quickInsertView" destination="SiQ-MJ-5a3" id="Mkn-KZ-gay"/>
@@ -316,6 +310,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Jst-p2-dh1"/>
+        <segue reference="Jak-oe-LP5"/>
     </inferredMetricsTieBreakers>
 </document>

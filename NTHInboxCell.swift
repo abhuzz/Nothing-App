@@ -26,6 +26,8 @@ class NTHInboxCell: UITableViewCell {
     }
     
     private func setup() {
+        self.separatorInset = UIEdgeInsetsMake(0, 20, 0, 0)
+        
         self.titleLabel.font = UIFont.NTHInboxCellTitleFont()
         self.titleLabel.textColor = UIColor.NTHCadetGrayColor()
         
