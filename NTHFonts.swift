@@ -15,7 +15,7 @@ extension UIFont {
     */
     
     private class func NTHRegularFontName() -> String {
-        return "HelveticaNeue-Regular"
+        return "HelveticaNeue"
     }
     
     private class func NTHLightFontName() -> String {
@@ -31,10 +31,14 @@ extension UIFont {
     */
     
     class func NTHInboxCellTitleFont() -> UIFont {
-        return UIFont(name: NTHRegularFontName(), size: 32)!
+        return UIFont(name: NTHRegularFontName(), size: 16)!
     }
     
     class func NTHInboxCellDescriptionFont() -> UIFont {
         return UIFont(name: NTHLightFontName(), size: 12)!
+    }
+    
+    class func NTHNavigationBarTitleFont() -> UIFont {
+        return UIFont(name: NTHLightFontName(), size: 17)!
     }
 }

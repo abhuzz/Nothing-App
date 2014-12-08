@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func applicationDidFinishLaunching(application: UIApplication) {
-        UISwitch.appearance().onTintColor = UIColor.appBlueColor()
 //        self.populateData()
+        self.setupUI()
     }
     
     /// Mark: Debug
@@ -103,6 +103,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(application: UIApplication) {
         CDHelper.mainContext.save(nil)
+    }
+}
+
+extension AppDelegate {
+    func setupUI() {
+        UINavigationBar.appearance().barTintColor = UIColor.NTHMoodyBlueColor()
+        UINavigationBar.appearance().translucent = false
+
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.NTHWhiteColor(),
+            NSFontAttributeName: UIFont.NTHNavigationBarTitleFont()
+        ]
+        
+        UINavigationBar.appearance().tintColor = UIColor.NTHWhiteColor()
     }
 }
 

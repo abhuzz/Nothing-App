@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		12059DCA1A34FDA2007F5E7C /* NTHColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DC91A34FDA2007F5E7C /* NTHColors.swift */; };
 		12059DCD1A34FF5C007F5E7C /* NTHFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */; };
+		12059DCF1A350153007F5E7C /* NTHInboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12059DCE1A350153007F5E7C /* NTHInboxCell.xib */; };
+		12059DD11A350476007F5E7C /* NTHInboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DD01A350476007F5E7C /* NTHInboxCell.swift */; };
+		12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */; };
 		123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2119FF86C4008E22DB /* HashtagDetector.swift */; };
 		123B6E2419FF909F008E22DB /* UILabel_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2319FF909F008E22DB /* UILabel_Extension.swift */; };
 		123F11C51A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123F11C41A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift */; };
@@ -67,6 +70,9 @@
 /* Begin PBXFileReference section */
 		12059DC91A34FDA2007F5E7C /* NTHColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHColors.swift; sourceTree = "<group>"; };
 		12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHFonts.swift; sourceTree = "<group>"; };
+		12059DCE1A350153007F5E7C /* NTHInboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NTHInboxCell.xib; path = Nothing/NTHInboxCell.xib; sourceTree = "<group>"; };
+		12059DD01A350476007F5E7C /* NTHInboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHInboxCell.swift; sourceTree = "<group>"; };
+		12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskStatusView.swift; sourceTree = "<group>"; };
 		123B6E2119FF86C4008E22DB /* HashtagDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagDetector.swift; sourceTree = "<group>"; };
 		123B6E2319FF909F008E22DB /* UILabel_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel_Extension.swift; sourceTree = "<group>"; };
 		123F11C41A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem_Extension.swift; sourceTree = "<group>"; };
@@ -139,6 +145,9 @@
 			children = (
 				12059DC91A34FDA2007F5E7C /* NTHColors.swift */,
 				12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */,
+				12059DD01A350476007F5E7C /* NTHInboxCell.swift */,
+				12059DCE1A350153007F5E7C /* NTHInboxCell.xib */,
+				12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */,
 			);
 			name = Nothing2;
 			sourceTree = "<group>";
@@ -412,6 +421,7 @@
 				128B298A1A1EA842005C93DF /* SeparatorCell.xib in Resources */,
 				12CC22251A1210DD00DF8EE0 /* InboxCell.xib in Resources */,
 				1279B5E119FED4E700A7828C /* Images.xcassets in Resources */,
+				12059DCF1A350153007F5E7C /* NTHInboxCell.xib in Resources */,
 				129A55601A1E826A00ED249D /* MapCell.xib in Resources */,
 				129A555A1A1E69F100ED249D /* TextViewCell.xib in Resources */,
 			);
@@ -437,6 +447,7 @@
 				1279B60D19FED64D00A7828C /* Nothing.xcdatamodeld in Sources */,
 				123B6E2419FF909F008E22DB /* UILabel_Extension.swift in Sources */,
 				1279B61519FEDBD200A7828C /* FileCache.swift in Sources */,
+				12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */,
 				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
 				1279B60B19FED64D00A7828C /* Connection.swift in Sources */,
 				12EDE78D1A1FC6770020D549 /* TextEditorViewController.swift in Sources */,
@@ -447,6 +458,7 @@
 				12059DCD1A34FF5C007F5E7C /* NTHFonts.swift in Sources */,
 				1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */,
 				123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */,
+				12059DD11A350476007F5E7C /* NTHInboxCell.swift in Sources */,
 				12059DCA1A34FDA2007F5E7C /* NTHColors.swift in Sources */,
 				12EDE7871A1FBD1E0020D549 /* CreateEditViewController.swift in Sources */,
 				129A555C1A1E6A0800ED249D /* TextViewCell.swift in Sources */,

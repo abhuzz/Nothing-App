@@ -33,7 +33,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     private func configureTableView() {
-        self.tableView.registerNib(InboxCell.nib(), forCellReuseIdentifier: Identifiers.InboxCell.rawValue)
+        self.tableView.registerNib(UINib(nibName: "NTHInboxCell", bundle: nil), forCellReuseIdentifier: "NTHInboxCell")
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.separatorInset = UIEdgeInsetsZero
@@ -150,30 +150,22 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let task = self.tasks[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.InboxCell.rawValue, forIndexPath: indexPath) as InboxCell
-        let inboxViewModel = InboxCellViewModel(task)
-        cell.update(inboxViewModel)
-        cell.delegate = self
+        let cell = tableView.dequeueReusableCellWithIdentifier("NTHInboxCell", forIndexPath: indexPath) as NTHInboxCell
+//        let inboxViewModel = InboxCellViewModel(task)
+//        cell.update(inboxViewModel)
+//        cell.delegate = self
 
         return cell
     }
     
     private var tmpCell: InboxCell!
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let task = self.tasks[indexPath.row]
-        
-        if (tmpCell == nil) {
-            tmpCell = InboxCell.nib().instantiateWithOwner(nil, options: nil).first as InboxCell
-            tmpCell.frame.size.width = tableView.bounds.width
-        }
-        
-        tmpCell.update(InboxCellViewModel(task))
-        return tmpCell.estimatedHeight
+        return 60.0
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        (cell as InboxCell).update(indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250())
-    }
+//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//        (cell as InboxCell).update(indexPath.row % 2 == 0 ? UIColor.appWhite255() : UIColor.appWhite250())
+//    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)

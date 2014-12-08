@@ -34,10 +34,10 @@ extension UIColor {
     }
     
     class func NTHCadetGrayColor() -> UIColor {
-        return UIColor(red:0.59, green:0.63, blue:0.69, alpha:1)
+        return UIColor(red:0.49, green:0.54, blue:0.61, alpha:1)
     }
     
     class func NTHLinkWaterColor() -> UIColor {
-        return UIColor(red:0.77, green:0.8, blue:0.84, alpha:1)
+        return UIColor(red:0.68, green:0.73, blue:0.79, alpha:1)
     }
 }
