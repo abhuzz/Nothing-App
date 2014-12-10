@@ -59,6 +59,8 @@ class NTHInboxCell: UITableViewCell {
         
         self.descriptionLabel.font = UIFont.NTHInboxCellDescriptionFont()
         self.descriptionLabel.textColor = UIColor.NTHLinkWaterColor()
+        
+        self.stateIndicatorView.state = .Active
     }
     
     func fill(model: NTHInboxCellViewModel) {
@@ -72,6 +74,7 @@ class NTHInboxCell: UITableViewCell {
             self.titleBottomToCenterYConstraint.constant = 0
         }
         
+        println("state = \(model.state == Task.State.Done)")
         stateIndicatorView.state = model.state
     }
     

@@ -12,12 +12,19 @@ class NTHTaskStatusView: UIView {
     
     var state: Task.State = .Active {
         didSet {
-            self.setNeedsDisplay()
+            self.setNeedsDisplayInRect(self.bounds)
         }
     }
     
     override func drawRect(frame: CGRect) {
         super.drawRect(frame)
+        
+        if let sublayers = self.layer.sublayers {
+            for sublayer in sublayers {
+                sublayer.removeFromSuperlayer()
+            }
+        }
+        
         self.backgroundColor = UIColor.clearColor()
         
         let circleLayer = CAShapeLayer()

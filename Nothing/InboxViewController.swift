@@ -41,7 +41,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.quickInsertView.backgroundColor = UIColor.appWhite250()
         self.quickInsertView.textField.placeholder = "What's in your mind"
         self.quickInsertView.submitButton.setTitle("Add", forState: .Normal)
-        self.quickInsertView.didSubmitBlock = { title in [self]
+        self.quickInsertView.didSubmitBlock = { [unowned self] title in
             /// create new task
             let task: Task = Task.create(CDHelper.mainContext)
             task.title = title
