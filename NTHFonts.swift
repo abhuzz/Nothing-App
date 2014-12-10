@@ -49,4 +49,8 @@ extension UIFont {
     class func NTHQuickInsertBoldFont() -> UIFont {
         return UIFont(name: NTHBoldFontName(), size: 14)!
     }
+    
+    class func NTHQuickInsertTextfieldFont() -> UIFont {
+        return UIFont(name: NTHLightFontName(), size: 12)!
+    }
 }
