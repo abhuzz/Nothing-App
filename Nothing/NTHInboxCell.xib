@@ -21,9 +21,9 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICc-5Y-394">
-                        <rect key="frame" x="374" y="0.0" width="30" height="59.5"/>
+                        <rect key="frame" x="354" y="0.0" width="50" height="59.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="LrA-rt-fSZ"/>
+                            <constraint firstAttribute="width" constant="50" id="LrA-rt-fSZ"/>
                         </constraints>
                         <state key="normal" image="more-actions-button">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -46,10 +46,10 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ICc-5Y-394" firstAttribute="leading" secondItem="P4t-y1-Cbv" secondAttribute="trailing" constant="15" id="13u-mG-vbP"/>
+                    <constraint firstItem="ICc-5Y-394" firstAttribute="leading" secondItem="P4t-y1-Cbv" secondAttribute="trailing" constant="-5" id="13u-mG-vbP"/>
                     <constraint firstItem="P4t-y1-Cbv" firstAttribute="leading" secondItem="GUp-BJ-c35" secondAttribute="trailing" constant="15" id="2Hp-lx-Agj"/>
                     <constraint firstAttribute="centerY" secondItem="GUp-BJ-c35" secondAttribute="centerY" id="4l4-oT-Whv"/>
-                    <constraint firstItem="ICc-5Y-394" firstAttribute="leading" secondItem="ToF-gX-vUT" secondAttribute="trailing" constant="15" id="5Zg-Fk-TaX"/>
+                    <constraint firstItem="ICc-5Y-394" firstAttribute="leading" secondItem="ToF-gX-vUT" secondAttribute="trailing" constant="-5" id="5Zg-Fk-TaX"/>
                     <constraint firstItem="ToF-gX-vUT" firstAttribute="bottom" secondItem="GUp-BJ-c35" secondAttribute="centerY" id="BDt-bD-hS6"/>
                     <constraint firstAttribute="trailing" secondItem="ICc-5Y-394" secondAttribute="trailing" id="EiQ-0t-HZC"/>
                     <constraint firstItem="ICc-5Y-394" firstAttribute="top" secondItem="5WV-dq-W1F" secondAttribute="top" id="OUu-Zw-ayr"/>
