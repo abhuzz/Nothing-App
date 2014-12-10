@@ -3,7 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -17,45 +16,51 @@
                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUp-BJ-c35" customClass="NTHTaskStatusView" customModule="Nothing" customModuleProvider="target">
                         <rect key="frame" x="15" y="25" width="10" height="10"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="10" id="JZj-lf-ftj"/>
-                            <constraint firstAttribute="width" constant="10" id="phN-dB-0lU"/>
+                            <constraint firstAttribute="width" constant="10" id="8OK-bC-obV"/>
+                            <constraint firstAttribute="height" constant="10" id="Abe-Zm-qDM"/>
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICc-5Y-394">
                         <rect key="frame" x="374" y="19" width="20" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="6nw-84-qwQ"/>
+                            <constraint firstAttribute="height" constant="22" id="ddQ-bo-nZi"/>
+                        </constraints>
                         <state key="normal" image="more-actions-button">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Talk to Phil about plans" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToF-gX-vUT">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Talk to Phil about plans" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToF-gX-vUT">
                         <rect key="frame" x="40" y="10" width="319" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Find few minutes to talk with Phil" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4t-y1-Cbv">
-                        <rect key="frame" x="40" y="33" width="319" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find few minutes to talk with Phil" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4t-y1-Cbv">
+                        <rect key="frame" x="40" y="32" width="319" height="14.5"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ToF-gX-vUT" firstAttribute="bottom" secondItem="GUp-BJ-c35" secondAttribute="centerY" id="4H8-5J-JYf"/>
-                    <constraint firstItem="P4t-y1-Cbv" firstAttribute="leading" secondItem="GUp-BJ-c35" secondAttribute="trailing" constant="15" id="4Su-uB-irx"/>
-                    <constraint firstItem="GUp-BJ-c35" firstAttribute="leading" secondItem="5WV-dq-W1F" secondAttribute="leadingMargin" constant="7" id="7aD-o6-JSf"/>
-                    <constraint firstAttribute="centerY" secondItem="ICc-5Y-394" secondAttribute="centerY" constant="-0.25" id="DYu-72-RzE"/>
-                    <constraint firstAttribute="centerY" secondItem="GUp-BJ-c35" secondAttribute="centerY" constant="0.25" id="PcV-hQ-cka"/>
-                    <constraint firstItem="ToF-gX-vUT" firstAttribute="leading" secondItem="GUp-BJ-c35" secondAttribute="trailing" constant="15" id="ZmE-re-LCn"/>
-                    <constraint firstAttribute="trailing" secondItem="ICc-5Y-394" secondAttribute="trailing" constant="10" id="bzN-dv-yv5"/>
-                    <constraint firstItem="P4t-y1-Cbv" firstAttribute="top" secondItem="GUp-BJ-c35" secondAttribute="bottom" constant="-2" id="jq9-Dm-ZQi"/>
+                    <constraint firstItem="ICc-5Y-394" firstAttribute="leading" secondItem="P4t-y1-Cbv" secondAttribute="trailing" constant="15" id="13u-mG-vbP"/>
+                    <constraint firstItem="P4t-y1-Cbv" firstAttribute="leading" secondItem="GUp-BJ-c35" secondAttribute="trailing" constant="15" id="2Hp-lx-Agj"/>
+                    <constraint firstAttribute="centerY" secondItem="GUp-BJ-c35" secondAttribute="centerY" id="4l4-oT-Whv"/>
+                    <constraint firstItem="ICc-5Y-394" firstAttribute="leading" secondItem="ToF-gX-vUT" secondAttribute="trailing" constant="15" id="5Zg-Fk-TaX"/>
+                    <constraint firstItem="ToF-gX-vUT" firstAttribute="bottom" secondItem="GUp-BJ-c35" secondAttribute="centerY" id="BDt-bD-hS6"/>
+                    <constraint firstAttribute="trailing" secondItem="ICc-5Y-394" secondAttribute="trailing" constant="10" id="EiQ-0t-HZC"/>
+                    <constraint firstItem="GUp-BJ-c35" firstAttribute="leading" secondItem="5WV-dq-W1F" secondAttribute="leading" constant="15" id="UBy-BD-OwZ"/>
+                    <constraint firstItem="P4t-y1-Cbv" firstAttribute="top" secondItem="GUp-BJ-c35" secondAttribute="centerY" constant="2" id="Z8c-al-bsm"/>
+                    <constraint firstAttribute="centerY" secondItem="ICc-5Y-394" secondAttribute="centerY" id="e86-6s-FUe"/>
+                    <constraint firstItem="ToF-gX-vUT" firstAttribute="leading" secondItem="GUp-BJ-c35" secondAttribute="trailing" constant="15" id="vBD-ze-7xp"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="actionsButton" destination="ICc-5Y-394" id="Zal-fH-83K"/>
                 <outlet property="descriptionLabel" destination="P4t-y1-Cbv" id="UbZ-hm-Anb"/>
-                <outlet property="spaceToCenterConstraint" destination="4H8-5J-JYf" id="qV3-pb-z2y"/>
                 <outlet property="stateIndicatorView" destination="GUp-BJ-c35" id="ZR0-wt-Cnc"/>
+                <outlet property="titleBottomToCenterYConstraint" destination="BDt-bD-hS6" id="TWh-s4-oOw"/>
                 <outlet property="titleLabel" destination="ToF-gX-vUT" id="BMe-fv-ecf"/>
             </connections>
             <point key="canvasLocation" x="345" y="406"/>

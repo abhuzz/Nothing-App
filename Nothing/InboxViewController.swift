@@ -105,9 +105,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let task = self.tasks[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("NTHInboxCell", forIndexPath: indexPath) as NTHInboxCell
-//        let inboxViewModel = InboxCellViewModel(task)
-//        cell.update(inboxViewModel)
-//        cell.delegate = self
+        cell.fill(NTHInboxCellViewModel(task: task))
 
         return cell
     }

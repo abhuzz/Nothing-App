@@ -108,6 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
     func setupUI() {
+        /// UINavigationBar
         UINavigationBar.appearance().barTintColor = UIColor.NTHMoodyBlueColor()
         UINavigationBar.appearance().translucent = false
 
@@ -117,6 +118,9 @@ extension AppDelegate {
         ]
         
         UINavigationBar.appearance().tintColor = UIColor.NTHWhiteColor()
+        
+        /// UITableView
+        UITableView.appearance().separatorColor = UIColor.NTHWhiteLilacColor()
     }
 }
 
