@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DetailViewControllerDelegate {
+class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DetailViewControllerDelegate, NTHInboxCellDelegate {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var quickInsertView: QuickInsertView!
@@ -106,6 +106,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let cell = tableView.dequeueReusableCellWithIdentifier("NTHInboxCell", forIndexPath: indexPath) as NTHInboxCell
         cell.fill(NTHInboxCellViewModel(task: task))
+        cell.delegate = self
 
         return cell
     }
@@ -162,6 +163,36 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.tableView.layoutIfNeeded()
             })
         }
+    }
+    
+    
+    
+    /// Mark: NTHInboxCellDelegate
+    func cellDidTapActionButton(cell: NTHInboxCell) {
+        let indexPath = self.tableView.indexPathForCell(cell)!
+        let task = self.tasks[indexPath.row]
+        
+        let actionSheet = UIAlertController(title: task.title, message: nil, preferredStyle: .ActionSheet)
+        
+        /// actions
+        if task.state == .Active {
+            let markDone = UIAlertAction(title: "Mark as done", style: UIAlertActionStyle.Default) { [unowned task, unowned cell] (action) -> Void in
+                task.changeState()
+                cell.fill(NTHInboxCellViewModel(task: task))
+            }
+            actionSheet.addAction(markDone)
+        } else {
+            let markActive = UIAlertAction(title: "Mark as Active", style: UIAlertActionStyle.Default) {[unowned task, unowned cell] (action) -> Void in
+                task.changeState()
+                cell.fill(NTHInboxCellViewModel(task: task))
+            }
+            actionSheet.addAction(markActive)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        actionSheet.addAction(cancelAction)
+    
+        self.presentViewController(actionSheet, animated: true, completion: nil)
     }
 }
 

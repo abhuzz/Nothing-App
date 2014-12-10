@@ -22,15 +22,24 @@ class NTHInboxCellViewModel {
     var longDescription: String {
        return self._task.longDescription ?? ""
     }
+    
+    var state: Task.State {
+        return self._task.state
+    }
+}
+
+protocol NTHInboxCellDelegate: class {
+    func cellDidTapActionButton(cell: NTHInboxCell)
 }
 
 class NTHInboxCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var stateIndicatorView: UIView!
+    @IBOutlet weak var stateIndicatorView: NTHTaskStatusView!
     @IBOutlet weak var actionsButton: UIButton!
-    @IBOutlet weak var spaceToCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleBottomToCenterYConstraint: NSLayoutConstraint!
+    
+    weak var delegate: NTHInboxCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,5 +71,11 @@ class NTHInboxCell: UITableViewCell {
         } else {
             self.titleBottomToCenterYConstraint.constant = 0
         }
+        
+        stateIndicatorView.state = model.state
+    }
+    
+    @IBAction func actionButtonPressed(sender: AnyObject) {
+        self.delegate?.cellDidTapActionButton(self)
     }
 }

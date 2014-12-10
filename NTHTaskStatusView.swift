@@ -10,7 +10,7 @@ import UIKit
 
 class NTHTaskStatusView: UIView {
     
-    var status: Task.State = .Active {
+    var state: Task.State = .Active {
         didSet {
             self.setNeedsDisplay()
         }
@@ -24,7 +24,7 @@ class NTHTaskStatusView: UIView {
         let path = UIBezierPath(ovalInRect: self.bounds)
         circleLayer.path = path.CGPath
         
-        if self.status == .Done {
+        if self.state == .Done {
             circleLayer.fillColor = UIColor.NTHYellowGreenColor().CGColor
         } else {
             circleLayer.fillColor = UIColor.clearColor().CGColor
