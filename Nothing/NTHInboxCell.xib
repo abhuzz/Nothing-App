@@ -21,10 +21,9 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICc-5Y-394">
-                        <rect key="frame" x="374" y="19" width="20" height="22"/>
+                        <rect key="frame" x="374" y="0.0" width="30" height="59.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="20" id="6nw-84-qwQ"/>
-                            <constraint firstAttribute="height" constant="22" id="ddQ-bo-nZi"/>
+                            <constraint firstAttribute="width" constant="30" id="LrA-rt-fSZ"/>
                         </constraints>
                         <state key="normal" image="more-actions-button">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -52,10 +51,11 @@
                     <constraint firstAttribute="centerY" secondItem="GUp-BJ-c35" secondAttribute="centerY" id="4l4-oT-Whv"/>
                     <constraint firstItem="ICc-5Y-394" firstAttribute="leading" secondItem="ToF-gX-vUT" secondAttribute="trailing" constant="15" id="5Zg-Fk-TaX"/>
                     <constraint firstItem="ToF-gX-vUT" firstAttribute="bottom" secondItem="GUp-BJ-c35" secondAttribute="centerY" id="BDt-bD-hS6"/>
-                    <constraint firstAttribute="trailing" secondItem="ICc-5Y-394" secondAttribute="trailing" constant="10" id="EiQ-0t-HZC"/>
+                    <constraint firstAttribute="trailing" secondItem="ICc-5Y-394" secondAttribute="trailing" id="EiQ-0t-HZC"/>
+                    <constraint firstItem="ICc-5Y-394" firstAttribute="top" secondItem="5WV-dq-W1F" secondAttribute="top" id="OUu-Zw-ayr"/>
                     <constraint firstItem="GUp-BJ-c35" firstAttribute="leading" secondItem="5WV-dq-W1F" secondAttribute="leading" constant="15" id="UBy-BD-OwZ"/>
                     <constraint firstItem="P4t-y1-Cbv" firstAttribute="top" secondItem="GUp-BJ-c35" secondAttribute="centerY" constant="2" id="Z8c-al-bsm"/>
-                    <constraint firstAttribute="centerY" secondItem="ICc-5Y-394" secondAttribute="centerY" id="e86-6s-FUe"/>
+                    <constraint firstAttribute="bottom" secondItem="ICc-5Y-394" secondAttribute="bottom" id="uRV-ZN-2M2"/>
                     <constraint firstItem="ToF-gX-vUT" firstAttribute="leading" secondItem="GUp-BJ-c35" secondAttribute="trailing" constant="15" id="vBD-ze-7xp"/>
                 </constraints>
             </tableViewCellContentView>
