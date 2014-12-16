@@ -81,10 +81,11 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.prepareForSegue(segue, sender: sender)
         
         if segue.identifier! == Identifiers.TaskDetailSegue.rawValue {
-            let navVC = segue.destinationViewController as UINavigationController
-            let vc = navVC.topViewController as DetailViewController
+//            let navVC = segue.destinationViewController as UINavigationController
+//            let vc = navVC.topViewController as DetailViewController
+            let vc = segue.destinationViewController as NTHTaskDetailViewController
             vc.task = sender as Task
-            vc.delegate = self
+//            vc.delegate = self
         } else if segue.identifier! == Identifiers.CreateTask.rawValue {
             let navVC = segue.destinationViewController as UINavigationController
             let vc = navVC.topViewController as CreateEditViewController
