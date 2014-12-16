@@ -61,10 +61,6 @@ class NTHTableViewController: UIViewController, UITableViewDelegate, UITableView
         cell.textView.textContainerInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
         return cell
     }
-
-    func createLocationCell() -> MapCell {
-        return self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier.MapCell.rawValue) as MapCell
-    }
     
     func createDateReminderDescriptionCell() -> TextViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier.TextViewCell.rawValue) as TextViewCell

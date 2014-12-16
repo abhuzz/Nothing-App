@@ -35,10 +35,6 @@ class DetailViewController: NTHTableViewController {
         return self.createLocationReminderDescriptionCell()
     }()
     
-    lazy private var locationCell: MapCell = {
-        return self.createLocationCell()
-    }()
-    
     lazy private var dateReminderDescriptionCell: TextViewCell = {
         return self.createDateReminderDescriptionCell()
     }()
@@ -90,9 +86,6 @@ class DetailViewController: NTHTableViewController {
             self.locationReminderDescriptionCell.textView.text = model.noLocationReminderDescription
             self.locationReminderDescriptionCell.textView.textColor = UIColor.appWhite186()
         } else {
-            self.locationCell.coordinate = self.task.locationReminder?.place.coordinate
-            self.locationReminderDescriptionCell.textView.text = model.locationReminderDescription
-            self.locationReminderDescriptionCell.textView.textColor = UIColor.appBlack()
         }
         
         if !model.isDateReminder {
@@ -121,13 +114,6 @@ class DetailViewController: NTHTableViewController {
         /// section 2
         sections.append([self.createSeparatorCell(), self.longDescriptionCell])
         
-        /// section 3
-        if self.task.locationReminder != nil {
-            sections.append([self.createSeparatorCell(), self.locationCell, self.locationReminderDescriptionCell])
-        } else {
-            sections.append([self.createSeparatorCell(), self.locationReminderDescriptionCell])
-        }
-        
         /// section 4
         sections.append([self.createSeparatorCell(), self.dateReminderDescriptionCell])
         
@@ -150,8 +136,6 @@ class DetailViewController: NTHTableViewController {
         let cell = self.sections[indexPath.section][indexPath.row]
         if (cell is TextViewCell) {
             return (cell as TextViewCell).textView.proposedHeight
-        } else if (cell is MapCell) {
-            return 150.0
         } else if (cell is SeparatorCell) {
             return 20.0
         }

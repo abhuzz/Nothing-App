@@ -11,6 +11,7 @@ import UIKit
 class NTHTaskDetailViewController: UIViewController {
     
     /// views
+    @IBOutlet private weak var mapCell: NTHMapCellView!
     @IBOutlet private weak var titleCell: NTHCellView!
     @IBOutlet private weak var descriptionCell: NTHCellView!
     @IBOutlet private weak var statusCell: NTHCellView!
@@ -70,5 +71,13 @@ class NTHTaskDetailViewController: UIViewController {
         /// repeat interval
         self.repeatCell.setDetail(displayable.repeatString ?? notSelectedString)
         self.repeatCell.setEnabled(displayable.repeatString != nil ? true : false)
+        
+        /// map
+        if let reminder = displayable.task.locationReminder {
+            self.mapCell.mapHidden(false)
+            self.mapCell.displayAnnotationPointWithCoordinate(reminder.place.coordinate)
+        } else {
+            self.mapCell.mapHidden(true)
+        }
     }
 }

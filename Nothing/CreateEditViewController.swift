@@ -93,8 +93,6 @@ class CreateEditViewController: NTHTableViewController {
         let cell = self.sections[indexPath.section][indexPath.row]
         if (cell is TextViewCell) {
             return (cell as TextViewCell).textView.proposedHeight
-        } else if (cell is MapCell) {
-            return 150.0
         } else if (cell is SeparatorCell) {
             return 20.0
         }
