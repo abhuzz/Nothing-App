@@ -14,7 +14,7 @@ class NTHTaskDetailViewController: UIViewController {
     @IBOutlet private weak var mapCell: NTHMapCellView!
     @IBOutlet private weak var titleCell: NTHCellView!
     @IBOutlet private weak var descriptionCell: NTHCellView!
-    @IBOutlet private weak var statusCell: NTHCellView!
+    @IBOutlet private weak var statusCell: NTHStateCellView!
     @IBOutlet private weak var remindMeAtLocationCell: NTHCellView!
     @IBOutlet private weak var distanceCell: NTHCellView!
     @IBOutlet private weak var remindMeOnDateCell: NTHCellView!
@@ -55,6 +55,7 @@ class NTHTaskDetailViewController: UIViewController {
         
         /// detail
         self.statusCell.setDetail(displayable.taskStateDescription)
+        self.statusCell.statusView.state = displayable.task.state
         
         /// location
         self.remindMeAtLocationCell.setDetail(displayable.nameOfLocationInReminder ?? notSelectedString)

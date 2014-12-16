@@ -1,19 +1,20 @@
 //
-//  NTHCellView.swift
+//  NTHStateCellView.swift
 //  Nothing
 //
-//  Created by Tomasz Szulc on 15/12/14.
+//  Created by Tomasz Szulc on 16/12/14.
 //  Copyright (c) 2014 Tomasz Szulc. All rights reserved.
 //
 
 import UIKit
 
-class NTHCellView: UIView {
+class NTHStateCellView: UIView {
     /// views
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var topSeparator: UIView!
     @IBOutlet weak var bottomSeparator: UIView!
+    @IBOutlet weak var statusView: NTHTaskStatusView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,8 +27,8 @@ class NTHCellView: UIView {
     
     override func awakeAfterUsingCoder(aDecoder: NSCoder) -> AnyObject? {
         if (self.subviews.count == 0) {
-            let nib = UINib(nibName: "NTHCellView", bundle: nil)
-            let loadedView = nib.instantiateWithOwner(nil, options: nil).first as NTHCellView
+            let nib = UINib(nibName: "NTHStateCellView", bundle: nil)
+            let loadedView = nib.instantiateWithOwner(nil, options: nil).first as NTHStateCellView
             
             /// set view as placeholder is set
             loadedView.frame = self.frame
@@ -35,12 +36,12 @@ class NTHCellView: UIView {
             loadedView.setTranslatesAutoresizingMaskIntoConstraints(self.translatesAutoresizingMaskIntoConstraints())
             
             for constraint in self.constraints() as [NSLayoutConstraint] {
-                var firstItem = constraint.firstItem as NTHCellView
+                var firstItem = constraint.firstItem as NTHStateCellView
                 if firstItem == self {
                     firstItem = loadedView
                 }
                 
-                var secondItem = constraint.secondItem as NTHCellView?
+                var secondItem = constraint.secondItem as NTHStateCellView?
                 if secondItem != nil {
                     if secondItem! == self {
                         secondItem = loadedView

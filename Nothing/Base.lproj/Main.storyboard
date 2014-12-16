@@ -121,9 +121,9 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hX-FN-Vy8" userLabel="status" customClass="NTHCellView" customModule="Nothing" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hX-FN-Vy8" userLabel="status" customClass="NTHStateCellView" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="240" width="600" height="45"/>
-                                                <color key="backgroundColor" red="0.95686274509803926" green="0.95686274509803926" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="3vr-cj-roB"/>
                                                 </constraints>
