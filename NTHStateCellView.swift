@@ -58,7 +58,7 @@ class NTHStateCellView: UIView {
     }
     
     func setTitle(title: String) {
-        self.titleLabel.text = title
+        self.titleLabel.text = title.uppercaseString
     }
     
     func setDetail(detail: String?) {

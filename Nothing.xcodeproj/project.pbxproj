@@ -46,6 +46,8 @@
 		12B6EF231A40DD42006E8A10 /* NTHMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6EF221A40DD42006E8A10 /* NTHMapAnnotation.swift */; };
 		12B6EF291A40EBA5006E8A10 /* NTHStateCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6EF281A40EBA5006E8A10 /* NTHStateCellView.swift */; };
 		12B6EF2B1A40EBB1006E8A10 /* NTHStateCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B6EF2A1A40EBB1006E8A10 /* NTHStateCellView.xib */; };
+		12B6EF2D1A41FC70006E8A10 /* NTHConnectionsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6EF2C1A41FC70006E8A10 /* NTHConnectionsCellView.swift */; };
+		12B6EF311A41FF1F006E8A10 /* NTHConnectionsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B6EF301A41FF1F006E8A10 /* NTHConnectionsCellView.xib */; };
 		12BEB0F41A06DC9300643860 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BEB0F31A06DC9300643860 /* ModelController.swift */; };
 		12CC22271A12207300DF8EE0 /* InboxCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC22261A12207300DF8EE0 /* InboxCellViewModel.swift */; };
 		12CC222B1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */; };
@@ -115,6 +117,8 @@
 		12B6EF221A40DD42006E8A10 /* NTHMapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHMapAnnotation.swift; sourceTree = "<group>"; };
 		12B6EF281A40EBA5006E8A10 /* NTHStateCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHStateCellView.swift; sourceTree = "<group>"; };
 		12B6EF2A1A40EBB1006E8A10 /* NTHStateCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHStateCellView.xib; sourceTree = "<group>"; };
+		12B6EF2C1A41FC70006E8A10 /* NTHConnectionsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHConnectionsCellView.swift; sourceTree = "<group>"; };
+		12B6EF301A41FF1F006E8A10 /* NTHConnectionsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHConnectionsCellView.xib; sourceTree = "<group>"; };
 		12BEB0F31A06DC9300643860 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		12CC22261A12207300DF8EE0 /* InboxCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxCellViewModel.swift; sourceTree = "<group>"; };
 		12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateFormatter_Extension.swift; sourceTree = "<group>"; };
@@ -348,6 +352,8 @@
 				12B6EF221A40DD42006E8A10 /* NTHMapAnnotation.swift */,
 				12B6EF281A40EBA5006E8A10 /* NTHStateCellView.swift */,
 				12B6EF2A1A40EBB1006E8A10 /* NTHStateCellView.xib */,
+				12B6EF2C1A41FC70006E8A10 /* NTHConnectionsCellView.swift */,
+				12B6EF301A41FF1F006E8A10 /* NTHConnectionsCellView.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -460,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12FE32611A10D76900FAB243 /* QuickInsertView.xib in Resources */,
+				12B6EF311A41FF1F006E8A10 /* NTHConnectionsCellView.xib in Resources */,
 				1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */,
 				12ED791E1A3F42FE0052893D /* NTHCellView.xib in Resources */,
 				12B6EF2B1A40EBB1006E8A10 /* NTHStateCellView.xib in Resources */,
@@ -503,6 +510,7 @@
 				12CC22271A12207300DF8EE0 /* InboxCellViewModel.swift in Sources */,
 				1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */,
 				12ED791C1A3F42E80052893D /* NTHCellView.swift in Sources */,
+				12B6EF2D1A41FC70006E8A10 /* NTHConnectionsCellView.swift in Sources */,
 				12059DCD1A34FF5C007F5E7C /* NTHFonts.swift in Sources */,
 				1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */,
 				123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */,

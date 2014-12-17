@@ -1,19 +1,26 @@
 //
-//  NTHCellView.swift
+//  NTHCollectionCellView.swift
 //  Nothing
 //
-//  Created by Tomasz Szulc on 15/12/14.
+//  Created by Tomasz Szulc on 17/12/14.
 //  Copyright (c) 2014 Tomasz Szulc. All rights reserved.
 //
 
 import UIKit
 
-class NTHCellView: UIView {
+class NTHConnectionsCellView: UIView {
+
     /// views
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var topSeparator: UIView!
     @IBOutlet weak var bottomSeparator: UIView!
+    
+    @IBOutlet weak var firstConnection: UIButton!
+    @IBOutlet weak var secondConnection: UIButton!
+    
+    typealias ConnectionTappedBlock = () -> Void
+    private var firstConnectionBlock: ConnectionTappedBlock?
+    private var secondConnectionBlock: ConnectionTappedBlock?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,13 +28,14 @@ class NTHCellView: UIView {
         self.bottomSeparator.backgroundColor = UIColor.NTHWhiteLilacColor()
         self.backgroundColor = UIColor.NTHWhiteSmokeColor()
         self.titleLabel.textColor = UIColor.NTHCadetGrayColor()
-        self.detailLabel.textColor = UIColor.NTHLinkWaterColor()
+        self.firstConnection.backgroundColor = UIColor.clearColor()
+        self.secondConnection.backgroundColor = UIColor.clearColor()
     }
     
     override func awakeAfterUsingCoder(aDecoder: NSCoder) -> AnyObject? {
         if (self.subviews.count == 0) {
-            let nib = UINib(nibName: "NTHCellView", bundle: nil)
-            let loadedView = nib.instantiateWithOwner(nil, options: nil).first as NTHCellView
+            let nib = UINib(nibName: "NTHConnectionsCellView", bundle: nil)
+            let loadedView = nib.instantiateWithOwner(nil, options: nil).first as NTHConnectionsCellView
             
             /// set view as placeholder is set
             loadedView.frame = self.frame
@@ -35,12 +43,12 @@ class NTHCellView: UIView {
             loadedView.setTranslatesAutoresizingMaskIntoConstraints(self.translatesAutoresizingMaskIntoConstraints())
             
             for constraint in self.constraints() as [NSLayoutConstraint] {
-                var firstItem = constraint.firstItem as NTHCellView
+                var firstItem = constraint.firstItem as NTHConnectionsCellView
                 if firstItem == self {
                     firstItem = loadedView
                 }
                 
-                var secondItem = constraint.secondItem as NTHCellView?
+                var secondItem = constraint.secondItem as NTHConnectionsCellView?
                 if secondItem != nil {
                     if secondItem! == self {
                         secondItem = loadedView
@@ -60,8 +68,26 @@ class NTHCellView: UIView {
         self.titleLabel.text = title.uppercaseString
     }
     
-    func setDetail(detail: String?) {
-        self.detailLabel.text = detail
+    func setFirstConnection(connection: Connection, withBlock block: ConnectionTappedBlock) {
+        self.firstConnectionBlock = block
+        let data = ThumbnailCache.sharedInstance.read(connection.thumbnailKey ?? "")
+        
+        if let d = data {
+            let image = UIImage(data: d)
+            self.firstConnection.setImage(image, forState: UIControlState.Normal)
+        }
+    }
+    
+    func setSecondConnection(connection: Connection, withBlock block: ConnectionTappedBlock) {
+        self.secondConnectionBlock = block
+    }
+    
+    @IBAction func firstConnectionTapped(sender: AnyObject) {
+        self.firstConnectionBlock?()
+    }
+    
+    @IBAction func secondConnectionTapped(sender: AnyObject) {
+        self.secondConnectionBlock?()
     }
     
     func setEnabled(enabled: Bool) {

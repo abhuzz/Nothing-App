@@ -92,7 +92,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="645"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Bk-pt-5JE">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="520"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="590"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rP0-gI-8Lg" customClass="NTHMapCellView" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
@@ -162,6 +162,13 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WBN-24-rwl" userLabel="connections" customClass="NTHConnectionsCellView" customModule="Nothing" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="525" width="600" height="55"/>
+                                                <color key="backgroundColor" red="0.90208402590000003" green="0.90208402590000003" blue="0.90208402590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="55" id="Kuk-cc-O1u"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -175,12 +182,16 @@
                                             <constraint firstItem="CJV-yz-zF7" firstAttribute="top" secondItem="2hX-FN-Vy8" secondAttribute="bottom" constant="20" id="Ar7-3d-ZYn"/>
                                             <constraint firstItem="A4O-VD-KL6" firstAttribute="top" secondItem="qze-C7-d0S" secondAttribute="bottom" constant="20" id="Dwp-Mp-qW7"/>
                                             <constraint firstItem="xhR-4q-CFm" firstAttribute="top" secondItem="A4O-VD-KL6" secondAttribute="bottom" id="GIj-IM-iK3"/>
+                                            <constraint firstAttribute="bottom" secondItem="WBN-24-rwl" secondAttribute="bottom" constant="10" id="MSW-C1-AL7"/>
                                             <constraint firstItem="Wjl-8W-0YF" firstAttribute="top" secondItem="rP0-gI-8Lg" secondAttribute="bottom" id="QEG-Kr-IHx"/>
                                             <constraint firstAttribute="trailing" secondItem="Wjl-8W-0YF" secondAttribute="trailing" id="YR3-vd-t3U"/>
+                                            <constraint firstItem="WBN-24-rwl" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="a2X-lv-hID"/>
                                             <constraint firstItem="A4O-VD-KL6" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="eBs-Gq-Pij"/>
+                                            <constraint firstAttribute="trailing" secondItem="WBN-24-rwl" secondAttribute="trailing" id="fUY-4g-Yg3"/>
                                             <constraint firstItem="CJV-yz-zF7" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="ggW-sY-muR"/>
                                             <constraint firstItem="v53-Ul-26J" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="kGH-hL-tzj"/>
                                             <constraint firstItem="qze-C7-d0S" firstAttribute="top" secondItem="CJV-yz-zF7" secondAttribute="bottom" id="kUZ-gf-DfB"/>
+                                            <constraint firstItem="WBN-24-rwl" firstAttribute="top" secondItem="xhR-4q-CFm" secondAttribute="bottom" constant="20" id="mwk-Xg-J7u"/>
                                             <constraint firstItem="2hX-FN-Vy8" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="pmr-VV-Z8Y"/>
                                             <constraint firstItem="v53-Ul-26J" firstAttribute="top" secondItem="Wjl-8W-0YF" secondAttribute="bottom" id="rS3-KG-fz4"/>
                                             <constraint firstItem="rP0-gI-8Lg" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="rcJ-vX-0bK"/>
@@ -188,7 +199,6 @@
                                             <constraint firstAttribute="trailing" secondItem="xhR-4q-CFm" secondAttribute="trailing" id="usG-oQ-rQB"/>
                                             <constraint firstItem="xhR-4q-CFm" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="xSp-TY-yeh"/>
                                             <constraint firstItem="Wjl-8W-0YF" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="xlk-AD-N2e"/>
-                                            <constraint firstAttribute="bottom" secondItem="xhR-4q-CFm" secondAttribute="bottom" constant="15" id="yjP-Cl-1Cu"/>
                                             <constraint firstAttribute="trailing" secondItem="A4O-VD-KL6" secondAttribute="trailing" id="yz6-9g-gMm"/>
                                         </constraints>
                                     </view>
@@ -220,6 +230,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="645"/>
                     <connections>
+                        <outlet property="connectionsCell" destination="WBN-24-rwl" id="3Wc-Ja-d2g"/>
                         <outlet property="descriptionCell" destination="v53-Ul-26J" id="JYd-xd-Xw7"/>
                         <outlet property="distanceCell" destination="qze-C7-d0S" id="O68-Jv-yV5"/>
                         <outlet property="mapCell" destination="rP0-gI-8Lg" id="r5D-H6-321"/>

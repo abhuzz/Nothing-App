@@ -20,7 +20,8 @@ class NTHTaskDetailViewController: UIViewController {
     @IBOutlet private weak var distanceCell: NTHCellView!
     @IBOutlet private weak var remindMeOnDateCell: NTHCellView!
     @IBOutlet private weak var repeatCell: NTHCellView!
-    
+    @IBOutlet private weak var connectionsCell: NTHConnectionsCellView!
+
     /// public
     var task: Task!
     
@@ -39,6 +40,7 @@ class NTHTaskDetailViewController: UIViewController {
         self.distanceCell.setTitle(NSLocalizedString("Distance", comment: ""))
         self.remindMeOnDateCell.setTitle(NSLocalizedString("Remind me on date", comment: ""))
         self.repeatCell.setTitle(NSLocalizedString("Repeat", comment: ""))
+        self.connectionsCell.setTitle(NSLocalizedString("Connections", comment: ""))
     }
     
     private func updateWithModel(displayable: NTHTaskDisplayable) {
@@ -80,6 +82,39 @@ class NTHTaskDetailViewController: UIViewController {
             self.mapCell.displayAnnotationPointWithCoordinate(reminder.place.coordinate)
         } else {
             self.mapCell.mapHidden(true)
+        }
+        
+        /// connections
+        var connectionsSet: Int = 0
+        for connection in self.task.allConnections.allObjects as [Connection] {
+            if (connectionsSet < 2) {
+                if (connectionsSet == 0) {
+                    self.connectionsCell.setFirstConnection(connection, withBlock: {
+                        println("first connection tapped")
+                    })
+                } else {
+                    self.connectionsCell.setSecondConnection(connection, withBlock: {
+                        println("second connection tapped")
+                    })
+                }
+                connectionsSet++
+            } else {
+                break
+            }
+        }
+        
+        if (connectionsSet == 0) {
+            self.connectionsCell.firstConnection.hidden = true
+            self.connectionsCell.secondConnection.hidden = true
+            self.connectionsCell.setEnabled(false)
+        } else if (connectionsSet == 1) {
+            self.connectionsCell.firstConnection.hidden = false
+            self.connectionsCell.secondConnection.hidden = true
+            self.connectionsCell.setEnabled(true)
+        } else {
+            self.connectionsCell.firstConnection.hidden = false
+            self.connectionsCell.secondConnection.hidden = true
+            self.connectionsCell.setEnabled(true)
         }
     }
     
