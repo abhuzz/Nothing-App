@@ -210,6 +210,13 @@
                             <constraint firstItem="Gwq-Az-TLc" firstAttribute="top" secondItem="SBR-eO-IKi" secondAttribute="top" id="uHe-Tz-SXJ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="aFF-Fl-Haf">
+                        <barButtonItem key="rightBarButtonItem" image="more-actions-button" id="4os-i3-XKO">
+                            <connections>
+                                <action selector="actionPressed:" destination="AdU-gc-aje" id="Xl0-Kw-CRf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="645"/>
                     <connections>
@@ -402,4 +409,7 @@
             <point key="canvasLocation" x="3927" y="1186"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="more-actions-button" width="20" height="5"/>
+    </resources>
 </document>

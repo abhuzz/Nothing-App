@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class NTHTaskDetailViewController: UIViewController {
     
@@ -81,4 +82,42 @@ class NTHTaskDetailViewController: UIViewController {
             self.mapCell.mapHidden(true)
         }
     }
+    
+    @IBAction func actionPressed(sender: AnyObject) {
+        let alertController = UIAlertController(title: self.task.title, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        /// edit
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Edit", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            /// edit it
+        }))
+        
+        /// mark as...
+        if (self.task.state == Task.State.Active) {
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("Mark as Done", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                /// mark as done
+            }))
+        } else {
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("Mark as Active", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                /// mark as active
+            }))
+        }
+        
+        /// show place on map
+        if let locationReminder = self.task.locationReminder {
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("Show place on map", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    let placemark = MKPlacemark(coordinate: locationReminder.place.coordinate, addressDictionary: nil)
+                    let mapItem = MKMapItem(placemark: placemark)
+                    mapItem.name = locationReminder.place.customName
+                    mapItem.openInMapsWithLaunchOptions(nil)
+                })
+            }))
+        }
+        
+        /// cancel
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.Cancel, handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
 }
