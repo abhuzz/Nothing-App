@@ -71,7 +71,7 @@ class NTHConnectionsCellView: UIView {
         self.connections = connections
         
         let height = CGRectGetHeight(self.connectionsScrollView.bounds)
-        let margin = 10
+        let margin = 5
         var previousView: UIView?
         var index = 0
         for connection in self.connections {
@@ -82,19 +82,18 @@ class NTHConnectionsCellView: UIView {
             }
             
             /// create button
-            var currentView = UIButton(frame: frame)
-            currentView.backgroundColor = UIColor.redColor()
+            var currentView = NTHCircleButton(frame: frame)
             currentView.tag = index
+            currentView.backgroundColor = UIColor.clearColor()
             currentView.addTarget(self, action: "_connectionButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
             
             /// set image
             let data = ThumbnailCache.sharedInstance.read(connection.thumbnailKey ?? "")
-
+            
             if let d = data {
                 let image = UIImage(data: d)
                 currentView.setImage(image, forState: UIControlState.Normal)
             }
-
             
             self.connectionsScrollView.addSubview(currentView)
             

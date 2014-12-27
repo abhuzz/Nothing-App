@@ -15,6 +15,7 @@
 		123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2119FF86C4008E22DB /* HashtagDetector.swift */; };
 		123B6E2419FF909F008E22DB /* UILabel_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2319FF909F008E22DB /* UILabel_Extension.swift */; };
 		123F11C51A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123F11C41A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift */; };
+		124A8F141A4EE9B300BE5EAB /* NTHCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124A8F131A4EE9B300BE5EAB /* NTHCircleButton.swift */; };
 		124ADC991A19467600750816 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124ADC981A19467600750816 /* DetailViewController.swift */; };
 		124ADC9B1A19493C00750816 /* DetailModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124ADC9A1A19493C00750816 /* DetailModelView.swift */; };
 		125593EC19FEE10A001EC477 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593EB19FEE10A001EC477 /* UIColor_Extension.swift */; };
@@ -83,12 +84,13 @@
 		123B6E2119FF86C4008E22DB /* HashtagDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagDetector.swift; sourceTree = "<group>"; };
 		123B6E2319FF909F008E22DB /* UILabel_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel_Extension.swift; sourceTree = "<group>"; };
 		123F11C41A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem_Extension.swift; sourceTree = "<group>"; };
+		124A8F131A4EE9B300BE5EAB /* NTHCircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCircleButton.swift; sourceTree = "<group>"; };
 		124ADC981A19467600750816 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		124ADC9A1A19493C00750816 /* DetailModelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailModelView.swift; sourceTree = "<group>"; };
 		125593EB19FEE10A001EC477 /* UIColor_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
 		1279B5D419FED4E700A7828C /* Nothing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nothing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1279B5D819FED4E700A7828C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1279B5D919FED4E700A7828C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1279B5D919FED4E700A7828C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Nothing/AppDelegate.swift; sourceTree = "<group>"; };
 		1279B5DB19FED4E700A7828C /* NTHInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NTHInboxViewController.swift; path = Nothing/NTHInboxViewController.swift; sourceTree = "<group>"; };
 		1279B5DE19FED4E700A7828C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1279B5E019FED4E700A7828C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -157,11 +159,10 @@
 		12059DCB1A34FDAC007F5E7C /* Nothing2 */ = {
 			isa = PBXGroup;
 			children = (
+				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
 				128786211A4ED75000751FEF /* Controllers */,
 				128786231A4ED76600751FEF /* Components */,
 				128786201A4ED74700751FEF /* Extensions */,
-				12ED79201A3F59C80052893D /* Task Detail */,
-				127400361A36593F004D96D3 /* QuickInsertView */,
 				1279B5DD19FED4E700A7828C /* Main.storyboard */,
 			);
 			name = Nothing2;
@@ -208,7 +209,6 @@
 		1279B5D619FED4E700A7828C /* Nothing */ = {
 			isa = PBXGroup;
 			children = (
-				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
 				12CC22211A12109400DF8EE0 /* Inbox */,
 				12EDE78B1A1FC65B0020D549 /* Dialogs */,
 				128B298D1A1FB060005C93DF /* Create / Edit / Browse */,
@@ -308,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				1279B5DB19FED4E700A7828C /* NTHInboxViewController.swift */,
+				12ED79211A3F59E10052893D /* NTHTaskDetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -328,6 +329,9 @@
 				12B6EF2A1A40EBB1006E8A10 /* NTHStateCellView.xib */,
 				12B6EF2C1A41FC70006E8A10 /* NTHConnectionsCellView.swift */,
 				12B6EF301A41FF1F006E8A10 /* NTHConnectionsCellView.xib */,
+				12B6EF1C1A40B5E1006E8A10 /* NTHTaskDisplayable.swift */,
+				127400361A36593F004D96D3 /* QuickInsertView */,
+				124A8F131A4EE9B300BE5EAB /* NTHCircleButton.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -368,15 +372,6 @@
 			children = (
 			);
 			name = External;
-			sourceTree = "<group>";
-		};
-		12ED79201A3F59C80052893D /* Task Detail */ = {
-			isa = PBXGroup;
-			children = (
-				12ED79211A3F59E10052893D /* NTHTaskDetailViewController.swift */,
-				12B6EF1C1A40B5E1006E8A10 /* NTHTaskDisplayable.swift */,
-			);
-			name = "Task Detail";
 			sourceTree = "<group>";
 		};
 		12EDE78A1A1FC2BB0020D549 /* Create */ = {
@@ -532,6 +527,7 @@
 				129A555C1A1E6A0800ED249D /* TextViewCell.swift in Sources */,
 				124ADC991A19467600750816 /* DetailViewController.swift in Sources */,
 				128B298C1A1EA862005C93DF /* SeparatorCell.swift in Sources */,
+				124A8F141A4EE9B300BE5EAB /* NTHCircleButton.swift in Sources */,
 				12B6EF291A40EBA5006E8A10 /* NTHStateCellView.swift in Sources */,
 				1279B60A19FED64D00A7828C /* NSManagedObject_Extension.swift in Sources */,
 				12B6EF1D1A40B5E1006E8A10 /* NTHTaskDisplayable.swift in Sources */,
