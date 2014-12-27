@@ -26,7 +26,7 @@
         <!--Inbox View Controller-->
         <scene sceneID="JK8-62-5xE">
             <objects>
-                <viewController id="Nc0-Yv-JIZ" customClass="NTHInboxViewController" sceneMemberID="viewController">
+                <viewController id="Nc0-Yv-JIZ" customClass="NTHInboxViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Eyc-1W-u7M"/>
                         <viewControllerLayoutGuide type="bottom" id="qHR-CB-ENn"/>

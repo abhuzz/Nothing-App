@@ -8,19 +8,20 @@
 
 import UIKit
 
+protocol NTHConnectionsCellViewDelegate : class {
+    func connectionsCell(cell: NTHConnectionsCellView, didSelectConnection connection: Connection)
+}
+
 class NTHConnectionsCellView: UIView {
 
     /// views
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var topSeparator: UIView!
     @IBOutlet weak var bottomSeparator: UIView!
+    @IBOutlet weak var connectionsScrollView: UIScrollView!
     
-    @IBOutlet weak var firstConnection: UIButton!
-    @IBOutlet weak var secondConnection: UIButton!
-    
-    typealias ConnectionTappedBlock = () -> Void
-    private var firstConnectionBlock: ConnectionTappedBlock?
-    private var secondConnectionBlock: ConnectionTappedBlock?
+    weak var delegate : NTHConnectionsCellViewDelegate?
+    private var connections = [Connection]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,8 +29,6 @@ class NTHConnectionsCellView: UIView {
         self.bottomSeparator.backgroundColor = UIColor.NTHWhiteLilacColor()
         self.backgroundColor = UIColor.NTHWhiteSmokeColor()
         self.titleLabel.textColor = UIColor.NTHCadetGrayColor()
-        self.firstConnection.backgroundColor = UIColor.clearColor()
-        self.secondConnection.backgroundColor = UIColor.clearColor()
     }
     
     override func awakeAfterUsingCoder(aDecoder: NSCoder) -> AnyObject? {
@@ -68,26 +67,75 @@ class NTHConnectionsCellView: UIView {
         self.titleLabel.text = title.uppercaseString
     }
     
-    func setFirstConnection(connection: Connection, withBlock block: ConnectionTappedBlock) {
-        self.firstConnectionBlock = block
-        let data = ThumbnailCache.sharedInstance.read(connection.thumbnailKey ?? "")
+    func setConnections(connections: [Connection]) {
+        self.connections = connections
         
-        if let d = data {
-            let image = UIImage(data: d)
-            self.firstConnection.setImage(image, forState: UIControlState.Normal)
+        let height = CGRectGetHeight(self.connectionsScrollView.bounds)
+        let margin = 10
+        var previousView: UIView?
+        var index = 0
+        for connection in self.connections {
+            /// get and adjust frame
+            var frame = CGRectMake(0, 0, height, height)
+            if previousView != nil {
+                frame.origin.x = CGRectGetMaxX(previousView!.frame) + CGFloat(margin)
+            }
+            
+            /// create button
+            var currentView = UIButton(frame: frame)
+            currentView.backgroundColor = UIColor.redColor()
+            currentView.tag = index
+            currentView.addTarget(self, action: "_connectionButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+            
+            /// set image
+            let data = ThumbnailCache.sharedInstance.read(connection.thumbnailKey ?? "")
+
+            if let d = data {
+                let image = UIImage(data: d)
+                currentView.setImage(image, forState: UIControlState.Normal)
+            }
+
+            
+            self.connectionsScrollView.addSubview(currentView)
+            
+            /// add constraints
+            
+            /// width
+            let widthConstraint = NSLayoutConstraint(item: currentView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: self.connectionsScrollView, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 0)
+            self.connectionsScrollView.addConstraint(widthConstraint)
+            
+            /// height
+            let heightConstraint = NSLayoutConstraint(item: currentView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: self.connectionsScrollView, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 0)
+            self.connectionsScrollView.addConstraint(heightConstraint)
+
+            /// Top
+            let topConstraint = NSLayoutConstraint(item: currentView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.connectionsScrollView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
+            self.connectionsScrollView.addConstraint(topConstraint)
+            
+            /// Bottom
+            let bottomConstraint = NSLayoutConstraint(item: currentView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.connectionsScrollView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0)
+            self.connectionsScrollView.addConstraint(bottomConstraint)
+            
+            /// Leading
+            if let previousView = previousView {
+                let leadingConstraint = NSLayoutConstraint(item: currentView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: previousView, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: CGFloat(margin))
+                self.connectionsScrollView.addConstraint(leadingConstraint)
+            } else {
+                let leadingConstraint = NSLayoutConstraint(item: currentView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.connectionsScrollView, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0)
+                self.connectionsScrollView.addConstraint(leadingConstraint)
+            }
+            
+            previousView = currentView
+            index++;
         }
+        
+        /// add trailing constraint
+        let trailingConstraint = NSLayoutConstraint(item: previousView!, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: self.connectionsScrollView, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0)
+        self.connectionsScrollView.addConstraint(trailingConstraint)
     }
     
-    func setSecondConnection(connection: Connection, withBlock block: ConnectionTappedBlock) {
-        self.secondConnectionBlock = block
-    }
-    
-    @IBAction func firstConnectionTapped(sender: AnyObject) {
-        self.firstConnectionBlock?()
-    }
-    
-    @IBAction func secondConnectionTapped(sender: AnyObject) {
-        self.secondConnectionBlock?()
+    func _connectionButtonTapped(sender: UIButton) {
+        self.delegate?.connectionsCell(self, didSelectConnection: self.connections[sender.tag])
     }
     
     func setEnabled(enabled: Bool) {

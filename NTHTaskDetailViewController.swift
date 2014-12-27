@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class NTHTaskDetailViewController: UIViewController {
+class NTHTaskDetailViewController: UIViewController, NTHConnectionsCellViewDelegate {
     
     /// views
     @IBOutlet private weak var mapCell: NTHMapCellView!
@@ -41,6 +41,7 @@ class NTHTaskDetailViewController: UIViewController {
         self.remindMeOnDateCell.setTitle(NSLocalizedString("Remind me on date", comment: ""))
         self.repeatCell.setTitle(NSLocalizedString("Repeat", comment: ""))
         self.connectionsCell.setTitle(NSLocalizedString("Connections", comment: ""))
+        self.connectionsCell.delegate = self
     }
     
     private func updateWithModel(displayable: NTHTaskDisplayable) {
@@ -84,38 +85,7 @@ class NTHTaskDetailViewController: UIViewController {
             self.mapCell.mapHidden(true)
         }
         
-        /// connections
-        var connectionsSet: Int = 0
-        for connection in self.task.allConnections.allObjects as [Connection] {
-            if (connectionsSet < 2) {
-                if (connectionsSet == 0) {
-                    self.connectionsCell.setFirstConnection(connection, withBlock: {
-                        println("first connection tapped")
-                    })
-                } else {
-                    self.connectionsCell.setSecondConnection(connection, withBlock: {
-                        println("second connection tapped")
-                    })
-                }
-                connectionsSet++
-            } else {
-                break
-            }
-        }
-        
-        if (connectionsSet == 0) {
-            self.connectionsCell.firstConnection.hidden = true
-            self.connectionsCell.secondConnection.hidden = true
-            self.connectionsCell.setEnabled(false)
-        } else if (connectionsSet == 1) {
-            self.connectionsCell.firstConnection.hidden = false
-            self.connectionsCell.secondConnection.hidden = true
-            self.connectionsCell.setEnabled(true)
-        } else {
-            self.connectionsCell.firstConnection.hidden = false
-            self.connectionsCell.secondConnection.hidden = true
-            self.connectionsCell.setEnabled(true)
-        }
+        self.connectionsCell.setConnections(self.task.allConnections.allObjects as [Connection])
     }
     
     @IBAction func actionPressed(sender: AnyObject) {
@@ -155,4 +125,34 @@ class NTHTaskDetailViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    
+    
+    /// Mark: NTHConnectionsCellViewDelegate
+    func connectionsCell(cell: NTHConnectionsCellView, didSelectConnection connection: Connection) {
+        /// get some name
+        var name = ""
+        if (connection is Contact) {
+            name = (connection as Contact).name
+        } else if (connection is Place) {
+            name = (connection as Place).customName
+        }
+        
+        /// create controller
+        let controller = UIAlertController(title: name, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        /// add actions for connections
+        let showDetails = UIAlertAction(title: "Show details", style: UIAlertActionStyle.Default) { (action) -> Void in
+            
+        }
+        
+        /// cancel
+        let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+            
+        }
+        
+        controller.addAction(showDetails)
+        controller.addAction(cancel)
+        
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
 }
