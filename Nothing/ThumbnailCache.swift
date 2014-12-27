@@ -11,7 +11,7 @@ import Foundation
 class ThumbnailCache: FileCache {
     class var sharedInstance: ThumbnailCache! {
         struct Static {
-            static var instance = ThumbnailCache(path: NSTemporaryDirectory().stringByAppendingPathComponent("thumbnails"))
+            static var instance = ThumbnailCache(path: ((NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask) as [NSURL]).last!).path!.stringByAppendingPathComponent("thumbnails"))
         }
         
         return Static.instance
