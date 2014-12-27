@@ -11,7 +11,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAJ-eq-qvv">
-                    <rect key="frame" x="15" y="5" width="570" height="12"/>
+                    <rect key="frame" x="15" y="5" width="542" height="12"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="10"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -31,22 +31,36 @@
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYa-5s-18s">
-                    <rect key="frame" x="15" y="20" width="570" height="30"/>
+                    <rect key="frame" x="15" y="20" width="542" height="30"/>
                 </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISR-e0-Pdk" userLabel="Disclosure button">
+                    <rect key="frame" x="565" y="13" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="6AN-g5-SRA"/>
+                        <constraint firstAttribute="height" constant="30" id="Gp2-pb-SBf"/>
+                        <constraint firstAttribute="width" constant="30" id="H4g-B9-bwd"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="bsd-1p-Mee"/>
+                    </constraints>
+                    <state key="normal" image="disclosure-indicator">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="ISR-e0-Pdk" secondAttribute="trailing" constant="5" id="1GU-WU-b6G"/>
                 <constraint firstItem="HYa-5s-18s" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="GKH-so-c1b"/>
                 <constraint firstItem="ZgY-PH-fW0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="NQN-qV-atM"/>
-                <constraint firstAttribute="trailing" secondItem="HYa-5s-18s" secondAttribute="trailing" constant="15" id="Rjk-3D-fW2"/>
+                <constraint firstItem="ISR-e0-Pdk" firstAttribute="leading" secondItem="HYa-5s-18s" secondAttribute="trailing" constant="8" id="PGB-Bl-xMJ"/>
                 <constraint firstItem="GAJ-eq-qvv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="WQV-Jw-YoA"/>
                 <constraint firstItem="ZgY-PH-fW0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Yex-G7-ydU"/>
                 <constraint firstAttribute="bottom" secondItem="5w4-ec-pus" secondAttribute="bottom" id="bzZ-OF-7Nu"/>
                 <constraint firstAttribute="trailing" secondItem="5w4-ec-pus" secondAttribute="trailing" id="fE2-9q-kwa"/>
                 <constraint firstItem="5w4-ec-pus" firstAttribute="top" secondItem="HYa-5s-18s" secondAttribute="bottom" constant="4" id="hEf-yB-kCf"/>
                 <constraint firstAttribute="trailing" secondItem="ZgY-PH-fW0" secondAttribute="trailing" id="iA4-Qq-a8f"/>
-                <constraint firstAttribute="trailing" secondItem="GAJ-eq-qvv" secondAttribute="trailing" constant="15" id="lEH-8c-uHt"/>
+                <constraint firstAttribute="centerY" secondItem="ISR-e0-Pdk" secondAttribute="centerY" constant="-0.5" id="iTE-mQ-42I"/>
                 <constraint firstItem="GAJ-eq-qvv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="m3V-zX-Sgl"/>
+                <constraint firstItem="ISR-e0-Pdk" firstAttribute="leading" secondItem="GAJ-eq-qvv" secondAttribute="trailing" constant="8" id="ow5-0d-q5u"/>
                 <constraint firstItem="5w4-ec-pus" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xKR-gy-j00"/>
                 <constraint firstItem="HYa-5s-18s" firstAttribute="top" secondItem="GAJ-eq-qvv" secondAttribute="bottom" constant="3" id="ztY-BB-WBZ"/>
             </constraints>
@@ -55,10 +69,15 @@
             <connections>
                 <outlet property="bottomSeparator" destination="5w4-ec-pus" id="iAH-I8-USX"/>
                 <outlet property="connectionsScrollView" destination="HYa-5s-18s" id="gif-kU-b7T"/>
+                <outlet property="disclosureIndicator" destination="ISR-e0-Pdk" id="00u-GN-iqe"/>
+                <outlet property="disclosureIndicatorTrailingconstraint" destination="1GU-WU-b6G" id="6vq-eR-0wE"/>
                 <outlet property="titleLabel" destination="GAJ-eq-qvv" id="Mjc-Qa-sck"/>
                 <outlet property="topSeparator" destination="ZgY-PH-fW0" id="dDy-Ed-gOO"/>
             </connections>
             <point key="canvasLocation" x="-322" y="231.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="disclosure-indicator" width="12" height="21"/>
+    </resources>
 </document>

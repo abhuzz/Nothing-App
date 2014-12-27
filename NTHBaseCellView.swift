@@ -11,9 +11,12 @@ import UIKit
 class NTHBaseCellView: UIView {
     @IBOutlet internal weak var topSeparator: UIView!
     @IBOutlet internal weak var bottomSeparator: UIView!
+    @IBOutlet internal weak var disclosureIndicator: UIButton!
+    @IBOutlet internal weak var disclosureIndicatorTrailingconstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.showDisclosureIndicator(false)
         self.setupUI()
     }
     
@@ -37,6 +40,20 @@ class NTHBaseCellView: UIView {
         } else {
             self.alpha = 0.5
         }
+    }
+    
+    func showDisclosureIndicator(show: Bool) {
+        if self.disclosureIndicator == nil {
+            return
+        }
+        
+        if show {
+            self.disclosureIndicatorTrailingconstraint.constant = 5
+        } else {
+            self.disclosureIndicatorTrailingconstraint.constant = -CGRectGetWidth(self.disclosureIndicator.bounds)
+        }
+        
+        self.layoutSubviews()
     }
 }
 
