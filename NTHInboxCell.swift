@@ -13,25 +13,26 @@ protocol NTHInboxCellDelegate: class {
 }
 
 class NTHInboxCell: UITableViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var stateIndicatorView: NTHTaskStatusView!
-    @IBOutlet weak var actionsButton: UIButton!
-    @IBOutlet weak var titleBottomToCenterYConstraint: NSLayoutConstraint!
+    /// outlets
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var stateIndicatorView: NTHTaskStatusView!
+    @IBOutlet private weak var actionsButton: UIButton!
+    @IBOutlet private weak var titleBottomToCenterYConstraint: NSLayoutConstraint!
     
     weak var delegate: NTHInboxCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.setup()
+        self.setupUI()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.setup()
+        self.setupUI()
     }
     
-    private func setup() {
+    private func setupUI() {
         self.separatorInset = UIEdgeInsetsMake(0, 20, 0, 0)
         
         self.titleLabel.font = UIFont.NTHInboxCellTitleFont()
@@ -43,7 +44,7 @@ class NTHInboxCell: UITableViewCell {
         self.stateIndicatorView.state = .Active
     }
     
-    func fill(model: NTHInboxCellViewModel) {
+    func update(model: NTHInboxCellViewModel) {
         self.titleLabel.text = model.title
         self.descriptionLabel.text = model.longDescription
         

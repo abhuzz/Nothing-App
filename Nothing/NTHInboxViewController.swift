@@ -105,7 +105,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
         let task = self.tasks[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("NTHInboxCell", forIndexPath: indexPath) as NTHInboxCell
-        cell.fill(NTHInboxCellViewModel(task: task))
+        cell.update(NTHInboxCellViewModel(task: task))
         cell.delegate = self
 
         return cell
@@ -171,13 +171,13 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
         if task.state == .Active {
             let markDone = UIAlertAction(title: "Mark as done", style: UIAlertActionStyle.Default) { [unowned task, unowned cell] (action) -> Void in
                 task.changeState()
-                cell.fill(NTHInboxCellViewModel(task: task))
+                cell.update(NTHInboxCellViewModel(task: task))
             }
             actionSheet.addAction(markDone)
         } else {
             let markActive = UIAlertAction(title: "Mark as Active", style: UIAlertActionStyle.Default) {[unowned task, unowned cell] (action) -> Void in
                 task.changeState()
-                cell.fill(NTHInboxCellViewModel(task: task))
+                cell.update(NTHInboxCellViewModel(task: task))
             }
             actionSheet.addAction(markActive)
         }
