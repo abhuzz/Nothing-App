@@ -12,55 +12,23 @@ protocol NTHConnectionsCellViewDelegate : class {
     func connectionsCell(cell: NTHConnectionsCellView, didSelectConnection connection: Connection)
 }
 
-class NTHConnectionsCellView: UIView {
+class NTHConnectionsCellView: NTHBaseCellView {
 
-    /// views
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var topSeparator: UIView!
-    @IBOutlet weak var bottomSeparator: UIView!
-    @IBOutlet weak var connectionsScrollView: UIScrollView!
+    /// outlets
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var connectionsScrollView: UIScrollView!
     
-    weak var delegate : NTHConnectionsCellViewDelegate?
     private var connections = [Connection]()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.topSeparator.backgroundColor = UIColor.NTHWhiteLilacColor()
-        self.bottomSeparator.backgroundColor = UIColor.NTHWhiteLilacColor()
-        self.backgroundColor = UIColor.NTHWhiteSmokeColor()
+    weak var delegate : NTHConnectionsCellViewDelegate?
+    
+    override func setupUI() {
+        super.setupUI()
         self.titleLabel.textColor = UIColor.NTHCadetGrayColor()
     }
     
-    override func awakeAfterUsingCoder(aDecoder: NSCoder) -> AnyObject? {
-        if (self.subviews.count == 0) {
-            let nib = UINib(nibName: "NTHConnectionsCellView", bundle: nil)
-            let loadedView = nib.instantiateWithOwner(nil, options: nil).first as NTHConnectionsCellView
-            
-            /// set view as placeholder is set
-            loadedView.frame = self.frame
-            loadedView.autoresizingMask = self.autoresizingMask
-            loadedView.setTranslatesAutoresizingMaskIntoConstraints(self.translatesAutoresizingMaskIntoConstraints())
-            
-            for constraint in self.constraints() as [NSLayoutConstraint] {
-                var firstItem = constraint.firstItem as NTHConnectionsCellView
-                if firstItem == self {
-                    firstItem = loadedView
-                }
-                
-                var secondItem = constraint.secondItem as NTHConnectionsCellView?
-                if secondItem != nil {
-                    if secondItem! == self {
-                        secondItem = loadedView
-                    }
-                }
-                
-                loadedView.addConstraint(NSLayoutConstraint(item: firstItem, attribute: constraint.firstAttribute, relatedBy: constraint.relation, toItem: secondItem, attribute: constraint.secondAttribute, multiplier: constraint.multiplier, constant: constraint.constant))
-            }
-            
-            return loadedView
-        }
-        
-        return self
+    override func nibName() -> String {
+        return "NTHConnectionsCellView"
     }
     
     func setTitle(title: String) {
@@ -69,6 +37,10 @@ class NTHConnectionsCellView: UIView {
     
     func setConnections(connections: [Connection]) {
         self.connections = connections
+        
+        if self.connections.count == 0 {
+            return
+        }
         
         let height = CGRectGetHeight(self.connectionsScrollView.bounds)
         let margin = 5
@@ -135,13 +107,5 @@ class NTHConnectionsCellView: UIView {
     
     func _connectionButtonTapped(sender: UIButton) {
         self.delegate?.connectionsCell(self, didSelectConnection: self.connections[sender.tag])
-    }
-    
-    func setEnabled(enabled: Bool) {
-        if enabled {
-            self.alpha = 1.0
-        } else {
-            self.alpha = 0.5
-        }
     }
 }

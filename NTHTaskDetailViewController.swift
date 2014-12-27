@@ -13,13 +13,13 @@ class NTHTaskDetailViewController: UIViewController, NTHConnectionsCellViewDeleg
     
     /// views
     @IBOutlet private weak var mapCell: NTHMapCellView!
-    @IBOutlet private weak var titleCell: NTHCellView!
-    @IBOutlet private weak var descriptionCell: NTHCellView!
+    @IBOutlet private weak var titleCell: NTHSimpleCellView!
+    @IBOutlet private weak var descriptionCell: NTHSimpleCellView!
     @IBOutlet private weak var statusCell: NTHStateCellView!
-    @IBOutlet private weak var remindMeAtLocationCell: NTHCellView!
-    @IBOutlet private weak var distanceCell: NTHCellView!
-    @IBOutlet private weak var remindMeOnDateCell: NTHCellView!
-    @IBOutlet private weak var repeatCell: NTHCellView!
+    @IBOutlet private weak var remindMeAtLocationCell: NTHSimpleCellView!
+    @IBOutlet private weak var distanceCell: NTHSimpleCellView!
+    @IBOutlet private weak var remindMeOnDateCell: NTHSimpleCellView!
+    @IBOutlet private weak var repeatCell: NTHSimpleCellView!
     @IBOutlet private weak var connectionsCell: NTHConnectionsCellView!
 
     /// public

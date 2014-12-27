@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12059DCA1A34FDA2007F5E7C /* NTHColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DC91A34FDA2007F5E7C /* NTHColors.swift */; };
-		12059DCD1A34FF5C007F5E7C /* NTHFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */; };
+		12059DCA1A34FDA2007F5E7C /* UIColor+Nothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DC91A34FDA2007F5E7C /* UIColor+Nothing.swift */; };
+		12059DCD1A34FF5C007F5E7C /* UIFont+Nothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DCC1A34FF5C007F5E7C /* UIFont+Nothing.swift */; };
 		12059DCF1A350153007F5E7C /* NTHInboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12059DCE1A350153007F5E7C /* NTHInboxCell.xib */; };
 		12059DD11A350476007F5E7C /* NTHInboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DD01A350476007F5E7C /* NTHInboxCell.swift */; };
 		12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */; };
@@ -16,6 +16,8 @@
 		123B6E2419FF909F008E22DB /* UILabel_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2319FF909F008E22DB /* UILabel_Extension.swift */; };
 		123F11C51A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123F11C41A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift */; };
 		124A8F141A4EE9B300BE5EAB /* NTHCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124A8F131A4EE9B300BE5EAB /* NTHCircleButton.swift */; };
+		124A8F161A4F017800BE5EAB /* UIView+Nothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124A8F151A4F017800BE5EAB /* UIView+Nothing.swift */; };
+		124A8F181A4F0D1800BE5EAB /* NTHBaseCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124A8F171A4F0D1800BE5EAB /* NTHBaseCellView.swift */; };
 		124ADC991A19467600750816 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124ADC981A19467600750816 /* DetailViewController.swift */; };
 		124ADC9B1A19493C00750816 /* DetailModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124ADC9A1A19493C00750816 /* DetailModelView.swift */; };
 		125593EC19FEE10A001EC477 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593EB19FEE10A001EC477 /* UIColor_Extension.swift */; };
@@ -55,8 +57,8 @@
 		12CC222B1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */; };
 		12CEF17F1A083832004DE156 /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEF17E1A083832004DE156 /* UIView_Extension.swift */; };
 		12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215991A03A9840038AD45 /* ThumbnailCache.swift */; };
-		12ED791C1A3F42E80052893D /* NTHCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED791B1A3F42E80052893D /* NTHCellView.swift */; };
-		12ED791E1A3F42FE0052893D /* NTHCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12ED791D1A3F42FE0052893D /* NTHCellView.xib */; };
+		12ED791C1A3F42E80052893D /* NTHSimpleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED791B1A3F42E80052893D /* NTHSimpleCellView.swift */; };
+		12ED791E1A3F42FE0052893D /* NTHSimpleCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12ED791D1A3F42FE0052893D /* NTHSimpleCellView.xib */; };
 		12ED79221A3F59E10052893D /* NTHTaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED79211A3F59E10052893D /* NTHTaskDetailViewController.swift */; };
 		12EDE7871A1FBD1E0020D549 /* CreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */; };
 		12EDE7891A1FBDC20020D549 /* NTHTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */; };
@@ -76,8 +78,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		12059DC91A34FDA2007F5E7C /* NTHColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHColors.swift; sourceTree = "<group>"; };
-		12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHFonts.swift; sourceTree = "<group>"; };
+		12059DC91A34FDA2007F5E7C /* UIColor+Nothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Nothing.swift"; sourceTree = "<group>"; };
+		12059DCC1A34FF5C007F5E7C /* UIFont+Nothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Nothing.swift"; sourceTree = "<group>"; };
 		12059DCE1A350153007F5E7C /* NTHInboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NTHInboxCell.xib; path = Nothing/NTHInboxCell.xib; sourceTree = "<group>"; };
 		12059DD01A350476007F5E7C /* NTHInboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHInboxCell.swift; sourceTree = "<group>"; };
 		12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskStatusView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,8 @@
 		123B6E2319FF909F008E22DB /* UILabel_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel_Extension.swift; sourceTree = "<group>"; };
 		123F11C41A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem_Extension.swift; sourceTree = "<group>"; };
 		124A8F131A4EE9B300BE5EAB /* NTHCircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCircleButton.swift; sourceTree = "<group>"; };
+		124A8F151A4F017800BE5EAB /* UIView+Nothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Nothing.swift"; sourceTree = "<group>"; };
+		124A8F171A4F0D1800BE5EAB /* NTHBaseCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHBaseCellView.swift; sourceTree = "<group>"; };
 		124ADC981A19467600750816 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		124ADC9A1A19493C00750816 /* DetailModelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailModelView.swift; sourceTree = "<group>"; };
 		125593EB19FEE10A001EC477 /* UIColor_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
@@ -128,8 +132,8 @@
 		12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateFormatter_Extension.swift; sourceTree = "<group>"; };
 		12CEF17E1A083832004DE156 /* UIView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
 		12E215991A03A9840038AD45 /* ThumbnailCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCache.swift; sourceTree = "<group>"; };
-		12ED791B1A3F42E80052893D /* NTHCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCellView.swift; sourceTree = "<group>"; };
-		12ED791D1A3F42FE0052893D /* NTHCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHCellView.xib; sourceTree = "<group>"; };
+		12ED791B1A3F42E80052893D /* NTHSimpleCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSimpleCellView.swift; sourceTree = "<group>"; };
+		12ED791D1A3F42FE0052893D /* NTHSimpleCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHSimpleCellView.xib; sourceTree = "<group>"; };
 		12ED79211A3F59E10052893D /* NTHTaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskDetailViewController.swift; sourceTree = "<group>"; };
 		12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditViewController.swift; sourceTree = "<group>"; };
 		12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTableViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +170,22 @@
 				1279B5DD19FED4E700A7828C /* Main.storyboard */,
 			);
 			name = Nothing2;
+			sourceTree = "<group>";
+		};
+		124A8F191A4F0D9F00BE5EAB /* Detail Cells */ = {
+			isa = PBXGroup;
+			children = (
+				124A8F171A4F0D1800BE5EAB /* NTHBaseCellView.swift */,
+				12ED791B1A3F42E80052893D /* NTHSimpleCellView.swift */,
+				12ED791D1A3F42FE0052893D /* NTHSimpleCellView.xib */,
+				12B6EF281A40EBA5006E8A10 /* NTHStateCellView.swift */,
+				12B6EF2A1A40EBB1006E8A10 /* NTHStateCellView.xib */,
+				12B6EF201A40C298006E8A10 /* NTHMapCellView.swift */,
+				12B6EF1E1A40C0D2006E8A10 /* NTHMapCellView.xib */,
+				12B6EF2C1A41FC70006E8A10 /* NTHConnectionsCellView.swift */,
+				12B6EF301A41FF1F006E8A10 /* NTHConnectionsCellView.xib */,
+			);
+			name = "Detail Cells";
 			sourceTree = "<group>";
 		};
 		125593ED19FEE133001EC477 /* Resources */ = {
@@ -298,8 +318,9 @@
 		128786201A4ED74700751FEF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				12059DC91A34FDA2007F5E7C /* NTHColors.swift */,
-				12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */,
+				12059DC91A34FDA2007F5E7C /* UIColor+Nothing.swift */,
+				12059DCC1A34FF5C007F5E7C /* UIFont+Nothing.swift */,
+				124A8F151A4F017800BE5EAB /* UIView+Nothing.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -320,18 +341,11 @@
 				12059DCE1A350153007F5E7C /* NTHInboxCell.xib */,
 				1287861E1A4ED5CD00751FEF /* NTHInboxCellViewModel.swift */,
 				12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */,
-				12ED791B1A3F42E80052893D /* NTHCellView.swift */,
-				12ED791D1A3F42FE0052893D /* NTHCellView.xib */,
-				12B6EF201A40C298006E8A10 /* NTHMapCellView.swift */,
-				12B6EF1E1A40C0D2006E8A10 /* NTHMapCellView.xib */,
-				12B6EF221A40DD42006E8A10 /* NTHMapAnnotation.swift */,
-				12B6EF281A40EBA5006E8A10 /* NTHStateCellView.swift */,
-				12B6EF2A1A40EBB1006E8A10 /* NTHStateCellView.xib */,
-				12B6EF2C1A41FC70006E8A10 /* NTHConnectionsCellView.swift */,
-				12B6EF301A41FF1F006E8A10 /* NTHConnectionsCellView.xib */,
+				124A8F191A4F0D9F00BE5EAB /* Detail Cells */,
 				12B6EF1C1A40B5E1006E8A10 /* NTHTaskDisplayable.swift */,
 				127400361A36593F004D96D3 /* QuickInsertView */,
 				124A8F131A4EE9B300BE5EAB /* NTHCircleButton.swift */,
+				12B6EF221A40DD42006E8A10 /* NTHMapAnnotation.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -474,7 +488,7 @@
 				12FE32611A10D76900FAB243 /* QuickInsertView.xib in Resources */,
 				12B6EF311A41FF1F006E8A10 /* NTHConnectionsCellView.xib in Resources */,
 				1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */,
-				12ED791E1A3F42FE0052893D /* NTHCellView.xib in Resources */,
+				12ED791E1A3F42FE0052893D /* NTHSimpleCellView.xib in Resources */,
 				12B6EF2B1A40EBB1006E8A10 /* NTHStateCellView.xib in Resources */,
 				1279B5E419FED4E700A7828C /* LaunchScreen.xib in Resources */,
 				12B6EF1F1A40C0D2006E8A10 /* NTHMapCellView.xib in Resources */,
@@ -504,24 +518,26 @@
 				125593EC19FEE10A001EC477 /* UIColor_Extension.swift in Sources */,
 				1279B60D19FED64D00A7828C /* Nothing.xcdatamodeld in Sources */,
 				123B6E2419FF909F008E22DB /* UILabel_Extension.swift in Sources */,
+				124A8F161A4F017800BE5EAB /* UIView+Nothing.swift in Sources */,
 				1279B61519FEDBD200A7828C /* FileCache.swift in Sources */,
 				12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */,
 				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
 				1279B60B19FED64D00A7828C /* Connection.swift in Sources */,
 				12EDE78D1A1FC6770020D549 /* TextEditorViewController.swift in Sources */,
 				12B6EF231A40DD42006E8A10 /* NTHMapAnnotation.swift in Sources */,
+				124A8F181A4F0D1800BE5EAB /* NTHBaseCellView.swift in Sources */,
 				12B6EF211A40C298006E8A10 /* NTHMapCellView.swift in Sources */,
 				12EDE7891A1FBDC20020D549 /* NTHTableViewController.swift in Sources */,
 				1279B61119FED64D00A7828C /* Task.swift in Sources */,
 				12CC22271A12207300DF8EE0 /* InboxCellViewModel.swift in Sources */,
 				1279B5DC19FED4E700A7828C /* NTHInboxViewController.swift in Sources */,
-				12ED791C1A3F42E80052893D /* NTHCellView.swift in Sources */,
+				12ED791C1A3F42E80052893D /* NTHSimpleCellView.swift in Sources */,
 				12B6EF2D1A41FC70006E8A10 /* NTHConnectionsCellView.swift in Sources */,
-				12059DCD1A34FF5C007F5E7C /* NTHFonts.swift in Sources */,
+				12059DCD1A34FF5C007F5E7C /* UIFont+Nothing.swift in Sources */,
 				1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */,
 				123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */,
 				12059DD11A350476007F5E7C /* NTHInboxCell.swift in Sources */,
-				12059DCA1A34FDA2007F5E7C /* NTHColors.swift in Sources */,
+				12059DCA1A34FDA2007F5E7C /* UIColor+Nothing.swift in Sources */,
 				12EDE7871A1FBD1E0020D549 /* CreateEditViewController.swift in Sources */,
 				1287861F1A4ED5CD00751FEF /* NTHInboxCellViewModel.swift in Sources */,
 				129A555C1A1E6A0800ED249D /* TextViewCell.swift in Sources */,

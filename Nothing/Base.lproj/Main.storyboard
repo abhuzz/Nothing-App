@@ -101,7 +101,7 @@
                                                     <constraint firstAttribute="height" constant="130" id="L3t-b6-6Sm"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjl-8W-0YF" userLabel="title" customClass="NTHCellView" customModule="Nothing" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjl-8W-0YF" userLabel="title" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="130" width="600" height="45"/>
                                                 <color key="backgroundColor" red="0.92615525265957444" green="0.92615525265957444" blue="0.92615525265957444" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -111,7 +111,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v53-Ul-26J" userLabel="description" customClass="NTHCellView" customModule="Nothing" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v53-Ul-26J" userLabel="description" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="175" width="600" height="45"/>
                                                 <color key="backgroundColor" red="0.86443442486702127" green="0.86443442486702127" blue="0.86443442486702127" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -128,14 +128,14 @@
                                                     <constraint firstAttribute="height" constant="45" id="3vr-cj-roB"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJV-yz-zF7" userLabel="remind me at location" customClass="NTHCellView" customModule="Nothing" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJV-yz-zF7" userLabel="remind me at location" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="305" width="600" height="45"/>
                                                 <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="SP3-zV-3YE"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qze-C7-d0S" userLabel="distance" customClass="NTHCellView" customModule="Nothing" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qze-C7-d0S" userLabel="distance" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="350" width="600" height="45"/>
                                                 <color key="backgroundColor" red="0.90208402593085102" green="0.90208402593085102" blue="0.90208402593085102" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -145,14 +145,14 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A4O-VD-KL6" userLabel="remind me on date" customClass="NTHCellView" customModule="Nothing" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A4O-VD-KL6" userLabel="remind me on date" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="415" width="600" height="45"/>
                                                 <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="zjM-FI-63a"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhR-4q-CFm" userLabel="repeat" customClass="NTHCellView" customModule="Nothing" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhR-4q-CFm" userLabel="repeat" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="460" width="600" height="45"/>
                                                 <color key="backgroundColor" red="0.90208402590000003" green="0.90208402590000003" blue="0.90208402590000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
