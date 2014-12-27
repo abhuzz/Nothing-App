@@ -8,26 +8,6 @@
 
 import UIKit
 
-class NTHInboxCellViewModel {
-    private var _task: Task
-    
-    init(task: Task) {
-        self._task = task
-    }
-    
-    var title: String {
-        return self._task.title
-    }
-    
-    var longDescription: String {
-       return self._task.longDescription ?? ""
-    }
-    
-    var state: Task.State {
-        return self._task.state
-    }
-}
-
 protocol NTHInboxCellDelegate: class {
     func cellDidTapActionButton(cell: NTHInboxCell)
 }

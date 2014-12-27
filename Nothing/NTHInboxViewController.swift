@@ -1,5 +1,5 @@
 //
-//  InboxViewController.swift
+//  NTHInboxViewController.swift
 //  Nothing
 //
 //  Created by Tomasz Szulc on 27/10/14.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DetailViewControllerDelegate, NTHInboxCellDelegate {
+class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHInboxCellDelegate {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var quickInsertView: QuickInsertView!
@@ -81,11 +81,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.prepareForSegue(segue, sender: sender)
         
         if segue.identifier! == Identifiers.TaskDetailSegue.rawValue {
-//            let navVC = segue.destinationViewController as UINavigationController
-//            let vc = navVC.topViewController as DetailViewController
             let vc = segue.destinationViewController as NTHTaskDetailViewController
             vc.task = sender as Task
-//            vc.delegate = self
         } else if segue.identifier! == Identifiers.CreateTask.rawValue {
             let navVC = segue.destinationViewController as UINavigationController
             let vc = navVC.topViewController as CreateEditViewController
@@ -96,6 +93,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func searchPressed(sender: AnyObject) {
 //        self.performSegueWithIdentifier(Identifiers.SearchSegue.rawValue, sender: nil)
     }
+    
+    
     
     /// Mark: UITableViewDelegate & UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -123,13 +122,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         self.quickInsertView.finish()
-    }
-    
-    /// Mark: DetailViewControllerDelegate
-    func viewControllerDidSelectHashtag(viewController: DetailViewController, hashtag: String) {
-//        viewController.dismissViewControllerAnimated(true, completion: { () -> Void in
-//            self.performSegueWithIdentifier(Identifiers.SearchSegue.rawValue, sender: hashtag)
-//        })
     }
     
     /// Mark: Keyboard Notification

@@ -19,7 +19,7 @@
 		124ADC9B1A19493C00750816 /* DetailModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124ADC9A1A19493C00750816 /* DetailModelView.swift */; };
 		125593EC19FEE10A001EC477 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593EB19FEE10A001EC477 /* UIColor_Extension.swift */; };
 		1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5D919FED4E700A7828C /* AppDelegate.swift */; };
-		1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5DB19FED4E700A7828C /* InboxViewController.swift */; };
+		1279B5DC19FED4E700A7828C /* NTHInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5DB19FED4E700A7828C /* NTHInboxViewController.swift */; };
 		1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1279B5DD19FED4E700A7828C /* Main.storyboard */; };
 		1279B5E119FED4E700A7828C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1279B5E019FED4E700A7828C /* Images.xcassets */; };
 		1279B5E419FED4E700A7828C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1279B5E219FED4E700A7828C /* LaunchScreen.xib */; };
@@ -36,6 +36,7 @@
 		1279B61119FED64D00A7828C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60619FED64D00A7828C /* Task.swift */; };
 		1279B61219FED64D00A7828C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60719FED64D00A7828C /* FileManager.swift */; };
 		1279B61519FEDBD200A7828C /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B61419FEDBD200A7828C /* FileCache.swift */; };
+		1287861F1A4ED5CD00751FEF /* NTHInboxCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1287861E1A4ED5CD00751FEF /* NTHInboxCellViewModel.swift */; };
 		128B298A1A1EA842005C93DF /* SeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128B29891A1EA842005C93DF /* SeparatorCell.xib */; };
 		128B298C1A1EA862005C93DF /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128B298B1A1EA862005C93DF /* SeparatorCell.swift */; };
 		129A555A1A1E69F100ED249D /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 129A55591A1E69F100ED249D /* TextViewCell.xib */; };
@@ -88,7 +89,7 @@
 		1279B5D419FED4E700A7828C /* Nothing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nothing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1279B5D819FED4E700A7828C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1279B5D919FED4E700A7828C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1279B5DB19FED4E700A7828C /* InboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InboxViewController.swift; path = Nothing/InboxViewController.swift; sourceTree = "<group>"; };
+		1279B5DB19FED4E700A7828C /* NTHInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NTHInboxViewController.swift; path = Nothing/NTHInboxViewController.swift; sourceTree = "<group>"; };
 		1279B5DE19FED4E700A7828C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1279B5E019FED4E700A7828C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1279B5E319FED4E700A7828C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		1279B60619FED64D00A7828C /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		1279B60719FED64D00A7828C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1279B61419FEDBD200A7828C /* FileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
+		1287861E1A4ED5CD00751FEF /* NTHInboxCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHInboxCellViewModel.swift; sourceTree = "<group>"; };
 		128B29891A1EA842005C93DF /* SeparatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorCell.xib; sourceTree = "<group>"; };
 		128B298B1A1EA862005C93DF /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
 		129A55591A1E69F100ED249D /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
@@ -155,9 +157,9 @@
 		12059DCB1A34FDAC007F5E7C /* Nothing2 */ = {
 			isa = PBXGroup;
 			children = (
-				12059DC91A34FDA2007F5E7C /* NTHColors.swift */,
-				12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */,
-				127400371A365A13004D96D3 /* Inbox */,
+				128786211A4ED75000751FEF /* Controllers */,
+				128786231A4ED76600751FEF /* Components */,
+				128786201A4ED74700751FEF /* Extensions */,
 				12ED79201A3F59C80052893D /* Task Detail */,
 				127400361A36593F004D96D3 /* QuickInsertView */,
 				1279B5DD19FED4E700A7828C /* Main.storyboard */,
@@ -181,17 +183,6 @@
 				12FE32601A10D76900FAB243 /* QuickInsertView.xib */,
 			);
 			name = QuickInsertView;
-			sourceTree = "<group>";
-		};
-		127400371A365A13004D96D3 /* Inbox */ = {
-			isa = PBXGroup;
-			children = (
-				12059DD01A350476007F5E7C /* NTHInboxCell.swift */,
-				12059DCE1A350153007F5E7C /* NTHInboxCell.xib */,
-				1279B5DB19FED4E700A7828C /* InboxViewController.swift */,
-				12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */,
-			);
-			name = Inbox;
 			sourceTree = "<group>";
 		};
 		1279B5CB19FED4E700A7828C = {
@@ -304,6 +295,43 @@
 			name = Cache;
 			sourceTree = "<group>";
 		};
+		128786201A4ED74700751FEF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				12059DC91A34FDA2007F5E7C /* NTHColors.swift */,
+				12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		128786211A4ED75000751FEF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1279B5DB19FED4E700A7828C /* NTHInboxViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		128786231A4ED76600751FEF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				12059DD01A350476007F5E7C /* NTHInboxCell.swift */,
+				12059DCE1A350153007F5E7C /* NTHInboxCell.xib */,
+				1287861E1A4ED5CD00751FEF /* NTHInboxCellViewModel.swift */,
+				12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */,
+				12ED791B1A3F42E80052893D /* NTHCellView.swift */,
+				12ED791D1A3F42FE0052893D /* NTHCellView.xib */,
+				12B6EF201A40C298006E8A10 /* NTHMapCellView.swift */,
+				12B6EF1E1A40C0D2006E8A10 /* NTHMapCellView.xib */,
+				12B6EF221A40DD42006E8A10 /* NTHMapAnnotation.swift */,
+				12B6EF281A40EBA5006E8A10 /* NTHStateCellView.swift */,
+				12B6EF2A1A40EBB1006E8A10 /* NTHStateCellView.xib */,
+				12B6EF2C1A41FC70006E8A10 /* NTHConnectionsCellView.swift */,
+				12B6EF301A41FF1F006E8A10 /* NTHConnectionsCellView.xib */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
 		128B29881A1E96AD005C93DF /* Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,28 +370,11 @@
 			name = External;
 			sourceTree = "<group>";
 		};
-		12ED791F1A3F43020052893D /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				12ED791B1A3F42E80052893D /* NTHCellView.swift */,
-				12ED791D1A3F42FE0052893D /* NTHCellView.xib */,
-				12B6EF201A40C298006E8A10 /* NTHMapCellView.swift */,
-				12B6EF1E1A40C0D2006E8A10 /* NTHMapCellView.xib */,
-				12B6EF221A40DD42006E8A10 /* NTHMapAnnotation.swift */,
-				12B6EF281A40EBA5006E8A10 /* NTHStateCellView.swift */,
-				12B6EF2A1A40EBB1006E8A10 /* NTHStateCellView.xib */,
-				12B6EF2C1A41FC70006E8A10 /* NTHConnectionsCellView.swift */,
-				12B6EF301A41FF1F006E8A10 /* NTHConnectionsCellView.xib */,
-			);
-			name = Cells;
-			sourceTree = "<group>";
-		};
 		12ED79201A3F59C80052893D /* Task Detail */ = {
 			isa = PBXGroup;
 			children = (
 				12ED79211A3F59E10052893D /* NTHTaskDetailViewController.swift */,
 				12B6EF1C1A40B5E1006E8A10 /* NTHTaskDisplayable.swift */,
-				12ED791F1A3F43020052893D /* Cells */,
 			);
 			name = "Task Detail";
 			sourceTree = "<group>";
@@ -508,7 +519,7 @@
 				12EDE7891A1FBDC20020D549 /* NTHTableViewController.swift in Sources */,
 				1279B61119FED64D00A7828C /* Task.swift in Sources */,
 				12CC22271A12207300DF8EE0 /* InboxCellViewModel.swift in Sources */,
-				1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */,
+				1279B5DC19FED4E700A7828C /* NTHInboxViewController.swift in Sources */,
 				12ED791C1A3F42E80052893D /* NTHCellView.swift in Sources */,
 				12B6EF2D1A41FC70006E8A10 /* NTHConnectionsCellView.swift in Sources */,
 				12059DCD1A34FF5C007F5E7C /* NTHFonts.swift in Sources */,
@@ -517,6 +528,7 @@
 				12059DD11A350476007F5E7C /* NTHInboxCell.swift in Sources */,
 				12059DCA1A34FDA2007F5E7C /* NTHColors.swift in Sources */,
 				12EDE7871A1FBD1E0020D549 /* CreateEditViewController.swift in Sources */,
+				1287861F1A4ED5CD00751FEF /* NTHInboxCellViewModel.swift in Sources */,
 				129A555C1A1E6A0800ED249D /* TextViewCell.swift in Sources */,
 				124ADC991A19467600750816 /* DetailViewController.swift in Sources */,
 				128B298C1A1EA862005C93DF /* SeparatorCell.swift in Sources */,

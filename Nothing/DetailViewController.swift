@@ -11,7 +11,6 @@ import MapKit
 
 class DetailViewController: NTHTableViewController {
     var task: Task!
-    var delegate: DetailViewControllerDelegate?
     private var model: DetailModelView?
     
     private var changeStateButton: UIBarButtonItem!
@@ -142,8 +141,4 @@ class DetailViewController: NTHTableViewController {
         
         return 50.0
     }
-}
-
-protocol DetailViewControllerDelegate {
-    func viewControllerDidSelectHashtag(viewController: DetailViewController, hashtag: String)
 }
