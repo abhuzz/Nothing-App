@@ -54,7 +54,6 @@ class NTHInboxCell: UITableViewCell {
             self.titleBottomToCenterYConstraint.constant = 0
         }
         
-        println("state = \(model.state == Task.State.Done)")
         stateIndicatorView.state = model.state
     }
     
