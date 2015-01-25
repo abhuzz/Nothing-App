@@ -233,7 +233,9 @@
                         <outlet property="connectionsCell" destination="WBN-24-rwl" id="3Wc-Ja-d2g"/>
                         <outlet property="descriptionCell" destination="v53-Ul-26J" id="JYd-xd-Xw7"/>
                         <outlet property="distanceCell" destination="qze-C7-d0S" id="O68-Jv-yV5"/>
+                        <outlet property="doneEditButton" destination="Duy-F1-sQc" id="BYw-cj-oOW"/>
                         <outlet property="mapCell" destination="rP0-gI-8Lg" id="r5D-H6-321"/>
+                        <outlet property="moreActionButton" destination="4os-i3-XKO" id="Jkv-Ty-87x"/>
                         <outlet property="remindMeAtLocationCell" destination="CJV-yz-zF7" id="DFX-dL-ALQ"/>
                         <outlet property="remindMeOnDateCell" destination="A4O-VD-KL6" id="Phc-SR-8mR"/>
                         <outlet property="repeatCell" destination="xhR-4q-CFm" id="t4q-V5-HmB"/>
@@ -242,6 +244,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="610-Ri-dz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Done" id="Duy-F1-sQc">
+                    <connections>
+                        <action selector="doneEditButtonPressed:" destination="AdU-gc-aje" id="dgk-uH-Jwm"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="1900" y="1273.5"/>
         </scene>
