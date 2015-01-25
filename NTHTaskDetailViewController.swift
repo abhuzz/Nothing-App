@@ -21,8 +21,6 @@ class NTHTaskDetailViewController: UIViewController, NTHConnectionsCellViewDeleg
     @IBOutlet private weak var remindMeOnDateCell: NTHSimpleCellView!
     @IBOutlet private weak var repeatCell: NTHSimpleCellView!
     @IBOutlet private weak var connectionsCell: NTHConnectionsCellView!
-    @IBOutlet private var doneEditButton: UIBarButtonItem!
-    @IBOutlet private var moreActionButton: UIBarButtonItem!
 
     /// public
     var task: Task!
@@ -30,7 +28,7 @@ class NTHTaskDetailViewController: UIViewController, NTHConnectionsCellViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupCells()
-        self.navigationItem.setRightBarButtonItem(self.moreActionButton, animated: false);
+        
         self.updateWithModel(NTHTaskDisplayable(task: self.task))
     }
     
@@ -94,17 +92,8 @@ class NTHTaskDetailViewController: UIViewController, NTHConnectionsCellViewDeleg
         let alertController = UIAlertController(title: self.task.title, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         
         /// edit
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Edit", comment: ""), style: UIAlertActionStyle.Default, handler: { [unowned self] (action) -> Void in
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Edit", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
             /// edit it
-            self.titleCell.showDisclosureIndicator(true)
-            self.descriptionCell.showDisclosureIndicator(true)
-            self.statusCell.showDisclosureIndicator(true)
-            self.remindMeAtLocationCell.showDisclosureIndicator(true)
-            self.distanceCell.showDisclosureIndicator(true)
-            self.remindMeOnDateCell.showDisclosureIndicator(true)
-            self.repeatCell.showDisclosureIndicator(true)
-            self.connectionsCell.showDisclosureIndicator(true)
-            self.navigationItem.setRightBarButtonItem(self.doneEditButton, animated: true)
         }))
         
         /// mark as...
@@ -136,18 +125,6 @@ class NTHTaskDetailViewController: UIViewController, NTHConnectionsCellViewDeleg
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func doneEditButtonPressed(sender: AnyObject) {
-        self.titleCell.showDisclosureIndicator(false)
-        self.descriptionCell.showDisclosureIndicator(false)
-        self.statusCell.showDisclosureIndicator(false)
-        self.remindMeAtLocationCell.showDisclosureIndicator(false)
-        self.distanceCell.showDisclosureIndicator(false)
-        self.remindMeOnDateCell.showDisclosureIndicator(false)
-        self.repeatCell.showDisclosureIndicator(false)
-        self.connectionsCell.showDisclosureIndicator(false)
-        println(self.moreActionButton)
-        self.navigationItem.setRightBarButtonItem(self.moreActionButton, animated: true)
-    }
     
     
     /// Mark: NTHConnectionsCellViewDelegate
