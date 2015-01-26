@@ -112,7 +112,7 @@ class CreateEditViewController: NTHTableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == Segue.TextEditor.rawValue) {
             let navVC = segue.destinationViewController as UINavigationController
-            let vc = navVC.topViewController as TextEditorViewController
+            let vc = navVC.topViewController as TextEditorController
             if (sender is TextViewCell) {
                 let cell = sender as TextViewCell
                 if (cell == self.titleCell) {

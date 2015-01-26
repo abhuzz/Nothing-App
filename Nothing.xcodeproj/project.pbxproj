@@ -21,6 +21,7 @@
 		124ADC991A19467600750816 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124ADC981A19467600750816 /* DetailViewController.swift */; };
 		124ADC9B1A19493C00750816 /* DetailModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124ADC9A1A19493C00750816 /* DetailModelView.swift */; };
 		125593EC19FEE10A001EC477 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593EB19FEE10A001EC477 /* UIColor_Extension.swift */; };
+		1279A4A61A75A92300A03FF4 /* INCGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1279A4A51A75A92300A03FF4 /* INCGradientView.m */; };
 		1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5D919FED4E700A7828C /* AppDelegate.swift */; };
 		1279B5DC19FED4E700A7828C /* NTHInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5DB19FED4E700A7828C /* NTHInboxViewController.swift */; };
 		1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1279B5DD19FED4E700A7828C /* Main.storyboard */; };
@@ -39,6 +40,9 @@
 		1279B61119FED64D00A7828C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60619FED64D00A7828C /* Task.swift */; };
 		1279B61219FED64D00A7828C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60719FED64D00A7828C /* FileManager.swift */; };
 		1279B61519FEDBD200A7828C /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B61419FEDBD200A7828C /* FileCache.swift */; };
+		12834C101A758E79005C952C /* NTHEditTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12834C0F1A758E79005C952C /* NTHEditTaskController.swift */; };
+		12834C121A7597C9005C952C /* NTHCreateTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12834C111A7597C9005C952C /* NTHCreateTaskController.swift */; };
+		12834C141A759E4F005C952C /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12834C131A759E4F005C952C /* Label.swift */; };
 		1287861F1A4ED5CD00751FEF /* NTHInboxCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1287861E1A4ED5CD00751FEF /* NTHInboxCellViewModel.swift */; };
 		128B298A1A1EA842005C93DF /* SeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128B29891A1EA842005C93DF /* SeparatorCell.xib */; };
 		128B298C1A1EA862005C93DF /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128B298B1A1EA862005C93DF /* SeparatorCell.swift */; };
@@ -62,7 +66,7 @@
 		12ED79221A3F59E10052893D /* NTHTaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED79211A3F59E10052893D /* NTHTaskDetailViewController.swift */; };
 		12EDE7871A1FBD1E0020D549 /* CreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */; };
 		12EDE7891A1FBDC20020D549 /* NTHTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */; };
-		12EDE78D1A1FC6770020D549 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE78C1A1FC6770020D549 /* TextEditorViewController.swift */; };
+		12EDE78D1A1FC6770020D549 /* TextEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE78C1A1FC6770020D549 /* TextEditorController.swift */; };
 		12FE325F1A10D75F00FAB243 /* QuickInsertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */; };
 		12FE32611A10D76900FAB243 /* QuickInsertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12FE32601A10D76900FAB243 /* QuickInsertView.xib */; };
 /* End PBXBuildFile section */
@@ -92,6 +96,9 @@
 		124ADC981A19467600750816 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		124ADC9A1A19493C00750816 /* DetailModelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailModelView.swift; sourceTree = "<group>"; };
 		125593EB19FEE10A001EC477 /* UIColor_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
+		1279A4A31A75A92200A03FF4 /* Nothing-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nothing-Bridging-Header.h"; sourceTree = "<group>"; };
+		1279A4A41A75A92300A03FF4 /* INCGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INCGradientView.h; sourceTree = "<group>"; };
+		1279A4A51A75A92300A03FF4 /* INCGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INCGradientView.m; sourceTree = "<group>"; };
 		1279B5D419FED4E700A7828C /* Nothing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nothing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1279B5D819FED4E700A7828C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1279B5D919FED4E700A7828C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Nothing/AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +121,9 @@
 		1279B60619FED64D00A7828C /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		1279B60719FED64D00A7828C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1279B61419FEDBD200A7828C /* FileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
+		12834C0F1A758E79005C952C /* NTHEditTaskController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHEditTaskController.swift; sourceTree = "<group>"; };
+		12834C111A7597C9005C952C /* NTHCreateTaskController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateTaskController.swift; sourceTree = "<group>"; };
+		12834C131A759E4F005C952C /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		1287861E1A4ED5CD00751FEF /* NTHInboxCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHInboxCellViewModel.swift; sourceTree = "<group>"; };
 		128B29891A1EA842005C93DF /* SeparatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorCell.xib; sourceTree = "<group>"; };
 		128B298B1A1EA862005C93DF /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
@@ -137,7 +147,7 @@
 		12ED79211A3F59E10052893D /* NTHTaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskDetailViewController.swift; sourceTree = "<group>"; };
 		12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditViewController.swift; sourceTree = "<group>"; };
 		12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTableViewController.swift; sourceTree = "<group>"; };
-		12EDE78C1A1FC6770020D549 /* TextEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
+		12EDE78C1A1FC6770020D549 /* TextEditorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorController.swift; sourceTree = "<group>"; };
 		12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuickInsertView.swift; path = Nothing/QuickInsertView.swift; sourceTree = "<group>"; };
 		12FE32601A10D76900FAB243 /* QuickInsertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuickInsertView.xib; path = Nothing/QuickInsertView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -330,6 +340,12 @@
 			children = (
 				1279B5DB19FED4E700A7828C /* NTHInboxViewController.swift */,
 				12ED79211A3F59E10052893D /* NTHTaskDetailViewController.swift */,
+				12834C0F1A758E79005C952C /* NTHEditTaskController.swift */,
+				12834C111A7597C9005C952C /* NTHCreateTaskController.swift */,
+				12834C131A759E4F005C952C /* Label.swift */,
+				1279A4A41A75A92300A03FF4 /* INCGradientView.h */,
+				1279A4A51A75A92300A03FF4 /* INCGradientView.m */,
+				1279A4A31A75A92200A03FF4 /* Nothing-Bridging-Header.h */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -399,7 +415,7 @@
 		12EDE78B1A1FC65B0020D549 /* Dialogs */ = {
 			isa = PBXGroup;
 			children = (
-				12EDE78C1A1FC6770020D549 /* TextEditorViewController.swift */,
+				12EDE78C1A1FC6770020D549 /* TextEditorController.swift */,
 			);
 			name = Dialogs;
 			sourceTree = "<group>";
@@ -523,7 +539,7 @@
 				12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */,
 				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
 				1279B60B19FED64D00A7828C /* Connection.swift in Sources */,
-				12EDE78D1A1FC6770020D549 /* TextEditorViewController.swift in Sources */,
+				12EDE78D1A1FC6770020D549 /* TextEditorController.swift in Sources */,
 				12B6EF231A40DD42006E8A10 /* NTHMapAnnotation.swift in Sources */,
 				124A8F181A4F0D1800BE5EAB /* NTHBaseCellView.swift in Sources */,
 				12B6EF211A40C298006E8A10 /* NTHMapCellView.swift in Sources */,
@@ -535,14 +551,18 @@
 				12B6EF2D1A41FC70006E8A10 /* NTHConnectionsCellView.swift in Sources */,
 				12059DCD1A34FF5C007F5E7C /* UIFont+Nothing.swift in Sources */,
 				1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */,
+				12834C101A758E79005C952C /* NTHEditTaskController.swift in Sources */,
 				123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */,
 				12059DD11A350476007F5E7C /* NTHInboxCell.swift in Sources */,
 				12059DCA1A34FDA2007F5E7C /* UIColor+Nothing.swift in Sources */,
+				12834C141A759E4F005C952C /* Label.swift in Sources */,
 				12EDE7871A1FBD1E0020D549 /* CreateEditViewController.swift in Sources */,
 				1287861F1A4ED5CD00751FEF /* NTHInboxCellViewModel.swift in Sources */,
 				129A555C1A1E6A0800ED249D /* TextViewCell.swift in Sources */,
+				12834C121A7597C9005C952C /* NTHCreateTaskController.swift in Sources */,
 				124ADC991A19467600750816 /* DetailViewController.swift in Sources */,
 				128B298C1A1EA862005C93DF /* SeparatorCell.swift in Sources */,
+				1279A4A61A75A92300A03FF4 /* INCGradientView.m in Sources */,
 				124A8F141A4EE9B300BE5EAB /* NTHCircleButton.swift in Sources */,
 				12B6EF291A40EBA5006E8A10 /* NTHStateCellView.swift in Sources */,
 				1279B60A19FED64D00A7828C /* NSManagedObject_Extension.swift in Sources */,
@@ -682,9 +702,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Nothing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Nothing-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -692,9 +715,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Nothing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Nothing-Bridging-Header.h";
 			};
 			name = Release;
 		};

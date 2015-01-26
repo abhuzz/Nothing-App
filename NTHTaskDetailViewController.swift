@@ -28,7 +28,6 @@ class NTHTaskDetailViewController: UIViewController, NTHConnectionsCellViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupCells()
-        
         self.updateWithModel(NTHTaskDisplayable(task: self.task))
     }
     
@@ -92,8 +91,8 @@ class NTHTaskDetailViewController: UIViewController, NTHConnectionsCellViewDeleg
         let alertController = UIAlertController(title: self.task.title, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         
         /// edit
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Edit", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-            /// edit it
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Edit", comment: ""), style: UIAlertActionStyle.Default, handler: { [unowned self] (action) -> Void in
+            self .performSegueWithIdentifier("EditTaskController", sender: self.task)
         }))
         
         /// mark as...
@@ -154,5 +153,15 @@ class NTHTaskDetailViewController: UIViewController, NTHConnectionsCellViewDeleg
         controller.addAction(cancel)
         
         self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "EditTaskController" {
+            let vc = segue.destinationViewController as NTHEditTaskController
+            vc.task = sender as Task
+            vc.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        }
     }
 }

@@ -10,14 +10,14 @@
             <rect key="frame" x="0.0" y="0.0" width="426" height="45"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKo-zm-hsh">
-                    <rect key="frame" x="15" y="5" width="368" height="12"/>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKo-zm-hsh">
+                    <rect key="frame" x="10" y="5" width="373" height="12"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="10"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DETAIL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIQ-6k-HfD">
-                    <rect key="frame" x="15" y="22" width="368" height="18"/>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DETAIL" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIQ-6k-HfD">
+                    <rect key="frame" x="10" y="22" width="373" height="18"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -48,6 +48,7 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="Vv6-8p-OiO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0bS-mI-msI"/>
                 <constraint firstItem="1bI-MA-FRo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Ac-I6-Elm"/>
@@ -56,13 +57,14 @@
                 <constraint firstAttribute="bottom" secondItem="kIQ-6k-HfD" secondAttribute="bottom" constant="5" id="KOw-sB-2H9"/>
                 <constraint firstItem="ZKo-zm-hsh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Lrb-9V-s6b"/>
                 <constraint firstAttribute="bottom" secondItem="1bI-MA-FRo" secondAttribute="bottom" id="NBr-Kd-M9S"/>
-                <constraint firstItem="ZKo-zm-hsh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="USd-dP-gBL"/>
+                <constraint firstItem="ZKo-zm-hsh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="USd-dP-gBL"/>
                 <constraint firstAttribute="trailing" secondItem="Vv6-8p-OiO" secondAttribute="trailing" id="Xff-ms-kcH"/>
                 <constraint firstAttribute="trailing" secondItem="1bI-MA-FRo" secondAttribute="trailing" id="ZCf-Rl-YfR"/>
-                <constraint firstItem="kIQ-6k-HfD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="bn3-9N-bk7"/>
+                <constraint firstItem="kIQ-6k-HfD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="bn3-9N-bk7"/>
                 <constraint firstAttribute="centerY" secondItem="4Hi-Os-t0i" secondAttribute="centerY" id="fJA-u9-6vJ"/>
                 <constraint firstItem="4Hi-Os-t0i" firstAttribute="leading" secondItem="kIQ-6k-HfD" secondAttribute="trailing" constant="8" id="gBF-iG-9mH"/>
                 <constraint firstItem="4Hi-Os-t0i" firstAttribute="leading" secondItem="ZKo-zm-hsh" secondAttribute="trailing" constant="8" id="gai-DJ-f04"/>
+                <constraint firstItem="kIQ-6k-HfD" firstAttribute="top" secondItem="ZKo-zm-hsh" secondAttribute="bottom" constant="5" id="z3k-hz-V5E"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

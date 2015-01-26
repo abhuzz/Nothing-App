@@ -8,27 +8,20 @@
 
 import UIKit
 
-class TextEditorViewController: UIViewController {
+class TextEditorController: UIViewController {
     
-    typealias ConfirmBlock = (value: String) -> Void
+    typealias TextEditorSuccessBlock = (value: String) -> Void
     
     @IBOutlet private weak var textView: UITextView!
     @IBOutlet private weak var bottomGuide: NSLayoutConstraint!
     
     var text: String?
-    var confirmBlock: ConfirmBlock?
+    var confirmBlock: TextEditorSuccessBlock?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureNavigationBar()
         self.textView.text = self.text
-        
         self.observeKeyboard()
-    }
-    
-    private func configureNavigationBar() {
-        self.navigationController?.navigationBar.topItem?.setLeftBarButtonItem(UIBarButtonItem.backButton(self, action: "closePressed"), animated: false)
-        self.navigationController?.navigationBar.topItem?.setRightBarButtonItem(UIBarButtonItem.saveButton(self, action: "onConfirmPressed"), animated: false)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -78,12 +71,12 @@ class TextEditorViewController: UIViewController {
         }
     }
 
-    
-    func closePressed() {
+    @IBAction func closePressed() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func onConfirmPressed() {
+    @IBAction func onConfirmPressed() {
         self.confirmBlock?(value: self.textView.text)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

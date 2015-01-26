@@ -14,14 +14,27 @@ class NTHBaseCellView: UIView {
     @IBOutlet internal weak var disclosureIndicator: UIButton!
     @IBOutlet internal weak var disclosureIndicatorTrailingconstraint: NSLayoutConstraint!
     
+    internal var tapGesture: UITapGestureRecognizer!
+    
+    typealias NTHCellViewTapBlock = () -> Void
+    var tapBlock: NTHCellViewTapBlock?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.tapGesture = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
+        self.addGestureRecognizer(self.tapGesture)
+        
         self.showDisclosureIndicator(false)
         self.setupUI()
     }
     
+    func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        self.tapBlock?()
+    }
+    
     internal func setupUI() {
-        self.backgroundColor = UIColor.NTHWhiteSmokeColor()
+        self.backgroundColor = UIColor.clearColor()
         self.topSeparator.backgroundColor = UIColor.NTHWhiteLilacColor()
         self.bottomSeparator.backgroundColor = UIColor.NTHWhiteLilacColor()
     }

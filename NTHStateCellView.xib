@@ -11,13 +11,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHK-zj-fi2">
-                    <rect key="frame" x="15" y="5" width="401" height="12"/>
+                    <rect key="frame" x="10" y="5" width="406" height="12"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="10"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DETAIL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NoB-t6-rZ7">
-                    <rect key="frame" x="15" y="22" width="378" height="18"/>
+                    <rect key="frame" x="10" y="22" width="383" height="18"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -54,10 +54,10 @@
                 <constraint firstItem="DV3-fN-TCy" firstAttribute="top" secondItem="CIw-On-K0a" secondAttribute="bottom" constant="7" id="PEQ-42-KUY"/>
                 <constraint firstAttribute="bottom" secondItem="NoB-t6-rZ7" secondAttribute="bottom" constant="5" id="VZg-kC-NgT"/>
                 <constraint firstAttribute="trailing" secondItem="CIw-On-K0a" secondAttribute="trailing" constant="15" id="Xcd-qR-GPJ"/>
-                <constraint firstItem="NoB-t6-rZ7" firstAttribute="leading" secondItem="WgL-ok-DhW" secondAttribute="leading" constant="15" id="m9i-nt-aPc"/>
+                <constraint firstItem="NoB-t6-rZ7" firstAttribute="leading" secondItem="WgL-ok-DhW" secondAttribute="leading" constant="10" id="m9i-nt-aPc"/>
                 <constraint firstAttribute="trailing" secondItem="w5M-L9-wT0" secondAttribute="trailing" id="ou9-9X-yPx"/>
                 <constraint firstAttribute="trailing" secondItem="NoB-t6-rZ7" secondAttribute="trailing" constant="33" id="pHQ-BS-Amy"/>
-                <constraint firstItem="pHK-zj-fi2" firstAttribute="leading" secondItem="WgL-ok-DhW" secondAttribute="leading" constant="15" id="pMr-i6-wy7"/>
+                <constraint firstItem="pHK-zj-fi2" firstAttribute="leading" secondItem="WgL-ok-DhW" secondAttribute="leading" constant="10" id="pMr-i6-wy7"/>
                 <constraint firstItem="DV3-fN-TCy" firstAttribute="leading" secondItem="WgL-ok-DhW" secondAttribute="leading" id="svx-vq-JBW"/>
                 <constraint firstAttribute="trailing" secondItem="pHK-zj-fi2" secondAttribute="trailing" constant="10" id="vbp-He-fSw"/>
             </constraints>

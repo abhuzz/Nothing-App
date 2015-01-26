@@ -27,7 +27,7 @@
                         <constraint firstAttribute="height" constant="1" id="SGO-To-wmW"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-place-selected-icon" translatesAutoresizingMaskIntoConstraints="NO" id="BUJ-ot-hOe">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="no-place-selected-icon" translatesAutoresizingMaskIntoConstraints="NO" id="BUJ-ot-hOe">
                     <rect key="frame" x="199" y="105" width="57" height="50"/>
                 </imageView>
             </subviews>

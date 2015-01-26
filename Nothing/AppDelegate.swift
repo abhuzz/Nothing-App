@@ -110,16 +110,16 @@ extension AppDelegate {
     func setupUI() {
         /// UINavigationBar
         UINavigationBar.appearance().barTintColor = UIColor.NTHMoodyBlueColor()
-        UINavigationBar.appearance().translucent = false
+        UINavigationBar.appearance().translucent = true
 
         UINavigationBar.appearance().titleTextAttributes = [
             NSForegroundColorAttributeName: UIColor.NTHWhiteColor(),
             NSFontAttributeName: UIFont.NTHNavigationBarTitleFont()
         ]
-        
+
         UINavigationBar.appearance().tintColor = UIColor.NTHWhiteColor()
-        
-        /// UITableView
+
+//        /// UITableView
         UITableView.appearance().separatorColor = UIColor.NTHWhiteLilacColor()
     }
 }
