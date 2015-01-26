@@ -10,7 +10,18 @@ import UIKit
 
 class LabelContainer: Label {
     var isSet: Bool = false
-    var placeholder: String = ""
+    
+    private var _placeholder: String = ""
+    var placeholder: String {
+        set {
+            _placeholder = newValue
+            self.text = newValue
+        }
+        
+        get {
+            return _placeholder
+        }
+    }
     
     override var text: String? {
         set {
@@ -27,6 +38,17 @@ class LabelContainer: Label {
         
         get {
             return super.text
+        }
+    }
+    
+    override var enabled: Bool {
+        set {
+            super.enabled = newValue
+            self.alpha = newValue == true ? 1.0 : 0.4
+        }
+        
+        get {
+            return super.enabled
         }
     }
 }

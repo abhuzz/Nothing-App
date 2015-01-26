@@ -22,6 +22,7 @@ class NTHCreateTaskController: UIViewController {
     @IBOutlet weak var titleTextLabel: LabelContainer!
     @IBOutlet weak var descriptionTextLabel: LabelContainer!
     @IBOutlet weak var locationLabel: LabelContainer!
+    @IBOutlet weak var regionLabel: LabelContainer!
     
     private var taskInfo = TaskInfo()
 
@@ -41,11 +42,13 @@ class NTHCreateTaskController: UIViewController {
         self.descriptionTextLabel.placeholder = "Describe this task"
         self.descriptionTextLabel.tapBlock = { [unowned self] in showTextEditor(self.descriptionTextLabel)}
         
-        
         self.locationLabel.placeholder = "None"
         self.locationLabel.tapBlock = { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.Places.rawValue, sender: self.locationLabel)
         }
+        
+        self.regionLabel.placeholder = "None"
+        self.regionLabel.enabled = false
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -63,6 +66,7 @@ class NTHCreateTaskController: UIViewController {
             placesVC.selectionBlock = { [unowned self] (place: Place) in
                 self.taskInfo.place = place
                 self.locationLabel.text = place.customName
+                self.regionLabel.enabled = true
             }
         }
     }

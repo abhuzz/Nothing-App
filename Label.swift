@@ -26,6 +26,8 @@ class Label: UILabel {
     }
     
     internal func handleTap(recognizer: UITapGestureRecognizer) {
+        if self.enabled == false { return }
+        
         UIView.animateWithDuration(0.2, animations: { () -> Void in
             self.alpha = 0.5
         }) { (flag) -> Void in
