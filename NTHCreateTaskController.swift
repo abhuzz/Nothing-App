@@ -10,8 +10,8 @@ import UIKit
 
 class NTHCreateTaskController: UIViewController {
     
-    @IBOutlet weak var titleTextLabel: Label!
-    @IBOutlet weak var descriptionTextLabel: Label!
+    @IBOutlet weak var titleTextLabel: LabelContainer!
+    @IBOutlet weak var descriptionTextLabel: LabelContainer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,21 +19,26 @@ class NTHCreateTaskController: UIViewController {
     }
     
     private func setup() {
-        let showTextEditor = {(label: Label) -> () in
+        let showTextEditor = {(label: LabelContainer) -> () in
             self.performSegueWithIdentifier("ShowTextEditor", sender: label)
         }
         
+        titleTextLabel.placeholder = "What's in your mind?"
         titleTextLabel.tapBlock = { [unowned self] in showTextEditor(self.titleTextLabel)}
+        
+        descriptionTextLabel.placeholder = "Describe this task"
         descriptionTextLabel.tapBlock = { [unowned self] in showTextEditor(self.descriptionTextLabel)}
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "ShowTextEditor") {
             let editor = (segue.destinationViewController as UINavigationController).topViewController as TextEditorController
-            editor.text = (sender as Label).text
             editor.title = "Text Editor"
+
+            let label = (sender as LabelContainer)
+            editor.text = label.isSet ? label.text : ""
             editor.confirmBlock = { text in
-                (sender as Label).text = text
+                (sender as LabelContainer).text = text
             }
         }
     }
