@@ -136,7 +136,7 @@
                                                 <color key="textColor" red="0.30588235294117649" green="0.39215686274509803" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not selected" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmG-kz-vIr" customClass="Label" customModule="Nothing" customModuleProvider="target">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not selected" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmG-kz-vIr" customClass="LabelContainer" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="180" width="270" height="21"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" red="0.59999999999999998" green="0.6705882353" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -288,8 +288,10 @@
                     <size key="freeformSize" width="320" height="700"/>
                     <connections>
                         <outlet property="descriptionTextLabel" destination="gu8-YQ-LtX" id="1Fr-8j-nzK"/>
+                        <outlet property="locationLabel" destination="GmG-kz-vIr" id="lAL-hs-Raw"/>
                         <outlet property="titleTextLabel" destination="8Vm-Ov-6Ga" id="DOG-ox-Cj6"/>
-                        <segue destination="78D-SZ-BW2" kind="modal" identifier="ShowTextEditor" id="USy-L9-PMD"/>
+                        <segue destination="78D-SZ-BW2" kind="modal" identifier="TextEditor" id="USy-L9-PMD"/>
+                        <segue destination="A7j-0A-jko" kind="modal" identifier="Places" id="5RZ-YH-F07"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fck-oU-cRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -528,6 +530,92 @@
                 <tapGestureRecognizer id="Z5j-ar-iOh"/>
             </objects>
             <point key="canvasLocation" x="1899" y="1211"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="t5G-kp-icM">
+            <objects>
+                <navigationController id="A7j-0A-jko" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hFv-wR-156">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yUi-GR-2yC" kind="relationship" relationship="rootViewController" id="v3G-M5-AMD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I4K-x2-sG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1452" y="1992"/>
+        </scene>
+        <!--Places-->
+        <scene sceneID="H8G-gw-x20">
+            <objects>
+                <tableViewController id="yUi-GR-2yC" customClass="NTHSelectPlaceTableViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="asL-VX-sTI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaceNameCell" rowHeight="50" id="G3J-2n-2VK" customClass="PlaceNameCell" customModule="Nothing" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G3J-2n-2VK" id="6GF-px-jnF">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihk-rH-JLP">
+                                            <rect key="frame" x="10" y="14" width="40" height="21"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ihk-rH-JLP" firstAttribute="leading" secondItem="6GF-px-jnF" secondAttribute="leading" constant="10" id="dJK-as-FDk"/>
+                                        <constraint firstAttribute="centerY" secondItem="Ihk-rH-JLP" secondAttribute="centerY" id="xOF-sX-gJj"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="Ihk-rH-JLP" id="1Aj-4d-sAh"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddNewPlaceCell" id="M3P-9x-27Q" customClass="AddNewPlaceCell" customModule="Nothing" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M3P-9x-27Q" id="56i-iL-dYv">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a new place" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0b-ef-Suc">
+                                            <rect key="frame" x="117" y="14" width="87" height="15"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="P0b-ef-Suc" secondAttribute="centerY" id="f19-wE-3BK"/>
+                                        <constraint firstAttribute="centerX" secondItem="P0b-ef-Suc" secondAttribute="centerX" constant="-0.5" id="kNS-sd-e2B"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="P0b-ef-Suc" id="eqx-bc-bdr"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yUi-GR-2yC" id="gFL-eS-Hrf"/>
+                            <outlet property="delegate" destination="yUi-GR-2yC" id="39z-4b-OOs"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Places" id="mG1-Pe-e8s">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0gy-V2-1RG">
+                            <connections>
+                                <action selector="closePressed" destination="yUi-GR-2yC" id="UuL-jB-7O2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AG5-GE-KrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1899" y="1992"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WqW-TO-gRH">
