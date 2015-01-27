@@ -11,12 +11,19 @@ import UIKit
 class NTHCreateTaskController: UIViewController {
 
     class TaskInfo {
+        class Region {
+            var distance: Float = 100
+            var onArrive: Bool = true
+        }
+        
         var place: Place?
+        var region = Region()
     }
     
     enum SegueIdentifier: String {
         case TextEditor = "TextEditor"
         case Places = "Places"
+        case Region = "Region"
     }
     
     @IBOutlet weak var titleTextLabel: LabelContainer!
@@ -37,10 +44,14 @@ class NTHCreateTaskController: UIViewController {
         }
         
         self.titleTextLabel.placeholder = "What's in your mind?"
-        self.titleTextLabel.tapBlock = { [unowned self] in showTextEditor(self.titleTextLabel)}
+        self.titleTextLabel.tapBlock = { [unowned self] in
+            showTextEditor(self.titleTextLabel)
+        }
         
         self.descriptionTextLabel.placeholder = "Describe this task"
-        self.descriptionTextLabel.tapBlock = { [unowned self] in showTextEditor(self.descriptionTextLabel)}
+        self.descriptionTextLabel.tapBlock = { [unowned self] in
+            showTextEditor(self.descriptionTextLabel)
+        }
         
         self.locationLabel.placeholder = "None"
         self.locationLabel.tapBlock = { [unowned self] in
@@ -49,6 +60,9 @@ class NTHCreateTaskController: UIViewController {
         
         self.regionLabel.placeholder = "None"
         self.regionLabel.enabled = false
+        self.regionLabel.tapBlock = { [unowned self] in
+            self.performSegueWithIdentifier(SegueIdentifier.Region.rawValue, sender: self.regionLabel)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -67,6 +81,15 @@ class NTHCreateTaskController: UIViewController {
                 self.taskInfo.place = place
                 self.locationLabel.text = place.customName
                 self.regionLabel.enabled = true
+            }
+        } else if (segue.identifier == SegueIdentifier.Region.rawValue) {
+            let regionVC = segue.destinationViewController as NTHRegionViewController
+            regionVC.successBlock = { (distance: Float, onArrive: Bool) in
+                let label = (sender as LabelContainer)
+                label.text = (onArrive ? "Arrive" : "Leave") + ", " + distance.distanceDescription()
+                
+                self.taskInfo.region.distance = distance
+                self.taskInfo.region.onArrive = onArrive
             }
         }
     }

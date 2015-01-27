@@ -13,16 +13,13 @@ class Label: UILabel {
     typealias LabelTapBlock = () -> Void
     var tapBlock: LabelTapBlock?
     
-    private var _tapGesture: UITapGestureRecognizer!
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setup()
     }
     
     private func setup() {
-        _tapGesture = UITapGestureRecognizer(target: self, action: "handleTap:")
-        self.addGestureRecognizer(_tapGesture!)
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
     }
     
     internal func handleTap(recognizer: UITapGestureRecognizer) {
