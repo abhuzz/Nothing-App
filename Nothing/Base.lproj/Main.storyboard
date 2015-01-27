@@ -613,10 +613,56 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="2PA-n2-imi" kind="push" identifier="AddNewPlace" id="Dh3-20-VJ5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AG5-GE-KrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1899" y="1992"/>
+        </scene>
+        <!--Add a new place-->
+        <scene sceneID="DMa-SP-BM6">
+            <objects>
+                <viewController id="2PA-n2-imi" customClass="NTHAddNewPlaceViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9pa-7S-ldk"/>
+                        <viewControllerLayoutGuide type="bottom" id="4TG-E7-YsN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hzw-zA-cNU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Fy-in-ahi">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="delegate" destination="2PA-n2-imi" id="2hw-lx-cZz"/>
+                                    <outletCollection property="gestureRecognizers" destination="z59-GJ-pGa" appends="YES" id="sNx-4K-bBW"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4Fy-in-ahi" firstAttribute="top" secondItem="Hzw-zA-cNU" secondAttribute="top" id="7gK-sK-UX5"/>
+                            <constraint firstItem="4TG-E7-YsN" firstAttribute="top" secondItem="4Fy-in-ahi" secondAttribute="bottom" id="HgC-K8-MRx"/>
+                            <constraint firstAttribute="trailing" secondItem="4Fy-in-ahi" secondAttribute="trailing" id="IQy-v0-8Ue"/>
+                            <constraint firstItem="4Fy-in-ahi" firstAttribute="leading" secondItem="Hzw-zA-cNU" secondAttribute="leading" id="T4V-AR-oTF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add a new place" id="1Ty-dM-4ts"/>
+                    <connections>
+                        <outlet property="mapView" destination="4Fy-in-ahi" id="Duu-6a-yzj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hha-Ik-xG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="z59-GJ-pGa" userLabel="Map Tap Gesture">
+                    <connections>
+                        <action selector="handleTapOnMap:" destination="2PA-n2-imi" id="fvn-G8-SJF"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2416" y="1992"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WqW-TO-gRH">

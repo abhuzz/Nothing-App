@@ -12,6 +12,10 @@ class NTHSelectPlaceTableViewController: UITableViewController {
     
     typealias NTHSelectPlaceTableViewControllerSelectionBlock = (place: Place) -> Void
     
+    enum SegueIdentifier: String {
+        case AddNewPlace = "AddNewPlace"
+    }
+    
     var selectionBlock: NTHSelectPlaceTableViewControllerSelectionBlock?
     
     private var places = [Place]()
@@ -46,7 +50,8 @@ class NTHSelectPlaceTableViewController: UITableViewController {
             self.selectionBlock?(place: self.places[indexPath.row])
             self.dismissViewControllerAnimated(true, completion: nil)
         } else {
-            
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.performSegueWithIdentifier(SegueIdentifier.AddNewPlace.rawValue, sender: nil)
         }
     }
     

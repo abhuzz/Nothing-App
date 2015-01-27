@@ -14,8 +14,10 @@ class LabelContainer: Label {
     private var _placeholder: String = ""
     var placeholder: String {
         set {
+            let set = self.isSet
             _placeholder = newValue
             self.text = newValue
+            self.isSet = set
         }
         
         get {
