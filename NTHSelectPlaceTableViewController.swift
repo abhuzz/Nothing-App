@@ -25,12 +25,18 @@ class NTHSelectPlaceTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.places = ModelController().allPlaces()
+        self.tableView.reloadData()
+    }
+    
     @IBAction func closePressed() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     private func numberOfCells() -> Int {
-        return 0 + 1
+        return self.places.count + 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,7 +45,9 @@ class NTHSelectPlaceTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row != self.numberOfCells() - 1 {
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCellWithIdentifier("PlaceNameCell") as PlaceNameCell
+            cell.label.text = self.places[indexPath.row].customName
+            return cell
         } else {
             return tableView.dequeueReusableCellWithIdentifier("AddNewPlaceCell") as AddNewPlaceCell
         }

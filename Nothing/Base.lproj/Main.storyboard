@@ -530,7 +530,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aai-Qf-c6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Z5j-ar-iOh"/>
             </objects>
-            <point key="canvasLocation" x="1899" y="1211"/>
+            <point key="canvasLocation" x="3742" y="1211"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="t5G-kp-icM">
@@ -621,10 +621,10 @@
             </objects>
             <point key="canvasLocation" x="1899" y="1992"/>
         </scene>
-        <!--Add a new place-->
+        <!--Select Place On Map-->
         <scene sceneID="DMa-SP-BM6">
             <objects>
-                <viewController id="2PA-n2-imi" customClass="NTHAddNewPlaceViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2PA-n2-imi" userLabel="Select Place On Map" customClass="NTHSelectPlaceOnMapViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9pa-7S-ldk"/>
                         <viewControllerLayoutGuide type="bottom" id="4TG-E7-YsN"/>
@@ -650,7 +650,13 @@
                             <constraint firstItem="4Fy-in-ahi" firstAttribute="leading" secondItem="Hzw-zA-cNU" secondAttribute="leading" id="T4V-AR-oTF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add a new place" id="1Ty-dM-4ts"/>
+                    <navigationItem key="navigationItem" title="Map" id="1Ty-dM-4ts">
+                        <barButtonItem key="rightBarButtonItem" title="Select" id="l17-8f-iSs">
+                            <connections>
+                                <segue destination="yTh-e4-hWU" kind="push" identifier="CreatePlace" id="O6x-rP-LK8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="4Fy-in-ahi" id="Duu-6a-yzj"/>
                     </connections>
@@ -662,7 +668,87 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2416" y="1992"/>
+            <point key="canvasLocation" x="2426" y="1992"/>
+        </scene>
+        <!--Create Place-->
+        <scene sceneID="g2H-uU-JoU">
+            <objects>
+                <viewController id="yTh-e4-hWU" customClass="NTHCreatePlaceViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZLr-te-9am"/>
+                        <viewControllerLayoutGuide type="bottom" id="ldZ-jZ-Tor"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dCR-WZ-DgH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ORIGINAL NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LI0-yQ-xHX">
+                                <rect key="frame" x="25" y="89" width="270" height="12"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="10"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ORIGINAL NAME" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjU-1e-uFd" customClass="LabelContainer" customModule="Nothing" customModuleProvider="target">
+                                <rect key="frame" x="25" y="106" width="270" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.6705882353" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yie-0U-FCn" userLabel="separator-1">
+                                <rect key="frame" x="25" y="142" width="270" height="1"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="M0k-Rm-bmX"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VISIBLE NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftl-Xx-XrL">
+                                <rect key="frame" x="25" y="158" width="270" height="12"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="10"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VISIBLE NAME" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u03-Ao-7to" customClass="LabelContainer" customModule="Nothing" customModuleProvider="target">
+                                <rect key="frame" x="25" y="175" width="270" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.6705882353" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="u03-Ao-7to" secondAttribute="trailing" constant="25" id="7Hl-kQ-Es9"/>
+                            <constraint firstItem="hjU-1e-uFd" firstAttribute="top" secondItem="LI0-yQ-xHX" secondAttribute="bottom" constant="5" id="FmQ-Tm-eFI"/>
+                            <constraint firstItem="LI0-yQ-xHX" firstAttribute="top" secondItem="ZLr-te-9am" secondAttribute="bottom" constant="25" id="N5I-EH-uss"/>
+                            <constraint firstAttribute="trailing" secondItem="ftl-Xx-XrL" secondAttribute="trailing" constant="25" id="Ndb-x0-syP"/>
+                            <constraint firstItem="yie-0U-FCn" firstAttribute="leading" secondItem="dCR-WZ-DgH" secondAttribute="leading" constant="25" id="ZMW-Ii-KcA"/>
+                            <constraint firstAttribute="trailing" secondItem="LI0-yQ-xHX" secondAttribute="trailing" constant="25" id="aDt-al-ZaH"/>
+                            <constraint firstItem="yie-0U-FCn" firstAttribute="top" secondItem="hjU-1e-uFd" secondAttribute="bottom" constant="15" id="brc-SG-4Mc"/>
+                            <constraint firstItem="u03-Ao-7to" firstAttribute="top" secondItem="ftl-Xx-XrL" secondAttribute="bottom" constant="5" id="gDB-2L-hSq"/>
+                            <constraint firstItem="hjU-1e-uFd" firstAttribute="leading" secondItem="dCR-WZ-DgH" secondAttribute="leading" constant="25" id="hFm-yM-bHH"/>
+                            <constraint firstAttribute="trailing" secondItem="yie-0U-FCn" secondAttribute="trailing" constant="25" id="iAY-MP-bVf"/>
+                            <constraint firstItem="LI0-yQ-xHX" firstAttribute="leading" secondItem="dCR-WZ-DgH" secondAttribute="leading" constant="25" id="jBY-Z6-teu"/>
+                            <constraint firstItem="ftl-Xx-XrL" firstAttribute="top" secondItem="yie-0U-FCn" secondAttribute="bottom" constant="15" id="jmK-0E-vXo"/>
+                            <constraint firstItem="ftl-Xx-XrL" firstAttribute="leading" secondItem="dCR-WZ-DgH" secondAttribute="leading" constant="25" id="nl5-vs-e7C"/>
+                            <constraint firstAttribute="trailing" secondItem="hjU-1e-uFd" secondAttribute="trailing" constant="25" id="vbr-fw-JSn"/>
+                            <constraint firstItem="u03-Ao-7to" firstAttribute="leading" secondItem="dCR-WZ-DgH" secondAttribute="leading" constant="25" id="yp5-Sv-I7y"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Place" id="EFn-cj-5rG">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="HBT-cN-IQg">
+                            <connections>
+                                <action selector="donePressed:" destination="yTh-e4-hWU" id="5ky-Je-N07"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="customNameLabel" destination="u03-Ao-7to" id="Awg-cJ-z7w"/>
+                        <outlet property="originalNameLabel" destination="hjU-1e-uFd" id="tKt-vM-haT"/>
+                        <segue destination="78D-SZ-BW2" kind="modal" identifier="TextEditor" id="NPY-dN-uPC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ena-bb-ayE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2905" y="1992"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WqW-TO-gRH">
@@ -680,7 +766,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qqq-1B-drd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="1211"/>
+            <point key="canvasLocation" x="3327" y="1211"/>
         </scene>
         <!--Edit Task Controller-->
         <scene sceneID="OQQ-bY-aIa">
@@ -862,4 +948,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="NPY-dN-uPC"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -19,4 +19,10 @@ extension ModelController {
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: false)]
         return CDHelper.mainContext.executeFetchRequest(request, error: nil) as [Task]! ?? [Task]()
     }
+    
+    func allPlaces() -> [Place] {
+        let request = NSFetchRequest(entityName: NSStringFromClass(Place.self))
+        request.sortDescriptors = [NSSortDescriptor(key: "originalName", ascending: false)]
+        return CDHelper.mainContext.executeFetchRequest(request, error: nil) as [Place]! ?? [Place]()
+    }
 }
