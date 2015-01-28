@@ -11,13 +11,19 @@ import UIKit
 class NTHCreateTaskController: UIViewController {
 
     class TaskInfo {
-        class Region {
-            var distance: Float = 100
-            var onArrive: Bool = true
+        class LocationReminder {
+            var place: Place?
+            var distance: Float?
+            var onArrive: Bool?
         }
         
-        var place: Place?
-        var region = Region()
+        class DateReminder {
+            var fireData: NSDate!
+            var repeatInterval: NSCalendarUnit!
+        }
+        
+        var dateReminder = DateReminder()
+        var locationReminder = LocationReminder()
     }
     
     enum SegueIdentifier: String {
@@ -92,7 +98,7 @@ class NTHCreateTaskController: UIViewController {
         } else if (segue.identifier == SegueIdentifier.Places.rawValue) {
             let placesVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectPlaceTableViewController
             placesVC.selectionBlock = { [unowned self] (place: Place) in
-                self.taskInfo.place = place
+                self.taskInfo.locationReminder.place = place
                 self.locationLabel.text = place.customName
                 self.regionLabel.enabled = true
             }
@@ -102,8 +108,8 @@ class NTHCreateTaskController: UIViewController {
                 let label = (sender as LabelContainer)
                 label.text = (onArrive ? "Arrive" : "Leave") + ", " + distance.distanceDescription()
                 
-                self.taskInfo.region.distance = distance
-                self.taskInfo.region.onArrive = onArrive
+                self.taskInfo.locationReminder.distance = distance
+                self.taskInfo.locationReminder.onArrive = onArrive
             }
         } else if (segue.identifier == SegueIdentifier.Date.rawValue) {
             let dateVC = segue.destinationViewController as NTHDatePickerViewController
