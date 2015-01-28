@@ -23,6 +23,6 @@ class NTHDatePickerViewController: UIViewController {
     
     @IBAction func donePressed(sender: AnyObject) {
         self.block?(date: self.datePicker.date)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }

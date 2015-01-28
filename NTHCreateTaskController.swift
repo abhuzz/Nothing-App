@@ -66,6 +66,17 @@ class NTHCreateTaskController: UIViewController {
         self.regionLabel.tapBlock = { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.Region.rawValue, sender: self.regionLabel)
         }
+        
+        self.dateLabel.placeholder = "None"
+        self.dateLabel.tapBlock = { [unowned self] in
+            self.performSegueWithIdentifier(SegueIdentifier.Date.rawValue, sender: self.dateLabel)
+        }
+        
+        self.repeatLabel.placeholder = "None"
+        self.repeatLabel.enabled = false
+        self.repeatLabel.tapBlock = {
+            
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -95,7 +106,11 @@ class NTHCreateTaskController: UIViewController {
                 self.taskInfo.region.onArrive = onArrive
             }
         } else if (segue.identifier == SegueIdentifier.Date.rawValue) {
-            
+            let dateVC = segue.destinationViewController as NTHDatePickerViewController
+            dateVC.block = { [unowned self] date in
+                self.dateLabel.text = NSString(format: "%@", date)
+                self.repeatLabel.enabled = true
+            }
         }
     }
 }
