@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1202EB731A79579900B67F45 /* NTHDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1202EB721A79579900B67F45 /* NTHDatePickerViewController.swift */; };
 		12059DCA1A34FDA2007F5E7C /* UIColor+Nothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DC91A34FDA2007F5E7C /* UIColor+Nothing.swift */; };
 		12059DCD1A34FF5C007F5E7C /* UIFont+Nothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DCC1A34FF5C007F5E7C /* UIFont+Nothing.swift */; };
 		12059DCF1A350153007F5E7C /* NTHInboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12059DCE1A350153007F5E7C /* NTHInboxCell.xib */; };
@@ -89,6 +90,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1202EB721A79579900B67F45 /* NTHDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHDatePickerViewController.swift; sourceTree = "<group>"; };
 		12059DC91A34FDA2007F5E7C /* UIColor+Nothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Nothing.swift"; sourceTree = "<group>"; };
 		12059DCC1A34FF5C007F5E7C /* UIFont+Nothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Nothing.swift"; sourceTree = "<group>"; };
 		12059DCE1A350153007F5E7C /* NTHInboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NTHInboxCell.xib; path = Nothing/NTHInboxCell.xib; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				1258A2E01A76C00C00755F6E /* NTHSelectPlaceOnMapViewController.swift */,
 				1279A4AB1A76A2A200A03FF4 /* NTHSelectPlaceTableViewController.swift */,
 				1260AC011A7838D30015CA4E /* NTHRegionViewController.swift */,
+				1202EB721A79579900B67F45 /* NTHDatePickerViewController.swift */,
 				1279A4AA1A76A1F700A03FF4 /* Components */,
 				1279A4AD1A76A2D100A03FF4 /* Storyboards */,
 			);
@@ -625,6 +628,7 @@
 				1260AC001A7819BB0015CA4E /* NTHAnnotation.swift in Sources */,
 				123F11C51A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift in Sources */,
 				1279B60C19FED64D00A7828C /* Contact.swift in Sources */,
+				1202EB731A79579900B67F45 /* NTHDatePickerViewController.swift in Sources */,
 				1279B61019FED64D00A7828C /* Place.swift in Sources */,
 				1279B60E19FED64D00A7828C /* DateReminderInfo.swift in Sources */,
 			);

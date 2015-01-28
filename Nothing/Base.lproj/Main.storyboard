@@ -168,7 +168,7 @@
                                                 <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not selected" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBa-xv-2RZ" customClass="Label" customModule="Nothing" customModuleProvider="target">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not selected" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBa-xv-2RZ" customClass="LabelContainer" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="300" width="270" height="21"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" red="0.59999999999999998" green="0.6705882353" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -186,7 +186,7 @@
                                                 <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not selected" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bw3-CK-9hG" customClass="Label" customModule="Nothing" customModuleProvider="target">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not selected" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bw3-CK-9hG" customClass="LabelContainer" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="353" width="270" height="21"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" red="0.59999999999999998" green="0.6705882353" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -288,18 +288,65 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="700"/>
                     <connections>
+                        <outlet property="dateLabel" destination="pBa-xv-2RZ" id="JdV-dN-fiB"/>
                         <outlet property="descriptionTextLabel" destination="gu8-YQ-LtX" id="1Fr-8j-nzK"/>
                         <outlet property="locationLabel" destination="GmG-kz-vIr" id="lAL-hs-Raw"/>
                         <outlet property="regionLabel" destination="leb-ED-iqu" id="BWg-u4-n3h"/>
+                        <outlet property="repeatLabel" destination="Bw3-CK-9hG" id="FQw-Rj-te9"/>
                         <outlet property="titleTextLabel" destination="8Vm-Ov-6Ga" id="DOG-ox-Cj6"/>
                         <segue destination="78D-SZ-BW2" kind="modal" identifier="TextEditor" id="USy-L9-PMD"/>
                         <segue destination="A7j-0A-jko" kind="modal" identifier="Places" id="5RZ-YH-F07"/>
                         <segue destination="xfT-mP-tfV" kind="push" identifier="Region" id="lMb-j9-vhb"/>
+                        <segue destination="qKL-pp-hDu" kind="push" identifier="Date" id="7tp-gK-yvc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fck-oU-cRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1014" y="1211"/>
+        </scene>
+        <!--Date-->
+        <scene sceneID="hNh-3G-lN3">
+            <objects>
+                <viewController id="qKL-pp-hDu" customClass="NTHDatePickerViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dMb-IP-6Sz"/>
+                        <viewControllerLayoutGuide type="bottom" id="qeV-3H-cUl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="g8V-C6-gmx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4sS-tq-eYU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="444159850.692505">
+                                    <!--2015-01-28 17:44:10 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4sS-tq-eYU" firstAttribute="top" secondItem="dMb-IP-6Sz" secondAttribute="bottom" id="5bI-F0-gCe"/>
+                            <constraint firstAttribute="trailing" secondItem="4sS-tq-eYU" secondAttribute="trailing" id="aPO-L6-ABV"/>
+                            <constraint firstItem="4sS-tq-eYU" firstAttribute="leading" secondItem="g8V-C6-gmx" secondAttribute="leading" id="sw1-Xf-ty3"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Date" id="jjz-ju-bH2">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="done" systemItem="done" id="u38-eC-nY5">
+                            <connections>
+                                <action selector="donePressed:" destination="qKL-pp-hDu" id="2i0-97-LBb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="datePicker" destination="4sS-tq-eYU" id="rHL-5k-PA9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NBe-lt-sSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="632" y="1992"/>
         </scene>
         <!--Region-->
         <scene sceneID="GsI-ov-95f">

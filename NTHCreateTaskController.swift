@@ -24,12 +24,15 @@ class NTHCreateTaskController: UIViewController {
         case TextEditor = "TextEditor"
         case Places = "Places"
         case Region = "Region"
+        case Date = "Date"
     }
     
     @IBOutlet weak var titleTextLabel: LabelContainer!
     @IBOutlet weak var descriptionTextLabel: LabelContainer!
     @IBOutlet weak var locationLabel: LabelContainer!
     @IBOutlet weak var regionLabel: LabelContainer!
+    @IBOutlet weak var dateLabel: LabelContainer!
+    @IBOutlet weak var repeatLabel: LabelContainer!
     
     private var taskInfo = TaskInfo()
 
@@ -91,6 +94,8 @@ class NTHCreateTaskController: UIViewController {
                 self.taskInfo.region.distance = distance
                 self.taskInfo.region.onArrive = onArrive
             }
+        } else if (segue.identifier == SegueIdentifier.Date.rawValue) {
+            
         }
     }
 }
