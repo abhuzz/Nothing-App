@@ -31,6 +31,7 @@ class NTHCreateTaskController: UIViewController {
         case Places = "Places"
         case Region = "Region"
         case Date = "Date"
+        case RepeatInterval = "RepeatInterval"
     }
     
     @IBOutlet weak var titleTextLabel: LabelContainer!
@@ -80,8 +81,8 @@ class NTHCreateTaskController: UIViewController {
         
         self.repeatLabel.placeholder = "None"
         self.repeatLabel.enabled = false
-        self.repeatLabel.tapBlock = {
-            
+        self.repeatLabel.tapBlock = { [unowned self] in
+            self.performSegueWithIdentifier(SegueIdentifier.RepeatInterval.rawValue, sender: self.repeatLabel)
         }
     }
     
@@ -116,6 +117,13 @@ class NTHCreateTaskController: UIViewController {
             dateVC.block = { [unowned self] date in
                 self.dateLabel.text = NSString(format: "%@", date)
                 self.repeatLabel.enabled = true
+            }
+        } else if (segue.identifier == SegueIdentifier.RepeatInterval.rawValue) {
+            let regionVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectRepeatIntervalViewController
+            regionVC.completionBlock = { unit, description in
+                let label = (sender as LabelContainer)
+                label.text = description
+                self.taskInfo.dateReminder.repeatInterval = unit
             }
         }
     }
