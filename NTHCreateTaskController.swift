@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NTHCreateTaskController: UIViewController {
+class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     class TaskInfo {
         class LocationReminder {
@@ -24,6 +24,7 @@ class NTHCreateTaskController: UIViewController {
         
         var dateReminder = DateReminder()
         var locationReminder = LocationReminder()
+        var connections = [String]()
     }
     
     enum SegueIdentifier: String {
@@ -40,6 +41,8 @@ class NTHCreateTaskController: UIViewController {
     @IBOutlet weak var regionLabel: LabelContainer!
     @IBOutlet weak var dateLabel: LabelContainer!
     @IBOutlet weak var repeatLabel: LabelContainer!
+    @IBOutlet weak var connectionTableView: UITableView!
+    @IBOutlet weak var connectionTableViewHeight: NSLayoutConstraint!
     
     private var taskInfo = TaskInfo()
 
@@ -84,6 +87,10 @@ class NTHCreateTaskController: UIViewController {
         self.repeatLabel.tapBlock = { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.RepeatInterval.rawValue, sender: self.repeatLabel)
         }
+        
+        
+        /// setup connections table view
+        self.connectionTableView.tableFooterView = UIView()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -125,6 +132,57 @@ class NTHCreateTaskController: UIViewController {
                 label.text = description
                 self.taskInfo.dateReminder.repeatInterval = unit
             }
+        }
+    }
+    
+
+    
+    /// Mark: UITableViewDelegate & UITableViewDataSource
+    func numberOfItemsInConnectionTableView() -> Int {
+        return self.taskInfo.connections.count + 1
+    }
+    
+    func heightOfConnectionTableViewCell() -> CGFloat {
+        return 50
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.numberOfItemsInConnectionTableView()
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if (indexPath.row != self.numberOfItemsInConnectionTableView() - 1) {
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHConnectionCell") as NTHConnectionCell
+            cell.label.text = self.taskInfo.connections[indexPath.row]
+            return cell
+        } else {
+            return tableView.dequeueReusableCellWithIdentifier("NTHAddConnectionCell") as NTHAddConnectionCell
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return self.heightOfConnectionTableViewCell()
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if (indexPath.row != self.numberOfItemsInConnectionTableView() - 1) {
+            /// Do nothing here
+        } else {
+            let number = self.numberOfItemsInConnectionTableView()
+            let text = String(number)
+            self.taskInfo.connections.append(text)
+            tableView.reloadData()
+            
+            /// Update table view height
+            let height = CGFloat(self.numberOfItemsInConnectionTableView()) * self.heightOfConnectionTableViewCell()
+            self.connectionTableViewHeight.constant = height
+            
+            UIView.animateWithDuration(NSTimeInterval(0.3), animations: {
+                self.view.needsUpdateConstraints()
+                self.view.updateConstraintsIfNeeded()
+                return /// explicit return
+            })
         }
     }
 }
