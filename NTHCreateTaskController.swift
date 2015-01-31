@@ -24,7 +24,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         
         var dateReminder = DateReminder()
         var locationReminder = LocationReminder()
-        var connections = [String]()
+        var connections = [Connection]()
     }
     
     enum SegueIdentifier: String {
@@ -153,7 +153,14 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (indexPath.row != self.numberOfItemsInConnectionTableView() - 1) {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHConnectionCell") as NTHConnectionCell
-            cell.label.text = self.taskInfo.connections[indexPath.row]
+            
+            let connection = self.taskInfo.connections[indexPath.row]
+            if connection is Contact {
+                cell.label.text = (connection as Contact).name
+            } else {
+                cell.label.text = (connection as Place).customName
+            }
+            
             return cell
         } else {
             return tableView.dequeueReusableCellWithIdentifier("NTHAddConnectionCell") as NTHAddConnectionCell
@@ -170,37 +177,40 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             /// Do nothing here
         } else {
             let types = [
-                "people": NSLocalizedString("People", comment: ""),
-                "places": NSLocalizedString("Places", comment: "")
+                "contact": NSLocalizedString("Contact", comment: ""),
+                "place": NSLocalizedString("Place", comment: "")
             ]
             
             let alert = UIAlertController.selectConnectionTypeActionSheet(types, completion: { (action: NTHAlertAction) -> Void in
-                if action.identifier == "people" {
-                    println("people!")
-                } else if action.identifier == "places" {
-                    println("places!")
+                if action.identifier == "contact" {
+                    println("contact!")
+                } else if action.identifier == "place" {
+                    println("place!")
+                    let nc = UIStoryboard.instantiateNTHSelectPlaceTableViewControllerInNavigationController();
+                    let vc = nc.topViewController as NTHSelectPlaceTableViewController
+                    vc.selectionBlock = { place in
+                        self.taskInfo.connections.append(place)
+                        self.refreshConnectionsTableView()
+                    }
+                    
+                    self.presentViewController(nc, animated: true, completion: nil)
                 }
             })
             
             self.presentViewController(alert, animated: true, completion: nil)
-            
-            /*
-            let number = self.numberOfItemsInConnectionTableView()
-            let text = String(number)
-            self.taskInfo.connections.append(text)
-            tableView.reloadData()
-            
-            /// Update table view height
-            let height = CGFloat(self.numberOfItemsInConnectionTableView()) * self.heightOfConnectionTableViewCell()
-            self.connectionTableViewHeight.constant = height
-            
-            UIView.animateWithDuration(NSTimeInterval(0.3), animations: {
-                self.view.needsUpdateConstraints()
-                self.view.updateConstraintsIfNeeded()
-                return /// explicit return
-            })
-            */
         }
+    }
+    
+    private func refreshConnectionsTableView() {
+        /// Update table view height
+        let height = CGFloat(self.numberOfItemsInConnectionTableView()) * self.heightOfConnectionTableViewCell()
+        self.connectionTableViewHeight.constant = height
+        
+        UIView.animateWithDuration(NSTimeInterval(0.3), animations: {
+            self.view.needsUpdateConstraints()
+            self.connectionTableView.reloadData()
+            return /// explicit return
+        })
     }
 }
 
@@ -227,5 +237,11 @@ extension UIAlertController {
         alert.addAction(action)
         
         return alert
+    }
+}
+
+extension UIStoryboard {
+    class func instantiateNTHSelectPlaceTableViewControllerInNavigationController() -> UINavigationController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SelectPlaceNC") as UINavigationController
     }
 }
