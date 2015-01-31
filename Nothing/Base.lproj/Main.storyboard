@@ -198,8 +198,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="cCx-aH-6h7"/>
                                                 </constraints>
+                                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <prototypes>
-                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NTHAddConnectionCell" id="ouU-EO-VPd" customClass="NTHAddConnectionCell" customModule="Nothing" customModuleProvider="target">
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="NTHAddConnectionCell" id="ouU-EO-VPd" customClass="NTHAddConnectionCell" customModule="Nothing" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ouU-EO-VPd" id="VbQ-1T-qfu">
@@ -221,7 +222,7 @@
                                                             <outlet property="label" destination="2wT-fP-AFG" id="uec-8B-dLw"/>
                                                         </connections>
                                                     </tableViewCell>
-                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NTHConnectionCell" id="8H2-Y2-u7D" customClass="NTHConnectionCell" customModule="Nothing" customModuleProvider="target">
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="NTHConnectionCell" id="8H2-Y2-u7D" customClass="NTHConnectionCell" customModule="Nothing" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8H2-Y2-u7D" id="Te7-UP-mNl">

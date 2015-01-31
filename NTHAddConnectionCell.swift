@@ -10,4 +10,9 @@ import UIKit
 
 class NTHAddConnectionCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
+    
+    override var layoutMargins: UIEdgeInsets {
+        set { super.layoutMargins = newValue }
+        get { return UIEdgeInsetsZero }
+    }
 }
