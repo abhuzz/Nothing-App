@@ -169,19 +169,18 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         if (indexPath.row != self.numberOfItemsInConnectionTableView() - 1) {
             /// Do nothing here
         } else {
-            let alert = UIAlertController(title: NSLocalizedString("Connections", comment:""), message: NSLocalizedString("What type of connection do you want to add?", comment:""), preferredStyle: UIAlertControllerStyle.ActionSheet)
+            let types = [
+                "people": NSLocalizedString("People", comment: ""),
+                "places": NSLocalizedString("Places", comment: "")
+            ]
             
-            /// Add action to select people
-            let people = UIAlertAction(title: NSLocalizedString("People", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-                
+            let alert = UIAlertController.selectConnectionTypeActionSheet(types, completion: { (action: NTHAlertAction) -> Void in
+                if action.identifier == "people" {
+                    println("people!")
+                } else if action.identifier == "places" {
+                    println("places!")
+                }
             })
-            
-            let places = UIAlertAction(title: NSLocalizedString("Places", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-                
-            })
-            
-            alert.addAction(people)
-            alert.addAction(places)
             
             self.presentViewController(alert, animated: true, completion: nil)
             
@@ -202,5 +201,31 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             })
             */
         }
+    }
+}
+
+class NTHAlertAction : UIAlertAction {
+    var identifier: String!
+}
+
+extension UIAlertController {
+    class func selectConnectionTypeActionSheet(types: [String: String], completion:(action: NTHAlertAction) -> Void) -> UIAlertController {
+        /// Create alert
+        let alert = UIAlertController(title: NSLocalizedString("Connections", comment:""), message: NSLocalizedString("What type of connection do you want to add?", comment:""), preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        /// Fill it with types
+        for (identifier, description) in types {
+            let action = NTHAlertAction(title: description, style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                completion(action: action as NTHAlertAction)
+            })
+            action.identifier = identifier
+            alert.addAction(action)
+        }
+        
+        /// Add cancel
+        let action = NTHAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.Cancel, handler: nil)
+        alert.addAction(action)
+        
+        return alert
     }
 }
