@@ -169,6 +169,23 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         if (indexPath.row != self.numberOfItemsInConnectionTableView() - 1) {
             /// Do nothing here
         } else {
+            let alert = UIAlertController(title: NSLocalizedString("Connections", comment:""), message: NSLocalizedString("What type of connection do you want to add?", comment:""), preferredStyle: UIAlertControllerStyle.ActionSheet)
+            
+            /// Add action to select people
+            let people = UIAlertAction(title: NSLocalizedString("People", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                
+            })
+            
+            let places = UIAlertAction(title: NSLocalizedString("Places", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                
+            })
+            
+            alert.addAction(people)
+            alert.addAction(places)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            /*
             let number = self.numberOfItemsInConnectionTableView()
             let text = String(number)
             self.taskInfo.connections.append(text)
@@ -183,6 +200,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
                 self.view.updateConstraintsIfNeeded()
                 return /// explicit return
             })
+            */
         }
     }
 }
