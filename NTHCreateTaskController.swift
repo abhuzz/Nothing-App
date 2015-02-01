@@ -183,10 +183,16 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             
             let alert = UIAlertController.selectConnectionTypeActionSheet(types, completion: { (action: NTHAlertAction) -> Void in
                 if action.identifier == "contact" {
-                    println("contact!")
+                    let nc = UIStoryboard.instantiateNTHSelectContactViewControllerInNavigationController()
+                    let vc = nc.topViewController as NTHSelectContactViewController
+                    vc.selectionBlock = { contact in
+                        self.taskInfo.connections.append(contact)
+                        self.refreshConnectionsTableView()
+                    }
+                    
+                    self.presentViewController(nc, animated: true, completion: nil)
                 } else if action.identifier == "place" {
-                    println("place!")
-                    let nc = UIStoryboard.instantiateNTHSelectPlaceTableViewControllerInNavigationController();
+                    let nc = UIStoryboard.instantiateNTHSelectPlaceTableViewControllerInNavigationController()
                     let vc = nc.topViewController as NTHSelectPlaceTableViewController
                     vc.selectionBlock = { place in
                         self.taskInfo.connections.append(place)
@@ -243,5 +249,9 @@ extension UIAlertController {
 extension UIStoryboard {
     class func instantiateNTHSelectPlaceTableViewControllerInNavigationController() -> UINavigationController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SelectPlaceNC") as UINavigationController
+    }
+    
+    class func instantiateNTHSelectContactViewControllerInNavigationController() -> UINavigationController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SelectContactNC") as UINavigationController
     }
 }

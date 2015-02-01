@@ -25,4 +25,10 @@ extension ModelController {
         request.sortDescriptors = [NSSortDescriptor(key: "originalName", ascending: false)]
         return CDHelper.mainContext.executeFetchRequest(request, error: nil) as [Place]! ?? [Place]()
     }
+    
+    func allContacts() -> [Contact] {
+        let request = NSFetchRequest(entityName: NSStringFromClass(Contact.self))
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
+        return CDHelper.mainContext.executeFetchRequest(request, error: nil) as [Contact]! ?? [Contact]()
+    }
 }
