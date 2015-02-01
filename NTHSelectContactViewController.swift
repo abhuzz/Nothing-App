@@ -7,18 +7,17 @@
 //
 
 import UIKit
+import AddressBook
+import AddressBookUI
 
-class NTHSelectContactViewController: UITableViewController {
+class NTHSelectContactViewController: UITableViewController, ABPeoplePickerNavigationControllerDelegate, UINavigationControllerDelegate {
     
     typealias NTHSelectContactViewController = (contact: Contact) -> Void
-    
-    enum SegueIdentifier: String {
-        case AddressBook = "AddressBook"
-    }
     
     var selectionBlock: NTHSelectContactViewController?
     
     private var contacts = [Contact]()
+    private var pickerController: ABPeoplePickerNavigationController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,11 +58,32 @@ class NTHSelectContactViewController: UITableViewController {
             self.dismissViewControllerAnimated(true, completion: nil)
         } else {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            self.performSegueWithIdentifier(SegueIdentifier.AddressBook.rawValue, sender: nil)
+            /// self.performSegueWithIdentifier(SegueIdentifier.AddressBook.rawValue, sender: nil)
+            
+            if self.pickerController == nil {
+                self.pickerController = ABPeoplePickerNavigationController()
+                self.pickerController?.peoplePickerDelegate = self
+            }
+            
+            self.presentViewController(self.pickerController!, animated: true, completion: nil)
         }
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 50
+    }
+    
+    
+    // Mark: ABPeoplePickerNavigationControllerDelegate
+    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, didSelectPerson person: ABRecord!) {
+        let contact: Contact = Contact.create(CDHelper.mainContext)
+        contact.name = ABRecordCopyCompositeName(person).takeRetainedValue() as String
+        contact.phone = "+48555123456"
+        contact.email = "mail@szulctomasz.com"
+        CDHelper.mainContext.save(nil)
+    }
+    
+    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, shouldContinueAfterSelectingPerson person: ABRecord!, property: ABPropertyID, identifier: ABMultiValueIdentifier) -> Bool {
+        return false
     }
 }
