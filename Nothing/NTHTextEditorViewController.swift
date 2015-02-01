@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextEditorController: UIViewController {
+class NTHTextEditorViewController: UIViewController {
     
     typealias TextEditorSuccessBlock = (value: String) -> Void
     

@@ -82,7 +82,7 @@
 		12ED79221A3F59E10052893D /* NTHTaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED79211A3F59E10052893D /* NTHTaskDetailViewController.swift */; };
 		12EDE7871A1FBD1E0020D549 /* CreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */; };
 		12EDE7891A1FBDC20020D549 /* NTHTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */; };
-		12EDE78D1A1FC6770020D549 /* TextEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE78C1A1FC6770020D549 /* TextEditorController.swift */; };
+		12EDE78D1A1FC6770020D549 /* NTHTextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE78C1A1FC6770020D549 /* NTHTextEditorViewController.swift */; };
 		12FE325F1A10D75F00FAB243 /* QuickInsertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */; };
 		12FE32611A10D76900FAB243 /* QuickInsertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12FE32601A10D76900FAB243 /* QuickInsertView.xib */; };
 /* End PBXBuildFile section */
@@ -177,7 +177,7 @@
 		12ED79211A3F59E10052893D /* NTHTaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskDetailViewController.swift; sourceTree = "<group>"; };
 		12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditViewController.swift; sourceTree = "<group>"; };
 		12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTableViewController.swift; sourceTree = "<group>"; };
-		12EDE78C1A1FC6770020D549 /* TextEditorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextEditorController.swift; path = Nothing/TextEditorController.swift; sourceTree = "<group>"; };
+		12EDE78C1A1FC6770020D549 /* NTHTextEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NTHTextEditorViewController.swift; path = Nothing/NTHTextEditorViewController.swift; sourceTree = "<group>"; };
 		12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuickInsertView.swift; path = Nothing/QuickInsertView.swift; sourceTree = "<group>"; };
 		12FE32601A10D76900FAB243 /* QuickInsertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuickInsertView.xib; path = Nothing/QuickInsertView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -267,7 +267,7 @@
 				1279A4AB1A76A2A200A03FF4 /* NTHSelectPlaceTableViewController.swift */,
 				12D4FF051A7D11AA00F04858 /* NTHSelectRepeatIntervalViewController.swift */,
 				1260AC011A7838D30015CA4E /* NTHRegionViewController.swift */,
-				12EDE78C1A1FC6770020D549 /* TextEditorController.swift */,
+				12EDE78C1A1FC6770020D549 /* NTHTextEditorViewController.swift */,
 				1279A4AA1A76A1F700A03FF4 /* Components */,
 				1279A4AD1A76A2D100A03FF4 /* Storyboards */,
 			);
@@ -611,7 +611,7 @@
 				12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */,
 				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
 				1279B60B19FED64D00A7828C /* Connection.swift in Sources */,
-				12EDE78D1A1FC6770020D549 /* TextEditorController.swift in Sources */,
+				12EDE78D1A1FC6770020D549 /* NTHTextEditorViewController.swift in Sources */,
 				12D4FF0C1A7D1FBF00F04858 /* NTHConnectionCell.swift in Sources */,
 				12B6EF231A40DD42006E8A10 /* NTHMapAnnotation.swift in Sources */,
 				124A8F181A4F0D1800BE5EAB /* NTHBaseCellView.swift in Sources */,

@@ -679,7 +679,7 @@
         <!--Editor-->
         <scene sceneID="FUY-Pi-9vm">
             <objects>
-                <viewController id="I6X-qf-5wN" customClass="TextEditorController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="I6X-qf-5wN" customClass="NTHTextEditorViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zRc-am-Cks"/>
                         <viewControllerLayoutGuide type="bottom" id="xnF-Yr-iqP"/>

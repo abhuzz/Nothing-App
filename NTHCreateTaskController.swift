@@ -95,7 +95,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == SegueIdentifier.TextEditor.rawValue) {
-            let editorVC = (segue.destinationViewController as UINavigationController).topViewController as TextEditorController
+            let editorVC = (segue.destinationViewController as UINavigationController).topViewController as NTHTextEditorViewController
             editorVC.title = "Text Editor"
 
             let label = (sender as LabelContainer)
