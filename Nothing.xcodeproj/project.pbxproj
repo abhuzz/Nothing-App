@@ -68,6 +68,8 @@
 		12BB652F1A7E279400CC4448 /* NTHAddNewContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB652E1A7E279400CC4448 /* NTHAddNewContactCell.swift */; };
 		12BB65311A7E27DA00CC4448 /* NTHContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB65301A7E27DA00CC4448 /* NTHContactCell.swift */; };
 		12BB65351A7E32FF00CC4448 /* NTHAddressBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB65341A7E32FF00CC4448 /* NTHAddressBookCell.swift */; };
+		12BB65381A7E59CF00CC4448 /* NTHBasicTitleDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12BB65371A7E59CF00CC4448 /* NTHBasicTitleDetailView.xib */; };
+		12BB653A1A7E59FD00CC4448 /* NTHBasicTitleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB65391A7E59FD00CC4448 /* NTHBasicTitleDetailView.swift */; };
 		12BEB0F41A06DC9300643860 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BEB0F31A06DC9300643860 /* ModelController.swift */; };
 		12CC22271A12207300DF8EE0 /* InboxCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC22261A12207300DF8EE0 /* InboxCellViewModel.swift */; };
 		12CC222B1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */; };
@@ -163,6 +165,8 @@
 		12BB652E1A7E279400CC4448 /* NTHAddNewContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHAddNewContactCell.swift; sourceTree = "<group>"; };
 		12BB65301A7E27DA00CC4448 /* NTHContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHContactCell.swift; sourceTree = "<group>"; };
 		12BB65341A7E32FF00CC4448 /* NTHAddressBookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHAddressBookCell.swift; sourceTree = "<group>"; };
+		12BB65371A7E59CF00CC4448 /* NTHBasicTitleDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHBasicTitleDetailView.xib; sourceTree = "<group>"; };
+		12BB65391A7E59FD00CC4448 /* NTHBasicTitleDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHBasicTitleDetailView.swift; sourceTree = "<group>"; };
 		12BEB0F31A06DC9300643860 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		12CC22261A12207300DF8EE0 /* InboxCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxCellViewModel.swift; sourceTree = "<group>"; };
 		12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateFormatter_Extension.swift; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 				12EDE78C1A1FC6770020D549 /* NTHTextEditorViewController.swift */,
 				1279A4AA1A76A1F700A03FF4 /* Components */,
 				1279A4AD1A76A2D100A03FF4 /* Storyboards */,
+				12BB65361A7E598A00CC4448 /* XIBs */,
 			);
 			name = "Nothing 3";
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				12BB652E1A7E279400CC4448 /* NTHAddNewContactCell.swift */,
 				12BB65301A7E27DA00CC4448 /* NTHContactCell.swift */,
 				12BB65341A7E32FF00CC4448 /* NTHAddressBookCell.swift */,
+				12BB653B1A7E5A0400CC4448 /* Controls */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -465,6 +471,22 @@
 			name = "Create / Edit / Browse";
 			sourceTree = "<group>";
 		};
+		12BB65361A7E598A00CC4448 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				12BB65371A7E59CF00CC4448 /* NTHBasicTitleDetailView.xib */,
+			);
+			name = XIBs;
+			sourceTree = "<group>";
+		};
+		12BB653B1A7E5A0400CC4448 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				12BB65391A7E59FD00CC4448 /* NTHBasicTitleDetailView.swift */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
 		12CC22211A12109400DF8EE0 /* Inbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -569,6 +591,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12BB65381A7E59CF00CC4448 /* NTHBasicTitleDetailView.xib in Resources */,
 				12FE32611A10D76900FAB243 /* QuickInsertView.xib in Resources */,
 				12B6EF311A41FF1F006E8A10 /* NTHConnectionsCellView.xib in Resources */,
 				1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */,
@@ -613,6 +636,7 @@
 				1279B60B19FED64D00A7828C /* Connection.swift in Sources */,
 				12EDE78D1A1FC6770020D549 /* NTHTextEditorViewController.swift in Sources */,
 				12D4FF0C1A7D1FBF00F04858 /* NTHConnectionCell.swift in Sources */,
+				12BB653A1A7E59FD00CC4448 /* NTHBasicTitleDetailView.swift in Sources */,
 				12B6EF231A40DD42006E8A10 /* NTHMapAnnotation.swift in Sources */,
 				124A8F181A4F0D1800BE5EAB /* NTHBaseCellView.swift in Sources */,
 				12B6EF211A40C298006E8A10 /* NTHMapCellView.swift in Sources */,

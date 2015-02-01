@@ -8,10 +8,11 @@
 
 import UIKit
 
+typealias LabelTapBlock = () -> Void
+
 class Label: UILabel {
     
-    typealias LabelTapBlock = () -> Void
-    var tapBlock: LabelTapBlock?
+    var onTap: LabelTapBlock?
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -31,7 +32,7 @@ class Label: UILabel {
             UIView.animateWithDuration(0.1, animations: { () -> Void in
                 self.alpha = 1
             }, completion: { (flag) -> Void in
-                self.tapBlock?()
+                self.onTap?()
                 return /// avoid compiler warning.
             })
         }

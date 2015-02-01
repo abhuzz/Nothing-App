@@ -17,7 +17,7 @@ class NTHBaseCellView: UIView {
     internal var tapGesture: UITapGestureRecognizer!
     
     typealias NTHCellViewTapBlock = () -> Void
-    var tapBlock: NTHCellViewTapBlock?
+    var onTap: NTHCellViewTapBlock?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +30,7 @@ class NTHBaseCellView: UIView {
     }
     
     func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        self.tapBlock?()
+        self.onTap?()
     }
     
     internal func setupUI() {

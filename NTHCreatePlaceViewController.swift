@@ -30,7 +30,7 @@ class NTHCreatePlaceViewController: UIViewController {
         self.customNameLabel.isSet = false
         self.customNameLabel.placeholder = self.originalNameLabel.text!
         self.customNameLabel.text = self.originalNameLabel.text
-        self.customNameLabel.tapBlock = { [unowned self] in
+        self.customNameLabel.onTap = { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.TextEditor.rawValue, sender: self.customNameLabel)
         }
     }

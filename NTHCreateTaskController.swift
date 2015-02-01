@@ -22,6 +22,8 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             var repeatInterval: NSCalendarUnit!
         }
         
+        var title = ""
+        var description = ""
         var dateReminder = DateReminder()
         var locationReminder = LocationReminder()
         var connections = [Connection]()
@@ -35,7 +37,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         case RepeatInterval = "RepeatInterval"
     }
     
-    @IBOutlet weak var titleTextLabel: LabelContainer!
+//    @IBOutlet weak var titleTextLabel: LabelContainer!
     @IBOutlet weak var descriptionTextLabel: LabelContainer!
     @IBOutlet weak var locationLabel: LabelContainer!
     @IBOutlet weak var regionLabel: LabelContainer!
@@ -43,6 +45,9 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var repeatLabel: LabelContainer!
     @IBOutlet weak var connectionTableView: UITableView!
     @IBOutlet weak var connectionTableViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var titleControl: NTHBasicTitleDetailView!
+    
     
     private var taskInfo = TaskInfo()
 
@@ -56,35 +61,36 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             self.performSegueWithIdentifier(SegueIdentifier.TextEditor.rawValue, sender: label)
         }
         
-        self.titleTextLabel.placeholder = "What's in your mind?"
-        self.titleTextLabel.tapBlock = { [unowned self] in
-            showTextEditor(self.titleTextLabel)
+        self.titleControl.setTitleText(NSLocalizedString("Title", comment: ""))
+        self.titleControl.setDetailPlaceholderText(NSLocalizedString("What's in your mind?", comment: ""))
+        self.titleControl.setOnTap { [unowned self] in
+            self.performSegueWithIdentifier(SegueIdentifier.TextEditor.rawValue, sender: self.titleControl)
         }
         
         self.descriptionTextLabel.placeholder = "Describe this task"
-        self.descriptionTextLabel.tapBlock = { [unowned self] in
+        self.descriptionTextLabel.onTap = { [unowned self] in
             showTextEditor(self.descriptionTextLabel)
         }
         
         self.locationLabel.placeholder = "None"
-        self.locationLabel.tapBlock = { [unowned self] in
+        self.locationLabel.onTap = { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.Places.rawValue, sender: self.locationLabel)
         }
         
         self.regionLabel.placeholder = "None"
         self.regionLabel.enabled = false
-        self.regionLabel.tapBlock = { [unowned self] in
+        self.regionLabel.onTap = { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.Region.rawValue, sender: self.regionLabel)
         }
         
         self.dateLabel.placeholder = "None"
-        self.dateLabel.tapBlock = { [unowned self] in
+        self.dateLabel.onTap = { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.Date.rawValue, sender: self.dateLabel)
         }
         
         self.repeatLabel.placeholder = "None"
         self.repeatLabel.enabled = false
-        self.repeatLabel.tapBlock = { [unowned self] in
+        self.repeatLabel.onTap = { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.RepeatInterval.rawValue, sender: self.repeatLabel)
         }
         
@@ -97,11 +103,14 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         if (segue.identifier == SegueIdentifier.TextEditor.rawValue) {
             let editorVC = (segue.destinationViewController as UINavigationController).topViewController as NTHTextEditorViewController
             editorVC.title = "Text Editor"
-
-            let label = (sender as LabelContainer)
-            editorVC.text = label.isSet ? label.text : ""
-            editorVC.confirmBlock = { text in
-                (sender as LabelContainer).text = text
+            
+            let control = sender as NTHBasicTitleDetailView
+            if (control == self.titleControl) {
+                editorVC.text = control.isSet ? control.detailLabel.text : ""
+                editorVC.confirmBlock = { text in
+                    control.setDetailText(text)
+                    self.taskInfo.title = text
+                }
             }
         } else if (segue.identifier == SegueIdentifier.Places.rawValue) {
             let placesVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectPlaceTableViewController
