@@ -7,91 +7,90 @@
 //
 
 import UIKit
+import AddressBook
+
+class SimpleAB {
+    
+    class Record {
+        private var record: ABRecordRef
+        
+        init(record: ABRecordRef) { self.record = record }
+        
+        var name: String {
+            return ABRecordCopyCompositeName(self.record).takeRetainedValue() as String
+        }
+    }
+    
+    class func createAddressBook() -> ABAddressBookRef? {
+        var errorRef: Unmanaged<CFErrorRef>? = nil
+        let abRef: Unmanaged<ABAddressBookRef>! = ABAddressBookCreateWithOptions(nil, &errorRef)
+        if let ab = abRef {
+            return Unmanaged<NSObject>.fromOpaque(ab.toOpaque()).takeUnretainedValue()
+        }
+        return nil
+    }
+    
+    class func checkAuthorizationStatus(completion: (status: ABAuthorizationStatus, success: Bool, error: CFErrorRef?) -> Void) {
+        
+        let authorizationStatus = ABAddressBookGetAuthorizationStatus()
+        if (authorizationStatus == ABAuthorizationStatus.NotDetermined) {
+            let addressBook: ABAddressBookRef? = SimpleAB.createAddressBook()
+            ABAddressBookRequestAccessWithCompletion(addressBook, { (success, error) -> Void in
+                completion(status: authorizationStatus, success: success, error: error)
+            })
+        } else if (authorizationStatus == ABAuthorizationStatus.Denied || authorizationStatus == ABAuthorizationStatus.Restricted) {
+            completion(status: authorizationStatus, success: false, error: nil)
+        } else if (authorizationStatus == ABAuthorizationStatus.Authorized) {
+            completion(status: authorizationStatus, success: true, error: nil)
+        }
+    }
+}
+
 
 class NTHAddressBookViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    private var contacts = Array<SimpleAB.Record>()
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loadContacts()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    private func loadContacts() {
+        /// Check authorization status
+        SimpleAB.checkAuthorizationStatus { (status, success, error) -> Void in
+            if (success) {
+                var fetchedContacts: [ABRecordRef] = ABAddressBookCopyArrayOfAllPeople(SimpleAB.createAddressBook()).takeRetainedValue()
+                
+                for record in fetchedContacts {
+                    self.contacts.append(SimpleAB.Record(record: record))
+                }
+                
+                self.tableView.reloadData()
+            } else {
+                /// Display alert
+                let alert = UIAlertController(title: NSLocalizedString("Address Book", comment: ""), message: NSLocalizedString("Cannot access Address Book", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+                
+                let closeAction = UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                    
+                })
+                
+                alert.addAction(closeAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
     }
+    
 
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
+        return self.contacts.count
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("NTHAddressBookCell") as NTHAddressBookCell
+        cell.label.text = self.contacts[indexPath.row].name
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
