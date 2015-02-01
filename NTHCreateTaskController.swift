@@ -38,7 +38,6 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     }
     
 //    @IBOutlet weak var titleTextLabel: LabelContainer!
-    @IBOutlet weak var descriptionTextLabel: LabelContainer!
     @IBOutlet weak var locationLabel: LabelContainer!
     @IBOutlet weak var regionLabel: LabelContainer!
     @IBOutlet weak var dateLabel: LabelContainer!
@@ -47,6 +46,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var connectionTableViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var titleControl: NTHBasicTitleDetailView!
+    @IBOutlet weak var descriptionControl: NTHBasicTitleDetailView!
     
     
     private var taskInfo = TaskInfo()
@@ -61,15 +61,18 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             self.performSegueWithIdentifier(SegueIdentifier.TextEditor.rawValue, sender: label)
         }
         
+        /// Title
         self.titleControl.setTitleText(NSLocalizedString("Title", comment: ""))
         self.titleControl.setDetailPlaceholderText(NSLocalizedString("What's in your mind?", comment: ""))
         self.titleControl.setOnTap { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.TextEditor.rawValue, sender: self.titleControl)
         }
         
-        self.descriptionTextLabel.placeholder = "Describe this task"
-        self.descriptionTextLabel.onTap = { [unowned self] in
-            showTextEditor(self.descriptionTextLabel)
+        /// Description
+        self.descriptionControl.setTitleText(NSLocalizedString("Description", comment: ""))
+        self.descriptionControl.setDetailPlaceholderText(NSLocalizedString("Describe this task", comment: ""))
+        self.descriptionControl.setOnTap { [unowned self] in
+            self.performSegueWithIdentifier(SegueIdentifier.TextEditor.rawValue, sender: self.descriptionControl)
         }
         
         self.locationLabel.placeholder = "None"
@@ -105,11 +108,13 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             editorVC.title = "Text Editor"
             
             let control = sender as NTHBasicTitleDetailView
-            if (control == self.titleControl) {
-                editorVC.text = control.isSet ? control.detailLabel.text : ""
-                editorVC.confirmBlock = { text in
-                    control.setDetailText(text)
+            editorVC.text = control.isSet ? control.detailLabel.text : ""
+            editorVC.confirmBlock = { text in
+                control.setDetailText(text)
+                if control == self.titleControl {
                     self.taskInfo.title = text
+                } else if control == self.descriptionControl {
+                    self.taskInfo.description = text
                 }
             }
         } else if (segue.identifier == SegueIdentifier.Places.rawValue) {
