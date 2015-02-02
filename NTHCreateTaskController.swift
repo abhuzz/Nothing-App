@@ -18,7 +18,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         class DateReminder {
-            var fireData: NSDate!
+            var fireDate: NSDate!
             var repeatInterval: NSCalendarUnit!
         }
         
@@ -37,15 +37,14 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         case RepeatInterval = "RepeatInterval"
     }
     
-    @IBOutlet weak var dateLabel: LabelContainer!
-    @IBOutlet weak var repeatLabel: LabelContainer!
     @IBOutlet weak var connectionTableView: UITableView!
     @IBOutlet weak var connectionTableViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var titleControl: NTHBasicTitleDetailView!
     @IBOutlet weak var descriptionControl: NTHBasicTitleDetailView!
     @IBOutlet weak var locationReminderControl: NTHDoubleTitleDetailView!
-    
+    @IBOutlet weak var dateReminderControl: NTHDoubleTitleDetailView!
+
     private var taskInfo = TaskInfo()
 
     override func viewDidLoad() {
@@ -73,7 +72,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         /// Location reminder
-        self.locationReminderControl.setFirstTitleText(NSLocalizedString("Remind me on location", comment: ""))
+        self.locationReminderControl.setFirstTitleText(NSLocalizedString("Remind me at location", comment: ""))
         self.locationReminderControl.setFirstPlaceholder(NSLocalizedString("None", comment: ""))
         self.locationReminderControl.setFirstOnTap { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.Places.rawValue, sender: self.locationReminderControl)
@@ -86,17 +85,18 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             self.performSegueWithIdentifier(SegueIdentifier.Region.rawValue, sender: self.locationReminderControl)
         }
         
-        self.dateLabel.placeholder = "None"
-        self.dateLabel.onTap = { [unowned self] in
-            self.performSegueWithIdentifier(SegueIdentifier.Date.rawValue, sender: self.dateLabel)
+        /// Date reminder
+        self.dateReminderControl.setFirstTitleText(NSLocalizedString("Remind me on date", comment: ""))
+        self.dateReminderControl.setFirstPlaceholder(NSLocalizedString("None", comment: ""))
+        self.dateReminderControl.setFirstOnTap { [unowned self] in
+            self.performSegueWithIdentifier(SegueIdentifier.Date.rawValue, sender: nil)
         }
         
-        self.repeatLabel.placeholder = "None"
-        self.repeatLabel.enabled = false
-        self.repeatLabel.onTap = { [unowned self] in
-            self.performSegueWithIdentifier(SegueIdentifier.RepeatInterval.rawValue, sender: self.repeatLabel)
+        self.dateReminderControl.setSecondTitleText(NSLocalizedString("Repeat", comment: ""))
+        self.dateReminderControl.setSecondPlaceholder(NSLocalizedString("None", comment: ""))
+        self.dateReminderControl.setSecondOnTap { [unowned self] in
+            self.performSegueWithIdentifier(SegueIdentifier.RepeatInterval.rawValue, sender: nil)
         }
-        
         
         /// setup connections table view
         self.connectionTableView.tableFooterView = UIView()
@@ -134,14 +134,14 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         } else if (segue.identifier == SegueIdentifier.Date.rawValue) {
             let dateVC = segue.destinationViewController as NTHDatePickerViewController
             dateVC.block = { [unowned self] date in
-                self.dateLabel.text = NSString(format: "%@", date)
-                self.repeatLabel.enabled = true
+                self.dateReminderControl.setFirstDetailText(NSString(format: "%@", date))
+                self.dateReminderControl.secondDetailLabel.enabled = true
+                self.taskInfo.dateReminder.fireDate = date
             }
         } else if (segue.identifier == SegueIdentifier.RepeatInterval.rawValue) {
             let regionVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectRepeatIntervalViewController
             regionVC.completionBlock = { [unowned self] unit, description in
-                let label = (sender as LabelContainer)
-                label.text = description
+                self.dateReminderControl.setSecondDetailText(description)
                 self.taskInfo.dateReminder.repeatInterval = unit
             }
         }
