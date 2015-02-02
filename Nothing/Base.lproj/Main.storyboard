@@ -93,37 +93,6 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="486" translatesAutoresizingMaskIntoConstraints="NO" id="EtV-lT-1eh" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                         <subviews>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REMIND ME ON LOCATION" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gve-8C-7Su">
-                                                <rect key="frame" x="25" y="163" width="270" height="12"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="10"/>
-                                                <color key="textColor" red="0.30588235294117649" green="0.39215686274509803" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not selected" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmG-kz-vIr" customClass="LabelContainer" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="180" width="270" height="21"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                                <color key="textColor" red="0.59999999999999998" green="0.6705882353" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REGION" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eop-Ij-GUV">
-                                                <rect key="frame" x="25" y="215" width="270" height="12"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="10"/>
-                                                <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not selected" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leb-ED-iqu" customClass="LabelContainer" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="232" width="270" height="21"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                                <color key="textColor" red="0.59999999999999998" green="0.6705882353" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxI-Ve-jLa" userLabel="separator-4">
-                                                <rect key="frame" x="25" y="268" width="270" height="1"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="1Fq-kq-OtV"/>
-                                                </constraints>
-                                            </view>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REMIND ME ON DATE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRO-cB-fqr" userLabel="REMIND ME ON DATE">
                                                 <rect key="frame" x="25" y="283" width="270" height="12"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="10"/>
@@ -232,53 +201,48 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="120" translatesAutoresizingMaskIntoConstraints="NO" id="KUi-RC-pIf" customClass="NTHDoubleTitleDetailView" customModule="Nothing" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="149" width="270" height="120"/>
+                                                <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="pBa-xv-2RZ" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="2rg-hS-AxK"/>
-                                            <constraint firstItem="leb-ED-iqu" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="3O5-H6-NGc"/>
                                             <constraint firstAttribute="bottom" secondItem="ZJK-e2-466" secondAttribute="bottom" constant="32" id="3aJ-dM-ejE"/>
                                             <constraint firstItem="63X-a1-3yT" firstAttribute="top" secondItem="Wbz-qe-nk8" secondAttribute="bottom" constant="15" id="4ic-Dj-xlW"/>
                                             <constraint firstItem="Wbz-qe-nk8" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="4tD-At-zDZ"/>
                                             <constraint firstItem="0Nk-TD-bVW" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="74Q-xh-ZNb"/>
                                             <constraint firstItem="Wbz-qe-nk8" firstAttribute="top" secondItem="Bw3-CK-9hG" secondAttribute="bottom" constant="15" id="79U-dX-r09"/>
-                                            <constraint firstAttribute="trailing" secondItem="mxI-Ve-jLa" secondAttribute="trailing" constant="25" id="Az9-pd-kWt"/>
                                             <constraint firstItem="pBa-xv-2RZ" firstAttribute="top" secondItem="zRO-cB-fqr" secondAttribute="bottom" constant="5" id="C46-NT-0rR"/>
-                                            <constraint firstAttribute="trailing" secondItem="eop-Ij-GUV" secondAttribute="trailing" constant="25" id="CgO-bZ-I8h"/>
-                                            <constraint firstItem="mxI-Ve-jLa" firstAttribute="top" secondItem="leb-ED-iqu" secondAttribute="bottom" constant="15" id="Cu6-46-Qye"/>
                                             <constraint firstItem="ZJK-e2-466" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="DBe-hN-0cm"/>
                                             <constraint firstAttribute="trailing" secondItem="pBa-xv-2RZ" secondAttribute="trailing" constant="25" id="G2s-dw-QhV"/>
                                             <constraint firstAttribute="trailing" secondItem="2hq-hD-JNk" secondAttribute="trailing" constant="25" id="I28-e0-hFP"/>
-                                            <constraint firstItem="mxI-Ve-jLa" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="IMy-Ul-jhn"/>
-                                            <constraint firstAttribute="trailing" secondItem="leb-ED-iqu" secondAttribute="trailing" constant="25" id="Ith-TK-D5r"/>
                                             <constraint firstItem="Oqg-of-52u" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="JBg-GK-MYs"/>
                                             <constraint firstAttribute="trailing" secondItem="Bw3-CK-9hG" secondAttribute="trailing" constant="25" id="Ja0-of-EZD"/>
+                                            <constraint firstItem="KUi-RC-pIf" firstAttribute="top" secondItem="2hq-hD-JNk" secondAttribute="bottom" id="LJV-vp-W2o"/>
+                                            <constraint firstItem="zRO-cB-fqr" firstAttribute="top" secondItem="KUi-RC-pIf" secondAttribute="bottom" constant="14" id="MeB-d1-N0X"/>
                                             <constraint firstItem="2hq-hD-JNk" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="Ndd-U8-55m"/>
                                             <constraint firstItem="0Nk-TD-bVW" firstAttribute="top" secondItem="pBa-xv-2RZ" secondAttribute="bottom" constant="15" id="PsW-VG-aYy"/>
                                             <constraint firstAttribute="trailing" secondItem="ZJK-e2-466" secondAttribute="trailing" constant="25" id="Qb7-uC-WNt"/>
                                             <constraint firstItem="ZJK-e2-466" firstAttribute="top" secondItem="63X-a1-3yT" secondAttribute="bottom" constant="5" id="VnF-tq-hCx"/>
                                             <constraint firstItem="Bw3-CK-9hG" firstAttribute="top" secondItem="0Nk-TD-bVW" secondAttribute="bottom" constant="5" id="WWS-Di-cX5"/>
-                                            <constraint firstItem="GmG-kz-vIr" firstAttribute="top" secondItem="gve-8C-7Su" secondAttribute="bottom" constant="5" id="XSz-gp-2Sf"/>
-                                            <constraint firstItem="eop-Ij-GUV" firstAttribute="top" secondItem="GmG-kz-vIr" secondAttribute="bottom" constant="14" id="XZR-7E-Phz"/>
-                                            <constraint firstItem="eop-Ij-GUV" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="Xm9-Fe-Kul"/>
+                                            <constraint firstItem="KUi-RC-pIf" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="WlM-FJ-bm3"/>
                                             <constraint firstItem="Bw3-CK-9hG" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="YTB-MN-TOm"/>
                                             <constraint firstItem="63X-a1-3yT" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="Z6f-Ef-adJ"/>
                                             <constraint firstItem="2hq-hD-JNk" firstAttribute="top" secondItem="Oqg-of-52u" secondAttribute="bottom" id="ZNG-XF-DFb"/>
-                                            <constraint firstItem="GmG-kz-vIr" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="ZbK-HE-hXh"/>
                                             <constraint firstAttribute="trailing" secondItem="Wbz-qe-nk8" secondAttribute="trailing" constant="25" id="aMB-EF-w81"/>
                                             <constraint firstItem="zRO-cB-fqr" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="caP-ea-twd"/>
+                                            <constraint firstAttribute="trailing" secondItem="KUi-RC-pIf" secondAttribute="trailing" constant="25" id="dDJ-ud-fYo"/>
                                             <constraint firstItem="Oqg-of-52u" firstAttribute="top" secondItem="EtV-lT-1eh" secondAttribute="top" constant="9" id="dMh-9G-7vT"/>
-                                            <constraint firstItem="gve-8C-7Su" firstAttribute="leading" secondItem="EtV-lT-1eh" secondAttribute="leading" constant="25" id="dPn-yR-WWj"/>
-                                            <constraint firstItem="zRO-cB-fqr" firstAttribute="top" secondItem="mxI-Ve-jLa" secondAttribute="bottom" constant="14" id="fkh-1C-R1B"/>
                                             <constraint firstAttribute="trailing" secondItem="Oqg-of-52u" secondAttribute="trailing" constant="25" id="mcb-LY-lhh"/>
                                             <constraint firstItem="Bw3-CK-9hG" firstAttribute="top" secondItem="0Nk-TD-bVW" secondAttribute="bottom" constant="5" id="oQt-2D-3cp"/>
-                                            <constraint firstItem="leb-ED-iqu" firstAttribute="top" secondItem="eop-Ij-GUV" secondAttribute="bottom" constant="5" id="oQw-Ab-GR7"/>
-                                            <constraint firstItem="gve-8C-7Su" firstAttribute="top" secondItem="2hq-hD-JNk" secondAttribute="bottom" constant="14" id="tT9-4h-j0M"/>
                                             <constraint firstAttribute="trailing" secondItem="zRO-cB-fqr" secondAttribute="trailing" constant="25" id="uQX-sJ-fBG"/>
                                             <constraint firstAttribute="trailing" secondItem="0Nk-TD-bVW" secondAttribute="trailing" constant="25" id="wg0-gF-SYs"/>
                                             <constraint firstAttribute="trailing" secondItem="63X-a1-3yT" secondAttribute="trailing" constant="25" id="xDI-wH-tv7"/>
-                                            <constraint firstAttribute="trailing" secondItem="GmG-kz-vIr" secondAttribute="trailing" constant="25" id="xhA-8B-vSS"/>
-                                            <constraint firstAttribute="trailing" secondItem="gve-8C-7Su" secondAttribute="trailing" constant="25" id="yRN-ca-YF3"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -308,8 +272,7 @@
                         <outlet property="connectionTableViewHeight" destination="cCx-aH-6h7" id="d7t-K6-Mk4"/>
                         <outlet property="dateLabel" destination="pBa-xv-2RZ" id="JdV-dN-fiB"/>
                         <outlet property="descriptionControl" destination="2hq-hD-JNk" id="3ZF-nV-xy9"/>
-                        <outlet property="locationLabel" destination="GmG-kz-vIr" id="lAL-hs-Raw"/>
-                        <outlet property="regionLabel" destination="leb-ED-iqu" id="BWg-u4-n3h"/>
+                        <outlet property="locationReminderControl" destination="KUi-RC-pIf" id="Rej-Ap-P9O"/>
                         <outlet property="repeatLabel" destination="Bw3-CK-9hG" id="FQw-Rj-te9"/>
                         <outlet property="titleControl" destination="Oqg-of-52u" id="acw-af-P74"/>
                         <segue destination="78D-SZ-BW2" kind="modal" identifier="TextEditor" id="USy-L9-PMD"/>

@@ -31,7 +31,7 @@ class NTHCreatePlaceViewController: UIViewController {
         self.customNameLabel.placeholder = self.originalNameLabel.text!
         self.customNameLabel.text = self.originalNameLabel.text
         self.customNameLabel.onTap = { [unowned self] in
-            self.performSegueWithIdentifier(SegueIdentifier.TextEditor.rawValue, sender: self.customNameLabel)
+            self.performSegueWithIdentifier(SegueIdentifier.TextEditor.rawValue, sender: nil)
         }
     }
     
@@ -52,8 +52,8 @@ class NTHCreatePlaceViewController: UIViewController {
         if (segue.identifier == SegueIdentifier.TextEditor.rawValue) {
             let editorVC = (segue.destinationViewController as UINavigationController).topViewController as NTHTextEditorViewController
             editorVC.text = self.customNameLabel.text
-            editorVC.confirmBlock = { text in
-                (sender as LabelContainer).text = text
+            editorVC.confirmBlock = {[unowned self] text in
+                self.customNameLabel.text = text
             }
         }
     }

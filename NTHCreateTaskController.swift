@@ -37,9 +37,6 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         case RepeatInterval = "RepeatInterval"
     }
     
-//    @IBOutlet weak var titleTextLabel: LabelContainer!
-    @IBOutlet weak var locationLabel: LabelContainer!
-    @IBOutlet weak var regionLabel: LabelContainer!
     @IBOutlet weak var dateLabel: LabelContainer!
     @IBOutlet weak var repeatLabel: LabelContainer!
     @IBOutlet weak var connectionTableView: UITableView!
@@ -47,7 +44,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var titleControl: NTHBasicTitleDetailView!
     @IBOutlet weak var descriptionControl: NTHBasicTitleDetailView!
-    
+    @IBOutlet weak var locationReminderControl: NTHDoubleTitleDetailView!
     
     private var taskInfo = TaskInfo()
 
@@ -75,15 +72,18 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             self.performSegueWithIdentifier(SegueIdentifier.TextEditor.rawValue, sender: self.descriptionControl)
         }
         
-        self.locationLabel.placeholder = "None"
-        self.locationLabel.onTap = { [unowned self] in
-            self.performSegueWithIdentifier(SegueIdentifier.Places.rawValue, sender: self.locationLabel)
+        /// Location reminder
+        self.locationReminderControl.setFirstTitleText(NSLocalizedString("Remind me on location", comment: ""))
+        self.locationReminderControl.setFirstPlaceholder(NSLocalizedString("None", comment: ""))
+        self.locationReminderControl.setFirstOnTap { [unowned self] in
+            self.performSegueWithIdentifier(SegueIdentifier.Places.rawValue, sender: self.locationReminderControl)
         }
         
-        self.regionLabel.placeholder = "None"
-        self.regionLabel.enabled = false
-        self.regionLabel.onTap = { [unowned self] in
-            self.performSegueWithIdentifier(SegueIdentifier.Region.rawValue, sender: self.regionLabel)
+        self.locationReminderControl.setSecondTitleText(NSLocalizedString("Region", comment: ""))
+        self.locationReminderControl.setSecondPlaceholder(NSLocalizedString("None", comment: ""))
+        self.locationReminderControl.secondDetailLabel.enabled = false
+        self.locationReminderControl.setSecondOnTap { [unowned self] in
+            self.performSegueWithIdentifier(SegueIdentifier.Region.rawValue, sender: self.locationReminderControl)
         }
         
         self.dateLabel.placeholder = "None"
@@ -109,7 +109,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             
             let control = sender as NTHBasicTitleDetailView
             editorVC.text = control.isSet ? control.detailLabel.text : ""
-            editorVC.confirmBlock = { text in
+            editorVC.confirmBlock = { [unowned self] text in
                 control.setDetailText(text)
                 if control == self.titleControl {
                     self.taskInfo.title = text
@@ -121,17 +121,15 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             let placesVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectPlaceTableViewController
             placesVC.selectionBlock = { [unowned self] (place: Place) in
                 self.taskInfo.locationReminder.place = place
-                self.locationLabel.text = place.customName
-                self.regionLabel.enabled = true
+                self.locationReminderControl.setFirstDetailText(place.customName)
+                self.locationReminderControl.secondDetailLabel.enabled = true
             }
         } else if (segue.identifier == SegueIdentifier.Region.rawValue) {
             let regionVC = segue.destinationViewController as NTHRegionViewController
-            regionVC.successBlock = { (distance: Float, onArrive: Bool) in
-                let label = (sender as LabelContainer)
-                label.text = (onArrive ? "Arrive" : "Leave") + ", " + distance.distanceDescription()
-                
+            regionVC.successBlock = { [unowned self] (distance: Float, onArrive: Bool) in
                 self.taskInfo.locationReminder.distance = distance
                 self.taskInfo.locationReminder.onArrive = onArrive
+                self.locationReminderControl.setSecondDetailText((onArrive ? "Arrive" : "Leave") + ", " + distance.distanceDescription())
             }
         } else if (segue.identifier == SegueIdentifier.Date.rawValue) {
             let dateVC = segue.destinationViewController as NTHDatePickerViewController
@@ -141,7 +139,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             }
         } else if (segue.identifier == SegueIdentifier.RepeatInterval.rawValue) {
             let regionVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectRepeatIntervalViewController
-            regionVC.completionBlock = { unit, description in
+            regionVC.completionBlock = { [unowned self] unit, description in
                 let label = (sender as LabelContainer)
                 label.text = description
                 self.taskInfo.dateReminder.repeatInterval = unit
@@ -199,7 +197,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
                 if action.identifier == "contact" {
                     let nc = UIStoryboard.instantiateNTHSelectContactViewControllerInNavigationController()
                     let vc = nc.topViewController as NTHSelectContactViewController
-                    vc.selectionBlock = { contact in
+                    vc.selectionBlock = { [unowned self] contact in
                         self.taskInfo.connections.append(contact)
                         self.refreshConnectionsTableView()
                     }
@@ -208,7 +206,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
                 } else if action.identifier == "place" {
                     let nc = UIStoryboard.instantiateNTHSelectPlaceTableViewControllerInNavigationController()
                     let vc = nc.topViewController as NTHSelectPlaceTableViewController
-                    vc.selectionBlock = { place in
+                    vc.selectionBlock = { [unowned self] place in
                         self.taskInfo.connections.append(place)
                         self.refreshConnectionsTableView()
                     }

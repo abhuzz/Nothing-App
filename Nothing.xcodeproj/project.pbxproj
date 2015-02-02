@@ -54,6 +54,8 @@
 		1287861F1A4ED5CD00751FEF /* NTHInboxCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1287861E1A4ED5CD00751FEF /* NTHInboxCellViewModel.swift */; };
 		128B298A1A1EA842005C93DF /* SeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128B29891A1EA842005C93DF /* SeparatorCell.xib */; };
 		128B298C1A1EA862005C93DF /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128B298B1A1EA862005C93DF /* SeparatorCell.swift */; };
+		129659D11A7EC9AB000696F9 /* NTHDoubleTitleDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 129659D01A7EC9AB000696F9 /* NTHDoubleTitleDetailView.xib */; };
+		129659D31A7ECC66000696F9 /* NTHDoubleTitleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129659D21A7ECC66000696F9 /* NTHDoubleTitleDetailView.swift */; };
 		129A555A1A1E69F100ED249D /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 129A55591A1E69F100ED249D /* TextViewCell.xib */; };
 		129A555C1A1E6A0800ED249D /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129A555B1A1E6A0800ED249D /* TextViewCell.swift */; };
 		12B6EF1D1A40B5E1006E8A10 /* NTHTaskDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6EF1C1A40B5E1006E8A10 /* NTHTaskDisplayable.swift */; };
@@ -151,6 +153,8 @@
 		1287861E1A4ED5CD00751FEF /* NTHInboxCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHInboxCellViewModel.swift; sourceTree = "<group>"; };
 		128B29891A1EA842005C93DF /* SeparatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorCell.xib; sourceTree = "<group>"; };
 		128B298B1A1EA862005C93DF /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
+		129659D01A7EC9AB000696F9 /* NTHDoubleTitleDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHDoubleTitleDetailView.xib; sourceTree = "<group>"; };
+		129659D21A7ECC66000696F9 /* NTHDoubleTitleDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHDoubleTitleDetailView.swift; sourceTree = "<group>"; };
 		129A55591A1E69F100ED249D /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
 		129A555B1A1E6A0800ED249D /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		12B6EF1C1A40B5E1006E8A10 /* NTHTaskDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskDisplayable.swift; sourceTree = "<group>"; };
@@ -475,6 +479,7 @@
 			isa = PBXGroup;
 			children = (
 				12BB65371A7E59CF00CC4448 /* NTHBasicTitleDetailView.xib */,
+				129659D01A7EC9AB000696F9 /* NTHDoubleTitleDetailView.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -483,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				12BB65391A7E59FD00CC4448 /* NTHBasicTitleDetailView.swift */,
+				129659D21A7ECC66000696F9 /* NTHDoubleTitleDetailView.swift */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -603,6 +609,7 @@
 				1279B5E119FED4E700A7828C /* Images.xcassets in Resources */,
 				12059DCF1A350153007F5E7C /* NTHInboxCell.xib in Resources */,
 				129A555A1A1E69F100ED249D /* TextViewCell.xib in Resources */,
+				129659D11A7EC9AB000696F9 /* NTHDoubleTitleDetailView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +691,7 @@
 				123F11C51A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift in Sources */,
 				1279B60C19FED64D00A7828C /* Contact.swift in Sources */,
 				12D4FF081A7D120100F04858 /* NTHSelectRepeatIntervalCell.swift in Sources */,
+				129659D31A7ECC66000696F9 /* NTHDoubleTitleDetailView.swift in Sources */,
 				1202EB731A79579900B67F45 /* NTHDatePickerViewController.swift in Sources */,
 				1279B61019FED64D00A7828C /* Place.swift in Sources */,
 				1279B60E19FED64D00A7828C /* DateReminderInfo.swift in Sources */,
