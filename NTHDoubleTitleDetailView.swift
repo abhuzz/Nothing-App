@@ -16,6 +16,14 @@ class NTHDoubleTitleDetailView: UIView {
     @IBOutlet weak var secondDetailLabel: LabelContainer!
     @IBOutlet weak var bottomSeparator: UIView!
     
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var clearButtonTrailing: NSLayoutConstraint!
+    @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var leadingButtonConstraint: NSLayoutConstraint!
+    
+    typealias NTHDoubleTitleDetailViewClearBlock = () -> Void
+    var onClearTappedBlock: NTHDoubleTitleDetailViewClearBlock?
+    
     private func nibName() -> String {
         return "NTHDoubleTitleDetailView"
     }
@@ -30,6 +38,9 @@ class NTHDoubleTitleDetailView: UIView {
     
     func setFirstDetailText(text: String) {
         self.firstDetailLabel.text = text
+        if (self.isFirstSet) {
+            self.showButton()
+        }
     }
     
     func setSecondTitleText(text: String) {
@@ -62,5 +73,31 @@ class NTHDoubleTitleDetailView: UIView {
     
     var isSecondSet: Bool {
         return self.secondDetailLabel.isSet
+    }
+    
+    func hideButton() {
+        self.clearButtonTrailing.constant -= self.buttonWidthConstraint.constant + self.leadingButtonConstraint.constant
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            self.clearButton.alpha = 0.0
+            self.setNeedsUpdateConstraints()
+            self.layoutSubviews()
+        })
+    }
+    
+    func showButton() {
+        self.clearButtonTrailing.constant = 0
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            self.clearButton.alpha = 1.0
+            self.setNeedsUpdateConstraints()
+            self.layoutSubviews()
+        })
+    }
+    
+    @IBAction func onClearPressed(sender: AnyObject) {
+        self.onClearTappedBlock?()
+        self.hideButton()
+        self.setFirstDetailText("")
+        self.setSecondDetailText("")
+        self.secondDetailLabel.enabled = false
     }
 }

@@ -74,6 +74,12 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         /// Location reminder
         self.locationReminderControl.setFirstTitleText(NSLocalizedString("Remind me at location", comment: ""))
         self.locationReminderControl.setFirstPlaceholder(NSLocalizedString("None", comment: ""))
+        self.locationReminderControl.hideButton()
+        self.locationReminderControl.onClearTappedBlock = {
+            self.taskInfo.locationReminder.place = nil
+            self.taskInfo.locationReminder.distance = 0
+            self.taskInfo.locationReminder.onArrive = true
+        }
         self.locationReminderControl.setFirstOnTap { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.Places.rawValue, sender: self.locationReminderControl)
         }
@@ -88,6 +94,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         /// Date reminder
         self.dateReminderControl.setFirstTitleText(NSLocalizedString("Remind me on date", comment: ""))
         self.dateReminderControl.setFirstPlaceholder(NSLocalizedString("None", comment: ""))
+        self.dateReminderControl.hideButton()
         self.dateReminderControl.setFirstOnTap { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.Date.rawValue, sender: nil)
         }
