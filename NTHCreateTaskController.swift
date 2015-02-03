@@ -101,6 +101,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         
         self.dateReminderControl.setSecondTitleText(NSLocalizedString("Repeat", comment: ""))
         self.dateReminderControl.setSecondPlaceholder(NSLocalizedString("None", comment: ""))
+        self.dateReminderControl.secondDetailLabel.enabled = false
         self.dateReminderControl.setSecondOnTap { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.RepeatInterval.rawValue, sender: nil)
         }

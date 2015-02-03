@@ -64,7 +64,6 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="R7s-Ez-aEF" firstAttribute="top" secondItem="hyM-D7-fxk" secondAttribute="bottom" constant="5" id="8aE-2A-rbm"/>
                 <constraint firstAttribute="trailing" secondItem="pBQ-cf-IPS" secondAttribute="trailing" id="DAT-do-Qke"/>
                 <constraint firstItem="qex-SB-BJM" firstAttribute="top" secondItem="hyM-D7-fxk" secondAttribute="bottom" constant="5" id="HvD-Tf-MgS"/>
                 <constraint firstItem="hyM-D7-fxk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="L7o-bf-9WY"/>
@@ -89,11 +88,6 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="8aE-2A-rbm"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="bottomSeparator" destination="pBQ-cf-IPS" id="if4-OY-qyI"/>
                 <outlet property="buttonWidthConstraint" destination="c7E-CD-aAB" id="77X-vM-3Oa"/>
