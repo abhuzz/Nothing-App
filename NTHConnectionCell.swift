@@ -8,11 +8,22 @@
 
 import UIKit
 
+protocol NTHConnectionCellDelegate {
+    func cellDidTapClearButton(cell: NTHConnectionCell)
+}
+
 class NTHConnectionCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var clearButton: UIButton!
+    
+    var delegate: NTHConnectionCellDelegate?
     
     override var layoutMargins: UIEdgeInsets {
         set { super.layoutMargins = newValue }
         get { return UIEdgeInsetsZero }
+    }
+    
+    @IBAction func onClearPressed(sender: AnyObject) {
+        self.delegate?.cellDidTapClearButton(self)
     }
 }

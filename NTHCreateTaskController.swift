@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHConnectionCellDelegate {
 
     class TaskInfo {
         class LocationReminder {
@@ -173,7 +173,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (indexPath.row != self.numberOfItemsInConnectionTableView() - 1) {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHConnectionCell") as NTHConnectionCell
-            
+            cell.delegate = self
             let connection = self.taskInfo.connections[indexPath.row]
             if connection is Contact {
                 cell.label.text = (connection as Contact).name
@@ -237,6 +237,15 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             self.connectionTableView.reloadData()
             return /// explicit return
         })
+    }
+    
+    
+    /// Mark: NTHConnectionCellDelegate
+    func cellDidTapClearButton(cell: NTHConnectionCell) {
+        if let indexPath = self.connectionTableView.indexPathForCell(cell) {
+            self.taskInfo.connections.removeAtIndex(indexPath.row)
+            self.refreshConnectionsTableView()
+        }
     }
 }
 
