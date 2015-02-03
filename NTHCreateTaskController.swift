@@ -129,7 +129,10 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             let placesVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectPlaceTableViewController
             placesVC.selectionBlock = { [unowned self] (place: Place) in
                 self.taskInfo.locationReminder.place = place
+                self.taskInfo.locationReminder.onArrive = true
+                self.taskInfo.locationReminder.distance = 100
                 self.locationReminderControl.setFirstDetailText(place.customName)
+                self.updateSecondDetailTextInLocationReminderControl(self.taskInfo.locationReminder.distance!, onArrive: self.taskInfo.locationReminder.onArrive!)
                 self.locationReminderControl.secondDetailLabel.enabled = true
             }
         } else if (segue.identifier == SegueIdentifier.Region.rawValue) {
@@ -137,7 +140,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             regionVC.successBlock = { [unowned self] (distance: Float, onArrive: Bool) in
                 self.taskInfo.locationReminder.distance = distance
                 self.taskInfo.locationReminder.onArrive = onArrive
-                self.locationReminderControl.setSecondDetailText((onArrive ? "Arrive" : "Leave") + ", " + distance.distanceDescription())
+                self.updateSecondDetailTextInLocationReminderControl(self.taskInfo.locationReminder.distance!, onArrive: self.taskInfo.locationReminder.onArrive!)
             }
         } else if (segue.identifier == SegueIdentifier.Date.rawValue) {
             let dateVC = segue.destinationViewController as NTHDatePickerViewController
@@ -155,6 +158,9 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    private func updateSecondDetailTextInLocationReminderControl(distance: Float, onArrive: Bool) {
+        self.locationReminderControl.setSecondDetailText((onArrive ? "Arrive" : "Leave") + ", " + distance.distanceDescription())
+    }
 
     
     /// Mark: UITableViewDelegate & UITableViewDataSource
