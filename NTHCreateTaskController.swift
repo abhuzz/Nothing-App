@@ -47,6 +47,10 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var createButton: UIBarButtonItem!
 
     private var taskInfo = TaskInfo()
+    
+    func configure(title: String) {
+        self.taskInfo.title = title
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +66,10 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         /// Title
         self.titleControl.setTitleText(NSLocalizedString("Title", comment: ""))
         self.titleControl.setDetailPlaceholderText(NSLocalizedString("What's in your mind?", comment: ""))
+        if countElements(self.taskInfo.title) > 0 {
+            self.titleControl.setDetailText(self.taskInfo.title)
+        }
+        
         self.titleControl.setOnTap { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.TextEditor.rawValue, sender: self.titleControl)
         }

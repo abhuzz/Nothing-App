@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="D71-qi-x3M">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="upi-PS-Do8">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -69,6 +69,7 @@
                         <outlet property="quickInsertView" destination="SiQ-MJ-5a3" id="Mkn-KZ-gay"/>
                         <outlet property="tableView" destination="Ahl-qW-HvN" id="LGV-CQ-zmu"/>
                         <segue destination="AdU-gc-aje" kind="push" identifier="TaskDetail" id="gmX-0N-o9G"/>
+                        <segue destination="hpC-1m-0Ku" kind="push" identifier="CreateTask" id="DF6-eZ-eD5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOv-Nc-IrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1209,5 +1210,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="USy-L9-PMD"/>
+        <segue reference="DF6-eZ-eD5"/>
     </inferredMetricsTieBreakers>
 </document>

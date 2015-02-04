@@ -84,9 +84,8 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
             let vc = segue.destinationViewController as NTHTaskDetailViewController
             vc.task = sender as Task
         } else if segue.identifier! == Identifiers.CreateTask.rawValue {
-            let navVC = segue.destinationViewController as UINavigationController
-            let vc = navVC.topViewController as CreateEditViewController
-            vc.taskTitle = sender as? String
+            let vc = segue.destinationViewController as NTHCreateTaskController
+            vc.configure(self.quickInsertView.text)
         }
     }
 
