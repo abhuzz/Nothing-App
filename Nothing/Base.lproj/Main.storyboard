@@ -390,6 +390,7 @@
                         <outlet property="curLabel" destination="5j0-Oe-yVf" id="i6S-rH-1lP"/>
                         <outlet property="maxLabel" destination="0Fg-aU-QHD" id="pkH-nI-jbC"/>
                         <outlet property="minLabel" destination="fpu-Gm-YHi" id="d8F-ZH-pbV"/>
+                        <outlet property="segmentedControl" destination="F4z-xd-h8B" id="mJd-JF-g9d"/>
                         <outlet property="slider" destination="eOk-PB-KfI" id="j8x-L1-JIO"/>
                     </connections>
                 </viewController>

@@ -24,11 +24,20 @@ class NTHRegionViewController: UIViewController {
     @IBOutlet weak var maxLabel: UILabel!
     @IBOutlet weak var curLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    func configure(distance: Float, onArrive: Bool) {
+        self.info.distance = distance
+        self.info.onArrive = onArrive
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.minLabel.text = slider.value.distanceDescription()
         self.maxLabel.text = slider.value.distanceDescription()
+        
+        self.processValue(self.info.distance)
+        self.segmentedControl.selectedSegmentIndex = Int(self.info.onArrive ? 0 : 1)
     }
     
     @IBAction func sliderValueChanged(sender: UISlider) {
@@ -50,9 +59,11 @@ class NTHRegionViewController: UIViewController {
         
         self.slider.minimumValue = minValue
         self.slider.maximumValue = maxValue
+        self.slider.value = value
         
         self.minLabel.text = minValue.distanceDescription()
         self.maxLabel.text = maxValue.distanceDescription()
+        self.curLabel.text = value.distanceDescription()
     }
     
     @IBAction func donePressed(sender: AnyObject) {

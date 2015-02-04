@@ -128,15 +128,22 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         } else if (segue.identifier == SegueIdentifier.Places.rawValue) {
             let placesVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectPlaceTableViewController
             placesVC.selectionBlock = { [unowned self] (place: Place) in
+                if self.taskInfo.locationReminder.place == nil {
+                    self.taskInfo.locationReminder.onArrive = true
+                    self.taskInfo.locationReminder.distance = 100
+                }
+                
                 self.taskInfo.locationReminder.place = place
-                self.taskInfo.locationReminder.onArrive = true
-                self.taskInfo.locationReminder.distance = 100
                 self.locationReminderControl.setFirstDetailText(place.customName)
                 self.updateSecondDetailTextInLocationReminderControl(self.taskInfo.locationReminder.distance!, onArrive: self.taskInfo.locationReminder.onArrive!)
                 self.locationReminderControl.secondDetailLabel.enabled = true
             }
         } else if (segue.identifier == SegueIdentifier.Region.rawValue) {
             let regionVC = segue.destinationViewController as NTHRegionViewController
+            if self.taskInfo.locationReminder.place != nil {
+                regionVC.configure(self.taskInfo.locationReminder.distance!, onArrive: self.taskInfo.locationReminder.onArrive!)
+            }
+            
             regionVC.successBlock = { [unowned self] (distance: Float, onArrive: Bool) in
                 self.taskInfo.locationReminder.distance = distance
                 self.taskInfo.locationReminder.onArrive = onArrive
