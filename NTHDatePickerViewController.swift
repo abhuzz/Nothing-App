@@ -19,6 +19,7 @@ class NTHDatePickerViewController: UIViewController {
         super.viewDidLoad()
         self.datePicker.setDate(NSDate(), animated: false)
         self.datePicker.minimumDate = self.datePicker.date
+        self.datePicker.datePickerMode = UIDatePickerMode.DateAndTime
     }
     
     @IBAction func donePressed(sender: AnyObject) {
