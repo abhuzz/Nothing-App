@@ -88,11 +88,6 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
             vc.configure(self.quickInsertView.text)
         }
     }
-
-    @IBAction func searchPressed(sender: AnyObject) {
-//        self.performSegueWithIdentifier(Identifiers.SearchSegue.rawValue, sender: nil)
-    }
-    
     
     
     /// Mark: UITableViewDelegate & UITableViewDataSource
@@ -163,7 +158,13 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     func cellDidTapActionButton(cell: NTHInboxCell) {
         let indexPath = self.tableView.indexPathForCell(cell)!
         let task = self.tasks[indexPath.row]
-        
+        let actionSheet = UIAlertController.selectActionOfTaskActionSheet(task, cell: cell)
+        self.presentViewController(actionSheet, animated: true, completion: nil)
+    }
+}
+
+extension UIAlertController {
+    class func selectActionOfTaskActionSheet(task: Task, cell: NTHInboxCell) -> UIAlertController {
         let actionSheet = UIAlertController(title: task.title, message: nil, preferredStyle: .ActionSheet)
         
         /// actions
@@ -183,8 +184,8 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
         actionSheet.addAction(cancelAction)
-    
-        self.presentViewController(actionSheet, animated: true, completion: nil)
+        
+        return actionSheet
     }
 }
 
