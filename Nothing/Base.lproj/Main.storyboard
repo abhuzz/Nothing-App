@@ -243,12 +243,19 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Create Task" id="j6f-cZ-MTA"/>
+                    <navigationItem key="navigationItem" title="Create Task" id="j6f-cZ-MTA">
+                        <barButtonItem key="rightBarButtonItem" title="Create" style="done" id="bO0-V0-42S">
+                            <connections>
+                                <action selector="createPressed:" destination="hpC-1m-0Ku" id="Xta-FS-qzK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="connectionTableView" destination="ZJK-e2-466" id="NeE-4V-zzL"/>
                         <outlet property="connectionTableViewHeight" destination="cCx-aH-6h7" id="d7t-K6-Mk4"/>
+                        <outlet property="createButton" destination="bO0-V0-42S" id="rtt-0A-cle"/>
                         <outlet property="dateReminderControl" destination="q6F-Z0-S4b" id="c8T-HM-OHz"/>
                         <outlet property="descriptionControl" destination="2hq-hD-JNk" id="3ZF-nV-xy9"/>
                         <outlet property="locationReminderControl" destination="KUi-RC-pIf" id="Rej-Ap-P9O"/>

@@ -44,12 +44,14 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var descriptionControl: NTHBasicTitleDetailView!
     @IBOutlet weak var locationReminderControl: NTHDoubleTitleDetailView!
     @IBOutlet weak var dateReminderControl: NTHDoubleTitleDetailView!
+    @IBOutlet weak var createButton: UIBarButtonItem!
 
     private var taskInfo = TaskInfo()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
+        self.createButton.enabled = false
     }
     
     private func setup() {
@@ -110,6 +112,13 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         self.connectionTableView.tableFooterView = UIView()
     }
     
+    private func validateCreateButton() {
+        let isTitle = countElements(self.taskInfo.title) > 0
+        let isDescription = countElements(self.taskInfo.description) > 0
+       
+        self.createButton.enabled = isTitle && isDescription
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == SegueIdentifier.TextEditor.rawValue) {
             let editorVC = (segue.destinationViewController as UINavigationController).topViewController as NTHTextEditorViewController
@@ -124,6 +133,8 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
                 } else if control == self.descriptionControl {
                     self.taskInfo.description = text
                 }
+                
+                self.validateCreateButton()
             }
         } else if (segue.identifier == SegueIdentifier.Places.rawValue) {
             let placesVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectPlaceTableViewController
@@ -137,6 +148,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
                 self.locationReminderControl.setFirstDetailText(place.customName)
                 self.updateSecondDetailTextInLocationReminderControl(self.taskInfo.locationReminder.distance!, onArrive: self.taskInfo.locationReminder.onArrive!)
                 self.locationReminderControl.secondDetailLabel.enabled = true
+                self.validateCreateButton()
             }
         } else if (segue.identifier == SegueIdentifier.Region.rawValue) {
             let regionVC = segue.destinationViewController as NTHRegionViewController
@@ -174,6 +186,10 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     
     private func updateSecondDetailTextInLocationReminderControl(distance: Float, onArrive: Bool) {
         self.locationReminderControl.setSecondDetailText((onArrive ? "Arrive" : "Leave") + ", " + distance.distanceDescription())
+    }
+    
+    @IBAction func createPressed(sender: AnyObject) {
+        
     }
 
     
