@@ -151,8 +151,11 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             }
         } else if (segue.identifier == SegueIdentifier.Date.rawValue) {
             let dateVC = segue.destinationViewController as NTHDatePickerViewController
+            if let date = self.taskInfo.dateReminder.fireDate {
+                dateVC.configure(date)
+            }
+            
             dateVC.block = { [unowned self] date in
-                
                 let formatter = NSDateFormatter()
                 formatter.dateFormat = "dd/MM/YYYY HH:mm"
                 

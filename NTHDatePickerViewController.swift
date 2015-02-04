@@ -13,6 +13,12 @@ class NTHDatePickerViewController: UIViewController {
     typealias NTHDatePickerViewControllerBlock = (date: NSDate) -> Void
     var block: NTHDatePickerViewControllerBlock?
 
+    private var selectedDate: NSDate?
+    
+    func configure(date: NSDate) {
+        self.selectedDate = date
+    }
+    
     @IBOutlet private weak var datePicker: UIDatePicker!
     
     override func viewDidLoad() {
@@ -20,6 +26,10 @@ class NTHDatePickerViewController: UIViewController {
         self.datePicker.setDate(NSDate(), animated: false)
         self.datePicker.minimumDate = self.datePicker.date
         self.datePicker.datePickerMode = UIDatePickerMode.DateAndTime
+        
+        if let date = self.selectedDate {
+            self.datePicker.date = date
+        }
     }
     
     @IBAction func donePressed(sender: AnyObject) {
