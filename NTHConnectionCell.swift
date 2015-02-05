@@ -15,6 +15,8 @@ protocol NTHConnectionCellDelegate {
 class NTHConnectionCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var clearButtonWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var clearButtonTrailingConstraint: NSLayoutConstraint!
     
     var delegate: NTHConnectionCellDelegate?
     
@@ -25,5 +27,22 @@ class NTHConnectionCell: UITableViewCell {
     
     @IBAction func onClearPressed(sender: AnyObject) {
         self.delegate?.cellDidTapClearButton(self)
+    }
+    
+    func hideShowButton(hide: Bool, animated: Bool) {
+        let animationDuration: Float = animated ? 0.25 : 0
+        let animationBlock: () -> () = {
+            self.clearButton.alpha = hide ? 0.0 : 1.0
+            self.setNeedsUpdateConstraints()
+            self.layoutSubviews()
+        }
+        
+        if hide {
+            self.clearButtonTrailingConstraint.constant -= self.clearButtonWidthConstraint.constant
+        } else {
+            self.clearButtonWidthConstraint.constant = 0
+        }
+        
+        UIView.animateWithDuration(NSTimeInterval(animationDuration), animations: animationBlock)
     }
 }

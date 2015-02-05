@@ -17,7 +17,10 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     
     enum Identifiers: String {
         case InboxCell = "InboxCell"
-        case TaskDetailSegue = "TaskDetail"
+    }
+    
+    enum SegueIdentifier: String {
+        case TaskDetails = "TaskDetails"
         case CreateTask = "CreateTask"
     }
     
@@ -61,7 +64,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         self.quickInsertView.didTapMoreBlock = { [self]
-            self.performSegueWithIdentifier(Identifiers.CreateTask.rawValue, sender: self.quickInsertView.text)
+            self.performSegueWithIdentifier(SegueIdentifier.CreateTask.rawValue, sender: self.quickInsertView.text)
             self.quickInsertView.finish()
         }
     }
@@ -80,10 +83,10 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         
-        if segue.identifier! == Identifiers.TaskDetailSegue.rawValue {
-            let vc = segue.destinationViewController as NTHTaskDetailViewController
+        if segue.identifier! == SegueIdentifier.TaskDetails.rawValue {
+            let vc = segue.destinationViewController as NTHTaskDetailsViewController
             vc.task = sender as Task
-        } else if segue.identifier! == Identifiers.CreateTask.rawValue {
+        } else if segue.identifier! == SegueIdentifier.CreateTask.rawValue {
             let vc = segue.destinationViewController as NTHCreateTaskController
             vc.configure(self.quickInsertView.text)
             vc.createdTaskBlock = {
@@ -115,7 +118,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.performSegueWithIdentifier(Identifiers.TaskDetailSegue.rawValue, sender: self.tasks[indexPath.row])
+        self.performSegueWithIdentifier(SegueIdentifier.TaskDetails.rawValue, sender: self.tasks[indexPath.row])
     }
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {

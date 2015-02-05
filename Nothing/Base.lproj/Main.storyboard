@@ -68,13 +68,13 @@
                         <outlet property="bottomGuide" destination="jXP-fM-QcW" id="4O2-gD-9bX"/>
                         <outlet property="quickInsertView" destination="SiQ-MJ-5a3" id="Mkn-KZ-gay"/>
                         <outlet property="tableView" destination="Ahl-qW-HvN" id="LGV-CQ-zmu"/>
-                        <segue destination="AdU-gc-aje" kind="push" identifier="TaskDetail" id="gmX-0N-o9G"/>
                         <segue destination="hpC-1m-0Ku" kind="push" identifier="CreateTask" id="DF6-eZ-eD5"/>
+                        <segue destination="5Bn-MW-jhx" kind="push" identifier="TaskDetails" id="DCg-df-EV7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOv-Nc-IrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1007" y="413"/>
+            <point key="canvasLocation" x="1007" y="500"/>
         </scene>
         <!--Create Task-->
         <scene sceneID="Mm8-y9-5lx">
@@ -127,44 +127,6 @@
                                                         </tableViewCellContentView>
                                                         <connections>
                                                             <outlet property="label" destination="2wT-fP-AFG" id="uec-8B-dLw"/>
-                                                        </connections>
-                                                    </tableViewCell>
-                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="NTHConnectionCell" id="8H2-Y2-u7D" customClass="NTHConnectionCell" customModule="Nothing" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8H2-Y2-u7D" id="Te7-UP-mNl">
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dH4-nj-yqD">
-                                                                    <rect key="frame" x="0.0" y="14" width="40" height="21"/>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muP-2Z-jcS">
-                                                                    <rect key="frame" x="240" y="10" width="30" height="30"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="30" id="kZ4-rR-pmo"/>
-                                                                        <constraint firstAttribute="width" constant="30" id="o2S-8S-cMs"/>
-                                                                    </constraints>
-                                                                    <state key="normal" image="clear-button">
-                                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    </state>
-                                                                    <connections>
-                                                                        <action selector="onClearPressed:" destination="8H2-Y2-u7D" eventType="touchUpInside" id="a4r-zh-Ssz"/>
-                                                                    </connections>
-                                                                </button>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="dH4-nj-yqD" firstAttribute="leading" secondItem="Te7-UP-mNl" secondAttribute="leading" id="7AG-GF-6Po"/>
-                                                                <constraint firstAttribute="trailing" secondItem="muP-2Z-jcS" secondAttribute="trailing" id="E9p-GB-PII"/>
-                                                                <constraint firstAttribute="centerY" secondItem="dH4-nj-yqD" secondAttribute="centerY" id="R7l-y0-0wR"/>
-                                                                <constraint firstItem="muP-2Z-jcS" firstAttribute="centerY" secondItem="dH4-nj-yqD" secondAttribute="centerY" id="fJZ-mb-vt2"/>
-                                                            </constraints>
-                                                        </tableViewCellContentView>
-                                                        <connections>
-                                                            <outlet property="clearButton" destination="muP-2Z-jcS" id="d13-ka-8Z1"/>
-                                                            <outlet property="label" destination="dH4-nj-yqD" id="FRc-a9-SW2"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
@@ -270,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fck-oU-cRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1014" y="1211"/>
+            <point key="canvasLocation" x="1007" y="1211"/>
         </scene>
         <!--Date-->
         <scene sceneID="hNh-3G-lN3">
@@ -405,190 +367,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6u8-DE-7iQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1546" y="1992"/>
-        </scene>
-        <!--Task Detail View Controller-->
-        <scene sceneID="q8z-0V-gKz">
-            <objects>
-                <viewController id="AdU-gc-aje" customClass="NTHTaskDetailViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gxf-GG-f73"/>
-                        <viewControllerLayoutGuide type="bottom" id="pjw-4Z-Cz2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="SBR-eO-IKi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="595"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gwq-Az-TLc">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="595"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Bk-pt-5JE">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="595"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rP0-gI-8Lg" customClass="NTHMapCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
-                                                <color key="backgroundColor" red="0.96384725770000002" green="0.96384725770000002" blue="0.96384725770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="130" id="L3t-b6-6Sm"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjl-8W-0YF" userLabel="title" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="135" width="600" height="45"/>
-                                                <color key="backgroundColor" red="0.92615525265957444" green="0.92615525265957444" blue="0.92615525265957444" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="Bsc-jT-SZJ"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="45" translatesAutoresizingMaskIntoConstraints="NO" id="v53-Ul-26J" userLabel="description" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="180" width="600" height="45"/>
-                                                <color key="backgroundColor" red="0.86443442486702127" green="0.86443442486702127" blue="0.86443442486702127" alpha="1" colorSpace="calibratedRGB"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hX-FN-Vy8" userLabel="status" customClass="NTHStateCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="245" width="600" height="45"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="3vr-cj-roB"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJV-yz-zF7" userLabel="remind me at location" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="310" width="600" height="45"/>
-                                                <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="SP3-zV-3YE"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qze-C7-d0S" userLabel="distance" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="355" width="600" height="45"/>
-                                                <color key="backgroundColor" red="0.90208402593085102" green="0.90208402593085102" blue="0.90208402593085102" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="XWZ-V0-9rO"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A4O-VD-KL6" userLabel="remind me on date" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="420" width="600" height="45"/>
-                                                <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="zjM-FI-63a"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhR-4q-CFm" userLabel="repeat" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="465" width="600" height="45"/>
-                                                <color key="backgroundColor" red="0.90208402590000003" green="0.90208402590000003" blue="0.90208402590000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="kVw-zi-RdI"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="60" translatesAutoresizingMaskIntoConstraints="NO" id="WBN-24-rwl" userLabel="connections" customClass="NTHConnectionsCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="530" width="600" height="60"/>
-                                                <color key="backgroundColor" red="0.90208402590000003" green="0.90208402590000003" blue="0.90208402590000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="rP0-gI-8Lg" secondAttribute="trailing" id="3zV-pd-djt"/>
-                                            <constraint firstAttribute="trailing" secondItem="v53-Ul-26J" secondAttribute="trailing" id="46H-wT-Nmm"/>
-                                            <constraint firstItem="rP0-gI-8Lg" firstAttribute="top" secondItem="3Bk-pt-5JE" secondAttribute="top" id="4gW-nn-78a"/>
-                                            <constraint firstItem="qze-C7-d0S" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="6BM-tY-8hg"/>
-                                            <constraint firstItem="2hX-FN-Vy8" firstAttribute="top" secondItem="v53-Ul-26J" secondAttribute="bottom" constant="20" id="84T-MD-VGO"/>
-                                            <constraint firstAttribute="trailing" secondItem="qze-C7-d0S" secondAttribute="trailing" id="8LO-fb-z8b"/>
-                                            <constraint firstAttribute="trailing" secondItem="2hX-FN-Vy8" secondAttribute="trailing" id="9WJ-0p-cn9"/>
-                                            <constraint firstItem="CJV-yz-zF7" firstAttribute="top" secondItem="2hX-FN-Vy8" secondAttribute="bottom" constant="20" id="Ar7-3d-ZYn"/>
-                                            <constraint firstItem="A4O-VD-KL6" firstAttribute="top" secondItem="qze-C7-d0S" secondAttribute="bottom" constant="20" id="Dwp-Mp-qW7"/>
-                                            <constraint firstItem="xhR-4q-CFm" firstAttribute="top" secondItem="A4O-VD-KL6" secondAttribute="bottom" id="GIj-IM-iK3"/>
-                                            <constraint firstAttribute="bottom" secondItem="WBN-24-rwl" secondAttribute="bottom" constant="5" id="MSW-C1-AL7"/>
-                                            <constraint firstItem="Wjl-8W-0YF" firstAttribute="top" secondItem="rP0-gI-8Lg" secondAttribute="bottom" constant="5" id="QEG-Kr-IHx"/>
-                                            <constraint firstAttribute="trailing" secondItem="Wjl-8W-0YF" secondAttribute="trailing" id="YR3-vd-t3U"/>
-                                            <constraint firstItem="WBN-24-rwl" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="a2X-lv-hID"/>
-                                            <constraint firstItem="A4O-VD-KL6" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="eBs-Gq-Pij"/>
-                                            <constraint firstAttribute="trailing" secondItem="WBN-24-rwl" secondAttribute="trailing" id="fUY-4g-Yg3"/>
-                                            <constraint firstItem="CJV-yz-zF7" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="ggW-sY-muR"/>
-                                            <constraint firstItem="v53-Ul-26J" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="kGH-hL-tzj"/>
-                                            <constraint firstItem="qze-C7-d0S" firstAttribute="top" secondItem="CJV-yz-zF7" secondAttribute="bottom" id="kUZ-gf-DfB"/>
-                                            <constraint firstItem="WBN-24-rwl" firstAttribute="top" secondItem="xhR-4q-CFm" secondAttribute="bottom" constant="20" id="mwk-Xg-J7u"/>
-                                            <constraint firstItem="2hX-FN-Vy8" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="pmr-VV-Z8Y"/>
-                                            <constraint firstItem="v53-Ul-26J" firstAttribute="top" secondItem="Wjl-8W-0YF" secondAttribute="bottom" id="rS3-KG-fz4"/>
-                                            <constraint firstItem="rP0-gI-8Lg" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="rcJ-vX-0bK"/>
-                                            <constraint firstAttribute="trailing" secondItem="CJV-yz-zF7" secondAttribute="trailing" id="sM9-Yv-85W"/>
-                                            <constraint firstAttribute="trailing" secondItem="xhR-4q-CFm" secondAttribute="trailing" id="usG-oQ-rQB"/>
-                                            <constraint firstItem="xhR-4q-CFm" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="xSp-TY-yeh"/>
-                                            <constraint firstItem="Wjl-8W-0YF" firstAttribute="leading" secondItem="3Bk-pt-5JE" secondAttribute="leading" id="xlk-AD-N2e"/>
-                                            <constraint firstAttribute="trailing" secondItem="A4O-VD-KL6" secondAttribute="trailing" id="yz6-9g-gMm"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="3Bk-pt-5JE" firstAttribute="leading" secondItem="Gwq-Az-TLc" secondAttribute="leading" id="5ZI-av-TBc"/>
-                                    <constraint firstItem="3Bk-pt-5JE" firstAttribute="width" secondItem="Gwq-Az-TLc" secondAttribute="width" id="RFJ-nd-GCM"/>
-                                    <constraint firstAttribute="trailing" secondItem="3Bk-pt-5JE" secondAttribute="trailing" id="RZL-fB-OqJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="3Bk-pt-5JE" secondAttribute="bottom" id="X53-V8-mc8"/>
-                                    <constraint firstItem="3Bk-pt-5JE" firstAttribute="top" secondItem="Gwq-Az-TLc" secondAttribute="top" id="dP1-MW-GTx"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="pjw-4Z-Cz2" firstAttribute="top" secondItem="Gwq-Az-TLc" secondAttribute="bottom" id="6wK-GJ-zsU"/>
-                            <constraint firstItem="Gwq-Az-TLc" firstAttribute="leading" secondItem="SBR-eO-IKi" secondAttribute="leading" id="j11-16-Gml"/>
-                            <constraint firstAttribute="trailing" secondItem="Gwq-Az-TLc" secondAttribute="trailing" id="k5o-Ry-h3n"/>
-                            <constraint firstItem="Gwq-Az-TLc" firstAttribute="top" secondItem="SBR-eO-IKi" secondAttribute="top" id="uHe-Tz-SXJ"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="aFF-Fl-Haf">
-                        <barButtonItem key="rightBarButtonItem" image="more-actions-button" id="4os-i3-XKO">
-                            <connections>
-                                <action selector="actionPressed:" destination="AdU-gc-aje" id="Xl0-Kw-CRf"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="595"/>
-                    <connections>
-                        <outlet property="connectionsCell" destination="WBN-24-rwl" id="3Wc-Ja-d2g"/>
-                        <outlet property="descriptionCell" destination="v53-Ul-26J" id="JYd-xd-Xw7"/>
-                        <outlet property="distanceCell" destination="qze-C7-d0S" id="O68-Jv-yV5"/>
-                        <outlet property="mapCell" destination="rP0-gI-8Lg" id="r5D-H6-321"/>
-                        <outlet property="remindMeAtLocationCell" destination="CJV-yz-zF7" id="DFX-dL-ALQ"/>
-                        <outlet property="remindMeOnDateCell" destination="A4O-VD-KL6" id="Phc-SR-8mR"/>
-                        <outlet property="repeatCell" destination="xhR-4q-CFm" id="t4q-V5-HmB"/>
-                        <outlet property="statusCell" destination="2hX-FN-Vy8" id="88E-Of-NnH"/>
-                        <outlet property="titleCell" destination="Wjl-8W-0YF" id="AhF-C3-Kr8"/>
-                        <segue destination="2r3-1F-Vbc" kind="push" identifier="EditTaskController" id="TTV-dx-Eca"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="610-Ri-dz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1759" y="412.5"/>
         </scene>
         <!--Editor-->
         <scene sceneID="FUY-Pi-9vm">
@@ -875,159 +653,6 @@
             </objects>
             <point key="canvasLocation" x="3191" y="1211"/>
         </scene>
-        <!--Edit Task Controller-->
-        <scene sceneID="OQQ-bY-aIa">
-            <objects>
-                <viewController id="2r3-1F-Vbc" customClass="NTHEditTaskController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="57d-PA-ygg"/>
-                        <viewControllerLayoutGuide type="bottom" id="jN2-Hk-Aqb"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fLP-1b-X7g">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pta-jj-Sm3">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="568"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vN-hy-c19">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="595"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cE3-Xh-rMX" userLabel="title" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
-                                                <color key="backgroundColor" red="0.92615525269999999" green="0.92615525269999999" blue="0.92615525269999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="eDJ-Ah-Ug5"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="45" translatesAutoresizingMaskIntoConstraints="NO" id="6yj-4T-O84" userLabel="description" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="45" width="600" height="45"/>
-                                                <color key="backgroundColor" red="0.8644344249" green="0.8644344249" blue="0.8644344249" alpha="1" colorSpace="calibratedRGB"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y8e-Ru-8CT" userLabel="remind me at location" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="90" width="600" height="45"/>
-                                                <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="na0-gm-dVm"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9L0-2v-Gg3" userLabel="distance" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="135" width="600" height="45"/>
-                                                <color key="backgroundColor" red="0.90208402590000003" green="0.90208402590000003" blue="0.90208402590000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="rfp-hl-S9r"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OTZ-HB-DPf" userLabel="remind me on date" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="180" width="600" height="45"/>
-                                                <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="hUa-HP-qr7"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p9V-6u-QTT" userLabel="repeat" customClass="NTHSimpleCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="225" width="600" height="45"/>
-                                                <color key="backgroundColor" red="0.90208402590000003" green="0.90208402590000003" blue="0.90208402590000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="qez-Cz-SzN"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="60" translatesAutoresizingMaskIntoConstraints="NO" id="mv7-id-7OT" userLabel="connections" customClass="NTHConnectionsCellView" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="270" width="600" height="60"/>
-                                                <color key="backgroundColor" red="0.90208402590000003" green="0.90208402590000003" blue="0.90208402590000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomSeparator.hidden" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="p9V-6u-QTT" firstAttribute="leading" secondItem="7vN-hy-c19" secondAttribute="leading" id="3Iz-MI-YqH"/>
-                                            <constraint firstItem="mv7-id-7OT" firstAttribute="leading" secondItem="7vN-hy-c19" secondAttribute="leading" id="7tU-RI-bwf"/>
-                                            <constraint firstItem="p9V-6u-QTT" firstAttribute="top" secondItem="OTZ-HB-DPf" secondAttribute="bottom" id="A60-0Z-UCd"/>
-                                            <constraint firstAttribute="trailing" secondItem="Y8e-Ru-8CT" secondAttribute="trailing" id="Bfj-zh-3AB"/>
-                                            <constraint firstItem="Y8e-Ru-8CT" firstAttribute="leading" secondItem="7vN-hy-c19" secondAttribute="leading" id="BnB-r2-hBx"/>
-                                            <constraint firstItem="cE3-Xh-rMX" firstAttribute="top" secondItem="7vN-hy-c19" secondAttribute="top" id="Ckt-q3-GmW"/>
-                                            <constraint firstItem="cE3-Xh-rMX" firstAttribute="leading" secondItem="7vN-hy-c19" secondAttribute="leading" id="Ekz-fM-4DQ"/>
-                                            <constraint firstAttribute="trailing" secondItem="cE3-Xh-rMX" secondAttribute="trailing" id="I9E-0F-bMf"/>
-                                            <constraint firstItem="6yj-4T-O84" firstAttribute="leading" secondItem="7vN-hy-c19" secondAttribute="leading" id="IOc-s4-35m"/>
-                                            <constraint firstAttribute="trailing" secondItem="OTZ-HB-DPf" secondAttribute="trailing" id="LTk-Rj-Yij"/>
-                                            <constraint firstItem="6yj-4T-O84" firstAttribute="top" secondItem="cE3-Xh-rMX" secondAttribute="bottom" id="TmH-Jv-jPy"/>
-                                            <constraint firstItem="mv7-id-7OT" firstAttribute="top" secondItem="p9V-6u-QTT" secondAttribute="bottom" id="WNc-PH-woK"/>
-                                            <constraint firstItem="9L0-2v-Gg3" firstAttribute="top" secondItem="Y8e-Ru-8CT" secondAttribute="bottom" id="Wuk-zh-Ojy"/>
-                                            <constraint firstAttribute="bottom" secondItem="mv7-id-7OT" secondAttribute="bottom" constant="265" id="d5D-l9-ISs"/>
-                                            <constraint firstItem="9L0-2v-Gg3" firstAttribute="leading" secondItem="7vN-hy-c19" secondAttribute="leading" id="dwc-IR-HHC"/>
-                                            <constraint firstItem="Y8e-Ru-8CT" firstAttribute="top" secondItem="6yj-4T-O84" secondAttribute="bottom" id="eXi-tE-dPy"/>
-                                            <constraint firstAttribute="trailing" secondItem="9L0-2v-Gg3" secondAttribute="trailing" id="jw4-dp-6D4"/>
-                                            <constraint firstItem="OTZ-HB-DPf" firstAttribute="leading" secondItem="7vN-hy-c19" secondAttribute="leading" id="mc7-E4-lFV"/>
-                                            <constraint firstAttribute="trailing" secondItem="p9V-6u-QTT" secondAttribute="trailing" id="mlT-Ev-IJW"/>
-                                            <constraint firstItem="OTZ-HB-DPf" firstAttribute="top" secondItem="9L0-2v-Gg3" secondAttribute="bottom" id="tc0-AS-s9M"/>
-                                            <constraint firstAttribute="trailing" secondItem="6yj-4T-O84" secondAttribute="trailing" id="uOg-OJ-iQ9"/>
-                                            <constraint firstAttribute="trailing" secondItem="mv7-id-7OT" secondAttribute="trailing" id="wKT-Dx-bc9"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="7vN-hy-c19" firstAttribute="width" secondItem="pta-jj-Sm3" secondAttribute="width" id="CMN-f4-PhY"/>
-                                    <constraint firstItem="7vN-hy-c19" firstAttribute="top" secondItem="pta-jj-Sm3" secondAttribute="top" id="PPe-aF-84W"/>
-                                    <constraint firstAttribute="bottom" secondItem="7vN-hy-c19" secondAttribute="bottom" id="nIw-Gj-M1D"/>
-                                    <constraint firstItem="7vN-hy-c19" firstAttribute="leading" secondItem="pta-jj-Sm3" secondAttribute="leading" id="p0z-Mt-3ic"/>
-                                    <constraint firstAttribute="trailing" secondItem="7vN-hy-c19" secondAttribute="trailing" id="zNN-8k-frm"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="pta-jj-Sm3" firstAttribute="top" secondItem="fLP-1b-X7g" secondAttribute="top" id="0SK-fp-LIK"/>
-                            <constraint firstItem="pta-jj-Sm3" firstAttribute="leading" secondItem="fLP-1b-X7g" secondAttribute="leading" id="73n-yB-eBp"/>
-                            <constraint firstItem="jN2-Hk-Aqb" firstAttribute="top" secondItem="pta-jj-Sm3" secondAttribute="bottom" id="GFc-pH-m9M"/>
-                            <constraint firstAttribute="trailing" secondItem="pta-jj-Sm3" secondAttribute="trailing" id="HQO-Q9-hWe"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="XMa-qp-K6F">
-                        <barButtonItem key="backBarButtonItem" title="Cancel" id="Mdb-bR-1ul"/>
-                    </navigationItem>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="568"/>
-                    <connections>
-                        <outlet property="connectionsCell" destination="mv7-id-7OT" id="w6V-Eb-q6p"/>
-                        <outlet property="descriptionCell" destination="6yj-4T-O84" id="LYj-DA-CfI"/>
-                        <outlet property="distanceCell" destination="9L0-2v-Gg3" id="lEH-Va-rWz"/>
-                        <outlet property="remindMeAtLocationCell" destination="Y8e-Ru-8CT" id="aEC-J9-wnB"/>
-                        <outlet property="remindMeOnDateCell" destination="OTZ-HB-DPf" id="tbg-gR-p5g"/>
-                        <outlet property="repeatCell" destination="p9V-6u-QTT" id="ObD-OJ-qUf"/>
-                        <outlet property="titleCell" destination="cE3-Xh-rMX" id="mYM-VB-iVS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7gB-kQ-UId" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2426" y="413"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Eoa-tR-JVh">
             <objects>
@@ -1198,11 +823,129 @@
             </objects>
             <point key="canvasLocation" x="2431" y="2626"/>
         </scene>
+        <!--Task Details-->
+        <scene sceneID="xeS-Lt-FQO">
+            <objects>
+                <viewController id="5Bn-MW-jhx" customClass="NTHTaskDetailsViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6Hn-Rs-EVG"/>
+                        <viewControllerLayoutGuide type="bottom" id="wRt-Km-SqU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JlV-wE-zwW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfw-IO-0B6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="486" translatesAutoresizingMaskIntoConstraints="NO" id="kC6-Sd-7MS" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                        <subviews>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONNECTIONS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hry-cs-Fr3" userLabel="REMIND ME ON DATE">
+                                                <rect key="frame" x="25" y="405" width="270" height="12"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="10"/>
+                                                <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FJW-aB-DPB">
+                                                <rect key="frame" x="25" y="422" width="270" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="q5v-Ye-1Nr"/>
+                                                </constraints>
+                                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="5Bn-MW-jhx" id="MXw-6H-Egg"/>
+                                                    <outlet property="delegate" destination="5Bn-MW-jhx" id="NzE-bB-Ty0"/>
+                                                </connections>
+                                            </tableView>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="70" translatesAutoresizingMaskIntoConstraints="NO" id="w6O-Rq-W5k" customClass="NTHBasicTitleDetailView" customModule="Nothing" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="9" width="270" height="70"/>
+                                                <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="70" translatesAutoresizingMaskIntoConstraints="NO" id="kKY-6q-pDj" customClass="NTHBasicTitleDetailView" customModule="Nothing" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="79" width="270" height="70"/>
+                                                <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="120" translatesAutoresizingMaskIntoConstraints="NO" id="GDz-Kt-nfk" customClass="NTHDoubleTitleDetailView" customModule="Nothing" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="149" width="270" height="120"/>
+                                                <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="120" translatesAutoresizingMaskIntoConstraints="NO" id="fvG-tw-TLW" customClass="NTHDoubleTitleDetailView" customModule="Nothing" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="269" width="270" height="120"/>
+                                                <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topSeparator.hidden" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="fvG-tw-TLW" firstAttribute="top" secondItem="GDz-Kt-nfk" secondAttribute="bottom" id="0P6-dU-500"/>
+                                            <constraint firstItem="kKY-6q-pDj" firstAttribute="top" secondItem="w6O-Rq-W5k" secondAttribute="bottom" id="3SM-Rx-Rpe"/>
+                                            <constraint firstItem="FJW-aB-DPB" firstAttribute="leading" secondItem="kC6-Sd-7MS" secondAttribute="leading" constant="25" id="3po-Qz-bUm"/>
+                                            <constraint firstItem="kKY-6q-pDj" firstAttribute="leading" secondItem="kC6-Sd-7MS" secondAttribute="leading" constant="25" id="7sO-gH-3u3"/>
+                                            <constraint firstAttribute="trailing" secondItem="kKY-6q-pDj" secondAttribute="trailing" constant="25" id="B95-5A-SeB"/>
+                                            <constraint firstAttribute="bottom" secondItem="FJW-aB-DPB" secondAttribute="bottom" constant="32" id="EOx-vs-Dug"/>
+                                            <constraint firstAttribute="trailing" secondItem="GDz-Kt-nfk" secondAttribute="trailing" constant="25" id="FGB-En-qHC"/>
+                                            <constraint firstItem="GDz-Kt-nfk" firstAttribute="leading" secondItem="kC6-Sd-7MS" secondAttribute="leading" constant="25" id="MWx-b1-osJ"/>
+                                            <constraint firstItem="GDz-Kt-nfk" firstAttribute="top" secondItem="kKY-6q-pDj" secondAttribute="bottom" id="Mgj-T7-wag"/>
+                                            <constraint firstAttribute="trailing" secondItem="fvG-tw-TLW" secondAttribute="trailing" constant="25" id="NfW-Ft-lNd"/>
+                                            <constraint firstItem="w6O-Rq-W5k" firstAttribute="top" secondItem="kC6-Sd-7MS" secondAttribute="top" constant="9" id="Nvm-Cq-fI3"/>
+                                            <constraint firstItem="FJW-aB-DPB" firstAttribute="top" secondItem="hry-cs-Fr3" secondAttribute="bottom" constant="5" id="Xop-uV-aDc"/>
+                                            <constraint firstAttribute="trailing" secondItem="hry-cs-Fr3" secondAttribute="trailing" constant="25" id="bsQ-zx-Vfl"/>
+                                            <constraint firstItem="fvG-tw-TLW" firstAttribute="leading" secondItem="kC6-Sd-7MS" secondAttribute="leading" constant="25" id="fzb-r7-82G"/>
+                                            <constraint firstAttribute="trailing" secondItem="w6O-Rq-W5k" secondAttribute="trailing" constant="25" id="rib-aJ-I8z"/>
+                                            <constraint firstAttribute="trailing" secondItem="FJW-aB-DPB" secondAttribute="trailing" constant="25" id="rs0-qL-SPZ"/>
+                                            <constraint firstItem="w6O-Rq-W5k" firstAttribute="leading" secondItem="kC6-Sd-7MS" secondAttribute="leading" constant="25" id="tYl-gr-up9"/>
+                                            <constraint firstItem="hry-cs-Fr3" firstAttribute="leading" secondItem="kC6-Sd-7MS" secondAttribute="leading" constant="25" id="w6p-So-X0O"/>
+                                            <constraint firstItem="hry-cs-Fr3" firstAttribute="top" secondItem="fvG-tw-TLW" secondAttribute="bottom" constant="16" id="zkR-BI-Ydd"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="kC6-Sd-7MS" firstAttribute="leading" secondItem="pfw-IO-0B6" secondAttribute="leading" id="5GS-5v-3cD"/>
+                                    <constraint firstAttribute="trailing" secondItem="kC6-Sd-7MS" secondAttribute="trailing" id="Bh8-Du-x0M"/>
+                                    <constraint firstItem="kC6-Sd-7MS" firstAttribute="top" secondItem="pfw-IO-0B6" secondAttribute="top" id="JcA-n3-tjm"/>
+                                    <constraint firstAttribute="bottom" secondItem="kC6-Sd-7MS" secondAttribute="bottom" id="R1p-0g-F0h"/>
+                                    <constraint firstAttribute="width" secondItem="kC6-Sd-7MS" secondAttribute="width" id="s39-ru-eRj"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wRt-Km-SqU" firstAttribute="top" secondItem="pfw-IO-0B6" secondAttribute="bottom" id="AaJ-2O-WpC"/>
+                            <constraint firstItem="pfw-IO-0B6" firstAttribute="leading" secondItem="JlV-wE-zwW" secondAttribute="leading" id="SoZ-Ac-gCR"/>
+                            <constraint firstAttribute="trailing" secondItem="pfw-IO-0B6" secondAttribute="trailing" id="tIU-K6-qZW"/>
+                            <constraint firstItem="pfw-IO-0B6" firstAttribute="top" secondItem="JlV-wE-zwW" secondAttribute="top" id="w9Y-c5-qvc"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Task Details" id="qzv-Y5-Eev"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="connectionTableView" destination="FJW-aB-DPB" id="GAd-me-EcL"/>
+                        <outlet property="connectionTableViewHeight" destination="q5v-Ye-1Nr" id="RTw-an-Jtp"/>
+                        <outlet property="dateReminderControl" destination="fvG-tw-TLW" id="Qcg-Ne-GGv"/>
+                        <outlet property="descriptionControl" destination="kKY-6q-pDj" id="Qkd-Sj-wOp"/>
+                        <outlet property="locationReminderControl" destination="GDz-Kt-nfk" id="ZAV-jG-j9B"/>
+                        <outlet property="titleControl" destination="w6O-Rq-W5k" id="ivl-2S-Ejs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IFo-4h-phS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1494" y="500"/>
+        </scene>
     </scenes>
-    <resources>
-        <image name="clear-button" width="20" height="20"/>
-        <image name="more-actions-button" width="20" height="5"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

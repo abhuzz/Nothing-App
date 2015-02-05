@@ -124,6 +124,10 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         /// setup connections table view
+        
+        let connectionCellNib = UINib(nibName: "NTHConnectionCell", bundle: nil)
+        self.connectionTableView.registerNib(connectionCellNib, forCellReuseIdentifier: "NTHConnectionCell")
+        
         self.connectionTableView.tableFooterView = UIView()
     }
     
