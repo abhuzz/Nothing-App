@@ -86,6 +86,10 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
         } else if segue.identifier! == Identifiers.CreateTask.rawValue {
             let vc = segue.destinationViewController as NTHCreateTaskController
             vc.configure(self.quickInsertView.text)
+            vc.createdTaskBlock = {
+                self.tasks = ModelController().allTasks()
+                self.tableView.reloadData()
+            }
         }
     }
     

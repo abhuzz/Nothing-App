@@ -13,12 +13,12 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     class TaskInfo {
         class LocationReminder {
             var place: Place?
-            var distance: Float?
-            var onArrive: Bool?
+            var distance: Float!
+            var onArrive: Bool!
         }
         
         class DateReminder {
-            var fireDate: NSDate!
+            var fireDate: NSDate?
             var repeatInterval: NSCalendarUnit!
         }
         
@@ -48,6 +48,8 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
 
     private var taskInfo = TaskInfo()
     
+    var createdTaskBlock: (() -> Void)?
+    
     func configure(title: String) {
         self.taskInfo.title = title
     }
@@ -56,6 +58,11 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         self.setup()
         self.createButton.enabled = false
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.validateCreateButton()
     }
     
     private func setup() {
@@ -122,9 +129,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     
     private func validateCreateButton() {
         let isTitle = countElements(self.taskInfo.title) > 0
-        let isDescription = countElements(self.taskInfo.description) > 0
-       
-        self.createButton.enabled = isTitle && isDescription
+        self.createButton.enabled = isTitle
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -197,7 +202,36 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func createPressed(sender: AnyObject) {
+        let task: Task = Task.create(CDHelper.mainContext)
+        task.title = self.taskInfo.title
+        task.longDescription = self.taskInfo.description
+
+        if let date = self.taskInfo.dateReminder.fireDate {
+            let dateReminder: DateReminderInfo = DateReminderInfo.create(CDHelper.mainContext)
+            dateReminder.fireDate = date
+            dateReminder.repeatInterval = self.taskInfo.dateReminder.repeatInterval
+            task.dateReminder = dateReminder
+        }
+
+        if let place = self.taskInfo.locationReminder.place {
+            let locationReminder: LocationReminderInfo = LocationReminderInfo.create(CDHelper.mainContext)
+            locationReminder.place = place
+            locationReminder.onArrive = self.taskInfo.locationReminder.onArrive
+            locationReminder.distance = self.taskInfo.locationReminder.distance
+            task.locationReminder = locationReminder
+        }
         
+        if self.taskInfo.connections.count > 0 {
+            for connection in self.taskInfo.connections {
+                task.addConnection(connection)
+            }
+        }
+        
+        CDHelper.mainContext.save(nil)
+        self.createdTaskBlock?()
+        
+        
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
     
