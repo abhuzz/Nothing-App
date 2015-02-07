@@ -183,11 +183,8 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
                 dateVC.configure(date)
             }
             
-            dateVC.block = { [unowned self] date in
-                let formatter = NSDateFormatter()
-                formatter.dateFormat = "dd/MM/YYYY HH:mm"
-                
-                self.dateReminderControl.setFirstDetailText(formatter.stringFromDate(date))
+            dateVC.block = { [unowned self] date in                
+                self.dateReminderControl.setFirstDetailText(NSDateFormatter.NTHStringFromDate(date))
                 self.dateReminderControl.secondDetailLabel.enabled = true
                 self.taskInfo.dateReminder.fireDate = date
             }

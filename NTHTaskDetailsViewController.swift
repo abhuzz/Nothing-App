@@ -68,9 +68,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         self.dateReminderControl.setSecondPlaceholder(String.noneString())
         
         if let reminder = self.task.dateReminder {
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = "dd/MM/YYYY HH:mm"
-            self.dateReminderControl.setFirstDetailText(formatter.stringFromDate(reminder.fireDate))
+            self.dateReminderControl.setFirstDetailText(NSDateFormatter.NTHStringFromDate(reminder.fireDate))
             self.dateReminderControl.setSecondDetailText(RepeatInterval.descriptionForInterval(interval: reminder.repeatInterval))
         }
         self.dateReminderControl.hideButton()
