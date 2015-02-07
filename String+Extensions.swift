@@ -104,4 +104,16 @@ extension String {
     static func showOnMapString() -> String {
         return NSLocalizedString("Show on map", comment: "")
     }
+    
+    static func editString() -> String {
+        return NSLocalizedString("Edit", comment: "")
+    }
+    
+    static func markAsDoneString() -> String {
+        return NSLocalizedString("Mark as Done", comment: "")
+    }
+    
+    static func markAsActiveString() -> String {
+        return NSLocalizedString("Mark as Active", comment: "")
+    }
 }

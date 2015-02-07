@@ -22,7 +22,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2sV-6f-Q54" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="413" y="413"/>
+            <point key="canvasLocation" x="548" y="500"/>
         </scene>
         <!--Inbox View Controller-->
         <scene sceneID="JK8-62-5xE">
@@ -391,7 +391,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aai-Qf-c6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Z5j-ar-iOh"/>
             </objects>
-            <point key="canvasLocation" x="3754" y="1211"/>
+            <point key="canvasLocation" x="4428" y="1211"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="t5G-kp-icM">
@@ -605,7 +605,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qqq-1B-drd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3191" y="1211"/>
+            <point key="canvasLocation" x="3865" y="1211"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Eoa-tR-JVh">
@@ -870,7 +870,20 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Task Details" id="qzv-Y5-Eev"/>
+                    <navigationItem key="navigationItem" title="Task Details" id="qzv-Y5-Eev">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="5Zf-Pz-tgO">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="avP-Db-Glg">
+                                <rect key="frame" x="284" y="11" width="40" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="more-actions-button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="morebuttonPressed:" destination="5Bn-MW-jhx" eventType="touchUpInside" id="i8M-vt-HYU"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
@@ -881,6 +894,7 @@
                         <outlet property="locationReminderControl" destination="GDz-Kt-nfk" id="ZAV-jG-j9B"/>
                         <outlet property="statusView" destination="Fgx-dq-teD" id="fdi-hv-mJH"/>
                         <outlet property="titleControl" destination="w6O-Rq-W5k" id="ivl-2S-Ejs"/>
+                        <segue destination="hpC-1m-0Ku" kind="push" identifier="EditTask" id="2gu-sc-1vn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFo-4h-phS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -888,13 +902,16 @@
             <point key="canvasLocation" x="1494" y="500"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="more-actions-button" width="20" height="5"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="USy-L9-PMD"/>
-        <segue reference="DF6-eZ-eD5"/>
+        <segue reference="2gu-sc-1vn"/>
+        <segue reference="NPY-dN-uPC"/>
     </inferredMetricsTieBreakers>
 </document>

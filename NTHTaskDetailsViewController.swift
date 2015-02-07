@@ -11,6 +11,10 @@ import MapKit
 
 class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    enum SegueIdentifier: String {
+        case EditTask = "EditTask"
+    }
+    
     @IBOutlet weak var connectionTableView: UITableView!
     @IBOutlet weak var connectionTableViewHeight: NSLayoutConstraint!
     
@@ -84,6 +88,18 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         
         self.refreshConnectionsTableView()
     }
+    
+    @IBAction func morebuttonPressed(sender: AnyObject!) {
+        let alert = UIAlertController.actionsForTaskInDetailViewActionSheet(self.task, presentEditingViewController: {
+            self.performSegueWithIdentifier(SegueIdentifier.EditTask.rawValue, sender: nil)
+        }, changeState: {
+            self.task.changeState()
+            self.statusView.state = self.task.state
+        })
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     
     /// Mark: UITableViewDelegate & UITableViewDataSource
     func numberOfItemsInConnectionTableView() -> Int {
@@ -189,6 +205,33 @@ extension UIAlertController {
         let cancel = UIAlertAction(title: String.cancelString(), style: UIAlertActionStyle.Cancel, handler: nil)
         alert.addAction(cancel)
         
+        return alert
+    }
+    
+    class func actionsForTaskInDetailViewActionSheet(task: Task, presentEditingViewController: () -> (), changeState: () -> ()) -> UIAlertController {
+        let alert = UIAlertController(title: task.title, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let edit = UIAlertAction(title: String.editString(), style: .Default) { (action) -> Void in
+            presentEditingViewController()
+        }
+        alert.addAction(edit)
+        
+        /// actions
+        if task.state == .Active {
+            let markDone = UIAlertAction(title: String.markAsDoneString(), style: UIAlertActionStyle.Default) { (action) -> Void in
+                changeState()
+            }
+            alert.addAction(markDone)
+        } else {
+            let markActive = UIAlertAction(title: String.markAsActiveString(), style: UIAlertActionStyle.Default) { (action) -> Void in
+                changeState()
+            }
+            alert.addAction(markActive)
+        }
+        
+        let cancel = UIAlertAction(title: String.cancelString(), style: UIAlertActionStyle.Cancel, handler: nil)
+        alert.addAction(cancel)
+
         return alert
     }
 }
