@@ -17,6 +17,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var descriptionControl: NTHBasicTitleDetailView!
     @IBOutlet weak var locationReminderControl: NTHDoubleTitleDetailView!
     @IBOutlet weak var dateReminderControl: NTHDoubleTitleDetailView!
+    @IBOutlet weak var statusView: NTHTaskStatusView!
     
     var task: Task!
     
@@ -30,6 +31,10 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     private func setup() {
+        
+        /// Status view
+        self.statusView.state = self.task.state
+        
         /// Title
         self.titleControl.setTitleText(String.titleHeaderString())
         self.titleControl.setDetailText(self.task.title)

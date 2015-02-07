@@ -842,12 +842,21 @@
                                             <constraint firstItem="hry-cs-Fr3" firstAttribute="top" secondItem="fvG-tw-TLW" secondAttribute="bottom" constant="16" id="zkR-BI-Ydd"/>
                                         </constraints>
                                     </view>
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fgx-dq-teD" customClass="NTHTaskStatusView" customModule="Nothing" customModuleProvider="target">
+                                        <rect key="frame" x="280" y="26" width="10" height="10"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="08G-n7-C3s"/>
+                                            <constraint firstAttribute="width" constant="10" id="oTf-ZN-sEc"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="kC6-Sd-7MS" firstAttribute="leading" secondItem="pfw-IO-0B6" secondAttribute="leading" id="5GS-5v-3cD"/>
                                     <constraint firstAttribute="trailing" secondItem="kC6-Sd-7MS" secondAttribute="trailing" id="Bh8-Du-x0M"/>
                                     <constraint firstItem="kC6-Sd-7MS" firstAttribute="top" secondItem="pfw-IO-0B6" secondAttribute="top" id="JcA-n3-tjm"/>
+                                    <constraint firstItem="Fgx-dq-teD" firstAttribute="top" secondItem="pfw-IO-0B6" secondAttribute="top" constant="26" id="MLl-DV-YgN"/>
                                     <constraint firstAttribute="bottom" secondItem="kC6-Sd-7MS" secondAttribute="bottom" id="R1p-0g-F0h"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fgx-dq-teD" secondAttribute="trailing" constant="30" id="alb-XD-09r"/>
                                     <constraint firstAttribute="width" secondItem="kC6-Sd-7MS" secondAttribute="width" id="s39-ru-eRj"/>
                                 </constraints>
                             </scrollView>
@@ -870,6 +879,7 @@
                         <outlet property="dateReminderControl" destination="fvG-tw-TLW" id="Qcg-Ne-GGv"/>
                         <outlet property="descriptionControl" destination="kKY-6q-pDj" id="Qkd-Sj-wOp"/>
                         <outlet property="locationReminderControl" destination="GDz-Kt-nfk" id="ZAV-jG-j9B"/>
+                        <outlet property="statusView" destination="Fgx-dq-teD" id="fdi-hv-mJH"/>
                         <outlet property="titleControl" destination="w6O-Rq-W5k" id="ivl-2S-Ejs"/>
                     </connections>
                 </viewController>
