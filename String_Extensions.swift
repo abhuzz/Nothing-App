@@ -63,6 +63,10 @@ extension String {
         return NSLocalizedString("+ Add a new contact", comment: "")
     }
     
+    static func noConnectionsString() -> String {
+        return NSLocalizedString("No connections", comment: "")
+    }
+    
     /// Repeat Intervals
     static func noneRepeatInterval() -> String {
         return NSLocalizedString("None", comment: "")

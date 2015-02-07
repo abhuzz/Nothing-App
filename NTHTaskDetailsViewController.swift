@@ -72,6 +72,10 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         /// Connections
         let connectionCellNib = UINib(nibName: "NTHConnectionCell", bundle: nil)
         self.connectionTableView.registerNib(connectionCellNib, forCellReuseIdentifier: "NTHConnectionCell")
+        
+        let centerLabelNib = UINib(nibName: "NTHCenterLabelCell", bundle: nil)
+        self.connectionTableView.registerNib(centerLabelNib, forCellReuseIdentifier: "NTHCenterLabelCell")
+
         self.connectionTableView.tableFooterView = UIView()
         
         self.refreshConnectionsTableView()
@@ -87,20 +91,26 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.numberOfItemsInConnectionTableView()
+        return max(self.numberOfItemsInConnectionTableView(), 1)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NTHConnectionCell") as NTHConnectionCell
-        let connection: Connection = self.task.allConnections.allObjects[indexPath.row] as Connection
-        if connection is Contact {
-            cell.label.text = (connection as Contact).name
+        if self.numberOfItemsInConnectionTableView() > 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHConnectionCell") as NTHConnectionCell
+            let connection: Connection = self.task.allConnections.allObjects[indexPath.row] as Connection
+            if connection is Contact {
+                cell.label.text = (connection as Contact).name
+            } else {
+                cell.label.text = (connection as Place).customName
+            }
+            
+            cell.hideShowButton(true, animated: false)
+            return cell
         } else {
-            cell.label.text = (connection as Place).customName
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as NTHCenterLabelCell
+            cell.label.text = String.noConnectionsString()
+            return cell
         }
-        
-        cell.hideShowButton(true, animated: false)
-        return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -113,7 +123,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     
     private func refreshConnectionsTableView() {
         /// Update table view height
-        let height = CGFloat(self.numberOfItemsInConnectionTableView()) * self.heightOfConnectionTableViewCell()
+        let height = CGFloat(max(1, self.numberOfItemsInConnectionTableView())) * self.heightOfConnectionTableViewCell()
         self.connectionTableViewHeight.constant = height
         
         UIView.animateWithDuration(NSTimeInterval(0.3), animations: {
