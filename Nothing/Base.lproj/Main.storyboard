@@ -79,7 +79,7 @@
         <!--Create Task-->
         <scene sceneID="Mm8-y9-5lx">
             <objects>
-                <viewController id="hpC-1m-0Ku" customClass="NTHCreateTaskController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hpC-1m-0Ku" customClass="NTHCreateOrEditTaskViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m8N-VS-2yC"/>
                         <viewControllerLayoutGuide type="bottom" id="z2h-Hf-UpU"/>
@@ -192,9 +192,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
+                        <outlet property="actionButton" destination="bO0-V0-42S" id="rtt-0A-cle"/>
                         <outlet property="connectionTableView" destination="ZJK-e2-466" id="NeE-4V-zzL"/>
                         <outlet property="connectionTableViewHeight" destination="cCx-aH-6h7" id="d7t-K6-Mk4"/>
-                        <outlet property="createButton" destination="bO0-V0-42S" id="rtt-0A-cle"/>
                         <outlet property="dateReminderControl" destination="q6F-Z0-S4b" id="c8T-HM-OHz"/>
                         <outlet property="descriptionControl" destination="2hq-hD-JNk" id="3ZF-nV-xy9"/>
                         <outlet property="locationReminderControl" destination="KUi-RC-pIf" id="Rej-Ap-P9O"/>

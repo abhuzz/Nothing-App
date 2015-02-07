@@ -87,9 +87,9 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
             let vc = segue.destinationViewController as NTHTaskDetailsViewController
             vc.task = sender as Task
         } else if segue.identifier! == SegueIdentifier.CreateTask.rawValue {
-            let vc = segue.destinationViewController as NTHCreateTaskController
+            let vc = segue.destinationViewController as NTHCreateOrEditTaskViewController
             vc.configure(self.quickInsertView.text)
-            vc.createdTaskBlock = {
+            vc.completionBlock = {
                 self.tasks = ModelController().allTasks()
                 self.tableView.reloadData()
             }

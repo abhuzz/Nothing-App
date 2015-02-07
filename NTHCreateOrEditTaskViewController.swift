@@ -1,5 +1,5 @@
 //
-//  NTHCreateTaskController.swift
+//  NTHCreateOrEditTaskViewController.swift
 //  Nothing
 //
 //  Created by Tomasz Szulc on 25/01/15.
@@ -8,25 +8,10 @@
 
 import UIKit
 
-class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHConnectionCellDelegate {
+class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHConnectionCellDelegate {
 
-    class TaskInfo {
-        class LocationReminder {
-            var place: Place?
-            var distance: Float!
-            var onArrive: Bool!
-        }
-        
-        class DateReminder {
-            var fireDate: NSDate?
-            var repeatInterval: NSCalendarUnit!
-        }
-        
-        var title = ""
-        var description = ""
-        var dateReminder = DateReminder()
-        var locationReminder = LocationReminder()
-        var connections = [Connection]()
+    enum Mode {
+        case Create, Edit
     }
     
     enum SegueIdentifier: String {
@@ -44,11 +29,12 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var descriptionControl: NTHBasicTitleDetailView!
     @IBOutlet weak var locationReminderControl: NTHDoubleTitleDetailView!
     @IBOutlet weak var dateReminderControl: NTHDoubleTitleDetailView!
-    @IBOutlet weak var createButton: UIBarButtonItem!
+    @IBOutlet weak var actionButton: UIBarButtonItem!
 
-    private var taskInfo = TaskInfo()
+    var taskInfo = NTHTaskInfo()
     
-    var createdTaskBlock: (() -> Void)?
+    var completionBlock: (() -> Void)?
+    var mode: Mode = .Create
     
     func configure(title: String) {
         self.taskInfo.title = title
@@ -57,7 +43,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
-        self.createButton.enabled = false
+        self.actionButton.enabled = false
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -128,11 +114,13 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         self.connectionTableView.registerNib(centerLabelNib, forCellReuseIdentifier: "NTHCenterLabelCell")
 
         self.connectionTableView.tableFooterView = UIView()
+        
+        self.actionButton.title = self.mode == .Create ? "Create" : "Done"
     }
     
     private func validateCreateButton() {
         let isTitle = countElements(self.taskInfo.title) > 0
-        self.createButton.enabled = isTitle
+        self.actionButton.enabled = isTitle
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -162,20 +150,20 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
                 
                 self.taskInfo.locationReminder.place = place
                 self.locationReminderControl.setFirstDetailText(place.customName)
-                self.updateSecondDetailTextInLocationReminderControl(self.taskInfo.locationReminder.distance!, onArrive: self.taskInfo.locationReminder.onArrive!)
+                self.updateSecondDetailTextInLocationReminderControl(self.taskInfo.locationReminder.distance, onArrive: self.taskInfo.locationReminder.onArrive)
                 self.locationReminderControl.secondDetailLabel.enabled = true
                 self.validateCreateButton()
             }
         } else if (segue.identifier == SegueIdentifier.Region.rawValue) {
             let regionVC = segue.destinationViewController as NTHRegionViewController
             if self.taskInfo.locationReminder.place != nil {
-                regionVC.configure(self.taskInfo.locationReminder.distance!, onArrive: self.taskInfo.locationReminder.onArrive!)
+                regionVC.configure(self.taskInfo.locationReminder.distance, onArrive: self.taskInfo.locationReminder.onArrive)
             }
             
             regionVC.successBlock = { [unowned self] (distance: Float, onArrive: Bool) in
                 self.taskInfo.locationReminder.distance = distance
                 self.taskInfo.locationReminder.onArrive = onArrive
-                self.updateSecondDetailTextInLocationReminderControl(self.taskInfo.locationReminder.distance!, onArrive: self.taskInfo.locationReminder.onArrive!)
+                self.updateSecondDetailTextInLocationReminderControl(self.taskInfo.locationReminder.distance, onArrive: self.taskInfo.locationReminder.onArrive)
             }
         } else if (segue.identifier == SegueIdentifier.Date.rawValue) {
             let dateVC = segue.destinationViewController as NTHDatePickerViewController
@@ -228,7 +216,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         CDHelper.mainContext.save(nil)
-        self.createdTaskBlock?()
+        self.completionBlock?()
         
         
         self.navigationController?.popViewControllerAnimated(true)
