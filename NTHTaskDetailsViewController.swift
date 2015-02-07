@@ -169,41 +169,41 @@ extension UIAlertController {
     class func actionsForContactActionSheet(contact: Contact) -> UIAlertController {
         let alert = UIAlertController(title: contact.name, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         
+        /// Call
         if let phone = contact.phone {
-            let action = UIAlertAction(title: String.callString(), style: UIAlertActionStyle.Default, handler: {(action) -> Void in
+            alert.addAction(UIAlertAction.normalAction(String.callString(), handler: { _ in
                 UIApplication.sharedApplication().openURL(NSURL(string: "tel:"+phone)!)
                 return
-            })
-            alert.addAction(action)
+            }))
         }
         
+        /// Send Email
         if let email = contact.email {
-            let action = UIAlertAction(title: String.sendEmailString(), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            alert.addAction(UIAlertAction.normalAction(String.sendEmailString(), handler: { _ in
                 UIApplication.sharedApplication().openURL(NSURL(string: "mailto:"+email)!)
                 return
-            })
-            alert.addAction(action)
+            }))
         }
         
-        let cancel = UIAlertAction(title: String.cancelString(), style: UIAlertActionStyle.Cancel, handler: nil)
-        alert.addAction(cancel)
+        /// Cancel
+        alert.addAction(UIAlertAction.cancelAction(String.cancelString(), handler: nil))
         
         return alert
     }
     
     class func actionsForPlaceActionSheet(place: Place) -> UIAlertController {
         let alert = UIAlertController(title: place.customName, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
-        let showOnMap = UIAlertAction(title: String.showOnMapString(), style: UIAlertActionStyle.Default) { (action) -> Void in
+
+        /// Show on map
+        alert.addAction(UIAlertAction.normalAction(String.showOnMapString(), handler: { _ in
             let placemark = MKPlacemark(coordinate: place.coordinate, addressDictionary: nil)
             let mapItem = MKMapItem(placemark: placemark)
             let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
             mapItem.openInMapsWithLaunchOptions(options)
-        }
-        alert.addAction(showOnMap)
+        }))
         
-        let cancel = UIAlertAction(title: String.cancelString(), style: UIAlertActionStyle.Cancel, handler: nil)
-        alert.addAction(cancel)
+        /// Cancel
+        alert.addAction(UIAlertAction.cancelAction(String.cancelString(), handler: nil))
         
         return alert
     }
@@ -211,26 +211,18 @@ extension UIAlertController {
     class func actionsForTaskInDetailViewActionSheet(task: Task, presentEditingViewController: () -> (), changeState: () -> ()) -> UIAlertController {
         let alert = UIAlertController(title: task.title, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         
-        let edit = UIAlertAction(title: String.editString(), style: .Default) { (action) -> Void in
+        /// Edit
+        alert.addAction(UIAlertAction.normalAction(String.editString(), handler: { _ in
             presentEditingViewController()
-        }
-        alert.addAction(edit)
+        }))
         
-        /// actions
-        if task.state == .Active {
-            let markDone = UIAlertAction(title: String.markAsDoneString(), style: UIAlertActionStyle.Default) { (action) -> Void in
-                changeState()
-            }
-            alert.addAction(markDone)
-        } else {
-            let markActive = UIAlertAction(title: String.markAsActiveString(), style: UIAlertActionStyle.Default) { (action) -> Void in
-                changeState()
-            }
-            alert.addAction(markActive)
-        }
-        
-        let cancel = UIAlertAction(title: String.cancelString(), style: UIAlertActionStyle.Cancel, handler: nil)
-        alert.addAction(cancel)
+        /// Done or Active
+        alert.addAction(UIAlertAction.normalAction((task.state == .Active) ? String.markAsDoneString() : String.markAsActiveString(), handler: { _ in
+            changeState()
+        }))
+
+        /// Cancel
+        alert.addAction(UIAlertAction.cancelAction(String.cancelString(), handler: nil))
 
         return alert
     }
