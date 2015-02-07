@@ -22,15 +22,58 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let connectionCellNib = UINib(nibName: "NTHConnectionCell", bundle: nil)
-        self.connectionTableView.registerNib(connectionCellNib, forCellReuseIdentifier: "NTHConnectionCell")
-
-        self.connectionTableView.tableFooterView = UIView()
+        self.setup()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    private func setup() {
+        /// Title
+        self.titleControl.setTitleText(String.titleHeaderString())
+        self.titleControl.setDetailText(self.task.title)
+
+        /// Description
+        self.descriptionControl.setTitleText(String.descriptionHeaderString())
+        self.descriptionControl.setDetailPlaceholderText(String.noneString())
+        self.descriptionControl.setDetailText(self.task.longDescription ?? "")
+
+        /// Location reminder
+        self.locationReminderControl.setFirstTitleText(String.remindMeAtLocationHeaderString())
+        self.locationReminderControl.setFirstPlaceholder(String.noneString())
+        
+        self.locationReminderControl.setSecondTitleText(String.regionHeaderString())
+        self.locationReminderControl.setSecondPlaceholder(String.noneString())
+        
+        if let reminder = self.task.locationReminder {
+            self.locationReminderControl.setFirstDetailText(reminder.place.customName)
+            let arriveOrLeave = reminder.onArrive ? String.arriveString() : String.leaveString()
+            self.locationReminderControl.setSecondDetailText(arriveOrLeave + ", " + reminder.distance.distanceDescription())
+        }
+        self.locationReminderControl.hideButton()
+        
+        /// Date reminder
+        self.dateReminderControl.setFirstTitleText(String.remindMeOnDateHeaderString())
+        self.dateReminderControl.setFirstPlaceholder(String.noneString())
+        self.dateReminderControl.hideButton()
+        
+        self.dateReminderControl.setSecondTitleText(String.repeatHeaderString())
+        self.dateReminderControl.setSecondPlaceholder(String.noneString())
+        
+        if let reminder = self.task.dateReminder {
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "dd/MM/YYYY HH:mm"
+            self.dateReminderControl.setFirstDetailText(formatter.stringFromDate(reminder.fireDate))
+            self.dateReminderControl.setSecondDetailText(RepeatInterval.descriptionForInterval(interval: reminder.repeatInterval))
+        }
+        self.dateReminderControl.hideButton()
+        
+        /// Connections
+        let connectionCellNib = UINib(nibName: "NTHConnectionCell", bundle: nil)
+        self.connectionTableView.registerNib(connectionCellNib, forCellReuseIdentifier: "NTHConnectionCell")
+        self.connectionTableView.tableFooterView = UIView()
+
         self.refreshConnectionsTableView()
     }
     

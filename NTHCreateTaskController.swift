@@ -66,12 +66,8 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func setup() {
-        let showTextEditor = {(label: LabelContainer) -> () in
-            self.performSegueWithIdentifier(SegueIdentifier.TextEditor.rawValue, sender: label)
-        }
-        
         /// Title
-        self.titleControl.setTitleText(NSLocalizedString("Title", comment: ""))
+        self.titleControl.setTitleText(String.titleHeaderString())
         self.titleControl.setDetailPlaceholderText(NSLocalizedString("What's in your mind?", comment: ""))
         if countElements(self.taskInfo.title) > 0 {
             self.titleControl.setDetailText(self.taskInfo.title)
@@ -82,15 +78,15 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         /// Description
-        self.descriptionControl.setTitleText(NSLocalizedString("Description", comment: ""))
+        self.descriptionControl.setTitleText(String.descriptionHeaderString())
         self.descriptionControl.setDetailPlaceholderText(NSLocalizedString("Describe this task", comment: ""))
         self.descriptionControl.setOnTap { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.TextEditor.rawValue, sender: self.descriptionControl)
         }
         
         /// Location reminder
-        self.locationReminderControl.setFirstTitleText(NSLocalizedString("Remind me at location", comment: ""))
-        self.locationReminderControl.setFirstPlaceholder(NSLocalizedString("None", comment: ""))
+        self.locationReminderControl.setFirstTitleText(String.remindMeAtLocationHeaderString())
+        self.locationReminderControl.setFirstPlaceholder(String.noneString())
         self.locationReminderControl.hideButton()
         self.locationReminderControl.onClearTappedBlock = {
             self.taskInfo.locationReminder.place = nil
@@ -101,23 +97,23 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             self.performSegueWithIdentifier(SegueIdentifier.Places.rawValue, sender: self.locationReminderControl)
         }
         
-        self.locationReminderControl.setSecondTitleText(NSLocalizedString("Region", comment: ""))
-        self.locationReminderControl.setSecondPlaceholder(NSLocalizedString("None", comment: ""))
+        self.locationReminderControl.setSecondTitleText(String.regionHeaderString())
+        self.locationReminderControl.setSecondPlaceholder(String.noneString())
         self.locationReminderControl.secondDetailLabel.enabled = false
         self.locationReminderControl.setSecondOnTap { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.Region.rawValue, sender: self.locationReminderControl)
         }
         
         /// Date reminder
-        self.dateReminderControl.setFirstTitleText(NSLocalizedString("Remind me on date", comment: ""))
-        self.dateReminderControl.setFirstPlaceholder(NSLocalizedString("None", comment: ""))
+        self.dateReminderControl.setFirstTitleText(String.remindMeOnDateHeaderString())
+        self.dateReminderControl.setFirstPlaceholder(String.noneString())
         self.dateReminderControl.hideButton()
         self.dateReminderControl.setFirstOnTap { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.Date.rawValue, sender: nil)
         }
         
-        self.dateReminderControl.setSecondTitleText(NSLocalizedString("Repeat", comment: ""))
-        self.dateReminderControl.setSecondPlaceholder(NSLocalizedString("None", comment: ""))
+        self.dateReminderControl.setSecondTitleText(String.repeatHeaderString())
+        self.dateReminderControl.setSecondPlaceholder(String.noneString())
         self.dateReminderControl.secondDetailLabel.enabled = false
         self.dateReminderControl.setSecondOnTap { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.RepeatInterval.rawValue, sender: nil)
@@ -194,7 +190,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             }
         } else if (segue.identifier == SegueIdentifier.RepeatInterval.rawValue) {
             let regionVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectRepeatIntervalViewController
-            regionVC.completionBlock = { [unowned self] unit, description in
+                regionVC.completionBlock = { [unowned self] unit, description in
                 self.dateReminderControl.setSecondDetailText(description)
                 self.taskInfo.dateReminder.repeatInterval = unit
             }
@@ -202,7 +198,7 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func updateSecondDetailTextInLocationReminderControl(distance: Float, onArrive: Bool) {
-        self.locationReminderControl.setSecondDetailText((onArrive ? "Arrive" : "Leave") + ", " + distance.distanceDescription())
+        self.locationReminderControl.setSecondDetailText((onArrive ? String.arriveString() : String.leaveString()) + ", " + distance.distanceDescription())
     }
     
     @IBAction func createPressed(sender: AnyObject) {

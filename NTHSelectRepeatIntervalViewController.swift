@@ -23,12 +23,14 @@ class NTHSelectRepeatIntervalViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.options.append(Option(desc: NSLocalizedString("None", comment: ""), unit: NSCalendarUnit.allZeros))
-        self.options.append(Option(desc: NSLocalizedString("Once a day", comment: ""), unit: NSCalendarUnit.CalendarUnitDay))
-        self.options.append(Option(desc: NSLocalizedString("Once a week", comment: ""), unit: NSCalendarUnit.CalendarUnitWeekOfYear))
-        self.options.append(Option(desc: NSLocalizedString("Once a month", comment: ""), unit: NSCalendarUnit.CalendarUnitMonth))
-        self.options.append(Option(desc: NSLocalizedString("Once a year", comment: ""), unit: NSCalendarUnit.CalendarUnitYear))
+        self.prepareOptions()
+    }
+    
+    private func prepareOptions() {
+        let intervals = RepeatInterval.allIntervals()
+        for interval in intervals {
+            self.options.append(Option(desc: RepeatInterval.descriptionForInterval(interval: interval), unit: interval))
+        }
     }
     
     @IBAction func closePressed() {
