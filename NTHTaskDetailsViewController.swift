@@ -124,6 +124,16 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        if self.numberOfItemsInConnectionTableView() > 0 {
+            let connection = self.task.allConnections.allObjects[indexPath.row] as Connection
+            if connection is Contact {
+                let alert = UIAlertController.actionsForContactActionSheet(connection as Contact)
+                self.presentViewController(alert, animated: true, completion: nil)
+            } else if connection is Place {
+                
+            }
+        }
     }
     
     private func refreshConnectionsTableView() {
@@ -137,5 +147,31 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             return /// explicit return
         })
     }
+}
 
+extension UIAlertController {
+    class func actionsForContactActionSheet(contact: Contact) -> UIAlertController {
+        let alert = UIAlertController(title: contact.name, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        if let phone = contact.phone {
+            let action = UIAlertAction(title: String.callString(), style: UIAlertActionStyle.Default, handler: {(action) -> Void in
+                UIApplication.sharedApplication().openURL(NSURL(string: "tel:"+phone)!)
+                return
+            })
+            alert.addAction(action)
+        }
+        
+        if let email = contact.email {
+            let action = UIAlertAction(title: String.sendEmailString(), style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                UIApplication.sharedApplication().openURL(NSURL(string: "mailto:"+email)!)
+                return
+            })
+            alert.addAction(action)
+        }
+        
+        let cancel = UIAlertAction(title: String.cancelString(), style: UIAlertActionStyle.Cancel, handler: nil)
+        alert.addAction(cancel)
+        
+        return alert
+    }
 }

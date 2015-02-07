@@ -87,4 +87,17 @@ extension String {
     static func onceAYearRepeatInterval() -> String {
         return NSLocalizedString("Once a year", comment: "")
     }
+    
+    
+    static func cancelString() -> String {
+        return NSLocalizedString("Cancel", comment: "")
+    }
+    
+    static func callString() -> String {
+        return NSLocalizedString("Call", comment: "")
+    }
+    
+    static func sendEmailString() -> String {
+        return NSLocalizedString("Send Email", comment: "")
+    }
 }
