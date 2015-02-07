@@ -51,6 +51,18 @@ extension String {
         return NSLocalizedString("Leave", comment: "")
     }
     
+    static func addANewConnectionString() -> String {
+        return NSLocalizedString("+ Add a new connection", comment: "")
+    }
+    
+    static func addANewPlaceString() -> String {
+        return NSLocalizedString("+ Add a new place", comment: "")
+    }
+    
+    static func addANewContactString() -> String {
+        return NSLocalizedString("+ Add a new contact", comment: "")
+    }
+    
     /// Repeat Intervals
     static func noneRepeatInterval() -> String {
         return NSLocalizedString("None", comment: "")

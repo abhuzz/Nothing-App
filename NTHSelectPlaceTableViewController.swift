@@ -23,6 +23,9 @@ class NTHSelectPlaceTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
+        
+        let centerLabelNib = UINib(nibName: "NTHCenterLabelCell", bundle: nil)
+        self.tableView.registerNib(centerLabelNib, forCellReuseIdentifier: "NTHCenterLabelCell")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -49,7 +52,9 @@ class NTHSelectPlaceTableViewController: UITableViewController {
             cell.label.text = self.places[indexPath.row].customName
             return cell
         } else {
-            return tableView.dequeueReusableCellWithIdentifier("AddNewPlaceCell") as AddNewPlaceCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as NTHCenterLabelCell
+            cell.label.text = String.addANewPlaceString()
+            return cell
         }
     }
     

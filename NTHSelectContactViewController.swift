@@ -22,6 +22,9 @@ class NTHSelectContactViewController: UITableViewController, ABPeoplePickerNavig
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
+        
+        let centerLabelNib = UINib(nibName: "NTHCenterLabelCell", bundle: nil)
+        self.tableView.registerNib(centerLabelNib, forCellReuseIdentifier: "NTHCenterLabelCell")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,7 +51,9 @@ class NTHSelectContactViewController: UITableViewController, ABPeoplePickerNavig
             cell.label.text = self.contacts[indexPath.row].name
             return cell
         } else {
-            return tableView.dequeueReusableCellWithIdentifier("NTHAddNewContactCell") as NTHAddNewContactCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as NTHCenterLabelCell
+            cell.label.text = String.addANewContactString()
+            return cell
         }
     }
     

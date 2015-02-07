@@ -32,7 +32,6 @@
 		1279A4A81A769CBE00A03FF4 /* LabelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279A4A71A769CBE00A03FF4 /* LabelContainer.swift */; };
 		1279A4AC1A76A2A200A03FF4 /* NTHSelectPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279A4AB1A76A2A200A03FF4 /* NTHSelectPlaceTableViewController.swift */; };
 		1279A4AF1A76A36300A03FF4 /* PlaceNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279A4AE1A76A36300A03FF4 /* PlaceNameCell.swift */; };
-		1279A4B11A76A44800A03FF4 /* AddNewPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279A4B01A76A44800A03FF4 /* AddNewPlaceCell.swift */; };
 		1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5D919FED4E700A7828C /* AppDelegate.swift */; };
 		1279B5DC19FED4E700A7828C /* NTHInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5DB19FED4E700A7828C /* NTHInboxViewController.swift */; };
 		1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1279B5DD19FED4E700A7828C /* Main.storyboard */; };
@@ -60,6 +59,8 @@
 		129659D11A7EC9AB000696F9 /* NTHDoubleTitleDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 129659D01A7EC9AB000696F9 /* NTHDoubleTitleDetailView.xib */; };
 		129659D31A7ECC66000696F9 /* NTHDoubleTitleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129659D21A7ECC66000696F9 /* NTHDoubleTitleDetailView.swift */; };
 		12981F0B1A86223000CDFA1D /* RepeatInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12981F0A1A86223000CDFA1D /* RepeatInterval.swift */; };
+		12981F0D1A8627D300CDFA1D /* NTHCenterLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12981F0C1A8627D300CDFA1D /* NTHCenterLabelCell.xib */; };
+		12981F0F1A86280800CDFA1D /* NTHCenterLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12981F0E1A86280800CDFA1D /* NTHCenterLabelCell.swift */; };
 		129A555A1A1E69F100ED249D /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 129A55591A1E69F100ED249D /* TextViewCell.xib */; };
 		129A555C1A1E6A0800ED249D /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129A555B1A1E6A0800ED249D /* TextViewCell.swift */; };
 		12B6EF1D1A40B5E1006E8A10 /* NTHTaskDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6EF1C1A40B5E1006E8A10 /* NTHTaskDisplayable.swift */; };
@@ -71,7 +72,6 @@
 		12B6EF2D1A41FC70006E8A10 /* NTHConnectionsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6EF2C1A41FC70006E8A10 /* NTHConnectionsCellView.swift */; };
 		12B6EF311A41FF1F006E8A10 /* NTHConnectionsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B6EF301A41FF1F006E8A10 /* NTHConnectionsCellView.xib */; };
 		12BB652D1A7E26DC00CC4448 /* NTHSelectContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB652C1A7E26DC00CC4448 /* NTHSelectContactViewController.swift */; };
-		12BB652F1A7E279400CC4448 /* NTHAddNewContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB652E1A7E279400CC4448 /* NTHAddNewContactCell.swift */; };
 		12BB65311A7E27DA00CC4448 /* NTHContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB65301A7E27DA00CC4448 /* NTHContactCell.swift */; };
 		12BB65351A7E32FF00CC4448 /* NTHAddressBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB65341A7E32FF00CC4448 /* NTHAddressBookCell.swift */; };
 		12BB65381A7E59CF00CC4448 /* NTHBasicTitleDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12BB65371A7E59CF00CC4448 /* NTHBasicTitleDetailView.xib */; };
@@ -82,7 +82,6 @@
 		12CEF17F1A083832004DE156 /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEF17E1A083832004DE156 /* UIView_Extension.swift */; };
 		12D4FF061A7D11AA00F04858 /* NTHSelectRepeatIntervalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4FF051A7D11AA00F04858 /* NTHSelectRepeatIntervalViewController.swift */; };
 		12D4FF081A7D120100F04858 /* NTHSelectRepeatIntervalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4FF071A7D120100F04858 /* NTHSelectRepeatIntervalCell.swift */; };
-		12D4FF0A1A7D1F6800F04858 /* NTHAddConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4FF091A7D1F6800F04858 /* NTHAddConnectionCell.swift */; };
 		12D4FF0C1A7D1FBF00F04858 /* NTHConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4FF0B1A7D1FBF00F04858 /* NTHConnectionCell.swift */; };
 		12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215991A03A9840038AD45 /* ThumbnailCache.swift */; };
 		12ED791C1A3F42E80052893D /* NTHSimpleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED791B1A3F42E80052893D /* NTHSimpleCellView.swift */; };
@@ -131,7 +130,6 @@
 		1279A4A71A769CBE00A03FF4 /* LabelContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelContainer.swift; sourceTree = "<group>"; };
 		1279A4AB1A76A2A200A03FF4 /* NTHSelectPlaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectPlaceTableViewController.swift; sourceTree = "<group>"; };
 		1279A4AE1A76A36300A03FF4 /* PlaceNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceNameCell.swift; sourceTree = "<group>"; };
-		1279A4B01A76A44800A03FF4 /* AddNewPlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPlaceCell.swift; sourceTree = "<group>"; };
 		1279B5D419FED4E700A7828C /* Nothing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nothing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1279B5D819FED4E700A7828C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1279B5D919FED4E700A7828C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Nothing/AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +161,8 @@
 		129659D01A7EC9AB000696F9 /* NTHDoubleTitleDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHDoubleTitleDetailView.xib; sourceTree = "<group>"; };
 		129659D21A7ECC66000696F9 /* NTHDoubleTitleDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHDoubleTitleDetailView.swift; sourceTree = "<group>"; };
 		12981F0A1A86223000CDFA1D /* RepeatInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatInterval.swift; sourceTree = "<group>"; };
+		12981F0C1A8627D300CDFA1D /* NTHCenterLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHCenterLabelCell.xib; sourceTree = "<group>"; };
+		12981F0E1A86280800CDFA1D /* NTHCenterLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCenterLabelCell.swift; sourceTree = "<group>"; };
 		129A55591A1E69F100ED249D /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
 		129A555B1A1E6A0800ED249D /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		12B6EF1C1A40B5E1006E8A10 /* NTHTaskDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskDisplayable.swift; sourceTree = "<group>"; };
@@ -174,7 +174,6 @@
 		12B6EF2C1A41FC70006E8A10 /* NTHConnectionsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHConnectionsCellView.swift; sourceTree = "<group>"; };
 		12B6EF301A41FF1F006E8A10 /* NTHConnectionsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHConnectionsCellView.xib; sourceTree = "<group>"; };
 		12BB652C1A7E26DC00CC4448 /* NTHSelectContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectContactViewController.swift; sourceTree = "<group>"; };
-		12BB652E1A7E279400CC4448 /* NTHAddNewContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHAddNewContactCell.swift; sourceTree = "<group>"; };
 		12BB65301A7E27DA00CC4448 /* NTHContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHContactCell.swift; sourceTree = "<group>"; };
 		12BB65341A7E32FF00CC4448 /* NTHAddressBookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHAddressBookCell.swift; sourceTree = "<group>"; };
 		12BB65371A7E59CF00CC4448 /* NTHBasicTitleDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHBasicTitleDetailView.xib; sourceTree = "<group>"; };
@@ -185,7 +184,6 @@
 		12CEF17E1A083832004DE156 /* UIView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
 		12D4FF051A7D11AA00F04858 /* NTHSelectRepeatIntervalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectRepeatIntervalViewController.swift; sourceTree = "<group>"; };
 		12D4FF071A7D120100F04858 /* NTHSelectRepeatIntervalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectRepeatIntervalCell.swift; sourceTree = "<group>"; };
-		12D4FF091A7D1F6800F04858 /* NTHAddConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHAddConnectionCell.swift; sourceTree = "<group>"; };
 		12D4FF0B1A7D1FBF00F04858 /* NTHConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHConnectionCell.swift; sourceTree = "<group>"; };
 		12E215991A03A9840038AD45 /* ThumbnailCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCache.swift; sourceTree = "<group>"; };
 		12ED791B1A3F42E80052893D /* NTHSimpleCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSimpleCellView.swift; sourceTree = "<group>"; };
@@ -309,14 +307,12 @@
 				12834C131A759E4F005C952C /* Label.swift */,
 				1279A4A71A769CBE00A03FF4 /* LabelContainer.swift */,
 				1279A4AE1A76A36300A03FF4 /* PlaceNameCell.swift */,
-				1279A4B01A76A44800A03FF4 /* AddNewPlaceCell.swift */,
 				1260ABFF1A7819BB0015CA4E /* NTHAnnotation.swift */,
 				12D4FF071A7D120100F04858 /* NTHSelectRepeatIntervalCell.swift */,
-				12D4FF091A7D1F6800F04858 /* NTHAddConnectionCell.swift */,
 				12D4FF0B1A7D1FBF00F04858 /* NTHConnectionCell.swift */,
-				12BB652E1A7E279400CC4448 /* NTHAddNewContactCell.swift */,
 				12BB65301A7E27DA00CC4448 /* NTHContactCell.swift */,
 				12BB65341A7E32FF00CC4448 /* NTHAddressBookCell.swift */,
+				12981F0E1A86280800CDFA1D /* NTHCenterLabelCell.swift */,
 				12BB653B1A7E5A0400CC4448 /* Controls */,
 			);
 			name = Components;
@@ -500,6 +496,7 @@
 				12BB65371A7E59CF00CC4448 /* NTHBasicTitleDetailView.xib */,
 				129659D01A7EC9AB000696F9 /* NTHDoubleTitleDetailView.xib */,
 				124E5EB71A841F9E00CB3076 /* NTHConnectionCell.xib */,
+				12981F0C1A8627D300CDFA1D /* NTHCenterLabelCell.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -621,6 +618,7 @@
 				12FE32611A10D76900FAB243 /* QuickInsertView.xib in Resources */,
 				124E5EB81A841F9E00CB3076 /* NTHConnectionCell.xib in Resources */,
 				12B6EF311A41FF1F006E8A10 /* NTHConnectionsCellView.xib in Resources */,
+				12981F0D1A8627D300CDFA1D /* NTHCenterLabelCell.xib in Resources */,
 				1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */,
 				12ED791E1A3F42FE0052893D /* NTHSimpleCellView.xib in Resources */,
 				12B6EF2B1A40EBB1006E8A10 /* NTHStateCellView.xib in Resources */,
@@ -659,7 +657,6 @@
 				124A8F161A4F017800BE5EAB /* UIView+Nothing.swift in Sources */,
 				1279B61519FEDBD200A7828C /* FileCache.swift in Sources */,
 				12BB65351A7E32FF00CC4448 /* NTHAddressBookCell.swift in Sources */,
-				12D4FF0A1A7D1F6800F04858 /* NTHAddConnectionCell.swift in Sources */,
 				12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */,
 				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
 				1279B60B19FED64D00A7828C /* Connection.swift in Sources */,
@@ -683,7 +680,6 @@
 				124E5EB61A83F5FF00CB3076 /* NTHTaskDetailsViewController.swift in Sources */,
 				123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */,
 				12059DD11A350476007F5E7C /* NTHInboxCell.swift in Sources */,
-				12BB652F1A7E279400CC4448 /* NTHAddNewContactCell.swift in Sources */,
 				12059DCA1A34FDA2007F5E7C /* UIColor+Nothing.swift in Sources */,
 				12834C141A759E4F005C952C /* Label.swift in Sources */,
 				12EDE7871A1FBD1E0020D549 /* CreateEditViewController.swift in Sources */,
@@ -700,7 +696,6 @@
 				1279B60A19FED64D00A7828C /* NSManagedObject_Extension.swift in Sources */,
 				12B6EF1D1A40B5E1006E8A10 /* NTHTaskDisplayable.swift in Sources */,
 				12FE325F1A10D75F00FAB243 /* QuickInsertView.swift in Sources */,
-				1279A4B11A76A44800A03FF4 /* AddNewPlaceCell.swift in Sources */,
 				1279B61219FED64D00A7828C /* FileManager.swift in Sources */,
 				12D4FF061A7D11AA00F04858 /* NTHSelectRepeatIntervalViewController.swift in Sources */,
 				12CC222B1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift in Sources */,
@@ -710,6 +705,7 @@
 				12ED79221A3F59E10052893D /* NTHTaskDetailViewController.swift in Sources */,
 				12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */,
 				124ADC9B1A19493C00750816 /* DetailModelView.swift in Sources */,
+				12981F0F1A86280800CDFA1D /* NTHCenterLabelCell.swift in Sources */,
 				1260ABFE1A7819020015CA4E /* NTHCreatePlaceViewController.swift in Sources */,
 				1260AC001A7819BB0015CA4E /* NTHAnnotation.swift in Sources */,
 				123F11C51A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift in Sources */,

@@ -106,30 +106,6 @@
                                                     <constraint firstAttribute="height" constant="50" id="cCx-aH-6h7"/>
                                                 </constraints>
                                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <prototypes>
-                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="NTHAddConnectionCell" id="ouU-EO-VPd" customClass="NTHAddConnectionCell" customModule="Nothing" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ouU-EO-VPd" id="VbQ-1T-qfu">
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ Add a connection" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wT-fP-AFG">
-                                                                    <rect key="frame" x="84" y="17" width="102" height="15"/>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="centerY" secondItem="2wT-fP-AFG" secondAttribute="centerY" id="2gX-US-Glo"/>
-                                                                <constraint firstAttribute="centerX" secondItem="2wT-fP-AFG" secondAttribute="centerX" id="j7t-Yd-eON"/>
-                                                            </constraints>
-                                                        </tableViewCellContentView>
-                                                        <connections>
-                                                            <outlet property="label" destination="2wT-fP-AFG" id="uec-8B-dLw"/>
-                                                        </connections>
-                                                    </tableViewCell>
-                                                </prototypes>
                                                 <connections>
                                                     <outlet property="dataSource" destination="hpC-1m-0Ku" id="vG9-1h-rli"/>
                                                     <outlet property="delegate" destination="hpC-1m-0Ku" id="zNR-PD-AL5"/>
@@ -463,28 +439,6 @@
                                     <outlet property="label" destination="Ihk-rH-JLP" id="1Aj-4d-sAh"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddNewPlaceCell" id="M3P-9x-27Q" customClass="AddNewPlaceCell" customModule="Nothing" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M3P-9x-27Q" id="56i-iL-dYv">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ Add a new place" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0b-ef-Suc">
-                                            <rect key="frame" x="112" y="14" width="98" height="15"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="centerY" secondItem="P0b-ef-Suc" secondAttribute="centerY" id="f19-wE-3BK"/>
-                                        <constraint firstAttribute="centerX" secondItem="P0b-ef-Suc" secondAttribute="centerX" constant="-0.5" id="kNS-sd-e2B"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="label" destination="P0b-ef-Suc" id="eqx-bc-bdr"/>
-                                </connections>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="yUi-GR-2yC" id="gFL-eS-Hrf"/>
@@ -781,28 +735,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="label" destination="EDq-3i-RqD" id="cnL-zw-WRY"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NTHAddNewContactCell" id="EtD-5c-Skc" customClass="NTHAddNewContactCell" customModule="Nothing" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EtD-5c-Skc" id="dQ5-YT-wjB">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ Add a new contact" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKh-lg-tlK">
-                                            <rect key="frame" x="106" y="14" width="109" height="15"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="centerX" secondItem="OKh-lg-tlK" secondAttribute="centerX" constant="-0.5" id="5Ml-Zh-Xen"/>
-                                        <constraint firstAttribute="centerY" secondItem="OKh-lg-tlK" secondAttribute="centerY" id="aOk-Jl-7Se"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="label" destination="OKh-lg-tlK" id="Iz7-zV-PMS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

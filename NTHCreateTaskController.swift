@@ -124,6 +124,9 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
         let connectionCellNib = UINib(nibName: "NTHConnectionCell", bundle: nil)
         self.connectionTableView.registerNib(connectionCellNib, forCellReuseIdentifier: "NTHConnectionCell")
         
+        let centerLabelNib = UINib(nibName: "NTHCenterLabelCell", bundle: nil)
+        self.connectionTableView.registerNib(centerLabelNib, forCellReuseIdentifier: "NTHCenterLabelCell")
+
         self.connectionTableView.tableFooterView = UIView()
     }
     
@@ -261,7 +264,9 @@ class NTHCreateTaskController: UIViewController, UITableViewDelegate, UITableVie
             
             return cell
         } else {
-            return tableView.dequeueReusableCellWithIdentifier("NTHAddConnectionCell") as NTHAddConnectionCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as NTHCenterLabelCell
+            cell.label.text = String.addANewConnectionString()
+            return cell
         }
     }
     

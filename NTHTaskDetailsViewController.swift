@@ -73,7 +73,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         let connectionCellNib = UINib(nibName: "NTHConnectionCell", bundle: nil)
         self.connectionTableView.registerNib(connectionCellNib, forCellReuseIdentifier: "NTHConnectionCell")
         self.connectionTableView.tableFooterView = UIView()
-
+        
         self.refreshConnectionsTableView()
     }
     
