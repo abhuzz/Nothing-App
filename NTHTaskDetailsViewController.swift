@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -131,7 +132,8 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
                 let alert = UIAlertController.actionsForContactActionSheet(connection as Contact)
                 self.presentViewController(alert, animated: true, completion: nil)
             } else if connection is Place {
-                
+                let alert = UIAlertController.actionsForPlaceActionSheet(connection as Place)
+                self.presentViewController(alert, animated: true, completion: nil)
             }
         }
     }
@@ -168,6 +170,23 @@ extension UIAlertController {
             })
             alert.addAction(action)
         }
+        
+        let cancel = UIAlertAction(title: String.cancelString(), style: UIAlertActionStyle.Cancel, handler: nil)
+        alert.addAction(cancel)
+        
+        return alert
+    }
+    
+    class func actionsForPlaceActionSheet(place: Place) -> UIAlertController {
+        let alert = UIAlertController(title: place.customName, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let showOnMap = UIAlertAction(title: String.showOnMapString(), style: UIAlertActionStyle.Default) { (action) -> Void in
+            let placemark = MKPlacemark(coordinate: place.coordinate, addressDictionary: nil)
+            let mapItem = MKMapItem(placemark: placemark)
+            let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
+            mapItem.openInMapsWithLaunchOptions(options)
+        }
+        alert.addAction(showOnMap)
         
         let cancel = UIAlertAction(title: String.cancelString(), style: UIAlertActionStyle.Cancel, handler: nil)
         alert.addAction(cancel)

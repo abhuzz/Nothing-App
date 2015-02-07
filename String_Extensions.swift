@@ -100,4 +100,8 @@ extension String {
     static func sendEmailString() -> String {
         return NSLocalizedString("Send Email", comment: "")
     }
+    
+    static func showOnMapString() -> String {
+        return NSLocalizedString("Show on map", comment: "")
+    }
 }
