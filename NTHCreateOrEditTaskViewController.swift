@@ -195,10 +195,6 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
     }
     
     @IBAction func createPressed(sender: AnyObject) {
-        if self.mode == .Create {
-            
-        }
-        
         self.context.performBlockAndWait({
             self.context.save(nil)
             CDHelper.mainContext.performBlockAndWait({
@@ -208,42 +204,6 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
             return
         })
         
-        
-        
-        
-        
-        /*
-        
-        
-        let task: Task = Task.create(CDHelper.mainContext)
-        task.title = self.taskInfo.title
-        task.longDescription = self.taskInfo.description
-
-        if let date = self.taskInfo.dateReminder.fireDate {
-            let dateReminder: DateReminderInfo = DateReminderInfo.create(CDHelper.mainContext)
-            dateReminder.fireDate = date
-            dateReminder.repeatInterval = self.taskInfo.dateReminder.repeatInterval
-            task.dateReminder = dateReminder
-        }
-
-        if let place = self.taskInfo.locationReminder.place {
-            let locationReminder: LocationReminderInfo = LocationReminderInfo.create(CDHelper.mainContext)
-            locationReminder.place = place
-            locationReminder.onArrive = self.taskInfo.locationReminder.onArrive
-            locationReminder.distance = self.taskInfo.locationReminder.distance
-            task.locationReminder = locationReminder
-        }
-        
-        if self.taskInfo.connections.count > 0 {
-            for connection in self.taskInfo.connections {
-                task.addConnection(connection)
-            }
-        }
-        
-        CDHelper.mainContext.save(nil)
-        self.completionBlock?()
-        
-        */
         self.navigationController?.popViewControllerAnimated(true)
     }
 
