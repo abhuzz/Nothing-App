@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class NTHSelectPlaceOnMapViewController: UIViewController, MKMapViewDelegate {
 
@@ -16,6 +17,8 @@ class NTHSelectPlaceOnMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBOutlet private weak var mapView: MKMapView!
+    
+    var context: NSManagedObjectContext!
     
     @IBAction func handleTapOnMap(sender: UITapGestureRecognizer) {
         /// Execute only when gesture is ended
@@ -40,6 +43,7 @@ class NTHSelectPlaceOnMapViewController: UIViewController, MKMapViewDelegate {
         if (segue.identifier == SegueIdentifier.CreatePlace.rawValue) {
             /// Show create place view
             let createPlaceVC = segue.destinationViewController as NTHCreatePlaceViewController
+            createPlaceVC.context = self.context
             createPlaceVC.annotation = self.mapView.annotations.first as NTHAnnotation
         }
     }

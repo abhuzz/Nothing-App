@@ -20,15 +20,15 @@ extension ModelController {
         return CDHelper.mainContext.executeFetchRequest(request, error: nil) as [Task]! ?? [Task]()
     }
     
-    func allPlaces() -> [Place] {
+    func allPlaces(context: NSManagedObjectContext) -> [Place] {
         let request = NSFetchRequest(entityName: NSStringFromClass(Place.self))
         request.sortDescriptors = [NSSortDescriptor(key: "originalName", ascending: false)]
-        return CDHelper.mainContext.executeFetchRequest(request, error: nil) as [Place]! ?? [Place]()
+        return context.executeFetchRequest(request, error: nil) as [Place]! ?? [Place]()
     }
     
-    func allContacts() -> [Contact] {
+    func allContacts(context: NSManagedObjectContext) -> [Contact] {
         let request = NSFetchRequest(entityName: NSStringFromClass(Contact.self))
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
-        return CDHelper.mainContext.executeFetchRequest(request, error: nil) as [Contact]! ?? [Contact]()
+        return context.executeFetchRequest(request, error: nil) as [Contact]! ?? [Contact]()
     }
 }

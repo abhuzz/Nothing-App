@@ -168,7 +168,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         if segue.identifier == SegueIdentifier.EditTask.rawValue {
             let editVC = segue.destinationViewController as NTHCreateOrEditTaskViewController
             editVC.mode = NTHCreateOrEditTaskViewController.Mode.Edit
-            editVC.taskInfo = NTHTaskInfo(task: self.task)
+//            editVC.taskInfo = NTHTaskInfo(task: self.task)
         }
     }
 }

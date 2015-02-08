@@ -39,12 +39,7 @@ extension Task {
     
     var locationReminder: LocationReminderInfo? {
         set {
-            self.removeConnection(self.locationReminderInfo?.place)
             self.locationReminderInfo = newValue
-            
-            if self.locationReminderInfo != nil {
-                self.addConnection(self.locationReminderInfo!.place)
-            }
         }
         
         get {
@@ -67,7 +62,7 @@ extension Task {
         }
     }
     
-    private func removeConnection(connection: Connection?) {
+    func removeConnection(connection: Connection?) {
         if connection == nil {
             return
         }

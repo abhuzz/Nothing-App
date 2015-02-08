@@ -9,12 +9,14 @@
 import UIKit
 import AddressBook
 import AddressBookUI
+import CoreData
 
 class NTHSelectContactViewController: UITableViewController, ABPeoplePickerNavigationControllerDelegate, UINavigationControllerDelegate {
     
     typealias NTHSelectContactViewController = (contact: Contact) -> Void
     
     var selectionBlock: NTHSelectContactViewController?
+    var context: NSManagedObjectContext!
     
     private var contacts = [Contact]()
     private var pickerController: ABPeoplePickerNavigationController?
@@ -29,7 +31,7 @@ class NTHSelectContactViewController: UITableViewController, ABPeoplePickerNavig
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.contacts = ModelController().allContacts()
+        self.contacts = ModelController().allContacts(self.context)
         self.tableView.reloadData()
     }
     
@@ -81,11 +83,10 @@ class NTHSelectContactViewController: UITableViewController, ABPeoplePickerNavig
     
     // Mark: ABPeoplePickerNavigationControllerDelegate
     func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, didSelectPerson person: ABRecord!) {
-        let contact: Contact = Contact.create(CDHelper.mainContext)
+        let contact: Contact = Contact.create(self.context)
         contact.name = ABRecordCopyCompositeName(person).takeRetainedValue() as String
         contact.phone = "+48555123456"
         contact.email = "mail@szulctomasz.com"
-        CDHelper.mainContext.save(nil)
     }
     
     func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, shouldContinueAfterSelectingPerson person: ABRecord!, property: ABPropertyID, identifier: ABMultiValueIdentifier) -> Bool {

@@ -15,6 +15,7 @@ class NTHCreatePlaceViewController: UIViewController {
     @IBOutlet weak var customNameLabel: LabelContainer!
     
     var annotation: NTHAnnotation!
+    var context: NSManagedObjectContext!
     
     enum SegueIdentifier: String {
         case TextEditor = "TextEditor"
@@ -36,15 +37,12 @@ class NTHCreatePlaceViewController: UIViewController {
     }
     
     @IBAction func donePressed(sender: AnyObject) {
-        let context = CDHelper.mainContext
-        
-        let place: Place = Place.create(CDHelper.mainContext)
+        let place: Place = Place.create(context)
         place.coordinate = self.annotation.coordinate
         place.originalName = self.annotation.title
         place.customName = self.customNameLabel.text!
         place.thumbnailKey = "DUMMY_KEY"
         
-        CDHelper.mainContext.save(nil)
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     

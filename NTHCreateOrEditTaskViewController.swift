@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHConnectionCellDelegate {
 
@@ -31,15 +32,13 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
     @IBOutlet weak var dateReminderControl: NTHDoubleTitleDetailView!
     @IBOutlet weak var actionButton: UIBarButtonItem!
 
-    var taskInfo = NTHTaskInfo()
+//    var taskInfo: NTHTaskInfo!
+    var task: Task!
+    var context: NSManagedObjectContext!
     
     var completionBlock: (() -> Void)?
     var mode: Mode = .Create
     
-    func configure(title: String) {
-        self.taskInfo.title = title
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -55,8 +54,8 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
         /// Title
         self.titleControl.setTitleText(String.titleHeaderString())
         self.titleControl.setDetailPlaceholderText(NSLocalizedString("What's in your mind?", comment: ""))
-        if countElements(self.taskInfo.title) > 0 {
-            self.titleControl.setDetailText(self.taskInfo.title)
+        if countElements(self.task.title) > 0 {
+            self.titleControl.setDetailText(self.task.title)
         }
         
         self.titleControl.setOnTap { [unowned self] in
@@ -75,9 +74,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
         self.locationReminderControl.setFirstPlaceholder(String.noneString())
         self.locationReminderControl.hideButton()
         self.locationReminderControl.onClearTappedBlock = {
-            self.taskInfo.locationReminder.place = nil
-            self.taskInfo.locationReminder.distance = 0
-            self.taskInfo.locationReminder.onArrive = true
+            self.task.locationReminder = nil
         }
         self.locationReminderControl.setFirstOnTap { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.Places.rawValue, sender: self.locationReminderControl)
@@ -119,7 +116,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
     }
     
     private func validateCreateButton() {
-        let isTitle = countElements(self.taskInfo.title) > 0
+        let isTitle = countElements(self.task.title) > 0
         self.actionButton.enabled = isTitle
     }
     
@@ -133,54 +130,62 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
             editorVC.confirmBlock = { [unowned self] text in
                 control.setDetailText(text)
                 if control == self.titleControl {
-                    self.taskInfo.title = text
+                    self.task.title = text
                 } else if control == self.descriptionControl {
-                    self.taskInfo.description = text
+                    self.task.longDescription = text
                 }
                 
                 self.validateCreateButton()
             }
         } else if (segue.identifier == SegueIdentifier.Places.rawValue) {
             let placesVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectPlaceTableViewController
+            placesVC.context = self.context
             placesVC.selectionBlock = { [unowned self] (place: Place) in
-                if self.taskInfo.locationReminder.place == nil {
-                    self.taskInfo.locationReminder.onArrive = true
-                    self.taskInfo.locationReminder.distance = 100
+                if self.task.locationReminder == nil {
+                    self.task.locationReminder = LocationReminderInfo.create(self.context) as LocationReminderInfo
+                    self.task.locationReminder!.distance = 100
+                    self.task.locationReminder!.onArrive = true
                 }
                 
-                self.taskInfo.locationReminder.place = place
+                self.task.locationReminder!.place = place
                 self.locationReminderControl.setFirstDetailText(place.customName)
-                self.updateSecondDetailTextInLocationReminderControl(self.taskInfo.locationReminder.distance, onArrive: self.taskInfo.locationReminder.onArrive)
+                self.updateSecondDetailTextInLocationReminderControl(self.task.locationReminder!.distance, onArrive: self.task.locationReminder!.onArrive)
                 self.locationReminderControl.secondDetailLabel.enabled = true
                 self.validateCreateButton()
             }
         } else if (segue.identifier == SegueIdentifier.Region.rawValue) {
             let regionVC = segue.destinationViewController as NTHRegionViewController
-            if self.taskInfo.locationReminder.place != nil {
-                regionVC.configure(self.taskInfo.locationReminder.distance, onArrive: self.taskInfo.locationReminder.onArrive)
+            if let place = self.task.locationReminder?.place {
+                regionVC.configure(self.task.locationReminder!.distance, onArrive: self.task.locationReminder!.onArrive)
             }
             
             regionVC.successBlock = { [unowned self] (distance: Float, onArrive: Bool) in
-                self.taskInfo.locationReminder.distance = distance
-                self.taskInfo.locationReminder.onArrive = onArrive
-                self.updateSecondDetailTextInLocationReminderControl(self.taskInfo.locationReminder.distance, onArrive: self.taskInfo.locationReminder.onArrive)
+                self.task.locationReminder!.distance = distance
+                self.task.locationReminder!.onArrive = onArrive
+                self.updateSecondDetailTextInLocationReminderControl(self.task.locationReminder!.distance, onArrive: self.task.locationReminder!.onArrive)
             }
         } else if (segue.identifier == SegueIdentifier.Date.rawValue) {
             let dateVC = segue.destinationViewController as NTHDatePickerViewController
-            if let date = self.taskInfo.dateReminder.fireDate {
-                dateVC.configure(date)
+            if let reminder = self.task.dateReminder {
+                dateVC.configure(reminder.fireDate)
             }
             
             dateVC.block = { [unowned self] date in                
                 self.dateReminderControl.setFirstDetailText(NSDateFormatter.NTHStringFromDate(date))
                 self.dateReminderControl.secondDetailLabel.enabled = true
-                self.taskInfo.dateReminder.fireDate = date
+                
+                if self.task.dateReminder == nil {
+                    self.task.dateReminder = DateReminderInfo.create(self.context) as DateReminderInfo
+                    self.task.dateReminder!.repeatInterval = NSCalendarUnit.allZeros
+                }
+                
+                self.task.dateReminder!.fireDate = date
             }
         } else if (segue.identifier == SegueIdentifier.RepeatInterval.rawValue) {
             let regionVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectRepeatIntervalViewController
                 regionVC.completionBlock = { [unowned self] unit, description in
                 self.dateReminderControl.setSecondDetailText(description)
-                self.taskInfo.dateReminder.repeatInterval = unit
+                self.task.dateReminder!.repeatInterval = unit
             }
         }
     }
@@ -190,6 +195,26 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
     }
     
     @IBAction func createPressed(sender: AnyObject) {
+        if self.mode == .Create {
+            
+        }
+        
+        self.context.performBlockAndWait({
+            self.context.save(nil)
+            CDHelper.mainContext.performBlockAndWait({
+                CDHelper.mainContext.save(nil)
+                return
+            })
+            return
+        })
+        
+        
+        
+        
+        
+        /*
+        
+        
         let task: Task = Task.create(CDHelper.mainContext)
         task.title = self.taskInfo.title
         task.longDescription = self.taskInfo.description
@@ -218,14 +243,14 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
         CDHelper.mainContext.save(nil)
         self.completionBlock?()
         
-        
+        */
         self.navigationController?.popViewControllerAnimated(true)
     }
 
     
     /// Mark: UITableViewDelegate & UITableViewDataSource
     func numberOfItemsInConnectionTableView() -> Int {
-        return self.taskInfo.connections.count + 1
+        return self.task.allConnections.allObjects.count + 1
     }
     
     func heightOfConnectionTableViewCell() -> CGFloat {
@@ -240,7 +265,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
         if (indexPath.row != self.numberOfItemsInConnectionTableView() - 1) {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHConnectionCell") as NTHConnectionCell
             cell.delegate = self
-            let connection = self.taskInfo.connections[indexPath.row]
+            let connection = self.task.allConnections.allObjects[indexPath.row] as Connection
             if connection is Contact {
                 cell.label.text = (connection as Contact).name
             } else {
@@ -273,8 +298,9 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
                 if action.identifier == "contact" {
                     let nc = UIStoryboard.instantiateNTHSelectContactViewControllerInNavigationController()
                     let vc = nc.topViewController as NTHSelectContactViewController
+                    vc.context = self.context
                     vc.selectionBlock = { [unowned self] contact in
-                        self.taskInfo.connections.append(contact)
+                        self.task.addConnection(contact as Connection)
                         self.refreshConnectionsTableView()
                     }
                     
@@ -282,8 +308,9 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
                 } else if action.identifier == "place" {
                     let nc = UIStoryboard.instantiateNTHSelectPlaceTableViewControllerInNavigationController()
                     let vc = nc.topViewController as NTHSelectPlaceTableViewController
+                    vc.context = self.context
                     vc.selectionBlock = { [unowned self] place in
-                        self.taskInfo.connections.append(place)
+                        self.task.addConnection(place as Connection)
                         self.refreshConnectionsTableView()
                     }
                     
@@ -311,7 +338,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
     /// Mark: NTHConnectionCellDelegate
     func cellDidTapClearButton(cell: NTHConnectionCell) {
         if let indexPath = self.connectionTableView.indexPathForCell(cell) {
-            self.taskInfo.connections.removeAtIndex(indexPath.row)
+            self.task.removeConnection(self.task.allConnections.allObjects[indexPath.row] as? Connection)
             self.refreshConnectionsTableView()
         }
     }

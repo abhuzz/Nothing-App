@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NTHSelectPlaceTableViewController: UITableViewController {
     
@@ -17,6 +18,7 @@ class NTHSelectPlaceTableViewController: UITableViewController {
     }
     
     var selectionBlock: NTHSelectPlaceTableViewControllerSelectionBlock?
+    var context: NSManagedObjectContext!
     
     private var places = [Place]()
     
@@ -30,7 +32,7 @@ class NTHSelectPlaceTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.places = ModelController().allPlaces()
+        self.places = ModelController().allPlaces(self.context)
         self.tableView.reloadData()
     }
     
@@ -70,5 +72,12 @@ class NTHSelectPlaceTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SegueIdentifier.AddNewPlace.rawValue {
+            let vc = segue.destinationViewController as NTHSelectPlaceOnMapViewController
+            vc.context = self.context
+        }
     }
 }

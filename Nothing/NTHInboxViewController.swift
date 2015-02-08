@@ -88,8 +88,19 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
             vc.task = sender as Task
         } else if segue.identifier! == SegueIdentifier.CreateTask.rawValue {
             let vc = segue.destinationViewController as NTHCreateOrEditTaskViewController
-            vc.configure(self.quickInsertView.text)
+            
+            /// work on temporary context
+            let context = CDHelper.temporaryContext
+            
+            var task: Task = Task.create(context)
+            task.title = self.quickInsertView.text
+            vc.task = task
+//            vc.taskInfo = NTHTaskInfo(task: task)
+            vc.context = context
             vc.completionBlock = {
+                
+                /// ----> Save should be performed here!
+                
                 self.tasks = ModelController().allTasks()
                 self.tableView.reloadData()
             }

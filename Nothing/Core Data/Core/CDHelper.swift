@@ -53,7 +53,7 @@ class CDHelper: NSObject {
     }()
     
     private func createTemporaryContext() -> NSManagedObjectContext {
-        var context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.ConfinementConcurrencyType)
+        var context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
         context.parentContext = self.mainContext
         return context
     }
