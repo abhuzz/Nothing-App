@@ -78,7 +78,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
         self.locationReminderControl.setFirstPlaceholder(String.noneString())
         self.locationReminderControl.hideButton()
         self.locationReminderControl.onClearTappedBlock = {
-            self.task.locationReminder = nil
+            self.task.locationReminderInfo = nil
         }
         self.locationReminderControl.setFirstOnTap { [unowned self] in
             self.performSegueWithIdentifier(SegueIdentifier.Places.rawValue, sender: self.locationReminderControl)
@@ -92,7 +92,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
         }
         
         if self.mode == .Edit {
-            if let reminder = self.task.locationReminder {
+            if let reminder = self.task.locationReminderInfo {
                 self.locationReminderControl.setFirstDetailText(reminder.place.customName)
                 self.updateSecondDetailTextInLocationReminderControl(reminder.distance, onArrive: reminder.onArrive)
                 self.locationReminderControl.secondDetailLabel.enabled = true
@@ -115,7 +115,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
         }
         
         if self.mode == .Edit {
-            if let reminder = self.task.dateReminder {
+            if let reminder = self.task.dateReminderInfo {
                 self.dateReminderControl.setFirstDetailText(NSDateFormatter.NTHStringFromDate(reminder.fireDate))
                 self.dateReminderControl.setSecondDetailText(RepeatInterval.descriptionForInterval(interval: reminder.repeatInterval))
                 self.dateReminderControl.secondDetailLabel.enabled = true
@@ -165,32 +165,32 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
             let placesVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectPlaceTableViewController
             placesVC.context = self.context
             placesVC.selectionBlock = { [unowned self] (place: Place) in
-                if self.task.locationReminder == nil {
-                    self.task.locationReminder = LocationReminderInfo.create(self.context) as LocationReminderInfo
-                    self.task.locationReminder!.distance = 100
-                    self.task.locationReminder!.onArrive = true
+                if self.task.locationReminderInfo == nil {
+                    self.task.locationReminderInfo = LocationReminderInfo.create(self.context) as LocationReminderInfo
+                    self.task.locationReminderInfo!.distance = 100
+                    self.task.locationReminderInfo!.onArrive = true
                 }
                 
-                self.task.locationReminder!.place = place
+                self.task.locationReminderInfo!.place = place
                 self.locationReminderControl.setFirstDetailText(place.customName)
-                self.updateSecondDetailTextInLocationReminderControl(self.task.locationReminder!.distance, onArrive: self.task.locationReminder!.onArrive)
+                self.updateSecondDetailTextInLocationReminderControl(self.task.locationReminderInfo!.distance, onArrive: self.task.locationReminderInfo!.onArrive)
                 self.locationReminderControl.secondDetailLabel.enabled = true
                 self.validateCreateButton()
             }
         } else if (segue.identifier == SegueIdentifier.Region.rawValue) {
             let regionVC = segue.destinationViewController as NTHRegionViewController
-            if let place = self.task.locationReminder?.place {
-                regionVC.configure(self.task.locationReminder!.distance, onArrive: self.task.locationReminder!.onArrive)
+            if let place = self.task.locationReminderInfo?.place {
+                regionVC.configure(self.task.locationReminderInfo!.distance, onArrive: self.task.locationReminderInfo!.onArrive)
             }
             
             regionVC.successBlock = { [unowned self] (distance: Float, onArrive: Bool) in
-                self.task.locationReminder!.distance = distance
-                self.task.locationReminder!.onArrive = onArrive
-                self.updateSecondDetailTextInLocationReminderControl(self.task.locationReminder!.distance, onArrive: self.task.locationReminder!.onArrive)
+                self.task.locationReminderInfo!.distance = distance
+                self.task.locationReminderInfo!.onArrive = onArrive
+                self.updateSecondDetailTextInLocationReminderControl(self.task.locationReminderInfo!.distance, onArrive: self.task.locationReminderInfo!.onArrive)
             }
         } else if (segue.identifier == SegueIdentifier.Date.rawValue) {
             let dateVC = segue.destinationViewController as NTHDatePickerViewController
-            if let reminder = self.task.dateReminder {
+            if let reminder = self.task.dateReminderInfo {
                 dateVC.configure(reminder.fireDate)
             }
             
@@ -198,18 +198,18 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
                 self.dateReminderControl.setFirstDetailText(NSDateFormatter.NTHStringFromDate(date))
                 self.dateReminderControl.secondDetailLabel.enabled = true
                 
-                if self.task.dateReminder == nil {
-                    self.task.dateReminder = DateReminderInfo.create(self.context) as DateReminderInfo
-                    self.task.dateReminder!.repeatInterval = NSCalendarUnit.allZeros
+                if self.task.dateReminderInfo == nil {
+                    self.task.dateReminderInfo = DateReminderInfo.create(self.context) as DateReminderInfo
+                    self.task.dateReminderInfo!.repeatInterval = NSCalendarUnit.allZeros
                 }
                 
-                self.task.dateReminder!.fireDate = date
+                self.task.dateReminderInfo!.fireDate = date
             }
         } else if (segue.identifier == SegueIdentifier.RepeatInterval.rawValue) {
             let regionVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectRepeatIntervalViewController
                 regionVC.completionBlock = { [unowned self] unit, description in
                 self.dateReminderControl.setSecondDetailText(description)
-                self.task.dateReminder!.repeatInterval = unit
+                self.task.dateReminderInfo!.repeatInterval = unit
             }
         }
     }
@@ -227,6 +227,8 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
             })
             return
         })
+        
+        self.task.schedule()
         
         self.completionBlock?()
         self.navigationController?.popViewControllerAnimated(true)

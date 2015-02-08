@@ -56,7 +56,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         self.locationReminderControl.setSecondTitleText(String.regionHeaderString())
         self.locationReminderControl.setSecondPlaceholder(String.noneString())
         
-        if let reminder = self.task.locationReminder {
+        if let reminder = self.task.locationReminderInfo {
             self.locationReminderControl.setFirstDetailText(reminder.place.customName)
             let arriveOrLeave = reminder.onArrive ? String.arriveString() : String.leaveString()
             self.locationReminderControl.setSecondDetailText(arriveOrLeave + ", " + reminder.distance.distanceDescription())
@@ -71,7 +71,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         self.dateReminderControl.setSecondTitleText(String.repeatHeaderString())
         self.dateReminderControl.setSecondPlaceholder(String.noneString())
         
-        if let reminder = self.task.dateReminder {
+        if let reminder = self.task.dateReminderInfo {
             self.dateReminderControl.setFirstDetailText(NSDateFormatter.NTHStringFromDate(reminder.fireDate))
             self.dateReminderControl.setSecondDetailText(RepeatInterval.descriptionForInterval(interval: reminder.repeatInterval))
         }

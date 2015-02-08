@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 @objc(Task)
 class Task: NSManagedObject {
@@ -15,8 +16,8 @@ class Task: NSManagedObject {
     @NSManaged var title: String
     @NSManaged var longDescription: String?
     @NSManaged private var stateNumber: NSNumber
-    @NSManaged private var dateReminderInfo: DateReminderInfo?
-    @NSManaged private var locationReminderInfo: LocationReminderInfo?
+    @NSManaged var dateReminderInfo: DateReminderInfo?
+    @NSManaged var locationReminderInfo: LocationReminderInfo?
     @NSManaged private var connections: NSSet
 }
 
@@ -30,21 +31,6 @@ extension Task {
     var state: State {
         get { return State(rawValue: self.stateNumber.integerValue)! }
         set { self.stateNumber = NSNumber(integer: newValue.rawValue) }
-    }
-    
-    var dateReminder: DateReminderInfo? {
-        set { self.dateReminderInfo = newValue }
-        get { return self.dateReminderInfo }
-    }
-    
-    var locationReminder: LocationReminderInfo? {
-        set {
-            self.locationReminderInfo = newValue
-        }
-        
-        get {
-            return self.locationReminderInfo
-        }
     }
     
     func addConnection(connection: Connection) {
@@ -85,6 +71,32 @@ extension Task {
             self.state = .Done
         } else {
             self.state = .Active
+        }
+    }
+    
+    func schedule() {
+        if let reminder = self.dateReminderInfo {
+            let taskObjectID = self.objectID.URIRepresentation().absoluteString!
+            
+            /// Find existing local notification and cancel it
+            for notification in UIApplication.sharedApplication().scheduledLocalNotifications as [UILocalNotification] {
+                if let info = notification.userInfo as [NSObject: AnyObject]? {
+                    if let objectID = info["objectID"] as? String {
+                        if objectID == taskObjectID {
+                            UIApplication.sharedApplication().cancelLocalNotification(notification)
+                            break
+                        }
+                    }
+                }
+            }
+            
+            /// Schedlue new local notification
+            let notification = UILocalNotification()
+            notification.fireDate = reminder.fireDate
+            notification.repeatInterval = reminder.repeatInterval
+            notification.alertBody = self.title
+            notification.userInfo = ["objectID": taskObjectID]
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
     }
 }

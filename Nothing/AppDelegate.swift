@@ -17,12 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidFinishLaunching(application: UIApplication) {
         self.setupUI()
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
         CDHelper.mainContext.save(nil)
     }
-}
+    }
 
 extension AppDelegate {
     func setupUI() {

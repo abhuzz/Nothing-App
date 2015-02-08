@@ -10,6 +10,7 @@ import UIKit
 
 @objc(Contact)
 class Contact: Connection {
+    /// TODO: Change it to contact ID from address book
     @NSManaged var email: String?
     @NSManaged var name: String
     @NSManaged var phone: String?
