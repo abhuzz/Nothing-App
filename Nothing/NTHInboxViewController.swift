@@ -95,12 +95,8 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
             var task: Task = Task.create(context)
             task.title = self.quickInsertView.text
             vc.task = task
-//            vc.taskInfo = NTHTaskInfo(task: task)
             vc.context = context
             vc.completionBlock = {
-                
-                /// ----> Save should be performed here!
-                
                 self.tasks = ModelController().allTasks()
                 self.tableView.reloadData()
             }

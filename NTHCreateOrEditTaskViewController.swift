@@ -69,6 +69,10 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
             self.performSegueWithIdentifier(SegueIdentifier.TextEditor.rawValue, sender: self.descriptionControl)
         }
         
+        if self.mode == .Edit {
+            self.descriptionControl.setDetailText(self.task.longDescription ?? "")
+        }
+        
         /// Location reminder
         self.locationReminderControl.setFirstTitleText(String.remindMeAtLocationHeaderString())
         self.locationReminderControl.setFirstPlaceholder(String.noneString())
@@ -87,6 +91,14 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
             self.performSegueWithIdentifier(SegueIdentifier.Region.rawValue, sender: self.locationReminderControl)
         }
         
+        if self.mode == .Edit {
+            if let reminder = self.task.locationReminder {
+                self.locationReminderControl.setFirstDetailText(reminder.place.customName)
+                self.updateSecondDetailTextInLocationReminderControl(reminder.distance, onArrive: reminder.onArrive)
+                self.locationReminderControl.secondDetailLabel.enabled = true
+            }
+        }
+        
         /// Date reminder
         self.dateReminderControl.setFirstTitleText(String.remindMeOnDateHeaderString())
         self.dateReminderControl.setFirstPlaceholder(String.noneString())
@@ -102,6 +114,14 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
             self.performSegueWithIdentifier(SegueIdentifier.RepeatInterval.rawValue, sender: nil)
         }
         
+        if self.mode == .Edit {
+            if let reminder = self.task.dateReminder {
+                self.dateReminderControl.setFirstDetailText(NSDateFormatter.NTHStringFromDate(reminder.fireDate))
+                self.dateReminderControl.setSecondDetailText(RepeatInterval.descriptionForInterval(interval: reminder.repeatInterval))
+                self.dateReminderControl.secondDetailLabel.enabled = true
+            }
+        }
+        
         /// setup connections table view
         
         let connectionCellNib = UINib(nibName: "NTHConnectionCell", bundle: nil)
@@ -113,6 +133,10 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
         self.connectionTableView.tableFooterView = UIView()
         
         self.actionButton.title = self.mode == .Create ? "Create" : "Done"
+        
+        if self.mode == .Edit {
+            self.refreshConnectionsTableView()
+        }
     }
     
     private func validateCreateButton() {
@@ -204,6 +228,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
             return
         })
         
+        self.completionBlock?()
         self.navigationController?.popViewControllerAnimated(true)
     }
 
