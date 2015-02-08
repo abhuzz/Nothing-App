@@ -41,7 +41,6 @@ class NTHCreatePlaceViewController: UIViewController {
         place.coordinate = self.annotation.coordinate
         place.originalName = self.annotation.title
         place.customName = self.customNameLabel.text!
-        place.thumbnailKey = "DUMMY_KEY"
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }

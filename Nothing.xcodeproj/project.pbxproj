@@ -85,6 +85,7 @@
 		12059DD01A350476007F5E7C /* NTHInboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHInboxCell.swift; sourceTree = "<group>"; };
 		12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskStatusView.swift; sourceTree = "<group>"; };
 		120B3CE71A86074700FB38DD /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 2.xcdatamodel"; sourceTree = "<group>"; };
 		124A8F151A4F017800BE5EAB /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		124E5EB51A83F5FF00CB3076 /* NTHTaskDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskDetailsViewController.swift; sourceTree = "<group>"; };
 		124E5EB71A841F9E00CB3076 /* NTHConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHConnectionCell.xib; sourceTree = "<group>"; };
@@ -732,9 +733,10 @@
 		1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */,
 				1279B60219FED64D00A7828C /* Nothing.xcdatamodel */,
 			);
-			currentVersion = 1279B60219FED64D00A7828C /* Nothing.xcdatamodel */;
+			currentVersion = 1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */;
 			name = Nothing.xcdatamodeld;
 			path = Model/Nothing.xcdatamodeld;
 			sourceTree = "<group>";

@@ -181,24 +181,14 @@ extension UIAlertController {
     class func selectActionOfTaskActionSheet(task: Task, cell: NTHInboxCell) -> UIAlertController {
         let actionSheet = UIAlertController(title: task.title, message: nil, preferredStyle: .ActionSheet)
         
-        /// actions
-        if task.state == .Active {
-            let markDone = UIAlertAction(title: "Mark as done", style: UIAlertActionStyle.Default) { [unowned task, unowned cell] (action) -> Void in
-                task.changeState()
-                cell.update(NTHInboxCellViewModel(task: task))
-            }
-            actionSheet.addAction(markDone)
-        } else {
-            let markActive = UIAlertAction(title: "Mark as Active", style: UIAlertActionStyle.Default) {[unowned task, unowned cell] (action) -> Void in
-                task.changeState()
-                cell.update(NTHInboxCellViewModel(task: task))
-            }
-            actionSheet.addAction(markActive)
-        }
+        /// Mark as Done / Active
+        actionSheet.addAction(UIAlertAction.normalAction(task.state == .Active ? String.markAsDoneString() : String.markAsActiveString(), handler: { _ in
+            task.changeState()
+            cell.update(NTHInboxCellViewModel(task: task))
+        }))
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-        actionSheet.addAction(cancelAction)
-        
+        /// Cancel
+        actionSheet.addAction(UIAlertAction.cancelAction(String.cancelString(), handler: nil))
         return actionSheet
     }
 }

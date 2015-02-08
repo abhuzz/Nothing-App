@@ -12,7 +12,6 @@ import CoreData
 @objc(Connection)
 class Connection: NSManagedObject {
     @NSManaged var tasks: NSSet
-    @NSManaged var thumbnailKey: String?
 }
 
 extension Connection {
