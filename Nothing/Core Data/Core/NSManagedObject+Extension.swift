@@ -12,6 +12,6 @@ import CoreLocation
 
 extension NSManagedObject {
     class func create<T: NSManagedObject>(context: NSManagedObjectContext) -> T {
-        return NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(T.self), inManagedObjectContext: context) as T
+        return NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(T.self), inManagedObjectContext: context) as! T
     }
 }

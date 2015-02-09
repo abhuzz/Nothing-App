@@ -76,9 +76,9 @@ class NTHRegionViewController: UIViewController {
 extension Float {
     func distanceDescription() -> String {
         if (self < 1000) {
-            return NSString(format: "%.0f m", self)
+            return NSString(format: "%.0f m", self) as! String
         } else {
-            return NSString(format: "%.1f km", self / 1000.0)
+            return NSString(format: "%.1f km", self / 1000.0) as! String
         }
     }
 }

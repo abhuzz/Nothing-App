@@ -37,7 +37,7 @@ extension Task {
     func addConnection(connection: Connection) {
         var add = true
         for c in self.allConnections {
-            if c as Connection == connection {
+            if c as! Connection == connection {
                 add = false
                 break
             }
@@ -55,7 +55,7 @@ extension Task {
         }
         
         for c in self.allConnections {
-            if c as Connection == connection! {
+            if c as! Connection == connection! {
                 var connections = self.mutableSetValueForKey("connections")
                 connections.removeObject(c)
                 return
@@ -64,7 +64,7 @@ extension Task {
     }
     
     var allConnections: NSSet {        
-        return NSSet(set: self.connections)
+        return NSSet(set: self.connections as! Set<NSObject>)
     }
     
     func changeState() {
@@ -80,7 +80,7 @@ extension Task {
             let taskObjectID = self.objectID.URIRepresentation().absoluteString!
             
             /// Find existing local notification and cancel it
-            for notification in UIApplication.sharedApplication().scheduledLocalNotifications as [UILocalNotification] {
+            for notification in UIApplication.sharedApplication().scheduledLocalNotifications as! [UILocalNotification] {
                 if let info = notification.userInfo as [NSObject: AnyObject]? {
                     if let objectID = info["objectID"] as? String {
                         if objectID == taskObjectID {

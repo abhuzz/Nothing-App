@@ -50,11 +50,11 @@ class NTHSelectPlaceTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row != self.numberOfCells() - 1 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PlaceNameCell") as PlaceNameCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PlaceNameCell") as! PlaceNameCell
             cell.label.text = self.places[indexPath.row].customName
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as NTHCenterLabelCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
             cell.label.text = String.addANewPlaceString()
             return cell
         }
@@ -76,7 +76,7 @@ class NTHSelectPlaceTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SegueIdentifier.AddNewPlace.rawValue {
-            let vc = segue.destinationViewController as NTHSelectPlaceOnMapViewController
+            let vc = segue.destinationViewController as! NTHSelectPlaceOnMapViewController
             vc.context = self.context
         }
     }

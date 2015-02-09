@@ -47,7 +47,7 @@ class NTHCreatePlaceViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == SegueIdentifier.TextEditor.rawValue) {
-            let editorVC = (segue.destinationViewController as UINavigationController).topViewController as NTHTextEditorViewController
+            let editorVC = (segue.destinationViewController as! UINavigationController).topViewController as! NTHTextEditorViewController
             editorVC.text = self.customNameLabel.text
             editorVC.confirmBlock = {[unowned self] text in
                 self.customNameLabel.text = text

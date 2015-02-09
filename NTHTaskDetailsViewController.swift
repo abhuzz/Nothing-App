@@ -116,18 +116,18 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if self.numberOfItemsInConnectionTableView() > 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("NTHConnectionCell") as NTHConnectionCell
-            let connection: Connection = self.task.allConnections.allObjects[indexPath.row] as Connection
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHConnectionCell") as! NTHConnectionCell
+            let connection: Connection = self.task.allConnections.allObjects[indexPath.row] as! Connection
             if connection is Contact {
-                cell.label.text = (connection as Contact).name
+                cell.label.text = (connection as! Contact).name
             } else {
-                cell.label.text = (connection as Place).customName
+                cell.label.text = (connection as! Place).customName
             }
             
             cell.hideShowButton(true, animated: false)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as NTHCenterLabelCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
             cell.label.text = String.noConnectionsString()
             return cell
         }
@@ -141,12 +141,12 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if self.numberOfItemsInConnectionTableView() > 0 {
-            let connection = self.task.allConnections.allObjects[indexPath.row] as Connection
+            let connection = self.task.allConnections.allObjects[indexPath.row] as! Connection
             if connection is Contact {
-                let alert = UIAlertController.actionsForContactActionSheet(connection as Contact)
+                let alert = UIAlertController.actionsForContactActionSheet(connection as! Contact)
                 self.presentViewController(alert, animated: true, completion: nil)
             } else if connection is Place {
-                let alert = UIAlertController.actionsForPlaceActionSheet(connection as Place)
+                let alert = UIAlertController.actionsForPlaceActionSheet(connection as! Place)
                 self.presentViewController(alert, animated: true, completion: nil)
             }
         }
@@ -166,12 +166,12 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SegueIdentifier.EditTask.rawValue {
-            let editVC = segue.destinationViewController as NTHCreateOrEditTaskViewController
+            let editVC = segue.destinationViewController as! NTHCreateOrEditTaskViewController
             editVC.mode = NTHCreateOrEditTaskViewController.Mode.Edit
             
             let context = CDHelper.temporaryContext
             editVC.context = context
-            let task = context.objectWithID(self.task.objectID) as Task
+            let task = context.objectWithID(self.task.objectID) as! Task
             editVC.task = task
             editVC.completionBlock = {
                 self.setup()

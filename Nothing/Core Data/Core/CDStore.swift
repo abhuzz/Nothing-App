@@ -12,7 +12,7 @@ class CDStore {
     private let storeName = "Nothing"
     
     lazy var applicationDocumentsDirectory: NSURL = {
-        return (NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask) as [NSURL]).last!
+        return (NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask) as! [NSURL]).last!
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {

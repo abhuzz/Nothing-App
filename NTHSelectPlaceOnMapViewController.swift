@@ -42,9 +42,9 @@ class NTHSelectPlaceOnMapViewController: UIViewController, MKMapViewDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == SegueIdentifier.CreatePlace.rawValue) {
             /// Show create place view
-            let createPlaceVC = segue.destinationViewController as NTHCreatePlaceViewController
+            let createPlaceVC = segue.destinationViewController as! NTHCreatePlaceViewController
             createPlaceVC.context = self.context
-            createPlaceVC.annotation = self.mapView.annotations.first as NTHAnnotation
+            createPlaceVC.annotation = self.mapView.annotations.first as! NTHAnnotation
         }
     }
     
@@ -53,7 +53,7 @@ class NTHSelectPlaceOnMapViewController: UIViewController, MKMapViewDelegate {
     MapKit
     */
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        return (annotation as NTHAnnotation).viewForAnnotation()
+        return (annotation as! NTHAnnotation).viewForAnnotation()
     }
 }
 

@@ -54,7 +54,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
         /// Title
         self.titleControl.setTitleText(String.titleHeaderString())
         self.titleControl.setDetailPlaceholderText(NSLocalizedString("What's in your mind?", comment: ""))
-        if countElements(self.task.title) > 0 {
+        if count(self.task.title) > 0 {
             self.titleControl.setDetailText(self.task.title)
         }
         
@@ -140,16 +140,16 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
     }
     
     private func validateCreateButton() {
-        let isTitle = countElements(self.task.title) > 0
+        let isTitle = count(self.task.title) > 0
         self.actionButton.enabled = isTitle
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == SegueIdentifier.TextEditor.rawValue) {
-            let editorVC = (segue.destinationViewController as UINavigationController).topViewController as NTHTextEditorViewController
+            let editorVC = (segue.destinationViewController as! UINavigationController).topViewController as! NTHTextEditorViewController
             editorVC.title = "Text Editor"
             
-            let control = sender as NTHBasicTitleDetailView
+            let control = sender as! NTHBasicTitleDetailView
             editorVC.text = control.isSet ? control.detailLabel.text : ""
             editorVC.confirmBlock = { [unowned self] text in
                 control.setDetailText(text)
@@ -162,7 +162,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
                 self.validateCreateButton()
             }
         } else if (segue.identifier == SegueIdentifier.Places.rawValue) {
-            let placesVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectPlaceTableViewController
+            let placesVC = (segue.destinationViewController as! UINavigationController).topViewController as! NTHSelectPlaceTableViewController
             placesVC.context = self.context
             placesVC.selectionBlock = { [unowned self] (place: Place) in
                 if self.task.locationReminderInfo == nil {
@@ -178,7 +178,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
                 self.validateCreateButton()
             }
         } else if (segue.identifier == SegueIdentifier.Region.rawValue) {
-            let regionVC = segue.destinationViewController as NTHRegionViewController
+            let regionVC = segue.destinationViewController as! NTHRegionViewController
             if let place = self.task.locationReminderInfo?.place {
                 regionVC.configure(self.task.locationReminderInfo!.distance, onArrive: self.task.locationReminderInfo!.onArrive)
             }
@@ -189,7 +189,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
                 self.updateSecondDetailTextInLocationReminderControl(self.task.locationReminderInfo!.distance, onArrive: self.task.locationReminderInfo!.onArrive)
             }
         } else if (segue.identifier == SegueIdentifier.Date.rawValue) {
-            let dateVC = segue.destinationViewController as NTHDatePickerViewController
+            let dateVC = segue.destinationViewController as! NTHDatePickerViewController
             if let reminder = self.task.dateReminderInfo {
                 dateVC.configure(reminder.fireDate)
             }
@@ -206,7 +206,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
                 self.task.dateReminderInfo!.fireDate = date
             }
         } else if (segue.identifier == SegueIdentifier.RepeatInterval.rawValue) {
-            let regionVC = (segue.destinationViewController as UINavigationController).topViewController as NTHSelectRepeatIntervalViewController
+            let regionVC = (segue.destinationViewController as! UINavigationController).topViewController as! NTHSelectRepeatIntervalViewController
                 regionVC.completionBlock = { [unowned self] unit, description in
                 self.dateReminderControl.setSecondDetailText(description)
                 self.task.dateReminderInfo!.repeatInterval = unit
@@ -250,18 +250,18 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (indexPath.row != self.numberOfItemsInConnectionTableView() - 1) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("NTHConnectionCell") as NTHConnectionCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHConnectionCell") as! NTHConnectionCell
             cell.delegate = self
-            let connection = self.task.allConnections.allObjects[indexPath.row] as Connection
+            let connection = self.task.allConnections.allObjects[indexPath.row] as! Connection
             if connection is Contact {
-                cell.label.text = (connection as Contact).name
+                cell.label.text = (connection as! Contact).name
             } else {
-                cell.label.text = (connection as Place).customName
+                cell.label.text = (connection as! Place).customName
             }
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as NTHCenterLabelCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
             cell.label.text = String.addANewConnectionString()
             return cell
         }
@@ -284,7 +284,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
             let alert = UIAlertController.selectConnectionTypeActionSheet(types, completion: { (action: NTHAlertAction) -> Void in
                 if action.identifier == "contact" {
                     let nc = UIStoryboard.instantiateNTHSelectContactViewControllerInNavigationController()
-                    let vc = nc.topViewController as NTHSelectContactViewController
+                    let vc = nc.topViewController as! NTHSelectContactViewController
                     vc.context = self.context
                     vc.selectionBlock = { [unowned self] contact in
                         self.task.addConnection(contact as Connection)
@@ -294,7 +294,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
                     self.presentViewController(nc, animated: true, completion: nil)
                 } else if action.identifier == "place" {
                     let nc = UIStoryboard.instantiateNTHSelectPlaceTableViewControllerInNavigationController()
-                    let vc = nc.topViewController as NTHSelectPlaceTableViewController
+                    let vc = nc.topViewController as! NTHSelectPlaceTableViewController
                     vc.context = self.context
                     vc.selectionBlock = { [unowned self] place in
                         self.task.addConnection(place as Connection)
@@ -343,7 +343,7 @@ extension UIAlertController {
         /// Fill it with types
         for (identifier, description) in types {
             let action = NTHAlertAction(title: description, style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-                completion(action: action as NTHAlertAction)
+                completion(action: action as! NTHAlertAction)
             })
             action.identifier = identifier
             alert.addAction(action)
@@ -359,10 +359,10 @@ extension UIAlertController {
 
 extension UIStoryboard {
     class func instantiateNTHSelectPlaceTableViewControllerInNavigationController() -> UINavigationController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SelectPlaceNC") as UINavigationController
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SelectPlaceNC") as! UINavigationController
     }
     
     class func instantiateNTHSelectContactViewControllerInNavigationController() -> UINavigationController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SelectContactNC") as UINavigationController
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SelectContactNC") as! UINavigationController
     }
 }

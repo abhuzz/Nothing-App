@@ -29,7 +29,7 @@ class QuickInsertView: UIView, UITextFieldDelegate {
     override func awakeAfterUsingCoder(aDecoder: NSCoder) -> AnyObject? {
         if self.subviews.count == 0 {
             let nib = UINib(nibName: "QuickInsertView", bundle: NSBundle.mainBundle())
-            let view = nib.instantiateWithOwner(nil, options: nil).first! as QuickInsertView
+            let view = nib.instantiateWithOwner(nil, options: nil).first! as! QuickInsertView
             view.setTranslatesAutoresizingMaskIntoConstraints(false)
             return view
         }
@@ -55,7 +55,7 @@ class QuickInsertView: UIView, UITextFieldDelegate {
     }
     
     private func updateView() {
-        let enabled = countElements(self.textField.text) > 0
+        let enabled = count(self.textField.text) > 0
         self.submitButton.enabled = enabled
         
         enabled ? self.showMoreAnimated(true) : self.hideMoreAnimated(true)
@@ -95,7 +95,7 @@ class QuickInsertView: UIView, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if countElements(self.textField.text) > 0 {
+        if count(self.textField.text) > 0 {
             self.didSubmitBlock?(text: self.textField.text)
         }
         

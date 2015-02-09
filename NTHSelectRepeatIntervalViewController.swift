@@ -43,7 +43,7 @@ class NTHSelectRepeatIntervalViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NTHSelectRepeatIntervalCell") as NTHSelectRepeatIntervalCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("NTHSelectRepeatIntervalCell") as! NTHSelectRepeatIntervalCell
         cell.label.text = self.options[indexPath.row].desc
         return cell
     }

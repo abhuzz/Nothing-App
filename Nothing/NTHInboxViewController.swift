@@ -121,10 +121,10 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
         super.prepareForSegue(segue, sender: sender)
         
         if segue.identifier! == SegueIdentifier.TaskDetails.rawValue {
-            let vc = segue.destinationViewController as NTHTaskDetailsViewController
-            vc.task = sender as Task
+            let vc = segue.destinationViewController as! NTHTaskDetailsViewController
+            vc.task = sender as! Task
         } else if segue.identifier! == SegueIdentifier.CreateTask.rawValue {
-            let vc = segue.destinationViewController as NTHCreateOrEditTaskViewController
+            let vc = segue.destinationViewController as! NTHCreateOrEditTaskViewController
             
             /// work on temporary context
             let context = CDHelper.temporaryContext
@@ -149,7 +149,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let task = self.tasks[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("NTHInboxCell", forIndexPath: indexPath) as NTHInboxCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("NTHInboxCell", forIndexPath: indexPath) as! NTHInboxCell
         cell.update(NTHInboxCellViewModel(task: task))
         cell.delegate = self
 

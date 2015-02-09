@@ -12,20 +12,20 @@ extension UIView {
     public func NTHAwakeAfterUsingCoder(aDecoder: NSCoder, nibName: String) -> AnyObject? {
         if (self.subviews.count == 0) {
             let nib = UINib(nibName: nibName, bundle: nil)
-            let loadedView = nib.instantiateWithOwner(nil, options: nil).first as UIView
+            let loadedView = nib.instantiateWithOwner(nil, options: nil).first as! UIView
             
             /// set view as placeholder is set
             loadedView.frame = self.frame
             loadedView.autoresizingMask = self.autoresizingMask
             loadedView.setTranslatesAutoresizingMaskIntoConstraints(self.translatesAutoresizingMaskIntoConstraints())
             
-            for constraint in self.constraints() as [NSLayoutConstraint] {
-                var firstItem = constraint.firstItem as UIView
+            for constraint in self.constraints() as! [NSLayoutConstraint] {
+                var firstItem = constraint.firstItem as! UIView
                 if firstItem == self {
                     firstItem = loadedView
                 }
                 
-                var secondItem = constraint.secondItem as UIView?
+                var secondItem = constraint.secondItem as! UIView?
                 if secondItem != nil {
                     if secondItem! == self {
                         secondItem = loadedView

@@ -13,14 +13,22 @@ import MapKit
 Class represents annotation added to map
 */
 class NTHAnnotation: NSObject, MKAnnotation {
-    var coordinate: CLLocationCoordinate2D
+    private var _coordinate: CLLocationCoordinate2D!
+    var coordinate: CLLocationCoordinate2D {
+        return _coordinate
+    }
     var title: String
     var subtitle: String
     
+    func setCoordinate(newCoordinate: CLLocationCoordinate2D) {
+        self._coordinate = newCoordinate
+    }
+    
     init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String = "") {
-        self.coordinate = coordinate
         self.title = title
         self.subtitle = subtitle
+        super.init()
+        self.setCoordinate(coordinate)
     }
     
     func viewForAnnotation() -> MKAnnotationView {
