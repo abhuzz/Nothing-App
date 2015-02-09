@@ -43,4 +43,3 @@ extension AppDelegate {
         UITableView.appearance().separatorColor = UIColor.NTHWhiteLilacColor()
     }
 }
-

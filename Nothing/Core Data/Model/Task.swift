@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
+import CoreLocation
 
 @objc(Task)
 class Task: NSManagedObject {
@@ -90,13 +91,31 @@ extension Task {
                 }
             }
             
-            /// Schedlue new local notification
+            var schedule = false
             let notification = UILocalNotification()
-            notification.fireDate = reminder.fireDate
-            notification.repeatInterval = reminder.repeatInterval
-            notification.alertBody = self.title
-            notification.userInfo = ["objectID": taskObjectID]
-            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+
+            /// Schedlue with date
+            if let reminder = self.dateReminderInfo {
+                schedule = true
+                notification.fireDate = reminder.fireDate
+                notification.repeatInterval = reminder.repeatInterval
+                notification.alertBody = self.title
+            }
+            
+            /// Schedule with location
+            if let reminder = self.locationReminderInfo {
+                schedule = true
+                let region = CLCircularRegion(circularRegionWithCenter: reminder.place.coordinate, radius: CLLocationDistance(reminder.distance), identifier: taskObjectID)
+                region.notifyOnEntry = reminder.onArrive
+                region.notifyOnExit = !reminder.onArrive
+                notification.region = region
+            }
+            
+            /// Schedule
+            if schedule {
+                notification.userInfo = ["objectID": taskObjectID]
+                UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            }
         }
     }
 }
