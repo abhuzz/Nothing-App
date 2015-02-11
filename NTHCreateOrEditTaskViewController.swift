@@ -228,7 +228,8 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
             return
         })
         
-        self.task.schedule()
+        /// schedule task
+        LocalNotificationScheduler.scheduleNotification(self.task)
         
         self.completionBlock?()
         self.navigationController?.popViewControllerAnimated(true)

@@ -10,10 +10,6 @@ import Foundation
 import CoreData
 
 class ModelController {
-    
-}
-
-extension ModelController {
     func allTasks() -> [Task] {
         let request = NSFetchRequest(entityName: NSStringFromClass(Task.self))
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: false)]

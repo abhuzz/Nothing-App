@@ -9,13 +9,11 @@
 import UIKit
 import CoreLocation
 
-class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHInboxCellDelegate, CLLocationManagerDelegate {
+class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHInboxCellDelegate {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var quickInsertView: QuickInsertView!
     @IBOutlet private weak var bottomGuide: NSLayoutConstraint!
-    
-    private var locationManager: CLLocationManager!
     
     enum Identifiers: String {
         case InboxCell = "InboxCell"
@@ -31,7 +29,6 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.startLocationService()
         self.observeKeyboard()
         self.configureTableView()
         self.configureInsertContainer()
@@ -41,39 +38,6 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     private func configureTableView() {
         self.tableView.registerNib(UINib(nibName: "NTHInboxCell", bundle: nil), forCellReuseIdentifier: "NTHInboxCell")
         self.tableView.tableFooterView = UIView()
-    }
-    
-    func startLocationService() {
-        
-        self.locationManager = CLLocationManager()
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        let status = CLLocationManager.authorizationStatus()
-        if status == CLAuthorizationStatus.AuthorizedWhenInUse || status == CLAuthorizationStatus.Denied {
-            let title = (status == CLAuthorizationStatus.Denied) ? "Location services are off" : "Background location is not enabled"
-            let message = "To use background location you must turn on 'Always' in the Location Services Settings"
-            
-            let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-            
-            /// Settings
-            alertController.addAction(UIAlertAction.normalAction("Settings", handler: { _ in
-                UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-                return
-            }))
-            
-            /// Cancel
-            alertController.addAction(UIAlertAction.cancelAction(String.cancelString(), handler: nil))
-            
-            self.presentViewController(alertController, animated: true, completion: nil)
-        } else if status == CLAuthorizationStatus.NotDetermined {
-            /// nothing
-        }
-        
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        self.locationManager.startUpdatingLocation()
     }
     
     private func configureInsertContainer() {
@@ -212,17 +176,6 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
         let actionSheet = UIAlertController.selectActionOfTaskActionSheet(task, cell: cell)
         self.presentViewController(actionSheet, animated: true, completion: nil)
     }
-    
-    
-    
-    /// Mark: CLLocationManagerDelegate
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        if let location = locations.first as? CLLocation {
-            self.navigationItem.title = "\(location.coordinate.latitude)" + " " + "\(location.coordinate.longitude)"
-        }
-    }
-    
-    
 }
 
 

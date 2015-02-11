@@ -74,48 +74,4 @@ extension Task {
             self.state = .Active
         }
     }
-    
-    func schedule() {
-        if let reminder = self.dateReminderInfo {
-            let taskObjectID = self.objectID.URIRepresentation().absoluteString!
-            
-            /// Find existing local notification and cancel it
-            for notification in UIApplication.sharedApplication().scheduledLocalNotifications as! [UILocalNotification] {
-                if let info = notification.userInfo as [NSObject: AnyObject]? {
-                    if let objectID = info["objectID"] as? String {
-                        if objectID == taskObjectID {
-                            UIApplication.sharedApplication().cancelLocalNotification(notification)
-                            break
-                        }
-                    }
-                }
-            }
-            
-            var schedule = false
-            let notification = UILocalNotification()
-
-            /// Schedlue with date
-            if let reminder = self.dateReminderInfo {
-                schedule = true
-                notification.fireDate = reminder.fireDate
-                notification.repeatInterval = reminder.repeatInterval
-                notification.alertBody = self.title
-            }
-            
-            /// Schedule with location
-            if let reminder = self.locationReminderInfo {
-                schedule = true
-                let region = CLCircularRegion(circularRegionWithCenter: reminder.place.coordinate, radius: CLLocationDistance(reminder.distance), identifier: taskObjectID)
-                region.notifyOnEntry = reminder.onArrive
-                region.notifyOnExit = !reminder.onArrive
-                notification.region = region
-            }
-            
-            /// Schedule
-            if schedule {
-                notification.userInfo = ["objectID": taskObjectID]
-                UIApplication.sharedApplication().scheduleLocalNotification(notification)
-            }
-        }
-    }
 }
