@@ -11,11 +11,11 @@ import CoreData
 import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, RegionManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, TSRegionManagerDelegate {
 
     var window: UIWindow?
     private var locationManager: CLLocationManager!
-    var regionManager = RegionManager()
+    var regionManager = TSRegionManager()
 
     func applicationDidFinishLaunching(application: UIApplication) {
         self.regionManager.delegate = self
@@ -35,10 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         if let task = ModelController().findTask(notification.userInfo!["uniqueIdentifier"] as! String) {
+            /*
             let alert = UIAlertController(title: notification.alertTitle, message: notification.alertBody, preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction.cancelAction(String.okString(), handler: nil))
             
             self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+            */
+            println("Received notification about [\(task.title)]")
         }
     }
 }
@@ -100,15 +103,14 @@ extension AppDelegate {
     /// Mark: CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let location = locations.first as? CLLocation {
-            self.regionManager.processLocation(location)
+            self.regionManager.update(location)
         }
     }
 
     
     
     /// Mark: RegionManagerDelegate
-    func regionManager(manager: RegionManager, didSelectRegions regions: [RegionManager.Region]) {
-        
+    func regionManager(manager: TSRegionManager, didNotify regions: [TSRegion]) {
         for region in regions {
             if let task = ModelController().findTask(region.identifier) {
                 let notification = UILocalNotification()
@@ -120,5 +122,18 @@ extension AppDelegate {
                 UIApplication.sharedApplication().scheduleLocalNotification(notification)
             }
         }
+    }
+    
+    func regionManagerNeedRegions(manager: TSRegionManager) -> [TSRegion] {
+        var regions = [TSRegion]()
+        
+        let tasks = ModelController().allTasks()
+        for task in tasks {
+            if let info = task.locationReminderInfo {
+                regions.append(TSRegion(identifier: task.uniqueIdentifier, coordinate: info.place.coordinate, notifyOnArrive: info.onArrive, notifyOnLeave: !info.onArrive, distance: CLLocationDistance(info.distance)))
+            }
+        }
+        
+        return regions
     }
 }
