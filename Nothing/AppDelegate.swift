@@ -11,13 +11,14 @@ import CoreData
 import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, RegionManagerDelegate {
 
     var window: UIWindow?
     private var locationManager: CLLocationManager!
     var regionManager = RegionManager()
 
     func applicationDidFinishLaunching(application: UIApplication) {
+        self.regionManager.delegate = self
         self.setupUI()
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
@@ -33,8 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        println("local notification received")
-        println("notification " + "\(notification)")
+        if let task = ModelController().findTask(notification.userInfo!["uniqueIdentifier"] as! String) {
+            let alert = UIAlertController(title: notification.alertTitle, message: notification.alertBody, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction.cancelAction(String.okString(), handler: nil))
+            
+            self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        }
     }
 }
 
@@ -90,10 +95,30 @@ extension AppDelegate {
         self.locationManager.startUpdatingLocation()
     }
     
+    
+    
     /// Mark: CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let location = locations.first as? CLLocation {
             self.regionManager.processLocation(location)
+        }
+    }
+
+    
+    
+    /// Mark: RegionManagerDelegate
+    func regionManager(manager: RegionManager, didSelectRegions regions: [RegionManager.Region]) {
+        
+        for region in regions {
+            if let task = ModelController().findTask(region.identifier) {
+                let notification = UILocalNotification()
+                
+                notification.fireDate = NSDate()
+                notification.alertTitle = task.title
+                notification.alertBody = "You're in close distance to do - \(task.title)"
+                notification.userInfo = ["uniqueIdentifier": task.uniqueIdentifier]
+                UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            }
         }
     }
 }

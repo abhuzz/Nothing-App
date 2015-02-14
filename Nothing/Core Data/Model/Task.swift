@@ -14,6 +14,7 @@ import CoreLocation
 @objc(Task)
 class Task: NSManagedObject {
     
+    @NSManaged var uniqueIdentifier: String
     @NSManaged var title: String
     @NSManaged var longDescription: String?
     @NSManaged private var stateNumber: NSNumber

@@ -16,6 +16,13 @@ class ModelController {
         return (CDHelper.mainContext.executeFetchRequest(request, error: nil) as! [Task]) ?? [Task]()
     }
     
+    func findTask(identifier: String) -> Task? {
+        let request = NSFetchRequest(entityName: NSStringFromClass(Task.self))
+        request.predicate = NSPredicate(format: "uniqueIdentifier = %@", identifier)
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: false)]
+        return CDHelper.mainContext.executeFetchRequest(request, error: nil)?.first as? Task
+    }
+    
     func allPlaces(context: NSManagedObjectContext) -> [Place] {
         let request = NSFetchRequest(entityName: NSStringFromClass(Place.self))
         request.sortDescriptors = [NSSortDescriptor(key: "originalName", ascending: false)]

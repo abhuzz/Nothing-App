@@ -15,9 +15,6 @@ class LocalNotificationScheduler {
         /// Cancel notifications first
         self.cancelScheduledNotifications(task)
 
-        /// Prepare for scheduling
-        let taskObjectID = task.objectID.URIRepresentation().absoluteString!
-
         var schedule = false
         let notification = UILocalNotification()
         
@@ -31,19 +28,19 @@ class LocalNotificationScheduler {
         
         /// Schedule
         if schedule {
-            notification.userInfo = ["objectID": taskObjectID]
+            notification.userInfo = ["uniqueIdentifier": task.uniqueIdentifier]
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
     }
     
     class func cancelScheduledNotifications(task: Task) {
-        let taskObjectID = task.objectID.URIRepresentation().absoluteString!
-
+        let taskUniqueIdentifier = task.uniqueIdentifier
+        
         /// Find existing local notification and cancel it
         for notification in UIApplication.sharedApplication().scheduledLocalNotifications as! [UILocalNotification] {
             if let info = notification.userInfo as [NSObject: AnyObject]? {
-                if let objectID = info["objectID"] as? String {
-                    if objectID == taskObjectID {
+                if let uniqueIdentifier = info["uniqueIdentifier"] as? String {
+                    if uniqueIdentifier == taskUniqueIdentifier {
                         UIApplication.sharedApplication().cancelLocalNotification(notification)
                         break
                     }

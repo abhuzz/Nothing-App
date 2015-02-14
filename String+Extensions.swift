@@ -116,4 +116,8 @@ extension String {
     static func markAsActiveString() -> String {
         return NSLocalizedString("Mark as Active", comment: "")
     }
+    
+    static func okString() -> String {
+        return NSLocalizedString("OK", comment: "")
+    }
 }

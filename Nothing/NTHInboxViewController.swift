@@ -48,6 +48,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
         self.quickInsertView.didSubmitBlock = { [unowned self] title in
             /// create new task
             let task: Task = Task.create(CDHelper.mainContext)
+            task.uniqueIdentifier = NSUUID().UUIDString;
             task.title = title
             
             self.tasks = ModelController().allTasks()
@@ -94,6 +95,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
             let context = CDHelper.temporaryContext
             
             var task: Task = Task.create(context)
+            task.uniqueIdentifier = NSUUID().UUIDString;
             task.title = self.quickInsertView.text
             vc.task = task
             vc.context = context
