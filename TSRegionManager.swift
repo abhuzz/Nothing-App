@@ -18,12 +18,22 @@ protocol TSRegionManagerDelegate {
 class TSRegionManager {
  
     private var regions = [TSRegion]()
+    private var lastLocation: CLLocation?
     
     var delegate: TSRegionManagerDelegate!
-    
+    var distanceUpdate: CLLocationDistance = 10
     
     
     func update(location: CLLocation) {
+        /// Check if distance is greater than `distanceUpdate` to avoid non-stop updates
+        if let previous = self.lastLocation {
+            if previous.distanceFromLocation(location) < self.distanceUpdate {
+                return
+            }
+        }
+        
+        self.lastLocation = location
+        
         self._refreshRegions()
         let regionsToNotify = self._checkRules(location)
         
