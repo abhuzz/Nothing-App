@@ -36,10 +36,10 @@ class NTHInboxCell: UITableViewCell {
         self.separatorInset = UIEdgeInsetsMake(0, 20, 0, 0)
         
         self.titleLabel.font = UIFont.NTHInboxCellTitleFont()
-        self.titleLabel.textColor = UIColor.NTHCadetGrayColor()
+        self.titleLabel.textColor = UIColor.NTHHeaderTextColor()
         
         self.descriptionLabel.font = UIFont.NTHInboxCellDescriptionFont()
-        self.descriptionLabel.textColor = UIColor.NTHLinkWaterColor()
+        self.descriptionLabel.textColor = UIColor.NTHSubtitleTextColor()
         
         self.stateIndicatorView.state = .Active
     }

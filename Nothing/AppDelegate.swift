@@ -49,18 +49,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 extension AppDelegate {
     func setupUI() {
         /// UINavigationBar
-        UINavigationBar.appearance().barTintColor = UIColor.NTHMoodyBlueColor()
+        UINavigationBar.appearance().barTintColor = UIColor.NTHAppBackgroundColor()
         UINavigationBar.appearance().translucent = true
 
         UINavigationBar.appearance().titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.NTHWhiteColor(),
+            NSForegroundColorAttributeName: UIColor.NTHNavigationBarColor(),
             NSFontAttributeName: /*UIFont.NTHNavigationBarTitleFont()*/UIFont(name: "GeezaPro-Bold", size: 20.0)!
         ]
 
-        UINavigationBar.appearance().tintColor = UIColor.NTHWhiteColor()
+        UINavigationBar.appearance().tintColor = UIColor.NTHNavigationBarColor()
 
-//        /// UITableView
-        UITableView.appearance().separatorColor = UIColor.NTHWhiteLilacColor()
+        /// UITableView
+        UITableView.appearance().separatorColor = UIColor.NTHTableViewSeparatorColor()
     }
 }
 

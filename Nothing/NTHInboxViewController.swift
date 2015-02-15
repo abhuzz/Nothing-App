@@ -42,7 +42,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     
     private func configureInsertContainer() {
         self.quickInsertView.submitButton.enabled = false
-        self.quickInsertView.backgroundColor = UIColor.NTHWhiteSmokeColor()
+        self.quickInsertView.backgroundColor = UIColor.NTHHeaderTextColor()
         self.quickInsertView.textField.placeholder = "What's in your mind"
         self.quickInsertView.submitButton.setTitle("Add", forState: .Normal)
         self.quickInsertView.didSubmitBlock = { [unowned self] title in

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 class LocationReminderContainer {
-    
+    var place: Place!
 }
 
 class DateReminderContainer {
@@ -38,7 +39,17 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     
     @IBOutlet private weak var notesTextView: NTHPlaceholderTextView!
     
-    
+    /**
+        For setting UI colors
+    */
+    @IBOutlet weak var locationRemindersLabel: UILabel!
+    @IBOutlet weak var dateRemindersLabel: UILabel!
+    @IBOutlet weak var linksLabel: UILabel!
+    @IBOutlet weak var separator1: UIView!
+    @IBOutlet weak var separator2: UIView!
+    @IBOutlet weak var separator3: UIView!
+    @IBOutlet weak var separator4: UIView!
+    /// END
 
     private var taskContainer = TaskContainer()
 
@@ -52,8 +63,15 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     }
     
     
+    var context: NSManagedObjectContext!
+    
+    
     override func viewDidLoad() {
+        
+        self.context = CDHelper.temporaryContext
+        
         super.viewDidLoad()
+        self._configureColors()
         self._configureTitleTextField()
         
         let centerLabelCell = UINib(nibName: "NTHCenterLabelCell", bundle: nil)
@@ -65,6 +83,19 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         self._configureLocationsTableView()
         self._configureDatesTableView()
         self._configureLinksTableView()
+    }
+    
+    private func _configureColors() {
+        self.locationRemindersLabel.textColor = UIColor.NTHHeaderTextColor()
+        self.dateRemindersLabel.textColor = UIColor.NTHHeaderTextColor()
+        self.linksLabel.textColor = UIColor.NTHHeaderTextColor()
+        
+        self.separator1.backgroundColor = UIColor.NTHTableViewSeparatorColor()
+        self.separator2.backgroundColor = UIColor.NTHTableViewSeparatorColor()
+        self.separator3.backgroundColor = UIColor.NTHTableViewSeparatorColor()
+        self.separator4.backgroundColor = UIColor.NTHTableViewSeparatorColor()
+        
+        self.notesTextView.placeholderColor = UIColor.NTHPlaceholderTextColor()
     }
     
     private func _configureTitleTextField() {
@@ -91,6 +122,14 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         super.viewWillAppear(animated)
     }
     
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SegueIdentifier.CreateLocationReminder.rawValue {
+            let vc = segue.destinationViewController as! NTHCreateEditLocationReminderViewController
+            vc.context = self.context
+        }
+    }
     
     
 
@@ -123,7 +162,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         
         switch tableView.type {
         case .Locations:
-            if self.taskContainer.locationReminders.count == 0 {
+            if indexPath.row == self.taskContainer.locationReminders.count {
                 return _createAddNewSomethingCell("+ Add new location")
             } else {
                 return UITableViewCell()

@@ -54,3 +54,14 @@ extension UIFont {
         return UIFont(name: NTHLightFontName(), size: 12)!
     }
 }
+
+extension UIFont {
+    
+    class func NTHAddNewCellFont() -> UIFont {
+        return UIFont(name: "AvenirNext-Regular", size: 13.0)!
+    }
+
+    class func NTHNormalTextFont() -> UIFont {
+        return UIFont(name: "AvenirNext-Regular", size: 20.0)!
+    }
+}

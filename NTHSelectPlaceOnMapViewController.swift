@@ -57,14 +57,6 @@ class NTHSelectPlaceOnMapViewController: UIViewController, MKMapViewDelegate {
     }
 }
 
-extension MKMapView {
-    func removeAllAnnotations() {
-        if let annotations = self.annotations {
-            self.removeAnnotations(annotations)
-        }
-    }
-}
-
 extension CLGeocoder {
     class func infoForCoordinate(coordinate: CLLocationCoordinate2D, completion: (info: String) -> Void) {
         let geocoder = CLGeocoder()

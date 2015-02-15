@@ -65,11 +65,11 @@ class QuickInsertView: UIView, UITextFieldDelegate {
         self.hideMoreAnimated(animated)
         self.textField.text = ""
         self.textField.font = UIFont.NTHQuickInsertTextfieldFont()
-        self.textField.textColor = UIColor.NTHLynchColor()
+        self.textField.textColor = UIColor.NTHHeaderTextColor()
         self.submitButton.titleLabel!.font = UIFont.NTHQuickInsertBoldFont()
-        self.submitButton.setTitleColor(UIColor.NTHLinkWaterColor(), forState: .Disabled)
-        self.submitButton.setTitleColor(UIColor.NTHMoodyBlueColor(), forState: .Normal)
-        self.moreButton.setTitleColor(UIColor.NTHMoodyBlueColor(), forState: .Normal)
+        self.submitButton.setTitleColor(UIColor.NTHHeaderTextColor(), forState: .Disabled)
+        self.submitButton.setTitleColor(UIColor.NTHStatusDoneColor(), forState: .Normal)
+        self.moreButton.setTitleColor(UIColor.NTHStatusDoneColor(), forState: .Normal)
         self.updateView()
     }
     
