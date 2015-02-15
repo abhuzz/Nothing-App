@@ -54,7 +54,7 @@ extension AppDelegate {
 
         UINavigationBar.appearance().titleTextAttributes = [
             NSForegroundColorAttributeName: UIColor.NTHWhiteColor(),
-            NSFontAttributeName: UIFont.NTHNavigationBarTitleFont()
+            NSFontAttributeName: /*UIFont.NTHNavigationBarTitleFont()*/UIFont(name: "GeezaPro-Bold", size: 20.0)!
         ]
 
         UINavigationBar.appearance().tintColor = UIColor.NTHWhiteColor()
