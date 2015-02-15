@@ -23,6 +23,7 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     
     
     private var places = [Place]()
+    private var selectedIndexPath: NSIndexPath?
     
     private enum SegueIdentifier: String {
         case AddNewPlace = "AddNewPlace"
@@ -84,16 +85,24 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
             cell.label.text = self.places[indexPath.row].customName
             cell.label.font = UIFont.NTHNormalTextFont()
             cell.selectedBackgroundView = UIView()
+            cell.tintColor = UIColor.NTHNavigationBarColor()
             return cell
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
         if indexPath.row == self.places.count {
             /// show place wizard
             self.performSegueWithIdentifier(SegueIdentifier.AddNewPlace.rawValue, sender: nil)
         } else {
-            /// do nothing now
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! NTHLeftLabelCell
+            if cell.accessoryType == UITableViewCellAccessoryType.None {
+                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                self.selectedIndexPath = indexPath
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryType.None
+            }
         }
     }
     
