@@ -300,8 +300,15 @@
                             <constraint firstItem="cWt-OY-ztq" firstAttribute="leading" secondItem="PcN-xf-vCi" secondAttribute="leading" constant="25" id="mZP-1m-h7Q"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Reminder" id="ehq-N6-xTD"/>
+                    <navigationItem key="navigationItem" title="Reminder" id="ehq-N6-xTD">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="G7t-TS-xim">
+                            <connections>
+                                <action selector="donePressed:" destination="01x-bX-lm7" id="bzy-yU-pzq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="doneButton" destination="G7t-TS-xim" id="T0E-ld-mvj"/>
                         <outlet property="placeLabel" destination="ubt-kg-pPj" id="OP1-xN-8sO"/>
                         <outlet property="placesTableView" destination="tr7-9D-Yzz" id="eKC-Px-QbT"/>
                         <outlet property="regionControl" destination="eEu-hK-Ipm" id="Xdi-ms-k4q"/>

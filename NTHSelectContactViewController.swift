@@ -49,9 +49,10 @@ class NTHSelectContactViewController: UITableViewController, ABPeoplePickerNavig
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row != self.numberOfCells() - 1 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("NTHContactCell") as! NTHContactCell
-            cell.label.text = self.contacts[indexPath.row].name
-            return cell
+            return UITableViewCell()
+//            let cell = tableView.dequeueReusableCellWithIdentifier("NTHContactCell") as! NTHContactCell
+//            cell.label.text = self.contacts[indexPath.row].name
+//            return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
             cell.label.text = String.addANewContactString()

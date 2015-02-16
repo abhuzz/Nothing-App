@@ -9,18 +9,10 @@
 import UIKit
 import CoreData
 
-class LocationReminderContainer {
-    var place: Place!
-}
-
-class DateReminderContainer {
-    
-}
-
 class TaskContainer {
     var title: String?
-    var locationReminders = [LocationReminderContainer]()
-    var dateReminders = [DateReminderContainer]()
+    var locationReminders = [LocationReminderInfo]()
+    var dateReminders = [DateReminderInfo]()
     var links = [Connection]()
 }
 
@@ -74,11 +66,15 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         self._configureColors()
         self._configureTitleTextField()
         
-        let centerLabelCell = UINib(nibName: "NTHCenterLabelCell", bundle: nil)
-        let centerLabelCellIdentifier = "NTHCenterLabelCell"
-        self.locationsTableView.registerNib(centerLabelCell, forCellReuseIdentifier: centerLabelCellIdentifier)
-        self.datesTableView.registerNib(centerLabelCell, forCellReuseIdentifier: centerLabelCellIdentifier)
-        self.linksTableView.registerNib(centerLabelCell, forCellReuseIdentifier: centerLabelCellIdentifier)
+        /// Register center label cell=
+        let centerCellIdentifier = "NTHCenterLabelCell"
+        let leftLabelRemoveCellIdentifier = "NTHLeftLabelRemoveCell"
+        
+        self.locationsTableView.registerNib(centerCellIdentifier)
+        self.locationsTableView.registerNib(leftLabelRemoveCellIdentifier)
+        
+        self.datesTableView.registerNib(centerCellIdentifier)
+        self.linksTableView.registerNib(centerCellIdentifier)
         
         self._configureLocationsTableView()
         self._configureDatesTableView()
@@ -128,6 +124,10 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         if segue.identifier == SegueIdentifier.CreateLocationReminder.rawValue {
             let vc = segue.destinationViewController as! NTHCreateEditLocationReminderViewController
             vc.context = self.context
+            vc.completionBlock = { newReminder in
+                self.taskContainer.locationReminders.append(newReminder)
+                self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.taskContainer.locationReminders.count + 1)
+            }
         }
     }
     
@@ -138,13 +138,13 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         
         switch tableView.type {
         case .Locations:
-            return max(1, self.taskContainer.locationReminders.count)
+            return self.taskContainer.locationReminders.count + 1
             
         case .Dates:
-            return max(1, self.taskContainer.dateReminders.count)
+            return self.taskContainer.dateReminders.count + 1
             
         case .Links:
-            return max(1, self.taskContainer.links.count)
+            return self.taskContainer.links.count + 1
         }
     }
     
@@ -160,12 +160,25 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             return cell
         }
         
+        func _createRegularCell(title: String) -> NTHLeftLabelRemoveCell {
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelRemoveCell") as! NTHLeftLabelRemoveCell
+            cell.label.font = UIFont(name: "AvenirNext-Regular", size: 18.0)
+            cell.label.text = title
+            cell.selectedBackgroundView = UIView()
+            return cell
+        }
+        
         switch tableView.type {
         case .Locations:
             if indexPath.row == self.taskContainer.locationReminders.count {
                 return _createAddNewSomethingCell("+ Add new location")
             } else {
-                return UITableViewCell()
+                let cell = _createRegularCell(self.taskContainer.locationReminders[indexPath.row].place.customName)
+                cell.clearPressedBlock = { cell in
+                    self.taskContainer.locationReminders.removeAtIndex(self.locationsTableView.indexPathForCell(cell)!.row)
+                    self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.taskContainer.locationReminders.count + 1)
+                }
+                return cell
             }
         case .Dates:
             if self.taskContainer.dateReminders.count == 0 {
@@ -194,7 +207,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 self.performSegueWithIdentifier(SegueIdentifier.CreateLocationReminder.rawValue, sender: nil)
             } else {
                 var reminder = self.taskContainer.locationReminders[indexPath.row]
-                self.performSegueWithIdentifier(SegueIdentifier.EditLocationReminder.rawValue, sender: reminder)
+//                self.performSegueWithIdentifier(SegueIdentifier.EditLocationReminder.rawValue, sender: reminder)
             }
             
         default:

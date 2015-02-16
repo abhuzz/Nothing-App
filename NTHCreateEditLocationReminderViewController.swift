@@ -16,6 +16,7 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     @IBOutlet private weak var separator: UIView!
     @IBOutlet weak var regionLabel: UILabel!
     @IBOutlet weak var regionControl: NTHRegionControl!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     private var places = [Place]()
     private var selectedIndexPath: NSIndexPath?
@@ -24,10 +25,8 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
         case AddNewPlace = "AddNewPlace"
     }
     
-    
     var context: NSManagedObjectContext!
-    
-    
+    var completionBlock: ((newReminder: LocationReminderInfo) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +52,18 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
         self.regionControl.regionSegmentedControl.tintColor = UIColor.NTHNavigationBarColor()
     }
     
+    @IBAction func donePressed(sender: AnyObject) {
+        let reminder: LocationReminderInfo = LocationReminderInfo.create(self.context)
+        reminder.place = self.places[self.selectedIndexPath!.row]
+        reminder.distance = self.regionControl.regionSlider.value
+        reminder.onArrive = (self.regionControl.regionSegmentedControl.selectedSegmentIndex == 0)
+        self.completionBlock?(newReminder: reminder)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    private func _validateDoneButton() {
+        self.doneButton.enabled = self.selectedIndexPath != nil
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SegueIdentifier.AddNewPlace.rawValue {
@@ -94,14 +105,22 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
             /// show place wizard
             self.performSegueWithIdentifier(SegueIdentifier.AddNewPlace.rawValue, sender: nil)
         } else {
+            /// deselect old cell
+            if let previousIndexPath = self.selectedIndexPath {
+                let previousCell = tableView.cellForRowAtIndexPath(previousIndexPath) as! NTHLeftLabelCell
+                previousCell.accessoryType = .None
+            }
+            
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! NTHLeftLabelCell
-            if cell.accessoryType == UITableViewCellAccessoryType.None {
-                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            if cell.accessoryType == .None {
+                cell.accessoryType = .Checkmark
                 self.selectedIndexPath = indexPath
             } else {
-                cell.accessoryType = UITableViewCellAccessoryType.None
+                cell.accessoryType = .None
             }
         }
+        
+        self._validateDoneButton()
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
