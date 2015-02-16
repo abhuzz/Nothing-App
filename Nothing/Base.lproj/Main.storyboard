@@ -130,6 +130,7 @@
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="hfZ-mf-dIk" secondAttribute="trailing" constant="25" id="08Y-tg-c25"/>
                                             <constraint firstItem="Rdk-cT-nLO" firstAttribute="top" secondItem="X2N-fH-drA" secondAttribute="bottom" constant="15" id="2ah-Ka-iy4"/>
@@ -169,6 +170,9 @@
                                             <constraint firstItem="X2N-fH-drA" firstAttribute="top" secondItem="3jk-oB-1EQ" secondAttribute="bottom" constant="15" id="z7E-SO-Kpg"/>
                                             <constraint firstItem="3Qh-pF-vJw" firstAttribute="leading" secondItem="Hml-OO-Tcx" secondAttribute="leading" constant="25" id="zCN-gG-TmI"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="nFu-2o-cDe" appends="YES" id="fXW-dg-0dF"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -206,12 +210,19 @@
                         <outlet property="separator2" destination="Rg2-jG-sH9" id="SNO-hi-LMy"/>
                         <outlet property="separator3" destination="kHU-k5-l2G" id="chl-ku-dsC"/>
                         <outlet property="separator4" destination="X2N-fH-drA" id="GjF-Qe-zhD"/>
+                        <outlet property="tapGesture" destination="nFu-2o-cDe" id="aEX-D6-IXF"/>
                         <outlet property="titleTextField" destination="LE8-wB-OeB" id="u4i-jZ-WPQ"/>
                         <segue destination="01x-bX-lm7" kind="push" identifier="EditLocationReminder" id="N3F-1W-rz6"/>
                         <segue destination="01x-bX-lm7" kind="push" identifier="CreateLocationReminder" id="ENL-Cp-mGc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEr-QO-NDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="nFu-2o-cDe">
+                    <connections>
+                        <action selector="handleTap:" destination="SX2-On-79X" id="sp9-yb-DQp"/>
+                        <outlet property="delegate" destination="SX2-On-79X" id="Ta0-Kk-TxD"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="469" y="256"/>
         </scene>

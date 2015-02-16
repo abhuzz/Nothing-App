@@ -16,7 +16,7 @@ class TaskContainer {
     var links = [Connection]()
 }
 
-class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
     @IBOutlet private weak var titleTextField: NTHTextField!
     
@@ -31,6 +31,10 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     
     @IBOutlet private weak var notesTextView: NTHPlaceholderTextView!
     
+    @IBOutlet private var tapGesture: UITapGestureRecognizer!
+    
+    
+    
     /**
         For setting UI colors
     */
@@ -42,6 +46,8 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     @IBOutlet weak var separator3: UIView!
     @IBOutlet weak var separator4: UIView!
     /// END
+    
+    
 
     private var taskContainer = TaskContainer()
 
@@ -118,6 +124,12 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         super.viewWillAppear(animated)
     }
     
+    @IBAction func handleTap(sender: AnyObject) {
+        if self.titleTextField.isFirstResponder() || self.notesTextView.isFirstResponder() {
+            self.titleTextField.resignFirstResponder()
+            self.notesTextView.resignFirstResponder()
+        }
+    }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -237,6 +249,16 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     
     private func tableViewCellHeight() -> CGFloat {
         return 50.0
+    }
+    
+    
+    /// Mark: UIGestureRecognizerDelegate
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if self.titleTextField.isFirstResponder() || self.notesTextView.isFirstResponder() {
+            return true
+        }
+        
+        return false
     }
 }
 
