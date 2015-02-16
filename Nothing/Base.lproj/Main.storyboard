@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="o8N-Fw-5uC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Task-->
@@ -215,6 +214,8 @@
                         <outlet property="titleTextField" destination="LE8-wB-OeB" id="u4i-jZ-WPQ"/>
                         <segue destination="01x-bX-lm7" kind="push" identifier="EditLocationReminder" id="N3F-1W-rz6"/>
                         <segue destination="01x-bX-lm7" kind="push" identifier="CreateLocationReminder" id="ENL-Cp-mGc"/>
+                        <segue destination="qKL-pp-hDu" kind="push" identifier="CreateDateReminder" id="wRh-l5-PIE"/>
+                        <segue destination="qKL-pp-hDu" kind="push" identifier="EditDateReminder" id="LMi-nX-CeN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEr-QO-NDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -351,7 +352,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2sV-6f-Q54" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1079" y="712"/>
+            <point key="canvasLocation" x="1204" y="1057"/>
         </scene>
         <!--Inbox View Controller-->
         <scene sceneID="JK8-62-5xE">
@@ -403,7 +404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOv-Nc-IrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1539" y="500"/>
+            <point key="canvasLocation" x="1753" y="716"/>
         </scene>
         <!--Create Task-->
         <scene sceneID="Mm8-y9-5lx">
@@ -530,8 +531,6 @@
                         <outlet property="titleControl" destination="Oqg-of-52u" id="acw-af-P74"/>
                         <segue destination="78D-SZ-BW2" kind="modal" identifier="TextEditor" id="USy-L9-PMD"/>
                         <segue destination="A7j-0A-jko" kind="modal" identifier="Places" id="5RZ-YH-F07"/>
-                        <segue destination="xfT-mP-tfV" kind="push" identifier="Region" id="lMb-j9-vhb"/>
-                        <segue destination="qKL-pp-hDu" kind="push" identifier="Date" id="7tp-gK-yvc"/>
                         <segue destination="gOI-5G-8xw" kind="modal" identifier="RepeatInterval" id="aLN-xo-bwu"/>
                     </connections>
                 </viewController>
@@ -581,97 +580,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBe-lt-sSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1164" y="1992"/>
-        </scene>
-        <!--Region-->
-        <scene sceneID="GsI-ov-95f">
-            <objects>
-                <viewController id="xfT-mP-tfV" customClass="NTHRegionViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Fe4-Lr-pAI"/>
-                        <viewControllerLayoutGuide type="bottom" id="CQF-uu-5QI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OJR-XI-vnY">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="100" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="eOk-PB-KfI">
-                                <rect key="frame" x="56" y="28" width="208" height="31"/>
-                                <connections>
-                                    <action selector="sliderEnded:" destination="xfT-mP-tfV" eventType="touchUpOutside" id="hmb-62-OAQ"/>
-                                    <action selector="sliderEnded:" destination="xfT-mP-tfV" eventType="touchUpInside" id="jpA-V1-9uH"/>
-                                    <action selector="sliderValueChanged:" destination="xfT-mP-tfV" eventType="valueChanged" id="3g9-ga-LJH"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 m" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpu-Gm-YHi">
-                                <rect key="frame" x="10" y="35" width="40" height="15"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fg-aU-QHD">
-                                <rect key="frame" x="270" y="35" width="40" height="15"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5j0-Oe-yVf">
-                                <rect key="frame" x="143" y="68" width="34" height="15"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="F4z-xd-h8B">
-                                <rect key="frame" x="58" y="112" width="204" height="29"/>
-                                <segments>
-                                    <segment title="Arrive"/>
-                                    <segment title="Leave"/>
-                                </segments>
-                                <connections>
-                                    <action selector="arriveOrLeavePressed:" destination="xfT-mP-tfV" eventType="valueChanged" id="TfF-ZB-W54"/>
-                                </connections>
-                            </segmentedControl>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="F4z-xd-h8B" firstAttribute="top" secondItem="eOk-PB-KfI" secondAttribute="bottom" constant="54" id="07b-iE-N5o"/>
-                            <constraint firstItem="eOk-PB-KfI" firstAttribute="centerY" secondItem="fpu-Gm-YHi" secondAttribute="centerY" constant="0.5" id="2Gi-9R-h3u"/>
-                            <constraint firstItem="eOk-PB-KfI" firstAttribute="leading" secondItem="OJR-XI-vnY" secondAttribute="leadingMargin" constant="42" id="CGZ-yG-uPB"/>
-                            <constraint firstItem="0Fg-aU-QHD" firstAttribute="leading" secondItem="eOk-PB-KfI" secondAttribute="trailing" constant="8" id="Cch-3C-4iY"/>
-                            <constraint firstItem="F4z-xd-h8B" firstAttribute="trailing" secondItem="eOk-PB-KfI" secondAttribute="trailing" id="EiB-8k-SAW"/>
-                            <constraint firstAttribute="trailing" secondItem="0Fg-aU-QHD" secondAttribute="trailing" constant="10" id="ND5-Re-cwQ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="eOk-PB-KfI" secondAttribute="trailing" constant="42" id="Uj5-dB-Cqm"/>
-                            <constraint firstItem="eOk-PB-KfI" firstAttribute="leading" secondItem="fpu-Gm-YHi" secondAttribute="trailing" constant="8" id="b0C-M3-bmo"/>
-                            <constraint firstItem="fpu-Gm-YHi" firstAttribute="leading" secondItem="OJR-XI-vnY" secondAttribute="leading" constant="10" id="cOM-fo-8UK"/>
-                            <constraint firstItem="5j0-Oe-yVf" firstAttribute="centerX" secondItem="eOk-PB-KfI" secondAttribute="centerX" id="cwQ-ND-rW2"/>
-                            <constraint firstItem="5j0-Oe-yVf" firstAttribute="top" secondItem="eOk-PB-KfI" secondAttribute="bottom" constant="10" id="gvm-I3-UAD"/>
-                            <constraint firstItem="F4z-xd-h8B" firstAttribute="leading" secondItem="eOk-PB-KfI" secondAttribute="leading" id="i3i-iz-duY"/>
-                            <constraint firstItem="eOk-PB-KfI" firstAttribute="top" secondItem="Fe4-Lr-pAI" secondAttribute="bottom" constant="28" id="jaP-Gb-jSu"/>
-                            <constraint firstItem="F4z-xd-h8B" firstAttribute="centerX" secondItem="eOk-PB-KfI" secondAttribute="centerX" id="tgm-P1-kQm"/>
-                            <constraint firstItem="0Fg-aU-QHD" firstAttribute="centerY" secondItem="eOk-PB-KfI" secondAttribute="centerY" constant="-0.5" id="x96-f2-3YY"/>
-                        </constraints>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Region" id="9TK-KD-M3T">
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="done" systemItem="done" id="SGt-fR-mYZ">
-                            <connections>
-                                <action selector="donePressed:" destination="xfT-mP-tfV" id="wrg-TO-D64"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="568"/>
-                    <connections>
-                        <outlet property="curLabel" destination="5j0-Oe-yVf" id="i6S-rH-1lP"/>
-                        <outlet property="maxLabel" destination="0Fg-aU-QHD" id="pkH-nI-jbC"/>
-                        <outlet property="minLabel" destination="fpu-Gm-YHi" id="d8F-ZH-pbV"/>
-                        <outlet property="segmentedControl" destination="F4z-xd-h8B" id="mJd-JF-g9d"/>
-                        <outlet property="slider" destination="eOk-PB-KfI" id="j8x-L1-JIO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6u8-DE-7iQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1546" y="1992"/>
+            <point key="canvasLocation" x="964" y="479"/>
         </scene>
         <!--Editor-->
         <scene sceneID="FUY-Pi-9vm">
@@ -1370,6 +1279,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="ENL-Cp-mGc"/>
+        <segue reference="LMi-nX-CeN"/>
         <segue reference="DF6-eZ-eD5"/>
         <segue reference="USy-L9-PMD"/>
     </inferredMetricsTieBreakers>

@@ -178,16 +178,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
                 self.validateCreateButton()
             }
         } else if (segue.identifier == SegueIdentifier.Region.rawValue) {
-            let regionVC = segue.destinationViewController as! NTHRegionViewController
-            if let place = self.task.locationReminderInfo?.place {
-                regionVC.configure(self.task.locationReminderInfo!.distance, onArrive: self.task.locationReminderInfo!.onArrive)
-            }
-            
-            regionVC.successBlock = { [unowned self] (distance: Float, onArrive: Bool) in
-                self.task.locationReminderInfo!.distance = distance
-                self.task.locationReminderInfo!.onArrive = onArrive
-                self.updateSecondDetailTextInLocationReminderControl(self.task.locationReminderInfo!.distance, onArrive: self.task.locationReminderInfo!.onArrive)
-            }
+
         } else if (segue.identifier == SegueIdentifier.Date.rawValue) {
             let dateVC = segue.destinationViewController as! NTHDatePickerViewController
             if let reminder = self.task.dateReminderInfo {
