@@ -18,6 +18,7 @@ class TaskContainer {
 
 class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var scrollViewBottomGuide: NSLayoutConstraint!
     @IBOutlet private weak var titleTextField: NTHTextField!
     
     @IBOutlet private weak var locationsTableView: UITableView!
@@ -32,7 +33,6 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     @IBOutlet private weak var notesTextView: NTHPlaceholderTextView!
     
     @IBOutlet private var tapGesture: UITapGestureRecognizer!
-    
     
     
     /**
@@ -87,6 +87,30 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         self._configureLinksTableView()
     }
     
+    private func _addObservers() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    private func _removeObservers() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        self.scrollViewBottomGuide.constant = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue().height
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        self.scrollViewBottomGuide.constant = 0
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            self.view.layoutIfNeeded()
+        })
+    }
+
+    
     private func _configureColors() {
         self.locationRemindersLabel.textColor = UIColor.NTHHeaderTextColor()
         self.dateRemindersLabel.textColor = UIColor.NTHHeaderTextColor()
@@ -122,6 +146,12 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self._addObservers()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self._removeObservers()
     }
     
     @IBAction func handleTap(sender: AnyObject) {

@@ -206,6 +206,7 @@
                         <outlet property="locationsTableView" destination="3Qh-pF-vJw" id="BCc-yr-Ci3"/>
                         <outlet property="locationsTableViewHeight" destination="UW6-BK-cKN" id="i4t-uf-Zpu"/>
                         <outlet property="notesTextView" destination="Rdk-cT-nLO" id="eSH-dq-QZk"/>
+                        <outlet property="scrollViewBottomGuide" destination="bHq-Q8-e8P" id="pM1-Ai-7Mt"/>
                         <outlet property="separator1" destination="SfQ-kW-KES" id="k58-w6-gKg"/>
                         <outlet property="separator2" destination="Rg2-jG-sH9" id="SNO-hi-LMy"/>
                         <outlet property="separator3" destination="kHU-k5-l2G" id="chl-ku-dsC"/>
