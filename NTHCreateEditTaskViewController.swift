@@ -58,6 +58,8 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     private enum SegueIdentifier: String {
         case CreateLocationReminder = "CreateLocationReminder"
         case EditLocationReminder = "EditLocationReminder"
+        case CreateDateReminder = "CreateDateReminder"
+        case EditDateReminder = "EditDateReminder"
     }
     
     
@@ -258,6 +260,12 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             } else {
                 var reminder = self.taskContainer.locationReminders[indexPath.row]
                 self.performSegueWithIdentifier(SegueIdentifier.EditLocationReminder.rawValue, sender: reminder)
+            }
+            
+        case .Dates:
+            let addNewReminder = indexPath.row == self.taskContainer.dateReminders.count
+            if addNewReminder {
+                self.performSegueWithIdentifier(SegueIdentifier.CreateDateReminder.rawValue, sender: nil)
             }
             
         default:

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1202EB731A79579900B67F45 /* NTHDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1202EB721A79579900B67F45 /* NTHDatePickerViewController.swift */; };
+		1202EB731A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */; };
 		12059DCA1A34FDA2007F5E7C /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DC91A34FDA2007F5E7C /* UIColor+Extensions.swift */; };
 		12059DCD1A34FF5C007F5E7C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DCC1A34FF5C007F5E7C /* UIFont+Extension.swift */; };
 		12059DCF1A350153007F5E7C /* NTHInboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12059DCE1A350153007F5E7C /* NTHInboxCell.xib */; };
@@ -95,7 +95,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1202EB721A79579900B67F45 /* NTHDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHDatePickerViewController.swift; sourceTree = "<group>"; };
+		1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditDateReminderViewController.swift; sourceTree = "<group>"; };
 		12059DC91A34FDA2007F5E7C /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		12059DCC1A34FF5C007F5E7C /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		12059DCE1A350153007F5E7C /* NTHInboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NTHInboxCell.xib; path = Nothing/NTHInboxCell.xib; sourceTree = "<group>"; };
@@ -227,7 +227,6 @@
 				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
 				1260ABFD1A7819020015CA4E /* NTHCreatePlaceViewController.swift */,
 				12834C111A7597C9005C952C /* NTHCreateOrEditTaskViewController.swift */,
-				1202EB721A79579900B67F45 /* NTHDatePickerViewController.swift */,
 				1279B5DB19FED4E700A7828C /* NTHInboxViewController.swift */,
 				12BB652C1A7E26DC00CC4448 /* NTHSelectContactViewController.swift */,
 				1258A2E01A76C00C00755F6E /* NTHSelectPlaceOnMapViewController.swift */,
@@ -238,6 +237,7 @@
 				121CF5C71A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift */,
 				128EE7BD1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift */,
 				12FE1D701A913A8600F03601 /* NTHCreateNewPlaceViewController.swift */,
+				1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */,
 			);
 			name = Controllers;
 			path = ..;
@@ -597,7 +597,7 @@
 				12D4FF081A7D120100F04858 /* NTHSelectRepeatIntervalCell.swift in Sources */,
 				129659D31A7ECC66000696F9 /* NTHDoubleTitleDetailView.swift in Sources */,
 				1230A08D1A8BBE6F0064447B /* LocalNotificationScheduler.swift in Sources */,
-				1202EB731A79579900B67F45 /* NTHDatePickerViewController.swift in Sources */,
+				1202EB731A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift in Sources */,
 				1279B61019FED64D00A7828C /* Place.swift in Sources */,
 				1279B60E19FED64D00A7828C /* DateReminderInfo.swift in Sources */,
 			);

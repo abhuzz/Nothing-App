@@ -180,22 +180,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
         } else if (segue.identifier == SegueIdentifier.Region.rawValue) {
 
         } else if (segue.identifier == SegueIdentifier.Date.rawValue) {
-            let dateVC = segue.destinationViewController as! NTHDatePickerViewController
-            if let reminder = self.task.dateReminderInfo {
-                dateVC.configure(reminder.fireDate)
-            }
             
-            dateVC.block = { [unowned self] date in                
-                self.dateReminderControl.setFirstDetailText(NSDateFormatter.NTHStringFromDate(date))
-                self.dateReminderControl.secondDetailLabel.enabled = true
-                
-                if self.task.dateReminderInfo == nil {
-                    self.task.dateReminderInfo = DateReminderInfo.create(self.context) as DateReminderInfo
-                    self.task.dateReminderInfo!.repeatInterval = NSCalendarUnit.allZeros
-                }
-                
-                self.task.dateReminderInfo!.fireDate = date
-            }
         } else if (segue.identifier == SegueIdentifier.RepeatInterval.rawValue) {
             let regionVC = (segue.destinationViewController as! UINavigationController).topViewController as! NTHSelectRepeatIntervalViewController
                 regionVC.completionBlock = { [unowned self] unit, description in

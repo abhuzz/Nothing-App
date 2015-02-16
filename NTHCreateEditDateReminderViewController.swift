@@ -1,5 +1,5 @@
 //
-//  NTHDatePickerViewController.swift
+//  NTHCreateEditDateReminderViewController.swift
 //  Nothing
 //
 //  Created by Tomasz Szulc on 28/01/15.
@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
-class NTHDatePickerViewController: UIViewController {
+class NTHCreateEditDateReminderViewController: UIViewController {
     
-    typealias NTHDatePickerViewControllerBlock = (date: NSDate) -> Void
-    var block: NTHDatePickerViewControllerBlock?
-
     private var selectedDate: NSDate?
+    
+    var context: NSManagedObjectContext!
+    var completionBlock: ((newReminder: DateReminderInfo) -> Void)?
     
     func configure(date: NSDate) {
         self.selectedDate = date
@@ -33,7 +34,7 @@ class NTHDatePickerViewController: UIViewController {
     }
     
     @IBAction func donePressed(sender: AnyObject) {
-        self.block?(date: self.datePicker.date)
+//        self.block?(date: self.datePicker.date)
         self.navigationController?.popViewControllerAnimated(true)
     }
 }
