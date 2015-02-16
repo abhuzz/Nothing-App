@@ -59,7 +59,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         if let reminder = self.task.locationReminderInfo {
             self.locationReminderControl.setFirstDetailText(reminder.place.customName)
             let arriveOrLeave = reminder.onArrive ? String.arriveString() : String.leaveString()
-            self.locationReminderControl.setSecondDetailText(arriveOrLeave + ", " + reminder.distance.distanceDescription())
+            self.locationReminderControl.setSecondDetailText(arriveOrLeave + ", " + reminder.distance.metersOrKilometers())
         }
         self.locationReminderControl.hideButton()
         

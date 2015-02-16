@@ -14,13 +14,8 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     @IBOutlet private weak var placeLabel: UILabel!
     @IBOutlet private weak var placesTableView: UITableView!
     @IBOutlet private weak var separator: UIView!
-    @IBOutlet private weak var regionSlider: UISlider!
-    @IBOutlet private weak var minRegionLabel: UILabel!
-    @IBOutlet private weak var curRegionLabel: UILabel!
-    @IBOutlet private weak var maxRegionLabel: UILabel!
-    @IBOutlet private weak var regionSegmentedControl: UISegmentedControl!
     @IBOutlet weak var regionLabel: UILabel!
-    
+    @IBOutlet weak var regionControl: NTHRegionControl!
     
     private var places = [Place]()
     private var selectedIndexPath: NSIndexPath?
@@ -41,17 +36,21 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
         self.placesTableView.registerNib("NTHCenterLabelCell")
         self.placesTableView.registerNib("NTHLeftLabelCell")
         self.places = ModelController().allPlaces(self.context)
+        
+        self.regionControl.configure(100.0, onArrive: true)
+        self.regionControl.prepareBeforePresenting()
     }
     
     private func _configureUIColors() {
         self.placeLabel.textColor = UIColor.NTHHeaderTextColor()
         self.regionLabel.textColor = UIColor.NTHHeaderTextColor()
         self.separator.backgroundColor = UIColor.NTHTableViewSeparatorColor()
-        self.regionSlider.minimumTrackTintColor = UIColor.NTHNavigationBarColor()
-        self.minRegionLabel.textColor = UIColor.NTHHeaderTextColor()
-        self.curRegionLabel.textColor = UIColor.NTHHeaderTextColor()
-        self.maxRegionLabel.textColor = UIColor.NTHHeaderTextColor()
-        self.regionSegmentedControl.tintColor = UIColor.NTHNavigationBarColor()
+        
+        self.regionControl.regionSlider.minimumTrackTintColor = UIColor.NTHNavigationBarColor()
+        self.regionControl.minRegionLabel.textColor = UIColor.NTHHeaderTextColor()
+        self.regionControl.curRegionLabel.textColor = UIColor.NTHHeaderTextColor()
+        self.regionControl.maxRegionLabel.textColor = UIColor.NTHHeaderTextColor()
+        self.regionControl.regionSegmentedControl.tintColor = UIColor.NTHNavigationBarColor()
     }
     
     
@@ -65,7 +64,6 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
             }
         }
     }
-    
     
     /// Mark: Table View
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

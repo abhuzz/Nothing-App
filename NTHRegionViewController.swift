@@ -33,15 +33,15 @@ class NTHRegionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.minLabel.text = slider.value.distanceDescription()
-        self.maxLabel.text = slider.value.distanceDescription()
+        self.minLabel.text = slider.value.metersOrKilometers()
+        self.maxLabel.text = slider.value.metersOrKilometers()
         
         self.processValue(self.info.distance)
         self.segmentedControl.selectedSegmentIndex = Int(self.info.onArrive ? 0 : 1)
     }
     
     @IBAction func sliderValueChanged(sender: UISlider) {
-        self.curLabel.text = sender.value.distanceDescription()
+        self.curLabel.text = sender.value.metersOrKilometers()
         self.info.distance = sender.value
     }
     
@@ -61,24 +61,13 @@ class NTHRegionViewController: UIViewController {
         self.slider.maximumValue = maxValue
         self.slider.value = value
         
-        self.minLabel.text = minValue.distanceDescription()
-        self.maxLabel.text = maxValue.distanceDescription()
-        self.curLabel.text = value.distanceDescription()
+        self.minLabel.text = minValue.metersOrKilometers()
+        self.maxLabel.text = maxValue.metersOrKilometers()
+        self.curLabel.text = value.metersOrKilometers()
     }
     
     @IBAction func donePressed(sender: AnyObject) {
         self.successBlock?(distance: self.info.distance, onArrive: self.info.onArrive)
         self.navigationController?.popViewControllerAnimated(true)
-    }
-}
-
-
-extension Float {
-    func distanceDescription() -> String {
-        if (self < 1000) {
-            return NSString(format: "%.0f m", self) as! String
-        } else {
-            return NSString(format: "%.1f km", self / 1000.0) as! String
-        }
     }
 }

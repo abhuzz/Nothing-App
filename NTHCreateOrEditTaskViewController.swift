@@ -215,7 +215,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
     }
     
     private func updateSecondDetailTextInLocationReminderControl(distance: Float, onArrive: Bool) {
-        self.locationReminderControl.setSecondDetailText((onArrive ? String.arriveString() : String.leaveString()) + ", " + distance.distanceDescription())
+        self.locationReminderControl.setSecondDetailText((onArrive ? String.arriveString() : String.leaveString()) + ", " + distance.metersOrKilometers())
     }
     
     @IBAction func createPressed(sender: AnyObject) {
