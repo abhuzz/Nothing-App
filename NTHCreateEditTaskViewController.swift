@@ -128,6 +128,14 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 self.taskContainer.locationReminders.append(newReminder)
                 self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.taskContainer.locationReminders.count + 1)
             }
+        } else if segue.identifier == SegueIdentifier.EditLocationReminder.rawValue {
+            let reminder = sender as! LocationReminderInfo
+            let vc = segue.destinationViewController as! NTHCreateEditLocationReminderViewController
+            vc.context = self.context
+            vc.editedReminder = reminder
+            vc.completionBlock = { newReminder in
+                self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.taskContainer.locationReminders.count + 1)
+            }
         }
     }
     
@@ -207,7 +215,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 self.performSegueWithIdentifier(SegueIdentifier.CreateLocationReminder.rawValue, sender: nil)
             } else {
                 var reminder = self.taskContainer.locationReminders[indexPath.row]
-//                self.performSegueWithIdentifier(SegueIdentifier.EditLocationReminder.rawValue, sender: reminder)
+                self.performSegueWithIdentifier(SegueIdentifier.EditLocationReminder.rawValue, sender: reminder)
             }
             
         default:

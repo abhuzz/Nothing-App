@@ -189,7 +189,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Task" id="pBE-FZ-rh7">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Vva-uh-izL"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Vva-uh-izL"/>
                     </navigationItem>
                     <connections>
                         <outlet property="dateRemindersLabel" destination="NyA-0O-hNq" id="mhn-kT-CSv"/>
