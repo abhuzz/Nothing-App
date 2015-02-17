@@ -226,7 +226,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="469" y="256"/>
+            <point key="canvasLocation" x="332" y="8"/>
         </scene>
         <!--Reminder-->
         <scene sceneID="gg6-rb-v1L">
@@ -333,7 +333,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWl-Pi-GEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="-168"/>
+            <point key="canvasLocation" x="827" y="-416"/>
         </scene>
         <!--Inbox-->
         <scene sceneID="noi-f6-1Da">
@@ -352,7 +352,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2sV-6f-Q54" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1204" y="1057"/>
+            <point key="canvasLocation" x="1518" y="1022"/>
         </scene>
         <!--Inbox View Controller-->
         <scene sceneID="JK8-62-5xE">
@@ -404,7 +404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOv-Nc-IrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1753" y="716"/>
+            <point key="canvasLocation" x="1884" y="1104"/>
         </scene>
         <!--Create Task-->
         <scene sceneID="Mm8-y9-5lx">
@@ -531,7 +531,6 @@
                         <outlet property="titleControl" destination="Oqg-of-52u" id="acw-af-P74"/>
                         <segue destination="78D-SZ-BW2" kind="modal" identifier="TextEditor" id="USy-L9-PMD"/>
                         <segue destination="A7j-0A-jko" kind="modal" identifier="Places" id="5RZ-YH-F07"/>
-                        <segue destination="gOI-5G-8xw" kind="modal" identifier="RepeatInterval" id="aLN-xo-bwu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fck-oU-cRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -624,7 +623,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBe-lt-sSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="479"/>
+            <point key="canvasLocation" x="827" y="231"/>
         </scene>
         <!--Editor-->
         <scene sceneID="FUY-Pi-9vm">
@@ -907,72 +906,6 @@
             </objects>
             <point key="canvasLocation" x="548" y="1211"/>
         </scene>
-        <!--Repeat-->
-        <scene sceneID="cG4-l8-oZ8">
-            <objects>
-                <tableViewController id="eYp-Ob-LT3" customClass="NTHSelectRepeatIntervalViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZXc-HV-UTB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NTHSelectRepeatIntervalCell" rowHeight="50" id="CJH-Ax-zcW" customClass="NTHSelectRepeatIntervalCell" customModule="Nothing" customModuleProvider="target">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CJH-Ax-zcW" id="7Cp-gu-GvT">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXT-OZ-L8m">
-                                            <rect key="frame" x="10" y="14" width="40" height="21"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="centerY" secondItem="aXT-OZ-L8m" secondAttribute="centerY" id="XU6-3u-oD1"/>
-                                        <constraint firstItem="aXT-OZ-L8m" firstAttribute="leading" secondItem="7Cp-gu-GvT" secondAttribute="leading" constant="10" id="hNt-3v-fuT"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="label" destination="aXT-OZ-L8m" id="WKG-Jp-yC2"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="eYp-Ob-LT3" id="ODc-IE-8RO"/>
-                            <outlet property="delegate" destination="eYp-Ob-LT3" id="nfN-XG-zhb"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Repeat" id="rm3-0e-L50">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ilA-z1-xse">
-                            <connections>
-                                <action selector="closePressed" destination="eYp-Ob-LT3" id="gnO-7Y-dGI"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UVo-5s-EVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="775" y="1992"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="7IB-Zh-Nwj">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gOI-5G-8xw" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6pE-aW-SVO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="eYp-Ob-LT3" kind="relationship" relationship="rootViewController" id="CBJ-GW-bn8"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="afi-2f-SLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="243" y="1992"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zly-KY-BC1">
             <objects>
@@ -1181,7 +1114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFo-4h-phS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2026" y="500"/>
+            <point key="canvasLocation" x="2274" y="1156"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kdA-zB-hK3">
@@ -1199,7 +1132,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="es3-b3-p2n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6" y="240"/>
+            <point key="canvasLocation" x="-135" y="8"/>
         </scene>
         <!--Select Place On Map-->
         <scene sceneID="v7U-YT-dhF">
@@ -1310,7 +1243,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1434" y="-168"/>
+            <point key="canvasLocation" x="1297" y="-416"/>
         </scene>
     </scenes>
     <resources>
@@ -1322,9 +1255,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="2gu-sc-1vn"/>
+        <segue reference="NPY-dN-uPC"/>
         <segue reference="ENL-Cp-mGc"/>
         <segue reference="LMi-nX-CeN"/>
-        <segue reference="DF6-eZ-eD5"/>
-        <segue reference="USy-L9-PMD"/>
     </inferredMetricsTieBreakers>
 </document>
