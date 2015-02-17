@@ -85,6 +85,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         self.datesTableView.registerNib(leftLabelRemoveCellIdentifier)
         
         self.linksTableView.registerNib(centerCellIdentifier)
+        self.linksTableView.registerNib(leftLabelRemoveCellIdentifier)
         
         self._configureLocationsTableView()
         self._configureDatesTableView()
@@ -172,7 +173,9 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             vc.context = self.context
             vc.completionBlock = { newReminder in
                 self.taskContainer.locationReminders.append(newReminder)
+//                self.taskContainer.links.append((newReminder as LocationReminderInfo).place)
                 self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.taskContainer.locationReminders.count + 1)
+//                self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.taskContainer.links.count + 1)
             }
         } else if segue.identifier == SegueIdentifier.EditLocationReminder.rawValue {
             let reminder = sender as! LocationReminderInfo
@@ -181,6 +184,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             vc.editedReminder = reminder
             vc.completionBlock = { newReminder in
                 self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.taskContainer.locationReminders.count + 1)
+                self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.taskContainer.links.count + 1)
             }
         } else if segue.identifier == SegueIdentifier.CreateDateReminder.rawValue {
             let vc = segue.destinationViewController as! NTHCreateEditDateReminderViewController
@@ -250,7 +254,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 return cell
             }
         case .Dates:
-            if self.taskContainer.dateReminders.count == 0 {
+            if indexPath.row == self.taskContainer.dateReminders.count {
                 return _createAddNewSomethingCell("+ Add new date")
             } else {
                 let reminder = self.taskContainer.dateReminders[indexPath.row]
@@ -263,10 +267,23 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 return cell
             }
         case .Links:
-            if self.taskContainer.links.count == 0 {
+            if indexPath.row == self.taskContainer.links.count {
                 return _createAddNewSomethingCell("+ Add new link")
             } else {
-                return UITableViewCell()
+                let title: String
+                let link = self.taskContainer.links[indexPath.row]
+                if link is Place {
+                    title = (link as! Place).customName
+                } else {
+                    title = (link as! Contact).name
+                }
+                
+                let cell = _createRegularCell(title)
+                cell.clearPressedBlock = { cell in
+                    self.taskContainer.links.removeAtIndex(self.linksTableView.indexPathForCell(cell)!.row)
+                    self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.taskContainer.links.count + 1)
+                }
+                return cell
             }
         }
     }
