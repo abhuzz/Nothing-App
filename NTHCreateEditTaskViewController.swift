@@ -189,6 +189,14 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 self.taskContainer.dateReminders.append(newReminder)
                 self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, items: 1)
             }
+        } else if segue.identifier == SegueIdentifier.EditDateReminder.rawValue {
+            let vc = segue.destinationViewController as! NTHCreateEditDateReminderViewController
+            vc.context = self.context
+            let reminder = sender as! DateReminderInfo
+            vc.editedReminder = reminder
+            vc.completionBlock = { newReminder in
+                self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, items: 1)
+            }
         }
     }
     
@@ -282,6 +290,9 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             let addNewReminder = indexPath.row == self.taskContainer.dateReminders.count
             if addNewReminder {
                 self.performSegueWithIdentifier(SegueIdentifier.CreateDateReminder.rawValue, sender: nil)
+            } else {
+                var reminder = self.taskContainer.dateReminders[indexPath.row]
+                self.performSegueWithIdentifier(SegueIdentifier.EditDateReminder.rawValue, sender: reminder)
             }
             
         default:

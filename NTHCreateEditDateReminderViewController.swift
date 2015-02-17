@@ -22,7 +22,7 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
     private var repeatIntervals = RepeatInterval.allIntervals()
     
     
-    
+    var editedReminder: DateReminderInfo?
     var context: NSManagedObjectContext!
     var completionBlock: ((newReminder: DateReminderInfo) -> Void)?
     
@@ -37,16 +37,29 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self._configureUIColors()
-        self.datePicker.setDate(NSDate(), animated: false)
+        
+        if let reminder = self.editedReminder {
+            self.datePicker.setDate(reminder.fireDate, animated: false)
+        } else {
+            self.datePicker.setDate(NSDate(), animated: false)
+        }
+        
         self.datePicker.datePickerMode = UIDatePickerMode.DateAndTime
         self.tableView.registerNib("NTHLeftLabelCell")
     }
     
     @IBAction func donePressed(sender: AnyObject) {
-        let reminder: DateReminderInfo = DateReminderInfo.create(self.context)
-        reminder.fireDate = self.datePicker.date
-        reminder.repeatInterval = self.repeatIntervals[repeatIntervalIndexPath!.row]
-        self.completionBlock?(newReminder: reminder)
+        if self.editedReminder == nil {
+            let reminder: DateReminderInfo = DateReminderInfo.create(self.context)
+            reminder.fireDate = self.datePicker.date
+            reminder.repeatInterval = self.repeatIntervals[self.repeatIntervalIndexPath!.row]
+            self.completionBlock?(newReminder: reminder)
+        } else {
+            let reminder = self.editedReminder!
+            reminder.fireDate = self.datePicker.date
+            reminder.repeatInterval = self.repeatIntervals[self.repeatIntervalIndexPath!.row]
+            self.completionBlock?(newReminder: self.editedReminder!)
+        }
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -59,15 +72,17 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelCell") as! NTHLeftLabelCell
-        cell.label.text = RepeatInterval.descriptionForInterval(interval: self.repeatIntervals[indexPath.row])
+        let interval = self.repeatIntervals[indexPath.row]
+        cell.label.text = RepeatInterval.descriptionForInterval(interval: interval)
         cell.label.font = UIFont.NTHNormalTextFont()
         cell.selectedBackgroundView = UIView()
         cell.tintColor = UIColor.NTHNavigationBarColor()
 
-        if self.repeatIntervalIndexPath == nil && indexPath.row == 0 {
+        if (self.repeatIntervalIndexPath == nil && indexPath.row == 0 && self.editedReminder == nil) || (self.editedReminder != nil && self.editedReminder!.repeatInterval == interval)  {
             cell.accessoryType = .Checkmark
             self.repeatIntervalIndexPath = indexPath
         }
+        
         return cell
     }
 
