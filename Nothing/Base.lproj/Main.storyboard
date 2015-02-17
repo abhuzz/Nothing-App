@@ -547,26 +547,65 @@
                         <viewControllerLayoutGuide type="bottom" id="qeV-3H-cUl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="g8V-C6-gmx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4sS-tq-eYU">
-                                <rect key="frame" x="16" y="20" width="304" height="162"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE AND TIME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LI2-Aa-iff">
+                                <rect key="frame" x="25" y="79" width="270" height="17"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4sS-tq-eYU">
+                                <rect key="frame" x="25" y="104" width="270" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="444159850.692505">
                                     <!--2015-01-28 17:44:10 +0000-->
                                 </date>
                             </datePicker>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WEj-sN-D9d">
+                                <rect key="frame" x="25" y="322" width="270" height="246"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="qKL-pp-hDu" id="9pa-ic-ICI"/>
+                                    <outlet property="delegate" destination="qKL-pp-hDu" id="DRn-mr-y6r"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REPEAT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubG-vb-FUG">
+                                <rect key="frame" x="25" y="297" width="270" height="17"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="TWo-9w-97b" userLabel="separator 3">
+                                <rect key="frame" x="25" y="281" width="270" height="1"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="w2f-4K-rl0"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4sS-tq-eYU" firstAttribute="top" secondItem="dMb-IP-6Sz" secondAttribute="bottom" id="5bI-F0-gCe"/>
-                            <constraint firstAttribute="trailing" secondItem="4sS-tq-eYU" secondAttribute="trailing" id="aPO-L6-ABV"/>
-                            <constraint firstItem="4sS-tq-eYU" firstAttribute="leading" secondItem="g8V-C6-gmx" secondAttribute="leading" id="sw1-Xf-ty3"/>
+                            <constraint firstItem="qeV-3H-cUl" firstAttribute="top" secondItem="WEj-sN-D9d" secondAttribute="bottom" id="2gi-2K-Zbo"/>
+                            <constraint firstAttribute="trailing" secondItem="LI2-Aa-iff" secondAttribute="trailing" constant="25" id="37i-gW-yZ8"/>
+                            <constraint firstAttribute="trailing" secondItem="ubG-vb-FUG" secondAttribute="trailing" constant="25" id="CEN-3W-yKL"/>
+                            <constraint firstItem="WEj-sN-D9d" firstAttribute="leading" secondItem="g8V-C6-gmx" secondAttribute="leading" constant="25" id="Gwm-9r-Ece"/>
+                            <constraint firstAttribute="trailing" secondItem="WEj-sN-D9d" secondAttribute="trailing" constant="25" id="KnF-BF-Gzw"/>
+                            <constraint firstItem="ubG-vb-FUG" firstAttribute="leading" secondItem="g8V-C6-gmx" secondAttribute="leading" constant="25" id="T0f-Vb-487"/>
+                            <constraint firstItem="4sS-tq-eYU" firstAttribute="top" secondItem="LI2-Aa-iff" secondAttribute="bottom" constant="8" id="UGk-3m-949"/>
+                            <constraint firstAttribute="trailing" secondItem="4sS-tq-eYU" secondAttribute="trailing" constant="25" id="WXV-zA-JU6"/>
+                            <constraint firstItem="4sS-tq-eYU" firstAttribute="leading" secondItem="g8V-C6-gmx" secondAttribute="leading" constant="25" id="a6Z-lt-EZs"/>
+                            <constraint firstItem="LI2-Aa-iff" firstAttribute="top" secondItem="dMb-IP-6Sz" secondAttribute="bottom" constant="15" id="e3S-Nm-M6C"/>
+                            <constraint firstItem="TWo-9w-97b" firstAttribute="leading" secondItem="g8V-C6-gmx" secondAttribute="leading" constant="25" id="gxy-uT-2oz"/>
+                            <constraint firstItem="WEj-sN-D9d" firstAttribute="top" secondItem="ubG-vb-FUG" secondAttribute="bottom" constant="8" id="nt0-CJ-nVq"/>
+                            <constraint firstAttribute="trailing" secondItem="TWo-9w-97b" secondAttribute="trailing" constant="25" id="nzP-jl-yos"/>
+                            <constraint firstItem="TWo-9w-97b" firstAttribute="top" secondItem="4sS-tq-eYU" secondAttribute="bottom" constant="15" id="pA2-Pp-jky"/>
+                            <constraint firstItem="ubG-vb-FUG" firstAttribute="top" secondItem="TWo-9w-97b" secondAttribute="bottom" constant="15" id="xNj-lz-q7J"/>
+                            <constraint firstItem="LI2-Aa-iff" firstAttribute="leading" secondItem="g8V-C6-gmx" secondAttribute="leading" constant="25" id="xlz-L1-cO6"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Date" id="jjz-ju-bH2">
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="done" systemItem="done" id="u38-eC-nY5">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="u38-eC-nY5">
                             <connections>
                                 <action selector="donePressed:" destination="qKL-pp-hDu" id="2i0-97-LBb"/>
                             </connections>
@@ -575,7 +614,12 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
+                        <outlet property="dateAndtimeLabel" destination="LI2-Aa-iff" id="QIm-lF-oDo"/>
                         <outlet property="datePicker" destination="4sS-tq-eYU" id="rHL-5k-PA9"/>
+                        <outlet property="doneButton" destination="u38-eC-nY5" id="5LW-nk-KKn"/>
+                        <outlet property="repeatIntervalLabel" destination="ubG-vb-FUG" id="jbZ-W3-ycH"/>
+                        <outlet property="separator" destination="TWo-9w-97b" id="ang-t0-3KK"/>
+                        <outlet property="tableView" destination="WEj-sN-D9d" id="kNz-j7-nYr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBe-lt-sSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -82,6 +82,8 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         self.locationsTableView.registerNib(leftLabelRemoveCellIdentifier)
         
         self.datesTableView.registerNib(centerCellIdentifier)
+        self.datesTableView.registerNib(leftLabelRemoveCellIdentifier)
+        
         self.linksTableView.registerNib(centerCellIdentifier)
         
         self._configureLocationsTableView()
@@ -180,6 +182,13 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             vc.completionBlock = { newReminder in
                 self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.taskContainer.locationReminders.count + 1)
             }
+        } else if segue.identifier == SegueIdentifier.CreateDateReminder.rawValue {
+            let vc = segue.destinationViewController as! NTHCreateEditDateReminderViewController
+            vc.context = self.context
+            vc.completionBlock = { newReminder in
+                self.taskContainer.dateReminders.append(newReminder)
+                self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, items: 1)
+            }
         }
     }
     
@@ -193,7 +202,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             return self.taskContainer.locationReminders.count + 1
             
         case .Dates:
-            return self.taskContainer.dateReminders.count + 1
+            return 1
             
         case .Links:
             return self.taskContainer.links.count + 1
@@ -236,7 +245,14 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             if self.taskContainer.dateReminders.count == 0 {
                 return _createAddNewSomethingCell("+ Add new date")
             } else {
-                return UITableViewCell()
+                let reminder = self.taskContainer.dateReminders[indexPath.row]
+                let title = NSDateFormatter.NTHStringFromDate(reminder.fireDate)
+                let cell = _createRegularCell(title)
+                cell.clearPressedBlock = { cell in
+                    self.taskContainer.dateReminders.removeAtIndex(self.datesTableView.indexPathForCell(cell)!.row)
+                    self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, items: 1)
+                }
+                return cell
             }
         case .Links:
             if self.taskContainer.links.count == 0 {
