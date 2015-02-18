@@ -1,5 +1,5 @@
 //
-//  NTHInboxCell.swift
+//  NTHOldInboxCell.swift
 //  Nothing
 //
 //  Created by Tomasz Szulc on 07/12/14.
@@ -8,19 +8,15 @@
 
 import UIKit
 
-protocol NTHInboxCellDelegate: class {
-    func cellDidTapActionButton(cell: NTHInboxCell)
-}
-
 class NTHInboxCell: UITableViewCell {
-    /// outlets
+
+    
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var titleCenterYConstraint: NSLayoutConstraint!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var stateIndicatorView: NTHTaskStatusView!
-    @IBOutlet private weak var actionsButton: UIButton!
-    @IBOutlet private weak var titleBottomToCenterYConstraint: NSLayoutConstraint!
     
-    weak var delegate: NTHInboxCellDelegate?
+    private var initialCenterYConstant: CGFloat!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,32 +29,24 @@ class NTHInboxCell: UITableViewCell {
     }
     
     private func setupUI() {
-        self.separatorInset = UIEdgeInsetsMake(0, 20, 0, 0)
-        
-        self.titleLabel.font = UIFont.NTHInboxCellTitleFont()
+        self.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        self.initialCenterYConstant = self.titleCenterYConstraint.constant
         self.titleLabel.textColor = UIColor.NTHHeaderTextColor()
-        
-        self.descriptionLabel.font = UIFont.NTHInboxCellDescriptionFont()
         self.descriptionLabel.textColor = UIColor.NTHSubtitleTextColor()
-        
         self.stateIndicatorView.state = .Active
     }
     
-    func update(model: NTHInboxCellViewModel) {
-        self.titleLabel.text = model.title
-        self.descriptionLabel.text = model.longDescription
+    func update(task: Task) {
+        self.titleLabel.text = task.title
+        self.descriptionLabel.text = task.longDescription ?? ""
         
-        if model.longDescription == ""  {
-            self.titleBottomToCenterYConstraint.constant = CGRectGetHeight(self.stateIndicatorView.bounds) - 1
+        if task.longDescription == ""  {
+            self.titleCenterYConstraint.constant = 0
             self.titleLabel.updateConstraintsIfNeeded()
         } else {
-            self.titleBottomToCenterYConstraint.constant = 0
+            self.titleCenterYConstraint.constant = self.initialCenterYConstant
         }
         
-        stateIndicatorView.state = model.state
-    }
-    
-    @IBAction func actionButtonPressed(sender: AnyObject) {
-        self.delegate?.cellDidTapActionButton(self)
+        stateIndicatorView.state = task.state
     }
 }

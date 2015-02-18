@@ -1,5 +1,5 @@
 //
-//  NTHInboxViewController.swift
+//  NTHOldInboxViewController.swift
 //  Nothing
 //
 //  Created by Tomasz Szulc on 27/10/14.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHInboxCellDelegate {
+class NTHOldInboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var quickInsertView: QuickInsertView!
@@ -36,7 +36,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func configureTableView() {
-        self.tableView.registerNib(UINib(nibName: "NTHInboxCell", bundle: nil), forCellReuseIdentifier: "NTHInboxCell")
+        self.tableView.registerNib(UINib(nibName: "NTHOldInboxCell", bundle: nil), forCellReuseIdentifier: "NTHOldInboxCell")
         self.tableView.tableFooterView = UIView()
     }
     
@@ -113,13 +113,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let task = self.tasks[indexPath.row]
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("NTHInboxCell", forIndexPath: indexPath) as! NTHInboxCell
-        cell.update(NTHInboxCellViewModel(task: task))
-        cell.delegate = self
-
-        return cell
+        return UITableViewCell()
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -172,28 +166,28 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     /// Mark: NTHInboxCellDelegate
-    func cellDidTapActionButton(cell: NTHInboxCell) {
-        let indexPath = self.tableView.indexPathForCell(cell)!
-        let task = self.tasks[indexPath.row]
-        let actionSheet = UIAlertController.selectActionOfTaskActionSheet(task, cell: cell)
-        self.presentViewController(actionSheet, animated: true, completion: nil)
-    }
+//    func cellDidTapActionButton(cell: NTHOldInboxCell) {
+//        let indexPath = self.tableView.indexPathForCell(cell)!
+//        let task = self.tasks[indexPath.row]
+//        let actionSheet = UIAlertController.selectActionOfTaskActionSheet(task, cell: cell)
+//        self.presentViewController(actionSheet, animated: true, completion: nil)
+//    }
 }
 
 
-extension UIAlertController {
-    class func selectActionOfTaskActionSheet(task: Task, cell: NTHInboxCell) -> UIAlertController {
-        let actionSheet = UIAlertController(title: task.title, message: nil, preferredStyle: .ActionSheet)
-        
-        /// Mark as Done / Active
-        actionSheet.addAction(UIAlertAction.normalAction(task.state == .Active ? String.markAsDoneString() : String.markAsActiveString(), handler: { _ in
-            task.changeState()
-            cell.update(NTHInboxCellViewModel(task: task))
-        }))
-        
-        /// Cancel
-        actionSheet.addAction(UIAlertAction.cancelAction(String.cancelString(), handler: nil))
-        return actionSheet
-    }
-}
+//extension UIAlertController {
+//    class func selectActionOfTaskActionSheet(task: Task, cell: NTHOldInboxCell) -> UIAlertController {
+//        let actionSheet = UIAlertController(title: task.title, message: nil, preferredStyle: .ActionSheet)
+//        
+//        /// Mark as Done / Active
+//        actionSheet.addAction(UIAlertAction.normalAction(task.state == .Active ? String.markAsDoneString() : String.markAsActiveString(), handler: { _ in
+//            task.changeState()
+//            cell.update(NTHInboxCellViewModel(task: task))
+//        }))
+//        
+//        /// Cancel
+//        actionSheet.addAction(UIAlertAction.cancelAction(String.cancelString(), handler: nil))
+//        return actionSheet
+//    }
+//}
 
