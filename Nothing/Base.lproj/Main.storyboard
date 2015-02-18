@@ -192,12 +192,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Task" id="pBE-FZ-rh7">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Vva-uh-izL"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="Vva-uh-izL">
+                            <connections>
+                                <action selector="donePressed:" destination="SX2-On-79X" id="0Qz-Af-Rqb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dateRemindersLabel" destination="NyA-0O-hNq" id="mhn-kT-CSv"/>
                         <outlet property="datesTableView" destination="e3z-Vr-1d4" id="wbs-mW-ROk"/>
                         <outlet property="datesTableViewHeight" destination="HwG-mO-RyI" id="CaB-vT-G6V"/>
+                        <outlet property="doneButton" destination="Vva-uh-izL" id="N2I-dH-nPx"/>
                         <outlet property="linksLabel" destination="ada-uR-0gL" id="sI0-hc-IBl"/>
                         <outlet property="linksTableView" destination="3jk-oB-1EQ" id="ULQ-qc-b6S"/>
                         <outlet property="linksTableViewHeight" destination="J7t-pi-klv" id="Xyi-cO-ZXc"/>

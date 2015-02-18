@@ -18,23 +18,24 @@ class TaskContainer {
 
 class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var scrollViewBottomGuide: NSLayoutConstraint!
+    @IBOutlet private weak var scrollViewBottomGuide: NSLayoutConstraint!
     @IBOutlet private weak var titleTextField: NTHTextField!
     
     @IBOutlet private weak var locationsTableView: UITableView!
-    @IBOutlet weak var locationsTableViewHeight: NSLayoutConstraint!
+    @IBOutlet private weak var locationsTableViewHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var datesTableView: UITableView!
+    @IBOutlet private weak var datesTableView: UITableView!
     @IBOutlet private weak var datesTableViewHeight: NSLayoutConstraint!
     
     @IBOutlet private weak var linksTableView: UITableView!
-    @IBOutlet weak var linksTableViewHeight: NSLayoutConstraint!
+    @IBOutlet private weak var linksTableViewHeight: NSLayoutConstraint!
     
     @IBOutlet private weak var notesTextView: NTHPlaceholderTextView!
     
     @IBOutlet private var tapGesture: UITapGestureRecognizer!
     
-    
+    @IBOutlet private var doneButton: UIBarButtonItem!
+
     /**
         For setting UI colors
     */
@@ -95,6 +96,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     }
     
     private func _addObservers() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldDidChange:", name: UITextFieldTextDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
@@ -115,6 +117,12 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         UIView.animateWithDuration(0.25, animations: { () -> Void in
             self.view.layoutIfNeeded()
         })
+    }
+    
+    func textFieldDidChange(notification: NSNotification) {
+        if (notification.object as! UITextField == self.titleTextField) {
+            self._validateDoneButton()
+        }
     }
 
     
@@ -217,6 +225,15 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             }
         }
     }
+    
+    private func _validateDoneButton() {
+        self.doneButton.enabled = count(self.titleTextField.text) > 0
+    }
+    
+    @IBAction func donePressed(sender: AnyObject) {
+        
+    }
+    
     
     
 
