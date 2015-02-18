@@ -13,7 +13,12 @@ class NTHPlaceholderTextView: UITextView, UITextViewDelegate {
     @IBInspectable var placeholder: String = ""
     @IBInspectable var placeholderColor: UIColor = UIColor.lightGrayColor()
     
+    var textValue: String! {
+        return self.isPlaceholder ? "" : self.text
+    }
+    
     private var initialTextColor: UIColor!
+    private var isPlaceholder: Bool = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -61,16 +66,9 @@ class NTHPlaceholderTextView: UITextView, UITextViewDelegate {
         }
     }
     
-//    func textViewDidChange(textView: UITextView) {
-//        self._setPlaceholder()
-//        self._removePlaceholder()
-//        if (_delegate?.respondsToSelector("textViewDidChange") != nil) {
-//            _delegate?.textViewDidChange!(textView)
-//        }
-//    }
-    
     private func _setPlaceholder() {
         if self.text == "" {
+            self.isPlaceholder = true
             self.text = self.placeholder
             self.textColor = self.placeholderColor
         }
@@ -78,6 +76,7 @@ class NTHPlaceholderTextView: UITextView, UITextViewDelegate {
     
     private func _removePlaceholder() {
         if self.text == self.placeholder {
+            self.isPlaceholder = false
             self.text = ""
             self.textColor = self.initialTextColor
         }

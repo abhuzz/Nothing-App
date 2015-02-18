@@ -33,6 +33,7 @@ class NTHInboxCell: UITableViewCell {
         self.initialCenterYConstant = self.titleCenterYConstraint.constant
         self.titleLabel.textColor = UIColor.NTHHeaderTextColor()
         self.descriptionLabel.textColor = UIColor.NTHSubtitleTextColor()
+        self.stateIndicatorView.backgroundColor = UIColor.clearColor()
         self.stateIndicatorView.state = .Active
     }
     

@@ -14,6 +14,10 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet private weak var tableView: UITableView!
     
     private var tasks = [Task]()
+    
+    private enum SegueIdentifier: String {
+        case CreateTask = "CreateTask"
+    }
 
     
     override func viewDidLoad() {
@@ -28,6 +32,19 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.reloadData()
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SegueIdentifier.CreateTask.rawValue {
+            let vc = segue.destinationViewController as! NTHCreateEditTaskViewController
+            vc.context = CDHelper.temporaryContext
+            vc.completionBlock = {
+                self.tasks = ModelController().allTasks()
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    
     /// Mark: Table View
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,6 +54,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NTHInboxCell") as! NTHInboxCell
         cell.update(self.tasks[indexPath.row])
+        cell.selectedBackgroundView = UIView()
         return cell
     }
     

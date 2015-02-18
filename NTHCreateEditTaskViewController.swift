@@ -67,12 +67,11 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     
     
     var context: NSManagedObjectContext!
+    var completionBlock: (() -> Void)?
     
     
     override func viewDidLoad() {
-        
-        self.context = CDHelper.temporaryContext
-        
+                
         super.viewDidLoad()
         self._configureColors()
         self._configureTitleTextField()
@@ -231,7 +230,19 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     }
     
     @IBAction func donePressed(sender: AnyObject) {
+        let task: Task = Task.create(self.context)
+        task.title = self.taskContainer.title!
         
+        task.locationReminderInfo = self.taskContainer.locationReminders.first
+        task.dateReminderInfo = self.taskContainer.dateReminders.first
+        task.connections = NSSet(array: self.taskContainer.links)
+        
+        task.longDescription = self.notesTextView.textValue
+        
+        self.context.save(nil)
+        self.context.parentContext?.save(nil)
+        self.completionBlock?()
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     

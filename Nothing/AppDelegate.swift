@@ -130,7 +130,7 @@ extension AppDelegate {
         let tasks = ModelController().allTasks()
         for task in tasks {
             if let info = task.locationReminderInfo {
-                regions.append(TSRegion(identifier: task.uniqueIdentifier, coordinate: info.place.coordinate, notifyOnArrive: info.onArrive, notifyOnLeave: !info.onArrive, distance: CLLocationDistance(info.distance)))
+//                regions.append(TSRegion(identifier: task.uniqueIdentifier, coordinate: info.place.coordinate, notifyOnArrive: info.onArrive, notifyOnLeave: !info.onArrive, distance: CLLocationDistance(info.distance)))
             }
         }
         

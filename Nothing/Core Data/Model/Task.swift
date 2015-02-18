@@ -20,7 +20,7 @@ class Task: NSManagedObject {
     @NSManaged private var stateNumber: NSNumber
     @NSManaged var dateReminderInfo: DateReminderInfo?
     @NSManaged var locationReminderInfo: LocationReminderInfo?
-    @NSManaged private var connections: NSSet
+    @NSManaged var connections: NSSet
 }
 
 extension Task {
@@ -33,39 +33,6 @@ extension Task {
     var state: State {
         get { return State(rawValue: self.stateNumber.integerValue)! }
         set { self.stateNumber = NSNumber(integer: newValue.rawValue) }
-    }
-    
-    func addConnection(connection: Connection) {
-        var add = true
-        for c in self.allConnections {
-            if c as! Connection == connection {
-                add = false
-                break
-            }
-        }
-        
-        if add {
-            var connections = self.mutableSetValueForKey("connections")
-            connections.addObject(connection)
-        }
-    }
-    
-    func removeConnection(connection: Connection?) {
-        if connection == nil {
-            return
-        }
-        
-        for c in self.allConnections {
-            if c as! Connection == connection! {
-                var connections = self.mutableSetValueForKey("connections")
-                connections.removeObject(c)
-                return
-            }
-        }
-    }
-    
-    var allConnections: NSSet {        
-        return NSSet(set: self.connections as! Set<NSObject>)
     }
     
     func changeState() {
