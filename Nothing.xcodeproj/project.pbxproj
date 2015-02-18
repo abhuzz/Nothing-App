@@ -58,6 +58,7 @@
 		128F91621A92844900C21DE3 /* NTHRegionControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128F91611A92844900C21DE3 /* NTHRegionControl.xib */; };
 		128F91641A92855D00C21DE3 /* NTHRegionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128F91631A92855D00C21DE3 /* NTHRegionControl.swift */; };
 		128F91661A92873B00C21DE3 /* Float_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128F91651A92873B00C21DE3 /* Float_TS.swift */; };
+		128F91681A93FED000C21DE3 /* NTHSelectPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128F91671A93FED000C21DE3 /* NTHSelectPlaceViewController.swift */; };
 		129659D11A7EC9AB000696F9 /* NTHDoubleTitleDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 129659D01A7EC9AB000696F9 /* NTHDoubleTitleDetailView.xib */; };
 		129659D31A7ECC66000696F9 /* NTHDoubleTitleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129659D21A7ECC66000696F9 /* NTHDoubleTitleDetailView.swift */; };
 		12981F0B1A86223000CDFA1D /* RepeatInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12981F0A1A86223000CDFA1D /* RepeatInterval.swift */; };
@@ -125,7 +126,7 @@
 		1279A4AE1A76A36300A03FF4 /* PlaceNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceNameCell.swift; sourceTree = "<group>"; };
 		1279B5D419FED4E700A7828C /* Nothing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nothing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1279B5D819FED4E700A7828C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1279B5D919FED4E700A7828C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Nothing/AppDelegate.swift; sourceTree = "<group>"; };
+		1279B5D919FED4E700A7828C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1279B5DB19FED4E700A7828C /* NTHInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NTHInboxViewController.swift; path = Nothing/NTHInboxViewController.swift; sourceTree = "<group>"; };
 		1279B5DE19FED4E700A7828C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1279B5E019FED4E700A7828C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -152,6 +153,7 @@
 		128F91611A92844900C21DE3 /* NTHRegionControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHRegionControl.xib; sourceTree = "<group>"; };
 		128F91631A92855D00C21DE3 /* NTHRegionControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHRegionControl.swift; sourceTree = "<group>"; };
 		128F91651A92873B00C21DE3 /* Float_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float_TS.swift; sourceTree = "<group>"; };
+		128F91671A93FED000C21DE3 /* NTHSelectPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectPlaceViewController.swift; sourceTree = "<group>"; };
 		129659D01A7EC9AB000696F9 /* NTHDoubleTitleDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHDoubleTitleDetailView.xib; sourceTree = "<group>"; };
 		129659D21A7ECC66000696F9 /* NTHDoubleTitleDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHDoubleTitleDetailView.swift; sourceTree = "<group>"; };
 		12981F0A1A86223000CDFA1D /* RepeatInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatInterval.swift; sourceTree = "<group>"; };
@@ -224,20 +226,12 @@
 		1246F0911A8641070001F4BE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
-				1260ABFD1A7819020015CA4E /* NTHCreatePlaceViewController.swift */,
-				12834C111A7597C9005C952C /* NTHCreateOrEditTaskViewController.swift */,
-				1279B5DB19FED4E700A7828C /* NTHInboxViewController.swift */,
-				12BB652C1A7E26DC00CC4448 /* NTHSelectContactViewController.swift */,
-				1258A2E01A76C00C00755F6E /* NTHSelectPlaceOnMapViewController.swift */,
-				1279A4AB1A76A2A200A03FF4 /* NTHSelectPlaceTableViewController.swift */,
-				12D4FF051A7D11AA00F04858 /* NTHSelectRepeatIntervalViewController.swift */,
-				124E5EB51A83F5FF00CB3076 /* NTHTaskDetailsViewController.swift */,
-				12EDE78C1A1FC6770020D549 /* NTHTextEditorViewController.swift */,
 				121CF5C71A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift */,
 				128EE7BD1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift */,
 				12FE1D701A913A8600F03601 /* NTHCreateNewPlaceViewController.swift */,
 				1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */,
+				128F91671A93FED000C21DE3 /* NTHSelectPlaceViewController.swift */,
+				128F91691A93FF7C00C21DE3 /* old */,
 			);
 			name = Controllers;
 			path = ..;
@@ -324,6 +318,7 @@
 		1279B5D619FED4E700A7828C /* Nothing */ = {
 			isa = PBXGroup;
 			children = (
+				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
 				1250A3B51A8683E0005B4D69 /* Swift */,
 				1246F0911A8641070001F4BE /* Controllers */,
 				1279A4AA1A76A1F700A03FF4 /* Components */,
@@ -397,6 +392,22 @@
 				12E215991A03A9840038AD45 /* ThumbnailCache.swift */,
 			);
 			name = Cache;
+			sourceTree = "<group>";
+		};
+		128F91691A93FF7C00C21DE3 /* old */ = {
+			isa = PBXGroup;
+			children = (
+				1260ABFD1A7819020015CA4E /* NTHCreatePlaceViewController.swift */,
+				12834C111A7597C9005C952C /* NTHCreateOrEditTaskViewController.swift */,
+				1279B5DB19FED4E700A7828C /* NTHInboxViewController.swift */,
+				12BB652C1A7E26DC00CC4448 /* NTHSelectContactViewController.swift */,
+				1258A2E01A76C00C00755F6E /* NTHSelectPlaceOnMapViewController.swift */,
+				1279A4AB1A76A2A200A03FF4 /* NTHSelectPlaceTableViewController.swift */,
+				12D4FF051A7D11AA00F04858 /* NTHSelectRepeatIntervalViewController.swift */,
+				124E5EB51A83F5FF00CB3076 /* NTHTaskDetailsViewController.swift */,
+				12EDE78C1A1FC6770020D549 /* NTHTextEditorViewController.swift */,
+			);
+			name = old;
 			sourceTree = "<group>";
 		};
 		12BB65361A7E598A00CC4448 /* XIBs */ = {
@@ -560,6 +571,7 @@
 				1279B5DC19FED4E700A7828C /* NTHInboxViewController.swift in Sources */,
 				1230A08F1A8BCDB20064447B /* TSRegionManager.swift in Sources */,
 				12BB65311A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift in Sources */,
+				128F91681A93FED000C21DE3 /* NTHSelectPlaceViewController.swift in Sources */,
 				12059DCD1A34FF5C007F5E7C /* UIFont+Extension.swift in Sources */,
 				12FE1D731A913C6100F03601 /* MKMapView_TS.swift in Sources */,
 				1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */,

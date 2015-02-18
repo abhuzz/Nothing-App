@@ -25,10 +25,17 @@ class NTHCreateNewPlaceViewController: UIViewController, MKMapViewDelegate, UITe
     
     var completionBlock: (() -> Void)!
     var context: NSManagedObjectContext!
+    var editedPlace: Place?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self._configureUIColors()
+        
+        if let place = self.editedPlace {
+            self.mapView.addAnnotation(NTHAnnotation(coordinate: place.coordinate, title: ""))
+            self.nameTextField.text = place.customName
+            self._validateDoneButton()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -58,10 +65,19 @@ class NTHCreateNewPlaceViewController: UIViewController, MKMapViewDelegate, UITe
     }
     
     @IBAction func donePressed(sender: AnyObject) {
-        var place: Place = Place.create(self.context)
-        place.originalName = ""
-        place.customName = self.nameTextField.text
-        place.coordinate = (self.mapView.annotations.first as! NTHAnnotation).coordinate
+        
+        let name = self.nameTextField.text
+        let coordinate = (self.mapView.annotations.first as! NTHAnnotation).coordinate
+        
+        if let place = self.editedPlace {
+            place.customName = name
+            place.coordinate = coordinate
+        } else {
+            var place: Place = Place.create(self.context)
+            place.originalName = ""
+            place.customName = name
+            place.coordinate = coordinate
+        }
         
         self.completionBlock()
         self.navigationController?.popViewControllerAnimated(true)

@@ -12,17 +12,17 @@ import CoreData
 class NTHCreateEditLocationReminderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet private weak var placeLabel: UILabel!
-    @IBOutlet private weak var placesTableView: UITableView!
+    @IBOutlet private weak var placeTableView: UITableView!
     @IBOutlet private weak var separator: UIView!
-    @IBOutlet weak var regionLabel: UILabel!
-    @IBOutlet weak var regionControl: NTHRegionControl!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet private weak var regionLabel: UILabel!
+    @IBOutlet private weak var regionControl: NTHRegionControl!
+    @IBOutlet private weak var doneButton: UIBarButtonItem!
     
-    private var places = [Place]()
-    private var selectedIndexPath: NSIndexPath?
+    private var place: Place?
     
     private enum SegueIdentifier: String {
-        case AddNewPlace = "AddNewPlace"
+        case SelectPlace = "SelectPlace"
+        case EditPlace = "EditPlace"
     }
     
     var context: NSManagedObjectContext!
@@ -34,11 +34,11 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
         super.viewDidLoad()
         self._configureUIColors()
         
-        self.placesTableView.registerNib("NTHCenterLabelCell")
-        self.placesTableView.registerNib("NTHLeftLabelCell")
-        self.places = ModelController().allPlaces(self.context)
+        self.placeTableView.registerNib("NTHCenterLabelCell")
+        self.placeTableView.registerNib("NTHLeftLabelRemoveCell")
         
         if let reminder = self.editedReminder {
+            self.place = reminder.place
             self.regionControl.configure(reminder.distance, onArrive: reminder.onArrive)
             self._validateDoneButton()
         } else {
@@ -61,7 +61,7 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     
     @IBAction func donePressed(sender: AnyObject) {
         
-        let place = self.places[self.selectedIndexPath!.row]
+        let place = self.place as Place!
         let distance = self.regionControl.regionSlider.value
         let onArrive = (self.regionControl.regionSegmentedControl.selectedSegmentIndex == 0)
         
@@ -82,75 +82,62 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     }
     
     private func _validateDoneButton() {
-        self.doneButton.enabled = self.selectedIndexPath != nil || self.editedReminder != nil
+        self.doneButton.enabled = self.place != nil || self.editedReminder != nil
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SegueIdentifier.AddNewPlace.rawValue {
+        if segue.identifier == SegueIdentifier.SelectPlace.rawValue {
+            let vc = segue.destinationViewController as! NTHSelectPlaceViewController
+            vc.context = self.context
+            vc.completionBlock = { selectedPlace in
+                self.place = selectedPlace
+                self.placeTableView.reloadData()
+            }
+        } else if segue.identifier == SegueIdentifier.EditPlace.rawValue {
             let vc = segue.destinationViewController as! NTHCreateNewPlaceViewController
             vc.context = self.context
+            vc.editedPlace = sender as! Place!
             vc.completionBlock = {
-                self.places = ModelController().allPlaces(self.context)
-                self.placesTableView.reloadData()
+                self.placeTableView.reloadData()
             }
         }
     }
     
     /// Mark: Table View
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.places.count + 1
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        if indexPath.row == self.places.count {
-            let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
-            cell.label.text = "+ Add new place"
-            cell.label.font = UIFont.NTHAddNewCellFont()
-            cell.selectedBackgroundView = UIView()
-            return cell
-        } else {
-            let place = self.places[indexPath.row]
-            
-            let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelCell") as! NTHLeftLabelCell
-
-            if let reminder = self.editedReminder {
-                if place == reminder.place {
-                    cell.accessoryType = .Checkmark
-                    self.selectedIndexPath = indexPath
-                } else {
-                    cell.accessoryType = .None
-                }
-            }
-            
+        if let place = self.place {
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelRemoveCell") as! NTHLeftLabelRemoveCell
             cell.label.text = place.customName
             cell.label.font = UIFont.NTHNormalTextFont()
             cell.selectedBackgroundView = UIView()
             cell.tintColor = UIColor.NTHNavigationBarColor()
+            cell.clearPressedBlock = { cell in
+                self.place = nil
+                self._validateDoneButton()
+                self.placeTableView.reloadData()
+            }
             
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
+            cell.label.text = "+ Select place"
+            cell.label.font = UIFont.NTHAddNewCellFont()
+            cell.selectedBackgroundView = UIView()
             return cell
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        if indexPath.row == self.places.count {
-            /// show place wizard
-            self.performSegueWithIdentifier(SegueIdentifier.AddNewPlace.rawValue, sender: nil)
+        
+        if let place = self.place {
+            self.performSegueWithIdentifier(SegueIdentifier.EditPlace.rawValue, sender: place)
         } else {
-            /// deselect old cell
-            if let previousIndexPath = self.selectedIndexPath {
-                let previousCell = tableView.cellForRowAtIndexPath(previousIndexPath) as! NTHLeftLabelCell
-                previousCell.accessoryType = .None
-            }
-            
-            let cell = tableView.cellForRowAtIndexPath(indexPath) as! NTHLeftLabelCell
-            if cell.accessoryType == .None {
-                cell.accessoryType = .Checkmark
-                self.selectedIndexPath = indexPath
-            } else {
-                cell.accessoryType = .None
-            }
+            self.performSegueWithIdentifier(SegueIdentifier.SelectPlace.rawValue, sender: nil)
         }
         
         self._validateDoneButton()
