@@ -18,6 +18,10 @@ class NTHSelectContactViewController: UIViewController, UITableViewDelegate, UIT
     private var selectedIndexPath: NSIndexPath?
     private var contacts = [Contact]()
     
+    private enum SegueIdentifier: String {
+        case AddNewContact = "AddNewContact"
+    }
+    
     
     var context: NSManagedObjectContext!
     var completionBlock: ((selectedContact: Contact) -> Void)?
@@ -37,6 +41,20 @@ class NTHSelectContactViewController: UIViewController, UITableViewDelegate, UIT
         self.completionBlock?(selectedContact: self.contacts[selectedIndexPath!.row])
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SegueIdentifier.AddNewContact.rawValue {
+            let vc = segue.destinationViewController as! NTHCreateEditContactViewController
+            vc.context = self.context
+            vc.completionBlock = {
+                self.contacts = ModelController().allContacts(self.context)
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    
+    
     
     /// Mark: Table View
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,8 +86,8 @@ class NTHSelectContactViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         if indexPath.row == self.contacts.count {
-            /// show place wizard
-//            self.performSegueWithIdentifier(SegueIdentifier.AddNewPlace.rawValue, sender: nil)
+            /// show contact wizard
+            self.performSegueWithIdentifier(SegueIdentifier.AddNewContact.rawValue, sender: nil)
         } else {
             /// deselect old cell
             if let previousIndexPath = self.selectedIndexPath {

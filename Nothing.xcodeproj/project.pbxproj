@@ -76,6 +76,7 @@
 		12D4FF0C1A7D1FBF00F04858 /* NTHConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4FF0B1A7D1FBF00F04858 /* NTHConnectionCell.swift */; };
 		12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215991A03A9840038AD45 /* ThumbnailCache.swift */; };
 		12E2929B1A951DEF0079D257 /* NTHSelectContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */; };
+		12E2929D1A9522D90079D257 /* NTHCreateEditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */; };
 		12EDE78D1A1FC6770020D549 /* NTHTextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE78C1A1FC6770020D549 /* NTHTextEditorViewController.swift */; };
 		12FE1D711A913A8600F03601 /* NTHCreateEditPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE1D701A913A8600F03601 /* NTHCreateEditPlaceViewController.swift */; };
 		12FE1D731A913C6100F03601 /* MKMapView_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE1D721A913C6100F03601 /* MKMapView_TS.swift */; };
@@ -171,6 +172,7 @@
 		12D4FF0B1A7D1FBF00F04858 /* NTHConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHConnectionCell.swift; sourceTree = "<group>"; };
 		12E215991A03A9840038AD45 /* ThumbnailCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCache.swift; sourceTree = "<group>"; };
 		12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectContactViewController.swift; sourceTree = "<group>"; };
+		12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditContactViewController.swift; sourceTree = "<group>"; };
 		12EDE78C1A1FC6770020D549 /* NTHTextEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NTHTextEditorViewController.swift; path = Nothing/NTHTextEditorViewController.swift; sourceTree = "<group>"; };
 		12FE1D701A913A8600F03601 /* NTHCreateEditPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditPlaceViewController.swift; sourceTree = "<group>"; };
 		12FE1D721A913C6100F03601 /* MKMapView_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView_TS.swift; sourceTree = "<group>"; };
@@ -226,10 +228,11 @@
 		1246F0911A8641070001F4BE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				121CF5C71A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift */,
+				12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */,
+				1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */,
 				128EE7BD1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift */,
 				12FE1D701A913A8600F03601 /* NTHCreateEditPlaceViewController.swift */,
-				1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */,
+				121CF5C71A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift */,
 				12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */,
 				128F91671A93FED000C21DE3 /* NTHSelectPlaceViewController.swift */,
 				128F91691A93FF7C00C21DE3 /* old */,
@@ -549,6 +552,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12FE1D771A9146F600F03601 /* NTHLeftLabelCell.swift in Sources */,
+				12E2929D1A9522D90079D257 /* NTHCreateEditContactViewController.swift in Sources */,
 				1270B00F1A91369C0058DE82 /* UITableView_TS.swift in Sources */,
 				128EE7BE1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift in Sources */,
 				120B3CE81A86074700FB38DD /* String+Extensions.swift in Sources */,

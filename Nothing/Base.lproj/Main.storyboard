@@ -970,7 +970,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8E-gY-fJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1448" y="291"/>
+            <point key="canvasLocation" x="1586" y="291"/>
         </scene>
         <!--Select Place On Map-->
         <scene sceneID="v7U-YT-dhF">
@@ -1081,7 +1081,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1884" y="-425"/>
+            <point key="canvasLocation" x="2022" y="-425"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="lhP-eQ-YU0">
@@ -1123,11 +1123,96 @@
                     <connections>
                         <outlet property="doneButton" destination="1rG-0N-7ad" id="TyV-PU-HtX"/>
                         <outlet property="tableView" destination="SMb-aE-dua" id="YNz-pe-owS"/>
+                        <segue destination="MNo-Xc-C6C" kind="push" identifier="AddNewContact" id="Nxh-lo-n4K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyZ-Ae-tUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1034" y="977"/>
+        </scene>
+        <!--Contact-->
+        <scene sceneID="Rch-oA-ncg">
+            <objects>
+                <viewController id="MNo-Xc-C6C" customClass="NTHCreateEditContactViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7LL-Xw-LNl"/>
+                        <viewControllerLayoutGuide type="bottom" id="srK-CV-QKE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XDf-Sl-sk8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="40" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="8rs-Nf-D1q" userLabel="Full name field" customClass="NTHTextField" customModule="Nothing" customModuleProvider="target">
+                                <rect key="frame" x="25" y="79" width="270" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="iKx-4y-2y5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="MNo-Xc-C6C" id="huu-AA-jNx"/>
+                                </connections>
+                            </textField>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="x6p-X8-R3m" userLabel="separator 1">
+                                <rect key="frame" x="25" y="127" width="270" height="1"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Bwe-TC-MaO"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="40" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="ba9-tU-yMY" userLabel="phone number field" customClass="NTHTextField" customModule="Nothing" customModuleProvider="target">
+                                <rect key="frame" x="25" y="136" width="270" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="xwa-WN-jfl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="MNo-Xc-C6C" id="R0e-SU-Z6S"/>
+                                </connections>
+                            </textField>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="b41-4X-gmB" userLabel="separator 2">
+                                <rect key="frame" x="25" y="184" width="270" height="1"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="k9E-ss-2kf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x6p-X8-R3m" firstAttribute="top" secondItem="8rs-Nf-D1q" secondAttribute="bottom" constant="8" id="4qS-Fj-FCi"/>
+                            <constraint firstAttribute="trailing" secondItem="8rs-Nf-D1q" secondAttribute="trailing" constant="25" id="DwE-0D-Fu1"/>
+                            <constraint firstItem="ba9-tU-yMY" firstAttribute="top" secondItem="x6p-X8-R3m" secondAttribute="bottom" constant="8" id="HM2-dm-1h7"/>
+                            <constraint firstAttribute="trailing" secondItem="ba9-tU-yMY" secondAttribute="trailing" constant="25" id="HWz-lF-f18"/>
+                            <constraint firstItem="x6p-X8-R3m" firstAttribute="leading" secondItem="XDf-Sl-sk8" secondAttribute="leading" constant="25" id="OKK-P4-Fu9"/>
+                            <constraint firstItem="b41-4X-gmB" firstAttribute="top" secondItem="ba9-tU-yMY" secondAttribute="bottom" constant="8" id="RZ5-Pq-QCG"/>
+                            <constraint firstItem="ba9-tU-yMY" firstAttribute="leading" secondItem="XDf-Sl-sk8" secondAttribute="leading" constant="25" id="TGJ-pK-ulI"/>
+                            <constraint firstItem="b41-4X-gmB" firstAttribute="leading" secondItem="XDf-Sl-sk8" secondAttribute="leading" constant="25" id="W02-ke-WVx"/>
+                            <constraint firstItem="8rs-Nf-D1q" firstAttribute="leading" secondItem="XDf-Sl-sk8" secondAttribute="leading" constant="25" id="dES-6b-AED"/>
+                            <constraint firstAttribute="trailing" secondItem="b41-4X-gmB" secondAttribute="trailing" constant="25" id="dvP-6K-wy1"/>
+                            <constraint firstItem="8rs-Nf-D1q" firstAttribute="top" secondItem="7LL-Xw-LNl" secondAttribute="bottom" constant="15" id="iR0-Dl-qjr"/>
+                            <constraint firstAttribute="trailing" secondItem="x6p-X8-R3m" secondAttribute="trailing" constant="25" id="uGv-kw-vks"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Contact" id="WrO-bD-ItO">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="bGb-C9-Hsl">
+                            <connections>
+                                <action selector="donePressed:" destination="MNo-Xc-C6C" id="Ntk-7K-eDz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="bGb-C9-Hsl" id="1kU-Lo-TFu"/>
+                        <outlet property="fullnameTextField" destination="8rs-Nf-D1q" id="cHE-yZ-V8Q"/>
+                        <outlet property="phoneNumberTextField" destination="ba9-tU-yMY" id="tlw-np-mjw"/>
+                        <outlet property="separator1" destination="x6p-X8-R3m" id="Q9Y-sq-apP"/>
+                        <outlet property="separator2" destination="b41-4X-gmB" id="3Je-xa-540"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hkG-Zn-Nac" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1586" y="977"/>
         </scene>
     </scenes>
     <resources>
