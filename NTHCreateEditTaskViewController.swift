@@ -60,6 +60,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         case EditLocationReminder = "EditLocationReminder"
         case CreateDateReminder = "CreateDateReminder"
         case EditDateReminder = "EditDateReminder"
+        case AddPlaceLink = "AddPlaceLink"
     }
     
     
@@ -173,9 +174,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             vc.context = self.context
             vc.completionBlock = { newReminder in
                 self.taskContainer.locationReminders.append(newReminder)
-//                self.taskContainer.links.append((newReminder as LocationReminderInfo).place)
                 self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.taskContainer.locationReminders.count + 1)
-//                self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.taskContainer.links.count + 1)
             }
         } else if segue.identifier == SegueIdentifier.EditLocationReminder.rawValue {
             let reminder = sender as! LocationReminderInfo
@@ -200,6 +199,13 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             vc.editedReminder = reminder
             vc.completionBlock = { newReminder in
                 self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, items: 1)
+            }
+        } else if segue.identifier == SegueIdentifier.AddPlaceLink.rawValue {
+            let vc = segue.destinationViewController as! NTHSelectPlaceViewController
+            vc.context = self.context
+            vc.completionBlock = { selectedPlace in
+                self.taskContainer.links.append(selectedPlace)
+                self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.taskContainer.links.count + 1)
             }
         }
     }
@@ -312,6 +318,35 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 self.performSegueWithIdentifier(SegueIdentifier.EditDateReminder.rawValue, sender: reminder)
             }
             
+        case .Links:
+            let addNewLink = indexPath.row == self.taskContainer.links.count
+            if addNewLink {
+                let types = [
+                    "contact": NSLocalizedString("Contact", comment: ""),
+                    "place": NSLocalizedString("Place", comment: "")
+                ]
+                
+                let alert = UIAlertController.selectConnectionTypeActionSheet(types, completion: { (action: NTHAlertAction) -> Void in
+                    if action.identifier == "contact" {
+                        /*let nc = UIStoryboard.instantiateNTHSelectContactViewControllerInNavigationController()
+                        let vc = nc.topViewController as! NTHSelectContactViewController
+                        vc.context = self.context
+                        vc.selectionBlock = { [unowned self] contact in
+                            self.task.addConnection(contact as Connection)
+                            self.refreshConnectionsTableView()
+                        }
+                        
+                        self.presentViewController(nc, animated: true, completion: nil)*/
+                    } else if action.identifier == "place" {
+                        self.performSegueWithIdentifier(SegueIdentifier.AddPlaceLink.rawValue, sender: nil)
+                    }
+                })
+                
+                self.presentViewController(alert, animated: true, completion: nil)
+            } else {
+                
+            }
+            
         default:
             break
         }
@@ -344,8 +379,35 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     }
 }
 
-extension UITableView {
+private extension UITableView {
     var type: NTHCreateEditTaskViewController.TableViewType {
         return NTHCreateEditTaskViewController.TableViewType(rawValue: self.tag)!
     }
 }
+
+class NTHAlertAction : UIAlertAction {
+    var identifier: String!
+}
+
+private extension UIAlertController {
+    class func selectConnectionTypeActionSheet(types: [String: String], completion:(action: NTHAlertAction) -> Void) -> UIAlertController {
+        /// Create alert
+        let alert = UIAlertController(title: NSLocalizedString("Links", comment:""), message: NSLocalizedString("What type of link do you want to add?", comment:""), preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        /// Fill it with types
+        for (identifier, description) in types {
+            let action = NTHAlertAction(title: description, style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                completion(action: action as! NTHAlertAction)
+            })
+            action.identifier = identifier
+            alert.addAction(action)
+        }
+        
+        /// Add cancel
+        let action = NTHAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.Cancel, handler: nil)
+        alert.addAction(action)
+        
+        return alert
+    }
+}
+

@@ -253,36 +253,7 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
         if (indexPath.row != self.numberOfItemsInConnectionTableView() - 1) {
             /// Do nothing here
         } else {
-            let types = [
-                "contact": NSLocalizedString("Contact", comment: ""),
-                "place": NSLocalizedString("Place", comment: "")
-            ]
-            
-            let alert = UIAlertController.selectConnectionTypeActionSheet(types, completion: { (action: NTHAlertAction) -> Void in
-                if action.identifier == "contact" {
-                    let nc = UIStoryboard.instantiateNTHSelectContactViewControllerInNavigationController()
-                    let vc = nc.topViewController as! NTHSelectContactViewController
-                    vc.context = self.context
-                    vc.selectionBlock = { [unowned self] contact in
-                        self.task.addConnection(contact as Connection)
-                        self.refreshConnectionsTableView()
-                    }
-                    
-                    self.presentViewController(nc, animated: true, completion: nil)
-                } else if action.identifier == "place" {
-                    let nc = UIStoryboard.instantiateNTHSelectPlaceTableViewControllerInNavigationController()
-                    let vc = nc.topViewController as! NTHSelectPlaceTableViewController
-                    vc.context = self.context
-                    vc.selectionBlock = { [unowned self] place in
-                        self.task.addConnection(place as Connection)
-                        self.refreshConnectionsTableView()
-                    }
-                    
-                    self.presentViewController(nc, animated: true, completion: nil)
-                }
-            })
-            
-            self.presentViewController(alert, animated: true, completion: nil)
+            /// removed
         }
     }
     
@@ -305,41 +276,5 @@ class NTHCreateOrEditTaskViewController: UIViewController, UITableViewDelegate, 
             self.task.removeConnection(self.task.allConnections.allObjects[indexPath.row] as? Connection)
             self.refreshConnectionsTableView()
         }
-    }
-}
-
-class NTHAlertAction : UIAlertAction {
-    var identifier: String!
-}
-
-extension UIAlertController {
-    class func selectConnectionTypeActionSheet(types: [String: String], completion:(action: NTHAlertAction) -> Void) -> UIAlertController {
-        /// Create alert
-        let alert = UIAlertController(title: NSLocalizedString("Connections", comment:""), message: NSLocalizedString("What type of connection do you want to add?", comment:""), preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
-        /// Fill it with types
-        for (identifier, description) in types {
-            let action = NTHAlertAction(title: description, style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-                completion(action: action as! NTHAlertAction)
-            })
-            action.identifier = identifier
-            alert.addAction(action)
-        }
-        
-        /// Add cancel
-        let action = NTHAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.Cancel, handler: nil)
-        alert.addAction(action)
-        
-        return alert
-    }
-}
-
-extension UIStoryboard {
-    class func instantiateNTHSelectPlaceTableViewControllerInNavigationController() -> UINavigationController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SelectPlaceNC") as! UINavigationController
-    }
-    
-    class func instantiateNTHSelectContactViewControllerInNavigationController() -> UINavigationController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SelectContactNC") as! UINavigationController
     }
 }
