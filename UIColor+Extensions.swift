@@ -9,32 +9,6 @@
 import UIKit
 
 extension UIColor {
-//    class func NTHMoodyBlueColor() -> UIColor {
-//        return UIColor(red:0.48, green:0.47, blue:0.79, alpha:1)
-//    }
-//    
-//
-
-//    
-//    class func NTHWhiteSmokeColor() -> UIColor {
-//        return UIColor(red:0.96, green:0.96, blue:0.96, alpha:1)
-//    }
-//    
-//    class func NTHWhiteColor() -> UIColor {
-//        return UIColor(red:1, green:1, blue:1, alpha:1)
-//    }
-//    
-//
-
-//    
-
-    
-//    private class func NTH_LynchColor() -> UIColor {
-//        return UIColor(red:0.41, green:0.47, blue:0.53, alpha:1)
-//    }
-}
-
-extension UIColor {
     
     class func NTHNavigationBarColor() -> UIColor { return NTH_BrownColor() }
     class func NTHAppBackgroundColor() -> UIColor { return NTH_WhiteColor() }
