@@ -231,6 +231,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     
     @IBAction func donePressed(sender: AnyObject) {
         let task: Task = Task.create(self.context)
+        task.uniqueIdentifier = NSUUID().UUIDString
         task.title = self.taskContainer.title!
         
         task.locationReminderInfo = self.taskContainer.locationReminders.first
