@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreData
 
-class NTHCreateNewPlaceViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
+class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet private weak var mapView: MKMapView!
     @IBOutlet private weak var separator1: UIView!

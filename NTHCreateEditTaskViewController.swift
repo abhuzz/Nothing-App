@@ -61,6 +61,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         case CreateDateReminder = "CreateDateReminder"
         case EditDateReminder = "EditDateReminder"
         case AddPlaceLink = "AddPlaceLink"
+        case AddContactLink = "AddContactLink"
     }
     
     
@@ -207,6 +208,13 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 self.taskContainer.links.append(selectedPlace)
                 self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.taskContainer.links.count + 1)
             }
+        } else if segue.identifier == SegueIdentifier.AddContactLink.rawValue {
+            let vc = segue.destinationViewController as! NTHSelectContactViewController
+            vc.context = self.context
+            vc.completionBlock = { selectedContact in
+                self.taskContainer.links.append(selectedContact)
+                self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.taskContainer.links.count + 1)
+            }
         }
     }
     
@@ -328,15 +336,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 
                 let alert = UIAlertController.selectConnectionTypeActionSheet(types, completion: { (action: NTHAlertAction) -> Void in
                     if action.identifier == "contact" {
-                        /*let nc = UIStoryboard.instantiateNTHSelectContactViewControllerInNavigationController()
-                        let vc = nc.topViewController as! NTHSelectContactViewController
-                        vc.context = self.context
-                        vc.selectionBlock = { [unowned self] contact in
-                            self.task.addConnection(contact as Connection)
-                            self.refreshConnectionsTableView()
-                        }
-                        
-                        self.presentViewController(nc, animated: true, completion: nil)*/
+                        self.performSegueWithIdentifier(SegueIdentifier.AddContactLink.rawValue, sender: nil)
                     } else if action.identifier == "place" {
                         self.performSegueWithIdentifier(SegueIdentifier.AddPlaceLink.rawValue, sender: nil)
                     }

@@ -15,6 +15,8 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet private weak var placesTableView: UITableView!
     @IBOutlet private weak var doneButton: UIBarButtonItem!
 
+    
+    
     private enum SegueIdentifier: String {
         case AddNewPlace = "AddNewPlace"
     }
@@ -45,7 +47,7 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SegueIdentifier.AddNewPlace.rawValue {
-            let vc = segue.destinationViewController as! NTHCreateNewPlaceViewController
+            let vc = segue.destinationViewController as! NTHCreateEditPlaceViewController
             vc.context = self.context
             vc.completionBlock = {
                 self.places = ModelController().allPlaces(self.context)

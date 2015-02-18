@@ -92,13 +92,15 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
             vc.completionBlock = { selectedPlace in
                 self.place = selectedPlace
                 self.placeTableView.reloadData()
+                self._validateDoneButton()
             }
         } else if segue.identifier == SegueIdentifier.EditPlace.rawValue {
-            let vc = segue.destinationViewController as! NTHCreateNewPlaceViewController
+            let vc = segue.destinationViewController as! NTHCreateEditPlaceViewController
             vc.context = self.context
             vc.editedPlace = sender as! Place!
             vc.completionBlock = {
                 self.placeTableView.reloadData()
+                self._validateDoneButton()
             }
         }
     }

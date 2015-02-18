@@ -217,6 +217,7 @@
                         <segue destination="qKL-pp-hDu" kind="push" identifier="CreateDateReminder" id="wRh-l5-PIE"/>
                         <segue destination="qKL-pp-hDu" kind="push" identifier="EditDateReminder" id="LMi-nX-CeN"/>
                         <segue destination="9Vs-Y6-SqM" kind="push" identifier="AddPlaceLink" id="FdA-Zs-FF8"/>
+                        <segue destination="JFE-PH-tvL" kind="push" identifier="AddContactLink" id="10A-z9-kye"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEr-QO-NDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -339,7 +340,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2sV-6f-Q54" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="864" y="1951"/>
+            <point key="canvasLocation" x="997" y="1868"/>
         </scene>
         <!--Inbox View Controller-->
         <scene sceneID="JK8-62-5xE">
@@ -521,7 +522,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fck-oU-cRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1007" y="1211"/>
+            <point key="canvasLocation" x="1153" y="2818"/>
         </scene>
         <!--Date-->
         <scene sceneID="hNh-3G-lN3">
@@ -658,7 +659,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aai-Qf-c6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Z5j-ar-iOh"/>
             </objects>
-            <point key="canvasLocation" x="4428" y="1211"/>
+            <point key="canvasLocation" x="3695" y="2177"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WqW-TO-gRH">
@@ -676,7 +677,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qqq-1B-drd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3865" y="1211"/>
+            <point key="canvasLocation" x="3132" y="2177"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Eoa-tR-JVh">
@@ -694,7 +695,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RkI-ea-wDr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="673" y="1639"/>
+            <point key="canvasLocation" x="104" y="1839"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zly-KY-BC1">
@@ -710,7 +711,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iem-Fh-g5a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1984" y="2626"/>
+            <point key="canvasLocation" x="1940" y="2901"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="FH4-9Z-szH">
@@ -904,7 +905,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFo-4h-phS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2090" y="1693"/>
+            <point key="canvasLocation" x="2022" y="1868"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kdA-zB-hK3">
@@ -974,7 +975,7 @@
         <!--Select Place On Map-->
         <scene sceneID="v7U-YT-dhF">
             <objects>
-                <viewController id="HG4-5E-df3" userLabel="Select Place On Map" customClass="NTHCreateNewPlaceViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HG4-5E-df3" userLabel="Select Place On Map" customClass="NTHCreateEditPlaceViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0me-R3-50n"/>
                         <viewControllerLayoutGuide type="bottom" id="wg3-Og-CZr"/>
@@ -1082,6 +1083,52 @@
             </objects>
             <point key="canvasLocation" x="1884" y="-425"/>
         </scene>
+        <!--Contacts-->
+        <scene sceneID="lhP-eQ-YU0">
+            <objects>
+                <viewController id="JFE-PH-tvL" customClass="NTHSelectContactViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cXJ-CJ-TbL"/>
+                        <viewControllerLayoutGuide type="bottom" id="wW9-1d-zTl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5VL-4y-4HS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SMb-aE-dua">
+                                <rect key="frame" x="25" y="64" width="270" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="JFE-PH-tvL" id="vZL-In-NOU"/>
+                                    <outlet property="delegate" destination="JFE-PH-tvL" id="ZTK-xp-qKK"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SMb-aE-dua" firstAttribute="top" secondItem="cXJ-CJ-TbL" secondAttribute="top" id="BdW-GL-JaK"/>
+                            <constraint firstItem="wW9-1d-zTl" firstAttribute="top" secondItem="SMb-aE-dua" secondAttribute="bottom" id="GBH-Gg-Zak"/>
+                            <constraint firstAttribute="trailing" secondItem="SMb-aE-dua" secondAttribute="trailing" constant="25" id="m0a-Hx-gFD"/>
+                            <constraint firstItem="SMb-aE-dua" firstAttribute="leading" secondItem="5VL-4y-4HS" secondAttribute="leading" constant="25" id="tpj-e5-0OL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Contacts" id="cAm-pJ-brg">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="1rG-0N-7ad">
+                            <connections>
+                                <action selector="donePressed:" destination="JFE-PH-tvL" id="trq-g3-ALG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="1rG-0N-7ad" id="TyV-PU-HtX"/>
+                        <outlet property="tableView" destination="SMb-aE-dua" id="YNz-pe-owS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lyZ-Ae-tUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1034" y="977"/>
+        </scene>
     </scenes>
     <resources>
         <image name="more-actions-button" width="20" height="5"/>
@@ -1092,7 +1139,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WoB-qe-axp"/>
+        <segue reference="2gu-sc-1vn"/>
         <segue reference="Pg9-vd-d1p"/>
         <segue reference="FdA-Zs-FF8"/>
         <segue reference="ENL-Cp-mGc"/>

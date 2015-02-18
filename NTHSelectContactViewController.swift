@@ -2,95 +2,94 @@
 //  NTHSelectContactViewController.swift
 //  Nothing
 //
-//  Created by Tomasz Szulc on 01/02/15.
+//  Created by Tomasz Szulc on 18/02/15.
 //  Copyright (c) 2015 Tomasz Szulc. All rights reserved.
 //
 
 import UIKit
-import AddressBook
-import AddressBookUI
 import CoreData
 
-class NTHSelectContactViewController: UITableViewController, ABPeoplePickerNavigationControllerDelegate, UINavigationControllerDelegate {
+class NTHSelectContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
-    typealias NTHSelectContactViewController = (contact: Contact) -> Void
     
-    var selectionBlock: NTHSelectContactViewController?
-    var context: NSManagedObjectContext!
-    
+    private var selectedIndexPath: NSIndexPath?
     private var contacts = [Contact]()
-    private var pickerController: ABPeoplePickerNavigationController?
+    
+    
+    var context: NSManagedObjectContext!
+    var completionBlock: ((selectedContact: Contact) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.tableFooterView = UIView()
-        
-        let centerLabelNib = UINib(nibName: "NTHCenterLabelCell", bundle: nil)
-        self.tableView.registerNib(centerLabelNib, forCellReuseIdentifier: "NTHCenterLabelCell")
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+        self.tableView.registerNib("NTHCenterLabelCell")
+        self.tableView.registerNib("NTHLeftLabelCell")
         self.contacts = ModelController().allContacts(self.context)
-        self.tableView.reloadData()
     }
     
-    @IBAction func closePressed() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    private func _validateDoneButton() {
+        self.doneButton.enabled = self.selectedIndexPath != nil
     }
     
-    private func numberOfCells() -> Int {
+    @IBAction func donePressed(sender: AnyObject) {
+        self.completionBlock?(selectedContact: self.contacts[selectedIndexPath!.row])
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    /// Mark: Table View
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.contacts.count + 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.numberOfCells()
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.row != self.numberOfCells() - 1 {
-            return UITableViewCell()
-//            let cell = tableView.dequeueReusableCellWithIdentifier("NTHContactCell") as! NTHContactCell
-//            cell.label.text = self.contacts[indexPath.row].name
-//            return cell
-        } else {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        if indexPath.row == self.contacts.count {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
-            cell.label.text = String.addANewContactString()
+            cell.label.text = "+ Add new contact"
+            cell.label.font = UIFont.NTHAddNewCellFont()
+            cell.selectedBackgroundView = UIView()
+            return cell
+        } else {
+            let contact = self.contacts[indexPath.row]
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelCell") as! NTHLeftLabelCell
+            
+            cell.label.text = contact.name
+            cell.label.font = UIFont.NTHNormalTextFont()
+            cell.selectedBackgroundView = UIView()
+            cell.tintColor = UIColor.NTHNavigationBarColor()
+            
             return cell
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row != self.numberOfCells() - 1 {
-            self.selectionBlock?(contact: self.contacts[indexPath.row])
-            self.dismissViewControllerAnimated(true, completion: nil)
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        if indexPath.row == self.contacts.count {
+            /// show place wizard
+//            self.performSegueWithIdentifier(SegueIdentifier.AddNewPlace.rawValue, sender: nil)
         } else {
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            /// self.performSegueWithIdentifier(SegueIdentifier.AddressBook.rawValue, sender: nil)
-            
-            if self.pickerController == nil {
-                self.pickerController = ABPeoplePickerNavigationController()
-                self.pickerController?.peoplePickerDelegate = self
+            /// deselect old cell
+            if let previousIndexPath = self.selectedIndexPath {
+                let previousCell = tableView.cellForRowAtIndexPath(previousIndexPath) as! NTHLeftLabelCell
+                previousCell.accessoryType = .None
             }
             
-            self.presentViewController(self.pickerController!, animated: true, completion: nil)
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! NTHLeftLabelCell
+            if cell.accessoryType == .None {
+                cell.accessoryType = .Checkmark
+                self.selectedIndexPath = indexPath
+            } else {
+                cell.accessoryType = .None
+            }
         }
+        
+        self._validateDoneButton()
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 50
-    }
-    
-    
-    // Mark: ABPeoplePickerNavigationControllerDelegate
-    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, didSelectPerson person: ABRecord!) {
-        let contact: Contact = Contact.create(self.context)
-        contact.name = ABRecordCopyCompositeName(person).takeRetainedValue() as String
-        contact.phone = "+48555123456"
-        contact.email = "mail@szulctomasz.com"
-    }
-    
-    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, shouldContinueAfterSelectingPerson person: ABRecord!, property: ABPropertyID, identifier: ABMultiValueIdentifier) -> Bool {
-        return false
     }
 }
