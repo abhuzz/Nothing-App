@@ -51,6 +51,9 @@
 		12981F0B1A86223000CDFA1D /* RepeatInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12981F0A1A86223000CDFA1D /* RepeatInterval.swift */; };
 		12981F0D1A8627D300CDFA1D /* NTHLeftLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12981F0C1A8627D300CDFA1D /* NTHLeftLabelCell.xib */; };
 		12981F0F1A86280800CDFA1D /* NTHCenterLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12981F0E1A86280800CDFA1D /* NTHCenterLabelCell.swift */; };
+		12A7B33D1A9679E800A4EACB /* NTHTaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A7B33C1A9679E800A4EACB /* NTHTaskDetailsViewController.swift */; };
+		12A7B33F1A9681FB00A4EACB /* NTHTwoLineLeftLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A7B33E1A9681FB00A4EACB /* NTHTwoLineLeftLabelCell.swift */; };
+		12A7B3411A96820E00A4EACB /* NTHTwoLineLeftLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12A7B3401A96820E00A4EACB /* NTHTwoLineLeftLabelCell.xib */; };
 		12AC63C91A90AB3700883650 /* NTHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AC63C81A90AB3700883650 /* NTHTextField.swift */; };
 		12BB65311A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB65301A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift */; };
 		12BEB0F41A06DC9300643860 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BEB0F31A06DC9300643860 /* ModelController.swift */; };
@@ -126,6 +129,9 @@
 		12981F0A1A86223000CDFA1D /* RepeatInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatInterval.swift; sourceTree = "<group>"; };
 		12981F0C1A8627D300CDFA1D /* NTHLeftLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHLeftLabelCell.xib; sourceTree = "<group>"; };
 		12981F0E1A86280800CDFA1D /* NTHCenterLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCenterLabelCell.swift; sourceTree = "<group>"; };
+		12A7B33C1A9679E800A4EACB /* NTHTaskDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskDetailsViewController.swift; sourceTree = "<group>"; };
+		12A7B33E1A9681FB00A4EACB /* NTHTwoLineLeftLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTwoLineLeftLabelCell.swift; sourceTree = "<group>"; };
+		12A7B3401A96820E00A4EACB /* NTHTwoLineLeftLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHTwoLineLeftLabelCell.xib; sourceTree = "<group>"; };
 		12AC63C81A90AB3700883650 /* NTHTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTextField.swift; sourceTree = "<group>"; };
 		12BB65301A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHLeftLabelRemoveCell.swift; sourceTree = "<group>"; };
 		12BEB0F31A06DC9300643860 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
@@ -194,6 +200,7 @@
 				12E2929E1A9527300079D257 /* NTHInboxViewController.swift */,
 				12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */,
 				128F91671A93FED000C21DE3 /* NTHSelectPlaceViewController.swift */,
+				12A7B33C1A9679E800A4EACB /* NTHTaskDetailsViewController.swift */,
 			);
 			name = Controllers;
 			path = ..;
@@ -233,6 +240,7 @@
 				12FE1D761A9146F600F03601 /* NTHLeftLabelCell.swift */,
 				12BB65301A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift */,
 				128F91631A92855D00C21DE3 /* NTHRegionControl.swift */,
+				12A7B33E1A9681FB00A4EACB /* NTHTwoLineLeftLabelCell.swift */,
 			);
 			name = Components;
 			path = ..;
@@ -354,6 +362,7 @@
 				12981F0C1A8627D300CDFA1D /* NTHLeftLabelCell.xib */,
 				124E5EB71A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib */,
 				128F91611A92844900C21DE3 /* NTHRegionControl.xib */,
+				12A7B3401A96820E00A4EACB /* NTHTwoLineLeftLabelCell.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -459,6 +468,7 @@
 				128F91621A92844900C21DE3 /* NTHRegionControl.xib in Resources */,
 				1279B5E419FED4E700A7828C /* LaunchScreen.xib in Resources */,
 				1279B5E119FED4E700A7828C /* Images.xcassets in Resources */,
+				12A7B3411A96820E00A4EACB /* NTHTwoLineLeftLabelCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,7 +529,9 @@
 				1230A0911A8BE5250064447B /* CLLocation_TS.swift in Sources */,
 				1260AC001A7819BB0015CA4E /* NTHAnnotation.swift in Sources */,
 				1279B60C19FED64D00A7828C /* Contact.swift in Sources */,
+				12A7B33D1A9679E800A4EACB /* NTHTaskDetailsViewController.swift in Sources */,
 				1230A08D1A8BBE6F0064447B /* LocalNotificationScheduler.swift in Sources */,
+				12A7B33F1A9681FB00A4EACB /* NTHTwoLineLeftLabelCell.swift in Sources */,
 				1202EB731A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift in Sources */,
 				1279B61019FED64D00A7828C /* Place.swift in Sources */,
 				1279B60E19FED64D00A7828C /* DateReminderInfo.swift in Sources */,

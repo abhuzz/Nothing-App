@@ -17,6 +17,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     
     private enum SegueIdentifier: String {
         case CreateTask = "CreateTask"
+        case ShowTask = "ShowTask"
     }
 
     
@@ -34,13 +35,20 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let refreshBlock: () -> Void = {
+            self.tasks = ModelController().allTasks()
+            self.tableView.reloadData()
+        }
+        
         if segue.identifier == SegueIdentifier.CreateTask.rawValue {
             let vc = segue.destinationViewController as! NTHCreateEditTaskViewController
             vc.context = CDHelper.temporaryContext
-            vc.completionBlock = {
-                self.tasks = ModelController().allTasks()
-                self.tableView.reloadData()
-            }
+            vc.completionBlock = refreshBlock
+        } else if segue.identifier == SegueIdentifier.ShowTask.rawValue {
+            let vc = segue.destinationViewController as! NTHTaskDetailsViewController
+            vc.context = CDHelper.temporaryContext
+            vc.task = sender as! Task!
+            vc.completionBlock = refreshBlock
         }
     }
     
@@ -59,7 +67,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        self.performSegueWithIdentifier(SegueIdentifier.ShowTask.rawValue, sender: self.tasks[indexPath.row])
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

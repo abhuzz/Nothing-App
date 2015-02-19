@@ -39,13 +39,13 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     /**
         For setting UI colors
     */
-    @IBOutlet weak var locationRemindersLabel: UILabel!
-    @IBOutlet weak var dateRemindersLabel: UILabel!
-    @IBOutlet weak var linksLabel: UILabel!
-    @IBOutlet weak var separator1: UIView!
-    @IBOutlet weak var separator2: UIView!
-    @IBOutlet weak var separator3: UIView!
-    @IBOutlet weak var separator4: UIView!
+    @IBOutlet private weak var locationRemindersLabel: UILabel!
+    @IBOutlet private weak var dateRemindersLabel: UILabel!
+    @IBOutlet private weak var linksLabel: UILabel!
+    @IBOutlet private weak var separator1: UIView!
+    @IBOutlet private weak var separator2: UIView!
+    @IBOutlet private weak var separator3: UIView!
+    @IBOutlet private weak var separator4: UIView!
     /// END
     
     

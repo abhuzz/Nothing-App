@@ -31,7 +31,7 @@ class NTHInboxCell: UITableViewCell {
     private func setupUI() {
         self.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         self.initialCenterYConstant = self.titleCenterYConstraint.constant
-        self.titleLabel.textColor = UIColor.NTHHeaderTextColor()
+        self.titleLabel.textColor = UIColor.blackColor()
         self.descriptionLabel.textColor = UIColor.NTHSubtitleTextColor()
         self.stateIndicatorView.backgroundColor = UIColor.clearColor()
         self.stateIndicatorView.state = .Active
