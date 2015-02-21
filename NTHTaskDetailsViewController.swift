@@ -34,6 +34,9 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet private weak var separator2: UIView!
     @IBOutlet private weak var separator3: UIView!
     @IBOutlet private weak var separator4: UIView!
+    
+    @IBOutlet private weak var markButton: NTHButton!
+    @IBOutlet weak var taskStatusView: NTHTaskStatusView!
 
     var task: Task!
     var context: NSManagedObjectContext!
@@ -82,6 +85,8 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, height: self._locationRemindersTableViewHeight())
         self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, height: self._datesRemindersTableViewHeight())
         self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, height: self._linksTableViewHeight())
+        
+        self._updateMarkButtonAndStatusView()
     }
     
 
@@ -250,7 +255,6 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         })
     }
     
-    
     /// Actions
     
     @IBAction func editPressed(sender: AnyObject) {
@@ -258,7 +262,15 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     @IBAction func markPressed(sender: AnyObject) {
-        
+        self.task.changeState()
+        self._updateMarkButtonAndStatusView()
+        self.context.save(nil)
+        self.context.parentContext?.save(nil)
+    }
+    
+    private func _updateMarkButtonAndStatusView() {
+        self.markButton.setTitle(self.task.state == .Done ? "Mark as Active" : "Mark as Done", forState: UIControlState.Normal)
+        self.taskStatusView.state = self.task.state
     }
     
     @IBAction func deletePressed(sender: AnyObject) {

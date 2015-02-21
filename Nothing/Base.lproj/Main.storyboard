@@ -777,14 +777,14 @@
                         <viewControllerLayoutGuide type="bottom" id="2Aj-Mg-4Rm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ili-BA-O3G">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="710"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cnt-dv-rdg">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="710"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsw-8v-Bjm" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="710"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="40" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Efx-Lj-A2g" userLabel="Title Field" customClass="NTHTextField" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="16" width="270" height="40"/>
@@ -967,7 +967,7 @@
                                             <constraint firstAttribute="trailing" secondItem="E7p-OM-3nB" secondAttribute="trailing" constant="25" id="U3Q-M0-Eiz"/>
                                             <constraint firstItem="UKN-CC-8E7" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="UwR-gS-5wZ"/>
                                             <constraint firstItem="yji-7g-YiZ" firstAttribute="top" secondItem="qdD-9s-KH4" secondAttribute="bottom" constant="15" id="VES-Iz-ega"/>
-                                            <constraint firstAttribute="bottom" secondItem="Rmf-6n-aVF" secondAttribute="bottom" constant="174" id="Vay-dC-pVq"/>
+                                            <constraint firstAttribute="bottom" secondItem="Rmf-6n-aVF" secondAttribute="bottom" constant="184" id="Vay-dC-pVq"/>
                                             <constraint firstItem="h34-Ea-L3S" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="Z0K-EP-4da"/>
                                             <constraint firstItem="H01-mQ-VRC" firstAttribute="top" secondItem="k7J-gf-uBR" secondAttribute="bottom" constant="15" id="Zqr-G2-sVd"/>
                                             <constraint firstItem="K71-HI-bts" firstAttribute="top" secondItem="6zw-I0-mQH" secondAttribute="bottom" constant="14" id="aCP-pv-9IY"/>
@@ -1011,9 +1011,17 @@
                             <constraint firstItem="Cnt-dv-rdg" firstAttribute="leading" secondItem="Ili-BA-O3G" secondAttribute="leading" id="oSn-vz-pch"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Task" id="u3V-zC-a2z"/>
+                    <navigationItem key="navigationItem" title="Task" id="u3V-zC-a2z">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="XiF-kg-ruj">
+                            <view key="customView" contentMode="scaleToFill" id="Rr0-TW-9ki" customClass="NTHTaskStatusView" customModule="Nothing" customModuleProvider="target">
+                                <rect key="frame" x="290" y="12" width="14" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="700"/>
+                    <size key="freeformSize" width="320" height="710"/>
                     <connections>
                         <outlet property="dateRemindersLabel" destination="h34-Ea-L3S" id="CSL-hq-46e"/>
                         <outlet property="datesTableView" destination="x0U-3F-cdn" id="38G-Ju-I8P"/>
@@ -1024,6 +1032,7 @@
                         <outlet property="locationRemindersLabel" destination="H01-mQ-VRC" id="I3b-CZ-Azq"/>
                         <outlet property="locationsTableView" destination="qdD-9s-KH4" id="KsB-8L-TCm"/>
                         <outlet property="locationsTableViewHeight" destination="jDR-06-3ku" id="Wje-uq-OmB"/>
+                        <outlet property="markButton" destination="E7p-OM-3nB" id="3HX-tJ-zcR"/>
                         <outlet property="notesTextView" destination="Rmf-6n-aVF" id="FWo-hE-q83"/>
                         <outlet property="scrollViewBottomGuide" destination="HZz-tc-gId" id="BUK-fj-vkU"/>
                         <outlet property="separator1" destination="k7J-gf-uBR" id="WE2-Em-f3y"/>
@@ -1031,6 +1040,7 @@
                         <outlet property="separator3" destination="AbD-zC-0ZB" id="z7Q-Y1-5bE"/>
                         <outlet property="separator4" destination="spz-gV-gau" id="QiS-gr-uIu"/>
                         <outlet property="tapGesture" destination="nFu-2o-cDe" id="IUV-Kg-iqg"/>
+                        <outlet property="taskStatusView" destination="Rr0-TW-9ki" id="Ijr-y5-D9s"/>
                         <outlet property="titleTextField" destination="Efx-Lj-A2g" id="Vvb-PE-Nga"/>
                     </connections>
                 </viewController>
