@@ -262,6 +262,19 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     @IBAction func deletePressed(sender: AnyObject) {
+        let alert = UIAlertController(title: "Delete", message: "Do you want to delete \"\(self.task.title)\"?", preferredStyle: UIAlertControllerStyle.Alert)
         
+        /// YES
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive, handler: { (action) -> Void in
+            self.context.deleteObject(self.task)
+            self.context.save(nil)
+            self.context.parentContext?.save(nil)
+            self.navigationController?.popViewControllerAnimated(true)
+        }))
+        
+        /// NO
+        alert.addAction(UIAlertAction.cancelAction("No", handler: nil))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }

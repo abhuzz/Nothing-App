@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -47,8 +48,14 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
         } else if segue.identifier == SegueIdentifier.ShowTask.rawValue {
             let vc = segue.destinationViewController as! NTHTaskDetailsViewController
             vc.context = CDHelper.temporaryContext
-            vc.task = sender as! Task!
-            vc.completionBlock = refreshBlock
+            
+            /// get task from the temporary context to be able to make operations on it like deleting.
+            if let task = sender as? Task {
+                var registeredObject = vc.context.objectWithID(task.objectID)
+                vc.task = (registeredObject as? Task)!
+                
+                vc.completionBlock = refreshBlock
+            }
         }
     }
     
