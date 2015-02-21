@@ -249,4 +249,19 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             return /// explicit return
         })
     }
+    
+    
+    /// Actions
+    
+    @IBAction func editPressed(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func markPressed(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func deletePressed(sender: AnyObject) {
+        
+    }
 }

@@ -29,6 +29,7 @@ class NTHAnnotation: NSObject, MKAnnotation {
         self.subtitle = subtitle
         super.init()
         self.setCoordinate(coordinate)
+        let b = UIButton()
     }
     
     func viewForAnnotation() -> MKAnnotationView {

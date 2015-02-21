@@ -777,14 +777,14 @@
                         <viewControllerLayoutGuide type="bottom" id="2Aj-Mg-4Rm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ili-BA-O3G">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cnt-dv-rdg">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsw-8v-Bjm" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="40" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Efx-Lj-A2g" userLabel="Title Field" customClass="NTHTextField" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="16" width="270" height="40"/>
@@ -876,6 +876,13 @@
                                                     <constraint firstAttribute="height" constant="1" id="B1f-45-pU6"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="6zw-I0-mQH" userLabel="separator 4">
+                                                <rect key="frame" x="25" y="541" width="270" height="1"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="lKA-TM-Od1"/>
+                                                </constraints>
+                                            </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="270" placeholderIntrinsicHeight="128" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmf-6n-aVF" userLabel="notes text view" customClass="NTHPlaceholderTextView" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="398" width="270" height="128"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -891,12 +898,57 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K71-HI-bts" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="556" width="270" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="DmR-Sg-9NR"/>
+                                                </constraints>
+                                                <state key="normal" title="Edit">
+                                                    <color key="titleColor" red="0.74510002139999998" green="0.42745000119999998" blue="0.32548999789999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="editPressed:" destination="50M-XF-HCh" eventType="touchUpInside" id="6HJ-zG-PqU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7p-OM-3nB" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="604" width="270" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="pqr-1Y-I1W"/>
+                                                </constraints>
+                                                <state key="normal" title="Mark">
+                                                    <color key="titleColor" red="0.74510002139999998" green="0.42745000119999998" blue="0.32548999789999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="editPressed:" destination="50M-XF-HCh" eventType="touchUpInside" id="PA1-a9-yA3"/>
+                                                    <action selector="markPressed:" destination="50M-XF-HCh" eventType="touchUpInside" id="mOb-CC-ob5"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVa-Y9-2da" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="652" width="270" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="Lcp-uy-kYL"/>
+                                                </constraints>
+                                                <state key="normal" title="Delete">
+                                                    <color key="titleColor" red="0.74510002139999998" green="0.42745000119999998" blue="0.32548999789999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="deletePressed:" destination="50M-XF-HCh" eventType="touchUpInside" id="ciy-al-nla"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <constraints>
+                                            <constraint firstItem="hVa-Y9-2da" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="2TS-Mu-Ybv"/>
                                             <constraint firstItem="Efx-Lj-A2g" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="2hm-SR-chW"/>
+                                            <constraint firstItem="6zw-I0-mQH" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="5NI-dC-fjT"/>
+                                            <constraint firstItem="K71-HI-bts" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="6u0-sZ-8JK"/>
                                             <constraint firstAttribute="trailing" secondItem="HMP-bh-HVD" secondAttribute="trailing" constant="25" id="8FC-yA-X4N"/>
+                                            <constraint firstItem="E7p-OM-3nB" firstAttribute="top" secondItem="K71-HI-bts" secondAttribute="bottom" constant="8" id="8cF-g5-Xoa"/>
+                                            <constraint firstAttribute="trailing" secondItem="6zw-I0-mQH" secondAttribute="trailing" constant="25" id="93n-55-cdW"/>
                                             <constraint firstItem="qdD-9s-KH4" firstAttribute="top" secondItem="H01-mQ-VRC" secondAttribute="bottom" constant="8" id="9mJ-Ub-SXJ"/>
                                             <constraint firstAttribute="trailing" secondItem="Rmf-6n-aVF" secondAttribute="trailing" constant="25" id="AmU-ke-S5w"/>
                                             <constraint firstItem="k7J-gf-uBR" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="BYT-mz-3tw"/>
@@ -908,13 +960,17 @@
                                             <constraint firstItem="k7J-gf-uBR" firstAttribute="top" secondItem="Efx-Lj-A2g" secondAttribute="bottom" constant="8" id="MjD-ZN-Uzz"/>
                                             <constraint firstAttribute="trailing" secondItem="x0U-3F-cdn" secondAttribute="trailing" constant="25" id="NK0-sy-Z0B"/>
                                             <constraint firstItem="spz-gV-gau" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="NXr-N2-tOL"/>
+                                            <constraint firstAttribute="trailing" secondItem="K71-HI-bts" secondAttribute="trailing" constant="25" id="Oot-6I-XXv"/>
                                             <constraint firstAttribute="trailing" secondItem="H01-mQ-VRC" secondAttribute="trailing" constant="25" id="RJP-oH-Ey9"/>
                                             <constraint firstAttribute="trailing" secondItem="spz-gV-gau" secondAttribute="trailing" constant="25" id="SXk-OE-mcD"/>
+                                            <constraint firstItem="hVa-Y9-2da" firstAttribute="top" secondItem="E7p-OM-3nB" secondAttribute="bottom" constant="8" id="TYr-HE-gFF"/>
+                                            <constraint firstAttribute="trailing" secondItem="E7p-OM-3nB" secondAttribute="trailing" constant="25" id="U3Q-M0-Eiz"/>
                                             <constraint firstItem="UKN-CC-8E7" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="UwR-gS-5wZ"/>
                                             <constraint firstItem="yji-7g-YiZ" firstAttribute="top" secondItem="qdD-9s-KH4" secondAttribute="bottom" constant="15" id="VES-Iz-ega"/>
-                                            <constraint firstAttribute="bottom" secondItem="Rmf-6n-aVF" secondAttribute="bottom" constant="42" id="Vay-dC-pVq"/>
+                                            <constraint firstAttribute="bottom" secondItem="Rmf-6n-aVF" secondAttribute="bottom" constant="174" id="Vay-dC-pVq"/>
                                             <constraint firstItem="h34-Ea-L3S" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="Z0K-EP-4da"/>
                                             <constraint firstItem="H01-mQ-VRC" firstAttribute="top" secondItem="k7J-gf-uBR" secondAttribute="bottom" constant="15" id="Zqr-G2-sVd"/>
+                                            <constraint firstItem="K71-HI-bts" firstAttribute="top" secondItem="6zw-I0-mQH" secondAttribute="bottom" constant="14" id="aCP-pv-9IY"/>
                                             <constraint firstItem="qdD-9s-KH4" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="aT5-6m-SRx"/>
                                             <constraint firstAttribute="trailing" secondItem="yji-7g-YiZ" secondAttribute="trailing" constant="25" id="b4m-fR-45J"/>
                                             <constraint firstAttribute="trailing" secondItem="Efx-Lj-A2g" secondAttribute="trailing" constant="25" id="cDM-3M-zut"/>
@@ -923,10 +979,13 @@
                                             <constraint firstAttribute="trailing" secondItem="h34-Ea-L3S" secondAttribute="trailing" constant="25" id="fPN-3N-d2a"/>
                                             <constraint firstItem="x0U-3F-cdn" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="gGg-Tl-S1n"/>
                                             <constraint firstItem="AbD-zC-0ZB" firstAttribute="top" secondItem="x0U-3F-cdn" secondAttribute="bottom" constant="15" id="ivA-OM-hxN"/>
+                                            <constraint firstItem="E7p-OM-3nB" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="k1n-f7-pQP"/>
                                             <constraint firstAttribute="trailing" secondItem="UKN-CC-8E7" secondAttribute="trailing" constant="25" id="kMh-gV-W6u"/>
+                                            <constraint firstItem="6zw-I0-mQH" firstAttribute="top" secondItem="Rmf-6n-aVF" secondAttribute="bottom" constant="15" id="kyl-VA-nZ7"/>
                                             <constraint firstItem="x0U-3F-cdn" firstAttribute="top" secondItem="h34-Ea-L3S" secondAttribute="bottom" constant="8" id="nmf-YH-E8J"/>
                                             <constraint firstItem="yji-7g-YiZ" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="oLO-6X-PXa"/>
                                             <constraint firstItem="AbD-zC-0ZB" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="pvN-fJ-3gL"/>
+                                            <constraint firstAttribute="trailing" secondItem="hVa-Y9-2da" secondAttribute="trailing" constant="25" id="tf4-Lv-HWY"/>
                                             <constraint firstItem="HMP-bh-HVD" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="u5i-ai-Xcl"/>
                                             <constraint firstItem="H01-mQ-VRC" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="uhe-pq-Ubm"/>
                                             <constraint firstItem="UKN-CC-8E7" firstAttribute="top" secondItem="HMP-bh-HVD" secondAttribute="bottom" constant="8" id="wbT-Vz-1Wu"/>
@@ -953,6 +1012,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Task" id="u3V-zC-a2z"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="700"/>
                     <connections>
                         <outlet property="dateRemindersLabel" destination="h34-Ea-L3S" id="CSL-hq-46e"/>
                         <outlet property="datesTableView" destination="x0U-3F-cdn" id="38G-Ju-I8P"/>
