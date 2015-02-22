@@ -15,11 +15,11 @@ import CoreLocation
 class Task: NSManagedObject {
     
     @NSManaged var uniqueIdentifier: String
-    @NSManaged var title: String
+    @NSManaged var title: String!
     @NSManaged var longDescription: String?
     @NSManaged private var stateNumber: NSNumber
     @NSManaged var dateReminderInfo: DateReminderInfo?
-    @NSManaged var locationReminderInfo: LocationReminderInfo?
+    @NSManaged var locationReminderInfos: NSSet
     @NSManaged var connections: NSSet
 }
 

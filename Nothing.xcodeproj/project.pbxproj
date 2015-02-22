@@ -87,6 +87,7 @@
 		12059DD01A350476007F5E7C /* NTHInboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHInboxCell.swift; sourceTree = "<group>"; };
 		12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskStatusView.swift; sourceTree = "<group>"; };
 		120B3CE71A86074700FB38DD /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		120E72BC1A9A20D7007F5E80 /* Nothing 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 5.xcdatamodel"; sourceTree = "<group>"; };
 		1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 2.xcdatamodel"; sourceTree = "<group>"; };
 		121CF5C51A8FD0440032ED36 /* NTHPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHPlaceholderTextView.swift; sourceTree = "<group>"; };
 		121CF5C71A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditTaskViewController.swift; sourceTree = "<group>"; };
@@ -759,12 +760,13 @@
 		1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				120E72BC1A9A20D7007F5E80 /* Nothing 5.xcdatamodel */,
 				12A7C0B81A9A1B7700BB6B94 /* Nothing 4.xcdatamodel */,
 				1230A0921A8BF10D0064447B /* Nothing 3.xcdatamodel */,
 				1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */,
 				1279B60219FED64D00A7828C /* Nothing.xcdatamodel */,
 			);
-			currentVersion = 12A7C0B81A9A1B7700BB6B94 /* Nothing 4.xcdatamodel */;
+			currentVersion = 120E72BC1A9A20D7007F5E80 /* Nothing 5.xcdatamodel */;
 			name = Nothing.xcdatamodeld;
 			path = Model/Nothing.xcdatamodeld;
 			sourceTree = "<group>";

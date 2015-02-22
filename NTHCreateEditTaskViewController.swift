@@ -101,9 +101,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 self.notesTextView.text = task.longDescription!
             }
             
-            if let reminder = task.locationReminderInfo {
-                self.taskContainer.locationReminders.append(reminder)
-            }
+            self.taskContainer.locationReminders = task.locationReminderInfos.allObjects as! [LocationReminderInfo]
             
             if let reminder = task.dateReminderInfo {
                 self.taskContainer.dateReminders.append(reminder)
@@ -278,7 +276,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         
         task.title = self.taskContainer.title!
         
-        task.locationReminderInfo = self.taskContainer.locationReminders.first
+        task.locationReminderInfos = NSSet(array: self.taskContainer.locationReminders)
         task.dateReminderInfo = self.taskContainer.dateReminders.first
         task.connections = NSSet(array: self.taskContainer.links)
         

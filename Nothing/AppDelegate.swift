@@ -113,10 +113,12 @@ extension AppDelegate {
     func regionManager(manager: TSRegionManager, didNotify regions: [TSRegion]) {
         for region in regions {
             if let task = ModelController().findTask(region.identifier) {
-                let notification = UILocalNotification()
-                
+                var notification = UILocalNotification()
                 notification.fireDate = NSDate()
-                notification.alertTitle = task.title
+                
+                if notification.respondsToSelector("setAlertTitle") {
+                    notification.alertTitle = task.title
+                }
                 notification.alertBody = "You're in close distance to do - \(task.title)"
                 notification.userInfo = ["uniqueIdentifier": task.uniqueIdentifier]
                 UIApplication.sharedApplication().scheduleLocalNotification(notification)
@@ -129,8 +131,8 @@ extension AppDelegate {
         
         let tasks = ModelController().allTasks()
         for task in tasks {
-            if let info = task.locationReminderInfo {
-                regions.append(TSRegion(identifier: task.uniqueIdentifier, coordinate: info.place.coordinate, notifyOnArrive: info.onArrive, notifyOnLeave: !info.onArrive, distance: CLLocationDistance(info.distance)))
+            for reminder in task.locationReminderInfos.allObjects as! [LocationReminderInfo] {
+                regions.append(TSRegion(identifier: task.uniqueIdentifier, coordinate: reminder.place.coordinate, notifyOnArrive: reminder.onArrive, notifyOnLeave: !reminder.onArrive, distance: CLLocationDistance(reminder.distance)))
             }
         }
         
