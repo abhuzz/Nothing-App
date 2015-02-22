@@ -143,7 +143,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             return 1
             
         case .Links:
-            return self.task.connections.allObjects.count
+            return max(1, self.task.connections.allObjects.count)
         }
     }
     
