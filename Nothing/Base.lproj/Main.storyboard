@@ -540,7 +540,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZd-3W-E2l" userLabel="map - separator">
-                                <rect key="frame" x="0.0" y="453" width="320" height="1"/>
+                                <rect key="frame" x="0.0" y="420" width="320" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="f2H-Bk-JU9"/>
@@ -571,26 +571,49 @@
                                 </connections>
                             </textField>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLw-Tp-FFM">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="452"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="419"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="HG4-5E-df3" id="vSU-l1-yW0"/>
                                     <outletCollection property="gestureRecognizers" destination="axV-oh-bQC" appends="YES" id="Lvd-Q6-TgE"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtZ-wg-21w" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
+                                <rect key="frame" x="25" y="429" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="hgw-26-UnX"/>
+                                    <constraint firstAttribute="height" constant="30" id="lXK-Pl-EOX"/>
+                                </constraints>
+                                <state key="normal" image="locate-me">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="pressedBorderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="pressedBackgroundColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="pressedTitleColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="PLw-Tp-FFM" firstAttribute="leading" secondItem="zdj-mr-xKn" secondAttribute="leading" id="6ES-kM-gn8"/>
-                            <constraint firstItem="0US-0e-8qa" firstAttribute="top" secondItem="PLw-Tp-FFM" secondAttribute="bottom" constant="15" id="76W-12-mak"/>
                             <constraint firstAttribute="trailing" secondItem="GZd-3W-E2l" secondAttribute="trailing" id="8Oz-fW-k5W"/>
+                            <constraint firstItem="BtZ-wg-21w" firstAttribute="top" secondItem="GZd-3W-E2l" secondAttribute="bottom" constant="8" id="9W1-2u-NoA"/>
                             <constraint firstItem="GZd-3W-E2l" firstAttribute="leading" secondItem="zdj-mr-xKn" secondAttribute="leading" id="B3p-lm-jkX"/>
                             <constraint firstAttribute="trailing" secondItem="0US-0e-8qa" secondAttribute="trailing" constant="25" id="D6E-sq-dzh"/>
                             <constraint firstItem="KXg-jK-Fvr" firstAttribute="leading" secondItem="zdj-mr-xKn" secondAttribute="leading" constant="25" id="Ezj-oF-Cx7"/>
                             <constraint firstAttribute="trailing" secondItem="PLw-Tp-FFM" secondAttribute="trailing" id="Itb-SP-bu5"/>
                             <constraint firstItem="KXg-jK-Fvr" firstAttribute="top" secondItem="0US-0e-8qa" secondAttribute="bottom" constant="15" id="KMB-fq-CNF"/>
+                            <constraint firstItem="BtZ-wg-21w" firstAttribute="leading" secondItem="zdj-mr-xKn" secondAttribute="leading" constant="25" id="Pv9-3v-Pca"/>
                             <constraint firstItem="wg3-Og-CZr" firstAttribute="top" secondItem="0j9-yI-f4J" secondAttribute="bottom" priority="800" constant="20" id="bI2-QM-GJY"/>
+                            <constraint firstItem="0US-0e-8qa" firstAttribute="top" secondItem="BtZ-wg-21w" secondAttribute="bottom" constant="8" id="cvU-mh-B2b"/>
                             <constraint firstItem="GZd-3W-E2l" firstAttribute="top" secondItem="PLw-Tp-FFM" secondAttribute="bottom" constant="1" id="d4A-A2-ALX"/>
                             <constraint firstAttribute="trailing" secondItem="0j9-yI-f4J" secondAttribute="trailing" constant="25" id="dQt-uP-eax"/>
                             <constraint firstAttribute="trailing" secondItem="KXg-jK-Fvr" secondAttribute="trailing" constant="25" id="lJH-dZ-YSI"/>
@@ -1050,6 +1073,9 @@
             <point key="canvasLocation" x="-100" y="-780"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="locate-me" width="30" height="30"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

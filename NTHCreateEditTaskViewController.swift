@@ -271,7 +271,8 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             /// Use edited task
             task = t
         } else {
-            let task: Task = Task.create(self.context)
+            let t: Task = Task.create(self.context)
+            task = t
             task.uniqueIdentifier = NSUUID().UUIDString
         }
         
