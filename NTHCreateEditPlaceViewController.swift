@@ -31,6 +31,9 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         super.viewDidLoad()
         self._configureUIColors()
         
+        self.mapView.showsUserLocation = true
+        self.mapView.tintColor = UIColor.NTHNavigationBarColor()
+        
         if let place = self.editedPlace {
             self.mapView.addAnnotation(NTHAnnotation(coordinate: place.coordinate, title: ""))
             self.nameTextField.text = place.customName
@@ -67,7 +70,16 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     @IBAction func donePressed(sender: AnyObject) {
         
         let name = self.nameTextField.text
-        let coordinate = (self.mapView.annotations.first as! NTHAnnotation).coordinate
+        
+        var annotation: NTHAnnotation!
+        for mapAnnotation in self.mapView.annotations as! [MKAnnotation] {
+            if mapAnnotation is NTHAnnotation {
+                annotation = (mapAnnotation as! NTHAnnotation)
+                break
+            }
+        }
+        
+        let coordinate = annotation.coordinate
         
         if let place = self.editedPlace {
             place.customName = name
@@ -128,6 +140,10 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     }
     
     
+    @IBAction func locateMePressed(sender: AnyObject) {
+        let region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, 1000, 1000)
+        self.mapView.setRegion(region, animated: true)
+    }
     
     /// Mark: UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -137,6 +153,10 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     
     /// Mark: MKMapViewDelegate
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
         return (annotation as! NTHAnnotation).viewForAnnotation()
     }
     
