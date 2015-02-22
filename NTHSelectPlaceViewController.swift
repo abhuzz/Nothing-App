@@ -102,6 +102,12 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
             cell.tintColor = UIColor.NTHNavigationBarColor()
             cell.label.font = UIFont.NTHNormalTextFont()
 
+            cell.leadingConstraint.constant = 15
+
+            if !self.canSelectPlace {
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            }
+            
             return cell
         }
     }

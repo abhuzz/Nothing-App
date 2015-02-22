@@ -545,7 +545,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8vA-Vk-0U5">
-                                <rect key="frame" x="25" y="64" width="270" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -556,10 +556,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8vA-Vk-0U5" firstAttribute="leading" secondItem="eud-gm-ex8" secondAttribute="leading" constant="25" id="8Pn-Se-84H"/>
+                            <constraint firstItem="8vA-Vk-0U5" firstAttribute="leading" secondItem="eud-gm-ex8" secondAttribute="leading" id="8Pn-Se-84H"/>
                             <constraint firstItem="I6e-4Q-H2c" firstAttribute="top" secondItem="8vA-Vk-0U5" secondAttribute="bottom" id="BuY-AA-v74"/>
                             <constraint firstItem="8vA-Vk-0U5" firstAttribute="top" secondItem="KJ1-Cw-T5j" secondAttribute="top" id="Tea-SO-nQK"/>
-                            <constraint firstAttribute="trailing" secondItem="8vA-Vk-0U5" secondAttribute="trailing" constant="25" id="afn-7h-PHF"/>
+                            <constraint firstAttribute="trailing" secondItem="8vA-Vk-0U5" secondAttribute="trailing" id="afn-7h-PHF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Places" id="jCI-BZ-Udt">
@@ -730,7 +730,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SMb-aE-dua">
-                                <rect key="frame" x="25" y="64" width="270" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -743,8 +743,8 @@
                         <constraints>
                             <constraint firstItem="SMb-aE-dua" firstAttribute="top" secondItem="cXJ-CJ-TbL" secondAttribute="top" id="BdW-GL-JaK"/>
                             <constraint firstItem="wW9-1d-zTl" firstAttribute="top" secondItem="SMb-aE-dua" secondAttribute="bottom" id="GBH-Gg-Zak"/>
-                            <constraint firstAttribute="trailing" secondItem="SMb-aE-dua" secondAttribute="trailing" constant="25" id="m0a-Hx-gFD"/>
-                            <constraint firstItem="SMb-aE-dua" firstAttribute="leading" secondItem="5VL-4y-4HS" secondAttribute="leading" constant="25" id="tpj-e5-0OL"/>
+                            <constraint firstAttribute="trailing" secondItem="SMb-aE-dua" secondAttribute="trailing" id="m0a-Hx-gFD"/>
+                            <constraint firstItem="SMb-aE-dua" firstAttribute="leading" secondItem="5VL-4y-4HS" secondAttribute="leading" id="tpj-e5-0OL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Contacts" id="cAm-pJ-brg">

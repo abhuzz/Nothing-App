@@ -99,6 +99,12 @@ class NTHSelectContactViewController: UIViewController, UITableViewDelegate, UIT
             cell.selectedBackgroundView = UIView()
             cell.tintColor = UIColor.NTHNavigationBarColor()
             
+            cell.leadingConstraint.constant = 15
+
+            if !self.canSelectContact {
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            }
+            
             return cell
         }
     }
