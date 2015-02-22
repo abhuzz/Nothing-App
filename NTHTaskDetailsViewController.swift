@@ -230,6 +230,14 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             break
             
         case .Links:
+            let link = self.task.connections.allObjects[indexPath.row] as! Connection
+            if link is Place {
+                let alert = UIAlertController.actionSheetForPlace(link as! Place)
+                self.presentViewController(alert, animated: true, completion: nil)
+            } else if link is Contact {
+                let alert = UIAlertController.actionSheetForContact(link as! Contact)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
             break
         }
     }
@@ -340,6 +348,28 @@ extension UIAlertController {
             mapItem.name = place.customName
             mapItem.openInMapsWithLaunchOptions(nil)
         }))
+        
+        alert.addAction(UIAlertAction.cancelAction("Cancel", handler: nil))
+        
+        return alert
+    }
+    
+    class func actionSheetForContact(contact: Contact) -> UIAlertController {
+        let alert = UIAlertController.actionSheet(contact.name, message: nil)
+        
+        if let phone = contact.phone {
+            alert.addAction(UIAlertAction.normalAction("Call " + phone, handler: { (action) -> Void in
+                UIApplication.sharedApplication().openURL(NSURL(string: "tel:" + phone)!)
+            }))
+        }
+        
+        if let email = contact.email {
+            alert.addAction(UIAlertAction.normalAction("Email " + email, handler: { (action) -> Void in
+                UIApplication.sharedApplication().openURL(NSURL(string: "mailto:" + email)!)
+            }))
+        }
+        
+        alert.addAction(UIAlertAction.cancelAction("Cancel", handler: nil))
         
         return alert
     }
