@@ -25,7 +25,7 @@ class ModelController {
     
     func allPlaces(context: NSManagedObjectContext) -> [Place] {
         let request = NSFetchRequest(entityName: NSStringFromClass(Place.self))
-        request.sortDescriptors = [NSSortDescriptor(key: "originalName", ascending: false)]
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
         return (context.executeFetchRequest(request, error: nil) as! [Place]) ?? [Place]()
     }
     

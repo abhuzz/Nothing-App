@@ -75,7 +75,7 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
             
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelCell") as! NTHLeftLabelCell
             
-            cell.label.text = place.customName
+            cell.label.text = place.name
             cell.label.font = UIFont.NTHNormalTextFont()
             cell.selectedBackgroundView = UIView()
             cell.tintColor = UIColor.NTHNavigationBarColor()

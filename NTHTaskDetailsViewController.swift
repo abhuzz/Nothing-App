@@ -181,7 +181,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         switch TableViewType(rawValue:tableView.tag)! {
         case .Locations:
             if let reminder = self.task.locationReminderInfo {
-                let topText = reminder.place.customName
+                let topText = reminder.place.name
                 let prefix = reminder.onArrive ? "Arrive" : "Leave"
                 let bottomText = prefix + ", " + reminder.distance.metersOrKilometers()
                 
@@ -207,7 +207,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
                 if link is Contact {
                     name = (link as! Contact).name
                 } else {
-                    name = (link as! Place).customName
+                    name = (link as! Place).name
                 }
                 
                 return _createRegularCell(name)
@@ -340,12 +340,12 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
 
 extension UIAlertController {
     class func actionSheetForPlace(place: Place) -> UIAlertController {
-        let alert = UIAlertController.actionSheet(place.customName, message: nil)
+        let alert = UIAlertController.actionSheet(place.name, message: nil)
         alert.addAction(UIAlertAction.normalAction("Show on map", handler: { (action) -> Void in
             let coordinate = place.coordinate
             let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: nil)
             let mapItem = MKMapItem(placemark: placemark)
-            mapItem.name = place.customName
+            mapItem.name = place.name
             mapItem.openInMapsWithLaunchOptions(nil)
         }))
         

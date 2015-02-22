@@ -113,7 +113,7 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let place = self.place {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelRemoveCell") as! NTHLeftLabelRemoveCell
-            cell.label.text = place.customName
+            cell.label.text = place.name
             cell.label.font = UIFont.NTHNormalTextFont()
             cell.selectedBackgroundView = UIView()
             cell.tintColor = UIColor.NTHNavigationBarColor()

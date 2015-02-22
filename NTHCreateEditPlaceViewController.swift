@@ -36,7 +36,7 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         
         if let place = self.editedPlace {
             self.mapView.addAnnotation(NTHAnnotation(coordinate: place.coordinate, title: ""))
-            self.nameTextField.text = place.customName
+            self.nameTextField.text = place.name
             self._validateDoneButton()
         }
     }
@@ -82,12 +82,11 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         let coordinate = annotation.coordinate
         
         if let place = self.editedPlace {
-            place.customName = name
+            place.name = name
             place.coordinate = coordinate
         } else {
             var place: Place = Place.create(self.context)
-            place.originalName = ""
-            place.customName = name
+            place.name = name
             place.coordinate = coordinate
         }
         

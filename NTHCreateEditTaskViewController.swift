@@ -336,7 +336,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             if indexPath.row == self.taskContainer.locationReminders.count {
                 return _createAddNewSomethingCell("+ Add new location")
             } else {
-                let cell = _createRegularCell(self.taskContainer.locationReminders[indexPath.row].place.customName)
+                let cell = _createRegularCell(self.taskContainer.locationReminders[indexPath.row].place.name)
                 cell.clearPressedBlock = { cell in
                     self.taskContainer.locationReminders.removeAtIndex(self.locationsTableView.indexPathForCell(cell)!.row)
                     self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.taskContainer.locationReminders.count + 1)
@@ -363,7 +363,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 let title: String
                 let link = self.taskContainer.links[indexPath.row]
                 if link is Place {
-                    title = (link as! Place).customName
+                    title = (link as! Place).name
                 } else {
                     title = (link as! Contact).name
                 }
