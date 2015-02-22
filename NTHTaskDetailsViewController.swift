@@ -121,7 +121,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
                         self.context.refreshObject(reminder, mergeChanges: true)
                     }
                     
-                    for link in self.task.connections.allObjects as! [Connection] {
+                    for link in self.task.connections.allObjects as! [Link] {
                         self.context.refreshObject(link, mergeChanges: true)
                     }
                     
@@ -201,7 +201,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             
         case .Links:
             if self.task.connections.allObjects.count > 0 {
-                let link = self.task.connections.allObjects[indexPath.row] as! Connection
+                let link = self.task.connections.allObjects[indexPath.row] as! Link
                 
                 let name: String!
                 if link is Contact {
@@ -230,7 +230,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             break
             
         case .Links:
-            let link = self.task.connections.allObjects[indexPath.row] as! Connection
+            let link = self.task.connections.allObjects[indexPath.row] as! Link
             if link is Place {
                 let alert = UIAlertController.actionSheetForPlace(link as! Place)
                 self.presentViewController(alert, animated: true, completion: nil)

@@ -136,6 +136,7 @@
 		12A7B3401A96820E00A4EACB /* NTHTwoLineLeftLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHTwoLineLeftLabelCell.xib; sourceTree = "<group>"; };
 		12A7C0B41A9893DA00BB6B94 /* NTHButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHButton.swift; sourceTree = "<group>"; };
 		12A7C0B61A9A080D00BB6B94 /* UIAlertController_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController_TS.swift; sourceTree = "<group>"; };
+		12A7C0B81A9A1B7700BB6B94 /* Nothing 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 4.xcdatamodel"; sourceTree = "<group>"; };
 		12AC63C81A90AB3700883650 /* NTHTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTextField.swift; sourceTree = "<group>"; };
 		12BB65301A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHLeftLabelRemoveCell.swift; sourceTree = "<group>"; };
 		12BEB0F31A06DC9300643860 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
@@ -758,11 +759,12 @@
 		1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				12A7C0B81A9A1B7700BB6B94 /* Nothing 4.xcdatamodel */,
 				1230A0921A8BF10D0064447B /* Nothing 3.xcdatamodel */,
 				1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */,
 				1279B60219FED64D00A7828C /* Nothing.xcdatamodel */,
 			);
-			currentVersion = 1230A0921A8BF10D0064447B /* Nothing 3.xcdatamodel */;
+			currentVersion = 12A7C0B81A9A1B7700BB6B94 /* Nothing 4.xcdatamodel */;
 			name = Nothing.xcdatamodeld;
 			path = Model/Nothing.xcdatamodeld;
 			sourceTree = "<group>";

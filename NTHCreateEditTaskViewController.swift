@@ -13,7 +13,7 @@ class TaskContainer {
     var title: String?
     var locationReminders = [LocationReminderInfo]()
     var dateReminders = [DateReminderInfo]()
-    var links = [Connection]()
+    var links = [Link]()
 }
 
 class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
@@ -109,7 +109,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 self.taskContainer.dateReminders.append(reminder)
             }
             
-            self.taskContainer.links = task.connections.allObjects as! [Connection]
+            self.taskContainer.links = task.connections.allObjects as! [Link]
             
             self._validateDoneButton()
             self._refreshLocations()

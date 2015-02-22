@@ -1,5 +1,5 @@
 //
-//  Connection.swift
+//  Link.swift
 //  CoreDataDemo
 //
 //  Created by Tomasz Szulc on 27/10/14.
@@ -9,12 +9,12 @@
 import UIKit
 import CoreData
 
-@objc(Connection)
-class Connection: NSManagedObject {
+@objc(Link)
+class Link: NSManagedObject {
     @NSManaged var tasks: NSSet
 }
 
-extension Connection {
+extension Link {
     
     override func awakeFromInsert() {
         super.awakeFromInsert()

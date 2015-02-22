@@ -9,7 +9,7 @@
 import UIKit
 
 @objc(Contact)
-class Contact: Connection {
+class Contact: Link {
     /// TODO: Change it to contact ID from address book
     @NSManaged var email: String?
     @NSManaged var name: String

@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 @objc(Place)
-class Place: Connection {
+class Place: Link {
     @NSManaged var originalName: String
     @NSManaged private var customNameString: String?
     @NSManaged private var latitude: NSNumber
