@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MapKit
 
 class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -219,6 +220,10 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch TableViewType(rawValue:tableView.tag)! {
         case .Locations:
+            if let reminder = self.task.locationReminderInfo {
+                let alert = UIAlertController.actionSheetForPlace(reminder.place)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
             break
             
         case .Dates:
@@ -322,5 +327,20 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         alert.addAction(UIAlertAction.cancelAction("No", handler: nil))
         
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+}
+
+extension UIAlertController {
+    class func actionSheetForPlace(place: Place) -> UIAlertController {
+        let alert = UIAlertController.actionSheet(place.customName, message: nil)
+        alert.addAction(UIAlertAction.normalAction("Show on map", handler: { (action) -> Void in
+            let coordinate = place.coordinate
+            let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: nil)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = place.customName
+            mapItem.openInMapsWithLaunchOptions(nil)
+        }))
+        
+        return alert
     }
 }
