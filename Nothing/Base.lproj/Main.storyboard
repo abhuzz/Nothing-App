@@ -507,6 +507,7 @@
                     <connections>
                         <outlet property="tableView" destination="dm4-kr-r5Q" id="A3C-7b-iOl"/>
                         <segue destination="9Vs-Y6-SqM" kind="push" identifier="ShowPlaces" id="EOv-PM-hL1"/>
+                        <segue destination="JFE-PH-tvL" kind="push" identifier="ShowContacts" id="0tn-fc-OPj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fl8-4U-53C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -714,7 +715,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1710" y="-425"/>
+            <point key="canvasLocation" x="1701" y="8"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="lhP-eQ-YU0">
@@ -757,6 +758,7 @@
                         <outlet property="doneButton" destination="1rG-0N-7ad" id="TyV-PU-HtX"/>
                         <outlet property="tableView" destination="SMb-aE-dua" id="YNz-pe-owS"/>
                         <segue destination="MNo-Xc-C6C" kind="push" identifier="AddNewContact" id="Nxh-lo-n4K"/>
+                        <segue destination="MNo-Xc-C6C" kind="push" identifier="EditContact" id="tuW-bm-KQy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyZ-Ae-tUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -781,7 +783,7 @@
                                     <constraint firstAttribute="height" constant="40" id="iKx-4y-2y5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="MNo-Xc-C6C" id="huu-AA-jNx"/>
                                 </connections>
@@ -799,7 +801,7 @@
                                     <constraint firstAttribute="height" constant="40" id="xwa-WN-jfl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="MNo-Xc-C6C" id="R0e-SU-Z6S"/>
                                 </connections>
@@ -817,7 +819,7 @@
                                     <constraint firstAttribute="height" constant="40" id="cGX-eT-UIA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="MNo-Xc-C6C" id="H9g-ON-9xZ"/>
                                 </connections>
@@ -1182,10 +1184,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="VNx-HN-FDJ"/>
-        <segue reference="FdA-Zs-FF8"/>
         <segue reference="ENL-Cp-mGc"/>
-        <segue reference="wRh-l5-PIE"/>
+        <segue reference="VNx-HN-FDJ"/>
+        <segue reference="0tn-fc-OPj"/>
+        <segue reference="EOv-PM-hL1"/>
+        <segue reference="tuW-bm-KQy"/>
         <segue reference="Pg9-vd-d1p"/>
+        <segue reference="wRh-l5-PIE"/>
     </inferredMetricsTieBreakers>
 </document>

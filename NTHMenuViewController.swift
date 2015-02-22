@@ -20,6 +20,7 @@ class NTHMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private enum SegueIdentifier: String {
         case ShowPlaces = "ShowPlaces"
+        case ShowContacts = "ShowContacts"
     }
     
     override func viewDidLoad() {
@@ -42,6 +43,13 @@ class NTHMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             vc.showDoneButton = false
             vc.canSelectPlace = false
             vc.canEditPlace = true
+            vc.saveContextEveryChange = true
+        } else if segue.identifier == SegueIdentifier.ShowContacts.rawValue {
+            let vc = segue.destinationViewController as! NTHSelectContactViewController
+            vc.context = CDHelper.mainContext
+            vc.showDoneButton = false
+            vc.canSelectContact = false
+            vc.canEditContact = true
             vc.saveContextEveryChange = true
         }
     }
@@ -81,6 +89,7 @@ class NTHMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             return
             
         case .Contacts:
+            self.performSegueWithIdentifier(SegueIdentifier.ShowContacts.rawValue, sender: nil)
             return
         }
     }

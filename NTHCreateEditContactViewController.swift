@@ -31,7 +31,8 @@ class NTHCreateEditContactViewController: UIViewController, UITextFieldDelegate 
         
         if let contact = self.editedContact {
             self.fullnameTextField.text = contact.name
-            self.phoneNumberTextField.text = contact.phone!
+            self.phoneNumberTextField.text = contact.phone ?? ""
+            self.emailTextField.text = contact.email ?? ""
             self._validateDoneButton()
         }
     }
