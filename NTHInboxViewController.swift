@@ -36,7 +36,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let refreshBlock: () -> Void = {
+        let refreshBlock: (task: Task) -> Void = { _ in
             self.tasks = ModelController().allTasks()
             self.tableView.reloadData()
         }
@@ -53,8 +53,10 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
             if let task = sender as? Task {
                 var registeredObject = vc.context.objectWithID(task.objectID)
                 vc.task = (registeredObject as? Task)!
-                
-                vc.completionBlock = refreshBlock
+                vc.completionBlock = {
+                    self.tasks = ModelController().allTasks()
+                    self.tableView.reloadData()
+                }
             }
         }
     }

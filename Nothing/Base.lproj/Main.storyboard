@@ -93,7 +93,7 @@
                                                 <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3jk-oB-1EQ" userLabel="links table view">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3jk-oB-1EQ" userLabel="links table view">
                                                 <rect key="frame" x="25" y="317" width="270" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -198,6 +198,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="dateRemindersLabel" destination="NyA-0O-hNq" id="mhn-kT-CSv"/>
                         <outlet property="datesTableView" destination="e3z-Vr-1d4" id="wbs-mW-ROk"/>
@@ -459,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cbN-fd-DVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-542" y="8"/>
+            <point key="canvasLocation" x="-539" y="8"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kdA-zB-hK3">
@@ -857,7 +858,7 @@
                                                 <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UKN-CC-8E7" userLabel="links table view">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UKN-CC-8E7" userLabel="links table view">
                                                 <rect key="frame" x="25" y="317" width="270" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -921,7 +922,6 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="editPressed:" destination="50M-XF-HCh" eventType="touchUpInside" id="PA1-a9-yA3"/>
                                                     <action selector="markPressed:" destination="50M-XF-HCh" eventType="touchUpInside" id="mOb-CC-ob5"/>
                                                 </connections>
                                             </button>
@@ -1042,11 +1042,12 @@
                         <outlet property="tapGesture" destination="nFu-2o-cDe" id="IUV-Kg-iqg"/>
                         <outlet property="taskStatusView" destination="Rr0-TW-9ki" id="Ijr-y5-D9s"/>
                         <outlet property="titleTextField" destination="Efx-Lj-A2g" id="Vvb-PE-Nga"/>
+                        <segue destination="SX2-On-79X" kind="push" identifier="EditTask" id="vMp-7O-Al3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFg-ra-4au" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-109" y="-620"/>
+            <point key="canvasLocation" x="-100" y="-780"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -1057,6 +1058,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Pg9-vd-d1p"/>
         <segue reference="FdA-Zs-FF8"/>
+        <segue reference="vMp-7O-Al3"/>
         <segue reference="ENL-Cp-mGc"/>
         <segue reference="wRh-l5-PIE"/>
     </inferredMetricsTieBreakers>

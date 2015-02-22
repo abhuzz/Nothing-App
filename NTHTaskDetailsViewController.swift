@@ -42,8 +42,12 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     var context: NSManagedObjectContext!
     var completionBlock: (() -> Void)?
     
-    enum TableViewType: Int {
+    private enum TableViewType: Int {
         case Locations, Dates, Links
+    }
+    
+    private enum SegueIdentifier: String {
+        case EditTask = "EditTask"
     }
     
     private func _configureColors() {
@@ -82,10 +86,6 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self._fillView()
-        self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, height: self._locationRemindersTableViewHeight())
-        self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, height: self._datesRemindersTableViewHeight())
-        self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, height: self._linksTableViewHeight())
-        
         self._updateMarkButtonAndStatusView()
     }
     
@@ -94,6 +94,40 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         self.titleTextField.text = self.task.title
         if count(self.task.longDescription ?? "") > 0 {
             self.notesTextView.text = self.task.longDescription!
+        }
+        
+        self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, height: self._locationRemindersTableViewHeight())
+        self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, height: self._datesRemindersTableViewHeight())
+        self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, height: self._linksTableViewHeight())
+    }
+    
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SegueIdentifier.EditTask.rawValue {
+            let vc = segue.destinationViewController as! NTHCreateEditTaskViewController
+            vc.context = CDHelper.temporaryContext
+            if let task = sender as? Task {
+                var registeredObject = vc.context.objectWithID(task.objectID)
+                vc.editedTask = (registeredObject as? Task)!
+                vc.completionBlock = { task in
+                    self.context.refreshObject(self.task, mergeChanges: true)
+                    if let reminder = self.task.locationReminderInfo {
+                        self.context.refreshObject(reminder, mergeChanges: true)
+                    }
+                    
+                    if let reminder = self.task.dateReminderInfo {
+                        self.context.refreshObject(reminder, mergeChanges: true)
+                    }
+                    
+                    for link in self.task.connections.allObjects as! [Connection] {
+                        self.context.refreshObject(link, mergeChanges: true)
+                    }
+                    
+                    self._fillView()
+                }
+            }
+
         }
     }
     
@@ -109,7 +143,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             return 1
             
         case .Links:
-            return 1
+            return self.task.connections.allObjects.count
         }
     }
     
@@ -258,7 +292,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     /// Actions
     
     @IBAction func editPressed(sender: AnyObject) {
-        
+        self.performSegueWithIdentifier(SegueIdentifier.EditTask.rawValue, sender: self.task)
     }
     
     @IBAction func markPressed(sender: AnyObject) {
