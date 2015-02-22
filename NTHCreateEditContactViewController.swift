@@ -13,8 +13,10 @@ class NTHCreateEditContactViewController: UIViewController, UITextFieldDelegate 
 
     @IBOutlet weak var fullnameTextField: NTHTextField!
     @IBOutlet weak var phoneNumberTextField: NTHTextField!
+    @IBOutlet weak var emailTextField: NTHTextField!
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var separator2: UIView!
+    @IBOutlet weak var separator3: UIView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
     
@@ -56,26 +58,32 @@ class NTHCreateEditContactViewController: UIViewController, UITextFieldDelegate 
     private func _configureUIColors() {
         self.separator1.backgroundColor = UIColor.NTHTableViewSeparatorColor()
         self.separator2.backgroundColor = UIColor.NTHTableViewSeparatorColor()
+        self.separator3.backgroundColor = UIColor.NTHTableViewSeparatorColor()
         self.fullnameTextField.textColor = UIColor.NTHHeaderTextColor()
         self.phoneNumberTextField.textColor = UIColor.NTHHeaderTextColor()
+        self.emailTextField.textColor = UIColor.NTHHeaderTextColor()
     }
     
     private func _validateDoneButton() {
-        self.doneButton.enabled = (count(self.fullnameTextField.text) > 0) && (count(self.phoneNumberTextField.text) > 0)
+        self.doneButton.enabled = count(self.fullnameTextField.text) > 0
     }
     
     @IBAction func donePressed(sender: AnyObject) {
         let fullName = self.fullnameTextField.text
         let phoneNumber = self.phoneNumberTextField.text
+        let emailAdress = self.emailTextField.text
         
-        if let contact = self.editedContact {
-            contact.name = fullName
-            contact.phone = phoneNumber
+        var contact: Contact!
+        if let edited = self.editedContact {
+            contact = edited
         } else {
-            var contact: Contact = Contact.create(self.context)
-            contact.name = fullName
-            contact.phone = phoneNumber
+            var newEntity: Contact = Contact.create(self.context)
+            contact = newEntity
         }
+        
+        contact.name = fullName
+        contact.phone = phoneNumber
+        contact.email = emailAdress
         
         self.completionBlock?()
         self.navigationController?.popViewControllerAnimated(true)
