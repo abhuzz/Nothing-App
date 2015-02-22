@@ -19,11 +19,16 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
     
     private enum SegueIdentifier: String {
         case AddNewPlace = "AddNewPlace"
+        case EditPlace = "EditPlace"
     }
 
     private var selectedIndexPath: NSIndexPath?
     private var places = [Place]()
     
+    var canSelectPlace: Bool = true
+    var canEditPlace: Bool = false
+    var showDoneButton: Bool = true
+    var saveContextEveryChange: Bool = false
     var context: NSManagedObjectContext!
     var completionBlock: ((selectedPlace: Place!) -> Void)?
     
@@ -33,6 +38,10 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
         self.placesTableView.registerNib("NTHCenterLabelCell")
         self.placesTableView.registerNib("NTHLeftLabelCell")
         self.places = ModelController().allPlaces(self.context)
+        
+        if !self.showDoneButton {
+            self.navigationItem.rightBarButtonItems = nil
+        }
     }
     
     private func _validateDoneButton() {
@@ -46,13 +55,26 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let refreshBlock: () -> Void = {
+            
+            if self.saveContextEveryChange {
+                self.context.save(nil)
+            }
+            
+            self.places = ModelController().allPlaces(self.context)
+            self.placesTableView.reloadData()
+        }
+        
         if segue.identifier == SegueIdentifier.AddNewPlace.rawValue {
             let vc = segue.destinationViewController as! NTHCreateEditPlaceViewController
             vc.context = self.context
-            vc.completionBlock = {
-                self.places = ModelController().allPlaces(self.context)
-                self.placesTableView.reloadData()
-            }
+            vc.completionBlock = refreshBlock
+        } else if segue.identifier == SegueIdentifier.EditPlace.rawValue {
+            let vc = segue.destinationViewController as! NTHCreateEditPlaceViewController
+            vc.context = self.context
+            vc.editedPlace = (sender as! Place)
+            vc.completionBlock = refreshBlock
         }
     }
     
@@ -76,10 +98,10 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelCell") as! NTHLeftLabelCell
             
             cell.label.text = place.name
-            cell.label.font = UIFont.NTHNormalTextFont()
             cell.selectedBackgroundView = UIView()
             cell.tintColor = UIColor.NTHNavigationBarColor()
-            
+            cell.label.font = UIFont.NTHNormalTextFont()
+
             return cell
         }
     }
@@ -90,22 +112,32 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
             /// show place wizard
             self.performSegueWithIdentifier(SegueIdentifier.AddNewPlace.rawValue, sender: nil)
         } else {
-            /// deselect old cell
-            if let previousIndexPath = self.selectedIndexPath {
-                let previousCell = tableView.cellForRowAtIndexPath(previousIndexPath) as! NTHLeftLabelCell
-                previousCell.accessoryType = .None
+            /// If user can select place, do this. Should not be able to select from Menu
+            if self.canSelectPlace {
+                /// deselect old cell
+                if let previousIndexPath = self.selectedIndexPath {
+                    let previousCell = tableView.cellForRowAtIndexPath(previousIndexPath) as! NTHLeftLabelCell
+                    previousCell.accessoryType = .None
+                }
+                
+                let cell = tableView.cellForRowAtIndexPath(indexPath) as! NTHLeftLabelCell
+                if cell.accessoryType == .None {
+                    cell.accessoryType = .Checkmark
+                    self.selectedIndexPath = indexPath
+                } else {
+                    cell.accessoryType = .None
+                }
             }
             
-            let cell = tableView.cellForRowAtIndexPath(indexPath) as! NTHLeftLabelCell
-            if cell.accessoryType == .None {
-                cell.accessoryType = .Checkmark
-                self.selectedIndexPath = indexPath
-            } else {
-                cell.accessoryType = .None
+            if self.canEditPlace {
+                let place = self.places[indexPath.row]
+                self.performSegueWithIdentifier(SegueIdentifier.EditPlace.rawValue, sender: place)
             }
         }
         
-        self._validateDoneButton()
+        if self.showDoneButton {
+            self._validateDoneButton()
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

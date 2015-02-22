@@ -26,6 +26,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="label" destination="v0v-DK-KcI" id="0wQ-gs-Iab"/>
+                <outlet property="leadingConstraint" destination="6go-oN-Wqa" id="bck-RF-wz9"/>
             </connections>
         </tableViewCell>
     </objects>

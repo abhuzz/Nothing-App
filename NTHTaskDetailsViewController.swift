@@ -151,7 +151,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         func _createNotSetCell(title: String) -> NTHCenterLabelCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
-            cell.label.font = UIFont(name: "AvenirNext-Regular", size: 14.0)
+            cell.label.font = UIFont.NTHAddNewCellFont()
             cell.label.text = title
             cell.label.textColor = UIColor.NTHSubtitleTextColor()
             cell.selectedBackgroundView = UIView()
@@ -160,10 +160,10 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         
         func _createTwoLabelCell(topText: String, bottomText: String) -> NTHTwoLineLeftLabelCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHTwoLineLeftLabelCell") as! NTHTwoLineLeftLabelCell
-            cell.topLabel.font = UIFont(name: "AvenirNext-Regular", size: 18.0)
+            cell.topLabel.font = UIFont.NTHNormalTextFont()
             cell.topLabel.text = topText
             
-            cell.bottomLabel.font = UIFont(name: "AvenirNext-Regular", size: 12.0)
+            cell.bottomLabel.font = UIFont.NTHAddNewCellFont()
             cell.bottomLabel.text = bottomText
             
             cell.selectedBackgroundView = UIView()
@@ -172,7 +172,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         
         func _createRegularCell(title: String) -> NTHLeftLabelCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelCell") as! NTHLeftLabelCell
-            cell.label.font = UIFont(name: "AvenirNext-Regular", size: 18.0)
+            cell.label.font = UIFont.NTHNormalTextFont()
             cell.label.text = title
             cell.selectedBackgroundView = UIView()
             return cell

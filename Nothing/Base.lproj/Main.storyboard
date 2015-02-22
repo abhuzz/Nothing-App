@@ -415,7 +415,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBe-lt-sSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="332" y="804"/>
+            <point key="canvasLocation" x="86" y="910"/>
         </scene>
         <!--Inbox-->
         <scene sceneID="a6b-6V-mzd">
@@ -447,6 +447,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inbox" id="tkh-pS-Swn">
+                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="huu-9Z-9Db" userLabel="Settings">
+                            <connections>
+                                <segue destination="dKd-vv-ZqU" kind="modal" identifier="ShowMenu" id="3kW-La-AdX"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="LFm-JT-sCr">
                             <connections>
                                 <segue destination="SX2-On-79X" kind="push" identifier="CreateTask" id="VNx-HN-FDJ"/>
@@ -461,6 +466,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cbN-fd-DVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-539" y="8"/>
+        </scene>
+        <!--Menu-->
+        <scene sceneID="e71-vW-Ree">
+            <objects>
+                <viewController id="Rat-a6-yme" customClass="NTHMenuViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bvc-vz-aMb"/>
+                        <viewControllerLayoutGuide type="bottom" id="oEk-xL-cb2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KqM-za-dHZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dm4-kr-r5Q">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Rat-a6-yme" id="HaV-1u-xVR"/>
+                                    <outlet property="delegate" destination="Rat-a6-yme" id="832-qh-SlK"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dm4-kr-r5Q" firstAttribute="top" secondItem="KqM-za-dHZ" secondAttribute="top" id="TZ1-pe-sNN"/>
+                            <constraint firstAttribute="trailing" secondItem="dm4-kr-r5Q" secondAttribute="trailing" id="Tur-Ie-tGo"/>
+                            <constraint firstItem="dm4-kr-r5Q" firstAttribute="leading" secondItem="KqM-za-dHZ" secondAttribute="leading" id="xaw-Av-UyJ"/>
+                            <constraint firstItem="oEk-xL-cb2" firstAttribute="top" secondItem="dm4-kr-r5Q" secondAttribute="bottom" id="zZD-Y9-gsK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Menu" id="3wR-MS-kd9">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DwC-to-FWH">
+                            <connections>
+                                <action selector="cancelPressed:" destination="Rat-a6-yme" id="FaB-Ai-FdW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="dm4-kr-r5Q" id="A3C-7b-iOl"/>
+                        <segue destination="9Vs-Y6-SqM" kind="push" identifier="ShowPlaces" id="EOv-PM-hL1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fl8-4U-53C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86" y="1722"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kdA-zB-hK3">
@@ -521,11 +572,12 @@
                         <outlet property="doneButton" destination="Sdo-db-voO" id="mJj-NQ-exa"/>
                         <outlet property="placesTableView" destination="8vA-Vk-0U5" id="UiQ-dW-WjN"/>
                         <segue destination="HG4-5E-df3" kind="push" identifier="AddNewPlace" id="Pg9-vd-d1p"/>
+                        <segue destination="HG4-5E-df3" kind="push" identifier="EditPlace" id="gvW-rL-N6i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8E-gY-fJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1586" y="291"/>
+            <point key="canvasLocation" x="1034" y="289"/>
         </scene>
         <!--Select Place On Map-->
         <scene sceneID="v7U-YT-dhF">
@@ -662,7 +714,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2022" y="-425"/>
+            <point key="canvasLocation" x="1710" y="-425"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="lhP-eQ-YU0">
@@ -709,7 +761,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyZ-Ae-tUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1034" y="977"/>
+            <point key="canvasLocation" x="1034" y="1179"/>
         </scene>
         <!--Contact-->
         <scene sceneID="Rch-oA-ncg">
@@ -819,7 +871,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hkG-Zn-Nac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1586" y="977"/>
+            <point key="canvasLocation" x="1548" y="1179"/>
         </scene>
         <!--Task-->
         <scene sceneID="gv2-EW-oGc">
@@ -1101,8 +1153,27 @@
             </objects>
             <point key="canvasLocation" x="-100" y="-780"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fYP-PD-L1T">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dKd-vv-ZqU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MfK-N0-a8J">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Rat-a6-yme" kind="relationship" relationship="rootViewController" id="ecw-hz-JtC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oLA-dj-95d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-539" y="1722"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="hamburger" width="30" height="30"/>
         <image name="locate-me" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -1111,10 +1182,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Pg9-vd-d1p"/>
+        <segue reference="VNx-HN-FDJ"/>
         <segue reference="FdA-Zs-FF8"/>
-        <segue reference="vMp-7O-Al3"/>
         <segue reference="ENL-Cp-mGc"/>
         <segue reference="wRh-l5-PIE"/>
+        <segue reference="Pg9-vd-d1p"/>
     </inferredMetricsTieBreakers>
 </document>

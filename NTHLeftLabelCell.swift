@@ -10,7 +10,8 @@ import UIKit
 
 class NTHLeftLabelCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
-
+    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         self.accessoryType = .None

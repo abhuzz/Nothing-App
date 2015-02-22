@@ -323,7 +323,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         
         func _createRegularCell(title: String) -> NTHLeftLabelRemoveCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelRemoveCell") as! NTHLeftLabelRemoveCell
-            cell.label.font = UIFont(name: "AvenirNext-Regular", size: 18.0)
+            cell.label.font = UIFont.NTHNormalTextFont()
             cell.label.text = title
             cell.selectedBackgroundView = UIView()
             return cell
