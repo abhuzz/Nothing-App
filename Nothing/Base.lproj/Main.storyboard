@@ -692,25 +692,39 @@
                                                 <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xbG-J0-Ohw">
-                                                <rect key="frame" x="246" y="262" width="51" height="31"/>
-                                            </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use open hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rc8-F9-dRM">
                                                 <rect key="frame" x="25" y="265" width="211" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xbG-J0-Ohw">
+                                                <rect key="frame" x="246" y="262" width="51" height="31"/>
+                                            </switch>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cNu-bB-TbR">
+                                                <rect key="frame" x="25" y="298" width="270" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="3mf-Kj-H8O"/>
+                                                </constraints>
+                                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="HG4-5E-df3" id="5Lg-N3-whr"/>
+                                                    <outlet property="delegate" destination="HG4-5E-df3" id="HG7-E9-Q0k"/>
+                                                </connections>
+                                            </tableView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="0US-0e-8qa" firstAttribute="top" secondItem="GZd-3W-E2l" secondAttribute="bottom" constant="10" id="4hL-pD-PY7"/>
                                             <constraint firstItem="0j9-yI-f4J" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="5QV-Df-MGs"/>
+                                            <constraint firstItem="cNu-bB-TbR" firstAttribute="top" secondItem="rc8-F9-dRM" secondAttribute="bottom" constant="8" id="9I5-GU-hbf"/>
                                             <constraint firstItem="Oxi-KR-ISG" firstAttribute="top" secondItem="0j9-yI-f4J" secondAttribute="bottom" constant="8" id="BiF-Dh-JS7"/>
                                             <constraint firstAttribute="bottom" secondItem="0j9-yI-f4J" secondAttribute="bottom" constant="189" id="CCF-fb-0tQ"/>
                                             <constraint firstAttribute="trailing" secondItem="0US-0e-8qa" secondAttribute="trailing" constant="25" id="DrE-6u-XbI"/>
                                             <constraint firstItem="rc8-F9-dRM" firstAttribute="top" secondItem="NgZ-Je-Cr6" secondAttribute="bottom" constant="11" id="Gxw-PY-MmA"/>
                                             <constraint firstItem="0US-0e-8qa" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="Jcc-wl-CDa"/>
+                                            <constraint firstItem="cNu-bB-TbR" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="Kze-Su-Yvv"/>
                                             <constraint firstAttribute="trailing" secondItem="GZd-3W-E2l" secondAttribute="trailing" id="Lhl-DP-grc"/>
                                             <constraint firstAttribute="trailing" secondItem="Oxi-KR-ISG" secondAttribute="trailing" constant="25" id="NUz-9u-vQO"/>
                                             <constraint firstItem="NgZ-Je-Cr6" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="NtU-dL-m8E"/>
@@ -722,6 +736,8 @@
                                             <constraint firstItem="rc8-F9-dRM" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="YaM-iS-1F4"/>
                                             <constraint firstAttribute="trailing" secondItem="PLw-Tp-FFM" secondAttribute="trailing" id="b1Y-Jn-nxN"/>
                                             <constraint firstItem="GZd-3W-E2l" firstAttribute="top" secondItem="PLw-Tp-FFM" secondAttribute="bottom" constant="1" id="bmY-IC-CG5"/>
+                                            <constraint firstAttribute="bottom" secondItem="cNu-bB-TbR" secondAttribute="bottom" constant="54" id="bqj-5m-gx5"/>
+                                            <constraint firstAttribute="trailing" secondItem="cNu-bB-TbR" secondAttribute="trailing" constant="25" id="c6Y-I5-w2t"/>
                                             <constraint firstAttribute="trailing" secondItem="xbG-J0-Ohw" secondAttribute="trailing" constant="25" id="iRg-Jb-7gn"/>
                                             <constraint firstItem="PLw-Tp-FFM" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" id="j0R-r9-Gi7"/>
                                             <constraint firstAttribute="trailing" secondItem="0j9-yI-f4J" secondAttribute="trailing" constant="25" id="jyW-XN-KXc"/>
@@ -766,6 +782,8 @@
                         <outlet property="mapView" destination="PLw-Tp-FFM" id="5kh-t3-phy"/>
                         <outlet property="nameTextField" destination="0j9-yI-f4J" id="6UY-VI-SHK"/>
                         <outlet property="openHoursSwitch" destination="xbG-J0-Ohw" id="tti-Ii-q6e"/>
+                        <outlet property="openHoursTableView" destination="cNu-bB-TbR" id="KFz-fP-ynh"/>
+                        <outlet property="openHoursTableViewHeightConstraint" destination="3mf-Kj-H8O" id="qBp-p9-wu0"/>
                         <outlet property="separator1" destination="GZd-3W-E2l" id="5Pc-qL-agB"/>
                         <outlet property="separator2" destination="0US-0e-8qa" id="b7s-Ys-lm8"/>
                         <segue destination="DNK-cP-a9z" kind="push" identifier="ShowMap" id="K3Z-6U-zPU"/>

@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreData
 
-class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
+class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet private weak var mapView: MKMapView!
     @IBOutlet private weak var separator1: UIView!
@@ -19,6 +19,8 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     @IBOutlet private var mapTapGesture: UITapGestureRecognizer!
     @IBOutlet weak var openHoursSwitch: UISwitch!
+    @IBOutlet weak var openHoursTableView: UITableView!
+    @IBOutlet weak var openHoursTableViewHeightConstraint: NSLayoutConstraint!
     
     
     var completionBlock: (() -> Void)!
@@ -174,5 +176,25 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         }
         
         return (annotation as! NTHAnnotation).viewForAnnotation()
+    }
+    
+    
+    
+    /// Mark: UITableView
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 50
     }
 }
