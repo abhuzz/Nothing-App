@@ -36,6 +36,8 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         super.viewDidLoad()
         self._configureUIColors()
         
+        self.openHoursTableView.registerNib("NTHCenterLabelCell")
+        
         self.mapView.tintColor = UIColor.NTHNavigationBarColor()
         
         if let place = self.editedPlace {

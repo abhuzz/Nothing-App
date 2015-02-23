@@ -14,14 +14,15 @@ import CoreLocation
 @objc(Task)
 class Task: NSManagedObject {
     
-    @NSManaged var uniqueIdentifier: String
-    @NSManaged var title: String!
-    @NSManaged var longDescription: String?
-    @NSManaged private var stateNumber: NSNumber
+    @NSManaged var connections: NSSet
     @NSManaged var dateReminderInfo: DateReminderInfo?
     @NSManaged var locationReminderInfos: NSSet
-    @NSManaged var connections: NSSet
+    @NSManaged var longDescription: String?
+    @NSManaged var uniqueIdentifier: String
+    @NSManaged private var stateNumber: NSNumber
+    @NSManaged var title: String!
     @NSManaged var trashed: NSNumber
+    @NSManaged var useOpenHours: NSNumber
 }
 
 extension Task {

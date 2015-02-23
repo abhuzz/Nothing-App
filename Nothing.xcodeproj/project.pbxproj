@@ -66,6 +66,7 @@
 		12D2E8811A9B9CDD001539CD /* NTHTrashCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D2E8801A9B9CDD001539CD /* NTHTrashCell.xib */; };
 		12D2E8831A9B9CF1001539CD /* NTHTrashCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E8821A9B9CF1001539CD /* NTHTrashCell.swift */; };
 		12D2E8851A9BB537001539CD /* NTHMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E8841A9BB537001539CD /* NTHMapViewController.swift */; };
+		12D2E8891A9BE76B001539CD /* OpenHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E8881A9BE76B001539CD /* OpenHours.swift */; };
 		12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215991A03A9840038AD45 /* ThumbnailCache.swift */; };
 		12E2929B1A951DEF0079D257 /* NTHSelectContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */; };
 		12E2929D1A9522D90079D257 /* NTHCreateEditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */; };
@@ -155,6 +156,9 @@
 		12D2E8801A9B9CDD001539CD /* NTHTrashCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHTrashCell.xib; sourceTree = "<group>"; };
 		12D2E8821A9B9CF1001539CD /* NTHTrashCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTrashCell.swift; sourceTree = "<group>"; };
 		12D2E8841A9BB537001539CD /* NTHMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHMapViewController.swift; sourceTree = "<group>"; };
+		12D2E8861A9BE65D001539CD /* Nothing 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 7.xcdatamodel"; sourceTree = "<group>"; };
+		12D2E8871A9BE720001539CD /* Nothing 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 8.xcdatamodel"; sourceTree = "<group>"; };
+		12D2E8881A9BE76B001539CD /* OpenHours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenHours.swift; sourceTree = "<group>"; };
 		12E215991A03A9840038AD45 /* ThumbnailCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCache.swift; sourceTree = "<group>"; };
 		12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectContactViewController.swift; sourceTree = "<group>"; };
 		12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditContactViewController.swift; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 				1279B60319FED64D00A7828C /* DateReminderInfo.swift */,
 				1279B60419FED64D00A7828C /* LocationReminderInfo.swift */,
 				12BEB0F31A06DC9300643860 /* ModelController.swift */,
+				12D2E8881A9BE76B001539CD /* OpenHours.swift */,
 				1279B60519FED64D00A7828C /* Place.swift */,
 				1279B60619FED64D00A7828C /* Task.swift */,
 			);
@@ -525,6 +530,7 @@
 				124A8F161A4F017800BE5EAB /* UIView+Extension.swift in Sources */,
 				1279B61519FEDBD200A7828C /* FileCache.swift in Sources */,
 				12E2929F1A9527300079D257 /* NTHInboxViewController.swift in Sources */,
+				12D2E8891A9BE76B001539CD /* OpenHours.swift in Sources */,
 				12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */,
 				12D2E8851A9BB537001539CD /* NTHMapViewController.swift in Sources */,
 				12D2E87D1A9B92D8001539CD /* NTHTrashViewController.swift in Sources */,
@@ -785,14 +791,16 @@
 		1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				12D2E8861A9BE65D001539CD /* Nothing 7.xcdatamodel */,
 				12D2E87B1A9B91D6001539CD /* Nothing 6.xcdatamodel */,
+				12D2E8871A9BE720001539CD /* Nothing 8.xcdatamodel */,
 				120E72BC1A9A20D7007F5E80 /* Nothing 5.xcdatamodel */,
 				12A7C0B81A9A1B7700BB6B94 /* Nothing 4.xcdatamodel */,
 				1230A0921A8BF10D0064447B /* Nothing 3.xcdatamodel */,
 				1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */,
 				1279B60219FED64D00A7828C /* Nothing.xcdatamodel */,
 			);
-			currentVersion = 12D2E87B1A9B91D6001539CD /* Nothing 6.xcdatamodel */;
+			currentVersion = 12D2E8871A9BE720001539CD /* Nothing 8.xcdatamodel */;
 			name = Nothing.xcdatamodeld;
 			path = Model/Nothing.xcdatamodeld;
 			sourceTree = "<group>";

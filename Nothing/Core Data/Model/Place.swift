@@ -15,6 +15,7 @@ class Place: Link {
     @NSManaged private var latitude: NSNumber
     @NSManaged private var longitude: NSNumber
     @NSManaged var locationReminderInfos: NSSet
+    @NSManaged var openHours: NSSet
 }
 
 extension Place {
