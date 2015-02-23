@@ -21,6 +21,7 @@ class Task: NSManagedObject {
     @NSManaged var dateReminderInfo: DateReminderInfo?
     @NSManaged var locationReminderInfos: NSSet
     @NSManaged var connections: NSSet
+    @NSManaged var trashed: NSNumber
 }
 
 extension Task {

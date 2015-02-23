@@ -16,11 +16,13 @@ class NTHMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     private enum MenuOption: String {
         case Places = "Places"
         case Contacts = "Contacts"
+        case Trash = "Trash"
     }
     
     private enum SegueIdentifier: String {
         case ShowPlaces = "ShowPlaces"
         case ShowContacts = "ShowContacts"
+        case ShowTrash = "ShowTrash"
     }
     
     override func viewDidLoad() {
@@ -51,6 +53,8 @@ class NTHMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             vc.canSelectContact = false
             vc.canEditContact = true
             vc.saveContextEveryChange = true
+        } else if segue.identifier == SegueIdentifier.ShowTrash.rawValue {
+            /// <- Create cell which has buttons restore and delete (cell like inbox but modified)
         }
     }
     
@@ -58,7 +62,7 @@ class NTHMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     /// Mark: Table View
     
     private func _options() -> [MenuOption] {
-        return [.Places, .Contacts]
+        return [.Places, .Contacts, .Trash]
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,11 +90,12 @@ class NTHMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch option {
         case .Places:
             self.performSegueWithIdentifier(SegueIdentifier.ShowPlaces.rawValue, sender: nil)
-            return
             
         case .Contacts:
             self.performSegueWithIdentifier(SegueIdentifier.ShowContacts.rawValue, sender: nil)
-            return
+            
+        case .Trash:
+            self.performSegueWithIdentifier(SegueIdentifier.ShowTrash.rawValue, sender: nil)
         }
     }
     

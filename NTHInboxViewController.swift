@@ -14,30 +14,40 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet private weak var tableView: UITableView!
     
-    private var tasks = [Task]()
+    private var resultsController: NSFetchedResultsController!
     
     private enum SegueIdentifier: String {
         case CreateTask = "CreateTask"
         case ShowTask = "ShowTask"
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //// create results controller
+        self._createResultsController()
+        
+        /// configure cell
         self.tableView.registerNib("NTHInboxCell")
         self.tableView.tableFooterView = UIView()
     }
     
+    private func _createResultsController() {
+        let request = NSFetchRequest(entityName: "Task")
+        request.predicate = NSPredicate(format: "trashed == 0", argumentArray: nil)
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        self.resultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CDHelper.mainContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.resultsController.performFetch(nil)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.tasks = ModelController().allTasks()
         self.tableView.reloadData()
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let refreshBlock: (task: Task) -> Void = { _ in
-            self.tasks = ModelController().allTasks()
+            self.resultsController.performFetch(nil)
             self.tableView.reloadData()
         }
         
@@ -54,7 +64,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
                 var registeredObject = vc.context.objectWithID(task.objectID)
                 vc.task = (registeredObject as? Task)!
                 vc.completionBlock = {
-                    self.tasks = ModelController().allTasks()
+                    self.resultsController.performFetch(nil)
                     self.tableView.reloadData()
                 }
             }
@@ -65,18 +75,18 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     /// Mark: Table View
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tasks.count
+        return self.resultsController.fetchedObjects?.count ?? 0
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NTHInboxCell") as! NTHInboxCell
-        cell.update(self.tasks[indexPath.row])
+        cell.update(self.resultsController.fetchedObjects![indexPath.row] as! Task)
         cell.selectedBackgroundView = UIView()
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier(SegueIdentifier.ShowTask.rawValue, sender: self.tasks[indexPath.row])
+        self.performSegueWithIdentifier(SegueIdentifier.ShowTask.rawValue, sender: self.resultsController.fetchedObjects![indexPath.row])
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

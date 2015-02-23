@@ -508,11 +508,56 @@
                         <outlet property="tableView" destination="dm4-kr-r5Q" id="A3C-7b-iOl"/>
                         <segue destination="9Vs-Y6-SqM" kind="push" identifier="ShowPlaces" id="EOv-PM-hL1"/>
                         <segue destination="JFE-PH-tvL" kind="push" identifier="ShowContacts" id="0tn-fc-OPj"/>
+                        <segue destination="ftv-ca-SLG" kind="push" identifier="ShowTrash" id="X19-8n-ck9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fl8-4U-53C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="86" y="1722"/>
+        </scene>
+        <!--Trash-->
+        <scene sceneID="cuc-bh-XMn">
+            <objects>
+                <viewController id="ftv-ca-SLG" customClass="NTHTrashViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7bG-2f-lHY"/>
+                        <viewControllerLayoutGuide type="bottom" id="rWF-U7-YO5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xoM-km-reb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UyM-JJ-Ogv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ftv-ca-SLG" id="q8o-t4-mwV"/>
+                                    <outlet property="delegate" destination="ftv-ca-SLG" id="2jg-lH-UKO"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rWF-U7-YO5" firstAttribute="top" secondItem="UyM-JJ-Ogv" secondAttribute="bottom" id="8AL-yJ-MhZ"/>
+                            <constraint firstAttribute="trailing" secondItem="UyM-JJ-Ogv" secondAttribute="trailing" id="S26-1m-trS"/>
+                            <constraint firstItem="UyM-JJ-Ogv" firstAttribute="leading" secondItem="xoM-km-reb" secondAttribute="leading" id="WG2-Yx-aWU"/>
+                            <constraint firstItem="UyM-JJ-Ogv" firstAttribute="top" secondItem="xoM-km-reb" secondAttribute="top" id="xRt-RD-dzi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Trash" id="8zk-H5-6ty">
+                        <barButtonItem key="rightBarButtonItem" title="Erase All" style="done" id="LoQ-Jq-1zT">
+                            <connections>
+                                <action selector="eraseAllPressed:" destination="ftv-ca-SLG" id="e5P-aX-1Nx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="UyM-JJ-Ogv" id="9Hw-bL-ggo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tbP-zZ-hlk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1034" y="1882"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kdA-zB-hK3">

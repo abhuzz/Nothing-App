@@ -61,6 +61,8 @@
 		12BB65311A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB65301A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift */; };
 		12BEB0F41A06DC9300643860 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BEB0F31A06DC9300643860 /* ModelController.swift */; };
 		12CC222B1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC222A1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift */; };
+		12D2E87D1A9B92D8001539CD /* NTHTrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */; };
+		12D2E87F1A9B9459001539CD /* Bool_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E87E1A9B9459001539CD /* Bool_TS.swift */; };
 		12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215991A03A9840038AD45 /* ThumbnailCache.swift */; };
 		12E2929B1A951DEF0079D257 /* NTHSelectContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */; };
 		12E2929D1A9522D90079D257 /* NTHCreateEditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */; };
@@ -144,6 +146,9 @@
 		12BB65301A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHLeftLabelRemoveCell.swift; sourceTree = "<group>"; };
 		12BEB0F31A06DC9300643860 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		12CC222A1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDateFormatter+Extension.swift"; path = "Nothing/NSDateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		12D2E87B1A9B91D6001539CD /* Nothing 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 6.xcdatamodel"; sourceTree = "<group>"; };
+		12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTrashViewController.swift; sourceTree = "<group>"; };
+		12D2E87E1A9B9459001539CD /* Bool_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bool_TS.swift; sourceTree = "<group>"; };
 		12E215991A03A9840038AD45 /* ThumbnailCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCache.swift; sourceTree = "<group>"; };
 		12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectContactViewController.swift; sourceTree = "<group>"; };
 		12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditContactViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +215,7 @@
 				12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */,
 				128F91671A93FED000C21DE3 /* NTHSelectPlaceViewController.swift */,
 				12A7B33C1A9679E800A4EACB /* NTHTaskDetailsViewController.swift */,
+				12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */,
 			);
 			name = Controllers;
 			path = ..;
@@ -225,6 +231,7 @@
 				12FE1D721A913C6100F03601 /* MKMapView_TS.swift */,
 				128F91651A92873B00C21DE3 /* Float_TS.swift */,
 				12A7C0B61A9A080D00BB6B94 /* UIAlertController_TS.swift */,
+				12D2E87E1A9B9459001539CD /* Bool_TS.swift */,
 			);
 			name = Swift;
 			sourceTree = "<group>";
@@ -509,12 +516,14 @@
 				1279B61519FEDBD200A7828C /* FileCache.swift in Sources */,
 				12E2929F1A9527300079D257 /* NTHInboxViewController.swift in Sources */,
 				12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */,
+				12D2E87D1A9B92D8001539CD /* NTHTrashViewController.swift in Sources */,
 				1259B7751A8F93380059525F /* CLLocationCoordinate2D_TS.swift in Sources */,
 				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
 				1279B60B19FED64D00A7828C /* Link.swift in Sources */,
 				1279B61119FED64D00A7828C /* Task.swift in Sources */,
 				12A7C0B51A9893DA00BB6B94 /* NTHButton.swift in Sources */,
 				12E2929B1A951DEF0079D257 /* NTHSelectContactViewController.swift in Sources */,
+				12D2E87F1A9B9459001539CD /* Bool_TS.swift in Sources */,
 				1230A08F1A8BCDB20064447B /* TSRegionManager.swift in Sources */,
 				12BB65311A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift in Sources */,
 				128F91681A93FED000C21DE3 /* NTHSelectPlaceViewController.swift in Sources */,
@@ -764,13 +773,14 @@
 		1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				12D2E87B1A9B91D6001539CD /* Nothing 6.xcdatamodel */,
 				120E72BC1A9A20D7007F5E80 /* Nothing 5.xcdatamodel */,
 				12A7C0B81A9A1B7700BB6B94 /* Nothing 4.xcdatamodel */,
 				1230A0921A8BF10D0064447B /* Nothing 3.xcdatamodel */,
 				1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */,
 				1279B60219FED64D00A7828C /* Nothing.xcdatamodel */,
 			);
-			currentVersion = 120E72BC1A9A20D7007F5E80 /* Nothing 5.xcdatamodel */;
+			currentVersion = 12D2E87B1A9B91D6001539CD /* Nothing 6.xcdatamodel */;
 			name = Nothing.xcdatamodeld;
 			path = Model/Nothing.xcdatamodeld;
 			sourceTree = "<group>";

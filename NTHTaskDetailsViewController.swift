@@ -318,7 +318,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         
         /// YES
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive, handler: { (action) -> Void in
-            self.context.deleteObject(self.task)
+            self.task.trashed = true.toNSNumber()
             self.context.save(nil)
             self.context.parentContext?.save(nil)
             self.navigationController?.popViewControllerAnimated(true)
