@@ -17,8 +17,6 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     @IBOutlet private weak var separator2: UIView!
     @IBOutlet private weak var placeDetailsLabel: UILabel!
     @IBOutlet private weak var nameTextField: NTHTextField!
-    @IBOutlet private weak var nameTextFieldBottomLayoutGuide: NSLayoutConstraint!
-    @IBOutlet private weak var nameTextFieldDefaultBottomLayoutGuide: NSLayoutConstraint!
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     @IBOutlet private var mapTapGesture: UITapGestureRecognizer!
     
@@ -26,16 +24,22 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     var completionBlock: (() -> Void)!
     var context: NSManagedObjectContext!
     var editedPlace: Place?
+    var coordinate: CLLocationCoordinate2D!
+    
+    private enum SegueIdentifier: String {
+        case ShowMap = "ShowMap"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self._configureUIColors()
         
-        self.mapView.showsUserLocation = true
         self.mapView.tintColor = UIColor.NTHNavigationBarColor()
         
         if let place = self.editedPlace {
+            self.coordinate = place.coordinate
             self.mapView.addAnnotation(NTHAnnotation(coordinate: place.coordinate, title: ""))
+            self._setRegionForCoordinate(place.coordinate)
             self.nameTextField.text = place.name
             self._validateDoneButton()
         }
@@ -95,22 +99,10 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     }
     
     @IBAction func handleTapOnMap(sender: UITapGestureRecognizer) {
-        /// Execute only when gesture is ended
-        if (sender.state != UIGestureRecognizerState.Ended) { return }
-        
-        /// Remove previous annotation
-        self.mapView.removeAllAnnotations()
-        
-        /// Get coordinates
-        let touchPoint = sender.locationInView(self.mapView)
-        let coordinate = self.mapView.convertPoint(touchPoint, toCoordinateFromView: self.mapView)
-        
-        /// Create annotation
-        self.mapView.addAnnotation(NTHAnnotation(coordinate: coordinate, title: ""))
-        self._validateDoneButton()
+        self.performSegueWithIdentifier(SegueIdentifier.ShowMap.rawValue, sender: nil)
     }
-    
-    @IBAction func handleTap(sender: UITapGestureRecognizer) {
+
+    @IBAction func handleTap(sender: AnyObject) {
         if self.nameTextField.editing {
             self.nameTextField.resignFirstResponder()
         }
@@ -120,18 +112,45 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         self._validateDoneButton()
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SegueIdentifier.ShowMap.rawValue {
+            let vc = segue.destinationViewController as! NTHMapViewController
+            if self.coordinate != nil {
+                vc.coordinate = self.coordinate
+            }
+            vc.completionBlock = { coordinate in
+                self.coordinate = coordinate
+                
+                self.mapView.removeAllAnnotations()
+                self.mapView.addAnnotation(NTHAnnotation(coordinate: coordinate, title: "", subtitle: ""))
+                self._setRegionForCoordinate(coordinate)
+                self._validateDoneButton()
+            }
+        }
+    }
+    
+    private func _setRegionForCoordinate(coordinate: CLLocationCoordinate2D) {
+        let region = MKCoordinateRegionMakeWithDistance(coordinate, 2000, 2000)
+        self.mapView.setRegion(region, animated: true)
+    }
+    
     func keyboardWillShow(notification: NSNotification) {
+        /*
         self.nameTextFieldBottomLayoutGuide.constant = self.nameTextFieldDefaultBottomLayoutGuide.constant + (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue().height
         UIView.animateWithDuration(0.25, animations: { () -> Void in
             self.view.layoutIfNeeded()
         })
+        */
     }
     
     func keyboardWillHide(notification: NSNotification) {
+        /*
         self.nameTextFieldBottomLayoutGuide.constant = self.nameTextFieldDefaultBottomLayoutGuide.constant
         UIView.animateWithDuration(0.25, animations: { () -> Void in
             self.view.layoutIfNeeded()
         })
+        */
     }
     
     private func _validateDoneButton() {
@@ -139,15 +158,12 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     }
     
     
-    @IBAction func locateMePressed(sender: AnyObject) {
-        let region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, 1000, 1000)
-        self.mapView.setRegion(region, animated: true)
-    }
     
     /// Mark: UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         return true
     }
+    
     
     
     /// Mark: MKMapViewDelegate
@@ -157,18 +173,5 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         }
         
         return (annotation as! NTHAnnotation).viewForAnnotation()
-    }
-    
-    
-    /// Mark: UIGestureRecognizerDelegate
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-    
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        if self.nameTextField.editing && gestureRecognizer == self.mapTapGesture {
-            return false
-        }
-        return true
     }
 }

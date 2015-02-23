@@ -20,7 +20,6 @@ class NTHTrashViewController: UIViewController, UITableViewDelegate, UITableView
         self._createResultsController()
         
         self.tableView.registerNib("NTHTrashCell")
-        self.tableView.tableFooterView = UIView()
     }
     
     private func _createResultsController() {
