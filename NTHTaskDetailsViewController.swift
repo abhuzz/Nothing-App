@@ -221,22 +221,26 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch TableViewType(rawValue:tableView.tag)! {
         case .Locations:
-            let reminder = self.task.locationReminderInfos.allObjects[indexPath.row] as! LocationReminderInfo
-            let alert = UIAlertController.actionSheetForPlace(reminder.place)
-            self.presentViewController(alert, animated: true, completion: nil)
+            if self.task.locationReminderInfos.allObjects.count > 0 {
+                let reminder = self.task.locationReminderInfos.allObjects[indexPath.row] as! LocationReminderInfo
+                let alert = UIAlertController.actionSheetForPlace(reminder.place)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
             break
             
         case .Dates:
             break
             
         case .Links:
-            let link = self.task.connections.allObjects[indexPath.row] as! Link
-            if link is Place {
-                let alert = UIAlertController.actionSheetForPlace(link as! Place)
-                self.presentViewController(alert, animated: true, completion: nil)
-            } else if link is Contact {
-                let alert = UIAlertController.actionSheetForContact(link as! Contact)
-                self.presentViewController(alert, animated: true, completion: nil)
+            if self.task.connections.allObjects.count > 0 {
+                let link = self.task.connections.allObjects[indexPath.row] as! Link
+                if link is Place {
+                    let alert = UIAlertController.actionSheetForPlace(link as! Place)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                } else if link is Contact {
+                    let alert = UIAlertController.actionSheetForContact(link as! Contact)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
             }
             break
         }
