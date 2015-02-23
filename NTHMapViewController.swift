@@ -13,6 +13,7 @@ class NTHMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet private weak var mapView: MKMapView!
     @IBOutlet private weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var locatePlaceButton: NTHButton!
     
     
     var completionBlock: ((coordinate: CLLocationCoordinate2D) -> Void)?
@@ -32,6 +33,12 @@ class NTHMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func locateMePressed(sender: AnyObject) {
         self._setRegionForCoordinate(self.mapView.userLocation.coordinate)
+    }
+    
+    @IBAction func locatePlacePressed(sender: AnyObject) {
+        if let coordinate = self.coordinate {
+            self._setRegionForCoordinate(coordinate)
+        }
     }
     
     private func _setRegionForCoordinate(coordinate: CLLocationCoordinate2D) {

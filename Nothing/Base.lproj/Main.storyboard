@@ -816,14 +816,42 @@
                                     <action selector="locateMePressed:" destination="DNK-cP-a9z" eventType="touchUpInside" id="JwL-1P-hIv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ioq-It-w2I" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
+                                <rect key="frame" x="46" y="530" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2tI-HZ-oGT"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="Vwa-BT-a3J"/>
+                                    <constraint firstAttribute="width" constant="30" id="kVa-Cx-mtZ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="yUr-gD-ZoD"/>
+                                </constraints>
+                                <state key="normal" image="locate-place">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="pressedBorderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="pressedBackgroundColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="pressedTitleColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="locatePlacePressed:" destination="DNK-cP-a9z" eventType="touchUpInside" id="5So-3L-Miz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ioq-It-w2I" firstAttribute="top" secondItem="gzS-2G-C0M" secondAttribute="bottom" constant="8" id="6Lr-so-xqC"/>
                             <constraint firstItem="BtZ-wg-21w" firstAttribute="leading" secondItem="gQO-iH-zXf" secondAttribute="leading" constant="8" id="B8K-sh-zbl"/>
                             <constraint firstItem="gzS-2G-C0M" firstAttribute="top" secondItem="gQO-iH-zXf" secondAttribute="top" id="Lty-sv-NIc"/>
                             <constraint firstAttribute="trailing" secondItem="Yad-fP-qM9" secondAttribute="trailing" id="OaQ-2B-lD5"/>
                             <constraint firstItem="Yad-fP-qM9" firstAttribute="leading" secondItem="gQO-iH-zXf" secondAttribute="leading" id="ShN-uk-uqt"/>
                             <constraint firstItem="Yad-fP-qM9" firstAttribute="top" secondItem="gzS-2G-C0M" secondAttribute="bottom" constant="-1" id="dSU-bD-Zgw"/>
+                            <constraint firstItem="Ioq-It-w2I" firstAttribute="leading" secondItem="BtZ-wg-21w" secondAttribute="trailing" constant="8" id="ffQ-jt-nV4"/>
                             <constraint firstItem="5ij-T0-OLJ" firstAttribute="top" secondItem="BtZ-wg-21w" secondAttribute="bottom" constant="8" id="qZM-9S-WDo"/>
                             <constraint firstItem="BtZ-wg-21w" firstAttribute="top" secondItem="Yad-fP-qM9" secondAttribute="bottom" constant="8" id="r9E-xL-79A"/>
                             <constraint firstItem="gzS-2G-C0M" firstAttribute="leading" secondItem="gQO-iH-zXf" secondAttribute="leading" id="rn0-nv-jH1"/>
@@ -839,6 +867,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="doneButton" destination="Avz-rF-Ghq" id="zJB-HV-rCv"/>
+                        <outlet property="locatePlaceButton" destination="Ioq-It-w2I" id="e9y-1w-v7t"/>
                         <outlet property="mapView" destination="gzS-2G-C0M" id="hRF-28-N5X"/>
                     </connections>
                 </viewController>
@@ -849,7 +878,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2252" y="8"/>
+            <point key="canvasLocation" x="2224" y="8"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="lhP-eQ-YU0">
@@ -1311,6 +1340,7 @@
     <resources>
         <image name="hamburger" width="30" height="30"/>
         <image name="locate-me" width="30" height="30"/>
+        <image name="locate-place" width="60" height="60"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
