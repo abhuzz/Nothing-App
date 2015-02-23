@@ -42,6 +42,8 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.resultsController.performFetch(nil)
         self.tableView.reloadData()
     }
     

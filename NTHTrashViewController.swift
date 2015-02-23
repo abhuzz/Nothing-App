@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NTHTrashViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NTHTrashViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHTrashCellDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
     
@@ -19,7 +19,7 @@ class NTHTrashViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         self._createResultsController()
         
-        self.tableView.registerNib("NTHInboxCell")
+        self.tableView.registerNib("NTHTrashCell")
         self.tableView.tableFooterView = UIView()
     }
     
@@ -50,8 +50,9 @@ class NTHTrashViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NTHInboxCell") as! NTHInboxCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("NTHTrashCell") as! NTHTrashCell
         cell.update(self.resultsController.fetchedObjects![indexPath.row] as! Task)
+        cell.delegate = self
         cell.selectedBackgroundView = UIView()
         return cell
     }
@@ -62,5 +63,27 @@ class NTHTrashViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 72
+    }
+    
+    
+    /// Mark: Trash Cell
+
+    func cellDidPressDelete(cell: NTHInboxCell) {
+        let indexPath = self.tableView.indexPathForCell(cell)!
+        CDHelper.mainContext.deleteObject(self.resultsController.fetchedObjects![indexPath.row] as! NSManagedObject)
+        CDHelper.mainContext.save(nil)
+        
+        self.resultsController.performFetch(nil)
+        self.tableView.reloadData()
+    }
+    
+    func cellDidPressRestore(cell: NTHInboxCell) {
+        let indexPath = self.tableView.indexPathForCell(cell)!
+        let task = self.resultsController.fetchedObjects![indexPath.row] as! Task
+        task.trashed = false.toNSNumber()
+        CDHelper.mainContext.save(nil)
+        
+        self.resultsController.performFetch(nil)
+        self.tableView.reloadData()
     }
 }

@@ -63,6 +63,8 @@
 		12CC222B1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC222A1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift */; };
 		12D2E87D1A9B92D8001539CD /* NTHTrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */; };
 		12D2E87F1A9B9459001539CD /* Bool_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E87E1A9B9459001539CD /* Bool_TS.swift */; };
+		12D2E8811A9B9CDD001539CD /* NTHTrashCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D2E8801A9B9CDD001539CD /* NTHTrashCell.xib */; };
+		12D2E8831A9B9CF1001539CD /* NTHTrashCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E8821A9B9CF1001539CD /* NTHTrashCell.swift */; };
 		12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215991A03A9840038AD45 /* ThumbnailCache.swift */; };
 		12E2929B1A951DEF0079D257 /* NTHSelectContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */; };
 		12E2929D1A9522D90079D257 /* NTHCreateEditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */; };
@@ -149,6 +151,8 @@
 		12D2E87B1A9B91D6001539CD /* Nothing 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 6.xcdatamodel"; sourceTree = "<group>"; };
 		12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTrashViewController.swift; sourceTree = "<group>"; };
 		12D2E87E1A9B9459001539CD /* Bool_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bool_TS.swift; sourceTree = "<group>"; };
+		12D2E8801A9B9CDD001539CD /* NTHTrashCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHTrashCell.xib; sourceTree = "<group>"; };
+		12D2E8821A9B9CF1001539CD /* NTHTrashCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTrashCell.swift; sourceTree = "<group>"; };
 		12E215991A03A9840038AD45 /* ThumbnailCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCache.swift; sourceTree = "<group>"; };
 		12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectContactViewController.swift; sourceTree = "<group>"; };
 		12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditContactViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 				12BB65301A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift */,
 				128F91631A92855D00C21DE3 /* NTHRegionControl.swift */,
 				12A7B33E1A9681FB00A4EACB /* NTHTwoLineLeftLabelCell.swift */,
+				12D2E8821A9B9CF1001539CD /* NTHTrashCell.swift */,
 			);
 			name = Components;
 			path = ..;
@@ -380,6 +385,7 @@
 				12981F0C1A8627D300CDFA1D /* NTHLeftLabelCell.xib */,
 				124E5EB71A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib */,
 				128F91611A92844900C21DE3 /* NTHRegionControl.xib */,
+				12D2E8801A9B9CDD001539CD /* NTHTrashCell.xib */,
 				12A7B3401A96820E00A4EACB /* NTHTwoLineLeftLabelCell.xib */,
 			);
 			name = XIBs;
@@ -483,6 +489,7 @@
 				124E5EB81A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib in Resources */,
 				12981F0D1A8627D300CDFA1D /* NTHLeftLabelCell.xib in Resources */,
 				1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */,
+				12D2E8811A9B9CDD001539CD /* NTHTrashCell.xib in Resources */,
 				128F91621A92844900C21DE3 /* NTHRegionControl.xib in Resources */,
 				1279B5E419FED4E700A7828C /* LaunchScreen.xib in Resources */,
 				1279B5E119FED4E700A7828C /* Images.xcassets in Resources */,
@@ -548,6 +555,7 @@
 				12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */,
 				120B99581A9A3DB100518FF0 /* NTHMenuViewController.swift in Sources */,
 				12FE1D711A913A8600F03601 /* NTHCreateEditPlaceViewController.swift in Sources */,
+				12D2E8831A9B9CF1001539CD /* NTHTrashCell.swift in Sources */,
 				12981F0F1A86280800CDFA1D /* NTHCenterLabelCell.swift in Sources */,
 				1230A0911A8BE5250064447B /* CLLocation_TS.swift in Sources */,
 				1260AC001A7819BB0015CA4E /* NTHAnnotation.swift in Sources */,
