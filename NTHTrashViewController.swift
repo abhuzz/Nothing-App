@@ -32,7 +32,15 @@ class NTHTrashViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func eraseAllPressed(sender: AnyObject) {
-        
+        if let tasks = self.resultsController.fetchedObjects as? [Task] {
+            for task in tasks {
+                CDHelper.mainContext.deleteObject(task)
+            }
+            
+            CDHelper.mainContext.save(nil)
+            self.resultsController.performFetch(nil)
+            self.tableView.reloadData()
+        }
     }
     
     /// Mark: UITableView
