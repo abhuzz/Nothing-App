@@ -27,11 +27,9 @@ class NTHSheetSegue: UIStoryboardSegue {
         }) { (finished1) -> Void in
             destinationVC.containerBottomConstraint.constant = 0
             UIView.animateWithDuration(NSTimeInterval(0.25), delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                
                 destinationVC.container.layoutIfNeeded()
-                }) { (finished2) -> Void in
-                    destinationVC.view.removeFromSuperview()
-                    sourceVC.presentViewController(destinationVC, animated: false, completion: nil)
+            }) { (finished2) -> Void in
+                sourceVC.presentViewController(destinationVC, animated: false, completion: nil)
             }
         }
     }

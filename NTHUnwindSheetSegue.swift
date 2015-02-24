@@ -16,7 +16,7 @@ class NTHUnwindSheetSegue: UIStoryboardSegue {
         
         sourceVC.containerBottomConstraint.constant = -sourceVC.container.frame.height
         UIView.animateWithDuration(NSTimeInterval(0.15), delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-            /// Hide the container
+            sourceVC.view.alpha = 0
             sourceVC.container.layoutIfNeeded()
             }) { (finished) -> Void in
                 sourceVC.dismissViewControllerAnimated(false, completion: nil)
