@@ -14,14 +14,9 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
 
     @IBOutlet private weak var mapView: MKMapView!
     @IBOutlet private weak var separator1: UIView!
-    @IBOutlet private weak var separator2: UIView!
     @IBOutlet private weak var nameTextField: NTHTextField!
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     @IBOutlet private var mapTapGesture: UITapGestureRecognizer!
-    @IBOutlet weak var openHoursSwitch: UISwitch!
-    @IBOutlet weak var openHoursTableView: UITableView!
-    @IBOutlet weak var openHoursTableViewHeightConstraint: NSLayoutConstraint!
-    
     
     var completionBlock: (() -> Void)!
     var context: NSManagedObjectContext!
@@ -35,8 +30,6 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         self._configureUIColors()
-        
-        self.openHoursTableView.registerNib("NTHCenterLabelCell")
         
         self.mapView.tintColor = UIColor.NTHNavigationBarColor()
         
@@ -71,9 +64,6 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     
     private func _configureUIColors() {
         self.separator1.backgroundColor = UIColor.NTHTableViewSeparatorColor()
-        self.separator2.backgroundColor = UIColor.NTHTableViewSeparatorColor()
-        self.openHoursSwitch.tintColor = UIColor.NTHNavigationBarColor()
-        self.openHoursSwitch.onTintColor = UIColor.NTHNavigationBarColor()
     }
     
     @IBAction func donePressed(sender: AnyObject) {

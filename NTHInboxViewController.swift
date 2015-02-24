@@ -24,6 +24,8 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: false)
+        
         //// create results controller
         self._createResultsController()
         
