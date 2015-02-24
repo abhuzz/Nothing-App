@@ -68,7 +68,7 @@
 		12D2E8831A9B9CF1001539CD /* NTHTrashCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E8821A9B9CF1001539CD /* NTHTrashCell.swift */; };
 		12D2E8851A9BB537001539CD /* NTHMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E8841A9BB537001539CD /* NTHMapViewController.swift */; };
 		12D2E8891A9BE76B001539CD /* OpenHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E8881A9BE76B001539CD /* OpenHours.swift */; };
-		12D2E88B1A9CE25A001539CD /* NTHTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E88A1A9CE25A001539CD /* NTHTimePickerViewController.swift */; };
+		12D2E88B1A9CE25A001539CD /* NTHDateTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E88A1A9CE25A001539CD /* NTHDateTimePickerViewController.swift */; };
 		12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215991A03A9840038AD45 /* ThumbnailCache.swift */; };
 		12E2929B1A951DEF0079D257 /* NTHSelectContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */; };
 		12E2929D1A9522D90079D257 /* NTHCreateEditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */; };
@@ -164,7 +164,7 @@
 		12D2E8861A9BE65D001539CD /* Nothing 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 7.xcdatamodel"; sourceTree = "<group>"; };
 		12D2E8871A9BE720001539CD /* Nothing 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 8.xcdatamodel"; sourceTree = "<group>"; };
 		12D2E8881A9BE76B001539CD /* OpenHours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenHours.swift; sourceTree = "<group>"; };
-		12D2E88A1A9CE25A001539CD /* NTHTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTimePickerViewController.swift; sourceTree = "<group>"; };
+		12D2E88A1A9CE25A001539CD /* NTHDateTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHDateTimePickerViewController.swift; sourceTree = "<group>"; };
 		12E215991A03A9840038AD45 /* ThumbnailCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCache.swift; sourceTree = "<group>"; };
 		12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectContactViewController.swift; sourceTree = "<group>"; };
 		12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditContactViewController.swift; sourceTree = "<group>"; };
@@ -235,7 +235,7 @@
 				128F91671A93FED000C21DE3 /* NTHSelectPlaceViewController.swift */,
 				12A7B33C1A9679E800A4EACB /* NTHTaskDetailsViewController.swift */,
 				12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */,
-				12D2E88A1A9CE25A001539CD /* NTHTimePickerViewController.swift */,
+				12D2E88A1A9CE25A001539CD /* NTHDateTimePickerViewController.swift */,
 				12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */,
 			);
 			name = Controllers;
@@ -562,7 +562,7 @@
 				12A7C0B51A9893DA00BB6B94 /* NTHButton.swift in Sources */,
 				12E2929B1A951DEF0079D257 /* NTHSelectContactViewController.swift in Sources */,
 				12D2E87F1A9B9459001539CD /* Bool_TS.swift in Sources */,
-				12D2E88B1A9CE25A001539CD /* NTHTimePickerViewController.swift in Sources */,
+				12D2E88B1A9CE25A001539CD /* NTHDateTimePickerViewController.swift in Sources */,
 				1230A08F1A8BCDB20064447B /* TSRegionManager.swift in Sources */,
 				12BB65311A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift in Sources */,
 				128F91681A93FED000C21DE3 /* NTHSelectPlaceViewController.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  NTHTimePickerViewController.swift
+//  NTHDateTimePickerViewController.swift
 //  Nothing
 //
 //  Created by Tomasz Szulc on 24/02/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NTHTimePickerViewController: NTHSheetViewController {
+class NTHDateTimePickerViewController: NTHSheetViewController {
 
     
     @IBOutlet private weak var datePicker: UIDatePicker!

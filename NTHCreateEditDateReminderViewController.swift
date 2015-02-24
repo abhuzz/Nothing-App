@@ -134,7 +134,7 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch TableViewType(rawValue: tableView.tag)! {
             case .Date:
-                let datePicker = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NTHTimePickerViewController") as! NTHTimePickerViewController
+                let datePicker = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NTHDateTimePickerViewController") as! NTHDateTimePickerViewController
                 
                 datePicker.mode = UIDatePickerMode.DateAndTime
                 datePicker.completionBlock = { selectedDate in
