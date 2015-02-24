@@ -22,7 +22,7 @@ class NTHSheetSegue: UIStoryboardSegue {
         /// Move container to the bottom of the view
         destinationVC.containerBottomConstraint.constant = -destinationVC.container.frame.height
         
-        UIView.animateWithDuration(0.25, animations: { () -> Void in
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
             destinationVC.view.alpha = 1
         }) { (finished1) -> Void in
             destinationVC.containerBottomConstraint.constant = 0
