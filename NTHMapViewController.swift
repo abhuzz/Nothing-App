@@ -45,6 +45,7 @@ class NTHMapViewController: UIViewController, MKMapViewDelegate {
         let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
         self.mapView.setRegion(region, animated: true)
     }
+
     
     @IBAction func handleMapTap(sender: UITapGestureRecognizer) {
         /// Execute only when gesture is ended

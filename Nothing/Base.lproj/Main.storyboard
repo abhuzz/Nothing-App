@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="o8N-Fw-5uC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="o8N-Fw-5uC">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
     </dependencies>
     <scenes>
         <!--Task-->
@@ -695,7 +695,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use open hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rc8-F9-dRM">
                                                 <rect key="frame" x="25" y="265" width="211" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xbG-J0-Ohw">
@@ -921,6 +921,92 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2224" y="8"/>
+        </scene>
+        <!--Time Picker View Controller-->
+        <scene sceneID="Qpv-uF-TUN">
+            <objects>
+                <viewController storyboardIdentifier="NTHTimePickerViewController" modalPresentationStyle="overCurrentContext" id="96Z-Md-k7X" customClass="NTHTimePickerViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Aem-r4-f5W"/>
+                        <viewControllerLayoutGuide type="bottom" id="KJp-I6-chu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d5b-oO-Kqf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="202" translatesAutoresizingMaskIntoConstraints="NO" id="yua-5k-IxC" userLabel="Container">
+                                <rect key="frame" x="0.0" y="366" width="320" height="202"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="BJn-f7-xCC">
+                                        <rect key="frame" x="0.0" y="40" width="320" height="162"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="446488916.28365999">
+                                            <!--2015-02-24 16:41:56 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KYJ-NY-IND" userLabel="Bar">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8E-jD-xFv" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
+                                                <rect key="frame" x="252" y="5" width="60" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="AsL-9l-PUi"/>
+                                                    <constraint firstAttribute="height" constant="30" id="tc9-2t-g8W"/>
+                                                </constraints>
+                                                <state key="normal" title="Done">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="donePressed:" destination="96Z-Md-k7X" eventType="touchUpInside" id="05K-e9-Rqd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.96384725770000002" green="0.96384725770000002" blue="0.96384725770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="B8E-jD-xFv" secondAttribute="trailing" constant="8" id="6rQ-Rv-Deo"/>
+                                            <constraint firstAttribute="height" constant="40" id="Krk-yY-TRV"/>
+                                            <constraint firstAttribute="centerY" secondItem="B8E-jD-xFv" secondAttribute="centerY" id="ccE-2d-Xdg"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="BJn-f7-xCC" firstAttribute="leading" secondItem="yua-5k-IxC" secondAttribute="leading" id="0p7-aQ-8lB"/>
+                                    <constraint firstAttribute="trailing" secondItem="KYJ-NY-IND" secondAttribute="trailing" id="Jm4-VK-giV"/>
+                                    <constraint firstAttribute="bottom" secondItem="BJn-f7-xCC" secondAttribute="bottom" id="T2i-dg-xSf"/>
+                                    <constraint firstItem="KYJ-NY-IND" firstAttribute="top" secondItem="yua-5k-IxC" secondAttribute="top" id="UOu-so-Fvz"/>
+                                    <constraint firstAttribute="trailing" secondItem="BJn-f7-xCC" secondAttribute="trailing" id="YCg-Rq-NEo"/>
+                                    <constraint firstItem="BJn-f7-xCC" firstAttribute="top" secondItem="KYJ-NY-IND" secondAttribute="bottom" id="eO4-Pe-7pe"/>
+                                    <constraint firstItem="KYJ-NY-IND" firstAttribute="leading" secondItem="yua-5k-IxC" secondAttribute="leading" id="fQN-Fv-a1u"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yua-5k-IxC" secondAttribute="trailing" id="KJl-xE-ES2"/>
+                            <constraint firstItem="KJp-I6-chu" firstAttribute="top" secondItem="yua-5k-IxC" secondAttribute="bottom" id="Xba-rc-SF9"/>
+                            <constraint firstItem="yua-5k-IxC" firstAttribute="leading" secondItem="d5b-oO-Kqf" secondAttribute="leading" id="mhP-ev-tMt"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="zAj-7s-Tae" appends="YES" id="yI4-tb-u0y"/>
+                        </connections>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="container" destination="yua-5k-IxC" id="QbD-08-tdJ"/>
+                        <outlet property="containerBottomConstraint" destination="Xba-rc-SF9" id="KbW-YD-0TI"/>
+                        <outlet property="datePicker" destination="BJn-f7-xCC" id="Kfo-1W-K3O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CUE-cu-Zr2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zAj-7s-Tae">
+                    <connections>
+                        <action selector="handleBackgroundTap:" destination="96Z-Md-k7X" id="QQt-vc-ivN"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2606" y="8"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="lhP-eQ-YU0">
