@@ -650,19 +650,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uy-NM-8Bz" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="229"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
                                         <subviews>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLw-Tp-FFM">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
-                                                <gestureRecognizers/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="150" id="8ar-ia-zUa"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="delegate" destination="HG4-5E-df3" id="vSU-l1-yW0"/>
-                                                    <outletCollection property="gestureRecognizers" destination="axV-oh-bQC" appends="YES" id="Lvd-Q6-TgE"/>
-                                                </connections>
-                                            </mapView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZd-3W-E2l" userLabel="map - separator">
                                                 <rect key="frame" x="0.0" y="151" width="320" height="1"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
@@ -688,12 +677,36 @@
                                                     <constraint firstAttribute="height" constant="1" id="opZ-bv-ZLR"/>
                                                 </constraints>
                                             </view>
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLw-Tp-FFM">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="8ar-ia-zUa"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="delegate" destination="HG4-5E-df3" id="vSU-l1-yW0"/>
+                                                    <outletCollection property="gestureRecognizers" destination="axV-oh-bQC" appends="YES" id="Lvd-Q6-TgE"/>
+                                                </connections>
+                                            </mapView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7I-qn-NsP" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="224" width="270" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="lWS-TC-P6T"/>
+                                                </constraints>
+                                                <state key="normal" title="Setup Open Hours">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="nMm-zV-EzU" kind="push" identifier="ShowOpenHours" id="SqQ-dG-3gQ"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="0j9-yI-f4J" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="5QV-Df-MGs"/>
+                                            <constraint firstItem="J7I-qn-NsP" firstAttribute="top" secondItem="Oxi-KR-ISG" secondAttribute="bottom" constant="15" id="8G3-eQ-ltj"/>
                                             <constraint firstItem="Oxi-KR-ISG" firstAttribute="top" secondItem="0j9-yI-f4J" secondAttribute="bottom" constant="8" id="BiF-Dh-JS7"/>
-                                            <constraint firstAttribute="bottom" secondItem="0j9-yI-f4J" secondAttribute="bottom" constant="29" id="CCF-fb-0tQ"/>
+                                            <constraint firstItem="J7I-qn-NsP" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="LQk-2H-dpb"/>
                                             <constraint firstAttribute="trailing" secondItem="GZd-3W-E2l" secondAttribute="trailing" id="Lhl-DP-grc"/>
                                             <constraint firstAttribute="trailing" secondItem="Oxi-KR-ISG" secondAttribute="trailing" constant="25" id="NUz-9u-vQO"/>
                                             <constraint firstItem="GZd-3W-E2l" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" id="WHD-s4-yjb"/>
@@ -701,9 +714,11 @@
                                             <constraint firstAttribute="trailing" secondItem="PLw-Tp-FFM" secondAttribute="trailing" id="b1Y-Jn-nxN"/>
                                             <constraint firstItem="GZd-3W-E2l" firstAttribute="top" secondItem="PLw-Tp-FFM" secondAttribute="bottom" constant="1" id="bmY-IC-CG5"/>
                                             <constraint firstItem="PLw-Tp-FFM" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" id="j0R-r9-Gi7"/>
+                                            <constraint firstAttribute="trailing" secondItem="J7I-qn-NsP" secondAttribute="trailing" constant="25" id="je0-eG-JDk"/>
                                             <constraint firstAttribute="trailing" secondItem="0j9-yI-f4J" secondAttribute="trailing" constant="25" id="jyW-XN-KXc"/>
                                             <constraint firstItem="0j9-yI-f4J" firstAttribute="top" secondItem="GZd-3W-E2l" secondAttribute="bottom" constant="8" id="qOs-F1-nsI"/>
                                             <constraint firstItem="Oxi-KR-ISG" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="rH7-r3-AHQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="J7I-qn-NsP" secondAttribute="bottom" constant="20" id="vy7-uw-QcF"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -877,6 +892,46 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2224" y="8"/>
+        </scene>
+        <!--Open Hours-->
+        <scene sceneID="TZV-Th-vYx">
+            <objects>
+                <viewController id="nMm-zV-EzU" customClass="NTHOpenHoursViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="s7B-Yo-TRc"/>
+                        <viewControllerLayoutGuide type="bottom" id="bTM-pm-0GR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IB1-fe-dVm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Seo-yA-Ldh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nMm-zV-EzU" id="4WN-gG-fyY"/>
+                                    <outlet property="delegate" destination="nMm-zV-EzU" id="76j-Fd-vCP"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Seo-yA-Ldh" secondAttribute="trailing" id="AaZ-1W-4sq"/>
+                            <constraint firstItem="Seo-yA-Ldh" firstAttribute="leading" secondItem="IB1-fe-dVm" secondAttribute="leading" id="I2Z-ny-KCJ"/>
+                            <constraint firstItem="bTM-pm-0GR" firstAttribute="top" secondItem="Seo-yA-Ldh" secondAttribute="bottom" id="YZR-EY-xuy"/>
+                            <constraint firstItem="Seo-yA-Ldh" firstAttribute="top" secondItem="IB1-fe-dVm" secondAttribute="top" id="dgX-ib-8Iy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Open Hours" id="Ju5-Ga-YGG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ODk-24-Tlf"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Seo-yA-Ldh" id="vXv-2q-33I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Myb-Ww-IlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2224" y="724"/>
         </scene>
         <!--Date Time Picker View Controller-->
         <scene sceneID="Qpv-uF-TUN">

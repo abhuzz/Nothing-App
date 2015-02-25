@@ -9,11 +9,12 @@
 import Foundation
 import CoreData
 
-class OpenHours: NSManagedObject {
+class OpenHour: NSManagedObject {
 
     @NSManaged var closeHour: NSDate
     @NSManaged var day: NSNumber
     @NSManaged var openHour: NSDate
     @NSManaged var place: Place
-
+    @NSManaged var enabled: Bool
+    @NSManaged var closed: Bool
 }
