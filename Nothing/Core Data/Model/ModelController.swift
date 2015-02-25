@@ -16,6 +16,13 @@ class ModelController {
         return (CDHelper.mainContext.executeFetchRequest(request, error: nil) as! [Task]) ?? [Task]()
     }
     
+    func allTasksNotDoneAndNotTrashed() -> [Task] {
+        let request = NSFetchRequest(entityName: NSStringFromClass(Task.self))
+        request.predicate = NSPredicate(format: "trashed == 0 && stateNumber == 0", argumentArray: nil)
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: false)]
+        return (CDHelper.mainContext.executeFetchRequest(request, error: nil) as! [Task]) ?? [Task]()
+    }
+    
     func findTask(identifier: String) -> Task? {
         let request = NSFetchRequest(entityName: NSStringFromClass(Task.self))
         request.predicate = NSPredicate(format: "uniqueIdentifier = %@", identifier)

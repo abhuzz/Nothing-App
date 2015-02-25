@@ -129,7 +129,7 @@ extension AppDelegate {
     func regionManagerNeedRegions(manager: TSRegionManager) -> [TSRegion] {
         var regions = [TSRegion]()
         
-        let tasks = ModelController().allTasks()
+        let tasks = ModelController().allTasksNotDoneAndNotTrashed()
         for task in tasks {
             for reminder in task.locationReminderInfos.allObjects as! [LocationReminderInfo] {
                 regions.append(TSRegion(identifier: task.uniqueIdentifier, coordinate: reminder.place.coordinate, notifyOnArrive: reminder.onArrive, notifyOnLeave: !reminder.onArrive, distance: CLLocationDistance(reminder.distance)))
