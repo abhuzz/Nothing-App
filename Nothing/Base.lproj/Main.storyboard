@@ -688,37 +688,37 @@
                                                     <outletCollection property="gestureRecognizers" destination="axV-oh-bQC" appends="YES" id="Lvd-Q6-TgE"/>
                                                 </connections>
                                             </mapView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7I-qn-NsP" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="224" width="270" height="40"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="EaR-T6-mma">
+                                                <rect key="frame" x="25" y="224" width="295" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="lWS-TC-P6T"/>
+                                                    <constraint firstAttribute="height" constant="40" id="P8u-ar-v7Q"/>
                                                 </constraints>
-                                                <state key="normal" title="Setup Open Hours">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
+                                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <connections>
-                                                    <segue destination="nMm-zV-EzU" kind="push" identifier="ShowOpenHours" id="SqQ-dG-3gQ"/>
+                                                    <outlet property="dataSource" destination="HG4-5E-df3" id="uqc-xy-dvg"/>
+                                                    <outlet property="delegate" destination="HG4-5E-df3" id="8Uk-Tq-8ie"/>
                                                 </connections>
-                                            </button>
+                                            </tableView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="0j9-yI-f4J" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="5QV-Df-MGs"/>
-                                            <constraint firstItem="J7I-qn-NsP" firstAttribute="top" secondItem="Oxi-KR-ISG" secondAttribute="bottom" constant="15" id="8G3-eQ-ltj"/>
                                             <constraint firstItem="Oxi-KR-ISG" firstAttribute="top" secondItem="0j9-yI-f4J" secondAttribute="bottom" constant="8" id="BiF-Dh-JS7"/>
-                                            <constraint firstItem="J7I-qn-NsP" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="LQk-2H-dpb"/>
+                                            <constraint firstItem="EaR-T6-mma" firstAttribute="top" secondItem="Oxi-KR-ISG" secondAttribute="bottom" constant="15" id="Fwc-W3-R4p"/>
                                             <constraint firstAttribute="trailing" secondItem="GZd-3W-E2l" secondAttribute="trailing" id="Lhl-DP-grc"/>
+                                            <constraint firstAttribute="trailing" secondItem="EaR-T6-mma" secondAttribute="trailing" id="MIT-kk-vlM"/>
                                             <constraint firstAttribute="trailing" secondItem="Oxi-KR-ISG" secondAttribute="trailing" constant="25" id="NUz-9u-vQO"/>
                                             <constraint firstItem="GZd-3W-E2l" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" id="WHD-s4-yjb"/>
                                             <constraint firstItem="PLw-Tp-FFM" firstAttribute="top" secondItem="5uy-NM-8Bz" secondAttribute="top" id="XzL-C8-CVE"/>
                                             <constraint firstAttribute="trailing" secondItem="PLw-Tp-FFM" secondAttribute="trailing" id="b1Y-Jn-nxN"/>
                                             <constraint firstItem="GZd-3W-E2l" firstAttribute="top" secondItem="PLw-Tp-FFM" secondAttribute="bottom" constant="1" id="bmY-IC-CG5"/>
+                                            <constraint firstAttribute="bottom" secondItem="EaR-T6-mma" secondAttribute="bottom" constant="20" id="hu5-cP-jZ3"/>
                                             <constraint firstItem="PLw-Tp-FFM" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" id="j0R-r9-Gi7"/>
-                                            <constraint firstAttribute="trailing" secondItem="J7I-qn-NsP" secondAttribute="trailing" constant="25" id="je0-eG-JDk"/>
                                             <constraint firstAttribute="trailing" secondItem="0j9-yI-f4J" secondAttribute="trailing" constant="25" id="jyW-XN-KXc"/>
                                             <constraint firstItem="0j9-yI-f4J" firstAttribute="top" secondItem="GZd-3W-E2l" secondAttribute="bottom" constant="8" id="qOs-F1-nsI"/>
                                             <constraint firstItem="Oxi-KR-ISG" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="rH7-r3-AHQ"/>
-                                            <constraint firstAttribute="bottom" secondItem="J7I-qn-NsP" secondAttribute="bottom" constant="20" id="vy7-uw-QcF"/>
+                                            <constraint firstItem="EaR-T6-mma" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="wsP-ba-Eeu"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -755,9 +755,12 @@
                         <outlet property="doneButton" destination="NF2-oY-6Xk" id="JCo-gv-1yH"/>
                         <outlet property="mapTapGesture" destination="axV-oh-bQC" id="vmX-t2-M3l"/>
                         <outlet property="mapView" destination="PLw-Tp-FFM" id="5kh-t3-phy"/>
+                        <outlet property="menuTableView" destination="EaR-T6-mma" id="o0h-3N-IBe"/>
                         <outlet property="nameTextField" destination="0j9-yI-f4J" id="6UY-VI-SHK"/>
                         <outlet property="separator1" destination="GZd-3W-E2l" id="5Pc-qL-agB"/>
+                        <outlet property="tapGesture" destination="fm1-Vg-EBQ" id="goS-a9-RIm"/>
                         <segue destination="DNK-cP-a9z" kind="push" identifier="ShowMap" id="K3Z-6U-zPU"/>
+                        <segue destination="nMm-zV-EzU" kind="push" identifier="ShowOpenHours" id="D7e-yH-hBy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0q5-AF-6sU" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -17,6 +17,8 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     @IBOutlet private weak var nameTextField: NTHTextField!
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     @IBOutlet private var mapTapGesture: UITapGestureRecognizer!
+    @IBOutlet private weak var menuTableView: UITableView!
+    @IBOutlet private var tapGesture: UITapGestureRecognizer!
     
     var completionBlock: (() -> Void)!
     var context: NSManagedObjectContext!
@@ -35,6 +37,8 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         self._configureUIColors()
+        
+        self.menuTableView.registerNib("NTHLeftLabelCell")
         
         self.mapView.tintColor = UIColor.NTHNavigationBarColor()
         
@@ -199,22 +203,35 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     }
     
     
+    /// Mark: UIGestureRecognizer
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if gestureRecognizer == self.tapGesture  {
+            return self.nameTextField.editing
+        }
+        
+        return true
+    }
+    
     
     /// Mark: UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelCell") as! NTHLeftLabelCell
+        cell.label.text = "Open Hours"
+        cell.selectedBackgroundView = UIView()
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        self.performSegueWithIdentifier(SegueIdentifier.ShowOpenHours.rawValue, sender: nil)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        return 40
     }
 }
