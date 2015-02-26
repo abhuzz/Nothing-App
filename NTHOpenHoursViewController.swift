@@ -12,6 +12,8 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet private weak var tableView: UITableView!
     
+    var openHours = [OpenHour]()
+    var completionBlock: ((openHours: [OpenHour]) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,22 +22,28 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
         self.tableView.tableFooterView = UIView()
     }
     
-    /// Mark: UITableView
-    
-    private func weekDays() -> [String] {
-        return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    @IBAction func donePressed(sender: AnyObject) {
+        self.completionBlock?(openHours: self.openHours)
+        self.navigationController?.popViewControllerAnimated(true)
     }
+    
+    /// Mark: UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let openHour = self.openHours[indexPath.row]
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("NTHOpenHoursCell") as! NTHOpenHoursCell
         cell.delegate = self
-        cell.enabledSwitch.setOn(true, animated: false)
+        cell.enabledSwitch.setOn(openHour.enabled, animated: false)
         cell.selectedBackgroundView = UIView()
-        cell.dayNameLabel.text = self.weekDays()[indexPath.row]
+        cell.dayNameLabel.text = openHour.dayString
+        cell.hourLabel.text = NSDateFormatter.NTHStringTimeFromDate(openHour.openHourDate) + " - " + NSDateFormatter.NTHStringTimeFromDate(openHour.closeHourDate)
+        cell.markEnabled(openHour.enabled)
         return cell
     }
     
@@ -50,6 +58,8 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
     /// Mark: NTHOpenHoursCellDelegate
     
     func cellDidChangeSwitchValue(cell: NTHOpenHoursCell, value: Bool) {
-        
+        if let indexPath = self.tableView.indexPathForCell(cell) {
+            self.openHours[indexPath.row].enabled = value
+        }
     }
 }

@@ -21,10 +21,10 @@
     </entity>
     <entity name="OpenHour" representedClassName="OpenHour" syncable="YES">
         <attribute name="closed" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="closeHour" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="day" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="closeHourTimeInterval" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dayNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="enabled" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="openHour" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="openHourTimeInterval" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="openHours" inverseEntity="Place" syncable="YES"/>
     </entity>
     <entity name="Place" representedClassName="Place" parentEntity="Link" syncable="YES">
@@ -33,7 +33,7 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="useOpenHours" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <relationship name="locationReminderInfos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocationReminderInfo" inverseName="place" inverseEntity="LocationReminderInfo" syncable="YES"/>
-        <relationship name="openHours" toMany="YES" deletionRule="Nullify" destinationEntity="OpenHour" inverseName="place" inverseEntity="OpenHour" syncable="YES"/>
+        <relationship name="openHours" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="OpenHour" inverseName="place" inverseEntity="OpenHour" syncable="YES"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES">
         <attribute name="longDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -51,7 +51,7 @@
         <element name="Link" positionX="252" positionY="315" width="128" height="58"/>
         <element name="LocationReminderInfo" positionX="-182" positionY="236" width="128" height="105"/>
         <element name="OpenHour" positionX="-306" positionY="171" width="128" height="135"/>
-        <element name="Place" positionX="27" positionY="369" width="128" height="133"/>
+        <element name="Place" positionX="27" positionY="369" width="128" height="135"/>
         <element name="Task" positionX="-342" positionY="18" width="128" height="163"/>
     </elements>
 </model>

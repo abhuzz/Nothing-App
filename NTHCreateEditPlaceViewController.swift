@@ -45,6 +45,21 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         } else {
             var aPlace: Place = Place.createNotInserted(self.context) as Place
             self.place = aPlace
+            
+            /// fill openHours of place            
+            var hours = [OpenHour]()
+            for day in 1...7 {
+                var openHour: OpenHour = OpenHour.createNotInserted(self.context)
+                openHour.dayNumber = day
+                openHour.openHourTimeInterval = 9 * 60 * 60
+                openHour.closeHourTimeInterval = 17 * 60 * 60
+                openHour.enabled = false
+                openHour.closed = false
+                openHour.place = self.place
+                hours.append(openHour)
+            }
+            
+            self.place.openHours = NSOrderedSet(array: hours)
         }
     }
     
@@ -122,6 +137,11 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
             }
         } else if segue.identifier == SegueIdentifier.ShowOpenHours.rawValue {
             let vc = segue.destinationViewController as! NTHOpenHoursViewController
+            
+            vc.openHours = self.place.openHours.array as! [OpenHour]
+            vc.completionBlock = { openHours in
+                self.place.openHours = NSOrderedSet(array: openHours)
+            }
         }
     }
     

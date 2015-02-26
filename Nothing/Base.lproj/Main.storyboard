@@ -923,7 +923,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Open Hours" id="Ju5-Ga-YGG">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ODk-24-Tlf"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ODk-24-Tlf">
+                            <connections>
+                                <action selector="donePressed:" destination="nMm-zV-EzU" id="hkW-YQ-QVJ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Seo-yA-Ldh" id="vXv-2q-33I"/>
