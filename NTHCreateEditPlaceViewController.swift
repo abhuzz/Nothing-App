@@ -20,11 +20,16 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     
     var completionBlock: (() -> Void)!
     var context: NSManagedObjectContext!
-    var editedPlace: Place?
-    var coordinate: CLLocationCoordinate2D!
+    var place: Place!
+    var editingPlace: Bool = false
+    
+    
+    private var coordinateSet: Bool = false
+    
     
     private enum SegueIdentifier: String {
         case ShowMap = "ShowMap"
+        case ShowOpenHours = "ShowOpenHours"
     }
     
     override func viewDidLoad() {
@@ -33,12 +38,13 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         
         self.mapView.tintColor = UIColor.NTHNavigationBarColor()
         
-        if let place = self.editedPlace {
-            self.coordinate = place.coordinate
-            self.mapView.addAnnotation(NTHAnnotation(coordinate: place.coordinate, title: ""))
-            self._setRegionForCoordinate(place.coordinate)
+        /// prepare editing place / view
+        if self.editingPlace {
             self.nameTextField.text = place.name
-            self._validateDoneButton()
+            self._updateWithCoordinate(self.place.coordinate)
+        } else {
+            var aPlace: Place = Place.createNotInserted(self.context) as Place
+            self.place = aPlace
         }
     }
     
@@ -68,8 +74,6 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     
     @IBAction func donePressed(sender: AnyObject) {
         
-        let name = self.nameTextField.text
-        
         var annotation: NTHAnnotation!
         for mapAnnotation in self.mapView.annotations as! [MKAnnotation] {
             if mapAnnotation is NTHAnnotation {
@@ -78,17 +82,13 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
             }
         }
         
-        let coordinate = annotation.coordinate
+        self.place.name = self.nameTextField.text
+        self.place.coordinate = annotation.coordinate
         
-        if let place = self.editedPlace {
-            place.name = name
-            place.coordinate = coordinate
-        } else {
-            var place: Place = Place.create(self.context)
-            place.name = name
-            place.coordinate = coordinate
+        if !self.editingPlace {
+            self.context.insertObject(self.place)
         }
-        
+    
         self.completionBlock()
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -111,18 +111,26 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SegueIdentifier.ShowMap.rawValue {
             let vc = segue.destinationViewController as! NTHMapViewController
-            if self.coordinate != nil {
-                vc.coordinate = self.coordinate
+            
+            if self.coordinateSet {
+                vc.coordinate = self.place.coordinate
             }
+            
             vc.completionBlock = { coordinate in
-                self.coordinate = coordinate
-                
-                self.mapView.removeAllAnnotations()
-                self.mapView.addAnnotation(NTHAnnotation(coordinate: coordinate, title: "", subtitle: ""))
-                self._setRegionForCoordinate(coordinate)
-                self._validateDoneButton()
+                self.place.coordinate = coordinate
+                self._updateWithCoordinate(coordinate)
             }
+        } else if segue.identifier == SegueIdentifier.ShowOpenHours.rawValue {
+            let vc = segue.destinationViewController as! NTHOpenHoursViewController
         }
+    }
+    
+    private func _updateWithCoordinate(coordinate: CLLocationCoordinate2D) {
+        self.mapView.removeAllAnnotations()
+        self.mapView.addAnnotation(NTHAnnotation(coordinate: coordinate, title: "", subtitle: ""))
+        self._setRegionForCoordinate(coordinate)
+        self._validateDoneButton()
+        self.coordinateSet = true
     }
     
     private func _setRegionForCoordinate(coordinate: CLLocationCoordinate2D) {

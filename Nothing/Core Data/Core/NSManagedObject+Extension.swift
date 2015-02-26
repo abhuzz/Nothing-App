@@ -14,4 +14,10 @@ extension NSManagedObject {
     class func create<T: NSManagedObject>(context: NSManagedObjectContext) -> T {
         return NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(T.self), inManagedObjectContext: context) as! T
     }
+    
+    class func createNotInserted<T: NSManagedObject>(context: NSManagedObjectContext) -> T {
+        var entity = NSEntityDescription.entityForName(NSStringFromClass(T.self), inManagedObjectContext: context)
+        let object: T = T(entity: entity!, insertIntoManagedObjectContext: nil)
+        return object
+    }
 }

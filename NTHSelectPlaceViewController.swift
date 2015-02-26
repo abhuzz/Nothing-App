@@ -73,7 +73,8 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
         } else if segue.identifier == SegueIdentifier.EditPlace.rawValue {
             let vc = segue.destinationViewController as! NTHCreateEditPlaceViewController
             vc.context = self.context
-            vc.editedPlace = (sender as! Place)
+            vc.place = (sender as! Place)
+            vc.editingPlace = true
             vc.completionBlock = refreshBlock
         }
     }
