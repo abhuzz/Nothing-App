@@ -11,6 +11,7 @@ import UIKit
 class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHOpenHoursCellDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var openHoursSwitch: UISwitch!
     
     var openHours = [OpenHour]()
     var completionBlock: ((openHours: [OpenHour]) -> Void)?
@@ -20,11 +21,22 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
         
         self.tableView.registerNib("NTHOpenHoursCell")
         self.tableView.tableFooterView = UIView()
+        self._updateTableView()
     }
     
     @IBAction func donePressed(sender: AnyObject) {
         self.completionBlock?(openHours: self.openHours)
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func openSwitchValueChanged(sender: AnyObject) {
+        self._updateTableView()
+    }
+    
+    private func _updateTableView() {
+        self.tableView.alpha = self.openHoursSwitch.on ? 1 : 0.3
+        self.tableView.userInteractionEnabled = self.openHoursSwitch.on
+        self.tableView.reloadData()
     }
     
     /// Mark: UITableView
@@ -47,8 +59,7 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
         let closeHourString = NTHTime(interval: openHour.closeTimeInterval).toString()
         cell.hourLabel.text =  openHourString + " - " + closeHourString
         cell.closedLabel.text = "Closed"
-
-        cell.update(openHour.enabled, closed: openHour.closed)
+        cell.update(openHour.closed)
         
         return cell
     }
@@ -62,12 +73,6 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     /// Mark: NTHOpenHoursCellDelegate
-    
-    func cellDidEnable(cell: NTHOpenHoursCell, enabled: Bool) {
-        let indexPath = self.tableView.indexPathForCell(cell)!
-        (self.openHours[indexPath.row] as OpenHour).enabled = enabled
-    }
-    
     func cellDidTapClock(cell: NTHOpenHoursCell) {
         let picker = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NTHOpenHoursPickerViewController") as! NTHOpenHoursPickerViewController
         
