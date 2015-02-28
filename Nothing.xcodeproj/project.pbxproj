@@ -99,6 +99,7 @@
 /* Begin PBXFileReference section */
 		120205281AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHOpenHoursPickerViewController.swift; sourceTree = "<group>"; };
 		1202052A1AA1F3780043CEE9 /* NTHTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTime.swift; sourceTree = "<group>"; };
+		1202052C1AA25D170043CEE9 /* Nothing 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 10.xcdatamodel"; sourceTree = "<group>"; };
 		1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditDateReminderViewController.swift; sourceTree = "<group>"; };
 		12059DC91A34FDA2007F5E7C /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		12059DCC1A34FF5C007F5E7C /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -836,6 +837,7 @@
 		1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1202052C1AA25D170043CEE9 /* Nothing 10.xcdatamodel */,
 				127C4AE11A9E787B00699F37 /* Nothing 9.xcdatamodel */,
 				12D2E8861A9BE65D001539CD /* Nothing 7.xcdatamodel */,
 				12D2E87B1A9B91D6001539CD /* Nothing 6.xcdatamodel */,
@@ -846,7 +848,7 @@
 				1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */,
 				1279B60219FED64D00A7828C /* Nothing.xcdatamodel */,
 			);
-			currentVersion = 127C4AE11A9E787B00699F37 /* Nothing 9.xcdatamodel */;
+			currentVersion = 1202052C1AA25D170043CEE9 /* Nothing 10.xcdatamodel */;
 			name = Nothing.xcdatamodeld;
 			path = Model/Nothing.xcdatamodeld;
 			sourceTree = "<group>";

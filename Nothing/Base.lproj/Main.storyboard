@@ -646,7 +646,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OxY-Ku-5xQ">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxY-Ku-5xQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uy-NM-8Bz" userLabel="Content View">
@@ -700,6 +700,13 @@
                                                     <outlet property="delegate" destination="HG4-5E-df3" id="8Uk-Tq-8ie"/>
                                                 </connections>
                                             </tableView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3f-a3-8bu" userLabel="separator 2">
+                                                <rect key="frame" x="25" y="279" width="270" height="1"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="cvu-k8-cey"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -712,13 +719,16 @@
                                             <constraint firstItem="GZd-3W-E2l" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" id="WHD-s4-yjb"/>
                                             <constraint firstItem="PLw-Tp-FFM" firstAttribute="top" secondItem="5uy-NM-8Bz" secondAttribute="top" id="XzL-C8-CVE"/>
                                             <constraint firstAttribute="trailing" secondItem="PLw-Tp-FFM" secondAttribute="trailing" id="b1Y-Jn-nxN"/>
+                                            <constraint firstAttribute="trailing" secondItem="J3f-a3-8bu" secondAttribute="trailing" constant="25" id="b2v-Y1-SOn"/>
                                             <constraint firstItem="GZd-3W-E2l" firstAttribute="top" secondItem="PLw-Tp-FFM" secondAttribute="bottom" constant="1" id="bmY-IC-CG5"/>
                                             <constraint firstAttribute="bottom" secondItem="EaR-T6-mma" secondAttribute="bottom" constant="20" id="hu5-cP-jZ3"/>
                                             <constraint firstItem="PLw-Tp-FFM" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" id="j0R-r9-Gi7"/>
                                             <constraint firstAttribute="trailing" secondItem="0j9-yI-f4J" secondAttribute="trailing" constant="25" id="jyW-XN-KXc"/>
                                             <constraint firstItem="0j9-yI-f4J" firstAttribute="top" secondItem="GZd-3W-E2l" secondAttribute="bottom" constant="8" id="qOs-F1-nsI"/>
                                             <constraint firstItem="Oxi-KR-ISG" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="rH7-r3-AHQ"/>
+                                            <constraint firstItem="J3f-a3-8bu" firstAttribute="top" secondItem="EaR-T6-mma" secondAttribute="bottom" constant="15" id="vWs-6d-oqZ"/>
                                             <constraint firstItem="EaR-T6-mma" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="wsP-ba-Eeu"/>
+                                            <constraint firstItem="J3f-a3-8bu" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="wwd-2I-6gc"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -982,13 +992,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Open Hours" id="Ju5-Ga-YGG">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ODk-24-Tlf">
-                            <connections>
-                                <action selector="donePressed:" destination="nMm-zV-EzU" id="hkW-YQ-QVJ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Open Hours" id="Ju5-Ga-YGG"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="585"/>
                     <connections>
@@ -998,7 +1002,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Myb-Ww-IlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2224" y="724"/>
+            <point key="canvasLocation" x="2224" y="731.5"/>
         </scene>
         <!--Date Time Picker View Controller-->
         <scene sceneID="Qpv-uF-TUN">

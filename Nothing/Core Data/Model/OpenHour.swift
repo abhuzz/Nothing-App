@@ -26,7 +26,6 @@ class OpenHour: NSManagedObject {
     @NSManaged var dayNumber: NSNumber
     @NSManaged private var closeHourTimeInterval: NSNumber
     @NSManaged var place: Place
-    @NSManaged var enabled: Bool
     @NSManaged var closed: Bool
     
     var openTimeInterval: NSTimeInterval! {

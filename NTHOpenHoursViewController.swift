@@ -12,24 +12,22 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var openHoursSwitch: UISwitch!
-    
-    var openHours = [OpenHour]()
+
+    var place: Place!
     var completionBlock: ((openHours: [OpenHour]) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.openHoursSwitch.setOn(self.place.useOpenHours.boolValue, animated: false)
         
         self.tableView.registerNib("NTHOpenHoursCell")
         self.tableView.tableFooterView = UIView()
         self._updateTableView()
     }
     
-    @IBAction func donePressed(sender: AnyObject) {
-        self.completionBlock?(openHours: self.openHours)
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    
-    @IBAction func openSwitchValueChanged(sender: AnyObject) {
+    @IBAction func openSwitchValueChanged(sender: UISwitch) {
+        self.place.useOpenHours = sender.on
         self._updateTableView()
     }
     
@@ -47,7 +45,7 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let openHour = self.openHours[indexPath.row]
+        let openHour = self.place.openHours[indexPath.row] as! OpenHour
         
         let cell = tableView.dequeueReusableCellWithIdentifier("NTHOpenHoursCell") as! NTHOpenHoursCell
         cell.delegate = self
@@ -77,14 +75,13 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
         let picker = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NTHOpenHoursPickerViewController") as! NTHOpenHoursPickerViewController
         
         let indexPath = self.tableView.indexPathForCell(cell)!
-        let openHour = self.openHours[indexPath.row]
-        
+        let openHour = self.place.openHours[indexPath.row] as! OpenHour
         
         picker.openHourTimeInterval = openHour.openTimeInterval
         picker.closeHourTimeInterval = openHour.closeTimeInterval
         
         picker.completionBlock = { openHourTimeInterval, closeHourTimeInterval in
-            let hour = self.openHours[indexPath.row]
+            let hour = self.place.openHours[indexPath.row] as! OpenHour
             hour.openTimeInterval = openHourTimeInterval
             hour.closeTimeInterval = closeHourTimeInterval
             self.tableView.reloadData()
@@ -95,13 +92,6 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
     
     func cellDidTapClose(cell: NTHOpenHoursCell, closed: Bool) {
         let indexPath = self.tableView.indexPathForCell(cell)!
-        (self.openHours[indexPath.row] as OpenHour).closed = closed
-    }
-    
-    
-    func cellDidChangeSwitchValue(cell: NTHOpenHoursCell, value: Bool) {
-        if let indexPath = self.tableView.indexPathForCell(cell) {
-            self.openHours[indexPath.row].enabled = value
-        }
+        (self.place.openHours[indexPath.row] as! OpenHour).closed = closed
     }
 }

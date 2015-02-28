@@ -23,6 +23,7 @@
         <attribute name="closed" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="closeHourTimeInterval" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="dayNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="enabled" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="openHourTimeInterval" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="openHours" inverseEntity="Place" syncable="YES"/>
     </entity>
@@ -49,7 +50,7 @@
         <element name="DateReminderInfo" positionX="-515" positionY="245" width="128" height="88"/>
         <element name="Link" positionX="252" positionY="315" width="128" height="58"/>
         <element name="LocationReminderInfo" positionX="-182" positionY="236" width="128" height="105"/>
-        <element name="OpenHour" positionX="-306" positionY="171" width="128" height="120"/>
+        <element name="OpenHour" positionX="-306" positionY="171" width="128" height="135"/>
         <element name="Place" positionX="27" positionY="369" width="128" height="135"/>
         <element name="Task" positionX="-342" positionY="18" width="128" height="163"/>
     </elements>
