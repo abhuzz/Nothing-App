@@ -649,7 +649,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uy-NM-8Bz" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="277"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZd-3W-E2l" userLabel="map - separator">
                                                 <rect key="frame" x="0.0" y="151" width="320" height="1"/>
@@ -687,8 +687,8 @@
                                                     <outletCollection property="gestureRecognizers" destination="axV-oh-bQC" appends="YES" id="Lvd-Q6-TgE"/>
                                                 </connections>
                                             </mapView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="EaR-T6-mma">
-                                                <rect key="frame" x="25" y="224" width="295" height="40"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="EaR-T6-mma">
+                                                <rect key="frame" x="25" y="217" width="295" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="P8u-ar-v7Q"/>
@@ -700,7 +700,7 @@
                                                 </connections>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3f-a3-8bu" userLabel="separator 2">
-                                                <rect key="frame" x="25" y="279" width="270" height="1"/>
+                                                <rect key="frame" x="25" y="265" width="270" height="1"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="cvu-k8-cey"/>
@@ -711,7 +711,7 @@
                                         <constraints>
                                             <constraint firstItem="0j9-yI-f4J" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="5QV-Df-MGs"/>
                                             <constraint firstItem="Oxi-KR-ISG" firstAttribute="top" secondItem="0j9-yI-f4J" secondAttribute="bottom" constant="8" id="BiF-Dh-JS7"/>
-                                            <constraint firstItem="EaR-T6-mma" firstAttribute="top" secondItem="Oxi-KR-ISG" secondAttribute="bottom" constant="15" id="Fwc-W3-R4p"/>
+                                            <constraint firstItem="EaR-T6-mma" firstAttribute="top" secondItem="Oxi-KR-ISG" secondAttribute="bottom" constant="8" id="Fwc-W3-R4p"/>
                                             <constraint firstAttribute="trailing" secondItem="GZd-3W-E2l" secondAttribute="trailing" id="Lhl-DP-grc"/>
                                             <constraint firstAttribute="trailing" secondItem="EaR-T6-mma" secondAttribute="trailing" id="MIT-kk-vlM"/>
                                             <constraint firstAttribute="trailing" secondItem="Oxi-KR-ISG" secondAttribute="trailing" constant="25" id="NUz-9u-vQO"/>
@@ -725,7 +725,7 @@
                                             <constraint firstAttribute="trailing" secondItem="0j9-yI-f4J" secondAttribute="trailing" constant="25" id="jyW-XN-KXc"/>
                                             <constraint firstItem="0j9-yI-f4J" firstAttribute="top" secondItem="GZd-3W-E2l" secondAttribute="bottom" constant="8" id="qOs-F1-nsI"/>
                                             <constraint firstItem="Oxi-KR-ISG" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="rH7-r3-AHQ"/>
-                                            <constraint firstItem="J3f-a3-8bu" firstAttribute="top" secondItem="EaR-T6-mma" secondAttribute="bottom" constant="15" id="vWs-6d-oqZ"/>
+                                            <constraint firstItem="J3f-a3-8bu" firstAttribute="top" secondItem="EaR-T6-mma" secondAttribute="bottom" constant="8" id="vWs-6d-oqZ"/>
                                             <constraint firstItem="EaR-T6-mma" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="wsP-ba-Eeu"/>
                                             <constraint firstItem="J3f-a3-8bu" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="wwd-2I-6gc"/>
                                         </constraints>
@@ -791,7 +791,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3083" y="-1"/>
+            <point key="canvasLocation" x="2995" y="297"/>
         </scene>
         <!--Map-->
         <scene sceneID="ZST-gy-DT3">
@@ -908,7 +908,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3732" y="-643"/>
+            <point key="canvasLocation" x="3648" y="-347"/>
         </scene>
         <!--Open Hours-->
         <scene sceneID="TZV-Th-vYx">
@@ -1006,7 +1006,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Myb-Ww-IlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3732" y="288.5"/>
+            <point key="canvasLocation" x="3648" y="584.5"/>
         </scene>
         <!--Date Time Picker View Controller-->
         <scene sceneID="Qpv-uF-TUN">
