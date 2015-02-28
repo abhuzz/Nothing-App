@@ -649,7 +649,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uy-NM-8Bz" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="277"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="341"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZd-3W-E2l" userLabel="map - separator">
                                                 <rect key="frame" x="0.0" y="151" width="320" height="1"/>
@@ -706,6 +706,19 @@
                                                     <constraint firstAttribute="height" constant="1" id="cvu-k8-cey"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpa-UI-gP4" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="281" width="270" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="hzJ-ge-rWo"/>
+                                                </constraints>
+                                                <state key="normal" title="Delete">
+                                                    <color key="titleColor" red="0.74510002139999998" green="0.42745000119999998" blue="0.32548999789999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="deletePressed:" destination="HG4-5E-df3" eventType="touchUpInside" id="FFG-dP-JsB"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -720,11 +733,14 @@
                                             <constraint firstAttribute="trailing" secondItem="PLw-Tp-FFM" secondAttribute="trailing" id="b1Y-Jn-nxN"/>
                                             <constraint firstAttribute="trailing" secondItem="J3f-a3-8bu" secondAttribute="trailing" constant="25" id="b2v-Y1-SOn"/>
                                             <constraint firstItem="GZd-3W-E2l" firstAttribute="top" secondItem="PLw-Tp-FFM" secondAttribute="bottom" constant="1" id="bmY-IC-CG5"/>
-                                            <constraint firstAttribute="bottom" secondItem="EaR-T6-mma" secondAttribute="bottom" constant="20" id="hu5-cP-jZ3"/>
+                                            <constraint firstAttribute="trailing" secondItem="dpa-UI-gP4" secondAttribute="trailing" constant="25" id="e4M-P0-LJe"/>
+                                            <constraint firstItem="dpa-UI-gP4" firstAttribute="top" secondItem="J3f-a3-8bu" secondAttribute="bottom" constant="15" id="eeA-UY-8EO"/>
                                             <constraint firstItem="PLw-Tp-FFM" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" id="j0R-r9-Gi7"/>
                                             <constraint firstAttribute="trailing" secondItem="0j9-yI-f4J" secondAttribute="trailing" constant="25" id="jyW-XN-KXc"/>
                                             <constraint firstItem="0j9-yI-f4J" firstAttribute="top" secondItem="GZd-3W-E2l" secondAttribute="bottom" constant="8" id="qOs-F1-nsI"/>
                                             <constraint firstItem="Oxi-KR-ISG" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="rH7-r3-AHQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="dpa-UI-gP4" secondAttribute="bottom" constant="20" id="t9u-Pq-K92"/>
+                                            <constraint firstItem="dpa-UI-gP4" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="tRs-Yn-7yK"/>
                                             <constraint firstItem="J3f-a3-8bu" firstAttribute="top" secondItem="EaR-T6-mma" secondAttribute="bottom" constant="8" id="vWs-6d-oqZ"/>
                                             <constraint firstItem="EaR-T6-mma" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="wsP-ba-Eeu"/>
                                             <constraint firstItem="J3f-a3-8bu" firstAttribute="leading" secondItem="5uy-NM-8Bz" secondAttribute="leading" constant="25" id="wwd-2I-6gc"/>
@@ -766,6 +782,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="deleteButton" destination="dpa-UI-gP4" id="t5f-cr-Ah4"/>
                         <outlet property="doneButton" destination="NF2-oY-6Xk" id="JCo-gv-1yH"/>
                         <outlet property="mapTapGesture" destination="axV-oh-bQC" id="vmX-t2-M3l"/>
                         <outlet property="mapView" destination="PLw-Tp-FFM" id="5kh-t3-phy"/>
@@ -1671,7 +1688,7 @@
         <segue reference="gvW-rL-N6i"/>
         <segue reference="u98-Xi-FZd"/>
         <segue reference="N3F-1W-rz6"/>
-        <segue reference="VNx-HN-FDJ"/>
+        <segue reference="vMp-7O-Al3"/>
         <segue reference="10A-z9-kye"/>
         <segue reference="wRh-l5-PIE"/>
         <segue reference="Nxh-lo-n4K"/>

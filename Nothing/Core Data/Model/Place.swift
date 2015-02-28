@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import CoreData
 
 @objc(Place)
 class Place: Link {
@@ -31,6 +32,13 @@ extension Place {
         set {
             self.latitude = NSNumber(double: newValue.latitude)
             self.longitude = NSNumber(double: newValue.longitude)
+        }
+    }
+    
+    func removeAllAssociatedObjects(context: NSManagedObjectContext!) {
+        let infos = self.locationReminderInfos.allObjects as! [LocationReminderInfo]
+        for info in infos {
+            context.deleteObject(info)
         }
     }
 }

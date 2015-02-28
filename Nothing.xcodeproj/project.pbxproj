@@ -149,6 +149,7 @@
 		1279B60719FED64D00A7828C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1279B61419FEDBD200A7828C /* FileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		127A800D1AA2666700B49666 /* NSManagedObjectContext_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSManagedObjectContext_TS.swift; path = ../NSManagedObjectContext_TS.swift; sourceTree = "<group>"; };
+		127A800F1AA27A8000B49666 /* Nothing 11.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 11.xcdatamodel"; sourceTree = "<group>"; };
 		127C4AE11A9E787B00699F37 /* Nothing 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 9.xcdatamodel"; sourceTree = "<group>"; };
 		128EE7BD1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditLocationReminderViewController.swift; sourceTree = "<group>"; };
 		128F91611A92844900C21DE3 /* NTHRegionControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHRegionControl.xib; sourceTree = "<group>"; };
@@ -841,6 +842,7 @@
 		1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				127A800F1AA27A8000B49666 /* Nothing 11.xcdatamodel */,
 				1202052C1AA25D170043CEE9 /* Nothing 10.xcdatamodel */,
 				127C4AE11A9E787B00699F37 /* Nothing 9.xcdatamodel */,
 				12D2E8861A9BE65D001539CD /* Nothing 7.xcdatamodel */,
@@ -852,7 +854,7 @@
 				1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */,
 				1279B60219FED64D00A7828C /* Nothing.xcdatamodel */,
 			);
-			currentVersion = 1202052C1AA25D170043CEE9 /* Nothing 10.xcdatamodel */;
+			currentVersion = 127A800F1AA27A8000B49666 /* Nothing 11.xcdatamodel */;
 			name = Nothing.xcdatamodeld;
 			path = Model/Nothing.xcdatamodeld;
 			sourceTree = "<group>";
