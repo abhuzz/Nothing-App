@@ -16,7 +16,6 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet private weak var doneButton: UIBarButtonItem!
 
     
-    
     private enum SegueIdentifier: String {
         case AddNewPlace = "AddNewPlace"
         case EditPlace = "EditPlace"
@@ -27,8 +26,8 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
     
     var canSelectPlace: Bool = true
     var canEditPlace: Bool = false
+    var canAddPlace: Bool = true
     var showDoneButton: Bool = true
-    var saveContextEveryChange: Bool = false
     var context: NSManagedObjectContext!
     var completionBlock: ((selectedPlace: Place!) -> Void)?
     
@@ -57,40 +56,52 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let refreshBlock: () -> Void = {
-            
-            if self.saveContextEveryChange {
-                self.context.save(nil)
-            }
-            
+        let completionBlock: (context: NSManagedObjectContext!) -> Void = { context in
+            self.context.save(nil)
             self.places = ModelController().allPlaces(self.context)
             self.placesTableView.reloadData()
         }
         
         if segue.identifier == SegueIdentifier.AddNewPlace.rawValue {
-            let vc = segue.destinationViewController as! NTHCreateEditPlaceViewController
-            vc.context = self.context
-            vc.completionBlock = refreshBlock
+            let navVC = segue.destinationViewController as! UINavigationController
+            let vc = navVC.topViewController as! NTHCreateEditPlaceViewController
+            vc.context = CDHelper.temporaryContextWithParent(self.context)
+            vc.presentedModally = true
+            vc.completionBlock = completionBlock
         } else if segue.identifier == SegueIdentifier.EditPlace.rawValue {
-            let vc = segue.destinationViewController as! NTHCreateEditPlaceViewController
-            vc.context = self.context
-            vc.place = (sender as! Place)
+            let navVC = segue.destinationViewController as! UINavigationController
+            let vc = navVC.topViewController as! NTHCreateEditPlaceViewController
+            vc.context = CDHelper.temporaryContextWithParent(self.context)
+            let place = (sender as! Place)
+            
+            /// Get `place` object but in new contextś
+            let placeInTemporaryContext = vc.context.objectWithID(place.objectID) as! Place
+            vc.place = placeInTemporaryContext
+            vc.presentedModally = true
             vc.editingPlace = true
-            vc.completionBlock = refreshBlock
+            vc.completionBlock = completionBlock
         }
     }
     
     
     /// Mark: Table View
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.places.count + 1
+        var count = self.places.count
+        if self.canAddPlace {
+            count++
+        }
+        return count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if indexPath.row == self.places.count {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
-            cell.label.text = "+ Add new place"
+            if self.canAddPlace {
+                cell.label.text = "+ Add new place"
+            } else {
+                cell.label.text = "No place to select."
+            }
             cell.label.font = UIFont.NTHAddNewCellFont()
             cell.selectedBackgroundView = UIView()
             return cell
@@ -117,8 +128,10 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         if indexPath.row == self.places.count {
-            /// show place wizard
-            self.performSegueWithIdentifier(SegueIdentifier.AddNewPlace.rawValue, sender: nil)
+            if self.canAddPlace {
+                /// add place wizard
+                self.performSegueWithIdentifier(SegueIdentifier.AddNewPlace.rawValue, sender: nil)
+            }
         } else {
             /// If user can select place, do this. Should not be able to select from Menu
             if self.canSelectPlace {

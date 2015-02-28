@@ -20,11 +20,11 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     @IBOutlet private weak var menuTableView: UITableView!
     @IBOutlet private var tapGesture: UITapGestureRecognizer!
     
-    var completionBlock: (() -> Void)!
+    var completionBlock: ((context: NSManagedObjectContext!) -> Void)!
     var context: NSManagedObjectContext!
     var place: Place!
     var editingPlace: Bool = false
-    
+    var presentedModally: Bool = false
     
     private var coordinateSet: Bool = false
     
@@ -38,6 +38,11 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         super.viewDidLoad()
         self._configureUIColors()
         
+        if !self.presentedModally {
+            /// Remove "Cancel" button if presented via push.
+            self.navigationController?.navigationItem.leftBarButtonItems = nil
+        }
+        
         self.menuTableView.registerNib("NTHLeftLabelCell")
         
         self.mapView.tintColor = UIColor.NTHNavigationBarColor()
@@ -47,13 +52,13 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
             self.nameTextField.text = place.name
             self._updateWithCoordinate(self.place.coordinate)
         } else {
-            var aPlace: Place = Place.createNotInserted(self.context) as Place
+            var aPlace: Place = Place.create(self.context)
             self.place = aPlace
             self.place.useOpenHours = false
             /// fill openHours of place            
             var hours = [OpenHour]()
             for day in 1...7 {
-                var openHour: OpenHour = OpenHour.createNotInserted(self.context)
+                var openHour: OpenHour = OpenHour.create(self.context)
                 openHour.dayNumber = day
                 openHour.openTimeInterval = NSTimeInterval(9 * 60 * 60)
                 openHour.closeTimeInterval = NSTimeInterval(17 * 60 * 60)
@@ -90,6 +95,10 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         self.separator1.backgroundColor = UIColor.NTHTableViewSeparatorColor()
     }
     
+    @IBAction func cancelPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func donePressed(sender: AnyObject) {
         
         var annotation: NTHAnnotation!
@@ -103,12 +112,14 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         self.place.name = self.nameTextField.text
         self.place.coordinate = annotation.coordinate
         
-        if !self.editingPlace {
-            self.context.insertObject(self.place)
+        self.context.save(nil)
+        self.completionBlock(context: self.context)
+        
+        if !self.presentedModally {
+            self.navigationController?.popViewControllerAnimated(true)
+        } else {
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
-    
-        self.completionBlock()
-        self.navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func handleTapOnMap(sender: UITapGestureRecognizer) {

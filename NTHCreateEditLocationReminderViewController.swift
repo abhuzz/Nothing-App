@@ -22,7 +22,6 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     
     private enum SegueIdentifier: String {
         case SelectPlace = "SelectPlace"
-        case EditPlace = "EditPlace"
     }
     
     var context: NSManagedObjectContext!
@@ -89,17 +88,9 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
         if segue.identifier == SegueIdentifier.SelectPlace.rawValue {
             let vc = segue.destinationViewController as! NTHSelectPlaceViewController
             vc.context = self.context
+            vc.canAddPlace = false
             vc.completionBlock = { selectedPlace in
                 self.place = selectedPlace
-                self.placeTableView.reloadData()
-                self._validateDoneButton()
-            }
-        } else if segue.identifier == SegueIdentifier.EditPlace.rawValue {
-            let vc = segue.destinationViewController as! NTHCreateEditPlaceViewController
-            vc.context = self.context
-            vc.place = sender as! Place
-            vc.editingPlace = true
-            vc.completionBlock = {
                 self.placeTableView.reloadData()
                 self._validateDoneButton()
             }
@@ -136,13 +127,7 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        
-        if let place = self.place {
-            self.performSegueWithIdentifier(SegueIdentifier.EditPlace.rawValue, sender: place)
-        } else {
-            self.performSegueWithIdentifier(SegueIdentifier.SelectPlace.rawValue, sender: nil)
-        }
-        
+        self.performSegueWithIdentifier(SegueIdentifier.SelectPlace.rawValue, sender: nil)
         self._validateDoneButton()
     }
     

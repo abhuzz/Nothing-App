@@ -45,7 +45,6 @@ class NTHMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             vc.showDoneButton = false
             vc.canSelectPlace = false
             vc.canEditPlace = true
-            vc.saveContextEveryChange = true
         } else if segue.identifier == SegueIdentifier.ShowContacts.rawValue {
             let vc = segue.destinationViewController as! NTHSelectContactViewController
             vc.context = CDHelper.mainContext

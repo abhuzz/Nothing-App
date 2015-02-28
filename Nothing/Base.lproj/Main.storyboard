@@ -322,12 +322,11 @@
                         <outlet property="separator" destination="mnI-2W-4Ev" id="aiY-lW-LCW"/>
                         <outlet property="view" destination="PcN-xf-vCi" id="39T-fX-Ppo"/>
                         <segue destination="9Vs-Y6-SqM" kind="push" identifier="SelectPlace" id="u98-Xi-FZd"/>
-                        <segue destination="HG4-5E-df3" kind="push" identifier="EditPlace" id="bcg-qF-Htk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWl-Pi-GEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1034" y="-425"/>
+            <point key="canvasLocation" x="1378" y="-417"/>
         </scene>
         <!--Date-->
         <scene sceneID="hNh-3G-lN3">
@@ -565,7 +564,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tbP-zZ-hlk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1034" y="1882"/>
+            <point key="canvasLocation" x="1378" y="1890"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kdA-zB-hK3">
@@ -626,13 +625,13 @@
                     <connections>
                         <outlet property="doneButton" destination="Sdo-db-voO" id="mJj-NQ-exa"/>
                         <outlet property="placesTableView" destination="8vA-Vk-0U5" id="UiQ-dW-WjN"/>
-                        <segue destination="HG4-5E-df3" kind="push" identifier="AddNewPlace" id="Pg9-vd-d1p"/>
-                        <segue destination="HG4-5E-df3" kind="push" identifier="EditPlace" id="gvW-rL-N6i"/>
+                        <segue destination="h6V-ak-bJr" kind="modal" identifier="AddNewPlace" id="Pg9-vd-d1p"/>
+                        <segue destination="h6V-ak-bJr" kind="modal" identifier="EditPlace" id="gvW-rL-N6i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8E-gY-fJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1034" y="289"/>
+            <point key="canvasLocation" x="1378" y="297"/>
         </scene>
         <!--Place-->
         <scene sceneID="v7U-YT-dhF">
@@ -755,6 +754,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Place" id="g5T-d4-ycf">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="H5i-EE-AUt">
+                            <connections>
+                                <action selector="cancelPressed:" destination="HG4-5E-df3" id="kjx-D3-8bJ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="NF2-oY-6Xk">
                             <connections>
                                 <action selector="donePressed:" destination="HG4-5E-df3" id="U4M-tZ-UjX"/>
@@ -787,7 +791,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1701" y="8"/>
+            <point key="canvasLocation" x="3083" y="-1"/>
         </scene>
         <!--Map-->
         <scene sceneID="ZST-gy-DT3">
@@ -904,7 +908,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2224" y="8"/>
+            <point key="canvasLocation" x="3732" y="-643"/>
         </scene>
         <!--Open Hours-->
         <scene sceneID="TZV-Th-vYx">
@@ -1002,7 +1006,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Myb-Ww-IlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2224" y="731.5"/>
+            <point key="canvasLocation" x="3732" y="288.5"/>
         </scene>
         <!--Date Time Picker View Controller-->
         <scene sceneID="Qpv-uF-TUN">
@@ -1136,7 +1140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyZ-Ae-tUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1034" y="1179"/>
+            <point key="canvasLocation" x="1378" y="1187"/>
         </scene>
         <!--Contact-->
         <scene sceneID="Rch-oA-ncg">
@@ -1246,7 +1250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hkG-Zn-Nac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="1179"/>
+            <point key="canvasLocation" x="2178" y="1187"/>
         </scene>
         <!--Task-->
         <scene sceneID="gv2-EW-oGc">
@@ -1633,6 +1637,25 @@
             </objects>
             <point key="canvasLocation" x="-1438" y="910"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fkh-k0-L61">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h6V-ak-bJr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="5Cl-aH-W3p"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="m4w-QF-brj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HG4-5E-df3" kind="relationship" relationship="rootViewController" id="UFA-4L-7bC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IBj-MH-fMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2178" y="297"/>
+        </scene>
     </scenes>
     <resources>
         <image name="hamburger" width="30" height="30"/>
@@ -1645,12 +1668,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bcg-qF-Htk"/>
-        <segue reference="ENL-Cp-mGc"/>
+        <segue reference="gvW-rL-N6i"/>
+        <segue reference="u98-Xi-FZd"/>
+        <segue reference="N3F-1W-rz6"/>
         <segue reference="VNx-HN-FDJ"/>
         <segue reference="10A-z9-kye"/>
         <segue reference="wRh-l5-PIE"/>
-        <segue reference="tuW-bm-KQy"/>
-        <segue reference="u98-Xi-FZd"/>
+        <segue reference="Nxh-lo-n4K"/>
     </inferredMetricsTieBreakers>
 </document>

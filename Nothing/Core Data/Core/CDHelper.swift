@@ -52,6 +52,12 @@ class CDHelper: NSObject {
         return context
     }()
     
+    class func temporaryContextWithParent(parent: NSManagedObjectContext!) -> NSManagedObjectContext {
+        var context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        context.parentContext = parent
+        return context
+    }
+    
     private func createTemporaryContext() -> NSManagedObjectContext {
         var context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
         context.parentContext = self.mainContext
