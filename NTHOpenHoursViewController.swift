@@ -39,9 +39,8 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
         
         let cell = tableView.dequeueReusableCellWithIdentifier("NTHOpenHoursCell") as! NTHOpenHoursCell
         cell.delegate = self
-        cell.enabledSwitch.setOn(openHour.enabled, animated: false)
         cell.selectedBackgroundView = UIView()
-        cell.dayNameLabel.text = openHour.dayString
+        cell.dayNameLabel.text = openHour.dayString.uppercaseString
         cell.hourLabel.text = NSDateFormatter.NTHStringTimeFromDate(openHour.openHourDate) + " - " + NSDateFormatter.NTHStringTimeFromDate(openHour.closeHourDate)
         cell.markEnabled(openHour.enabled)
         return cell
@@ -52,10 +51,26 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 71
+        return 60
     }
     
     /// Mark: NTHOpenHoursCellDelegate
+    
+    func cellDidEnable(cell: NTHOpenHoursCell, enabled: Bool) {
+        let indexPath = self.tableView.indexPathForCell(cell)!
+        (self.openHours[indexPath.row] as OpenHour).enabled = enabled
+    }
+    
+    func cellDidTapClock(cell: NTHOpenHoursCell) {
+        let picker = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NTHOpenHoursPickerViewController") as! NTHOpenHoursPickerViewController
+        NTHSheetSegue(identifier: nil, source: self, destination: picker).perform()
+    }
+    
+    func cellDidTapClose(cell: NTHOpenHoursCell, closed: Bool) {
+        let indexPath = self.tableView.indexPathForCell(cell)!
+        (self.openHours[indexPath.row] as OpenHour).closed = closed
+    }
+    
     
     func cellDidChangeSwitchValue(cell: NTHOpenHoursCell, value: Bool) {
         if let indexPath = self.tableView.indexPathForCell(cell) {

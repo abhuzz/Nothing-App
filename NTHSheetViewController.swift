@@ -12,4 +12,16 @@ class NTHSheetViewController: UIViewController {
 
     @IBOutlet var container: UIView!
     @IBOutlet var containerBottomConstraint: NSLayoutConstraint!
+    
+    @IBAction func handleBackgroundTap(sender: AnyObject) {
+        self._unwind()
+    }
+    
+    private func _unwind() {
+        NTHUnwindSheetSegue(identifier: "CloseSheet", source: self, destination: self.presentingViewController as UIViewController!).perform()
+    }
+    
+    @IBAction func donePressed(sender: AnyObject) {
+        self._unwind()
+    }
 }

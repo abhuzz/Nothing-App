@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120205291AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120205281AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift */; };
 		1202EB731A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */; };
 		12059DCA1A34FDA2007F5E7C /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DC91A34FDA2007F5E7C /* UIColor+Extensions.swift */; };
 		12059DCD1A34FF5C007F5E7C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DCC1A34FF5C007F5E7C /* UIFont+Extension.swift */; };
@@ -95,6 +96,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		120205281AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHOpenHoursPickerViewController.swift; sourceTree = "<group>"; };
 		1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditDateReminderViewController.swift; sourceTree = "<group>"; };
 		12059DC91A34FDA2007F5E7C /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		12059DCC1A34FF5C007F5E7C /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */,
 				12D2E88A1A9CE25A001539CD /* NTHDateTimePickerViewController.swift */,
 				12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */,
+				120205281AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift */,
 				126904811A9E6B69008FDD84 /* NTHOpenHoursViewController.swift */,
 			);
 			name = Controllers;
@@ -593,6 +596,7 @@
 				12CC222B1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift in Sources */,
 				1259B7731A8F7AFA0059525F /* TSRegion.swift in Sources */,
 				128F91641A92855D00C21DE3 /* NTHRegionControl.swift in Sources */,
+				120205291AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift in Sources */,
 				121CF5C61A8FD0440032ED36 /* NTHPlaceholderTextView.swift in Sources */,
 				1279B60819FED64D00A7828C /* CDHelper.swift in Sources */,
 				128F91661A92873B00C21DE3 /* Float_TS.swift in Sources */,

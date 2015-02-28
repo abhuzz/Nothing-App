@@ -39,16 +39,8 @@ class NTHDateTimePickerViewController: NTHSheetViewController {
         }
     }
     
-    @IBAction func donePressed(sender: AnyObject) {
+    @IBAction override func donePressed(sender: AnyObject) {
         self.completionBlock?(selectedDate: self.datePicker.date)
-        self._unwind()
-    }
-    
-    @IBAction func handleBackgroundTap(sender: AnyObject) {
-        self._unwind()
-    }
-    
-    private func _unwind() {
-        NTHUnwindSheetSegue(identifier: "CloseSheet", source: self, destination: self.presentingViewController as UIViewController!).perform()
+        super.donePressed(sender)
     }
 }
