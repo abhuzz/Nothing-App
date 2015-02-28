@@ -12,19 +12,25 @@ class NTHOpenHoursPickerViewController: NTHSheetViewController, UIPickerViewDele
 
     @IBOutlet weak var pickerView: UIPickerView!
     
+    var completionBlock: ((openHourTimeInterval: NSTimeInterval, closeHourTimeInterval: NSTimeInterval) -> Void)?
+    
+    var openHourTimeInterval: NSTimeInterval! = 0
+    var closeHourTimeInterval: NSTimeInterval! = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    struct Time {
-        let hours: Int
-        let minutes: Int
         
-        var stringRepresentation: String {
-            return String(format: "%02d:%02d", self.hours, self.minutes)
-        }
+        self.pickerView.selectRow(Int(((self.openHourTimeInterval / 60.0) / 5.0)), inComponent: 0, animated: false)
+        self.pickerView.selectRow(Int(((self.closeHourTimeInterval / 60.0) / 5.0)), inComponent: 1, animated: false)
     }
     
+    @IBAction override func donePressed(sender: AnyObject) {
+        let openValue = self.pickerView.selectedRowInComponent(0)
+        let closeValue = self.pickerView.selectedRowInComponent(1)
+        
+        self.completionBlock?(openHourTimeInterval: NSTimeInterval(openValue * 60 * 5), closeHourTimeInterval: NSTimeInterval(closeValue * 60 * 5))
+        super.donePressed(sender)
+    }
     
     /// Mark: UIPickerView
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -32,21 +38,19 @@ class NTHOpenHoursPickerViewController: NTHSheetViewController, UIPickerViewDele
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 24 * 12
+        return 24 /*h*/ * 12 /* 12 pieces, 5 minutes each */
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return self._timeForRow(row).stringRepresentation
+        return self._timeForRow(row).toString()
     }
     
     func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 40
     }
     
-    private func _timeForRow(row: Int) -> Time {
-        let timeInMinutes = row * 5 /* minutes */
-        let hours = timeInMinutes / 60
-        let minutes = timeInMinutes - (hours * 60)
-        return Time(hours: hours, minutes: minutes)
+    private func _timeForRow(row: Int) -> NTHTime {
+        let timeInSeconds: NSTimeInterval = NSTimeInterval(row * 5 /* minutes */ * 60 /* secs */)
+        return NTHTime(interval: timeInSeconds)
     }
 }

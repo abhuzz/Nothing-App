@@ -40,9 +40,16 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCellWithIdentifier("NTHOpenHoursCell") as! NTHOpenHoursCell
         cell.delegate = self
         cell.selectedBackgroundView = UIView()
+        
         cell.dayNameLabel.text = openHour.dayString.uppercaseString
-        cell.hourLabel.text = NSDateFormatter.NTHStringTimeFromDate(openHour.openHourDate) + " - " + NSDateFormatter.NTHStringTimeFromDate(openHour.closeHourDate)
-        cell.markEnabled(openHour.enabled)
+        
+        let openHourString = NTHTime(interval: openHour.openTimeInterval).toString()
+        let closeHourString = NTHTime(interval: openHour.closeTimeInterval).toString()
+        cell.hourLabel.text =  openHourString + " - " + closeHourString
+        cell.closedLabel.text = "Closed"
+
+        cell.update(openHour.enabled, closed: openHour.closed)
+        
         return cell
     }
     
@@ -63,6 +70,21 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
     
     func cellDidTapClock(cell: NTHOpenHoursCell) {
         let picker = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NTHOpenHoursPickerViewController") as! NTHOpenHoursPickerViewController
+        
+        let indexPath = self.tableView.indexPathForCell(cell)!
+        let openHour = self.openHours[indexPath.row]
+        
+        
+        picker.openHourTimeInterval = openHour.openTimeInterval
+        picker.closeHourTimeInterval = openHour.closeTimeInterval
+        
+        picker.completionBlock = { openHourTimeInterval, closeHourTimeInterval in
+            let hour = self.openHours[indexPath.row]
+            hour.openTimeInterval = openHourTimeInterval
+            hour.closeTimeInterval = closeHourTimeInterval
+            self.tableView.reloadData()
+        }
+        
         NTHSheetSegue(identifier: nil, source: self, destination: picker).perform()
     }
     

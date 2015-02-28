@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		120205291AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120205281AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift */; };
+		1202052B1AA1F3780043CEE9 /* NTHTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1202052A1AA1F3780043CEE9 /* NTHTime.swift */; };
 		1202EB731A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */; };
 		12059DCA1A34FDA2007F5E7C /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DC91A34FDA2007F5E7C /* UIColor+Extensions.swift */; };
 		12059DCD1A34FF5C007F5E7C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DCC1A34FF5C007F5E7C /* UIFont+Extension.swift */; };
@@ -97,6 +98,7 @@
 
 /* Begin PBXFileReference section */
 		120205281AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHOpenHoursPickerViewController.swift; sourceTree = "<group>"; };
+		1202052A1AA1F3780043CEE9 /* NTHTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTime.swift; sourceTree = "<group>"; };
 		1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditDateReminderViewController.swift; sourceTree = "<group>"; };
 		12059DC91A34FDA2007F5E7C /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		12059DCC1A34FF5C007F5E7C /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				1259B7711A8F7AD30059525F /* TSRegionManager */,
 				12981F0A1A86223000CDFA1D /* RepeatInterval.swift */,
 				1230A08C1A8BBE6F0064447B /* LocalNotificationScheduler.swift */,
+				1202052A1AA1F3780043CEE9 /* NTHTime.swift */,
 			);
 			name = Helpers;
 			path = ..;
@@ -577,6 +580,7 @@
 				12E2929B1A951DEF0079D257 /* NTHSelectContactViewController.swift in Sources */,
 				12D2E87F1A9B9459001539CD /* Bool_TS.swift in Sources */,
 				12D2E88B1A9CE25A001539CD /* NTHDateTimePickerViewController.swift in Sources */,
+				1202052B1AA1F3780043CEE9 /* NTHTime.swift in Sources */,
 				1230A08F1A8BCDB20064447B /* TSRegionManager.swift in Sources */,
 				12BB65311A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift in Sources */,
 				128F91681A93FED000C21DE3 /* NTHSelectPlaceViewController.swift in Sources */,

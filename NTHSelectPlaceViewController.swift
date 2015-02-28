@@ -35,6 +35,7 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.placesTableView.tableFooterView = UIView()
         self.placesTableView.registerNib("NTHCenterLabelCell")
         self.placesTableView.registerNib("NTHLeftLabelCell")
         self.places = ModelController().allPlaces(self.context)
@@ -148,7 +149,7 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        return 60
     }
 
 }

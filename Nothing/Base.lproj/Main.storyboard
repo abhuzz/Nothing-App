@@ -1496,7 +1496,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="202" translatesAutoresizingMaskIntoConstraints="NO" id="Yix-vg-S99" userLabel="Container">
-                                <rect key="frame" x="0.0" y="308" width="320" height="260"/>
+                                <rect key="frame" x="0.0" y="356" width="320" height="212"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NlD-to-tEo" userLabel="Bar">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
@@ -1511,46 +1511,19 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="donePressed:" destination="6aJ-Fk-kDv" eventType="touchUpInside" id="ZgS-ZT-Jqk"/>
+                                                    <action selector="donePressed:" destination="6aJ-Fk-kDv" eventType="touchUpInside" id="hIH-dR-2c3"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulF-u0-268">
-                                                <rect key="frame" x="8" y="12" width="59" height="25"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aph-sH-mMB">
-                                                <rect key="frame" x="75" y="8" width="51" height="31"/>
-                                            </switch>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96384725770000002" green="0.96384725770000002" blue="0.96384725770000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="Aph-sH-mMB" firstAttribute="leading" secondItem="ulF-u0-268" secondAttribute="trailing" constant="8" id="I3d-zY-qdz"/>
                                             <constraint firstAttribute="centerY" secondItem="nBp-6r-GHn" secondAttribute="centerY" id="UOK-su-Zhn"/>
-                                            <constraint firstItem="ulF-u0-268" firstAttribute="leading" secondItem="NlD-to-tEo" secondAttribute="leading" constant="8" id="c8z-9p-fhm"/>
-                                            <constraint firstAttribute="centerY" secondItem="ulF-u0-268" secondAttribute="centerY" constant="0.5" id="cTS-6X-pgH"/>
-                                            <constraint firstItem="Aph-sH-mMB" firstAttribute="centerY" secondItem="ulF-u0-268" secondAttribute="centerY" constant="-1" id="gzy-Mz-81r"/>
                                             <constraint firstAttribute="trailing" secondItem="nBp-6r-GHn" secondAttribute="trailing" constant="8" id="oyy-Y7-zRL"/>
                                             <constraint firstAttribute="height" constant="50" id="yGS-hT-B59"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1a8-VX-kxL" userLabel="Bar">
-                                        <rect key="frame" x="0.0" y="49" width="320" height="50"/>
-                                        <color key="backgroundColor" red="0.96384725770000002" green="0.96384725770000002" blue="0.96384725770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="H8l-mb-y78"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="pAE-7Q-lMA" userLabel="separator">
-                                        <rect key="frame" x="0.0" y="48" width="320" height="1"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="zb0-4k-fZk"/>
-                                        </constraints>
-                                    </view>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEH-HM-LqT">
-                                        <rect key="frame" x="0.0" y="98" width="320" height="162"/>
+                                        <rect key="frame" x="0.0" y="50" width="320" height="162"/>
                                         <connections>
                                             <outlet property="dataSource" destination="6aJ-Fk-kDv" id="gKv-iL-qOt"/>
                                             <outlet property="delegate" destination="6aJ-Fk-kDv" id="u6h-wA-Fye"/>
@@ -1559,19 +1532,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="pAE-7Q-lMA" secondAttribute="trailing" id="0Q2-6D-a2p"/>
                                     <constraint firstItem="ZEH-HM-LqT" firstAttribute="leading" secondItem="Yix-vg-S99" secondAttribute="leading" id="4wz-hs-pSo"/>
-                                    <constraint firstItem="1a8-VX-kxL" firstAttribute="leading" secondItem="Yix-vg-S99" secondAttribute="leading" id="6bx-ZY-vOm"/>
                                     <constraint firstAttribute="trailing" secondItem="ZEH-HM-LqT" secondAttribute="trailing" id="Xce-hS-WW6"/>
-                                    <constraint firstItem="1a8-VX-kxL" firstAttribute="top" secondItem="pAE-7Q-lMA" secondAttribute="bottom" id="Yic-b0-jbq"/>
-                                    <constraint firstItem="pAE-7Q-lMA" firstAttribute="leading" secondItem="Yix-vg-S99" secondAttribute="leading" id="Zgo-Lh-vSb"/>
-                                    <constraint firstAttribute="trailing" secondItem="1a8-VX-kxL" secondAttribute="trailing" id="eDJ-qT-Pgr"/>
+                                    <constraint firstItem="ZEH-HM-LqT" firstAttribute="top" secondItem="NlD-to-tEo" secondAttribute="bottom" id="jad-S2-aCS"/>
                                     <constraint firstAttribute="trailing" secondItem="NlD-to-tEo" secondAttribute="trailing" id="kNQ-1z-Mwd"/>
                                     <constraint firstItem="NlD-to-tEo" firstAttribute="leading" secondItem="Yix-vg-S99" secondAttribute="leading" id="mNb-xo-1O5"/>
                                     <constraint firstItem="NlD-to-tEo" firstAttribute="top" secondItem="Yix-vg-S99" secondAttribute="top" id="qI8-5w-cUz"/>
                                     <constraint firstAttribute="bottom" secondItem="ZEH-HM-LqT" secondAttribute="bottom" id="sSA-9v-cvG"/>
-                                    <constraint firstItem="1a8-VX-kxL" firstAttribute="top" secondItem="NlD-to-tEo" secondAttribute="bottom" constant="-1" id="tFV-1w-g30"/>
-                                    <constraint firstItem="ZEH-HM-LqT" firstAttribute="top" secondItem="1a8-VX-kxL" secondAttribute="bottom" constant="-1" id="ukW-z1-hHV"/>
                                 </constraints>
                             </view>
                         </subviews>

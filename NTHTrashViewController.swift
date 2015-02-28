@@ -19,7 +19,9 @@ class NTHTrashViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         self._createResultsController()
         
+        self.tableView.tableFooterView = UIView()
         self.tableView.registerNib("NTHTrashCell")
+        self.tableView.registerNib("NTHCenterLabelCell")
     }
     
     private func _createResultsController() {
@@ -45,23 +47,37 @@ class NTHTrashViewController: UIViewController, UITableViewDelegate, UITableView
     /// Mark: UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.resultsController.fetchedObjects?.count ?? 0
+        var count = 0
+        if let objects = self.resultsController.fetchedObjects {
+            count = objects.count
+        }
+        
+        return max(1, count)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NTHTrashCell") as! NTHTrashCell
-        cell.update(self.resultsController.fetchedObjects![indexPath.row] as! Task)
-        cell.delegate = self
-        cell.selectedBackgroundView = UIView()
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        if self.resultsController.fetchedObjects?.count == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
+            cell.label.text = "No trashed tasks"
+            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+            cell.label.textColor = UIColor.blackColor()
+            cell.label.font = UIFont.NTHAddNewCellFont()
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHTrashCell") as! NTHTrashCell
+            cell.update(self.resultsController.fetchedObjects![indexPath.row] as! Task)
+            cell.delegate = self
+            cell.selectedBackgroundView = UIView()
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 72
+        if self.resultsController.fetchedObjects?.count == 0 {
+            return 60
+        } else {
+            return 72
+        }
     }
     
     

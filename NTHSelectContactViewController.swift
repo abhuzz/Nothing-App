@@ -35,6 +35,7 @@ class NTHSelectContactViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         self.tableView.registerNib("NTHCenterLabelCell")
         self.tableView.registerNib("NTHLeftLabelCell")
+        self.tableView.tableFooterView = UIView()
         self.contacts = ModelController().allContacts(self.context)
         
         if !self.showDoneButton {
@@ -142,6 +143,6 @@ class NTHSelectContactViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        return 60
     }
 }

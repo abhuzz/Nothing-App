@@ -22,12 +22,22 @@ class OpenHour: NSManagedObject {
         case Sunday = 7
     }
 
-    @NSManaged var openHourTimeInterval: NSNumber
+    @NSManaged private var openHourTimeInterval: NSNumber
     @NSManaged var dayNumber: NSNumber
-    @NSManaged var closeHourTimeInterval: NSNumber
+    @NSManaged private var closeHourTimeInterval: NSNumber
     @NSManaged var place: Place
     @NSManaged var enabled: Bool
     @NSManaged var closed: Bool
+    
+    var openTimeInterval: NSTimeInterval! {
+        set { self.openHourTimeInterval = NSNumber(integer: Int(newValue)) }
+        get { return NSTimeInterval(self.openHourTimeInterval.integerValue) }
+    }
+    
+    var closeTimeInterval: NSTimeInterval! {
+        set { self.closeHourTimeInterval = NSNumber(integer: Int(newValue)) }
+        get { return NSTimeInterval(self.closeHourTimeInterval.integerValue) }
+    }
     
     var day: Day {
         return Day(rawValue: self.dayNumber.integerValue)!
@@ -43,13 +53,5 @@ class OpenHour: NSManagedObject {
         case .Saturday: return "Saturday"
         case .Sunday: return "Sunday"
         }
-    }
-    
-    var openHourDate: NSDate {
-        return NSDate(timeIntervalSince1970: NSTimeInterval(self.openHourTimeInterval.integerValue))
-    }
-    
-    var closeHourDate: NSDate {
-        return NSDate(timeIntervalSince1970: NSTimeInterval(self.closeHourTimeInterval.integerValue))
     }
 }

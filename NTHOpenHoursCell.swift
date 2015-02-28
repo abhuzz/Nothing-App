@@ -23,7 +23,6 @@ class NTHOpenHoursCell: UITableViewCell {
     @IBOutlet weak var closedLabel: UILabel!
     
     var delegate: NTHOpenHoursCellDelegate?
-
     
     override var layoutMargins: UIEdgeInsets {
         set { super.layoutMargins = newValue }
@@ -65,31 +64,67 @@ class NTHOpenHoursCell: UITableViewCell {
         
         if sender.tag == 0 {
             sender.tag = 1
-            self.hourLabel.hidden = true
-            self.closedLabel.hidden = false
-            self.closeButton.alpha = 1
         } else {
             sender.tag = 0
-            self.hourLabel.hidden = false
-            self.closedLabel.hidden = true
-            self.closeButton.alpha = 0.3
         }
         
-        self.delegate?.cellDidTapClose(self, closed: self.tag == 1)
+        self.markClosed(sender.tag == 1)
+        self.delegate?.cellDidTapClose(self, closed: sender.tag == 1)
+    }
+    
+    
+    func update(enabled: Bool, closed: Bool) {
+        self.useButton.tag = Int(enabled)
+        self.closeButton.tag = Int(closed)
+        self.markEnabled(enabled)
+        self.markClosed(closed)
+    }
+    
+    func markClosed(closed: Bool) {
+        self._updateHourLabel()
+        self._updateClosedLabel()
+        self._updateCloseButton()
+        self._updateClockButton()
     }
     
     func markEnabled(enabled: Bool) {
         UIView.animateWithDuration(0.25, animations: { () -> Void in
-            let alpha: CGFloat = enabled ? 1 : 0.3
-            self.dayNameLabel.alpha = alpha
-            self.hourLabel.alpha = alpha
-            self.useButton.alpha = alpha
-            self.clockButton.alpha = alpha
-            
-            if self.closeButton.tag == 1 {
-                self.closeButton.alpha = alpha
-                self.closedLabel.alpha = alpha
-            }
+            self._updateDayNameLabel()
+            self._updateHourLabel()
+            self._updateClosedLabel()
+            self._updateCloseButton()
+            self._updateClockButton()
+            self._updateUseButton()
         })
+    }
+    
+    private func _updateDayNameLabel() {
+        self._setViewEnabled(self.dayNameLabel, enabled: self.useButton.tag == 1)
+    }
+    
+    private func _updateClosedLabel() {
+        self.closedLabel.hidden = self.closeButton.tag == 0
+        self._setViewEnabled(self.closedLabel, enabled: self.useButton.tag == 1)
+    }
+    
+    private func _updateHourLabel() {
+        self.hourLabel.hidden = self.closeButton.tag == 1
+        self._setViewEnabled(self.hourLabel, enabled: self.useButton.tag == 1)
+    }
+    
+    private func _updateCloseButton() {
+        self._setViewEnabled(self.closeButton, enabled: self.closeButton.tag == 1 && self.useButton.tag == 1)
+    }
+    
+    private func _updateClockButton() {
+        self._setViewEnabled(self.clockButton, enabled: self.useButton.tag == 1 && self.closeButton.tag == 0)
+    }
+    
+    private func _updateUseButton() {
+        self._setViewEnabled(self.useButton, enabled: self.useButton.tag == 1)
+    }
+    
+    private func _setViewEnabled(view: UIView, enabled: Bool) {
+        view.alpha = enabled ? 1 : 0.3
     }
 }
