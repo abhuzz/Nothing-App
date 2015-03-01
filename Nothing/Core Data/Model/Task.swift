@@ -14,7 +14,7 @@ import CoreLocation
 @objc(Task)
 class Task: NSManagedObject {
     
-    @NSManaged var connections: NSSet
+    @NSManaged var links: NSSet
     @NSManaged var dateReminderInfo: DateReminderInfo?
     @NSManaged var locationReminderInfos: NSSet
     @NSManaged var longDescription: String?
@@ -59,14 +59,14 @@ extension Task {
     
     /// Link
     func addLink(link: Link) {
-        let mutableSet = NSMutableSet(set: self.connections)
+        let mutableSet = NSMutableSet(set: self.links)
         mutableSet.addObject(link)
-        self.connections = NSSet(set: mutableSet)
+        self.links = NSSet(set: mutableSet)
     }
     
     func removeLink(link: Link) {
-        let mutableSet = NSMutableSet(set: self.connections)
+        let mutableSet = NSMutableSet(set: self.links)
         mutableSet.removeObject(link)
-        self.connections = NSSet(set: mutableSet)
+        self.links = NSSet(set: mutableSet)
     }
 }

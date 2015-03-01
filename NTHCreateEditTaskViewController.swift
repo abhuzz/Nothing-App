@@ -239,7 +239,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     }
     
     private func _refreshLinks() {
-        self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.task.connections.count + 1)
+        self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.task.links.count + 1)
     }
     
     private func _refreshDates() {
@@ -273,7 +273,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         switch tableView.type {
         case .Locations: return self.task.locationReminderInfos.allObjects.count + 1
         case .Dates: return 1
-        case .Links: return self.task.connections.allObjects.count + 1
+        case .Links: return self.task.links.allObjects.count + 1
         }
     }
     
@@ -324,11 +324,11 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             }
             
         case .Links:
-            if indexPath.row == self.task.connections.allObjects.count {
+            if indexPath.row == self.task.links.allObjects.count {
                 return _createAddNewSomethingCell("+ Add new link")
             } else {
                 let title: String
-                let link = self.task.connections.allObjects[indexPath.row] as! Link
+                let link = self.task.links.allObjects[indexPath.row] as! Link
                 if link is Place {
                     title = (link as! Place).name
                 } else {
@@ -338,7 +338,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 let cell = _createRegularCell(title)
                 cell.clearPressedBlock = { cell in
                     self.task.removeLink(link)
-                    self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.task.connections.allObjects.count + 1)
+                    self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.task.links.allObjects.count + 1)
                 }
                 return cell
             }
@@ -368,7 +368,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             }
             
         case .Links:
-            let addNewLink = indexPath.row == self.task.connections.allObjects.count
+            let addNewLink = indexPath.row == self.task.links.allObjects.count
             if addNewLink {
                 let types = [
                     "contact": NSLocalizedString("Contact", comment: ""),

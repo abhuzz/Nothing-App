@@ -190,6 +190,7 @@
 		12E2929E1A9527300079D257 /* NTHInboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHInboxViewController.swift; sourceTree = "<group>"; };
 		12F0B3231A9CF0F1006229AD /* NTHSheetSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSheetSegue.swift; sourceTree = "<group>"; };
 		12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSheetViewController.swift; sourceTree = "<group>"; };
+		12FBB4C31AA33B3D00C2B32A /* Nothing 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 12.xcdatamodel"; sourceTree = "<group>"; };
 		12FE1D701A913A8600F03601 /* NTHCreateEditPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditPlaceViewController.swift; sourceTree = "<group>"; };
 		12FE1D721A913C6100F03601 /* MKMapView_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView_TS.swift; sourceTree = "<group>"; };
 		12FE1D741A9146E100F03601 /* NTHCenterLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHCenterLabelCell.xib; sourceTree = "<group>"; };
@@ -858,6 +859,7 @@
 		1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				12FBB4C31AA33B3D00C2B32A /* Nothing 12.xcdatamodel */,
 				127A800F1AA27A8000B49666 /* Nothing 11.xcdatamodel */,
 				1202052C1AA25D170043CEE9 /* Nothing 10.xcdatamodel */,
 				127C4AE11A9E787B00699F37 /* Nothing 9.xcdatamodel */,
@@ -870,7 +872,7 @@
 				1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */,
 				1279B60219FED64D00A7828C /* Nothing.xcdatamodel */,
 			);
-			currentVersion = 127A800F1AA27A8000B49666 /* Nothing 11.xcdatamodel */;
+			currentVersion = 12FBB4C31AA33B3D00C2B32A /* Nothing 12.xcdatamodel */;
 			name = Nothing.xcdatamodeld;
 			path = Model/Nothing.xcdatamodeld;
 			sourceTree = "<group>";

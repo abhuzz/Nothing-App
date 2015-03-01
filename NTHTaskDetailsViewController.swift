@@ -122,7 +122,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
                         self.context.refreshObject(reminder, mergeChanges: true)
                     }
                     
-                    for link in self.task.connections.allObjects as! [Link] {
+                    for link in self.task.links.allObjects as! [Link] {
                         self.context.refreshObject(link, mergeChanges: true)
                     }
                     
@@ -145,7 +145,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             return 1
             
         case .Links:
-            return max(1, self.task.connections.allObjects.count)
+            return max(1, self.task.links.allObjects.count)
         }
     }
     
@@ -202,8 +202,8 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             }
             
         case .Links:
-            if self.task.connections.allObjects.count > 0 {
-                let link = self.task.connections.allObjects[indexPath.row] as! Link
+            if self.task.links.allObjects.count > 0 {
+                let link = self.task.links.allObjects[indexPath.row] as! Link
                 
                 let name: String!
                 if link is Contact {
@@ -233,8 +233,8 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             break
             
         case .Links:
-            if self.task.connections.allObjects.count > 0 {
-                let link = self.task.connections.allObjects[indexPath.row] as! Link
+            if self.task.links.allObjects.count > 0 {
+                let link = self.task.links.allObjects[indexPath.row] as! Link
                 if link is Place {
                     let alert = UIAlertController.actionSheetForPlace(link as! Place)
                     self.presentViewController(alert, animated: true, completion: nil)
@@ -286,7 +286,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     private func _linksTableViewHeight() -> CGFloat {
-        return self._oneLineCellHeight() * CGFloat(max(1, self.task.connections.count))
+        return self._oneLineCellHeight() * CGFloat(max(1, self.task.links.count))
     }
     
     private func _refreshTableView(tableView: UITableView, heightConstraint: NSLayoutConstraint, height: CGFloat) {
