@@ -11,6 +11,7 @@ import CoreData
 
 class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
+    @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var scrollViewBottomGuide: NSLayoutConstraint!
     @IBOutlet private weak var titleTextField: NTHTextField!
     
@@ -126,6 +127,13 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     
     func keyboardWillShow(notification: NSNotification) {
         self.scrollViewBottomGuide.constant = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue().height
+        
+        if self.titleTextField.isFirstResponder() {
+            self.scrollView.scrollRectToVisible(self.titleTextField.frame, animated: true)
+        } else if self.notesTextView.isFirstResponder() {
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: CGRectGetMinY(self.notesTextView.frame) - 140.0), animated: true)
+        }
+        
         UIView.animateWithDuration(0.25, animations: { () -> Void in
             self.view.layoutIfNeeded()
         })
