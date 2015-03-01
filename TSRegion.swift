@@ -22,36 +22,25 @@ class TSRegion {
     var satisfiesOnLeave = false
     var onLeaveNotificationSent = false
     
+    var useTimeRanges: Bool = false
     var timeRanges = [TSRegionTimeRange]()
     
-    init(identifier: String!, coordinate: CLLocationCoordinate2D!, notifyOnArrive: Bool!, notifyOnLeave: Bool!, distance: CLLocationDistance!, timeRanges: [TSRegionTimeRange]) {
+    init(identifier: String!, coordinate: CLLocationCoordinate2D!, notifyOnArrive: Bool!, notifyOnLeave: Bool!, distance: CLLocationDistance!, timeRanges: [TSRegionTimeRange], useTimeRanges: Bool) {
         self.identifier = identifier
         self.coordinate = coordinate
         self.notifyOnArrive = notifyOnArrive
         self.notifyOnLeave = notifyOnLeave
         self.distance = distance
         self.timeRanges = timeRanges
+        self.useTimeRanges = useTimeRanges
     }
     
     func updateRegion(region: TSRegion) {
-        if self.coordinate != region.coordinate {
-            self.coordinate = region.coordinate
-            println("update coordinate")
-        }
-        
-        if self.notifyOnArrive != region.notifyOnArrive {
-            self.notifyOnArrive = region.notifyOnArrive
-            println("update notifyOnArrive")
-        }
-        
-        if self.notifyOnLeave != region.notifyOnLeave {
-            self.notifyOnLeave = region.notifyOnLeave
-            println("update notifyOnLeave")
-        }
-        
-        if self.distance != region.distance {
-            self.distance = region.distance
-            println("distance update")
-        }
+        self.coordinate = region.coordinate
+        self.notifyOnArrive = region.notifyOnArrive
+        self.notifyOnLeave = region.notifyOnLeave
+        self.distance = region.distance
+        self.timeRanges = region.timeRanges
+        self.useTimeRanges = region.useTimeRanges
     }
 }

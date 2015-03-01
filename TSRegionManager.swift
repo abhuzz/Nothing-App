@@ -69,7 +69,46 @@ class TSRegionManager {
     /// Check rules and return those regions that should be send with notification
     private func _checkRules(location: CLLocation) -> [TSRegion] {
         var output = [TSRegion]()
+
+        let calendar = NSCalendar.currentCalendar()
+        let date = NSDate()
+        let components = calendar.components(.CalendarUnitWeekday | .HourCalendarUnit | .MinuteCalendarUnit, fromDate: date)
+        
         for region in self.regions {
+            if region.useTimeRanges {
+                /// Get time range for 'now'.
+                var timeRange: TSRegionTimeRange!
+                for range in region.timeRanges {
+                    if range.day.rawValue == components.weekday {
+                        timeRange = range
+                        break
+                    }
+                }
+                
+                var valid = false
+                let timeIntervalOfNow = NSTimeInterval((components.hour * 3600) + (components.minute * 60))
+                if timeRange.openHourTimeInterval < timeRange.closeHourTimeInterval {
+                    /// 8:00 -> 15:00, e.g. 13:00
+                    if timeIntervalOfNow >= timeRange.openHourTimeInterval && timeIntervalOfNow <= timeRange.closeHourTimeInterval {
+                        valid = true
+                    }
+                } else {
+                    /// 15:00 -> 8:00, e.g. 19:00
+                    if timeIntervalOfNow >= timeRange.openHourTimeInterval || timeIntervalOfNow <= timeRange.closeHourTimeInterval {
+                        valid = true
+                    }
+                }
+                
+                if !valid {
+                    region.satisfiesOnArrive = false
+                    region.onArriveNotificationSent = false
+                    region.satisfiesOnLeave = false
+                    region.onLeaveNotificationSent = false
+                    continue
+                }
+            }
+            
+            
             let diffDistance = location.distanceFromLocation(CLLocation(coordinate: region.coordinate))
             
             var notify = false

@@ -151,7 +151,7 @@ extension AppDelegate {
                     }
                 }
                 
-                regions.append(TSRegion(identifier: task.uniqueIdentifier, coordinate: reminder.place.coordinate, notifyOnArrive: reminder.onArrive, notifyOnLeave: !reminder.onArrive, distance: CLLocationDistance(reminder.distance), timeRanges: timeRanges))
+                regions.append(TSRegion(identifier: task.uniqueIdentifier, coordinate: reminder.place.coordinate, notifyOnArrive: reminder.onArrive, notifyOnLeave: !reminder.onArrive, distance: CLLocationDistance(reminder.distance), timeRanges: timeRanges, useTimeRanges: reminder.place.useOpenHours.boolValue))
             }
         }
         
