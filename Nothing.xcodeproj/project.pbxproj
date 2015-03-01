@@ -50,6 +50,8 @@
 		1279B61219FED64D00A7828C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60719FED64D00A7828C /* FileManager.swift */; };
 		1279B61519FEDBD200A7828C /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B61419FEDBD200A7828C /* FileCache.swift */; };
 		127A800E1AA2666700B49666 /* NSManagedObjectContext_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127A800D1AA2666700B49666 /* NSManagedObjectContext_TS.swift */; };
+		127A80131AA301D300B49666 /* UIStoryboardSegue_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127A80121AA301D300B49666 /* UIStoryboardSegue_TS.swift */; };
+		127A80151AA30F5600B49666 /* NTHSimpleSelectPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127A80141AA30F5600B49666 /* NTHSimpleSelectPlaceViewController.swift */; };
 		128EE7BE1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128EE7BD1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift */; };
 		128F91621A92844900C21DE3 /* NTHRegionControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128F91611A92844900C21DE3 /* NTHRegionControl.xib */; };
 		128F91641A92855D00C21DE3 /* NTHRegionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128F91631A92855D00C21DE3 /* NTHRegionControl.swift */; };
@@ -150,6 +152,8 @@
 		1279B61419FEDBD200A7828C /* FileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		127A800D1AA2666700B49666 /* NSManagedObjectContext_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSManagedObjectContext_TS.swift; path = ../NSManagedObjectContext_TS.swift; sourceTree = "<group>"; };
 		127A800F1AA27A8000B49666 /* Nothing 11.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 11.xcdatamodel"; sourceTree = "<group>"; };
+		127A80121AA301D300B49666 /* UIStoryboardSegue_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardSegue_TS.swift; sourceTree = "<group>"; };
+		127A80141AA30F5600B49666 /* NTHSimpleSelectPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSimpleSelectPlaceViewController.swift; sourceTree = "<group>"; };
 		127C4AE11A9E787B00699F37 /* Nothing 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 9.xcdatamodel"; sourceTree = "<group>"; };
 		128EE7BD1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditLocationReminderViewController.swift; sourceTree = "<group>"; };
 		128F91611A92844900C21DE3 /* NTHRegionControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHRegionControl.xib; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 				120B99571A9A3DB100518FF0 /* NTHMenuViewController.swift */,
 				12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */,
 				128F91671A93FED000C21DE3 /* NTHSelectPlaceViewController.swift */,
+				127A80141AA30F5600B49666 /* NTHSimpleSelectPlaceViewController.swift */,
 				12A7B33C1A9679E800A4EACB /* NTHTaskDetailsViewController.swift */,
 				12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */,
 				12D2E88A1A9CE25A001539CD /* NTHDateTimePickerViewController.swift */,
@@ -263,15 +268,16 @@
 		1250A3B51A8683E0005B4D69 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
-				127A800D1AA2666700B49666 /* NSManagedObjectContext_TS.swift */,
-				1250A3B61A868420005B4D69 /* UIAlertAction_TS.swift */,
+				12D2E87E1A9B9459001539CD /* Bool_TS.swift */,
 				1230A0901A8BE5250064447B /* CLLocation_TS.swift */,
 				1259B7741A8F93380059525F /* CLLocationCoordinate2D_TS.swift */,
-				1270B00E1A91369C0058DE82 /* UITableView_TS.swift */,
-				12FE1D721A913C6100F03601 /* MKMapView_TS.swift */,
 				128F91651A92873B00C21DE3 /* Float_TS.swift */,
+				12FE1D721A913C6100F03601 /* MKMapView_TS.swift */,
+				127A800D1AA2666700B49666 /* NSManagedObjectContext_TS.swift */,
+				1250A3B61A868420005B4D69 /* UIAlertAction_TS.swift */,
 				12A7C0B61A9A080D00BB6B94 /* UIAlertController_TS.swift */,
-				12D2E87E1A9B9459001539CD /* Bool_TS.swift */,
+				127A80121AA301D300B49666 /* UIStoryboardSegue_TS.swift */,
+				1270B00E1A91369C0058DE82 /* UITableView_TS.swift */,
 			);
 			name = Swift;
 			sourceTree = "<group>";
@@ -570,9 +576,11 @@
 				1279B60919FED64D00A7828C /* CDStore.swift in Sources */,
 				12AC63C91A90AB3700883650 /* NTHTextField.swift in Sources */,
 				1279B60D19FED64D00A7828C /* Nothing.xcdatamodeld in Sources */,
+				127A80131AA301D300B49666 /* UIStoryboardSegue_TS.swift in Sources */,
 				124A8F161A4F017800BE5EAB /* UIView+Extension.swift in Sources */,
 				1279B61519FEDBD200A7828C /* FileCache.swift in Sources */,
 				12E2929F1A9527300079D257 /* NTHInboxViewController.swift in Sources */,
+				127A80151AA30F5600B49666 /* NTHSimpleSelectPlaceViewController.swift in Sources */,
 				12D2E8891A9BE76B001539CD /* OpenHour.swift in Sources */,
 				12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */,
 				12D2E8851A9BB537001539CD /* NTHMapViewController.swift in Sources */,

@@ -17,8 +17,7 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     @IBOutlet private weak var regionLabel: UILabel!
     @IBOutlet private weak var regionControl: NTHRegionControl!
     @IBOutlet private weak var doneButton: UIBarButtonItem!
-    
-    private var place: Place?
+    @IBOutlet private weak var cancelButton: UIBarButtonItem!
     
     private enum SegueIdentifier: String {
         case SelectPlace = "SelectPlace"
@@ -27,7 +26,7 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     var context: NSManagedObjectContext!
     var completionBlock: ((newReminder: LocationReminderInfo) -> Void)?
     
-    var editedReminder: LocationReminderInfo?
+    var reminder: LocationReminderInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +35,23 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
         self.placeTableView.registerNib("NTHCenterLabelCell")
         self.placeTableView.registerNib("NTHLeftLabelRemoveCell")
         
-        if let reminder = self.editedReminder {
-            self.place = reminder.place
-            self.regionControl.configure(reminder.distance, onArrive: reminder.onArrive)
-            self._validateDoneButton()
-        } else {
-            self.regionControl.configure(100.0, onArrive: true)
+        /// Check if reminder exists, if not create new one
+        if self.reminder == nil {
+            self.reminder = LocationReminderInfo.create(self.context) as LocationReminderInfo
+            self.reminder.distance = 100.0
+            self.reminder.onArrive = true
         }
+        
+        self.regionControl.configure(self.reminder.distance, onArrive: self.reminder.onArrive)
+        self._validateDoneButton()
+        
         self.regionControl.prepareBeforePresenting()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.placeTableView.reloadData()
+        self._validateDoneButton()
     }
     
     private func _configureUIColors() {
@@ -58,42 +66,29 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
         self.regionControl.regionSegmentedControl.tintColor = UIColor.NTHNavigationBarColor()
     }
     
+    @IBAction func cancelPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func donePressed(sender: AnyObject) {
+        self.reminder.onArrive = (self.regionControl.regionSegmentedControl.selectedSegmentIndex == 0)
+        self.reminder.distance = self.regionControl.regionSlider.value
         
-        let place = self.place as Place!
-        let distance = self.regionControl.regionSlider.value
-        let onArrive = (self.regionControl.regionSegmentedControl.selectedSegmentIndex == 0)
-        
-        if let reminder = self.editedReminder {
-            reminder.place = place
-            reminder.distance = distance
-            reminder.onArrive = onArrive
-            self.completionBlock?(newReminder: reminder)
-        } else {
-            let reminder: LocationReminderInfo = LocationReminderInfo.create(self.context)
-            reminder.place = place
-            reminder.distance = distance
-            reminder.onArrive = onArrive
-            self.completionBlock?(newReminder: reminder)
-        }
-        
-        self.navigationController?.popViewControllerAnimated(true)
+        self.context.save(nil) /// save temporary context and pass object from this context along
+        self.completionBlock?(newReminder: reminder)
+    
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     private func _validateDoneButton() {
-        self.doneButton.enabled = self.place != nil || self.editedReminder != nil
+        self.doneButton.enabled = self.reminder.place != nil
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SegueIdentifier.SelectPlace.rawValue {
-            let vc = segue.destinationViewController as! NTHSelectPlaceViewController
+            let vc = segue.destinationViewController as! NTHSimpleSelectPlaceViewController
             vc.context = self.context
-            vc.canAddPlace = false
-            vc.completionBlock = { selectedPlace in
-                self.place = selectedPlace
-                self.placeTableView.reloadData()
-                self._validateDoneButton()
-            }
+            vc.reminder = self.reminder
         }
     }
     
@@ -103,14 +98,14 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let place = self.place {
+        if let place = self.reminder.place {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelRemoveCell") as! NTHLeftLabelRemoveCell
             cell.label.text = place.name
             cell.label.font = UIFont.NTHNormalTextFont()
             cell.selectedBackgroundView = UIView()
             cell.tintColor = UIColor.NTHNavigationBarColor()
             cell.clearPressedBlock = { cell in
-                self.place = nil
+                self.reminder.place = nil
                 self._validateDoneButton()
                 self.placeTableView.reloadData()
             }

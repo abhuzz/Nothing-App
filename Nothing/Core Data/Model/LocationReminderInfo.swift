@@ -13,7 +13,7 @@ import CoreData
 class LocationReminderInfo: NSManagedObject {
     @NSManaged private var distanceNumber: NSNumber
     @NSManaged private var onArriveBool: NSNumber
-    @NSManaged var place: Place
+    @NSManaged var place: Place!
     @NSManaged var task: Task?
 }
 

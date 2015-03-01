@@ -200,17 +200,19 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SegueIdentifier.CreateLocationReminder.rawValue {
-            let vc = segue.destinationViewController as! NTHCreateEditLocationReminderViewController
-            vc.context = self.context
+            let vc = segue.topOfNavigationController as! NTHCreateEditLocationReminderViewController
+            vc.context = CDHelper.temporaryContextWithParent(self.context)
             vc.completionBlock = { newReminder in
-                self.taskContainer.locationReminders.append(newReminder)
+                let object = self.context.objectWithID(newReminder.objectID)
+                let reminder = object as! LocationReminderInfo
+                self.taskContainer.locationReminders.append(reminder)
                 self._refreshLocations()
             }
         } else if segue.identifier == SegueIdentifier.EditLocationReminder.rawValue {
             let reminder = sender as! LocationReminderInfo
-            let vc = segue.destinationViewController as! NTHCreateEditLocationReminderViewController
+            let vc = segue.topOfNavigationController as! NTHCreateEditLocationReminderViewController
             vc.context = self.context
-            vc.editedReminder = reminder
+            vc.reminder = reminder
             vc.completionBlock = { newReminder in
                 self._refreshLocations()
                 self._refreshLinks()
