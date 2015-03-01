@@ -57,9 +57,9 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
             self.place = aPlace
             self.place.useOpenHours = false
             /// fill openHours of place            
-            var hours = [OpenHour]()
+            var hours = [OpenTimeRange]()
             for day in 1...7 {
-                var openHour: OpenHour = OpenHour.create(self.context)
+                var openHour: OpenTimeRange = OpenTimeRange.create(self.context)
                 openHour.dayNumber = day
                 openHour.openTimeInterval = NSTimeInterval(9 * 60 * 60)
                 openHour.closeTimeInterval = NSTimeInterval(17 * 60 * 60)

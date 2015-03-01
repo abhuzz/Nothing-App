@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-@objc(OpenHour)
-class OpenHour: NSManagedObject {
+@objc(OpenTimeRange)
+class OpenTimeRange: NSManagedObject {
     
     enum Day: Int {
         case Monday = 1
@@ -22,20 +22,20 @@ class OpenHour: NSManagedObject {
         case Sunday = 7
     }
 
-    @NSManaged private var openHourTimeInterval: NSNumber
+    @NSManaged private var openTimeIntervalNumber: NSNumber
+    @NSManaged private var closeTimeIntervalNumber: NSNumber
     @NSManaged var dayNumber: NSNumber
-    @NSManaged private var closeHourTimeInterval: NSNumber
     @NSManaged var place: Place
     @NSManaged var closed: Bool
     
     var openTimeInterval: NSTimeInterval! {
-        set { self.openHourTimeInterval = NSNumber(integer: Int(newValue)) }
-        get { return NSTimeInterval(self.openHourTimeInterval.integerValue) }
+        set { self.openTimeIntervalNumber = NSNumber(integer: Int(newValue)) }
+        get { return NSTimeInterval(self.openTimeIntervalNumber.integerValue) }
     }
     
     var closeTimeInterval: NSTimeInterval! {
-        set { self.closeHourTimeInterval = NSNumber(integer: Int(newValue)) }
-        get { return NSTimeInterval(self.closeHourTimeInterval.integerValue) }
+        set { self.closeTimeIntervalNumber = NSNumber(integer: Int(newValue)) }
+        get { return NSTimeInterval(self.closeTimeIntervalNumber.integerValue) }
     }
     
     var day: Day {
