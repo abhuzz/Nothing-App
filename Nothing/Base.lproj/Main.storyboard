@@ -224,12 +224,12 @@
                         <outlet property="separator4" destination="X2N-fH-drA" id="GjF-Qe-zhD"/>
                         <outlet property="tapGesture" destination="nFu-2o-cDe" id="aEX-D6-IXF"/>
                         <outlet property="titleTextField" destination="LE8-wB-OeB" id="u4i-jZ-WPQ"/>
-                        <segue destination="9Vs-Y6-SqM" kind="push" identifier="AddPlaceLink" id="FdA-Zs-FF8"/>
                         <segue destination="JFE-PH-tvL" kind="push" identifier="AddContactLink" id="10A-z9-kye"/>
                         <segue destination="4cK-Gu-tE1" kind="modal" identifier="EditLocationReminder" id="hv9-nu-D7n"/>
                         <segue destination="4cK-Gu-tE1" kind="modal" identifier="CreateLocationReminder" id="nvQ-Ui-egl"/>
                         <segue destination="F4J-5t-9Q7" kind="modal" identifier="EditDateReminder" id="OMl-SI-DSb"/>
                         <segue destination="F4J-5t-9Q7" kind="modal" identifier="CreateDateReminder" id="8fX-BY-uP7"/>
+                        <segue destination="5za-ZO-d9Q" kind="push" identifier="AddPlaceLink" id="Ewy-IN-EZr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEr-QO-NDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -257,7 +257,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SBE-RK-4DF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1358" y="-573"/>
+            <point key="canvasLocation" x="1358" y="-1419"/>
         </scene>
         <!--Reminder-->
         <scene sceneID="gg6-rb-v1L">
@@ -355,7 +355,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWl-Pi-GEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2006" y="-573"/>
+            <point key="canvasLocation" x="2006" y="-1419"/>
         </scene>
         <!--Date-->
         <scene sceneID="hNh-3G-lN3">
@@ -457,7 +457,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBe-lt-sSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2006" y="229"/>
+            <point key="canvasLocation" x="2006" y="385"/>
         </scene>
         <!--Inbox-->
         <scene sceneID="a6b-6V-mzd">
@@ -1761,7 +1761,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kq8-l2-CSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2680" y="-573"/>
+            <point key="canvasLocation" x="2006" y="-431"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tqH-GL-eDb">
@@ -1778,7 +1778,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jr9-Jl-VkA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1358" y="229"/>
+            <point key="canvasLocation" x="1358" y="385"/>
         </scene>
     </scenes>
     <resources>
@@ -1792,11 +1792,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="FdA-Zs-FF8"/>
         <segue reference="czI-Pn-o8P"/>
         <segue reference="8fX-BY-uP7"/>
         <segue reference="nvQ-Ui-egl"/>
         <segue reference="10A-z9-kye"/>
+        <segue reference="Ewy-IN-EZr"/>
         <segue reference="Nxh-lo-n4K"/>
         <segue reference="Pg9-vd-d1p"/>
     </inferredMetricsTieBreakers>

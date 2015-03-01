@@ -220,7 +220,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 self._refreshDates()
             }
         } else if segue.identifier == SegueIdentifier.AddPlaceLink.rawValue {
-            let vc = segue.destinationViewController as! NTHSelectPlaceViewController
+            let vc = segue.destinationViewController as! NTHSimpleSelectPlaceViewController
             vc.context = self.context
             vc.completionBlock = { selectedPlace in
                 self.task.addLink(selectedPlace)
