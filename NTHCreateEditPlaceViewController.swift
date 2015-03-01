@@ -82,6 +82,7 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self._removeObservers()
+        self.nameTextField.resignFirstResponder()
     }
     
     private func _addObservers() {
