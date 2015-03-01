@@ -31,6 +31,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
         
         /// configure cell
         self.tableView.registerNib("NTHInboxCell")
+        self.tableView.registerNib("NTHCenterLabelCell")
         self.tableView.tableFooterView = UIView()
     }
     
@@ -80,18 +81,29 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     /// Mark: Table View
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.resultsController.fetchedObjects?.count ?? 0
+        return max(self.resultsController.fetchedObjects?.count ?? 0, 1)
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NTHInboxCell") as! NTHInboxCell
-        cell.update(self.resultsController.fetchedObjects![indexPath.row] as! Task)
-        cell.selectedBackgroundView = UIView()
-        return cell
+        if self.resultsController.fetchedObjects?.count > 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHInboxCell") as! NTHInboxCell
+            cell.update(self.resultsController.fetchedObjects![indexPath.row] as! Task)
+            cell.selectedBackgroundView = UIView()
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
+            cell.selectedBackgroundView = UIView()
+            cell.label.text = "No tasks"
+            cell.label.font = UIFont.NTHAddNewCellFont()
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier(SegueIdentifier.ShowTask.rawValue, sender: self.resultsController.fetchedObjects![indexPath.row])
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if self.resultsController.fetchedObjects?.count > 0 {
+            self.performSegueWithIdentifier(SegueIdentifier.ShowTask.rawValue, sender: self.resultsController.fetchedObjects![indexPath.row])
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
