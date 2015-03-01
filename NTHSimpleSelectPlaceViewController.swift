@@ -15,11 +15,11 @@ class NTHSimpleSelectPlaceViewController: UIViewController, UITableViewDelegate,
     
     
     private var selectedIndexPath: NSIndexPath?
-    
+    private var places = [Place]()
     
     var context: NSManagedObjectContext!
-    var reminder: LocationReminderInfo!
-    var places = [Place]()
+    var selectedPlace: Place?
+    var completionBlock: ((selectedPlace: Place!) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +32,12 @@ class NTHSimpleSelectPlaceViewController: UIViewController, UITableViewDelegate,
     
     /// Mark: Table View
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.places.count
+        return max(1, self.places.count)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if indexPath.row == self.places.count {
+        if self.places.count == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
             cell.label.text = "No place to select."
             cell.label.font = UIFont.NTHAddNewCellFont()
@@ -54,8 +54,8 @@ class NTHSimpleSelectPlaceViewController: UIViewController, UITableViewDelegate,
             cell.label.font = UIFont.NTHNormalTextFont()
             cell.leadingConstraint.constant = 15
             
-            if let reminderPlace = self.reminder.place {
-                if reminderPlace == place {
+            if let selectedPlace = self.selectedPlace {
+                if selectedPlace == place {
                     self.selectedIndexPath = indexPath
                     cell.accessoryType = UITableViewCellAccessoryType.Checkmark
                 }
@@ -68,6 +68,10 @@ class NTHSimpleSelectPlaceViewController: UIViewController, UITableViewDelegate,
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
 
+        if self.places.count == 0 {
+            return
+        }
+        
         /// deselect old cell
         if let previousIndexPath = self.selectedIndexPath {
             let previousCell = tableView.cellForRowAtIndexPath(previousIndexPath) as! NTHLeftLabelCell
@@ -78,7 +82,8 @@ class NTHSimpleSelectPlaceViewController: UIViewController, UITableViewDelegate,
         if cell.accessoryType == .None {
             cell.accessoryType = .Checkmark
             self.selectedIndexPath = indexPath
-            self.reminder.place = self.places[indexPath.row]
+            
+            self.completionBlock?(selectedPlace: self.places[indexPath.row])
             
             let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.4 * Double(NSEC_PER_SEC)))
             dispatch_after(delayTime, dispatch_get_main_queue()) {
