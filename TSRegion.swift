@@ -22,12 +22,15 @@ class TSRegion {
     var satisfiesOnLeave = false
     var onLeaveNotificationSent = false
     
-    init(identifier: String!, coordinate: CLLocationCoordinate2D!, notifyOnArrive: Bool!, notifyOnLeave: Bool!, distance: CLLocationDistance!) {
+    var timeRanges = [TSRegionTimeRange]()
+    
+    init(identifier: String!, coordinate: CLLocationCoordinate2D!, notifyOnArrive: Bool!, notifyOnLeave: Bool!, distance: CLLocationDistance!, timeRanges: [TSRegionTimeRange]) {
         self.identifier = identifier
         self.coordinate = coordinate
         self.notifyOnArrive = notifyOnArrive
         self.notifyOnLeave = notifyOnLeave
         self.distance = distance
+        self.timeRanges = timeRanges
     }
     
     func updateRegion(region: TSRegion) {

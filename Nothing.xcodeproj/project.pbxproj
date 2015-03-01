@@ -69,6 +69,7 @@
 		12BB65311A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB65301A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift */; };
 		12BEB0F41A06DC9300643860 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BEB0F31A06DC9300643860 /* ModelController.swift */; };
 		12CAEA2C1A9D16100084A67C /* NTHUnwindSheetSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CAEA2B1A9D16100084A67C /* NTHUnwindSheetSegue.swift */; };
+		12CB97661AA372F70075C0E4 /* TSRegionTimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CB97651AA372F70075C0E4 /* TSRegionTimeRange.swift */; };
 		12CC222B1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC222A1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift */; };
 		12D2E87D1A9B92D8001539CD /* NTHTrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */; };
 		12D2E87F1A9B9459001539CD /* Bool_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E87E1A9B9459001539CD /* Bool_TS.swift */; };
@@ -173,6 +174,7 @@
 		12BB65301A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHLeftLabelRemoveCell.swift; sourceTree = "<group>"; };
 		12BEB0F31A06DC9300643860 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		12CAEA2B1A9D16100084A67C /* NTHUnwindSheetSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHUnwindSheetSegue.swift; sourceTree = "<group>"; };
+		12CB97651AA372F70075C0E4 /* TSRegionTimeRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSRegionTimeRange.swift; sourceTree = "<group>"; };
 		12CC222A1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDateFormatter+Extension.swift"; path = "Nothing/NSDateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		12D2E87B1A9B91D6001539CD /* Nothing 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 6.xcdatamodel"; sourceTree = "<group>"; };
 		12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTrashViewController.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			children = (
 				1230A08E1A8BCDB20064447B /* TSRegionManager.swift */,
 				1259B7721A8F7AFA0059525F /* TSRegion.swift */,
+				12CB97651AA372F70075C0E4 /* TSRegionTimeRange.swift */,
 			);
 			name = TSRegionManager;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */,
 				12D2E8851A9BB537001539CD /* NTHMapViewController.swift in Sources */,
 				12D2E87D1A9B92D8001539CD /* NTHTrashViewController.swift in Sources */,
+				12CB97661AA372F70075C0E4 /* TSRegionTimeRange.swift in Sources */,
 				1259B7751A8F93380059525F /* CLLocationCoordinate2D_TS.swift in Sources */,
 				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
 				1279B60B19FED64D00A7828C /* Link.swift in Sources */,

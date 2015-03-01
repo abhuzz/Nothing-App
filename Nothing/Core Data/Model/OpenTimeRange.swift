@@ -13,13 +13,13 @@ import CoreData
 class OpenTimeRange: NSManagedObject {
     
     enum Day: Int {
-        case Monday = 1
-        case Tuesday = 2
-        case Wednesday = 3
-        case Thursday = 4
-        case Friday = 5
-        case Saturday = 6
-        case Sunday = 7
+        case Sunday = 1
+        case Monday
+        case Tuesday
+        case Wednesday
+        case Thursday
+        case Friday
+        case Saturday
     }
 
     @NSManaged private var openTimeIntervalNumber: NSNumber
@@ -44,13 +44,13 @@ class OpenTimeRange: NSManagedObject {
     
     var dayString: String {
         switch self.day {
+        case .Sunday: return "Sunday"
         case .Monday: return "Monday"
         case .Tuesday: return "Tuesday"
         case .Wednesday: return "Wednesday"
         case .Thursday: return "Thursday"
         case .Friday: return "Friday"
         case .Saturday: return "Saturday"
-        case .Sunday: return "Sunday"
         }
     }
 }

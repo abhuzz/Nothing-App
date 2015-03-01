@@ -37,16 +37,15 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
         self.tableView.reloadData()
     }
     
-    /// Mark: UITableView
     
+    
+    /// Mark: UITableView
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let openHour = self.place.openHours[indexPath.row] as! OpenTimeRange
-        
+        let openHour = self._sortedOpenHours()[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("NTHOpenHoursCell") as! NTHOpenHoursCell
         cell.delegate = self
         cell.selectedBackgroundView = UIView()
@@ -70,18 +69,31 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
         return 60
     }
     
+    func _sortedOpenHours() -> [OpenTimeRange] {
+        return sorted(self.place.openHours.array as! [OpenTimeRange]) { range1, range2 in
+            if range1.day == .Sunday {
+                return false
+            } else if range2.day == .Sunday {
+                return true
+            }
+            
+            return range1.day.rawValue < range2.day.rawValue
+        }
+    }
+    
+    
     /// Mark: NTHOpenHoursCellDelegate
     func cellDidTapClock(cell: NTHOpenHoursCell) {
         let picker = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NTHOpenHoursPickerViewController") as! NTHOpenHoursPickerViewController
         
         let indexPath = self.tableView.indexPathForCell(cell)!
-        let openHour = self.place.openHours[indexPath.row] as! OpenTimeRange
+        let openHour = self._sortedOpenHours()[indexPath.row]
         
         picker.openHourTimeInterval = openHour.openTimeInterval
         picker.closeHourTimeInterval = openHour.closeTimeInterval
         
         picker.completionBlock = { openHourTimeInterval, closeHourTimeInterval in
-            let hour = self.place.openHours[indexPath.row] as! OpenTimeRange
+            let hour = self._sortedOpenHours()[indexPath.row]
             hour.openTimeInterval = openHourTimeInterval
             hour.closeTimeInterval = closeHourTimeInterval
             self.tableView.reloadData()
@@ -92,6 +104,6 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
     
     func cellDidTapClose(cell: NTHOpenHoursCell, closed: Bool) {
         let indexPath = self.tableView.indexPathForCell(cell)!
-        (self.place.openHours[indexPath.row] as! OpenTimeRange).closed = closed
+        self._sortedOpenHours()[indexPath.row].closed = closed
     }
 }

@@ -132,7 +132,16 @@ extension AppDelegate {
         let tasks = ModelController().allTasksNotDoneAndNotTrashed()
         for task in tasks {
             for reminder in task.locationReminderInfos.allObjects as! [LocationReminderInfo] {
-                regions.append(TSRegion(identifier: task.uniqueIdentifier, coordinate: reminder.place.coordinate, notifyOnArrive: reminder.onArrive, notifyOnLeave: !reminder.onArrive, distance: CLLocationDistance(reminder.distance)))
+                var timeRanges = [TSRegionTimeRange]()
+                if reminder.place.useOpenHours == true {
+                    for obj in reminder.place.openHours {
+                        let openTimeRange = (obj as! OpenTimeRange)
+                        let day = TSRegionTimeRange.Weekday(rawValue: openTimeRange.day.rawValue)!
+                        timeRanges.append(TSRegionTimeRange(day: day, openHourTimeInterval: openTimeRange.openTimeInterval, closeHourTimeInterval: openTimeRange.closeTimeInterval))
+                    }
+                }
+                
+                regions.append(TSRegion(identifier: task.uniqueIdentifier, coordinate: reminder.place.coordinate, notifyOnArrive: reminder.onArrive, notifyOnLeave: !reminder.onArrive, distance: CLLocationDistance(reminder.distance), timeRanges: timeRanges))
             }
         }
         
