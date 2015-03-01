@@ -86,11 +86,11 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SegueIdentifier.SelectPlace.rawValue {
-            let vc = segue.destinationViewController as! NTHSimpleSelectPlaceViewController
+            let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController
             vc.context = self.context
-            vc.selectedPlace = self.reminder.place
-            vc.completionBlock = { selectedPlace in
-                self.reminder.place = selectedPlace
+            vc.selectedLink = self.reminder.place
+            vc.completionBlock = { selected in
+                self.reminder.place = (selected as! Place)
             }
         }
     }

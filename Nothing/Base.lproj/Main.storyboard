@@ -224,12 +224,12 @@
                         <outlet property="separator4" destination="X2N-fH-drA" id="GjF-Qe-zhD"/>
                         <outlet property="tapGesture" destination="nFu-2o-cDe" id="aEX-D6-IXF"/>
                         <outlet property="titleTextField" destination="LE8-wB-OeB" id="u4i-jZ-WPQ"/>
-                        <segue destination="JFE-PH-tvL" kind="push" identifier="AddContactLink" id="10A-z9-kye"/>
                         <segue destination="4cK-Gu-tE1" kind="modal" identifier="EditLocationReminder" id="hv9-nu-D7n"/>
                         <segue destination="4cK-Gu-tE1" kind="modal" identifier="CreateLocationReminder" id="nvQ-Ui-egl"/>
                         <segue destination="F4J-5t-9Q7" kind="modal" identifier="EditDateReminder" id="OMl-SI-DSb"/>
                         <segue destination="F4J-5t-9Q7" kind="modal" identifier="CreateDateReminder" id="8fX-BY-uP7"/>
                         <segue destination="5za-ZO-d9Q" kind="push" identifier="AddPlaceLink" id="Ewy-IN-EZr"/>
+                        <segue destination="5za-ZO-d9Q" kind="push" identifier="AddContactLink" id="4g0-c3-SbQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEr-QO-NDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -615,7 +615,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tbP-zZ-hlk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1908" y="1886"/>
+            <point key="canvasLocation" x="86" y="2775"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kdA-zB-hK3">
@@ -682,7 +682,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8E-gY-fJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1358" y="1031"/>
+            <point key="canvasLocation" x="622" y="2006"/>
         </scene>
         <!--Place-->
         <scene sceneID="v7U-YT-dhF">
@@ -859,7 +859,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3266" y="693"/>
+            <point key="canvasLocation" x="2140" y="2006"/>
         </scene>
         <!--Map-->
         <scene sceneID="ZST-gy-DT3">
@@ -976,7 +976,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3902" y="279"/>
+            <point key="canvasLocation" x="2778" y="1585"/>
         </scene>
         <!--Open Hours-->
         <scene sceneID="TZV-Th-vYx">
@@ -1074,7 +1074,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Myb-Ww-IlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3902" y="1260.5"/>
+            <point key="canvasLocation" x="2778" y="2566.5"/>
         </scene>
         <!--Date Time Picker View Controller-->
         <scene sceneID="Qpv-uF-TUN">
@@ -1208,7 +1208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyZ-Ae-tUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="542" y="1117"/>
+            <point key="canvasLocation" x="622" y="1252"/>
         </scene>
         <!--Contact-->
         <scene sceneID="Rch-oA-ncg">
@@ -1318,7 +1318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hkG-Zn-Nac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2408" y="1501"/>
+            <point key="canvasLocation" x="1292" y="1252"/>
         </scene>
         <!--Task-->
         <scene sceneID="gv2-EW-oGc">
@@ -1722,12 +1722,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBj-MH-fMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2734" y="693"/>
+            <point key="canvasLocation" x="1292" y="2006"/>
         </scene>
         <!--Places-->
         <scene sceneID="9eH-hZ-Wa1">
             <objects>
-                <viewController id="5za-ZO-d9Q" customClass="NTHSimpleSelectPlaceViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5za-ZO-d9Q" customClass="NTHSimpleSelectLinkViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="A1t-3e-3Cw"/>
                         <viewControllerLayoutGuide type="bottom" id="Yyl-qz-01K"/>
@@ -1795,8 +1795,7 @@
         <segue reference="czI-Pn-o8P"/>
         <segue reference="8fX-BY-uP7"/>
         <segue reference="nvQ-Ui-egl"/>
-        <segue reference="10A-z9-kye"/>
-        <segue reference="Ewy-IN-EZr"/>
+        <segue reference="4g0-c3-SbQ"/>
         <segue reference="Nxh-lo-n4K"/>
         <segue reference="Pg9-vd-d1p"/>
     </inferredMetricsTieBreakers>

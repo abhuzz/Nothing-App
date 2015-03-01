@@ -9,53 +9,57 @@
 import UIKit
 import CoreData
 
-class NTHSimpleSelectPlaceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NTHSimpleSelectLinkViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet private weak var tableView: UITableView!
     
     
     private var selectedIndexPath: NSIndexPath?
-    private var places = [Place]()
     
+    var links = [Link]()
     var context: NSManagedObjectContext!
-    var selectedPlace: Place?
-    var completionBlock: ((selectedPlace: Place!) -> Void)?
+    var selectedLink: Link?
+    var completionBlock: ((selected: Link) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
         self.tableView.registerNib("NTHCenterLabelCell")
         self.tableView.registerNib("NTHLeftLabelCell")
-        self.places = ModelController().allPlaces(self.context)
     }
     
     
     /// Mark: Table View
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return max(1, self.places.count)
+        return max(1, self.links.count)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if self.places.count == 0 {
+        if self.links.count == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
             cell.label.text = "No place to select."
             cell.label.font = UIFont.NTHAddNewCellFont()
             cell.selectedBackgroundView = UIView()
             return cell
         } else {
-            let place = self.places[indexPath.row]
+            let link = self.links[indexPath.row]
             
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelCell") as! NTHLeftLabelCell
             
-            cell.label.text = place.name
+            if link is Place {
+                cell.label.text = (link as! Place).name
+            } else if link is Contact {
+                cell.label.text = (link as! Contact).name
+            }
+            
             cell.selectedBackgroundView = UIView()
             cell.tintColor = UIColor.NTHNavigationBarColor()
             cell.label.font = UIFont.NTHNormalTextFont()
             cell.leadingConstraint.constant = 15
             
-            if let selectedPlace = self.selectedPlace {
-                if selectedPlace == place {
+            if let selectedLink = self.selectedLink {
+                if selectedLink == link {
                     self.selectedIndexPath = indexPath
                     cell.accessoryType = UITableViewCellAccessoryType.Checkmark
                 }
@@ -68,7 +72,7 @@ class NTHSimpleSelectPlaceViewController: UIViewController, UITableViewDelegate,
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
 
-        if self.places.count == 0 {
+        if self.links.count == 0 {
             return
         }
         
@@ -83,7 +87,7 @@ class NTHSimpleSelectPlaceViewController: UIViewController, UITableViewDelegate,
             cell.accessoryType = .Checkmark
             self.selectedIndexPath = indexPath
             
-            self.completionBlock?(selectedPlace: self.places[indexPath.row])
+            self.completionBlock?(selected: self.links[indexPath.row])
             
             let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.4 * Double(NSEC_PER_SEC)))
             dispatch_after(delayTime, dispatch_get_main_queue()) {

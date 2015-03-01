@@ -256,10 +256,8 @@
 				127A80141AA30F5600B49666 /* NTHSimpleSelectPlaceViewController.swift */,
 				12A7B33C1A9679E800A4EACB /* NTHTaskDetailsViewController.swift */,
 				12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */,
-				12D2E88A1A9CE25A001539CD /* NTHDateTimePickerViewController.swift */,
-				12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */,
-				120205281AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift */,
 				126904811A9E6B69008FDD84 /* NTHOpenHoursViewController.swift */,
+				12FBB4C21AA338A600C2B32A /* Sheets */,
 			);
 			name = Controllers;
 			path = ..;
@@ -451,6 +449,16 @@
 				12CAEA2B1A9D16100084A67C /* NTHUnwindSheetSegue.swift */,
 			);
 			name = UIStoryboardSegue;
+			sourceTree = "<group>";
+		};
+		12FBB4C21AA338A600C2B32A /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				12D2E88A1A9CE25A001539CD /* NTHDateTimePickerViewController.swift */,
+				120205281AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift */,
+				12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */,
+			);
+			name = Sheets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
