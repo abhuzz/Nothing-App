@@ -13,12 +13,18 @@ import CoreLocation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, TSRegionManagerDelegate {
 
+    
+    static let ApplicationDidUpdatePlaceSettingsNotification = "ApplicationDidUpdatePlaceSettingsNotification"
+    
     var window: UIWindow?
     private var locationManager: CLLocationManager!
     var regionManager = TSRegionManager()
 
     func applicationDidFinishLaunching(application: UIApplication) {
         self.regionManager.delegate = self
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "_refreshRegionManager", name: AppDelegate.ApplicationDidUpdatePlaceSettingsNotification, object: nil)
+        
         self.setupUI()
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
@@ -27,6 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func applicationDidEnterBackground(application: UIApplication) {
         CDHelper.mainContext.save(nil)
+    }
+    
+    func _refreshRegionManager() {
+        self.regionManager.refresh()
     }
     
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {

@@ -60,6 +60,9 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
             self.context.save(nil)
             self.places = ModelController().allPlaces(self.context)
             self.placesTableView.reloadData()
+            
+            /// Notify TSRegionManager that place changed
+            NSNotificationCenter.defaultCenter().postNotificationName(AppDelegate.ApplicationDidUpdatePlaceSettingsNotification, object: nil)
         }
         
         if segue.identifier == SegueIdentifier.AddNewPlace.rawValue {

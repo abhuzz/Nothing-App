@@ -311,6 +311,9 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         self._updateMarkButtonAndStatusView()
         self.context.save(nil)
         self.context.parentContext?.save(nil)
+        
+        /// Notify TSRegionManager that place changed
+        NSNotificationCenter.defaultCenter().postNotificationName(AppDelegate.ApplicationDidUpdatePlaceSettingsNotification, object: nil)
     }
     
     private func _updateMarkButtonAndStatusView() {

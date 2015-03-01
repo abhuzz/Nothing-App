@@ -263,6 +263,10 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         self.task.longDescription = self.notesTextView.textValue
         self.context.save(nil)
         self.completionBlock?(task: task)
+        
+        /// Notify TSRegionManager that place changed
+        NSNotificationCenter.defaultCenter().postNotificationName(AppDelegate.ApplicationDidUpdatePlaceSettingsNotification, object: nil)
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
