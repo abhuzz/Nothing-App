@@ -106,13 +106,14 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SegueIdentifier.EditTask.rawValue {
-            let vc = segue.destinationViewController as! NTHCreateEditTaskViewController
+            let vc = segue.topOfNavigationController as! NTHCreateEditTaskViewController
             vc.context = CDHelper.temporaryContext
             if let task = sender as? Task {
                 var registeredObject = vc.context.objectWithID(task.objectID)
-                vc.editedTask = (registeredObject as? Task)!
+                vc.task = (registeredObject as? Task)!
                 vc.completionBlock = { task in
                     self.context.refreshObject(self.task, mergeChanges: true)
+                    self.context.save(nil)
                     for reminder in self.task.locationReminderInfos.allObjects as! [LocationReminderInfo] {
                         self.context.refreshObject(reminder, mergeChanges: true)
                     }

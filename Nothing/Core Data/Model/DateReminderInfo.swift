@@ -11,7 +11,7 @@ import CoreData
 
 @objc(DateReminderInfo)
 class DateReminderInfo: NSManagedObject {
-    @NSManaged var fireDate: NSDate
+    @NSManaged var fireDate: NSDate!
     @NSManaged private var repeatIntervalNumber: NSNumber
     @NSManaged private var task: Task?
 }

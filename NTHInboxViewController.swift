@@ -51,12 +51,13 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let refreshBlock: (task: Task) -> Void = { _ in
+            CDHelper.mainContext.save(nil)
             self.resultsController.performFetch(nil)
             self.tableView.reloadData()
         }
         
         if segue.identifier == SegueIdentifier.CreateTask.rawValue {
-            let vc = segue.destinationViewController as! NTHCreateEditTaskViewController
+            let vc = segue.topOfNavigationController as! NTHCreateEditTaskViewController
             vc.context = CDHelper.temporaryContext
             vc.completionBlock = refreshBlock
         } else if segue.identifier == SegueIdentifier.ShowTask.rawValue {

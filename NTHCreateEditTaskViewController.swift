@@ -9,13 +9,6 @@
 import UIKit
 import CoreData
 
-class TaskContainer {
-    var title: String?
-    var locationReminders = [LocationReminderInfo]()
-    var dateReminders = [DateReminderInfo]()
-    var links = [Link]()
-}
-
 class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
     @IBOutlet private weak var scrollViewBottomGuide: NSLayoutConstraint!
@@ -35,9 +28,10 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     @IBOutlet private var tapGesture: UITapGestureRecognizer!
     
     @IBOutlet private var doneButton: UIBarButtonItem!
-
+    @IBOutlet private weak var cancelButton: UIBarButtonItem!
+    
     /**
-        For setting UI colors
+    For setting UI colors
     */
     @IBOutlet private weak var locationRemindersLabel: UILabel!
     @IBOutlet private weak var dateRemindersLabel: UILabel!
@@ -49,12 +43,12 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     /// END
     
     
-
-    private var taskContainer = TaskContainer()
-
+    
     enum TableViewType: Int {
         case Locations, Dates, Links
     }
+    
+    
     
     private enum SegueIdentifier: String {
         case CreateLocationReminder = "CreateLocationReminder"
@@ -67,9 +61,8 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     
     
     var context: NSManagedObjectContext!
-    var editedTask: Task?
     var completionBlock: ((task: Task) -> Void)?
-    
+    var task: Task!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,28 +86,33 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         self._configureDatesTableView()
         self._configureLinksTableView()
         
-        if let task = self.editedTask {
-            self.taskContainer.title = task.title
-            self.titleTextField.text = task.title
-
-            if count(task.longDescription ?? "") > 0 {
-                self.notesTextView.text = task.longDescription!
-            }
-            
-            self.taskContainer.locationReminders = task.locationReminderInfos.allObjects as! [LocationReminderInfo]
-            
-            if let reminder = task.dateReminderInfo {
-                self.taskContainer.dateReminders.append(reminder)
-            }
-            
-            self.taskContainer.links = task.connections.allObjects as! [Link]
-            
-            self._validateDoneButton()
-            self._refreshLocations()
-            self._refreshDates()
-            self._refreshLinks()
+        if self.task == nil {
+            self.task = Task.create(self.context) as Task
+            self.task.uniqueIdentifier = NSUUID().UUIDString
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.titleTextField.text = self.task.title
+        if count(self.task.longDescription ?? "") > 0 {
+            self.notesTextView.text = task.longDescription!
+        }
+        
+        self._validateDoneButton()
+        self._refreshLocations()
+        self._refreshDates()
+        self._refreshLinks()
+        
+        self._addObservers()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self._removeObservers()
+    }
+    
     
     private func _addObservers() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldDidChange:", name: UITextFieldTextDidChangeNotification, object: nil)
@@ -145,7 +143,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             self._validateDoneButton()
         }
     }
-
+    
     
     private func _configureColors() {
         self.locationRemindersLabel.textColor = UIColor.NTHHeaderTextColor()
@@ -162,7 +160,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     
     private func _configureTitleTextField() {
         self.titleTextField.textFieldDidChangeBlock = { text in
-            self.taskContainer.title = text
+            self.task.title = text
         }
     }
     
@@ -176,18 +174,6 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     
     private func _configureLinksTableView() {
         self.linksTableView.tag = TableViewType.Links.rawValue
-    }
-
-    
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self._addObservers()
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        self._removeObservers()
     }
     
     @IBAction func handleTap(sender: AnyObject) {
@@ -205,7 +191,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             vc.completionBlock = { newReminder in
                 let object = self.context.objectWithID(newReminder.objectID)
                 let reminder = object as! LocationReminderInfo
-                self.taskContainer.locationReminders.append(reminder)
+                self.task.addLocationReminder(reminder)
                 self._refreshLocations()
             }
         } else if segue.identifier == SegueIdentifier.EditLocationReminder.rawValue {
@@ -218,17 +204,18 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 self._refreshLinks()
             }
         } else if segue.identifier == SegueIdentifier.CreateDateReminder.rawValue {
-            let vc = segue.destinationViewController as! NTHCreateEditDateReminderViewController
-            vc.context = self.context
+            let vc = segue.topOfNavigationController as! NTHCreateEditDateReminderViewController
+            vc.context = CDHelper.temporaryContextWithParent(self.context)
             vc.completionBlock = { newReminder in
-                self.taskContainer.dateReminders.append(newReminder)
+                let object = self.context.objectWithID(newReminder.objectID)
+                let reminder = object as! DateReminderInfo
+                self.task.dateReminderInfo = reminder
                 self._refreshDates()
             }
         } else if segue.identifier == SegueIdentifier.EditDateReminder.rawValue {
-            let vc = segue.destinationViewController as! NTHCreateEditDateReminderViewController
-            vc.context = self.context
-            let reminder = sender as! DateReminderInfo
-            vc.editedReminder = reminder
+            let vc = segue.topOfNavigationController as! NTHCreateEditDateReminderViewController
+            vc.context = CDHelper.temporaryContextWithParent(self.context)
+            vc.reminder = vc.context.objectWithID((sender as! DateReminderInfo).objectID) as! DateReminderInfo
             vc.completionBlock = { newReminder in
                 self._refreshDates()
             }
@@ -236,21 +223,21 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             let vc = segue.destinationViewController as! NTHSelectPlaceViewController
             vc.context = self.context
             vc.completionBlock = { selectedPlace in
-                self.taskContainer.links.append(selectedPlace)
+                self.task.addLink(selectedPlace)
                 self._refreshLinks()
             }
         } else if segue.identifier == SegueIdentifier.AddContactLink.rawValue {
             let vc = segue.destinationViewController as! NTHSelectContactViewController
             vc.context = self.context
             vc.completionBlock = { selectedContact in
-                self.taskContainer.links.append(selectedContact)
+                self.task.addLink(selectedContact)
                 self._refreshLinks()
             }
         }
     }
     
     private func _refreshLinks() {
-        self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.taskContainer.links.count + 1)
+        self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.task.connections.count + 1)
     }
     
     private func _refreshDates() {
@@ -258,60 +245,37 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     }
     
     private func _refreshLocations() {
-        self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.taskContainer.locationReminders.count + 1)
+        self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.task.locationReminderInfos.allObjects.count + 1)
     }
     
     private func _validateDoneButton() {
         self.doneButton.enabled = count(self.titleTextField.text) > 0
     }
     
+    @IBAction func cancelPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func donePressed(sender: AnyObject) {
-        var task: Task!
-        if let t = self.editedTask {
-            /// Use edited task
-            task = t
-        } else {
-            let t: Task = Task.create(self.context)
-            task = t
-            task.uniqueIdentifier = NSUUID().UUIDString
-        }
-        
-        task.title = self.taskContainer.title!
-        
-        task.locationReminderInfos = NSSet(array: self.taskContainer.locationReminders)
-        task.dateReminderInfo = self.taskContainer.dateReminders.first
-        task.connections = NSSet(array: self.taskContainer.links)
-        
-        task.longDescription = self.notesTextView.textValue
-        
-        var ctx = self.context
-        while(ctx != nil) {
-            ctx.save(nil)
-            ctx = ctx.parentContext
-        }
+        self.task.title = self.titleTextField.text
+        self.task.longDescription = self.notesTextView.textValue
+        self.context.save(nil)
         self.completionBlock?(task: task)
-        self.navigationController?.popViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
     
-
     /// Mark: UITableViewDelegate & UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         switch tableView.type {
-        case .Locations:
-            return self.taskContainer.locationReminders.count + 1
-            
-        case .Dates:
-            return 1
-            
-        case .Links:
-            return self.taskContainer.links.count + 1
+        case .Locations: return self.task.locationReminderInfos.allObjects.count + 1
+        case .Dates: return 1
+        case .Links: return self.task.connections.allObjects.count + 1
         }
     }
     
-
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -333,35 +297,36 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         
         switch tableView.type {
         case .Locations:
-            if indexPath.row == self.taskContainer.locationReminders.count {
+            if indexPath.row == self.task.locationReminderInfos.allObjects.count {
                 return _createAddNewSomethingCell("+ Add new location")
             } else {
-                let cell = _createRegularCell(self.taskContainer.locationReminders[indexPath.row].place.name)
+                let reminder = self.task.locationReminderInfos.allObjects[indexPath.row] as! LocationReminderInfo
+                let cell = _createRegularCell(reminder.place.name)
                 cell.clearPressedBlock = { cell in
-                    self.taskContainer.locationReminders.removeAtIndex(self.locationsTableView.indexPathForCell(cell)!.row)
-                    self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.taskContainer.locationReminders.count + 1)
+                    self.task.removeLocationReminder(reminder)
+                    self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.task.locationReminderInfos.allObjects.count + 1)
                 }
                 return cell
             }
         case .Dates:
-            if indexPath.row == self.taskContainer.dateReminders.count {
-                return _createAddNewSomethingCell("+ Add new date")
-            } else {
-                let reminder = self.taskContainer.dateReminders[indexPath.row]
+            if let reminder = self.task.dateReminderInfo {
                 let title = NSDateFormatter.NTHStringFromDate(reminder.fireDate)
                 let cell = _createRegularCell(title)
                 cell.clearPressedBlock = { cell in
-                    self.taskContainer.dateReminders.removeAtIndex(self.datesTableView.indexPathForCell(cell)!.row)
+                    self.task.dateReminderInfo = nil
                     self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, items: 1)
                 }
                 return cell
+            } else {
+                return _createAddNewSomethingCell("+ Add new date")
             }
+            
         case .Links:
-            if indexPath.row == self.taskContainer.links.count {
+            if indexPath.row == self.task.connections.allObjects.count {
                 return _createAddNewSomethingCell("+ Add new link")
             } else {
                 let title: String
-                let link = self.taskContainer.links[indexPath.row]
+                let link = self.task.connections.allObjects[indexPath.row] as! Link
                 if link is Place {
                     title = (link as! Place).name
                 } else {
@@ -370,8 +335,8 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 
                 let cell = _createRegularCell(title)
                 cell.clearPressedBlock = { cell in
-                    self.taskContainer.links.removeAtIndex(self.linksTableView.indexPathForCell(cell)!.row)
-                    self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.taskContainer.links.count + 1)
+                    self.task.removeLink(link)
+                    self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.task.connections.allObjects.count + 1)
                 }
                 return cell
             }
@@ -385,25 +350,23 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch tableView.type {
         case .Locations:
-            let addNewReminder = indexPath.row == self.taskContainer.locationReminders.count
+            let addNewReminder = indexPath.row == self.task.locationReminderInfos.allObjects.count
             if addNewReminder {
                 self.performSegueWithIdentifier(SegueIdentifier.CreateLocationReminder.rawValue, sender: nil)
             } else {
-                var reminder = self.taskContainer.locationReminders[indexPath.row]
+                var reminder = self.task.locationReminderInfos.allObjects[indexPath.row] as! LocationReminderInfo
                 self.performSegueWithIdentifier(SegueIdentifier.EditLocationReminder.rawValue, sender: reminder)
             }
             
         case .Dates:
-            let addNewReminder = indexPath.row == self.taskContainer.dateReminders.count
-            if addNewReminder {
-                self.performSegueWithIdentifier(SegueIdentifier.CreateDateReminder.rawValue, sender: nil)
-            } else {
-                var reminder = self.taskContainer.dateReminders[indexPath.row]
+            if let reminder = self.task.dateReminderInfo {
                 self.performSegueWithIdentifier(SegueIdentifier.EditDateReminder.rawValue, sender: reminder)
+            } else {
+                self.performSegueWithIdentifier(SegueIdentifier.CreateDateReminder.rawValue, sender: nil)
             }
             
         case .Links:
-            let addNewLink = indexPath.row == self.taskContainer.links.count
+            let addNewLink = indexPath.row == self.task.connections.allObjects.count
             if addNewLink {
                 let types = [
                     "contact": NSLocalizedString("Contact", comment: ""),

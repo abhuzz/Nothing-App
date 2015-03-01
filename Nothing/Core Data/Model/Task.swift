@@ -43,4 +43,30 @@ extension Task {
             self.state = .Active
         }
     }
+    
+    /// Location Reminder
+    func addLocationReminder(reminder: LocationReminderInfo) {
+        let mutableSet = NSMutableSet(set: self.locationReminderInfos)
+        mutableSet.addObject(reminder)
+        self.locationReminderInfos = NSSet(set: mutableSet)
+    }
+    
+    func removeLocationReminder(reminder: LocationReminderInfo) {
+        let mutableSet = NSMutableSet(set: self.locationReminderInfos)
+        mutableSet.removeObject(reminder)
+        self.locationReminderInfos = NSSet(set: mutableSet)
+    }
+    
+    /// Link
+    func addLink(link: Link) {
+        let mutableSet = NSMutableSet(set: self.connections)
+        mutableSet.addObject(link)
+        self.connections = NSSet(set: mutableSet)
+    }
+    
+    func removeLink(link: Link) {
+        let mutableSet = NSMutableSet(set: self.connections)
+        mutableSet.removeObject(link)
+        self.connections = NSSet(set: mutableSet)
+    }
 }

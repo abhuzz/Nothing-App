@@ -6,8 +6,8 @@
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="DateReminderInfo" representedClassName="DateReminderInfo" syncable="YES">
-        <attribute name="fireDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="repeatIntervalNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="fireDate" attributeType="Date" syncable="YES"/>
+        <attribute name="repeatIntervalNumber" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="dateReminderInfo" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Link" representedClassName="Link" isAbstract="YES" syncable="YES">
@@ -37,21 +37,21 @@
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES">
         <attribute name="longDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stateNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="stateNumber" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="trashed" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="uniqueIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueIdentifier" attributeType="String" syncable="YES"/>
         <relationship name="connections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Link" inverseName="tasks" inverseEntity="Link" syncable="YES"/>
         <relationship name="dateReminderInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DateReminderInfo" inverseName="task" inverseEntity="DateReminderInfo" syncable="YES"/>
         <relationship name="locationReminderInfos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocationReminderInfo" inverseName="task" inverseEntity="LocationReminderInfo" syncable="YES"/>
     </entity>
     <elements>
         <element name="Contact" positionX="25" positionY="207" width="128" height="88"/>
-        <element name="DateReminderInfo" positionX="-515" positionY="245" width="128" height="88"/>
+        <element name="DateReminderInfo" positionX="-515" positionY="245" width="128" height="90"/>
         <element name="Link" positionX="252" positionY="315" width="128" height="58"/>
         <element name="LocationReminderInfo" positionX="-182" positionY="236" width="128" height="105"/>
         <element name="OpenHour" positionX="-306" positionY="171" width="128" height="135"/>
         <element name="Place" positionX="27" positionY="369" width="128" height="135"/>
-        <element name="Task" positionX="-342" positionY="18" width="128" height="163"/>
+        <element name="Task" positionX="-342" positionY="18" width="128" height="165"/>
     </elements>
 </model>
