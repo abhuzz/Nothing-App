@@ -88,6 +88,7 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
         if segue.identifier == SegueIdentifier.SelectPlace.rawValue {
             let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController
             vc.context = self.context
+            vc.links = ModelController().allPlaces(self.context)
             vc.selectedLink = self.reminder.place
             vc.completionBlock = { selected in
                 self.reminder.place = (selected as! Place)
