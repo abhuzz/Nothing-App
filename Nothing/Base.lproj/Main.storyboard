@@ -557,7 +557,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Menu" id="3wR-MS-kd9">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DwC-to-FWH">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="DwC-to-FWH">
                             <connections>
                                 <action selector="cancelPressed:" destination="Rat-a6-yme" id="FaB-Ai-FdW"/>
                             </connections>
