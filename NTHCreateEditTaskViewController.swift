@@ -198,12 +198,12 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             vc.context = CDHelper.temporaryContextWithParent(self.context)
             vc.completionBlock = { newReminder in
                 let object = self.context.objectWithID(newReminder.objectID)
-                let reminder = object as! LocationReminderInfo
-                self.task.addLocationReminder(reminder)
+                let reminder = object as! LocationReminder
+                self.task.addReminder(reminder)
                 self._refreshLocations()
             }
         } else if segue.identifier == SegueIdentifier.EditLocationReminder.rawValue {
-            let reminder = sender as! LocationReminderInfo
+            let reminder = sender as! LocationReminder
             let vc = segue.topOfNavigationController as! NTHCreateEditLocationReminderViewController
             vc.context = self.context
             vc.reminder = reminder
@@ -255,7 +255,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     }
     
     private func _refreshLocations() {
-        self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.task.locationReminderInfos.allObjects.count + 1)
+        self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.task.locationReminders.count + 1)
     }
     
     private func _validateDoneButton() {
@@ -283,9 +283,14 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     /// Mark: UITableViewDelegate & UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableView.type {
-        case .Locations: return self.task.locationReminderInfos.allObjects.count + 1
-        case .Dates: return self.task.dateReminders.count + 1
-        case .Links: return self.task.links.allObjects.count + 1
+        case .Locations:
+            return self.task.locationReminders.count + 1
+            
+        case .Dates:
+            return self.task.dateReminders.count + 1
+            
+        case .Links:
+            return self.task.links.allObjects.count + 1
         }
     }
     
@@ -311,14 +316,15 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         
         switch tableView.type {
         case .Locations:
-            if indexPath.row == self.task.locationReminderInfos.allObjects.count {
+            let reminders = self.task.locationReminders
+            if indexPath.row == reminders.count {
                 return _createAddNewSomethingCell("+ Add new location")
             } else {
-                let reminder = self.task.locationReminderInfos.allObjects[indexPath.row] as! LocationReminderInfo
+                let reminder = reminders[indexPath.row]
                 let cell = _createRegularCell(reminder.place.name)
                 cell.clearPressedBlock = { cell in
-                    self.task.removeLocationReminder(reminder)
-                    self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.task.locationReminderInfos.allObjects.count + 1)
+                    self.task.removeReminder(reminder)
+                    self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.task.locationReminders.count + 1)
                 }
                 return cell
             }
@@ -367,11 +373,11 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch tableView.type {
         case .Locations:
-            let addNewReminder = indexPath.row == self.task.locationReminderInfos.allObjects.count
-            if addNewReminder {
+            let reminders = self.task.locationReminders
+            if indexPath.row == reminders.count {
                 self.performSegueWithIdentifier(SegueIdentifier.CreateLocationReminder.rawValue, sender: nil)
             } else {
-                var reminder = self.task.locationReminderInfos.allObjects[indexPath.row] as! LocationReminderInfo
+                var reminder = reminders[indexPath.row]
                 self.performSegueWithIdentifier(SegueIdentifier.EditLocationReminder.rawValue, sender: reminder)
             }
             

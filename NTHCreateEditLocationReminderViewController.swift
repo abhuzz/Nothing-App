@@ -24,9 +24,9 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     }
     
     var context: NSManagedObjectContext!
-    var completionBlock: ((newReminder: LocationReminderInfo) -> Void)?
+    var completionBlock: ((newReminder: LocationReminder) -> Void)?
     
-    var reminder: LocationReminderInfo!
+    var reminder: LocationReminder!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +37,12 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
         
         /// Check if reminder exists, if not create new one
         if self.reminder == nil {
-            self.reminder = LocationReminderInfo.create(self.context) as LocationReminderInfo
+            self.reminder = LocationReminder.create(self.context) as LocationReminder
             self.reminder.distance = 100.0
             self.reminder.onArrive = true
         }
         
-        self.regionControl.configure(self.reminder.distance, onArrive: self.reminder.onArrive)
+        self.regionControl.configure(self.reminder.distance.floatValue, onArrive: self.reminder.onArrive.boolValue)
         self._validateDoneButton()
         
         self.regionControl.prepareBeforePresenting()

@@ -15,7 +15,6 @@ import CoreLocation
 class Task: NSManagedObject {
     
     @NSManaged var links: NSSet
-    @NSManaged var locationReminderInfos: NSSet
     @NSManaged var longDescription: String?
     @NSManaged var uniqueIdentifier: String
     @NSManaged private var stateNumber: NSNumber
@@ -44,7 +43,8 @@ extension Task {
         }
     }
     
-    /// Date Reminder
+
+    /// Reminders
     func addReminder(reminder: Reminder) {
         let mutableSet = self.reminders.mutableSet()
         mutableSet.addObject(reminder)
@@ -61,19 +61,10 @@ extension Task {
         return filter(self.reminders.allObjects) { $0 is DateReminder } as! [DateReminder]
     }
     
-    
-    /// Location Reminder
-    func addLocationReminder(reminder: LocationReminderInfo) {
-        let mutableSet = NSMutableSet(set: self.locationReminderInfos)
-        mutableSet.addObject(reminder)
-        self.locationReminderInfos = NSSet(set: mutableSet)
+    var locationReminders: [LocationReminder] {
+        return filter(self.reminders.allObjects) { $0 is LocationReminder } as! [LocationReminder]
     }
     
-    func removeLocationReminder(reminder: LocationReminderInfo) {
-        let mutableSet = NSMutableSet(set: self.locationReminderInfos)
-        mutableSet.removeObject(reminder)
-        self.locationReminderInfos = NSSet(set: mutableSet)
-    }
     
     /// Link
     func addLink(link: Link) {

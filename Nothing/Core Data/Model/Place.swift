@@ -15,16 +15,15 @@ class Place: Link {
     @NSManaged var name: String!
     @NSManaged private var latitude: NSNumber
     @NSManaged private var longitude: NSNumber
-    @NSManaged var locationReminderInfos: NSSet
     @NSManaged var openHours: NSOrderedSet
     @NSManaged var useOpenHours: NSNumber
+    @NSManaged var locationReminders: NSSet
 }
 
 extension Place {
     
     override func awakeFromInsert() {
         super.awakeFromInsert()
-        self.locationReminderInfos = NSSet()
     }
     
     var coordinate: CLLocationCoordinate2D {
@@ -36,8 +35,7 @@ extension Place {
     }
     
     func removeAllAssociatedObjects(context: NSManagedObjectContext!) {
-        let infos = self.locationReminderInfos.allObjects as! [LocationReminderInfo]
-        for info in infos {
+        for info in self.locationReminders.allObjects as! [LocationReminder] {
             context.deleteObject(info)
         }
     }

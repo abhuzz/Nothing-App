@@ -132,7 +132,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch TableViewType(rawValue:tableView.tag)! {
         case .Locations:
-            return max(1, self.task.locationReminderInfos.allObjects.count)
+            return max(1, self.task.locationReminders.count)
             
         case .Dates:
             return max(1, self.task.dateReminders.count)
@@ -174,11 +174,12 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         
         switch TableViewType(rawValue:tableView.tag)! {
         case .Locations:
-            if indexPath.row != self.task.locationReminderInfos.allObjects.count {
-                let reminder = self.task.locationReminderInfos.allObjects[indexPath.row] as! LocationReminderInfo
+            let reminders = self.task.locationReminders
+            if indexPath.row != reminders.count {
+                let reminder = reminders[indexPath.row]
                 let topText = reminder.place.name
-                let prefix = reminder.onArrive ? "Arrive" : "Leave"
-                let bottomText = prefix + ", " + reminder.distance.metersOrKilometers()
+                let prefix = reminder.onArrive.boolValue ? "Arrive" : "Leave"
+                let bottomText = prefix + ", " + reminder.distance.floatValue.metersOrKilometers()
                 
                 return _createTwoLabelCell(topText, bottomText)
             } else {
@@ -217,8 +218,9 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch TableViewType(rawValue:tableView.tag)! {
         case .Locations:
-            if self.task.locationReminderInfos.allObjects.count > 0 {
-                let reminder = self.task.locationReminderInfos.allObjects[indexPath.row] as! LocationReminderInfo
+            let reminders = self.task.locationReminders
+            if reminders.count > 0 {
+                let reminder = reminders[indexPath.row]
                 let alert = UIAlertController.actionSheetForPlace(reminder.place)
                 self.presentViewController(alert, animated: true, completion: nil)
             }
@@ -245,7 +247,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch TableViewType(rawValue:tableView.tag)! {
         case .Locations:
-            return self.task.locationReminderInfos.allObjects.count > 0 ? self._twoLineCellHeight() : self._oneLineCellHeight()
+            return self.task.locationReminders.count > 0 ? self._twoLineCellHeight() : self._oneLineCellHeight()
         case .Dates:
             return (self.task.dateReminders.count > 0) ? self._twoLineCellHeight() : self._oneLineCellHeight()
             
@@ -264,7 +266,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     private func _locationRemindersTableViewHeight() -> CGFloat {
-        let count = self.task.locationReminderInfos.allObjects.count
+        let count = self.task.locationReminders.count
         return count > 0 ? CGFloat(count) * self._twoLineCellHeight() : self._oneLineCellHeight()
     }
     

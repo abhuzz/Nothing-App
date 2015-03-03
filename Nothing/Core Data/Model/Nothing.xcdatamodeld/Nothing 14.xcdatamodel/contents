@@ -23,13 +23,7 @@
     <entity name="LocationReminder" representedClassName="LocationReminder" parentEntity="Reminder" syncable="YES">
         <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="onArrive" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
-        <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="locationReminder" inverseEntity="Place" syncable="YES"/>
-    </entity>
-    <entity name="LocationReminderInfo" representedClassName="LocationReminderInfo" syncable="YES">
-        <attribute name="distanceNumber" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
-        <attribute name="onArriveBool" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="locationReminderInfos" inverseEntity="Place" syncable="YES"/>
-        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="locationReminderInfos" inverseEntity="Task" syncable="YES"/>
+        <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="locationReminders" inverseEntity="Place" syncable="YES"/>
     </entity>
     <entity name="OpenTimeRange" representedClassName="OpenTimeRange" syncable="YES">
         <attribute name="closed" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
@@ -45,8 +39,7 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="useOpenHours" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <relationship name="locationDateReminder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationDateReminder" inverseName="place" inverseEntity="LocationDateReminder" syncable="YES"/>
-        <relationship name="locationReminder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationReminder" inverseName="place" inverseEntity="LocationReminder" syncable="YES"/>
-        <relationship name="locationReminderInfos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocationReminderInfo" inverseName="place" inverseEntity="LocationReminderInfo" syncable="YES"/>
+        <relationship name="locationReminders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocationReminder" inverseName="place" inverseEntity="LocationReminder" syncable="YES"/>
         <relationship name="openHours" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="OpenTimeRange" inverseName="place" inverseEntity="OpenTimeRange" syncable="YES"/>
     </entity>
     <entity name="Reminder" representedClassName="Reminder" syncable="YES">
@@ -59,16 +52,14 @@
         <attribute name="trashed" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="uniqueIdentifier" attributeType="String" syncable="YES"/>
         <relationship name="links" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Link" inverseName="tasks" inverseEntity="Link" syncable="YES"/>
-        <relationship name="locationReminderInfos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocationReminderInfo" inverseName="task" inverseEntity="LocationReminderInfo" syncable="YES"/>
         <relationship name="reminders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reminder" inverseName="task" inverseEntity="Reminder" syncable="YES"/>
     </entity>
     <elements>
         <element name="Contact" positionX="252" positionY="153" width="128" height="88"/>
         <element name="Link" positionX="27" positionY="167" width="128" height="58"/>
-        <element name="LocationReminderInfo" positionX="-182" positionY="252" width="128" height="105"/>
         <element name="OpenTimeRange" positionX="223" positionY="441" width="128" height="135"/>
-        <element name="Place" positionX="27" positionY="411" width="128" height="165"/>
-        <element name="Task" positionX="-342" positionY="18" width="128" height="163"/>
+        <element name="Place" positionX="27" positionY="411" width="128" height="148"/>
+        <element name="Task" positionX="-342" positionY="18" width="128" height="148"/>
         <element name="Reminder" positionX="-614" positionY="588" width="128" height="58"/>
         <element name="DateReminder" positionX="-297" positionY="726" width="128" height="75"/>
         <element name="LocationReminder" positionX="-279" positionY="594" width="128" height="88"/>

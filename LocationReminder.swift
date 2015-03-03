@@ -14,6 +14,6 @@ class LocationReminder: Reminder {
 
     @NSManaged var distance: NSNumber
     @NSManaged var onArrive: NSNumber
-    @NSManaged var place: Place
+    @NSManaged var place: Place!
 
 }

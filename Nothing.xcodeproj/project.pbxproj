@@ -43,7 +43,6 @@
 		1279B60B19FED64D00A7828C /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5FF19FED64D00A7828C /* Link.swift */; };
 		1279B60C19FED64D00A7828C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60019FED64D00A7828C /* Contact.swift */; };
 		1279B60D19FED64D00A7828C /* Nothing.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */; };
-		1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60419FED64D00A7828C /* LocationReminderInfo.swift */; };
 		1279B61019FED64D00A7828C /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60519FED64D00A7828C /* Place.swift */; };
 		1279B61119FED64D00A7828C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60619FED64D00A7828C /* Task.swift */; };
 		1279B61219FED64D00A7828C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60719FED64D00A7828C /* FileManager.swift */; };
@@ -150,7 +149,6 @@
 		1279B5FF19FED64D00A7828C /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		1279B60019FED64D00A7828C /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		1279B60219FED64D00A7828C /* Nothing.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nothing.xcdatamodel; sourceTree = "<group>"; };
-		1279B60419FED64D00A7828C /* LocationReminderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationReminderInfo.swift; sourceTree = "<group>"; };
 		1279B60519FED64D00A7828C /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		1279B60619FED64D00A7828C /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		1279B60719FED64D00A7828C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
@@ -420,7 +418,6 @@
 				1279B5FF19FED64D00A7828C /* Link.swift */,
 				128732431AA62A63000B3694 /* LocationDateReminder.swift */,
 				128732411AA6298D000B3694 /* LocationReminder.swift */,
-				1279B60419FED64D00A7828C /* LocationReminderInfo.swift */,
 				12BEB0F31A06DC9300643860 /* ModelController.swift */,
 				12D2E8881A9BE76B001539CD /* OpenTimeRange.swift */,
 				1279B60519FED64D00A7828C /* Place.swift */,
@@ -617,7 +614,6 @@
 				12D2E87D1A9B92D8001539CD /* NTHTrashViewController.swift in Sources */,
 				12CB97661AA372F70075C0E4 /* TSRegionTimeRange.swift in Sources */,
 				1259B7751A8F93380059525F /* CLLocationCoordinate2D_TS.swift in Sources */,
-				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
 				1279B60B19FED64D00A7828C /* Link.swift in Sources */,
 				1279B61119FED64D00A7828C /* Task.swift in Sources */,
 				12A7C0B51A9893DA00BB6B94 /* NTHButton.swift in Sources */,
