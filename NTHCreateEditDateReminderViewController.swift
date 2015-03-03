@@ -23,8 +23,8 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
     private var repeatIntervals = RepeatInterval.allIntervals()
     
     var context: NSManagedObjectContext!
-    var reminder: DateReminderInfo!
-    var completionBlock: ((newReminder: DateReminderInfo) -> Void)?
+    var reminder: DateReminder!
+    var completionBlock: ((newReminder: DateReminder) -> Void)?
     
     private enum TableViewType: Int {
         case Date = 0
@@ -50,7 +50,7 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
         
         /// create reminder if not exists
         if self.reminder == nil {
-            self.reminder = DateReminderInfo.create(self.context) as DateReminderInfo
+            self.reminder = DateReminder.create(self.context) as DateReminder
             self.reminder.fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(3600))
         }
         

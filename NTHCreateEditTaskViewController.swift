@@ -216,14 +216,14 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             vc.context = CDHelper.temporaryContextWithParent(self.context)
             vc.completionBlock = { newReminder in
                 let object = self.context.objectWithID(newReminder.objectID)
-                let reminder = object as! DateReminderInfo
-                self.task.dateReminderInfo = reminder
+                let reminder = object as! DateReminder
+                self.task.addReminder(reminder)
                 self._refreshDates()
             }
         } else if segue.identifier == SegueIdentifier.EditDateReminder.rawValue {
             let vc = segue.topOfNavigationController as! NTHCreateEditDateReminderViewController
             vc.context = CDHelper.temporaryContextWithParent(self.context)
-            vc.reminder = vc.context.objectWithID((sender as! DateReminderInfo).objectID) as! DateReminderInfo
+            vc.reminder = vc.context.objectWithID((sender as! DateReminder).objectID) as! DateReminder
             vc.completionBlock = { newReminder in
                 self._refreshDates()
             }
@@ -251,7 +251,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     }
     
     private func _refreshDates() {
-        self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, items: 1)
+        self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, items: self.task.dateReminders.count + 1)
     }
     
     private func _refreshLocations() {
@@ -284,7 +284,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableView.type {
         case .Locations: return self.task.locationReminderInfos.allObjects.count + 1
-        case .Dates: return 1
+        case .Dates: return self.task.dateReminders.count + 1
         case .Links: return self.task.links.allObjects.count + 1
         }
     }
@@ -322,17 +322,20 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 }
                 return cell
             }
+            
         case .Dates:
-            if let reminder = self.task.dateReminderInfo {
+            if indexPath.row == self.task.dateReminders.count {
+                return _createAddNewSomethingCell("+ Add new date")
+            } else {
+                let reminders = self.task.dateReminders
+                let reminder = reminders[indexPath.row]
                 let title = NSDateFormatter.NTHStringFromDate(reminder.fireDate)
                 let cell = _createRegularCell(title)
                 cell.clearPressedBlock = { cell in
-                    self.task.dateReminderInfo = nil
-                    self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, items: 1)
+                    self.task.removeReminder(reminder)
+                    self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, items: max(1,self.task.dateReminders.count))
                 }
                 return cell
-            } else {
-                return _createAddNewSomethingCell("+ Add new date")
             }
             
         case .Links:
@@ -373,10 +376,11 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             }
             
         case .Dates:
-            if let reminder = self.task.dateReminderInfo {
-                self.performSegueWithIdentifier(SegueIdentifier.EditDateReminder.rawValue, sender: reminder)
-            } else {
+            let reminders = self.task.dateReminders
+            if indexPath.row == reminders.count {
                 self.performSegueWithIdentifier(SegueIdentifier.CreateDateReminder.rawValue, sender: nil)
+            } else {
+                self.performSegueWithIdentifier(SegueIdentifier.EditDateReminder.rawValue, sender: reminders[indexPath.row])
             }
             
         case .Links:

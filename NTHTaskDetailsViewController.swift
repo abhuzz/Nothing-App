@@ -114,16 +114,9 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
                 vc.completionBlock = { task in
                     self.context.refreshObject(self.task, mergeChanges: true)
                     self.context.save(nil)
-                    for reminder in self.task.locationReminderInfos.allObjects as! [LocationReminderInfo] {
-                        self.context.refreshObject(reminder, mergeChanges: true)
-                    }
                     
-                    if let reminder = self.task.dateReminderInfo {
+                    for reminder in self.task.reminders.allObjects as! [Reminder] {
                         self.context.refreshObject(reminder, mergeChanges: true)
-                    }
-                    
-                    for link in self.task.links.allObjects as! [Link] {
-                        self.context.refreshObject(link, mergeChanges: true)
                     }
                     
                     self._fillView()
@@ -142,7 +135,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             return max(1, self.task.locationReminderInfos.allObjects.count)
             
         case .Dates:
-            return 1
+            return max(1, self.task.dateReminders.count)
             
         case .Links:
             return max(1, self.task.links.allObjects.count)
@@ -193,7 +186,9 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             }
             
         case .Dates:
-            if let reminder = self.task.dateReminderInfo {
+            let reminders = self.task.dateReminders
+            if reminders.count > 0 {
+                let reminder = reminders[indexPath.row]
                 let topText = NSDateFormatter.NTHStringFromDate(reminder.fireDate)
                 let bottomText = RepeatInterval.descriptionForInterval(interval: reminder.repeatInterval)
                 return _createTwoLabelCell(topText, bottomText)
@@ -252,11 +247,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         case .Locations:
             return self.task.locationReminderInfos.allObjects.count > 0 ? self._twoLineCellHeight() : self._oneLineCellHeight()
         case .Dates:
-            if let reminder = self.task.dateReminderInfo {
-                return self._twoLineCellHeight()
-            } else {
-                return self._oneLineCellHeight()
-            }
+            return (self.task.dateReminders.count > 0) ? self._twoLineCellHeight() : self._oneLineCellHeight()
             
         case .Links:
             return self._oneLineCellHeight()
@@ -278,11 +269,8 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     private func _datesRemindersTableViewHeight() -> CGFloat {
-        if let reminder = self.task.dateReminderInfo {
-            return self._twoLineCellHeight()
-        } else {
-            return self._oneLineCellHeight()
-        }
+        let count = self.task.dateReminders.count
+        return (count > 0) ? self._twoLineCellHeight() * CGFloat(count) : self._oneLineCellHeight()
     }
     
     private func _linksTableViewHeight() -> CGFloat {

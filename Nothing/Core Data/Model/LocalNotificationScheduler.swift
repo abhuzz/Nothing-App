@@ -12,6 +12,7 @@ import UIKit
 class LocalNotificationScheduler {
     
     class func scheduleNotification(task: Task) {
+        /*
         /// Cancel notifications first
         self.cancelScheduledNotifications(task)
 
@@ -25,12 +26,13 @@ class LocalNotificationScheduler {
             notification.repeatInterval = reminder.repeatInterval
             notification.alertBody = task.title
         }
-        
+
         /// Schedule
         if schedule {
             notification.userInfo = ["uniqueIdentifier": task.uniqueIdentifier]
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
+        */
     }
     
     class func cancelScheduledNotifications(task: Task) {

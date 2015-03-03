@@ -14,4 +14,9 @@ class DateReminder: Reminder {
 
     @NSManaged var fireDate: NSDate!
     @NSManaged var repeatIntervalNumber: NSNumber!
+    
+    var repeatInterval: NSCalendarUnit {
+        set { self.repeatIntervalNumber = NSNumber(unsignedLong: newValue.rawValue) }
+        get { return NSCalendarUnit(rawValue: self.repeatIntervalNumber.unsignedLongValue) }
+    }
 }
