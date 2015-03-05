@@ -11,29 +11,36 @@ import CoreData
 
 class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    
     @IBOutlet private weak var dateAndtimeLabel: UILabel!
     @IBOutlet weak var dateTableView: UITableView!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var repeatIntervalLabel: UILabel!
     @IBOutlet private weak var separator: UIView!
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
-    private var repeatIntervalIndexPath: NSIndexPath?
-    private var repeatIntervals = RepeatInterval.allIntervals()
+    
     
     var context: NSManagedObjectContext!
     var reminder: DateReminder!
     var completionBlock: ((newReminder: DateReminder) -> Void)?
     
+    
+    
     private enum TableViewType: Int {
         case Date = 0
-        case RepeatInterval
+        case Options
+    }
+    
+    
+    
+    private enum SegueIdentifier: String {
+        case SelectRepeatInterval = "SelectRepeatInterval"
     }
     
     private func _configureUIColors() {
         self.dateAndtimeLabel.textColor = UIColor.NTHHeaderTextColor()
-        self.repeatIntervalLabel.textColor = UIColor.NTHHeaderTextColor()
         self.separator.backgroundColor = UIColor.NTHTableViewSeparatorColor()
     }
     
@@ -45,8 +52,8 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
         self.dateTableView.registerNib("NTHLeftLabelCell")
         self.dateTableView.tag = TableViewType.Date.rawValue
         
-        self.tableView.registerNib("NTHLeftLabelCell")
-        self.tableView.tag = TableViewType.RepeatInterval.rawValue
+        self.tableView.registerNib("NTHTwoLineLeftLabelCell")
+        self.tableView.tag = TableViewType.Options.rawValue
         
         /// create reminder if not exists
         if self.reminder == nil {
@@ -56,6 +63,11 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
         
         println("date = \(self.reminder.fireDate)")
         self._validateDoneButton()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
     }
     
     @IBAction func cancelPressed(sender: AnyObject) {
@@ -73,11 +85,21 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
     }
     
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SegueIdentifier.SelectRepeatInterval.rawValue {
+            let vc = segue.destinationViewController as! NTHSelectRepeatIntervalViewController
+            vc.reminder = self.reminder
+            vc.completionBlock = {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     /// Mark: UITableView
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch TableViewType(rawValue: tableView.tag)! {
         case .Date: return 1
-        case .RepeatInterval: return self.repeatIntervals.count
+        case .Options: return 1
         }
     }
     
@@ -87,6 +109,15 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelCell") as! NTHLeftLabelCell
             cell.label.text = title
             cell.label.font = UIFont.NTHNormalTextFont()
+            cell.selectedBackgroundView = UIView()
+            cell.tintColor = UIColor.NTHNavigationBarColor()
+            return cell
+        }
+        
+        func _twoLineLabelCell(title: String, subtitle: String) -> NTHTwoLineLeftLabelCell {
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHTwoLineLeftLabelCell") as! NTHTwoLineLeftLabelCell
+            cell.topLabel.text = title
+            cell.bottomLabel.text = subtitle
             cell.selectedBackgroundView = UIView()
             cell.tintColor = UIColor.NTHNavigationBarColor()
             return cell
@@ -109,22 +140,20 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
                 return _centerLabelCell("+ Select date")
             }
             
-        case .RepeatInterval:
-            let interval = self.repeatIntervals[indexPath.row]
-            let cell = _leftLabelCell(RepeatInterval.descriptionForInterval(interval: interval))
-            
-            if (self.repeatIntervalIndexPath == nil && indexPath.row == 0 && self.reminder.fireDate == nil) ||
-                (self.reminder.repeatInterval == interval)  {
-                    cell.accessoryType = .Checkmark
-                    self.repeatIntervalIndexPath = indexPath
-            }
-            
+        case .Options:
+            let interval = self.reminder.repeatInterval
+            let cell = _twoLineLabelCell("Repeat Interval", RepeatInterval.descriptionForInterval(interval: interval))
+            cell.accessoryType = .DisclosureIndicator
             return cell
         }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        if tableView == self.tableView {
+            return 62
+        } else {
+            return 50
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -146,23 +175,9 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
             NTHSheetSegue(identifier: nil, source: self, destination: datePicker).perform()
             return
             
-        case .RepeatInterval:
+        case .Options:
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            
-            if let previousIndexPath = self.repeatIntervalIndexPath {
-                tableView.cellForRowAtIndexPath(previousIndexPath)?.accessoryType = .None
-                self.repeatIntervalIndexPath = nil
-            }
-            
-            let cell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-            if cell.accessoryType == .None {
-                cell.accessoryType = .Checkmark
-            } else {
-                cell.accessoryType = .None
-            }
-            
-            self.repeatIntervalIndexPath = indexPath
-            self.reminder.repeatInterval = self.repeatIntervals[indexPath.row]
+            self.performSegueWithIdentifier("SelectRepeatInterval", sender: nil)
         }
     }
 }

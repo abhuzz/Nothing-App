@@ -24,7 +24,7 @@ class RepeatInterval {
         if i == NSCalendarUnit.CalendarUnitDay { return String.onceADayRepeatInterval() }
         if i == NSCalendarUnit.CalendarUnitWeekOfYear { return String.onceAWeakRepeatInterval() }
         if i == NSCalendarUnit.CalendarUnitMonth { return String.onceAMonthRepeatInterval() }
-        if i == NSCalendarUnit.CalendarUnitYear { return String.onceAWeakRepeatInterval() }
+        if i == NSCalendarUnit.CalendarUnitYear { return String.onceAYearRepeatInterval() }
         return ""
     }
 }

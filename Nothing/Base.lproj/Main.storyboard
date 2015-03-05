@@ -376,21 +376,6 @@
                                 <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WEj-sN-D9d">
-                                <rect key="frame" x="25" y="210" width="270" height="358"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="qKL-pp-hDu" id="9pa-ic-ICI"/>
-                                    <outlet property="delegate" destination="qKL-pp-hDu" id="DRn-mr-y6r"/>
-                                </connections>
-                            </tableView>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REPEAT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubG-vb-FUG">
-                                <rect key="frame" x="25" y="185" width="270" height="17"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
-                                <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="TWo-9w-97b" userLabel="separator 3">
                                 <rect key="frame" x="25" y="169" width="270" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
@@ -410,25 +395,33 @@
                                     <outlet property="delegate" destination="qKL-pp-hDu" id="F4t-av-BqN"/>
                                 </connections>
                             </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WEj-sN-D9d">
+                                <rect key="frame" x="25" y="178" width="285" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="szC-Fa-iWM"/>
+                                </constraints>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="qKL-pp-hDu" id="9pa-ic-ICI"/>
+                                    <outlet property="delegate" destination="qKL-pp-hDu" id="DRn-mr-y6r"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qeV-3H-cUl" firstAttribute="top" secondItem="WEj-sN-D9d" secondAttribute="bottom" id="2gi-2K-Zbo"/>
                             <constraint firstAttribute="trailing" secondItem="LI2-Aa-iff" secondAttribute="trailing" constant="25" id="37i-gW-yZ8"/>
-                            <constraint firstAttribute="trailing" secondItem="ubG-vb-FUG" secondAttribute="trailing" constant="25" id="CEN-3W-yKL"/>
                             <constraint firstItem="bm9-kS-j0T" firstAttribute="leading" secondItem="g8V-C6-gmx" secondAttribute="leading" constant="25" id="EHP-E0-QWz"/>
                             <constraint firstItem="WEj-sN-D9d" firstAttribute="leading" secondItem="g8V-C6-gmx" secondAttribute="leading" constant="25" id="Gwm-9r-Ece"/>
                             <constraint firstItem="bm9-kS-j0T" firstAttribute="top" secondItem="dMb-IP-6Sz" secondAttribute="bottom" constant="40" id="Jux-Ok-HMz"/>
-                            <constraint firstAttribute="trailing" secondItem="WEj-sN-D9d" secondAttribute="trailing" constant="25" id="KnF-BF-Gzw"/>
-                            <constraint firstItem="ubG-vb-FUG" firstAttribute="leading" secondItem="g8V-C6-gmx" secondAttribute="leading" constant="25" id="T0f-Vb-487"/>
+                            <constraint firstAttribute="trailing" secondItem="WEj-sN-D9d" secondAttribute="trailing" constant="10" id="KnF-BF-Gzw"/>
                             <constraint firstItem="TWo-9w-97b" firstAttribute="top" secondItem="bm9-kS-j0T" secondAttribute="bottom" constant="15" id="bhO-cq-ec1"/>
                             <constraint firstItem="LI2-Aa-iff" firstAttribute="top" secondItem="dMb-IP-6Sz" secondAttribute="bottom" constant="15" id="e3S-Nm-M6C"/>
                             <constraint firstItem="TWo-9w-97b" firstAttribute="leading" secondItem="g8V-C6-gmx" secondAttribute="leading" constant="25" id="gxy-uT-2oz"/>
                             <constraint firstItem="bm9-kS-j0T" firstAttribute="top" secondItem="LI2-Aa-iff" secondAttribute="bottom" constant="8" id="h29-Oy-8lx"/>
-                            <constraint firstItem="WEj-sN-D9d" firstAttribute="top" secondItem="ubG-vb-FUG" secondAttribute="bottom" constant="8" id="nt0-CJ-nVq"/>
+                            <constraint firstItem="WEj-sN-D9d" firstAttribute="top" secondItem="TWo-9w-97b" secondAttribute="bottom" constant="8" id="lvt-5a-9YK"/>
                             <constraint firstAttribute="trailing" secondItem="TWo-9w-97b" secondAttribute="trailing" constant="25" id="nzP-jl-yos"/>
                             <constraint firstAttribute="trailing" secondItem="bm9-kS-j0T" secondAttribute="trailing" constant="25" id="pKc-v3-HiW"/>
-                            <constraint firstItem="ubG-vb-FUG" firstAttribute="top" secondItem="TWo-9w-97b" secondAttribute="bottom" constant="15" id="xNj-lz-q7J"/>
                             <constraint firstItem="LI2-Aa-iff" firstAttribute="leading" secondItem="g8V-C6-gmx" secondAttribute="leading" constant="25" id="xlz-L1-cO6"/>
                         </constraints>
                     </view>
@@ -451,14 +444,52 @@
                         <outlet property="dateAndtimeLabel" destination="LI2-Aa-iff" id="QIm-lF-oDo"/>
                         <outlet property="dateTableView" destination="bm9-kS-j0T" id="O3g-wF-kgP"/>
                         <outlet property="doneButton" destination="u38-eC-nY5" id="5LW-nk-KKn"/>
-                        <outlet property="repeatIntervalLabel" destination="ubG-vb-FUG" id="jbZ-W3-ycH"/>
                         <outlet property="separator" destination="TWo-9w-97b" id="ang-t0-3KK"/>
                         <outlet property="tableView" destination="WEj-sN-D9d" id="kNz-j7-nYr"/>
+                        <segue destination="dwb-mj-o2U" kind="push" identifier="SelectRepeatInterval" id="7vb-2m-T27"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBe-lt-sSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2006" y="385"/>
+        </scene>
+        <!--Repeat Interval-->
+        <scene sceneID="hiC-nt-WaF">
+            <objects>
+                <viewController id="dwb-mj-o2U" customClass="NTHSelectRepeatIntervalViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wg2-X1-gLv"/>
+                        <viewControllerLayoutGuide type="bottom" id="QWA-eU-pc1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lFM-xj-JkJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="K1g-dV-mrh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dwb-mj-o2U" id="N0l-zt-5hG"/>
+                                    <outlet property="delegate" destination="dwb-mj-o2U" id="paY-l5-PAp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="K1g-dV-mrh" secondAttribute="trailing" id="8lT-NT-ffU"/>
+                            <constraint firstItem="K1g-dV-mrh" firstAttribute="top" secondItem="lFM-xj-JkJ" secondAttribute="top" id="adJ-JG-eyp"/>
+                            <constraint firstItem="K1g-dV-mrh" firstAttribute="leading" secondItem="lFM-xj-JkJ" secondAttribute="leading" id="bcm-8A-wof"/>
+                            <constraint firstItem="QWA-eU-pc1" firstAttribute="top" secondItem="K1g-dV-mrh" secondAttribute="bottom" id="uWc-bm-j7r"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Repeat Interval" id="KKy-hz-DqB"/>
+                    <connections>
+                        <outlet property="tableView" destination="K1g-dV-mrh" id="9ke-zY-V7I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F2f-f1-tFG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2559" y="385"/>
         </scene>
         <!--Inbox-->
         <scene sceneID="a6b-6V-mzd">
