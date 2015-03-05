@@ -18,6 +18,9 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet private weak var locationsTableView: UITableView!
     @IBOutlet private weak var locationsTableViewHeight: NSLayoutConstraint!
     
+    @IBOutlet private weak var locationDatesTableView: UITableView!
+    @IBOutlet private weak var locationDatesTableViewHeight: NSLayoutConstraint!
+    
     @IBOutlet private weak var datesTableView: UITableView!
     @IBOutlet private weak var datesTableViewHeight: NSLayoutConstraint!
     
@@ -44,7 +47,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     var completionBlock: (() -> Void)?
     
     private enum TableViewType: Int {
-        case Locations, Dates, Links
+        case Locations, Dates, LocationDates, Links
     }
     
     private enum SegueIdentifier: String {
@@ -75,6 +78,10 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         self.locationsTableView.registerNib(notSetCellIdentifier)
         self.locationsTableView.registerNib(twoLineLeftLabelCellIdentifier)
         
+        self.locationDatesTableView.tag = TableViewType.LocationDates.rawValue
+        self.locationDatesTableView.registerNib(notSetCellIdentifier)
+        self.locationDatesTableView.registerNib(twoLineLeftLabelCellIdentifier)
+        
         self.datesTableView.tag = TableViewType.Dates.rawValue
         self.datesTableView.registerNib(notSetCellIdentifier)
         self.datesTableView.registerNib(twoLineLeftLabelCellIdentifier)
@@ -98,6 +105,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         }
         
         self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, height: self._locationRemindersTableViewHeight())
+        self._refreshTableView(self.locationDatesTableView, heightConstraint: self.locationDatesTableViewHeight, height: self._locationDatesRemindersTableViewHeight())
         self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, height: self._datesRemindersTableViewHeight())
         self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, height: self._linksTableViewHeight())
     }
@@ -133,6 +141,9 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         switch TableViewType(rawValue:tableView.tag)! {
         case .Locations:
             return max(1, self.task.locationReminders.count)
+            
+        case .LocationDates:
+            return max(1, self.task.locationDateReminders.count)
             
         case .Dates:
             return max(1, self.task.dateReminders.count)
@@ -183,7 +194,21 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
                 
                 return _createTwoLabelCell(topText, bottomText)
             } else {
-                return _createNotSetCell("No location reminders")
+                return _createNotSetCell("No reminders")
+            }
+            
+        case .LocationDates:
+            let reminders = self.task.locationDateReminders
+            if reminders.count > 0 {
+                let reminder = reminders[indexPath.row]
+                let topText = NSDateFormatter.NTHStringFromDate(reminder.sinceDate) + " - " + NSDateFormatter.NTHStringFromDate(reminder.toDate)
+                
+                let prefix = reminder.onArrive.boolValue ? "Arrive" : "Leave"
+                let bottomText = reminder.place.name + " - " + prefix + ", " + reminder.distance.floatValue.metersOrKilometers()
+
+                return _createTwoLabelCell(topText, bottomText)
+            } else {
+                return _createNotSetCell("No reminders")
             }
             
         case .Dates:
@@ -194,7 +219,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
                 let bottomText = RepeatInterval.descriptionForInterval(interval: reminder.repeatInterval)
                 return _createTwoLabelCell(topText, bottomText)
             } else {
-                return _createNotSetCell("No date reminders")
+                return _createNotSetCell("No reminders")
             }
             
         case .Links:
@@ -226,6 +251,15 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             }
             break
             
+        case .LocationDates:
+            let reminders = self.task.locationDateReminders
+            if reminders.count > 0 {
+                println("Location Dates tap not supported")
+//                let reminder = reminders[indexPath.row]
+//                let alert = UIAlertController.actionSheetForPlace(reminder.place)
+//                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            
         case .Dates:
             break
             
@@ -251,6 +285,9 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         case .Dates:
             return (self.task.dateReminders.count > 0) ? self._twoLineCellHeight() : self._oneLineCellHeight()
             
+        case .LocationDates:
+            return (self.task.locationDateReminders.count > 0) ? self._twoLineCellHeight() : self._oneLineCellHeight()
+
         case .Links:
             return self._oneLineCellHeight()
         }
@@ -263,6 +300,11 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     
     private func _twoLineCellHeight() -> CGFloat {
         return 69.0
+    }
+    
+    private func _locationDatesRemindersTableViewHeight() -> CGFloat {
+        let count = self.task.locationDateReminders.count
+        return count > 0 ? CGFloat(count) * self._twoLineCellHeight() : self._oneLineCellHeight()
     }
     
     private func _locationRemindersTableViewHeight() -> CGFloat {

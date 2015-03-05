@@ -18,6 +18,9 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     @IBOutlet private weak var locationsTableView: UITableView!
     @IBOutlet private weak var locationsTableViewHeight: NSLayoutConstraint!
     
+    @IBOutlet private weak var locationDatesTableView: UITableView!
+    @IBOutlet private weak var locationDatesTableViewHeight: NSLayoutConstraint!
+    
     @IBOutlet private weak var datesTableView: UITableView!
     @IBOutlet private weak var datesTableViewHeight: NSLayoutConstraint!
     
@@ -46,7 +49,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     
     
     enum TableViewType: Int {
-        case Locations, Dates, Links
+        case Locations, Dates, LocationDates, Links
     }
     
     
@@ -77,15 +80,19 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         self.locationsTableView.registerNib(centerCellIdentifier)
         self.locationsTableView.registerNib(leftLabelRemoveCellIdentifier)
         
+        self.locationDatesTableView.registerNib(centerCellIdentifier)
+        self.locationDatesTableView.registerNib(leftLabelRemoveCellIdentifier)
+        
         self.datesTableView.registerNib(centerCellIdentifier)
         self.datesTableView.registerNib(leftLabelRemoveCellIdentifier)
         
         self.linksTableView.registerNib(centerCellIdentifier)
         self.linksTableView.registerNib(leftLabelRemoveCellIdentifier)
         
-        self._configureLocationsTableView()
-        self._configureDatesTableView()
-        self._configureLinksTableView()
+        self.locationsTableView.tag = TableViewType.Locations.rawValue
+        self.locationDatesTableView.tag = TableViewType.LocationDates.rawValue
+        self.datesTableView.tag = TableViewType.Dates.rawValue
+        self.linksTableView.tag = TableViewType.Links.rawValue
         
         if self.task == nil {
             self.task = Task.create(self.context) as Task
@@ -170,18 +177,6 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         self.titleTextField.textFieldDidChangeBlock = { text in
             self.task.title = text
         }
-    }
-    
-    private func _configureLocationsTableView() {
-        self.locationsTableView.tag = TableViewType.Locations.rawValue
-    }
-    
-    private func _configureDatesTableView() {
-        self.datesTableView.tag = TableViewType.Dates.rawValue
-    }
-    
-    private func _configureLinksTableView() {
-        self.linksTableView.tag = TableViewType.Links.rawValue
     }
     
     @IBAction func handleTap(sender: AnyObject) {
@@ -289,6 +284,9 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         case .Dates:
             return self.task.dateReminders.count + 1
             
+        case .LocationDates:
+            return self.task.locationDateReminders.count + 1
+            
         case .Links:
             return self.task.links.allObjects.count + 1
         }
@@ -318,7 +316,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         case .Locations:
             let reminders = self.task.locationReminders
             if indexPath.row == reminders.count {
-                return _createAddNewSomethingCell("+ Add new location")
+                return _createAddNewSomethingCell("+ Add reminder")
             } else {
                 let reminder = reminders[indexPath.row]
                 let cell = _createRegularCell(reminder.place.name)
@@ -331,7 +329,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             
         case .Dates:
             if indexPath.row == self.task.dateReminders.count {
-                return _createAddNewSomethingCell("+ Add new date")
+                return _createAddNewSomethingCell("+ Add reminder")
             } else {
                 let reminders = self.task.dateReminders
                 let reminder = reminders[indexPath.row]
@@ -340,6 +338,21 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 cell.clearPressedBlock = { cell in
                     self.task.removeReminder(reminder)
                     self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, items: max(1,self.task.dateReminders.count))
+                }
+                return cell
+            }
+            
+        case .LocationDates:
+            let reminders = self.task.locationDateReminders
+            if indexPath.row == reminders.count {
+                return _createAddNewSomethingCell("+ Add reminder")
+            } else {
+                let reminder = reminders[indexPath.row]
+                let title = NSDateFormatter.NTHStringFromDate(reminder.sinceDate) + " - " + NSDateFormatter.NTHStringFromDate(reminder.toDate)
+                let cell = _createRegularCell(title)
+                cell.clearPressedBlock = { cell in
+                    self.task.removeReminder(reminder)
+                    self._refreshTableView(self.locationDatesTableView, heightConstraint: self.locationDatesTableViewHeight, items: max(1,self.task.locationDateReminders.count))
                 }
                 return cell
             }
