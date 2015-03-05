@@ -61,6 +61,8 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         case EditDateReminder = "EditDateReminder"
         case AddPlaceLink = "AddPlaceLink"
         case AddContactLink = "AddContactLink"
+        case AddLocationDateReminder = "AddLocationDateReminder"
+        case EditLocationDateReminder = "EditLocationDateReminder"
     }
     
     
@@ -400,6 +402,15 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 self.performSegueWithIdentifier(SegueIdentifier.CreateDateReminder.rawValue, sender: nil)
             } else {
                 self.performSegueWithIdentifier(SegueIdentifier.EditDateReminder.rawValue, sender: reminders[indexPath.row])
+            }
+            
+        case .LocationDates:
+            let reminders = self.task.locationDateReminders
+            if indexPath.row == reminders.count {
+                self.performSegueWithIdentifier(SegueIdentifier.AddLocationDateReminder.rawValue, sender: nil)
+            } else {
+                var reminder = reminders[indexPath.row]
+                self.performSegueWithIdentifier(SegueIdentifier.EditLocationDateReminder.rawValue, sender: reminder)
             }
             
         case .Links:
