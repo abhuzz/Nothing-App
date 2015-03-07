@@ -90,6 +90,7 @@
 		12E2929F1A9527300079D257 /* NTHInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929E1A9527300079D257 /* NTHInboxViewController.swift */; };
 		12F0B3241A9CF0F1006229AD /* NTHSheetSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F0B3231A9CF0F1006229AD /* NTHSheetSegue.swift */; };
 		12F0B3261A9CF128006229AD /* NTHSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */; };
+		12FC2D2C1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC2D2B1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift */; };
 		12FE1D711A913A8600F03601 /* NTHCreateEditPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE1D701A913A8600F03601 /* NTHCreateEditPlaceViewController.swift */; };
 		12FE1D731A913C6100F03601 /* MKMapView_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE1D721A913C6100F03601 /* MKMapView_TS.swift */; };
 		12FE1D751A9146E100F03601 /* NTHCenterLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12FE1D741A9146E100F03601 /* NTHCenterLabelCell.xib */; };
@@ -207,6 +208,7 @@
 		12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSheetViewController.swift; sourceTree = "<group>"; };
 		12FBB4C31AA33B3D00C2B32A /* Nothing 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 12.xcdatamodel"; sourceTree = "<group>"; };
 		12FBB4C41AA33D5400C2B32A /* Nothing 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 13.xcdatamodel"; sourceTree = "<group>"; };
+		12FC2D2B1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectRegionViewController.swift; sourceTree = "<group>"; };
 		12FE1D701A913A8600F03601 /* NTHCreateEditPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditPlaceViewController.swift; sourceTree = "<group>"; };
 		12FE1D721A913C6100F03601 /* MKMapView_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView_TS.swift; sourceTree = "<group>"; };
 		12FE1D741A9146E100F03601 /* NTHCenterLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHCenterLabelCell.xib; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				120B99571A9A3DB100518FF0 /* NTHMenuViewController.swift */,
 				12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */,
 				128F91671A93FED000C21DE3 /* NTHSelectPlaceViewController.swift */,
+				12FC2D2B1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift */,
 				12A703511AA7B9F2009538E2 /* NTHSelectRepeatIntervalViewController.swift */,
 				127A80141AA30F5600B49666 /* NTHSimpleSelectPlaceViewController.swift */,
 				12A7B33C1A9679E800A4EACB /* NTHTaskDetailsViewController.swift */,
@@ -646,6 +649,7 @@
 				12A7C0B71A9A080D00BB6B94 /* UIAlertController_TS.swift in Sources */,
 				126904861A9E6DA0008FDD84 /* NTHOpenHoursCell.swift in Sources */,
 				1279B60A19FED64D00A7828C /* NSManagedObject+Extension.swift in Sources */,
+				12FC2D2C1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift in Sources */,
 				126904821A9E6B69008FDD84 /* NTHOpenHoursViewController.swift in Sources */,
 				121CF5C81A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift in Sources */,
 				1279B61219FED64D00A7828C /* FileManager.swift in Sources */,

@@ -30,6 +30,15 @@ class NTHRegionControl: UIView {
         return self.NTHAwakeAfterUsingCoder(aDecoder, nibName: "NTHRegionControl")
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.regionSlider.minimumTrackTintColor = UIColor.NTHNavigationBarColor()
+        self.minRegionLabel.textColor = UIColor.NTHHeaderTextColor()
+        self.curRegionLabel.textColor = UIColor.NTHHeaderTextColor()
+        self.maxRegionLabel.textColor = UIColor.NTHHeaderTextColor()
+        self.regionSegmentedControl.tintColor = UIColor.NTHNavigationBarColor()
+    }
+    
     func configure(distance: Float, onArrive: Bool) {
         self.info.distance = distance
         self.info.onArrive = onArrive

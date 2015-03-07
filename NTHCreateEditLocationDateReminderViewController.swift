@@ -15,11 +15,10 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
     @IBOutlet private weak var dateRangeTableViewHeight: NSLayoutConstraint!
     @IBOutlet private weak var placeTableView: UITableView!
     @IBOutlet private weak var placeTableViewHeight: NSLayoutConstraint!
-    @IBOutlet private weak var regionControl: NTHRegionControl!
+    @IBOutlet weak var regionTableView: UITableView!
 
     private enum TableViewType: Int {
-        case DateRange
-        case Place
+        case DateRange, Place, Region
     }
     
     private enum CellType: Int {
@@ -30,6 +29,7 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
         case EditFromDate = "EditFromDate"
         case EditToDate = "EditToDate"
         case EditRepeatInterval = "EditRepeatInterval"
+        case EditRegion = "EditRegion"
     }
     
     
@@ -45,6 +45,9 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
         self.dateRangeTableView.refreshTableView(self.dateRangeTableViewHeight, height: 3.0 * self._twoLineLabelCellHeight())
         
         self.placeTableView.tag = TableViewType.Place.rawValue
+        
+        self.regionTableView.tag = TableViewType.Region.rawValue
+        self.regionTableView.registerNib("NTHTwoLineLeftLabelCell")
         
         if self.reminder == nil {
             self.reminder = LocationDateReminder.create(self.context)
@@ -74,6 +77,15 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
                 self.dateRangeTableView.reloadData()
             }
             
+        case .EditRegion:
+            let vc = segue.destinationViewController as! NTHSelectRegionViewController
+            vc.settings = RegionAndDistance(onArrive: self.reminder.onArrive.boolValue, distance: self.reminder.distance.floatValue)
+            vc.completionBlock = { settings in
+                self.reminder.onArrive = settings.onArrive
+                self.reminder.distance = settings.distance
+                self.regionTableView.reloadData()
+            }
+            
         default: return
         }
     }
@@ -90,7 +102,6 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
             cell.bottomLabel.text = subtitle
             return cell
         }
-        
         
         switch TableViewType(rawValue: tableView.tag)! {
         case .DateRange:
@@ -112,6 +123,14 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
         
         case .Place:
             return UITableViewCell()
+            
+        case .Region:
+            let prefix = self.reminder.onArrive.boolValue ? "Arrive" : "Leave"
+            let description = prefix + ", " + self.reminder.distance.floatValue.metersOrKilometers()
+            let cell = _twoLineCell("Region and distance", description)
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            cell.selectedBackgroundView = UIView()
+            return cell
         }
     }
     
@@ -147,6 +166,10 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
             
         case .Place:
             return
+            
+        case .Region:
+            self.performSegueWithIdentifier(SegueIdentifier.EditRegion.rawValue, sender: nil)
+            return
         }
     }
     
@@ -162,6 +185,7 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
         switch TableViewType(rawValue: tableView.tag)! {
         case .DateRange: return 3
         case .Place: return 1
+        case .Region: return 1
         }
     }
 }
