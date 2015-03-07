@@ -16,7 +16,7 @@
 		12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */; };
 		120B3CE81A86074700FB38DD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B3CE71A86074700FB38DD /* String+Extensions.swift */; };
 		120B99581A9A3DB100518FF0 /* NTHMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B99571A9A3DB100518FF0 /* NTHMenuViewController.swift */; };
-		121AA83B1AAB060100F3C7F6 /* NTHCreateEditLocationDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AA83A1AAB060100F3C7F6 /* NTHCreateEditLocationDateViewController.swift */; };
+		121AA83B1AAB060100F3C7F6 /* NTHCreateEditLocationDateReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AA83A1AAB060100F3C7F6 /* NTHCreateEditLocationDateReminderViewController.swift */; };
 		121CF5C61A8FD0440032ED36 /* NTHPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121CF5C51A8FD0440032ED36 /* NTHPlaceholderTextView.swift */; };
 		121CF5C81A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121CF5C71A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift */; };
 		1230A08D1A8BBE6F0064447B /* LocalNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230A08C1A8BBE6F0064447B /* LocalNotificationScheduler.swift */; };
@@ -119,7 +119,7 @@
 		120B99571A9A3DB100518FF0 /* NTHMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHMenuViewController.swift; sourceTree = "<group>"; };
 		120E72BC1A9A20D7007F5E80 /* Nothing 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 5.xcdatamodel"; sourceTree = "<group>"; };
 		1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 2.xcdatamodel"; sourceTree = "<group>"; };
-		121AA83A1AAB060100F3C7F6 /* NTHCreateEditLocationDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditLocationDateViewController.swift; sourceTree = "<group>"; };
+		121AA83A1AAB060100F3C7F6 /* NTHCreateEditLocationDateReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditLocationDateReminderViewController.swift; sourceTree = "<group>"; };
 		121CF5C51A8FD0440032ED36 /* NTHPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHPlaceholderTextView.swift; sourceTree = "<group>"; };
 		121CF5C71A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditTaskViewController.swift; sourceTree = "<group>"; };
 		1230A08C1A8BBE6F0064447B /* LocalNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalNotificationScheduler.swift; path = "Nothing/Core Data/Model/LocalNotificationScheduler.swift"; sourceTree = "<group>"; };
@@ -263,7 +263,7 @@
 				12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */,
 				1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */,
 				128EE7BD1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift */,
-				121AA83A1AAB060100F3C7F6 /* NTHCreateEditLocationDateViewController.swift */,
+				121AA83A1AAB060100F3C7F6 /* NTHCreateEditLocationDateReminderViewController.swift */,
 				12FE1D701A913A8600F03601 /* NTHCreateEditPlaceViewController.swift */,
 				121CF5C71A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift */,
 				12E2929E1A9527300079D257 /* NTHInboxViewController.swift */,
@@ -656,7 +656,7 @@
 				121CF5C61A8FD0440032ED36 /* NTHPlaceholderTextView.swift in Sources */,
 				1279B60819FED64D00A7828C /* CDHelper.swift in Sources */,
 				128F91661A92873B00C21DE3 /* Float_TS.swift in Sources */,
-				121AA83B1AAB060100F3C7F6 /* NTHCreateEditLocationDateViewController.swift in Sources */,
+				121AA83B1AAB060100F3C7F6 /* NTHCreateEditLocationDateReminderViewController.swift in Sources */,
 				12BEB0F41A06DC9300643860 /* ModelController.swift in Sources */,
 				12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */,
 				120B99581A9A3DB100518FF0 /* NTHMenuViewController.swift in Sources */,

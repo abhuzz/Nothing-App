@@ -16,8 +16,8 @@ class NTHSelectRepeatIntervalViewController: UIViewController, UITableViewDelega
     private var repeatIntervals = RepeatInterval.allIntervals()
     private var repeatIntervalIndexPath: NSIndexPath?
     
-    var reminder: DateReminder!
-    var completionBlock: (() -> Void)?
+    var repeatInterval: NSCalendarUnit!
+    var completionBlock: ((repeatInterval: NSCalendarUnit!) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ class NTHSelectRepeatIntervalViewController: UIViewController, UITableViewDelega
         let interval = self.repeatIntervals[indexPath.row]
         let cell = _leftLabelCell(RepeatInterval.descriptionForInterval(interval: interval))
         
-        if self.reminder.repeatInterval == interval {
+        if self.repeatInterval == interval {
             cell.accessoryType = .Checkmark
             self.repeatIntervalIndexPath = indexPath
         }
@@ -72,8 +72,8 @@ class NTHSelectRepeatIntervalViewController: UIViewController, UITableViewDelega
         }
         
         self.repeatIntervalIndexPath = indexPath
-        self.reminder.repeatInterval = self.repeatIntervals[indexPath.row]
-        
+        self.repeatInterval = self.repeatIntervals[indexPath.row]
+        self.completionBlock?(repeatInterval: self.repeatInterval)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.4 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             self.navigationController?.popViewControllerAnimated(true)

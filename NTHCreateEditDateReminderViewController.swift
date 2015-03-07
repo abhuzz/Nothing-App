@@ -88,8 +88,9 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SegueIdentifier.SelectRepeatInterval.rawValue {
             let vc = segue.destinationViewController as! NTHSelectRepeatIntervalViewController
-            vc.reminder = self.reminder
-            vc.completionBlock = {
+            vc.repeatInterval = self.reminder.repeatInterval
+            vc.completionBlock = { repeatInterval in
+                self.reminder.repeatInterval = repeatInterval
                 self.tableView.reloadData()
             }
         }

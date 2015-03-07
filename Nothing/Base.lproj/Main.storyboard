@@ -1908,7 +1908,7 @@
         <!--Reminder-->
         <scene sceneID="jt4-Yh-Fwo">
             <objects>
-                <viewController id="5Ok-RT-Cu4" customClass="NTHCreateEditLocationDateViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5Ok-RT-Cu4" customClass="NTHCreateEditLocationDateReminderViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h2x-Qz-xdy"/>
                         <viewControllerLayoutGuide type="bottom" id="qcu-FE-ZOA"/>
@@ -1921,7 +1921,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLe-1e-GQQ" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="378"/>
                                         <subviews>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE RANGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F50-N6-MO1">
                                                 <rect key="frame" x="25" y="15" width="270" height="17"/>
@@ -1930,15 +1930,15 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="V0t-y8-N63">
-                                                <rect key="frame" x="25" y="40" width="270" height="50"/>
+                                                <rect key="frame" x="25" y="40" width="285" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="p3y-Ft-RC5"/>
                                                 </constraints>
                                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <connections>
-                                                    <outlet property="dataSource" destination="qKL-pp-hDu" id="p99-En-dcK"/>
-                                                    <outlet property="delegate" destination="qKL-pp-hDu" id="7jc-DD-df2"/>
+                                                    <outlet property="dataSource" destination="5Ok-RT-Cu4" id="jiU-RM-zrJ"/>
+                                                    <outlet property="delegate" destination="5Ok-RT-Cu4" id="Jd5-Uu-ayM"/>
                                                 </connections>
                                             </tableView>
                                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="dvH-Gz-GXz" userLabel="separator 3">
@@ -1968,15 +1968,15 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aqC-BE-Ssu">
-                                                <rect key="frame" x="25" y="146" width="270" height="50"/>
+                                                <rect key="frame" x="25" y="146" width="285" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Qbq-VQ-Ran"/>
                                                 </constraints>
                                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <connections>
-                                                    <outlet property="dataSource" destination="01x-bX-lm7" id="sWG-Cr-goD"/>
-                                                    <outlet property="delegate" destination="01x-bX-lm7" id="1v9-sA-zh1"/>
+                                                    <outlet property="dataSource" destination="5Ok-RT-Cu4" id="tAP-fy-fWs"/>
+                                                    <outlet property="delegate" destination="5Ok-RT-Cu4" id="nBz-I0-LdE"/>
                                                 </connections>
                                             </tableView>
                                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="270" placeholderIntrinsicHeight="106" translatesAutoresizingMaskIntoConstraints="NO" id="OdY-rx-Ztr" customClass="NTHRegionControl" customModule="Nothing" customModuleProvider="target">
@@ -1997,14 +1997,14 @@
                                             <constraint firstItem="aqC-BE-Ssu" firstAttribute="top" secondItem="gVV-4L-HmN" secondAttribute="bottom" constant="8" id="FcV-sR-dPe"/>
                                             <constraint firstItem="B6b-Ay-jQ4" firstAttribute="leading" secondItem="OLe-1e-GQQ" secondAttribute="leading" constant="25" id="Fde-jg-q0d"/>
                                             <constraint firstItem="OdY-rx-Ztr" firstAttribute="top" secondItem="B6b-Ay-jQ4" secondAttribute="bottom" constant="8" id="JtW-Sb-Eoa"/>
-                                            <constraint firstAttribute="trailing" secondItem="V0t-y8-N63" secondAttribute="trailing" constant="25" id="RIw-po-BSx"/>
+                                            <constraint firstAttribute="trailing" secondItem="V0t-y8-N63" secondAttribute="trailing" constant="10" id="RIw-po-BSx"/>
                                             <constraint firstItem="OdY-rx-Ztr" firstAttribute="leading" secondItem="OLe-1e-GQQ" secondAttribute="leading" constant="25" id="Rks-kp-EEr"/>
                                             <constraint firstItem="dvH-Gz-GXz" firstAttribute="top" secondItem="V0t-y8-N63" secondAttribute="bottom" constant="15" id="Upt-11-IkB"/>
                                             <constraint firstAttribute="trailing" secondItem="F50-N6-MO1" secondAttribute="trailing" constant="25" id="Z2f-Jv-c3T"/>
                                             <constraint firstItem="F4Q-T5-4A9" firstAttribute="top" secondItem="aqC-BE-Ssu" secondAttribute="bottom" constant="15" id="ZjF-xv-7jv"/>
                                             <constraint firstAttribute="trailing" secondItem="B6b-Ay-jQ4" secondAttribute="trailing" constant="25" id="a5t-oe-UQC"/>
-                                            <constraint firstAttribute="trailing" secondItem="aqC-BE-Ssu" secondAttribute="trailing" constant="25" id="ajl-7t-f37"/>
-                                            <constraint firstAttribute="bottom" secondItem="OdY-rx-Ztr" secondAttribute="bottom" constant="146" id="dJJ-xU-Utz"/>
+                                            <constraint firstAttribute="trailing" secondItem="aqC-BE-Ssu" secondAttribute="trailing" constant="10" id="ajl-7t-f37"/>
+                                            <constraint firstAttribute="bottom" secondItem="OdY-rx-Ztr" secondAttribute="bottom" constant="20" id="dJJ-xU-Utz"/>
                                             <constraint firstAttribute="trailing" secondItem="F4Q-T5-4A9" secondAttribute="trailing" constant="25" id="dSL-9t-TMk"/>
                                             <constraint firstItem="V0t-y8-N63" firstAttribute="leading" secondItem="OLe-1e-GQQ" secondAttribute="leading" constant="25" id="g25-A9-8xx"/>
                                             <constraint firstAttribute="trailing" secondItem="dvH-Gz-GXz" secondAttribute="trailing" constant="25" id="gde-j4-koc"/>
@@ -2020,7 +2020,7 @@
                                 <constraints>
                                     <constraint firstItem="OLe-1e-GQQ" firstAttribute="leading" secondItem="pnp-O0-fvt" secondAttribute="leading" id="BIB-kk-A0x"/>
                                     <constraint firstAttribute="trailing" secondItem="OLe-1e-GQQ" secondAttribute="trailing" id="VAl-Ke-Pbm"/>
-                                    <constraint firstAttribute="bottom" secondItem="OLe-1e-GQQ" secondAttribute="bottom" id="ern-fT-ij8"/>
+                                    <constraint firstAttribute="bottom" secondItem="OLe-1e-GQQ" secondAttribute="bottom" constant="126" id="ern-fT-ij8"/>
                                     <constraint firstItem="OLe-1e-GQQ" firstAttribute="width" secondItem="pnp-O0-fvt" secondAttribute="width" id="spK-PO-KWa"/>
                                     <constraint firstItem="OLe-1e-GQQ" firstAttribute="top" secondItem="pnp-O0-fvt" secondAttribute="top" id="uBc-Ua-x9t"/>
                                 </constraints>
@@ -2052,7 +2052,8 @@
                         <outlet property="dateRangeTableViewHeight" destination="p3y-Ft-RC5" id="Ar2-nL-ohw"/>
                         <outlet property="placeTableView" destination="aqC-BE-Ssu" id="85L-Zg-9cb"/>
                         <outlet property="placeTableViewHeight" destination="Qbq-VQ-Ran" id="Gya-4l-dlS"/>
-                        <outlet property="regionControl" destination="OdY-rx-Ztr" id="C7t-Cf-sF9"/>
+                        <outlet property="regionControl" destination="OdY-rx-Ztr" id="qkm-Fe-Tq3"/>
+                        <segue destination="dwb-mj-o2U" kind="push" identifier="EditRepeatInterval" id="pka-w5-r5o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Caq-Op-pAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2071,12 +2072,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="4g0-c3-SbQ"/>
         <segue reference="zJ1-y0-1y8"/>
         <segue reference="Pg9-vd-d1p"/>
         <segue reference="tuW-bm-KQy"/>
         <segue reference="x47-1C-LfF"/>
-        <segue reference="nvQ-Ui-egl"/>
+        <segue reference="4g0-c3-SbQ"/>
         <segue reference="8fX-BY-uP7"/>
+        <segue reference="nvQ-Ui-egl"/>
+        <segue reference="pka-w5-r5o"/>
     </inferredMetricsTieBreakers>
 </document>

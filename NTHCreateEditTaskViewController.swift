@@ -225,6 +225,21 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             vc.completionBlock = { newReminder in
                 self._refreshDates()
             }
+        } else if segue.identifier == SegueIdentifier.AddLocationDateReminder.rawValue {
+            let vc = segue.topOfNavigationController as! NTHCreateEditLocationDateReminderViewController
+            vc.context = CDHelper.temporaryContextWithParent(self.context)
+            vc.completionBlock = { newReminder in
+                let object = self.context.objectWithID(newReminder.objectID)
+                self.task.addReminder(object as! LocationDateReminder)
+                self._refreshDates()
+            }
+        } else if segue.identifier == SegueIdentifier.EditLocationDateReminder.rawValue {
+            let vc = segue.topOfNavigationController as! NTHCreateEditLocationDateReminderViewController
+            vc.context = CDHelper.temporaryContextWithParent(self.context)
+            vc.reminder = vc.context.objectWithID((sender as! LocationDateReminder).objectID) as! LocationDateReminder
+            vc.completionBlock = { newReminder in
+                self._refreshLocationDates()
+            }
         } else if segue.identifier == SegueIdentifier.AddPlaceLink.rawValue {
             let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController
             vc.context = self.context
