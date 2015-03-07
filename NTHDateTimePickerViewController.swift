@@ -15,9 +15,14 @@ class NTHDateTimePickerViewController: NTHSheetViewController {
     
     
     var completionBlock: ((selectedDate: NSDate) -> Void)?
-    
     var editedDate: NSDate?
     var mode: UIDatePickerMode?
+    
+    
+    class func instantiate() -> NTHDateTimePickerViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NTHDateTimePickerViewController") as! NTHDateTimePickerViewController
+    }
+    
     
     func setDate(date: NSDate) {
         self.editedDate = date
