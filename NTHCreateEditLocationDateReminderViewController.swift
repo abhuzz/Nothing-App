@@ -15,6 +15,7 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
     @IBOutlet private weak var dateRangeTableViewHeight: NSLayoutConstraint!
     @IBOutlet private weak var placeTableView: UITableView!
     @IBOutlet private weak var placeTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
 
     private enum TableViewType: Int {
         case DateRange, Place
@@ -67,7 +68,13 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
     }
     
     @IBAction func donePressed(sender: AnyObject) {
-        
+        self.context.save(nil)
+        self.completionBlock?(reminder:self.reminder)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    private func _validateDoneButton() {
+        self.doneButton.enabled = (self.reminder.place != nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -98,6 +105,7 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
             vc.completionBlock = { selected in
                 self.reminder.place = (selected as! Place)
                 self.placeTableView.reloadData()
+                self._validateDoneButton()
             }
             
         default: return

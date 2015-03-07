@@ -1990,7 +1990,7 @@ Use distance slider to set proper distance when app should notify about the even
                                 <action selector="cancelPressed:" destination="5Ok-RT-Cu4" id="3F5-5x-sNB"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Pfh-Tz-Car">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="Pfh-Tz-Car">
                             <connections>
                                 <action selector="donePressed:" destination="5Ok-RT-Cu4" id="MWw-3y-2kY"/>
                             </connections>
@@ -1999,6 +1999,7 @@ Use distance slider to set proper distance when app should notify about the even
                     <connections>
                         <outlet property="dateRangeTableView" destination="V0t-y8-N63" id="J1n-fq-Mhx"/>
                         <outlet property="dateRangeTableViewHeight" destination="p3y-Ft-RC5" id="Ar2-nL-ohw"/>
+                        <outlet property="doneButton" destination="Pfh-Tz-Car" id="4rR-Bu-6g3"/>
                         <outlet property="placeTableView" destination="aqC-BE-Ssu" id="85L-Zg-9cb"/>
                         <outlet property="placeTableViewHeight" destination="Qbq-VQ-Ran" id="Gya-4l-dlS"/>
                         <segue destination="dwb-mj-o2U" kind="push" identifier="EditRepeatInterval" id="pka-w5-r5o"/>
