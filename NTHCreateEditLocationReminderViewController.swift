@@ -11,37 +11,31 @@ import CoreData
 
 class NTHCreateEditLocationReminderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet private weak var placeLabel: UILabel!
-    @IBOutlet private weak var placeTableView: UITableView!
-    @IBOutlet private weak var separator: UIView!
+
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     @IBOutlet private weak var cancelButton: UIBarButtonItem!
-    @IBOutlet weak var regionTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
-    private enum TableViewType: Int {
-        case Place, Region
-    }
     
     private enum SegueIdentifier: String {
         case SelectPlace = "SelectPlace"
         case EditRegion = "EditRegion"
     }
     
+    private enum CellType: Int {
+        case Place = 0
+        case Region
+    }
+
     var context: NSManagedObjectContext!
     var completionBlock: ((newReminder: LocationReminder) -> Void)?
-    
     var reminder: LocationReminder!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self._configureUIColors()
         
-        self.placeTableView.tag = TableViewType.Place.rawValue
-        self.placeTableView.registerNib("NTHCenterLabelCell")
-        self.placeTableView.registerNib("NTHLeftLabelRemoveCell")
-        
-        self.regionTableView.tag = TableViewType.Region.rawValue
-        self.regionTableView.registerNib("NTHTwoLineLeftLabelCell")
+        self.tableView.registerNib("NTHTwoLineLeftLabelCell")
+        self.tableView.separatorColor = UIColor.NTHTableViewSeparatorColor()
         
         /// Check if reminder exists, if not create new one
         if self.reminder == nil {
@@ -49,19 +43,12 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
             self.reminder.distance = 100.0
             self.reminder.onArrive = true
         }
-        
-        self._validateDoneButton()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.placeTableView.reloadData()
+        self.tableView.reloadData()
         self._validateDoneButton()
-    }
-    
-    private func _configureUIColors() {
-        self.placeLabel.textColor = UIColor.NTHHeaderTextColor()
-        self.separator.backgroundColor = UIColor.NTHTableViewSeparatorColor()
     }
     
     @IBAction func cancelPressed(sender: AnyObject) {
@@ -88,6 +75,7 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
             vc.selectedLink = self.reminder.place
             vc.completionBlock = { selected in
                 self.reminder.place = (selected as! Place)
+                self.tableView.reloadData()
             }
             
         case .EditRegion:
@@ -96,7 +84,7 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
             vc.completionBlock = { settings in
                 self.reminder.onArrive = settings.onArrive
                 self.reminder.distance = settings.distance
-                self.regionTableView.reloadData()
+                self.tableView.reloadData()
                 return
             }
         }
@@ -104,58 +92,32 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     
     /// Mark: Table View
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch TableViewType(rawValue: tableView.tag)! {
+        switch CellType(rawValue: indexPath.row)! {
         case .Place:
+            let cell = NTHTwoLineLeftLabelCell.create(tableView, title: "Place", subtitle: "Select")
+            cell.accessoryType = .DisclosureIndicator
             if let place = self.reminder.place {
-                let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelRemoveCell") as! NTHLeftLabelRemoveCell
-                cell.label.text = place.name
-                cell.label.font = UIFont.NTHNormalTextFont()
-                cell.selectedBackgroundView = UIView()
-                cell.tintColor = UIColor.NTHNavigationBarColor()
-                cell.clearPressedBlock = { cell in
-                    self.reminder.place = nil
-                    self._validateDoneButton()
-                    self.placeTableView.reloadData()
-                }
-                
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
-                cell.label.text = "+ Select place"
-                cell.label.font = UIFont.NTHAddNewCellFont()
-                cell.selectedBackgroundView = UIView()
-                return cell
+                cell.bottomLabel.text = place.name
             }
+            return cell
             
         case .Region:
-            func _twoLineCell(title: String, subtitle: String) -> NTHTwoLineLeftLabelCell {
-                let cell = tableView.dequeueReusableCellWithIdentifier("NTHTwoLineLeftLabelCell") as! NTHTwoLineLeftLabelCell
-                cell.topLabel.font = UIFont.NTHNormalTextFont()
-                cell.topLabel.text = title
-                
-                cell.bottomLabel.font = UIFont.NTHAddNewCellFont()
-                cell.bottomLabel.text = subtitle
-                cell.accessoryType = .DisclosureIndicator
-                cell.selectedBackgroundView = UIView()
-                return cell
-            }
-            
             let prefix = self.reminder.onArrive.boolValue ? "Arrive" : "Leave"
             let description = prefix + ", " + self.reminder.distance.floatValue.metersOrKilometers()
-            return _twoLineCell("Region and distance", description)
+            let cell = NTHTwoLineLeftLabelCell.create(tableView, title: "Region and distance", subtitle: description)
+            cell.accessoryType = .DisclosureIndicator
+            return cell
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch TableViewType(rawValue: tableView.tag)! {
+        switch CellType(rawValue: indexPath.row)! {
         case .Place:
-            tableView.deselectRowAtIndexPath(indexPath, animated: false)
             self.performSegueWithIdentifier(SegueIdentifier.SelectPlace.rawValue, sender: nil)
-            self._validateDoneButton()
 
         case .Region:
             self.performSegueWithIdentifier(SegueIdentifier.EditRegion.rawValue, sender: nil)
@@ -163,9 +125,6 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        switch TableViewType(rawValue: tableView.tag)! {
-        case .Place: return 50
-        case .Region: return 62
-        }
+        return 62
     }
 }

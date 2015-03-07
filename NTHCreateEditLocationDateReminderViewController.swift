@@ -92,33 +92,21 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
     
     /// Mar: UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        func _twoLineCell(title: String, subtitle: String) -> NTHTwoLineLeftLabelCell {
-            let cell = tableView.dequeueReusableCellWithIdentifier("NTHTwoLineLeftLabelCell") as! NTHTwoLineLeftLabelCell
-            cell.topLabel.font = UIFont.NTHNormalTextFont()
-            cell.topLabel.text = title
-            
-            cell.bottomLabel.font = UIFont.NTHAddNewCellFont()
-            cell.bottomLabel.text = subtitle
-            return cell
-        }
-        
         switch TableViewType(rawValue: tableView.tag)! {
         case .DateRange:
             let cell: NTHTwoLineLeftLabelCell
             switch CellType(rawValue: indexPath.row)! {
             case .FromDate:
-                cell = _twoLineCell("From Date", NSDateFormatter.NTHStringFromDate(self.reminder.fromDate))
-
+                cell = NTHTwoLineLeftLabelCell.create(tableView, title: "From Date", subtitle: NSDateFormatter.NTHStringFromDate(self.reminder.fromDate))
+            
             case .ToDate:
-                cell = _twoLineCell("To Date", NSDateFormatter.NTHStringFromDate(self.reminder.toDate))
+                cell = NTHTwoLineLeftLabelCell.create(tableView, title: "To Date", subtitle: NSDateFormatter.NTHStringFromDate(self.reminder.toDate))
 
             case .RepeatInterval:
-                cell = _twoLineCell("Repeat Interval", RepeatInterval.descriptionForInterval(interval: self.reminder.repeatInterval))
+                cell = NTHTwoLineLeftLabelCell.create(tableView, title: "Repeat Interval", subtitle: RepeatInterval.descriptionForInterval(interval: self.reminder.repeatInterval))
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
             
-            cell.selectedBackgroundView = UIView()
             return cell
         
         case .Place:
@@ -127,9 +115,8 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
         case .Region:
             let prefix = self.reminder.onArrive.boolValue ? "Arrive" : "Leave"
             let description = prefix + ", " + self.reminder.distance.floatValue.metersOrKilometers()
-            let cell = _twoLineCell("Region and distance", description)
+            let cell = NTHTwoLineLeftLabelCell.create(tableView, title: "Region and distance", subtitle: description)
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            cell.selectedBackgroundView = UIView()
             return cell
         }
     }
