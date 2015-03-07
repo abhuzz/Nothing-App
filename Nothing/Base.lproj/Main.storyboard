@@ -1755,7 +1755,7 @@
             </objects>
             <point key="canvasLocation" x="1292" y="2754"/>
         </scene>
-        <!--Places-->
+        <!--Link-Selector-->
         <scene sceneID="9eH-hZ-Wa1">
             <objects>
                 <viewController id="5za-ZO-d9Q" customClass="NTHSimpleSelectLinkViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
@@ -1785,7 +1785,7 @@
                             <constraint firstItem="GPG-t0-dca" firstAttribute="top" secondItem="A1t-3e-3Cw" secondAttribute="top" id="zZY-6A-dFD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Places" id="bOc-S1-OgE"/>
+                    <navigationItem key="navigationItem" title="Link-Selector" id="bOc-S1-OgE"/>
                     <connections>
                         <outlet property="tableView" destination="GPG-t0-dca" id="aCQ-kV-dpW"/>
                     </connections>

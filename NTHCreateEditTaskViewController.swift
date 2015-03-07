@@ -242,6 +242,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             }
         } else if segue.identifier == SegueIdentifier.AddPlaceLink.rawValue {
             let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController
+            vc.linkType = LinkType.Place
             vc.context = self.context
             vc.links = ModelController().allPlaces(self.context)
             vc.completionBlock = { selectedPlace in
@@ -250,6 +251,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             }
         } else if segue.identifier == SegueIdentifier.AddContactLink.rawValue {
             let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController
+            vc.linkType = LinkType.Contact
             vc.context = self.context
             vc.links = ModelController().allContacts(self.context)
             vc.completionBlock = { selectedContact in

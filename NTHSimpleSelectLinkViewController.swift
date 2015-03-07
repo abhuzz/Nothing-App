@@ -9,6 +9,11 @@
 import UIKit
 import CoreData
 
+enum LinkType {
+    case Place
+    case Contact
+}
+
 class NTHSimpleSelectLinkViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet private weak var tableView: UITableView!
@@ -16,6 +21,8 @@ class NTHSimpleSelectLinkViewController: UIViewController, UITableViewDelegate, 
     
     private var selectedIndexPath: NSIndexPath?
     
+    
+    var linkType: LinkType!
     var links = [Link]()
     var context: NSManagedObjectContext!
     var selectedLink: Link?
@@ -23,6 +30,13 @@ class NTHSimpleSelectLinkViewController: UIViewController, UITableViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.linkType == .Place {
+            self.title = "Place"
+        } else if (self.linkType == .Contact) {
+            self.title = "Contact"
+        }
+        
         self.tableView.tableFooterView = UIView()
         self.tableView.registerNib("NTHCenterLabelCell")
         self.tableView.registerNib("NTHLeftLabelCell")
@@ -38,7 +52,11 @@ class NTHSimpleSelectLinkViewController: UIViewController, UITableViewDelegate, 
         
         if self.links.count == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
-            cell.label.text = "No place to select."
+            if self.linkType == .Place {
+                cell.label.text = "No place to select."
+            } else if self.linkType == .Contact {
+                cell.label.text = "No contact to select."
+            }
             cell.label.font = UIFont.NTHAddNewCellFont()
             cell.selectedBackgroundView = UIView()
             return cell

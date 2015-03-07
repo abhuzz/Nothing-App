@@ -91,6 +91,7 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
             
         case .SelectPlace:
             let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController
+            vc.linkType = LinkType.Place
             vc.context = self.context
             vc.links = ModelController().allPlaces(self.context)
             vc.selectedLink = self.reminder.place
