@@ -12,7 +12,7 @@ import CoreData
 @objc(LocationDateReminder)
 class LocationDateReminder: Reminder {
 
-    @NSManaged var sinceDate: NSDate
+    @NSManaged var fromDate: NSDate
     @NSManaged var toDate: NSDate
     @NSManaged var repeatInterval: NSNumber
     @NSManaged var distance: NSNumber

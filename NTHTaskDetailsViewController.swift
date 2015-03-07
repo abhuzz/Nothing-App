@@ -104,13 +104,11 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             self.notesTextView.text = self.task.longDescription!
         }
         
-        self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, height: self._locationRemindersTableViewHeight())
-        self._refreshTableView(self.locationDatesTableView, heightConstraint: self.locationDatesTableViewHeight, height: self._locationDatesRemindersTableViewHeight())
-        self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, height: self._datesRemindersTableViewHeight())
-        self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, height: self._linksTableViewHeight())
+        self.locationsTableView.refreshTableView(self.locationsTableViewHeight, height: self._locationRemindersTableViewHeight())
+        self.locationDatesTableView.refreshTableView(self.locationDatesTableViewHeight, height: self._locationDatesRemindersTableViewHeight())
+        self.datesTableView.refreshTableView(self.datesTableViewHeight, height: self._datesRemindersTableViewHeight())
+        self.linksTableView.refreshTableView(self.linksTableViewHeight, height: self._linksTableViewHeight())
     }
-    
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SegueIdentifier.EditTask.rawValue {
@@ -139,17 +137,10 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch TableViewType(rawValue:tableView.tag)! {
-        case .Locations:
-            return max(1, self.task.locationReminders.count)
-            
-        case .LocationDates:
-            return max(1, self.task.locationDateReminders.count)
-            
-        case .Dates:
-            return max(1, self.task.dateReminders.count)
-            
-        case .Links:
-            return max(1, self.task.links.allObjects.count)
+        case .Locations: return max(1, self.task.locationReminders.count)
+        case .LocationDates: return max(1, self.task.locationDateReminders.count)
+        case .Dates: return max(1, self.task.dateReminders.count)
+        case .Links: return max(1, self.task.links.allObjects.count)
         }
     }
     
@@ -201,7 +192,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
             let reminders = self.task.locationDateReminders
             if reminders.count > 0 {
                 let reminder = reminders[indexPath.row]
-                let topText = NSDateFormatter.NTHStringFromDate(reminder.sinceDate) + " - " + NSDateFormatter.NTHStringFromDate(reminder.toDate)
+                let topText = NSDateFormatter.NTHStringFromDate(reminder.fromDate) + " - " + NSDateFormatter.NTHStringFromDate(reminder.toDate)
                 
                 let prefix = reminder.onArrive.boolValue ? "Arrive" : "Leave"
                 let bottomText = reminder.place.name + " - " + prefix + ", " + reminder.distance.floatValue.metersOrKilometers()
@@ -319,17 +310,6 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     
     private func _linksTableViewHeight() -> CGFloat {
         return self._oneLineCellHeight() * CGFloat(max(1, self.task.links.count))
-    }
-    
-    private func _refreshTableView(tableView: UITableView, heightConstraint: NSLayoutConstraint, height: CGFloat) {
-        /// Update table view height
-        heightConstraint.constant = height
-        
-        UIView.animateWithDuration(NSTimeInterval(0.3), animations: {
-            self.view.needsUpdateConstraints()
-            tableView.reloadData()
-            return /// explicit return
-        })
     }
     
     /// Actions

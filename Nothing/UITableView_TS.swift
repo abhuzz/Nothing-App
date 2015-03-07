@@ -17,4 +17,13 @@ extension UITableView {
     func registerNib(name: String!) {
         self.registerNibWithName(name, identifier: name)
     }
+    
+    func refreshTableView(heightConstraint: NSLayoutConstraint, height: CGFloat) {
+        heightConstraint.constant = height
+        UIView.animateWithDuration(NSTimeInterval(0.3), animations: {
+            self.needsUpdateConstraints()
+            self.reloadData()
+            return /// explicit return
+        })
+    }
 }

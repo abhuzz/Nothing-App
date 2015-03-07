@@ -114,6 +114,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         self._refreshLocations()
         self._refreshDates()
         self._refreshLinks()
+        self._refreshLocationDates()
         
         self._addObservers()
     }
@@ -244,15 +245,23 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     }
     
     private func _refreshLinks() {
-        self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.task.links.count + 1)
+        let height = CGFloat(self.task.links.count + 1) * self.tableViewCellHeight()
+        self.linksTableView.refreshTableView(self.linksTableViewHeight, height: height)
     }
     
     private func _refreshDates() {
-        self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, items: self.task.dateReminders.count + 1)
+        let height = CGFloat(self.task.dateReminders.count + 1) * self.tableViewCellHeight()
+        self.datesTableView.refreshTableView(self.datesTableViewHeight, height: height)
     }
     
     private func _refreshLocations() {
-        self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.task.locationReminders.count + 1)
+        let height = CGFloat(self.task.locationReminders.count + 1) * self.tableViewCellHeight()
+        self.locationsTableView.refreshTableView(self.locationsTableViewHeight, height: height)
+    }
+    
+    private func _refreshLocationDates() {
+        let height = CGFloat(self.task.locationDateReminders.count + 1) * self.tableViewCellHeight()
+        self.locationDatesTableView.refreshTableView(self.locationDatesTableViewHeight, height: height)
     }
     
     private func _validateDoneButton() {
@@ -324,7 +333,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 let cell = _createRegularCell(reminder.place.name)
                 cell.clearPressedBlock = { cell in
                     self.task.removeReminder(reminder)
-                    self._refreshTableView(self.locationsTableView, heightConstraint: self.locationsTableViewHeight, items: self.task.locationReminders.count + 1)
+                    self._refreshLocations()
                 }
                 return cell
             }
@@ -339,7 +348,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 let cell = _createRegularCell(title)
                 cell.clearPressedBlock = { cell in
                     self.task.removeReminder(reminder)
-                    self._refreshTableView(self.datesTableView, heightConstraint: self.datesTableViewHeight, items: max(1,self.task.dateReminders.count))
+                    self._refreshDates()
                 }
                 return cell
             }
@@ -350,11 +359,11 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 return _createAddNewSomethingCell("+ Add reminder")
             } else {
                 let reminder = reminders[indexPath.row]
-                let title = NSDateFormatter.NTHStringFromDate(reminder.sinceDate) + " - " + NSDateFormatter.NTHStringFromDate(reminder.toDate)
+                let title = NSDateFormatter.NTHStringFromDate(reminder.fromDate) + " - " + NSDateFormatter.NTHStringFromDate(reminder.toDate)
                 let cell = _createRegularCell(title)
                 cell.clearPressedBlock = { cell in
                     self.task.removeReminder(reminder)
-                    self._refreshTableView(self.locationDatesTableView, heightConstraint: self.locationDatesTableViewHeight, items: max(1,self.task.locationDateReminders.count))
+                    self._refreshLocationDates()
                 }
                 return cell
             }
@@ -374,7 +383,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 let cell = _createRegularCell(title)
                 cell.clearPressedBlock = { cell in
                     self.task.removeLink(link)
-                    self._refreshTableView(self.linksTableView, heightConstraint: self.linksTableViewHeight, items: self.task.links.allObjects.count + 1)
+                    self._refreshLinks()
                 }
                 return cell
             }
@@ -437,18 +446,6 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         default:
             break
         }
-    }
-    
-    private func _refreshTableView(tableView: UITableView, heightConstraint: NSLayoutConstraint, items: Int) {
-        /// Update table view height
-        let height = CGFloat(items) * self.tableViewCellHeight()
-        heightConstraint.constant = height
-        
-        UIView.animateWithDuration(NSTimeInterval(0.3), animations: {
-            self.view.needsUpdateConstraints()
-            tableView.reloadData()
-            return /// explicit return
-        })
     }
     
     private func tableViewCellHeight() -> CGFloat {
