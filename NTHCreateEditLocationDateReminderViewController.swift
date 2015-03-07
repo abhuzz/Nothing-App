@@ -15,14 +15,17 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
     @IBOutlet private weak var dateRangeTableViewHeight: NSLayoutConstraint!
     @IBOutlet private weak var placeTableView: UITableView!
     @IBOutlet private weak var placeTableViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var regionTableView: UITableView!
 
     private enum TableViewType: Int {
-        case DateRange, Place, Region
+        case DateRange, Place
     }
     
-    private enum CellType: Int {
+    private enum CellDateType: Int {
         case FromDate, ToDate, RepeatInterval
+    }
+    
+    private enum CellPlaceType: Int {
+        case Place, Region
     }
     
     private enum SegueIdentifier: String {
@@ -30,6 +33,7 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
         case EditToDate = "EditToDate"
         case EditRepeatInterval = "EditRepeatInterval"
         case EditRegion = "EditRegion"
+        case SelectPlace = "SelectPlace"
     }
     
     
@@ -37,17 +41,16 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
     var context: NSManagedObjectContext!
     var completionBlock: ((reminder: LocationDateReminder!) -> Void)?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.dateRangeTableView.registerNib("NTHTwoLineLeftLabelCell")
         self.dateRangeTableView.tag = TableViewType.DateRange.rawValue
+        self.dateRangeTableView.registerNib("NTHTwoLineLeftLabelCell")
         self.dateRangeTableView.refreshTableView(self.dateRangeTableViewHeight, height: 3.0 * self._twoLineLabelCellHeight())
         
         self.placeTableView.tag = TableViewType.Place.rawValue
-        
-        self.regionTableView.tag = TableViewType.Region.rawValue
-        self.regionTableView.registerNib("NTHTwoLineLeftLabelCell")
+        self.placeTableView.registerNib("NTHTwoLineLeftLabelCell")
         
         if self.reminder == nil {
             self.reminder = LocationDateReminder.create(self.context)
@@ -83,19 +86,30 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
             vc.completionBlock = { settings in
                 self.reminder.onArrive = settings.onArrive
                 self.reminder.distance = settings.distance
-                self.regionTableView.reloadData()
+                self.placeTableView.reloadData()
+            }
+            
+        case .SelectPlace:
+            let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController
+            vc.context = self.context
+            vc.links = ModelController().allPlaces(self.context)
+            vc.selectedLink = self.reminder.place
+            vc.completionBlock = { selected in
+                self.reminder.place = (selected as! Place)
+                self.placeTableView.reloadData()
             }
             
         default: return
         }
     }
     
+    
     /// Mar: UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch TableViewType(rawValue: tableView.tag)! {
         case .DateRange:
             let cell: NTHTwoLineLeftLabelCell
-            switch CellType(rawValue: indexPath.row)! {
+            switch CellDateType(rawValue: indexPath.row)! {
             case .FromDate:
                 cell = NTHTwoLineLeftLabelCell.create(tableView, title: "From Date", subtitle: NSDateFormatter.NTHStringFromDate(self.reminder.fromDate))
             
@@ -110,24 +124,30 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
             return cell
         
         case .Place:
-            return UITableViewCell()
-            
-        case .Region:
-            let prefix = self.reminder.onArrive.boolValue ? "Arrive" : "Leave"
-            let description = prefix + ", " + self.reminder.distance.floatValue.metersOrKilometers()
-            let cell = NTHTwoLineLeftLabelCell.create(tableView, title: "Region and distance", subtitle: description)
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            return cell
+            switch CellPlaceType(rawValue: indexPath.row)! {
+            case .Place:
+                let cell = NTHTwoLineLeftLabelCell.create(tableView, title: "Place", subtitle: "Select")
+                if let place = self.reminder.place {
+                    cell.bottomLabel.text = place.name
+                }
+                cell.accessoryType = .DisclosureIndicator
+                return cell
+                
+            case .Region:
+                let prefix = self.reminder.onArrive.boolValue ? "Arrive" : "Leave"
+                let description = prefix + ", " + self.reminder.distance.floatValue.metersOrKilometers()
+                let cell = NTHTwoLineLeftLabelCell.create(tableView, title: "Region and distance", subtitle: description)
+                cell.accessoryType = .DisclosureIndicator
+                return cell
+            }
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch TableViewType(rawValue: tableView.tag)! {
         case .DateRange:
-            
             func _presentDatePicker(date: NSDate, completion: (date: NSDate) -> Void) {
-                let datePicker = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NTHDateTimePickerViewController") as! NTHDateTimePickerViewController
-                
+                let datePicker = NTHDateTimePickerViewController.instantiate()
                 datePicker.mode = UIDatePickerMode.DateAndTime
                 datePicker.completionBlock = completion
                 datePicker.setDate(date)
@@ -136,7 +156,7 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
             }
             
             
-            switch CellType(rawValue: indexPath.row)! {
+            switch CellDateType(rawValue: indexPath.row)! {
             case .FromDate:
                 _presentDatePicker(self.reminder.fromDate, { (date) -> Void in
                     self.reminder.fromDate = date
@@ -152,10 +172,13 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
             }
             
         case .Place:
-            return
-            
-        case .Region:
-            self.performSegueWithIdentifier(SegueIdentifier.EditRegion.rawValue, sender: nil)
+            switch CellPlaceType(rawValue: indexPath.row)! {
+            case .Place:
+                self.performSegueWithIdentifier(SegueIdentifier.SelectPlace.rawValue, sender: nil)
+
+            case .Region:
+                self.performSegueWithIdentifier(SegueIdentifier.EditRegion.rawValue, sender: nil)
+            }
             return
         }
     }
@@ -171,8 +194,7 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch TableViewType(rawValue: tableView.tag)! {
         case .DateRange: return 3
-        case .Place: return 1
-        case .Region: return 1
+        case .Place: return 2
         }
     }
 }

@@ -17,7 +17,7 @@ class LocationDateReminder: Reminder {
     @NSManaged var repeatIntervalNumber: NSNumber
     @NSManaged var distance: NSNumber
     @NSManaged var onArrive: NSNumber
-    @NSManaged var place: Place
+    @NSManaged var place: Place!
 
     var repeatInterval: NSCalendarUnit {
         set { self.repeatIntervalNumber = NSNumber(unsignedLong: newValue.rawValue) }

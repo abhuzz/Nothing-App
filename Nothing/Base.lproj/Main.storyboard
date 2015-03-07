@@ -298,7 +298,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SBE-RK-4DF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1358" y="-1419"/>
+            <point key="canvasLocation" x="1358" y="-1375"/>
         </scene>
         <!--Reminder-->
         <scene sceneID="gg6-rb-v1L">
@@ -356,7 +356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWl-Pi-GEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2006" y="-1419"/>
+            <point key="canvasLocation" x="1881" y="-1375"/>
         </scene>
         <!--Reminder-->
         <scene sceneID="hNh-3G-lN3">
@@ -414,7 +414,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBe-lt-sSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2006" y="1121"/>
+            <point key="canvasLocation" x="1358" y="1073"/>
         </scene>
         <!--Repeat Interval-->
         <scene sceneID="hiC-nt-WaF">
@@ -452,7 +452,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2f-f1-tFG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2559" y="1121"/>
+            <point key="canvasLocation" x="1881" y="1073"/>
         </scene>
         <!--Inbox-->
         <scene sceneID="a6b-6V-mzd">
@@ -1792,7 +1792,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kq8-l2-CSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1358" y="-537"/>
+            <point key="canvasLocation" x="2318" y="-537"/>
         </scene>
         <!--Region-->
         <scene sceneID="Vgd-cT-7se">
@@ -1847,7 +1847,7 @@ Use distance slider to set proper distance when app should notify about the even
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgy-OR-XHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2320" y="-537"/>
+            <point key="canvasLocation" x="3096" y="-537"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tqH-GL-eDb">
@@ -1864,7 +1864,7 @@ Use distance slider to set proper distance when app should notify about the even
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jr9-Jl-VkA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1358" y="1121"/>
+            <point key="canvasLocation" x="856" y="1073"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="j8G-o7-qPZ">
@@ -1899,9 +1899,9 @@ Use distance slider to set proper distance when app should notify about the even
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLe-1e-GQQ" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="309"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="295"/>
                                         <subviews>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE RANGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F50-N6-MO1">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F50-N6-MO1">
                                                 <rect key="frame" x="25" y="15" width="270" height="17"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                                 <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1926,13 +1926,6 @@ Use distance slider to set proper distance when app should notify about the even
                                                     <constraint firstAttribute="height" constant="1" id="aDX-Fi-7m5"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4Q-T5-4A9" userLabel="separator">
-                                                <rect key="frame" x="25" y="211" width="270" height="1"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="bLN-bB-bNu"/>
-                                                </constraints>
-                                            </view>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLACE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVV-4L-HmN" userLabel="header - PLACE">
                                                 <rect key="frame" x="25" y="121" width="270" height="17"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
@@ -1940,27 +1933,15 @@ Use distance slider to set proper distance when app should notify about the even
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aqC-BE-Ssu">
-                                                <rect key="frame" x="25" y="146" width="285" height="50"/>
+                                                <rect key="frame" x="25" y="146" width="285" height="124"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="Qbq-VQ-Ran"/>
+                                                    <constraint firstAttribute="height" constant="124" id="Qbq-VQ-Ran"/>
                                                 </constraints>
                                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="5Ok-RT-Cu4" id="tAP-fy-fWs"/>
                                                     <outlet property="delegate" destination="5Ok-RT-Cu4" id="nBz-I0-LdE"/>
-                                                </connections>
-                                            </tableView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="f7E-BY-lKQ">
-                                                <rect key="frame" x="25" y="227" width="285" height="62"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="62" id="bv5-Qo-yjz"/>
-                                                </constraints>
-                                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="5Ok-RT-Cu4" id="XyA-T2-EIj"/>
-                                                    <outlet property="delegate" destination="5Ok-RT-Cu4" id="gur-uy-Vb1"/>
                                                 </connections>
                                             </tableView>
                                         </subviews>
@@ -1972,21 +1953,15 @@ Use distance slider to set proper distance when app should notify about the even
                                             <constraint firstItem="F50-N6-MO1" firstAttribute="top" secondItem="OLe-1e-GQQ" secondAttribute="top" constant="15" id="7cz-b5-heu"/>
                                             <constraint firstItem="aqC-BE-Ssu" firstAttribute="leading" secondItem="OLe-1e-GQQ" secondAttribute="leading" constant="25" id="DE4-rJ-BW3"/>
                                             <constraint firstItem="aqC-BE-Ssu" firstAttribute="top" secondItem="gVV-4L-HmN" secondAttribute="bottom" constant="8" id="FcV-sR-dPe"/>
-                                            <constraint firstAttribute="trailing" secondItem="f7E-BY-lKQ" secondAttribute="trailing" constant="10" id="Mav-XH-njy"/>
+                                            <constraint firstAttribute="bottom" secondItem="aqC-BE-Ssu" secondAttribute="bottom" constant="25" id="Pgm-EK-Zk8"/>
                                             <constraint firstAttribute="trailing" secondItem="V0t-y8-N63" secondAttribute="trailing" constant="10" id="RIw-po-BSx"/>
-                                            <constraint firstItem="f7E-BY-lKQ" firstAttribute="top" secondItem="F4Q-T5-4A9" secondAttribute="bottom" constant="15" id="SSJ-vK-FM7"/>
                                             <constraint firstItem="dvH-Gz-GXz" firstAttribute="top" secondItem="V0t-y8-N63" secondAttribute="bottom" constant="15" id="Upt-11-IkB"/>
                                             <constraint firstAttribute="trailing" secondItem="F50-N6-MO1" secondAttribute="trailing" constant="25" id="Z2f-Jv-c3T"/>
-                                            <constraint firstItem="f7E-BY-lKQ" firstAttribute="leading" secondItem="OLe-1e-GQQ" secondAttribute="leading" constant="25" id="Z3v-dt-QOc"/>
-                                            <constraint firstItem="F4Q-T5-4A9" firstAttribute="top" secondItem="aqC-BE-Ssu" secondAttribute="bottom" constant="15" id="ZjF-xv-7jv"/>
                                             <constraint firstAttribute="trailing" secondItem="aqC-BE-Ssu" secondAttribute="trailing" constant="10" id="ajl-7t-f37"/>
-                                            <constraint firstAttribute="trailing" secondItem="F4Q-T5-4A9" secondAttribute="trailing" constant="25" id="dSL-9t-TMk"/>
                                             <constraint firstItem="V0t-y8-N63" firstAttribute="leading" secondItem="OLe-1e-GQQ" secondAttribute="leading" constant="25" id="g25-A9-8xx"/>
                                             <constraint firstAttribute="trailing" secondItem="dvH-Gz-GXz" secondAttribute="trailing" constant="25" id="gde-j4-koc"/>
                                             <constraint firstItem="F50-N6-MO1" firstAttribute="leading" secondItem="OLe-1e-GQQ" secondAttribute="leading" constant="25" id="hTq-rv-0t1"/>
-                                            <constraint firstAttribute="bottom" secondItem="f7E-BY-lKQ" secondAttribute="bottom" constant="20" id="mev-gh-V73"/>
                                             <constraint firstItem="V0t-y8-N63" firstAttribute="top" secondItem="F50-N6-MO1" secondAttribute="bottom" constant="8" id="s4U-c4-1DR"/>
-                                            <constraint firstItem="F4Q-T5-4A9" firstAttribute="leading" secondItem="OLe-1e-GQQ" secondAttribute="leading" constant="25" id="uZd-NS-hXp"/>
                                             <constraint firstItem="gVV-4L-HmN" firstAttribute="top" secondItem="dvH-Gz-GXz" secondAttribute="bottom" constant="15" id="wtt-Ld-e09"/>
                                         </constraints>
                                     </view>
@@ -1994,7 +1969,7 @@ Use distance slider to set proper distance when app should notify about the even
                                 <constraints>
                                     <constraint firstItem="OLe-1e-GQQ" firstAttribute="leading" secondItem="pnp-O0-fvt" secondAttribute="leading" id="BIB-kk-A0x"/>
                                     <constraint firstAttribute="trailing" secondItem="OLe-1e-GQQ" secondAttribute="trailing" id="VAl-Ke-Pbm"/>
-                                    <constraint firstAttribute="bottom" secondItem="OLe-1e-GQQ" secondAttribute="bottom" constant="126" id="ern-fT-ij8"/>
+                                    <constraint firstAttribute="bottom" secondItem="OLe-1e-GQQ" secondAttribute="bottom" priority="800" id="ern-fT-ij8"/>
                                     <constraint firstItem="OLe-1e-GQQ" firstAttribute="width" secondItem="pnp-O0-fvt" secondAttribute="width" id="spK-PO-KWa"/>
                                     <constraint firstItem="OLe-1e-GQQ" firstAttribute="top" secondItem="pnp-O0-fvt" secondAttribute="top" id="uBc-Ua-x9t"/>
                                 </constraints>
@@ -2026,9 +2001,9 @@ Use distance slider to set proper distance when app should notify about the even
                         <outlet property="dateRangeTableViewHeight" destination="p3y-Ft-RC5" id="Ar2-nL-ohw"/>
                         <outlet property="placeTableView" destination="aqC-BE-Ssu" id="85L-Zg-9cb"/>
                         <outlet property="placeTableViewHeight" destination="Qbq-VQ-Ran" id="Gya-4l-dlS"/>
-                        <outlet property="regionTableView" destination="f7E-BY-lKQ" id="FEY-oG-onC"/>
                         <segue destination="dwb-mj-o2U" kind="push" identifier="EditRepeatInterval" id="pka-w5-r5o"/>
                         <segue destination="6i6-YQ-4eN" kind="push" identifier="EditRegion" id="cRv-x9-KKV"/>
+                        <segue destination="5za-ZO-d9Q" kind="push" identifier="SelectPlace" id="ctO-kt-bJz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Caq-Op-pAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2053,8 +2028,8 @@ Use distance slider to set proper distance when app should notify about the even
         <segue reference="P9f-vh-bDu"/>
         <segue reference="OMl-SI-DSb"/>
         <segue reference="nvQ-Ui-egl"/>
-        <segue reference="7vb-2m-T27"/>
-        <segue reference="eUV-df-Dag"/>
-        <segue reference="Uti-Iq-nKf"/>
+        <segue reference="ctO-kt-bJz"/>
+        <segue reference="pka-w5-r5o"/>
+        <segue reference="cRv-x9-KKV"/>
     </inferredMetricsTieBreakers>
 </document>
