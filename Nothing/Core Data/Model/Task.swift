@@ -65,9 +65,11 @@ extension Task {
         return filter(self.reminders.allObjects) { $0 is LocationReminder } as! [LocationReminder]
     }
     
+    /*
     var locationDateReminders: [LocationDateReminder] {
         return filter(self.reminders.allObjects) { $0 is LocationDateReminder } as! [LocationDateReminder]
     }
+    */
     
     /// Link
     func addLink(link: Link) {
