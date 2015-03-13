@@ -204,6 +204,7 @@
 		12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectContactViewController.swift; sourceTree = "<group>"; };
 		12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditContactViewController.swift; sourceTree = "<group>"; };
 		12E2929E1A9527300079D257 /* NTHInboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHInboxViewController.swift; sourceTree = "<group>"; };
+		12EAC6691AB3859F000C904F /* Nothing 15.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 15.xcdatamodel"; sourceTree = "<group>"; };
 		12F0B3231A9CF0F1006229AD /* NTHSheetSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSheetSegue.swift; sourceTree = "<group>"; };
 		12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSheetViewController.swift; sourceTree = "<group>"; };
 		12FBB4C31AA33B3D00C2B32A /* Nothing 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 12.xcdatamodel"; sourceTree = "<group>"; };
@@ -893,6 +894,7 @@
 		1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				12EAC6691AB3859F000C904F /* Nothing 15.xcdatamodel */,
 				1287323C1AA62541000B3694 /* Nothing 14.xcdatamodel */,
 				12FBB4C41AA33D5400C2B32A /* Nothing 13.xcdatamodel */,
 				12FBB4C31AA33B3D00C2B32A /* Nothing 12.xcdatamodel */,
@@ -908,7 +910,7 @@
 				1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */,
 				1279B60219FED64D00A7828C /* Nothing.xcdatamodel */,
 			);
-			currentVersion = 1287323C1AA62541000B3694 /* Nothing 14.xcdatamodel */;
+			currentVersion = 12EAC6691AB3859F000C904F /* Nothing 15.xcdatamodel */;
 			name = Nothing.xcdatamodeld;
 			path = Model/Nothing.xcdatamodeld;
 			sourceTree = "<group>";

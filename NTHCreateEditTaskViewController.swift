@@ -18,9 +18,6 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     @IBOutlet private weak var locationsTableView: UITableView!
     @IBOutlet private weak var locationsTableViewHeight: NSLayoutConstraint!
     
-    @IBOutlet private weak var locationDatesTableView: UITableView!
-    @IBOutlet private weak var locationDatesTableViewHeight: NSLayoutConstraint!
-    
     @IBOutlet private weak var datesTableView: UITableView!
     @IBOutlet private weak var datesTableViewHeight: NSLayoutConstraint!
     
@@ -49,7 +46,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     
     
     enum TableViewType: Int {
-        case Locations, Dates, LocationDates, Links
+        case Locations, Dates, Links
     }
     
     
@@ -82,9 +79,6 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         self.locationsTableView.registerNib(centerCellIdentifier)
         self.locationsTableView.registerNib(leftLabelRemoveCellIdentifier)
         
-        self.locationDatesTableView.registerNib(centerCellIdentifier)
-        self.locationDatesTableView.registerNib(leftLabelRemoveCellIdentifier)
-        
         self.datesTableView.registerNib(centerCellIdentifier)
         self.datesTableView.registerNib(leftLabelRemoveCellIdentifier)
         
@@ -92,7 +86,6 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         self.linksTableView.registerNib(leftLabelRemoveCellIdentifier)
         
         self.locationsTableView.tag = TableViewType.Locations.rawValue
-        self.locationDatesTableView.tag = TableViewType.LocationDates.rawValue
         self.datesTableView.tag = TableViewType.Dates.rawValue
         self.linksTableView.tag = TableViewType.Links.rawValue
         
@@ -114,7 +107,6 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         self._refreshLocations()
         self._refreshDates()
         self._refreshLinks()
-        self._refreshLocationDates()
         
         self._addObservers()
     }
@@ -225,21 +217,6 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             vc.completionBlock = { newReminder in
                 self._refreshDates()
             }
-        } else if segue.identifier == SegueIdentifier.AddLocationDateReminder.rawValue {
-            let vc = segue.topOfNavigationController as! NTHCreateEditLocationDateReminderViewController
-            vc.context = CDHelper.temporaryContextWithParent(self.context)
-            vc.completionBlock = { newReminder in
-                let object = self.context.objectWithID(newReminder.objectID)
-                self.task.addReminder(object as! LocationDateReminder)
-                self._refreshDates()
-            }
-        } else if segue.identifier == SegueIdentifier.EditLocationDateReminder.rawValue {
-            let vc = segue.topOfNavigationController as! NTHCreateEditLocationDateReminderViewController
-            vc.context = CDHelper.temporaryContextWithParent(self.context)
-            vc.reminder = vc.context.objectWithID((sender as! LocationDateReminder).objectID) as! LocationDateReminder
-            vc.completionBlock = { newReminder in
-                self._refreshLocationDates()
-            }
         } else if segue.identifier == SegueIdentifier.AddPlaceLink.rawValue {
             let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController
             vc.linkType = LinkType.Place
@@ -276,11 +253,6 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         self.locationsTableView.refreshTableView(self.locationsTableViewHeight, height: height)
     }
     
-    private func _refreshLocationDates() {
-        let height = CGFloat(self.task.locationDateReminders.count + 1) * self.tableViewCellHeight()
-        self.locationDatesTableView.refreshTableView(self.locationDatesTableViewHeight, height: height)
-    }
-    
     private func _validateDoneButton() {
         self.doneButton.enabled = count(self.titleTextField.text) > 0
     }
@@ -311,9 +283,6 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
             
         case .Dates:
             return self.task.dateReminders.count + 1
-            
-        case .LocationDates:
-            return self.task.locationDateReminders.count + 1
             
         case .Links:
             return self.task.links.allObjects.count + 1
@@ -370,21 +339,6 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 return cell
             }
             
-        case .LocationDates:
-            let reminders = self.task.locationDateReminders
-            if indexPath.row == reminders.count {
-                return _createAddNewSomethingCell("+ Add reminder")
-            } else {
-                let reminder = reminders[indexPath.row]
-                let title = NSDateFormatter.NTHStringFromDate(reminder.fromDate) + " - " + NSDateFormatter.NTHStringFromDate(reminder.toDate)
-                let cell = _createRegularCell(title)
-                cell.clearPressedBlock = { cell in
-                    self.task.removeReminder(reminder)
-                    self._refreshLocationDates()
-                }
-                return cell
-            }
-            
         case .Links:
             if indexPath.row == self.task.links.allObjects.count {
                 return _createAddNewSomethingCell("+ Add new link")
@@ -428,15 +382,6 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 self.performSegueWithIdentifier(SegueIdentifier.CreateDateReminder.rawValue, sender: nil)
             } else {
                 self.performSegueWithIdentifier(SegueIdentifier.EditDateReminder.rawValue, sender: reminders[indexPath.row])
-            }
-            
-        case .LocationDates:
-            let reminders = self.task.locationDateReminders
-            if indexPath.row == reminders.count {
-                self.performSegueWithIdentifier(SegueIdentifier.AddLocationDateReminder.rawValue, sender: nil)
-            } else {
-                var reminder = reminders[indexPath.row]
-                self.performSegueWithIdentifier(SegueIdentifier.EditLocationDateReminder.rawValue, sender: reminder)
             }
             
         case .Links:

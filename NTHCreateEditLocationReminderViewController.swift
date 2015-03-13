@@ -15,6 +15,7 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     @IBOutlet private weak var doneButton: UIBarButtonItem!
     @IBOutlet private weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var useOpenHoursSwitch: UISwitch!
     
     
     private enum SegueIdentifier: String {
@@ -48,6 +49,7 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
+        self.useOpenHoursSwitch.setOn(self.reminder.useOpenHours.boolValue, animated: false)
         self._validateDoneButton()
     }
     
@@ -56,10 +58,15 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     }
     
     @IBAction func donePressed(sender: AnyObject) {
+        self.reminder.useOpenHours = self.useOpenHoursSwitch.on
         self.context.save(nil) /// save temporary context and pass object from this context along
         self.completionBlock?(newReminder: reminder)
     
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func openHoursSwitchChanged(sender: UISwitch) {
+
     }
     
     private func _validateDoneButton() {
