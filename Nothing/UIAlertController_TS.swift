@@ -11,7 +11,7 @@ import UIKit
 
 extension UIAlertController {
     
-    class func actionSheet(title: String, message: String?) -> UIAlertController {
+    class func actionSheet(title: String?, message: String?) -> UIAlertController {
         return UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
     }
     

@@ -81,7 +81,21 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func morePressed(sender: AnyObject) {
+        let alert = UIAlertController.actionSheet(nil, message: nil)
+        alert.addAction(UIAlertAction.normalAction("Move Done to trash", handler: { (action) -> Void in
+            for task in self.resultsController.fetchedObjects as! [Task] {
+                if task.state == .Done {
+                    task.trashed = true
+                }
+            }
+            
+            CDHelper.mainContext.save(nil)
+            self.resultsController.performFetch(nil)
+            self.tableView.reloadData()
+        }))
         
+        alert.addAction(UIAlertAction.cancelAction("Cancel", handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     
