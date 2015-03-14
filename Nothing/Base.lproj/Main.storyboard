@@ -908,8 +908,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uy-NM-8Bz" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="348"/>
                                         <subviews>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLw-Tp-FFM">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="150"/>
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLw-Tp-FFM">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="8ar-ia-zUa"/>
@@ -1527,7 +1527,7 @@
             </objects>
             <point key="canvasLocation" x="1292" y="2000"/>
         </scene>
-        <!--Task-->
+        <!--Task Details View Controller-->
         <scene sceneID="gv2-EW-oGc">
             <objects>
                 <viewController storyboardIdentifier="NTHTaskDetailsViewController" id="50M-XF-HCh" customClass="NTHTaskDetailsViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
@@ -1543,7 +1543,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="818"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsw-8v-Bjm" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="712"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="610"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="40" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Efx-Lj-A2g" userLabel="Title Field" customClass="NTHTextField" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="16" width="270" height="40"/>
@@ -1657,21 +1657,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K71-HI-bts" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="556" width="270" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="DmR-Sg-9NR"/>
-                                                </constraints>
-                                                <state key="normal" title="Edit">
-                                                    <color key="titleColor" red="0.74510002139999998" green="0.42745000119999998" blue="0.32548999789999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="editPressed:" destination="50M-XF-HCh" eventType="touchUpInside" id="6HJ-zG-PqU"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7p-OM-3nB" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="604" width="270" height="40"/>
+                                                <rect key="frame" x="25" y="550" width="270" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="pqr-1Y-I1W"/>
                                                 </constraints>
@@ -1683,29 +1670,14 @@
                                                     <action selector="markPressed:" destination="50M-XF-HCh" eventType="touchUpInside" id="mOb-CC-ob5"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVa-Y9-2da" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="652" width="270" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="Lcp-uy-kYL"/>
-                                                </constraints>
-                                                <state key="normal" title="Delete">
-                                                    <color key="titleColor" red="0.74510002139999998" green="0.42745000119999998" blue="0.32548999789999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="deletePressed:" destination="50M-XF-HCh" eventType="touchUpInside" id="ciy-al-nla"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstItem="hVa-Y9-2da" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="2TS-Mu-Ybv"/>
+                                            <constraint firstAttribute="bottom" secondItem="E7p-OM-3nB" secondAttribute="bottom" constant="20" id="1Gi-iM-Jtf"/>
                                             <constraint firstItem="Efx-Lj-A2g" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="2hm-SR-chW"/>
                                             <constraint firstItem="6zw-I0-mQH" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="5NI-dC-fjT"/>
-                                            <constraint firstItem="K71-HI-bts" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="6u0-sZ-8JK"/>
                                             <constraint firstAttribute="trailing" secondItem="HMP-bh-HVD" secondAttribute="trailing" constant="25" id="8FC-yA-X4N"/>
-                                            <constraint firstItem="E7p-OM-3nB" firstAttribute="top" secondItem="K71-HI-bts" secondAttribute="bottom" constant="8" id="8cF-g5-Xoa"/>
                                             <constraint firstAttribute="trailing" secondItem="6zw-I0-mQH" secondAttribute="trailing" constant="25" id="93n-55-cdW"/>
                                             <constraint firstItem="qdD-9s-KH4" firstAttribute="top" secondItem="H01-mQ-VRC" secondAttribute="bottom" constant="8" id="9mJ-Ub-SXJ"/>
                                             <constraint firstAttribute="trailing" secondItem="Rmf-6n-aVF" secondAttribute="trailing" constant="25" id="AmU-ke-S5w"/>
@@ -1719,17 +1691,13 @@
                                             <constraint firstItem="k7J-gf-uBR" firstAttribute="top" secondItem="Efx-Lj-A2g" secondAttribute="bottom" constant="8" id="MjD-ZN-Uzz"/>
                                             <constraint firstAttribute="trailing" secondItem="x0U-3F-cdn" secondAttribute="trailing" constant="25" id="NK0-sy-Z0B"/>
                                             <constraint firstItem="spz-gV-gau" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="NXr-N2-tOL"/>
-                                            <constraint firstAttribute="trailing" secondItem="K71-HI-bts" secondAttribute="trailing" constant="25" id="Oot-6I-XXv"/>
                                             <constraint firstAttribute="trailing" secondItem="H01-mQ-VRC" secondAttribute="trailing" constant="25" id="RJP-oH-Ey9"/>
                                             <constraint firstAttribute="trailing" secondItem="spz-gV-gau" secondAttribute="trailing" constant="25" id="SXk-OE-mcD"/>
-                                            <constraint firstItem="hVa-Y9-2da" firstAttribute="top" secondItem="E7p-OM-3nB" secondAttribute="bottom" constant="8" id="TYr-HE-gFF"/>
                                             <constraint firstAttribute="trailing" secondItem="E7p-OM-3nB" secondAttribute="trailing" constant="25" id="U3Q-M0-Eiz"/>
                                             <constraint firstItem="UKN-CC-8E7" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="UwR-gS-5wZ"/>
                                             <constraint firstItem="yji-7g-YiZ" firstAttribute="top" secondItem="qdD-9s-KH4" secondAttribute="bottom" constant="15" id="VES-Iz-ega"/>
-                                            <constraint firstAttribute="bottom" secondItem="Rmf-6n-aVF" secondAttribute="bottom" constant="186" id="Vay-dC-pVq"/>
                                             <constraint firstItem="h34-Ea-L3S" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="Z0K-EP-4da"/>
                                             <constraint firstItem="H01-mQ-VRC" firstAttribute="top" secondItem="k7J-gf-uBR" secondAttribute="bottom" constant="15" id="Zqr-G2-sVd"/>
-                                            <constraint firstItem="K71-HI-bts" firstAttribute="top" secondItem="6zw-I0-mQH" secondAttribute="bottom" constant="14" id="aCP-pv-9IY"/>
                                             <constraint firstItem="qdD-9s-KH4" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="aT5-6m-SRx"/>
                                             <constraint firstAttribute="trailing" secondItem="yji-7g-YiZ" secondAttribute="trailing" constant="25" id="b4m-fR-45J"/>
                                             <constraint firstAttribute="trailing" secondItem="Efx-Lj-A2g" secondAttribute="trailing" constant="25" id="cDM-3M-zut"/>
@@ -1743,7 +1711,7 @@
                                             <constraint firstItem="x0U-3F-cdn" firstAttribute="top" secondItem="h34-Ea-L3S" secondAttribute="bottom" constant="8" id="nmf-YH-E8J"/>
                                             <constraint firstItem="yji-7g-YiZ" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="oLO-6X-PXa"/>
                                             <constraint firstItem="AbD-zC-0ZB" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="pvN-fJ-3gL"/>
-                                            <constraint firstAttribute="trailing" secondItem="hVa-Y9-2da" secondAttribute="trailing" constant="25" id="tf4-Lv-HWY"/>
+                                            <constraint firstItem="E7p-OM-3nB" firstAttribute="top" secondItem="6zw-I0-mQH" secondAttribute="bottom" constant="8" id="u3z-ct-DNy"/>
                                             <constraint firstItem="HMP-bh-HVD" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="u5i-ai-Xcl"/>
                                             <constraint firstItem="H01-mQ-VRC" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="uhe-pq-Ubm"/>
                                             <constraint firstItem="UKN-CC-8E7" firstAttribute="top" secondItem="HMP-bh-HVD" secondAttribute="bottom" constant="8" id="wbT-Vz-1Wu"/>
@@ -1769,14 +1737,13 @@
                             <constraint firstItem="Cnt-dv-rdg" firstAttribute="leading" secondItem="Ili-BA-O3G" secondAttribute="leading" id="oSn-vz-pch"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Task" id="u3V-zC-a2z">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="XiF-kg-ruj">
-                            <view key="customView" contentMode="scaleToFill" id="Rr0-TW-9ki" customClass="NTHTaskStatusView" customModule="Nothing" customModuleProvider="target">
-                                <rect key="frame" x="290" y="12" width="14" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </barButtonItem>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="u3V-zC-a2z" customClass="NTHMultiNavigationItem" customModule="Nothing" customModuleProvider="target">
+                        <connections>
+                            <outletCollection property="rightBarButtonItemsCollection" destination="E69-AL-IYh" collectionClass="NSMutableArray" id="SID-KJ-2ZM"/>
+                            <outletCollection property="rightBarButtonItemsCollection" destination="MUL-hD-Msz" collectionClass="NSMutableArray" id="Jgt-bf-9Rc"/>
+                            <outletCollection property="rightBarButtonItemsCollection" destination="XiF-kg-ruj" collectionClass="NSMutableArray" id="ErE-Q8-BLe"/>
+                        </connections>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -1804,6 +1771,23 @@
                         <segue destination="5SG-b5-6d5" kind="modal" identifier="EditTask" id="zJ1-y0-1y8"/>
                     </connections>
                 </viewController>
+                <barButtonItem systemItem="trash" id="MUL-hD-Msz" userLabel="Delete">
+                    <connections>
+                        <action selector="deletePressed:" destination="50M-XF-HCh" id="8Be-iH-VHq"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="compose" id="E69-AL-IYh" userLabel="Edit">
+                    <connections>
+                        <action selector="editPressed:" destination="50M-XF-HCh" id="veW-1K-YXa"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem style="plain" id="XiF-kg-ruj" userLabel="Status">
+                    <view key="customView" contentMode="scaleToFill" id="Rr0-TW-9ki" customClass="NTHTaskStatusView" customModule="Nothing" customModuleProvider="target">
+                        <rect key="frame" x="290" y="12" width="14" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </barButtonItem>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFg-ra-4au" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-100" y="-939"/>
