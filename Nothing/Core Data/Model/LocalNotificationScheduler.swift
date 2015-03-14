@@ -12,27 +12,15 @@ import UIKit
 class LocalNotificationScheduler {
     
     class func scheduleNotification(task: Task) {
-        /*
-        /// Cancel notifications first
-        self.cancelScheduledNotifications(task)
-
-        var schedule = false
-        let notification = UILocalNotification()
-        
-        /// Schedlue with date
-        if let reminder = task.dateReminderInfo {
-            schedule = true
+        for reminder in task.dateReminders {
+            let notification = UILocalNotification()
             notification.fireDate = reminder.fireDate
             notification.repeatInterval = reminder.repeatInterval
             notification.alertBody = task.title
-        }
-
-        /// Schedule
-        if schedule {
             notification.userInfo = ["uniqueIdentifier": task.uniqueIdentifier]
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            println("scheduled notification: \(notification)")
         }
-        */
     }
     
     class func cancelScheduledNotifications(task: Task) {

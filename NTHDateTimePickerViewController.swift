@@ -45,7 +45,10 @@ class NTHDateTimePickerViewController: NTHSheetViewController {
     }
     
     @IBAction override func donePressed(sender: AnyObject) {
-        self.completionBlock?(selectedDate: self.datePicker.date)
+        var componenets: NSDateComponents = NSCalendar.autoupdatingCurrentCalendar().components(NSCalendarUnit.YearCalendarUnit|NSCalendarUnit.MonthCalendarUnit|NSCalendarUnit.DayCalendarUnit|NSCalendarUnit.HourCalendarUnit|NSCalendarUnit.MinuteCalendarUnit, fromDate: self.datePicker.date)
+        componenets.second = 0
+        let date = NSCalendar.autoupdatingCurrentCalendar().dateFromComponents(componenets)!
+        self.completionBlock?(selectedDate: date)
         super.donePressed(sender)
     }
 }

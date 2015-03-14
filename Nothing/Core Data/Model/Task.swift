@@ -65,12 +65,6 @@ extension Task {
         return filter(self.reminders.allObjects) { $0 is LocationReminder } as! [LocationReminder]
     }
     
-    /*
-    var locationDateReminders: [LocationDateReminder] {
-        return filter(self.reminders.allObjects) { $0 is LocationDateReminder } as! [LocationDateReminder]
-    }
-    */
-    
     /// Link
     func addLink(link: Link) {
         let mutableSet = NSMutableSet(set: self.links)
@@ -82,5 +76,11 @@ extension Task {
         let mutableSet = NSMutableSet(set: self.links)
         mutableSet.removeObject(link)
         self.links = NSSet(set: mutableSet)
+    }
+    
+    /// Schedule
+    func schedule() {
+        LocalNotificationScheduler.cancelScheduledNotifications(self)
+        LocalNotificationScheduler.scheduleNotification(self)
     }
 }
