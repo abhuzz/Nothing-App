@@ -18,7 +18,7 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
     
     private enum SegueIdentifier: String {
         case AddNewPlace = "AddNewPlace"
-        case EditPlace = "EditPlace"
+        case ShowPlace = "ShowPlace"
     }
 
     private var selectedIndexPath: NSIndexPath?
@@ -76,14 +76,11 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
             vc.context = CDHelper.temporaryContextWithParent(self.context)
             vc.presentedModally = true
             vc.completionBlock = completionBlock
-        } else if segue.identifier == SegueIdentifier.EditPlace.rawValue {
+        } else if segue.identifier == SegueIdentifier.ShowPlace.rawValue {
             let vc = segue.destinationViewController as! NTHPlaceDetailsViewController
-            vc.context = CDHelper.temporaryContextWithParent(self.context)
             let place = (sender as! Place)
-            
-            /// Get `place` object but in new contextś
-            let placeInTemporaryContext = vc.context.objectWithID(place.objectID) as! Place
-            vc.place = placeInTemporaryContext
+            vc.context = place.managedObjectContext
+            vc.place = place
         }
     }
     
@@ -156,7 +153,7 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
             
             if self.canEditPlace {
                 let place = self.places[indexPath.row]
-                self.performSegueWithIdentifier(SegueIdentifier.EditPlace.rawValue, sender: place)
+                self.performSegueWithIdentifier(SegueIdentifier.ShowPlace.rawValue, sender: place)
             }
         }
         

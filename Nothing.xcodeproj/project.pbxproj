@@ -24,6 +24,7 @@
 		1230A0911A8BE5250064447B /* CLLocation_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230A0901A8BE5250064447B /* CLLocation_TS.swift */; };
 		123181B51AB4226200776105 /* NTHMultiNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123181B41AB4226200776105 /* NTHMultiNavigationItem.swift */; };
 		123181B71AB43B4400776105 /* NTHPlaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123181B61AB43B4400776105 /* NTHPlaceDetailsViewController.swift */; };
+		123181B91AB4DFC600776105 /* NTHTaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123181B81AB4DFC600776105 /* NTHTaskListViewController.swift */; };
 		123A54921A952A4D00B4C5D4 /* NTHInboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 123A54911A952A4D00B4C5D4 /* NTHInboxCell.xib */; };
 		124A8F161A4F017800BE5EAB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124A8F151A4F017800BE5EAB /* UIView+Extension.swift */; };
 		124E5EB81A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 124E5EB71A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib */; };
@@ -131,6 +132,8 @@
 		1230A0921A8BF10D0064447B /* Nothing 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 3.xcdatamodel"; sourceTree = "<group>"; };
 		123181B41AB4226200776105 /* NTHMultiNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHMultiNavigationItem.swift; sourceTree = "<group>"; };
 		123181B61AB43B4400776105 /* NTHPlaceDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHPlaceDetailsViewController.swift; sourceTree = "<group>"; };
+		123181B81AB4DFC600776105 /* NTHTaskListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskListViewController.swift; sourceTree = "<group>"; };
+		123181BA1AB4EA8D00776105 /* Nothing 16.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 16.xcdatamodel"; sourceTree = "<group>"; };
 		123A54911A952A4D00B4C5D4 /* NTHInboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHInboxCell.xib; sourceTree = "<group>"; };
 		124A8F151A4F017800BE5EAB /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		124E5EB71A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHLeftLabelRemoveCell.xib; sourceTree = "<group>"; };
@@ -283,6 +286,7 @@
 				12A703511AA7B9F2009538E2 /* NTHSelectRepeatIntervalViewController.swift */,
 				127A80141AA30F5600B49666 /* NTHSimpleSelectLinkViewController.swift */,
 				12A7B33C1A9679E800A4EACB /* NTHTaskDetailsViewController.swift */,
+				123181B81AB4DFC600776105 /* NTHTaskListViewController.swift */,
 				12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */,
 				126904811A9E6B69008FDD84 /* NTHOpenHoursViewController.swift */,
 				12FBB4C21AA338A600C2B32A /* Sheets */,
@@ -674,6 +678,7 @@
 				120B99581A9A3DB100518FF0 /* NTHMenuViewController.swift in Sources */,
 				12FE1D711A913A8600F03601 /* NTHCreateEditPlaceViewController.swift in Sources */,
 				123181B71AB43B4400776105 /* NTHPlaceDetailsViewController.swift in Sources */,
+				123181B91AB4DFC600776105 /* NTHTaskListViewController.swift in Sources */,
 				12D2E8831A9B9CF1001539CD /* NTHTrashCell.swift in Sources */,
 				128732401AA626DD000B3694 /* DateReminder.swift in Sources */,
 				12981F0F1A86280800CDFA1D /* NTHCenterLabelCell.swift in Sources */,
@@ -902,6 +907,7 @@
 		1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				123181BA1AB4EA8D00776105 /* Nothing 16.xcdatamodel */,
 				12EAC6691AB3859F000C904F /* Nothing 15.xcdatamodel */,
 				1287323C1AA62541000B3694 /* Nothing 14.xcdatamodel */,
 				12FBB4C41AA33D5400C2B32A /* Nothing 13.xcdatamodel */,
@@ -918,7 +924,7 @@
 				1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */,
 				1279B60219FED64D00A7828C /* Nothing.xcdatamodel */,
 			);
-			currentVersion = 12EAC6691AB3859F000C904F /* Nothing 15.xcdatamodel */;
+			currentVersion = 123181BA1AB4EA8D00776105 /* Nothing 16.xcdatamodel */;
 			name = Nothing.xcdatamodeld;
 			path = Model/Nothing.xcdatamodeld;
 			sourceTree = "<group>";

@@ -21,6 +21,7 @@ class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITabl
     
     private enum SegueIdentifier: String {
         case EditPlace = "EditPlace"
+        case ShowTasks = "ShowTasks"
     }
     
     private enum TableView: Int {
@@ -64,7 +65,8 @@ class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITabl
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SegueIdentifier.EditPlace.rawValue {
+        switch SegueIdentifier(rawValue: segue.identifier!)! {
+        case .EditPlace:
             let vc = segue.topOfNavigationController as! NTHCreateEditPlaceViewController
             vc.context = CDHelper.temporaryContextWithParent(self.context)
             
@@ -80,6 +82,10 @@ class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITabl
                 /// Notify TSRegionManager that place changed
                 NSNotificationCenter.defaultCenter().postNotificationName(AppDelegate.ApplicationDidUpdatePlaceSettingsNotification, object: nil)
             }
+
+        case .ShowTasks:
+            let vc = segue.destinationViewController as! NTHTaskListViewController
+            vc.place = self.place
         }
     }
     
@@ -162,6 +168,14 @@ class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITabl
             return self._openHoursTableViewCellHeight()
         case .AssignedTasks:
             return 50
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch TableView(rawValue: tableView.tag)! {
+        case .AssignedTasks:
+            self.performSegueWithIdentifier(SegueIdentifier.ShowTasks.rawValue, sender: nil)
+        default: return
         }
     }
     

@@ -68,10 +68,6 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
             if let task = sender as? Task {
                 var registeredObject = vc.context.objectWithID(task.objectID)
                 vc.task = (registeredObject as? Task)!
-                vc.completionBlock = {
-                    self.resultsController.performFetch(nil)
-                    self.tableView.reloadData()
-                }
             }
         }
     }

@@ -319,6 +319,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
                 let reminder = reminders[indexPath.row]
                 let cell = _createRegularCell(reminder.place.name)
                 cell.clearPressedBlock = { cell in
+                    reminder.task = nil
                     self.task.removeReminder(reminder)
                     self._refreshLocations()
                 }

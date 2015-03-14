@@ -41,7 +41,6 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
 
     var task: Task!
     var context: NSManagedObjectContext!
-    var completionBlock: (() -> Void)?
     
     private enum TableViewType: Int {
         case Locations, Dates, Links

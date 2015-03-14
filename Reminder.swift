@@ -12,6 +12,6 @@ import CoreData
 @objc(Reminder)
 class Reminder: NSManagedObject {
 
-    @NSManaged var task: Task
+    @NSManaged var task: Task!
 
 }

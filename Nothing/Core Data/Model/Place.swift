@@ -44,7 +44,11 @@ extension Place {
         var tasks = [Task]()
         
         for reminder in self.locationReminders.allObjects as! [LocationReminder] {
-            tasks.append(reminder.task)
+            if let task = reminder.task {
+                if !task.trashed.boolValue && task.state == .Active {
+                    tasks.append(task)
+                }
+            }
         }
         
         return tasks
