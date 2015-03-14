@@ -22,6 +22,7 @@
 		1230A08D1A8BBE6F0064447B /* LocalNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230A08C1A8BBE6F0064447B /* LocalNotificationScheduler.swift */; };
 		1230A08F1A8BCDB20064447B /* TSRegionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230A08E1A8BCDB20064447B /* TSRegionManager.swift */; };
 		1230A0911A8BE5250064447B /* CLLocation_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230A0901A8BE5250064447B /* CLLocation_TS.swift */; };
+		123181B51AB4226200776105 /* NTHMultiNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123181B41AB4226200776105 /* NTHMultiNavigationItem.swift */; };
 		123A54921A952A4D00B4C5D4 /* NTHInboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 123A54911A952A4D00B4C5D4 /* NTHInboxCell.xib */; };
 		124A8F161A4F017800BE5EAB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124A8F151A4F017800BE5EAB /* UIView+Extension.swift */; };
 		124E5EB81A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 124E5EB71A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib */; };
@@ -127,6 +128,7 @@
 		1230A08E1A8BCDB20064447B /* TSRegionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSRegionManager.swift; sourceTree = "<group>"; };
 		1230A0901A8BE5250064447B /* CLLocation_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocation_TS.swift; sourceTree = "<group>"; };
 		1230A0921A8BF10D0064447B /* Nothing 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 3.xcdatamodel"; sourceTree = "<group>"; };
+		123181B41AB4226200776105 /* NTHMultiNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHMultiNavigationItem.swift; sourceTree = "<group>"; };
 		123A54911A952A4D00B4C5D4 /* NTHInboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHInboxCell.xib; sourceTree = "<group>"; };
 		124A8F151A4F017800BE5EAB /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		124E5EB71A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHLeftLabelRemoveCell.xib; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				12D2E8821A9B9CF1001539CD /* NTHTrashCell.swift */,
 				12A7B33E1A9681FB00A4EACB /* NTHTwoLineLeftLabelCell.swift */,
 				12F0B3221A9CF0C5006229AD /* UIStoryboardSegue */,
+				123181B41AB4226200776105 /* NTHMultiNavigationItem.swift */,
 			);
 			name = Components;
 			path = ..;
@@ -605,6 +608,7 @@
 			files = (
 				12FE1D771A9146F600F03601 /* NTHLeftLabelCell.swift in Sources */,
 				12E2929D1A9522D90079D257 /* NTHCreateEditContactViewController.swift in Sources */,
+				123181B51AB4226200776105 /* NTHMultiNavigationItem.swift in Sources */,
 				1270B00F1A91369C0058DE82 /* UITableView_TS.swift in Sources */,
 				12A703521AA7B9F2009538E2 /* NTHSelectRepeatIntervalViewController.swift in Sources */,
 				12F0B3241A9CF0F1006229AD /* NTHSheetSegue.swift in Sources */,

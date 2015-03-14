@@ -463,18 +463,37 @@
                             <constraint firstItem="5Eg-Vm-5rB" firstAttribute="top" secondItem="uJF-A0-AXa" secondAttribute="bottom" id="qnv-zJ-yYw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Inbox" id="tkh-pS-Swn">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="huu-9Z-9Db" userLabel="Settings">
+                    <toolbarItems>
+                        <barButtonItem image="hamburger" id="huu-9Z-9Db" userLabel="Settings">
                             <connections>
                                 <segue destination="dKd-vv-ZqU" kind="modal" identifier="ShowMenu" id="3kW-La-AdX"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LFm-JT-sCr">
+                        <barButtonItem style="plain" systemItem="search" id="YZ0-oC-f67">
+                            <connections>
+                                <action selector="searchPressed:" destination="wgm-K5-WoD" id="uYY-78-Reg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="more-actions-button" id="pyi-oZ-xkb" userLabel="More">
+                            <connections>
+                                <action selector="morePressed:" destination="wgm-K5-WoD" id="GlD-Tr-OKf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="add" id="LFm-JT-sCr">
                             <connections>
                                 <segue destination="5SG-b5-6d5" kind="modal" identifier="CreateTask" id="czI-Pn-o8P"/>
                             </connections>
                         </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Inbox" id="tkh-pS-Swn" customClass="NTHMultiNavigationItem" customModule="Nothing" customModuleProvider="target">
+                        <connections>
+                            <outletCollection property="leftBarButtonItemsCollection" destination="huu-9Z-9Db" collectionClass="NSMutableArray" id="4e0-eQ-xV2"/>
+                            <outletCollection property="leftBarButtonItemsCollection" destination="YZ0-oC-f67" collectionClass="NSMutableArray" id="W0x-WE-sbq"/>
+                            <outletCollection property="rightBarButtonItemsCollection" destination="pyi-oZ-xkb" collectionClass="NSMutableArray" id="gvW-gp-DGw"/>
+                            <outletCollection property="rightBarButtonItemsCollection" destination="LFm-JT-sCr" collectionClass="NSMutableArray" id="poY-H2-ykI"/>
+                        </connections>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="uJF-A0-AXa" id="xv4-xv-Fr2"/>
                         <segue destination="50M-XF-HCh" kind="push" identifier="ShowTask" id="QCK-CA-6zt"/>
@@ -1546,6 +1565,7 @@
                             </view>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="818"/>
                     <connections>
@@ -1960,6 +1980,7 @@ Use distance slider to set proper distance when app should notify about the even
         <image name="hamburger" width="30" height="30"/>
         <image name="locate-me" width="30" height="30"/>
         <image name="locate-place" width="60" height="60"/>
+        <image name="more-actions-button" width="20" height="5"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1967,14 +1988,14 @@ Use distance slider to set proper distance when app should notify about the even
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="zJ1-y0-1y8"/>
-        <segue reference="OMl-SI-DSb"/>
         <segue reference="P9f-vh-bDu"/>
-        <segue reference="nvQ-Ui-egl"/>
-        <segue reference="pka-w5-r5o"/>
-        <segue reference="Uti-Iq-nKf"/>
-        <segue reference="eUV-df-Dag"/>
+        <segue reference="czI-Pn-o8P"/>
         <segue reference="tuW-bm-KQy"/>
         <segue reference="Pg9-vd-d1p"/>
+        <segue reference="nvQ-Ui-egl"/>
+        <segue reference="OMl-SI-DSb"/>
+        <segue reference="eUV-df-Dag"/>
+        <segue reference="Uti-Iq-nKf"/>
+        <segue reference="pka-w5-r5o"/>
     </inferredMetricsTieBreakers>
 </document>
