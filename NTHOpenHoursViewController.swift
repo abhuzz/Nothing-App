@@ -92,10 +92,17 @@ class NTHOpenHoursViewController: UIViewController, UITableViewDelegate, UITable
         picker.openHourTimeInterval = openHour.openTimeInterval
         picker.closeHourTimeInterval = openHour.closeTimeInterval
         
-        picker.completionBlock = { openHourTimeInterval, closeHourTimeInterval in
-            let hour = self._sortedOpenHours()[indexPath.row]
-            hour.openTimeInterval = openHourTimeInterval
-            hour.closeTimeInterval = closeHourTimeInterval
+        picker.completionBlock = { openHourTimeInterval, closeHourTimeInterval, eachDay in
+            if (eachDay) {
+                for hour in self._sortedOpenHours() {
+                    hour.openTimeInterval = openHourTimeInterval
+                    hour.closeTimeInterval = closeHourTimeInterval
+                }
+            } else {
+                let hour = self._sortedOpenHours()[indexPath.row]
+                hour.openTimeInterval = openHourTimeInterval
+                hour.closeTimeInterval = closeHourTimeInterval
+            }
             self.tableView.reloadData()
         }
         

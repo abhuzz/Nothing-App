@@ -1644,11 +1644,24 @@
                                                     <action selector="donePressed:" destination="6aJ-Fk-kDv" eventType="touchUpInside" id="hIH-dR-2c3"/>
                                                 </connections>
                                             </button>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="toY-Bz-gZ2">
+                                                <rect key="frame" x="8" y="10" width="51" height="31"/>
+                                            </switch>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Each day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRd-2t-DZi">
+                                                <rect key="frame" x="65" y="13" width="75" height="25"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96384725770000002" green="0.96384725770000002" blue="0.96384725770000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="toY-Bz-gZ2" firstAttribute="leading" secondItem="NlD-to-tEo" secondAttribute="leading" constant="8" id="FbK-Km-yxT"/>
+                                            <constraint firstItem="oRd-2t-DZi" firstAttribute="leading" secondItem="toY-Bz-gZ2" secondAttribute="trailing" constant="8" id="MjR-pA-AfN"/>
+                                            <constraint firstAttribute="centerY" secondItem="toY-Bz-gZ2" secondAttribute="centerY" id="PJW-I8-cn3"/>
                                             <constraint firstAttribute="centerY" secondItem="nBp-6r-GHn" secondAttribute="centerY" id="UOK-su-Zhn"/>
                                             <constraint firstAttribute="trailing" secondItem="nBp-6r-GHn" secondAttribute="trailing" constant="8" id="oyy-Y7-zRL"/>
+                                            <constraint firstItem="oRd-2t-DZi" firstAttribute="centerY" secondItem="toY-Bz-gZ2" secondAttribute="centerY" id="xFS-XA-gIB"/>
                                             <constraint firstAttribute="height" constant="50" id="yGS-hT-B59"/>
                                         </constraints>
                                     </view>
@@ -1688,6 +1701,7 @@
                     <connections>
                         <outlet property="container" destination="Yix-vg-S99" id="kCE-uH-7qC"/>
                         <outlet property="containerBottomConstraint" destination="MkI-4Y-Exe" id="uZv-a6-G7J"/>
+                        <outlet property="eachDaySwitch" destination="toY-Bz-gZ2" id="XpK-p0-UGC"/>
                         <outlet property="pickerView" destination="ZEH-HM-LqT" id="7RD-Jx-7ad"/>
                     </connections>
                 </viewController>

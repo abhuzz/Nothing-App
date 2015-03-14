@@ -11,8 +11,9 @@ import UIKit
 class NTHOpenHoursPickerViewController: NTHSheetViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var eachDaySwitch: UISwitch!
     
-    var completionBlock: ((openHourTimeInterval: NSTimeInterval, closeHourTimeInterval: NSTimeInterval) -> Void)?
+    var completionBlock: ((openHourTimeInterval: NSTimeInterval, closeHourTimeInterval: NSTimeInterval, eachDay: Bool) -> Void)?
     
     var openHourTimeInterval: NSTimeInterval! = 0
     var closeHourTimeInterval: NSTimeInterval! = 0
@@ -28,7 +29,11 @@ class NTHOpenHoursPickerViewController: NTHSheetViewController, UIPickerViewDele
         let openValue = self.pickerView.selectedRowInComponent(0)
         let closeValue = self.pickerView.selectedRowInComponent(1)
         
-        self.completionBlock?(openHourTimeInterval: NSTimeInterval(openValue * 60 * 5), closeHourTimeInterval: NSTimeInterval(closeValue * 60 * 5))
+        let openHour = NSTimeInterval(openValue * 60 * 5)
+        let closeHour = NSTimeInterval(closeValue * 60 * 5)
+        let eachDay = self.eachDaySwitch.on
+        
+        self.completionBlock?(openHourTimeInterval: openHour, closeHourTimeInterval: closeHour, eachDay: eachDay)
         super.donePressed(sender)
     }
     
