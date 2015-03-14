@@ -694,7 +694,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgo-2Y-Pk2" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="370"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="430"/>
                                         <subviews>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puF-fH-pNu">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
@@ -719,6 +719,13 @@
                                                     <constraint firstAttribute="height" constant="1" id="Cyc-pM-8Z6"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAf-hn-nsd" userLabel="separator 1">
+                                                <rect key="frame" x="25" y="306" width="270" height="1"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="AgA-8C-4VP"/>
+                                                </constraints>
+                                            </view>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yi7-6d-eUb">
                                                 <rect key="frame" x="25" y="166" width="270" height="17"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
@@ -734,13 +741,13 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OPEN HOURS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozz-mv-1hf">
-                                                <rect key="frame" x="25" y="255" width="270" height="17"/>
+                                                <rect key="frame" x="25" y="315" width="270" height="17"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                                 <color key="textColor" red="0.30588235289999999" green="0.3921568627" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Llh-LK-KeC">
-                                                <rect key="frame" x="15" y="280" width="280" height="70"/>
+                                                <rect key="frame" x="15" y="340" width="280" height="70"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="Bdj-HV-KEr"/>
@@ -748,6 +755,17 @@
                                                 <connections>
                                                     <outlet property="dataSource" destination="wJB-zI-sLv" id="frD-Qi-OiJ"/>
                                                     <outlet property="delegate" destination="wJB-zI-sLv" id="F0d-I9-FOv"/>
+                                                </connections>
+                                            </tableView>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="S6v-kG-aD3">
+                                                <rect key="frame" x="25" y="248" width="285" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="zXt-sy-ghi"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="wJB-zI-sLv" id="WOK-Va-Pcg"/>
+                                                    <outlet property="delegate" destination="wJB-zI-sLv" id="nXJ-dw-JuI"/>
                                                 </connections>
                                             </tableView>
                                         </subviews>
@@ -768,12 +786,18 @@
                                             <constraint firstAttribute="trailing" secondItem="yi7-6d-eUb" secondAttribute="trailing" constant="25" id="VSd-eS-p8U"/>
                                             <constraint firstItem="LtR-1N-TAG" firstAttribute="top" secondItem="Wqh-8J-ePX" secondAttribute="bottom" constant="8" id="XqK-Lp-EYm"/>
                                             <constraint firstItem="Wqh-8J-ePX" firstAttribute="leading" secondItem="cgo-2Y-Pk2" secondAttribute="leading" constant="25" id="ZNb-ke-KHs"/>
+                                            <constraint firstItem="S6v-kG-aD3" firstAttribute="top" secondItem="LtR-1N-TAG" secondAttribute="bottom" constant="8" id="aWk-OU-rSa"/>
+                                            <constraint firstItem="NAf-hn-nsd" firstAttribute="leading" secondItem="cgo-2Y-Pk2" secondAttribute="leading" constant="25" id="ajN-61-CGt"/>
                                             <constraint firstAttribute="bottom" secondItem="Llh-LK-KeC" secondAttribute="bottom" constant="20" id="cYN-2J-nLe"/>
-                                            <constraint firstItem="ozz-mv-1hf" firstAttribute="top" secondItem="LtR-1N-TAG" secondAttribute="bottom" constant="15" id="dkj-S9-38u"/>
                                             <constraint firstItem="yi7-6d-eUb" firstAttribute="leading" secondItem="cgo-2Y-Pk2" secondAttribute="leading" constant="25" id="hp4-lw-ebF"/>
+                                            <constraint firstItem="S6v-kG-aD3" firstAttribute="leading" secondItem="cgo-2Y-Pk2" secondAttribute="leading" constant="25" id="iWX-Nl-ZwP"/>
                                             <constraint firstItem="gwV-eK-CdF" firstAttribute="top" secondItem="puF-fH-pNu" secondAttribute="bottom" id="lgk-58-3Bw"/>
+                                            <constraint firstItem="NAf-hn-nsd" firstAttribute="top" secondItem="S6v-kG-aD3" secondAttribute="bottom" constant="8" id="niw-wZ-Qox"/>
+                                            <constraint firstItem="ozz-mv-1hf" firstAttribute="top" secondItem="NAf-hn-nsd" secondAttribute="bottom" constant="8" id="ntF-pF-v6t"/>
                                             <constraint firstItem="puF-fH-pNu" firstAttribute="leading" secondItem="cgo-2Y-Pk2" secondAttribute="leading" id="rEG-96-AkL"/>
                                             <constraint firstItem="Wqh-8J-ePX" firstAttribute="top" secondItem="yi7-6d-eUb" secondAttribute="bottom" constant="8" id="rp2-ef-JJv"/>
+                                            <constraint firstAttribute="trailing" secondItem="NAf-hn-nsd" secondAttribute="trailing" constant="25" id="v24-kQ-r0M"/>
+                                            <constraint firstAttribute="trailing" secondItem="S6v-kG-aD3" secondAttribute="trailing" constant="10" id="vqU-EI-cSp"/>
                                             <constraint firstAttribute="trailing" secondItem="Llh-LK-KeC" secondAttribute="trailing" constant="25" id="xRD-rH-tXi"/>
                                         </constraints>
                                     </view>
@@ -805,6 +829,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="assignedTasksTableView" destination="S6v-kG-aD3" id="evX-tZ-Paz"/>
                         <outlet property="mapView" destination="puF-fH-pNu" id="yer-cK-Wf8"/>
                         <outlet property="nameTextField" destination="Wqh-8J-ePX" id="sOm-ed-lcx"/>
                         <outlet property="openHoursTableView" destination="Llh-LK-KeC" id="Ygn-O9-E8V"/>
@@ -823,7 +848,7 @@
                 </barButtonItem>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bg0-Pr-cVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1292" y="3469"/>
+            <point key="canvasLocation" x="1292" y="3193"/>
         </scene>
         <!--Place-->
         <scene sceneID="v7U-YT-dhF">
@@ -1001,7 +1026,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2734" y="2756"/>
+            <point key="canvasLocation" x="2424" y="2756"/>
         </scene>
         <!--Map-->
         <scene sceneID="ZST-gy-DT3">
@@ -1118,7 +1143,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3290" y="2335"/>
+            <point key="canvasLocation" x="2980" y="2335"/>
         </scene>
         <!--Open Hours-->
         <scene sceneID="TZV-Th-vYx">
@@ -1216,7 +1241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Myb-Ww-IlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3290" y="3136.5"/>
+            <point key="canvasLocation" x="2980" y="3136.5"/>
         </scene>
         <!--Date Time Picker View Controller-->
         <scene sceneID="Qpv-uF-TUN">
@@ -1879,7 +1904,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBj-MH-fMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2196" y="2756"/>
+            <point key="canvasLocation" x="1886" y="2756"/>
         </scene>
         <!--Link-Selector-->
         <scene sceneID="9eH-hZ-Wa1">

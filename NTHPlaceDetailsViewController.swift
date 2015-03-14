@@ -16,10 +16,15 @@ class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITabl
     @IBOutlet private weak var mapView: MKMapView!
     @IBOutlet private weak var openHoursTableView: UITableView!
     @IBOutlet private weak var openHoursTableViewHeight: NSLayoutConstraint!
+    @IBOutlet private weak var assignedTasksTableView: UITableView!
     
     
     private enum SegueIdentifier: String {
         case EditPlace = "EditPlace"
+    }
+    
+    private enum TableView: Int {
+        case AssignedTasks, OpenHours
     }
     
     var place: Place!
@@ -27,8 +32,12 @@ class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.openHoursTableView.tag = TableView.OpenHours.rawValue
         self.openHoursTableView.registerNib("NTHOpenHoursCell")
         self.openHoursTableView.registerNib("NTHCenterLabelCell")
+        
+        self.assignedTasksTableView.tag = TableView.AssignedTasks.rawValue
+        self.assignedTasksTableView.registerNib("NTHLeftLabelCell")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -36,9 +45,13 @@ class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITabl
         
         self.navigationItem.title = ""
         self.nameTextField.text = self.place.name
+        
         /// update map
         self._updateMapWithCoordinate(self.place.coordinate)
+        
+        /// refresh tables
         self.openHoursTableView.refreshTableView(self.openHoursTableViewHeight, height: self._openHoursTableViewHeight())
+        self.assignedTasksTableView.reloadData()
     }
     
     private func _updateMapWithCoordinate(coordinate: CLLocationCoordinate2D) {
@@ -105,33 +118,52 @@ class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITabl
     
     /// Mark: UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if self.place.useOpenHours.boolValue {
-            let openHour = self._sortedOpenHours()[indexPath.row]
-            let cell = tableView.dequeueReusableCellWithIdentifier("NTHOpenHoursCell") as! NTHOpenHoursCell
-            cell.selectedBackgroundView = UIView()
-            
-            cell.dayNameLabel.text = openHour.dayString.uppercaseString
-            let openHourString = NTHTime(interval: openHour.openTimeInterval).toString()
-            let closeHourString = NTHTime(interval: openHour.closeTimeInterval).toString()
-            cell.hourLabel.text =  openHourString + " - " + closeHourString
-            cell.closedLabel.text = "Closed"
-            cell.update(openHour.closed)
-            cell.clockButton.hidden = true
-            cell.closeButton.hidden = true
+        switch TableView(rawValue: tableView.tag)! {
+        case .AssignedTasks:
+            var hasTasks = self.place.associatedTasks.count > 0
+            let title = "Associated Tasks (\(self.place.associatedTasks.count))"
+            let cell = NTHLeftLabelCell.create(tableView, title: title)
+            cell.accessoryType = hasTasks ? .DisclosureIndicator : .None
             return cell
-        } else {
-            return NTHCenterLabelCell.create(tableView, title: "Open hours disabled")
+            
+        case .OpenHours:
+            if self.place.useOpenHours.boolValue {
+                let openHour = self._sortedOpenHours()[indexPath.row]
+                let cell = tableView.dequeueReusableCellWithIdentifier("NTHOpenHoursCell") as! NTHOpenHoursCell
+                cell.selectedBackgroundView = UIView()
+                
+                cell.dayNameLabel.text = openHour.dayString.uppercaseString
+                let openHourString = NTHTime(interval: openHour.openTimeInterval).toString()
+                let closeHourString = NTHTime(interval: openHour.closeTimeInterval).toString()
+                cell.hourLabel.text =  openHourString + " - " + closeHourString
+                cell.closedLabel.text = "Closed"
+                cell.update(openHour.closed)
+                cell.clockButton.hidden = true
+                cell.closeButton.hidden = true
+                return cell
+            } else {
+                return NTHCenterLabelCell.create(tableView, title: "Open hours disabled")
+            }
         }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  self._openHoursTableViewCellsNumber()
+        switch TableView(rawValue: tableView.tag)! {
+        case .OpenHours:
+            return self._openHoursTableViewCellsNumber()
+        case .AssignedTasks:
+            return 1
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return self._openHoursTableViewCellHeight()
+        switch TableView(rawValue: tableView.tag)! {
+        case .OpenHours:
+            return self._openHoursTableViewCellHeight()
+        case .AssignedTasks:
+            return 50
+        }
     }
-    
     
     // Table View helpers
     private func _openHoursTableViewCellsNumber() -> Int {

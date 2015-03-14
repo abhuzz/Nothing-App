@@ -23,6 +23,27 @@ class ModelController {
         return (CDHelper.mainContext.executeFetchRequest(request, error: nil) as! [Task]) ?? [Task]()
     }
     
+    func activeTasksForPlace(place: Place) -> [Task] {
+        let tasks = self.allTasksNotDoneAndNotTrashed()
+        var result = [Task]()
+        
+        for task in tasks {
+            var found = false
+            for reminder in task.locationReminders {
+                if (reminder.place == place) {
+                    found = true
+                    break
+                }
+            }
+            
+            if found {
+                result.append(task)
+            }
+        }
+        
+        return result
+    }
+    
     func findTask(identifier: String) -> Task? {
         let request = NSFetchRequest(entityName: NSStringFromClass(Task.self))
         request.predicate = NSPredicate(format: "uniqueIdentifier = %@", identifier)

@@ -21,4 +21,12 @@ class NTHLeftLabelCell: UITableViewCell {
         set { super.layoutMargins = newValue }
         get { return UIEdgeInsetsZero }
     }
+    
+    class func create(tableView: UITableView, title: String) -> NTHLeftLabelCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("NTHLeftLabelCell") as! NTHLeftLabelCell
+        cell.label.font = UIFont.NTHNormalTextFont()
+        cell.label.text = title
+        cell.selectedBackgroundView = UIView()
+        return cell
+    }
 }

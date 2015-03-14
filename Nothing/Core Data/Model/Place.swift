@@ -39,4 +39,14 @@ extension Place {
             context.deleteObject(info)
         }
     }
+    
+    var associatedTasks: [Task] {
+        var tasks = [Task]()
+        
+        for reminder in self.locationReminders.allObjects as! [LocationReminder] {
+            tasks.append(reminder.task)
+        }
+        
+        return tasks
+    }
 }
