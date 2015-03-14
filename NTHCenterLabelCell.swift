@@ -15,4 +15,12 @@ class NTHCenterLabelCell: UITableViewCell {
         set { super.layoutMargins = newValue }
         get { return UIEdgeInsetsZero }
     }
+    
+    class func create(tableView: UITableView, title: String) -> NTHCenterLabelCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("NTHCenterLabelCell") as! NTHCenterLabelCell
+        cell.label.font = UIFont.NTHAddNewCellFont()
+        cell.label.text = title
+        cell.selectedBackgroundView = UIView()
+        return cell
+    }
 }

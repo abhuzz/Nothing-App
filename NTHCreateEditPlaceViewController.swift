@@ -19,7 +19,6 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     @IBOutlet private var mapTapGesture: UITapGestureRecognizer!
     @IBOutlet private weak var menuTableView: UITableView!
     @IBOutlet private var tapGesture: UITapGestureRecognizer!
-    @IBOutlet private weak var deleteButton: NTHButton!
     
     var completionBlock: ((context: NSManagedObjectContext!) -> Void)!
     var context: NSManagedObjectContext!
@@ -70,8 +69,6 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
             
             self.place.openHours = NSOrderedSet(array: hours)
         }
-        
-        self.deleteButton.hidden = !self.editingPlace
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -135,27 +132,6 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
             self.nameTextField.resignFirstResponder()
         }
     }
-    
-    @IBAction func deletePressed(sender: AnyObject) {
-        
-        let alert = UIAlertController(title: "Delete", message: "Do you want to delete \"\(self.place.name)\"?", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        /// YES
-        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive, handler: { (action) -> Void in
-            self.place.removeAllAssociatedObjects(self.context)
-            self.context.deleteObject(self.place)
-            self.context.save(nil)
-            self.context.parentContext?.save(nil)
-            self.completionBlock?(context: self.context)
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }))
-        
-        /// NO
-        alert.addAction(UIAlertAction.cancelAction("No", handler: nil))
-        
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
     
     func textFieldDidChangeNotification() {
         self._validateDoneButton()

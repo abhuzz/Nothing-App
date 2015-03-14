@@ -37,11 +37,16 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
         self.placesTableView.tableFooterView = UIView()
         self.placesTableView.registerNib("NTHCenterLabelCell")
         self.placesTableView.registerNib("NTHLeftLabelCell")
-        self.places = ModelController().allPlaces(self.context)
         
         if !self.showDoneButton {
             self.navigationItem.rightBarButtonItems = nil
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.places = ModelController().allPlaces(self.context)
+        self.placesTableView.reloadData()
     }
     
     private func _validateDoneButton() {
@@ -72,17 +77,13 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
             vc.presentedModally = true
             vc.completionBlock = completionBlock
         } else if segue.identifier == SegueIdentifier.EditPlace.rawValue {
-            let navVC = segue.destinationViewController as! UINavigationController
-            let vc = navVC.topViewController as! NTHCreateEditPlaceViewController
+            let vc = segue.destinationViewController as! NTHPlaceDetailsViewController
             vc.context = CDHelper.temporaryContextWithParent(self.context)
             let place = (sender as! Place)
             
             /// Get `place` object but in new contextś
             let placeInTemporaryContext = vc.context.objectWithID(place.objectID) as! Place
             vc.place = placeInTemporaryContext
-            vc.presentedModally = true
-            vc.editingPlace = true
-            vc.completionBlock = completionBlock
         }
     }
     
