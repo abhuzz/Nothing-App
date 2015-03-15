@@ -27,6 +27,11 @@ class NTHTaskSearchViewController: UIViewController, UISearchBarDelegate, UITabl
         self.tableView.registerNib("NTHCenterLabelCell")
         self.tableView.registerNib("NTHInboxCell")
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
 
     /// Mark: UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -45,7 +50,7 @@ class NTHTaskSearchViewController: UIViewController, UISearchBarDelegate, UITabl
         let vc = storyboard.instantiateViewControllerWithIdentifier("NTHTaskDetailsViewController") as! NTHTaskDetailsViewController
         vc.context = self.context
         vc.task = self.results[indexPath.row]
-        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

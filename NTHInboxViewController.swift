@@ -74,7 +74,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func searchPressed(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("NTHTaskSearchViewController") as! NTHTaskSearchViewController
+        let vc = storyboard.instantiateViewControllerWithIdentifier("NTHTaskSearchNavigationController") as! UINavigationController
         self.presentViewController(vc, animated: true, completion: nil)
     }
     
