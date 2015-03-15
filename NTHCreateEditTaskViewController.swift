@@ -92,6 +92,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         if self.task == nil {
             self.task = Task.create(self.context) as Task
             self.task.uniqueIdentifier = NSUUID().UUIDString
+            self.task.createdAt = NSDate()
         }
     }
     

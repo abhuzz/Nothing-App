@@ -134,6 +134,7 @@
 		123181B61AB43B4400776105 /* NTHPlaceDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHPlaceDetailsViewController.swift; sourceTree = "<group>"; };
 		123181B81AB4DFC600776105 /* NTHTaskListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskListViewController.swift; sourceTree = "<group>"; };
 		123181BA1AB4EA8D00776105 /* Nothing 16.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 16.xcdatamodel"; sourceTree = "<group>"; };
+		123181BB1AB57C0300776105 /* Nothing 17.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 17.xcdatamodel"; sourceTree = "<group>"; };
 		123A54911A952A4D00B4C5D4 /* NTHInboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHInboxCell.xib; sourceTree = "<group>"; };
 		124A8F151A4F017800BE5EAB /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		124E5EB71A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHLeftLabelRemoveCell.xib; sourceTree = "<group>"; };
@@ -907,6 +908,7 @@
 		1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				123181BB1AB57C0300776105 /* Nothing 17.xcdatamodel */,
 				123181BA1AB4EA8D00776105 /* Nothing 16.xcdatamodel */,
 				12EAC6691AB3859F000C904F /* Nothing 15.xcdatamodel */,
 				1287323C1AA62541000B3694 /* Nothing 14.xcdatamodel */,
@@ -924,7 +926,7 @@
 				1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */,
 				1279B60219FED64D00A7828C /* Nothing.xcdatamodel */,
 			);
-			currentVersion = 123181BA1AB4EA8D00776105 /* Nothing 16.xcdatamodel */;
+			currentVersion = 123181BB1AB57C0300776105 /* Nothing 17.xcdatamodel */;
 			name = Nothing.xcdatamodeld;
 			path = Model/Nothing.xcdatamodeld;
 			sourceTree = "<group>";

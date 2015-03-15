@@ -14,6 +14,7 @@ import CoreLocation
 @objc(Task)
 class Task: NSManagedObject {
     
+    @NSManaged var createdAt: NSDate
     @NSManaged var links: NSSet
     @NSManaged var longDescription: String?
     @NSManaged var uniqueIdentifier: String

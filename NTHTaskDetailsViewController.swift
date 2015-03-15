@@ -36,7 +36,6 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet private weak var separator3: UIView!
     @IBOutlet private weak var separator4: UIView!
     
-    @IBOutlet private weak var markButton: NTHButton!
     @IBOutlet weak var taskStatusView: NTHTaskStatusView!
 
     var task: Task!
@@ -86,7 +85,7 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self._fillView()
-        self._updateMarkButtonAndStatusView()
+        self.taskStatusView.state = self.task.state
     }
     
 
@@ -123,6 +122,15 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
+    @IBAction func changeStatusPressed(sender: AnyObject) {
+        self.task.changeState()
+        self.taskStatusView.state = self.task.state
+        self.context.save(nil)
+        self.context.parentContext?.save(nil)
+        
+        /// Notify TSRegionManager that place changed
+        NSNotificationCenter.defaultCenter().postNotificationName(AppDelegate.ApplicationDidUpdatePlaceSettingsNotification, object: nil)
+    }
     
     /// Mark: UITableView
     
@@ -275,21 +283,6 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBAction func editPressed(sender: AnyObject) {
         self.performSegueWithIdentifier(SegueIdentifier.EditTask.rawValue, sender: self.task)
-    }
-    
-    @IBAction func markPressed(sender: AnyObject) {
-        self.task.changeState()
-        self._updateMarkButtonAndStatusView()
-        self.context.save(nil)
-        self.context.parentContext?.save(nil)
-        
-        /// Notify TSRegionManager that place changed
-        NSNotificationCenter.defaultCenter().postNotificationName(AppDelegate.ApplicationDidUpdatePlaceSettingsNotification, object: nil)
-    }
-    
-    private func _updateMarkButtonAndStatusView() {
-        self.markButton.setTitle(self.task.state == .Done ? "Mark as Active" : "Mark as Done", forState: UIControlState.Normal)
-        self.taskStatusView.state = self.task.state
     }
     
     @IBAction func deletePressed(sender: AnyObject) {

@@ -1194,10 +1194,10 @@
                         <viewControllerLayoutGuide type="bottom" id="bTM-pm-0GR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IB1-fe-dVm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="521"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="585"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fF0-5W-HQ4">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fF0-5W-HQ4">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="521"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nIt-IW-850" userLabel="Content View">
@@ -1543,7 +1543,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="818"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsw-8v-Bjm" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="610"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="546"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="40" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Efx-Lj-A2g" userLabel="Title Field" customClass="NTHTextField" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="16" width="270" height="40"/>
@@ -1635,13 +1635,6 @@
                                                     <constraint firstAttribute="height" constant="1" id="B1f-45-pU6"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="6zw-I0-mQH" userLabel="separator 4">
-                                                <rect key="frame" x="25" y="541" width="270" height="1"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="lKA-TM-Od1"/>
-                                                </constraints>
-                                            </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="270" placeholderIntrinsicHeight="128" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmf-6n-aVF" userLabel="notes text view" customClass="NTHPlaceholderTextView" customModule="Nothing" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="398" width="270" height="128"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1657,28 +1650,12 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7p-OM-3nB" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="550" width="270" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="pqr-1Y-I1W"/>
-                                                </constraints>
-                                                <state key="normal" title="Mark">
-                                                    <color key="titleColor" red="0.74510002139999998" green="0.42745000119999998" blue="0.32548999789999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="markPressed:" destination="50M-XF-HCh" eventType="touchUpInside" id="mOb-CC-ob5"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="E7p-OM-3nB" secondAttribute="bottom" constant="20" id="1Gi-iM-Jtf"/>
                                             <constraint firstItem="Efx-Lj-A2g" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="2hm-SR-chW"/>
-                                            <constraint firstItem="6zw-I0-mQH" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="5NI-dC-fjT"/>
                                             <constraint firstAttribute="trailing" secondItem="HMP-bh-HVD" secondAttribute="trailing" constant="25" id="8FC-yA-X4N"/>
-                                            <constraint firstAttribute="trailing" secondItem="6zw-I0-mQH" secondAttribute="trailing" constant="25" id="93n-55-cdW"/>
                                             <constraint firstItem="qdD-9s-KH4" firstAttribute="top" secondItem="H01-mQ-VRC" secondAttribute="bottom" constant="8" id="9mJ-Ub-SXJ"/>
                                             <constraint firstAttribute="trailing" secondItem="Rmf-6n-aVF" secondAttribute="trailing" constant="25" id="AmU-ke-S5w"/>
                                             <constraint firstItem="k7J-gf-uBR" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="BYT-mz-3tw"/>
@@ -1693,7 +1670,6 @@
                                             <constraint firstItem="spz-gV-gau" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="NXr-N2-tOL"/>
                                             <constraint firstAttribute="trailing" secondItem="H01-mQ-VRC" secondAttribute="trailing" constant="25" id="RJP-oH-Ey9"/>
                                             <constraint firstAttribute="trailing" secondItem="spz-gV-gau" secondAttribute="trailing" constant="25" id="SXk-OE-mcD"/>
-                                            <constraint firstAttribute="trailing" secondItem="E7p-OM-3nB" secondAttribute="trailing" constant="25" id="U3Q-M0-Eiz"/>
                                             <constraint firstItem="UKN-CC-8E7" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="UwR-gS-5wZ"/>
                                             <constraint firstItem="yji-7g-YiZ" firstAttribute="top" secondItem="qdD-9s-KH4" secondAttribute="bottom" constant="15" id="VES-Iz-ega"/>
                                             <constraint firstItem="h34-Ea-L3S" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="Z0K-EP-4da"/>
@@ -1705,13 +1681,11 @@
                                             <constraint firstItem="Rmf-6n-aVF" firstAttribute="top" secondItem="spz-gV-gau" secondAttribute="bottom" constant="15" id="eYR-DP-rA3"/>
                                             <constraint firstAttribute="trailing" secondItem="h34-Ea-L3S" secondAttribute="trailing" constant="25" id="fPN-3N-d2a"/>
                                             <constraint firstItem="x0U-3F-cdn" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="gGg-Tl-S1n"/>
-                                            <constraint firstItem="E7p-OM-3nB" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="k1n-f7-pQP"/>
                                             <constraint firstAttribute="trailing" secondItem="UKN-CC-8E7" secondAttribute="trailing" constant="25" id="kMh-gV-W6u"/>
-                                            <constraint firstItem="6zw-I0-mQH" firstAttribute="top" secondItem="Rmf-6n-aVF" secondAttribute="bottom" constant="15" id="kyl-VA-nZ7"/>
+                                            <constraint firstAttribute="bottom" secondItem="Rmf-6n-aVF" secondAttribute="bottom" constant="20" id="ksb-Ee-ocn"/>
                                             <constraint firstItem="x0U-3F-cdn" firstAttribute="top" secondItem="h34-Ea-L3S" secondAttribute="bottom" constant="8" id="nmf-YH-E8J"/>
                                             <constraint firstItem="yji-7g-YiZ" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="oLO-6X-PXa"/>
                                             <constraint firstItem="AbD-zC-0ZB" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="pvN-fJ-3gL"/>
-                                            <constraint firstItem="E7p-OM-3nB" firstAttribute="top" secondItem="6zw-I0-mQH" secondAttribute="bottom" constant="8" id="u3z-ct-DNy"/>
                                             <constraint firstItem="HMP-bh-HVD" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="u5i-ai-Xcl"/>
                                             <constraint firstItem="H01-mQ-VRC" firstAttribute="leading" secondItem="gsw-8v-Bjm" secondAttribute="leading" constant="25" id="uhe-pq-Ubm"/>
                                             <constraint firstItem="UKN-CC-8E7" firstAttribute="top" secondItem="HMP-bh-HVD" secondAttribute="bottom" constant="8" id="wbT-Vz-1Wu"/>
@@ -1742,7 +1716,7 @@
                         <connections>
                             <outletCollection property="rightBarButtonItemsCollection" destination="E69-AL-IYh" collectionClass="NSMutableArray" id="SID-KJ-2ZM"/>
                             <outletCollection property="rightBarButtonItemsCollection" destination="MUL-hD-Msz" collectionClass="NSMutableArray" id="Jgt-bf-9Rc"/>
-                            <outletCollection property="rightBarButtonItemsCollection" destination="XiF-kg-ruj" collectionClass="NSMutableArray" id="ErE-Q8-BLe"/>
+                            <outletCollection property="rightBarButtonItemsCollection" destination="sTF-BL-QBW" collectionClass="NSMutableArray" id="6h1-hx-AgN"/>
                         </connections>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -1758,7 +1732,6 @@
                         <outlet property="locationRemindersLabel" destination="H01-mQ-VRC" id="I3b-CZ-Azq"/>
                         <outlet property="locationsTableView" destination="qdD-9s-KH4" id="KsB-8L-TCm"/>
                         <outlet property="locationsTableViewHeight" destination="jDR-06-3ku" id="Wje-uq-OmB"/>
-                        <outlet property="markButton" destination="E7p-OM-3nB" id="3HX-tJ-zcR"/>
                         <outlet property="notesTextView" destination="Rmf-6n-aVF" id="FWo-hE-q83"/>
                         <outlet property="scrollViewBottomGuide" destination="HZz-tc-gId" id="BUK-fj-vkU"/>
                         <outlet property="separator1" destination="k7J-gf-uBR" id="WE2-Em-f3y"/>
@@ -1766,29 +1739,56 @@
                         <outlet property="separator3" destination="AbD-zC-0ZB" id="z7Q-Y1-5bE"/>
                         <outlet property="separator4" destination="spz-gV-gau" id="QiS-gr-uIu"/>
                         <outlet property="tapGesture" destination="nFu-2o-cDe" id="IUV-Kg-iqg"/>
-                        <outlet property="taskStatusView" destination="Rr0-TW-9ki" id="Ijr-y5-D9s"/>
+                        <outlet property="taskStatusView" destination="Q2f-I2-KBD" id="1FB-P0-FtN"/>
                         <outlet property="titleTextField" destination="Efx-Lj-A2g" id="Vvb-PE-Nga"/>
                         <segue destination="5SG-b5-6d5" kind="modal" identifier="EditTask" id="zJ1-y0-1y8"/>
                     </connections>
                 </viewController>
-                <barButtonItem systemItem="trash" id="MUL-hD-Msz" userLabel="Delete">
-                    <connections>
-                        <action selector="deletePressed:" destination="50M-XF-HCh" id="8Be-iH-VHq"/>
-                    </connections>
-                </barButtonItem>
-                <barButtonItem systemItem="compose" id="E69-AL-IYh" userLabel="Edit">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IFg-ra-4au" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem style="plain" systemItem="compose" id="E69-AL-IYh" userLabel="Edit">
                     <connections>
                         <action selector="editPressed:" destination="50M-XF-HCh" id="veW-1K-YXa"/>
                     </connections>
                 </barButtonItem>
-                <barButtonItem style="plain" id="XiF-kg-ruj" userLabel="Status">
-                    <view key="customView" contentMode="scaleToFill" id="Rr0-TW-9ki" customClass="NTHTaskStatusView" customModule="Nothing" customModuleProvider="target">
-                        <rect key="frame" x="290" y="12" width="14" height="14"/>
+                <barButtonItem style="plain" systemItem="trash" id="MUL-hD-Msz" userLabel="Delete">
+                    <connections>
+                        <action selector="deletePressed:" destination="50M-XF-HCh" id="8Be-iH-VHq"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem style="plain" id="sTF-BL-QBW" userLabel="Status">
+                    <view key="customView" contentMode="scaleToFill" id="3hN-JL-X2n" userLabel="Container">
+                        <rect key="frame" x="274" y="2" width="30" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pD-Po-rIk">
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeStatusPressed:" destination="50M-XF-HCh" eventType="touchUpInside" id="vaf-dS-Lbf"/>
+                                </connections>
+                            </button>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2f-I2-KBD" customClass="NTHTaskStatusView" customModule="Nothing" customModuleProvider="target">
+                                <rect key="frame" x="8" y="8" width="14" height="14"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="14" id="t3B-oW-zJ3"/>
+                                    <constraint firstAttribute="height" constant="14" id="wsT-Jx-asO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q2f-I2-KBD" firstAttribute="centerX" secondItem="8pD-Po-rIk" secondAttribute="centerX" id="7ht-9v-trv"/>
+                            <constraint firstItem="8pD-Po-rIk" firstAttribute="leading" secondItem="3hN-JL-X2n" secondAttribute="leading" id="D2Y-xc-8iV"/>
+                            <constraint firstItem="8pD-Po-rIk" firstAttribute="top" secondItem="3hN-JL-X2n" secondAttribute="top" id="OkU-sR-21P"/>
+                            <constraint firstAttribute="trailing" secondItem="8pD-Po-rIk" secondAttribute="trailing" id="aii-qf-crR"/>
+                            <constraint firstItem="Q2f-I2-KBD" firstAttribute="centerY" secondItem="8pD-Po-rIk" secondAttribute="centerY" id="pML-dK-GkQ"/>
+                            <constraint firstAttribute="bottom" secondItem="8pD-Po-rIk" secondAttribute="bottom" id="qom-5X-Glk"/>
+                        </constraints>
                     </view>
                 </barButtonItem>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IFg-ra-4au" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-100" y="-939"/>
         </scene>
