@@ -31,6 +31,7 @@ class NTHTaskSearchViewController: UIViewController, UISearchBarDelegate, UITabl
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self._searchPhrase(self.searchBar.text)
     }
 
     /// Mark: UITableView
@@ -70,13 +71,17 @@ class NTHTaskSearchViewController: UIViewController, UISearchBarDelegate, UITabl
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        self._searchPhrase(searchText)
+    }
+    
+    private func _searchPhrase(searchText: String) {
         let allTasks = ModelController().allTasks()
         var tasks = [Task]()
         
         let regexp = NSRegularExpression(pattern: searchText, options: NSRegularExpressionOptions.CaseInsensitive, error: nil)
         
         for task in allTasks {
-           
+            
             /// Create string to search
             var source = task.title
             for reminder in task.locationReminders {
