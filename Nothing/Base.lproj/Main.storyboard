@@ -1742,7 +1742,7 @@
                         <outlet property="tapGesture" destination="nFu-2o-cDe" id="IUV-Kg-iqg"/>
                         <outlet property="taskStatusView" destination="Q2f-I2-KBD" id="1FB-P0-FtN"/>
                         <outlet property="titleTextField" destination="Efx-Lj-A2g" id="Vvb-PE-Nga"/>
-                        <segue destination="5SG-b5-6d5" kind="modal" identifier="EditTask" id="zJ1-y0-1y8"/>
+                        <segue destination="5SG-b5-6d5" kind="modal" identifier="EditTask" modalTransitionStyle="crossDissolve" id="zJ1-y0-1y8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFg-ra-4au" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2280,14 +2280,14 @@ Use distance slider to set proper distance when app should notify about the even
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="czI-Pn-o8P"/>
         <segue reference="OMl-SI-DSb"/>
-        <segue reference="Ewy-IN-EZr"/>
-        <segue reference="nvQ-Ui-egl"/>
-        <segue reference="P9f-vh-bDu"/>
-        <segue reference="eUV-df-Dag"/>
-        <segue reference="pka-w5-r5o"/>
+        <segue reference="zJ1-y0-1y8"/>
         <segue reference="tuW-bm-KQy"/>
+        <segue reference="P9f-vh-bDu"/>
+        <segue reference="nvQ-Ui-egl"/>
+        <segue reference="Ewy-IN-EZr"/>
+        <segue reference="pka-w5-r5o"/>
+        <segue reference="eUV-df-Dag"/>
         <segue reference="jz3-em-BDf"/>
     </inferredMetricsTieBreakers>
 </document>
