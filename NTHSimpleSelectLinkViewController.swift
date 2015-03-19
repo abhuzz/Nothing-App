@@ -18,15 +18,13 @@ class NTHSimpleSelectLinkViewController: UIViewController, UITableViewDelegate, 
 
     @IBOutlet private weak var tableView: UITableView!
     
-    
-    private var selectedIndexPath: NSIndexPath?
-    
+    var singleSelection = true
+    var selectedLinks = [Link]()
+    var selectedIndexPaths = [NSIndexPath]()
     
     var linkType: LinkType!
     var links = [Link]()
-    var context: NSManagedObjectContext!
-    var selectedLink: Link?
-    var completionBlock: ((selected: Link) -> Void)?
+    var selectedBlock: ((links: [Link]) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,10 +74,13 @@ class NTHSimpleSelectLinkViewController: UIViewController, UITableViewDelegate, 
             cell.label.font = UIFont.NTHNormalTextFont()
             cell.leadingConstraint.constant = 15
             
-            if let selectedLink = self.selectedLink {
+            for selectedLink in self.selectedLinks {
                 if selectedLink == link {
-                    self.selectedIndexPath = indexPath
                     cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                    if find(self.selectedIndexPaths, indexPath) == nil {
+                        self.selectedIndexPaths.append(indexPath)
+                    }
+                    break
                 }
             }
             
@@ -94,26 +95,33 @@ class NTHSimpleSelectLinkViewController: UIViewController, UITableViewDelegate, 
             return
         }
         
-        /// deselect old cell
-        if let previousIndexPath = self.selectedIndexPath {
-            let previousCell = tableView.cellForRowAtIndexPath(previousIndexPath) as! NTHLeftLabelCell
-            previousCell.accessoryType = .None
-        }
+        let linkToAdd = self.links[indexPath.row]
         
+        /// Deselect previous index path
+        if (self.singleSelection && self.selectedIndexPaths.count > 0) {
+            let cell = tableView.cellForRowAtIndexPath(self.selectedIndexPaths.first!) as! NTHLeftLabelCell
+            cell.accessoryType = .None
+            self.selectedIndexPaths.removeAtIndex(0)
+            self.selectedLinks.removeAtIndex(0)
+        }
+
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! NTHLeftLabelCell
         if cell.accessoryType == .None {
             cell.accessoryType = .Checkmark
-            self.selectedIndexPath = indexPath
-            
-            self.completionBlock?(selected: self.links[indexPath.row])
-            
-            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.4 * Double(NSEC_PER_SEC)))
-            dispatch_after(delayTime, dispatch_get_main_queue()) {
-                self.navigationController?.popViewControllerAnimated(true)
-            }
+            self.selectedLinks.append(linkToAdd)
+            self.selectedIndexPaths.append(indexPath)
         } else {
             cell.accessoryType = .None
+            if !self.singleSelection {
+                let indexToRemove = find(self.selectedIndexPaths, indexPath)
+                if let indexToRemove = indexToRemove {
+                    self.selectedIndexPaths.removeAtIndex(indexToRemove)
+                    self.selectedLinks.removeAtIndex(indexToRemove)
+                }
+            }
         }
+        
+        self.selectedBlock?(links: self.selectedLinks)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

@@ -79,6 +79,52 @@ extension Task {
         self.links = NSSet(set: mutableSet)
     }
     
+    var placeLinks: [Place] {
+        get {
+            return filter(self.links.allObjects) { $0 is Place } as! [Place]
+        }
+        
+        set {
+            var updatedLinks = [Link]()
+            
+            for place in newValue {
+                updatedLinks.append(place)
+            }
+            
+            let links = self.links.allObjects as! [Link]
+            for link in links {
+                if !(link is Place) {
+                    updatedLinks.append(link)
+                }
+            }
+            
+            self.links = NSSet(array: updatedLinks)
+        }
+    }
+    
+    var contactLinks: [Contact] {
+        get {
+            return filter(self.links.allObjects) { $0 is Contact } as! [Contact]
+        }
+        
+        set {
+            var updatedLinks = [Link]()
+            
+            for contact in newValue {
+                updatedLinks.append(contact)
+            }
+            
+            let links = self.links.allObjects as! [Link]
+            for link in links {
+                if !(link is Contact) {
+                    updatedLinks.append(link)
+                }
+            }
+            
+            self.links = NSSet(array: updatedLinks)
+        }
+    }
+    
     /// Schedule
     func schedule() {
         LocalNotificationScheduler.cancelScheduledNotifications(self)

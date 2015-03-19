@@ -78,12 +78,13 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
         case .SelectPlace:
             let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController
             vc.linkType = LinkType.Place
-            vc.context = self.context
             vc.links = ModelController().allPlaces(self.context)
-            vc.selectedLink = self.reminder.place
-            vc.completionBlock = { selected in
-                self.reminder.place = (selected as! Place)
-                self.tableView.reloadData()
+            if self.reminder.place != nil {
+                vc.selectedLinks = [self.reminder.place]
+            }
+            
+            vc.selectedBlock = { link in
+                self.reminder.place = (link[0] as! Place)
             }
             
         case .EditRegion:

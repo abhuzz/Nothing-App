@@ -221,20 +221,21 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
         } else if segue.identifier == SegueIdentifier.AddPlaceLink.rawValue {
             let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController
             vc.linkType = LinkType.Place
-            vc.context = self.context
+            vc.selectedLinks = self.task.placeLinks
+            vc.selectedLinks = NSArray(array: self.task.placeLinks) as! [Link]
             vc.links = ModelController().allPlaces(self.context)
-            vc.completionBlock = { selectedPlace in
-                self.task.addLink(selectedPlace)
-                self._refreshLinks()
+            vc.singleSelection = false
+            vc.selectedBlock = { links in
+                self.task.placeLinks = links as! [Place]
             }
         } else if segue.identifier == SegueIdentifier.AddContactLink.rawValue {
             let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController
             vc.linkType = LinkType.Contact
-            vc.context = self.context
+            vc.selectedLinks = NSArray(array: self.task.contactLinks) as! [Link]
             vc.links = ModelController().allContacts(self.context)
-            vc.completionBlock = { selectedContact in
-                self.task.addLink(selectedContact)
-                self._refreshLinks()
+            vc.singleSelection = false
+            vc.selectedBlock = { links in
+                self.task.contactLinks = links as! [Contact]
             }
         }
     }

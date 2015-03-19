@@ -92,17 +92,17 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
 //            let vc = segue.destinationViewController as! NTHSelectRegionViewController
 //            vc.reminder = self.reminder
             
-        case .SelectPlace:
-            let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController
-            vc.linkType = LinkType.Place
-            vc.context = self.context
-            vc.links = ModelController().allPlaces(self.context)
-            vc.selectedLink = self.reminder.place
-            vc.completionBlock = { selected in
-                self.reminder.place = (selected as! Place)
-                self.placeTableView.reloadData()
-                self._validateDoneButton()
-            }
+//        case .SelectPlace:
+//            let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController
+//            vc.linkType = LinkType.Place
+//            vc.links = ModelController().allPlaces(self.context)
+//            
+//            vc.selectedLink = self.reminder.place
+//            vc.completionBlock = { selected in
+//                self.reminder.place = (selected as! Place)
+//                self.placeTableView.reloadData()
+//                self._validateDoneButton()
+//            }
             
         default: return
         }

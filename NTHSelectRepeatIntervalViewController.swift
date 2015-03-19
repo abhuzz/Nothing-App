@@ -74,10 +74,5 @@ class NTHSelectRepeatIntervalViewController: UIViewController, UITableViewDelega
         self.repeatIntervalIndexPath = indexPath
         self.repeatInterval = self.repeatIntervals[indexPath.row]
         self.completionBlock?(repeatInterval: self.repeatInterval)
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.4 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-            self.navigationController?.popViewControllerAnimated(true)
-        }
-
     }
 }
