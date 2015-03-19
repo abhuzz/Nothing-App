@@ -805,8 +805,8 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Place" id="gQJ-KC-yAq" customClass="NTHMultiNavigationItem" customModule="Nothing" customModuleProvider="target">
                         <connections>
-                            <outletCollection property="rightBarButtonItemsCollection" destination="ilE-z7-2T3" collectionClass="NSMutableArray" id="UfZ-ck-lpf"/>
                             <outletCollection property="rightBarButtonItemsCollection" destination="zYG-dd-sJm" collectionClass="NSMutableArray" id="M2M-R1-KK1"/>
+                            <outletCollection property="rightBarButtonItemsCollection" destination="ilE-z7-2T3" collectionClass="NSMutableArray" id="YZC-Rd-PYd"/>
                         </connections>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -821,7 +821,7 @@
                 </viewController>
                 <barButtonItem style="plain" systemItem="compose" id="zYG-dd-sJm" userLabel="Edit">
                     <connections>
-                        <segue destination="h6V-ak-bJr" kind="modal" identifier="EditPlace" id="jz3-em-BDf"/>
+                        <segue destination="h6V-ak-bJr" kind="modal" identifier="EditPlace" modalTransitionStyle="crossDissolve" id="jz3-em-BDf"/>
                     </connections>
                 </barButtonItem>
                 <barButtonItem style="plain" systemItem="trash" id="ilE-z7-2T3" userLabel="Trash">
@@ -1016,7 +1016,7 @@
                                 <action selector="cancelPressed:" destination="HG4-5E-df3" id="kjx-D3-8bJ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="NF2-oY-6Xk">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="NF2-oY-6Xk">
                             <connections>
                                 <action selector="donePressed:" destination="HG4-5E-df3" id="U4M-tZ-UjX"/>
                             </connections>
@@ -1059,11 +1059,11 @@
                         <viewControllerLayoutGuide type="bottom" id="5ij-T0-OLJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gQO-iH-zXf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzS-2G-C0M">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="522"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="458"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="DNK-cP-a9z" id="R9T-WU-Lq6"/>
@@ -1071,14 +1071,14 @@
                                 </connections>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yad-fP-qM9" userLabel="map - separator">
-                                <rect key="frame" x="0.0" y="521" width="320" height="1"/>
+                                <rect key="frame" x="0.0" y="457" width="320" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Awb-uK-kzQ"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtZ-wg-21w" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
-                                <rect key="frame" x="8" y="530" width="30" height="30"/>
+                                <rect key="frame" x="8" y="466" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="EWn-VA-6Sg"/>
                                     <constraint firstAttribute="width" constant="30" id="hgw-26-UnX"/>
@@ -1104,7 +1104,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ioq-It-w2I" customClass="NTHButton" customModule="Nothing" customModuleProvider="target">
-                                <rect key="frame" x="46" y="530" width="30" height="30"/>
+                                <rect key="frame" x="46" y="466" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2tI-HZ-oGT"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="Vwa-BT-a3J"/>
@@ -1145,15 +1145,9 @@
                             <constraint firstAttribute="trailing" secondItem="gzS-2G-C0M" secondAttribute="trailing" id="wz9-if-cft"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Map" id="JWx-Mt-jSR">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="Avz-rF-Ghq">
-                            <connections>
-                                <action selector="donePressed:" destination="DNK-cP-a9z" id="Gkc-tK-jYK"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Map" id="JWx-Mt-jSR"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
-                        <outlet property="doneButton" destination="Avz-rF-Ghq" id="zJB-HV-rCv"/>
                         <outlet property="locatePlaceButton" destination="Ioq-It-w2I" id="e9y-1w-v7t"/>
                         <outlet property="mapView" destination="gzS-2G-C0M" id="hRF-28-N5X"/>
                     </connections>
@@ -1490,7 +1484,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Contact" id="WrO-bD-ItO">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="bGb-C9-Hsl">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="save" id="bGb-C9-Hsl">
                             <connections>
                                 <action selector="donePressed:" destination="MNo-Xc-C6C" id="Ntk-7K-eDz"/>
                             </connections>
@@ -2265,8 +2259,8 @@ Use distance slider to set proper distance when app should notify about the even
     <inferredMetricsTieBreakers>
         <segue reference="zJ1-y0-1y8"/>
         <segue reference="P9f-vh-bDu"/>
-        <segue reference="7vb-2m-T27"/>
         <segue reference="tuW-bm-KQy"/>
+        <segue reference="7vb-2m-T27"/>
         <segue reference="jz3-em-BDf"/>
         <segue reference="Uti-Iq-nKf"/>
         <segue reference="eUV-df-Dag"/>

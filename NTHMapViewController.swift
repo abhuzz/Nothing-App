@@ -12,7 +12,6 @@ import MapKit
 class NTHMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet private weak var mapView: MKMapView!
-    @IBOutlet private weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var locatePlaceButton: NTHButton!
     
     
@@ -27,8 +26,6 @@ class NTHMapViewController: UIViewController, MKMapViewDelegate {
             self.mapView.addAnnotation(NTHAnnotation(coordinate: coordinate, title: ""))
             self._setRegionForCoordinate(coordinate)
         }
-        
-        self._validateDoneButton()
     }
     
     @IBAction func locateMePressed(sender: AnyObject) {
@@ -60,25 +57,8 @@ class NTHMapViewController: UIViewController, MKMapViewDelegate {
         
         /// Create annotation
         self.mapView.addAnnotation(NTHAnnotation(coordinate: coordinate, title: ""))
-        self._validateDoneButton()
-    }
-    
-    @IBAction func donePressed(sender: AnyObject) {
         
-        var annotation: NTHAnnotation!
-        for ann in self.mapView.annotations as! [MKAnnotation] {
-            if ann is NTHAnnotation {
-                annotation = ann as! NTHAnnotation
-                break
-            }
-        }
-        
-        self.completionBlock?(coordinate: (annotation.coordinate))
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    
-    private func _validateDoneButton() {
-        self.doneButton.enabled = self.mapView.annotations.count > 0
+        self.completionBlock?(coordinate: (coordinate))
     }
     
     /// Mark: MKMapViewDelegate
