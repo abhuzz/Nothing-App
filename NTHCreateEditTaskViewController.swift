@@ -184,41 +184,7 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SegueIdentifier.CreateLocationReminder.rawValue {
-            let vc = segue.topOfNavigationController as! NTHCreateEditLocationReminderViewController
-            vc.context = CDHelper.temporaryContextWithParent(self.context)
-            vc.completionBlock = { newReminder in
-                let object = self.context.objectWithID(newReminder.objectID)
-                let reminder = object as! LocationReminder
-                self.task.addReminder(reminder)
-                self._refreshLocations()
-            }
-        } else if segue.identifier == SegueIdentifier.EditLocationReminder.rawValue {
-            let reminder = sender as! LocationReminder
-            let vc = segue.topOfNavigationController as! NTHCreateEditLocationReminderViewController
-            vc.context = self.context
-            vc.reminder = reminder
-            vc.completionBlock = { newReminder in
-                self._refreshLocations()
-                self._refreshLinks()
-            }
-        } else if segue.identifier == SegueIdentifier.CreateDateReminder.rawValue {
-            let vc = segue.topOfNavigationController as! NTHCreateEditDateReminderViewController
-            vc.context = CDHelper.temporaryContextWithParent(self.context)
-            vc.completionBlock = { newReminder in
-                let object = self.context.objectWithID(newReminder.objectID)
-                let reminder = object as! DateReminder
-                self.task.addReminder(reminder)
-                self._refreshDates()
-            }
-        } else if segue.identifier == SegueIdentifier.EditDateReminder.rawValue {
-            let vc = segue.topOfNavigationController as! NTHCreateEditDateReminderViewController
-            vc.context = CDHelper.temporaryContextWithParent(self.context)
-            vc.reminder = vc.context.objectWithID((sender as! DateReminder).objectID) as! DateReminder
-            vc.completionBlock = { newReminder in
-                self._refreshDates()
-            }
-        } else if segue.identifier == SegueIdentifier.AddPlaceLink.rawValue {
+        if segue.identifier == SegueIdentifier.AddPlaceLink.rawValue {
             let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController
             vc.linkType = LinkType.Place
             vc.selectedLinks = self.task.placeLinks
@@ -370,24 +336,60 @@ class NTHCreateEditTaskViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch tableView.type {
         case .Locations:
             let reminders = self.task.locationReminders
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let reminderVC = storyboard.instantiateViewControllerWithIdentifier("NTHCreateEditLocationReminderViewController") as! NTHCreateEditLocationReminderViewController
+
             if indexPath.row == reminders.count {
-                self.performSegueWithIdentifier(SegueIdentifier.CreateLocationReminder.rawValue, sender: nil)
+                reminderVC.context = CDHelper.temporaryContextWithParent(self.context)
+                reminderVC.mode = NTHCreateEditLocationReminderViewController.Mode.Create
+                reminderVC.completionBlock = { newReminder in
+                    let object = self.context.objectWithID(newReminder.objectID)
+                    let reminder = object as! LocationReminder
+                    self.task.addReminder(reminder)
+                    self._refreshLocations()
+                }
             } else {
-                var reminder = reminders[indexPath.row]
-                self.performSegueWithIdentifier(SegueIdentifier.EditLocationReminder.rawValue, sender: reminder)
+                reminderVC.reminder = reminders[indexPath.row]
+                reminderVC.context = self.context
+                reminderVC.mode = NTHCreateEditLocationReminderViewController.Mode.Edit
+                reminderVC.completionBlock = { newReminder in
+                    self._refreshLocations()
+                    self._refreshLinks()
+                }
             }
+            self.navigationController?.pushViewController(reminderVC, animated: true)
             
         case .Dates:
             let reminders = self.task.dateReminders
-            if indexPath.row == reminders.count {
-                self.performSegueWithIdentifier(SegueIdentifier.CreateDateReminder.rawValue, sender: nil)
-            } else {
-                self.performSegueWithIdentifier(SegueIdentifier.EditDateReminder.rawValue, sender: reminders[indexPath.row])
-            }
             
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let reminderVC = storyboard.instantiateViewControllerWithIdentifier("NTHCreateEditDateReminderViewController") as! NTHCreateEditDateReminderViewController
+            
+            if indexPath.row == reminders.count {
+                reminderVC.context = CDHelper.temporaryContextWithParent(self.context)
+                reminderVC.mode = NTHCreateEditDateReminderViewController.Mode.Create
+                reminderVC.completionBlock = { newReminder in
+                    let object = self.context.objectWithID(newReminder.objectID)
+                    let reminder = object as! DateReminder
+                    self.task.addReminder(reminder)
+                    self._refreshDates()
+                }
+
+            } else {
+                reminderVC.mode = NTHCreateEditDateReminderViewController.Mode.Edit
+                reminderVC.reminder = reminders[indexPath.row]
+                reminderVC.context = self.context
+                reminderVC.completionBlock = { newReminder in
+                    self._refreshDates()
+                }
+            }
+            self.navigationController?.pushViewController(reminderVC, animated: true)
+
         case .Links:
             let addNewLink = indexPath.row == self.task.links.allObjects.count
             if addNewLink {

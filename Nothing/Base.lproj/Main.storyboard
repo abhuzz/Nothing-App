@@ -226,10 +226,6 @@
                         <outlet property="separator4" destination="X2N-fH-drA" id="GjF-Qe-zhD"/>
                         <outlet property="tapGesture" destination="nFu-2o-cDe" id="aEX-D6-IXF"/>
                         <outlet property="titleTextField" destination="LE8-wB-OeB" id="u4i-jZ-WPQ"/>
-                        <segue destination="4cK-Gu-tE1" kind="modal" identifier="EditLocationReminder" id="hv9-nu-D7n"/>
-                        <segue destination="4cK-Gu-tE1" kind="modal" identifier="CreateLocationReminder" id="nvQ-Ui-egl"/>
-                        <segue destination="F4J-5t-9Q7" kind="modal" identifier="EditDateReminder" id="OMl-SI-DSb"/>
-                        <segue destination="F4J-5t-9Q7" kind="modal" identifier="CreateDateReminder" id="8fX-BY-uP7"/>
                         <segue destination="5za-ZO-d9Q" kind="push" identifier="AddPlaceLink" id="Ewy-IN-EZr"/>
                         <segue destination="5za-ZO-d9Q" kind="push" identifier="AddContactLink" id="4g0-c3-SbQ"/>
                         <segue destination="S3R-A0-NWM" kind="modal" identifier="AddLocationDateReminder" id="P9f-vh-bDu"/>
@@ -261,12 +257,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SBE-RK-4DF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1358" y="-1375"/>
+            <point key="canvasLocation" x="1441" y="-1293"/>
         </scene>
         <!--Reminder-->
         <scene sceneID="gg6-rb-v1L">
             <objects>
-                <viewController id="01x-bX-lm7" customClass="NTHCreateEditLocationReminderViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NTHCreateEditLocationReminderViewController" id="01x-bX-lm7" customClass="NTHCreateEditLocationReminderViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LtT-EZ-ZhP"/>
                         <viewControllerLayoutGuide type="bottom" id="fp7-dM-pFh"/>
@@ -312,21 +308,9 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Reminder" id="ehq-N6-xTD">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Kj1-7f-WIa">
-                            <connections>
-                                <action selector="cancelPressed:" destination="01x-bX-lm7" id="hpG-w3-NoQ"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="G7t-TS-xim">
-                            <connections>
-                                <action selector="donePressed:" destination="01x-bX-lm7" id="bzy-yU-pzq"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Reminder" id="ehq-N6-xTD"/>
                     <connections>
-                        <outlet property="cancelButton" destination="Kj1-7f-WIa" id="EaG-JE-Ts4"/>
-                        <outlet property="doneButton" destination="G7t-TS-xim" id="T0E-ld-mvj"/>
+                        <outlet property="saveButton" destination="TJ9-ME-n4F" id="4ty-49-djw"/>
                         <outlet property="tableView" destination="ukI-kV-EHj" id="LVS-Ne-ruT"/>
                         <outlet property="useOpenHoursSwitch" destination="TPM-H9-ogG" id="YVe-ic-vGv"/>
                         <outlet property="view" destination="PcN-xf-vCi" id="39T-fX-Ppo"/>
@@ -335,13 +319,18 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWl-Pi-GEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem enabled="NO" style="done" systemItem="save" id="TJ9-ME-n4F">
+                    <connections>
+                        <action selector="savePressed:" destination="01x-bX-lm7" id="ERv-Qg-rQx"/>
+                    </connections>
+                </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="1881" y="-1375"/>
+            <point key="canvasLocation" x="1855" y="-1293"/>
         </scene>
         <!--Reminder-->
         <scene sceneID="hNh-3G-lN3">
             <objects>
-                <viewController id="qKL-pp-hDu" customClass="NTHCreateEditDateReminderViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NTHCreateEditDateReminderViewController" id="qKL-pp-hDu" customClass="NTHCreateEditDateReminderViewController" customModule="Nothing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dMb-IP-6Sz"/>
                         <viewControllerLayoutGuide type="bottom" id="qeV-3H-cUl"/>
@@ -371,28 +360,21 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Reminder" id="jjz-ju-bH2">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tMd-DX-Com">
-                            <connections>
-                                <action selector="cancelPressed:" destination="qKL-pp-hDu" id="deM-3n-ycl"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="u38-eC-nY5">
-                            <connections>
-                                <action selector="donePressed:" destination="qKL-pp-hDu" id="2i0-97-LBb"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Reminder" id="jjz-ju-bH2"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
-                        <outlet property="cancelButton" destination="tMd-DX-Com" id="CWF-5R-Yc5"/>
-                        <outlet property="doneButton" destination="u38-eC-nY5" id="5LW-nk-KKn"/>
+                        <outlet property="saveButton" destination="u38-eC-nY5" id="mRw-j7-Kog"/>
                         <outlet property="tableView" destination="bm9-kS-j0T" id="KG3-D8-dYk"/>
                         <segue destination="dwb-mj-o2U" kind="push" identifier="SelectRepeatInterval" id="7vb-2m-T27"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBe-lt-sSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem style="done" systemItem="save" id="u38-eC-nY5">
+                    <connections>
+                        <action selector="savePressed:" destination="qKL-pp-hDu" id="4bU-yE-k6g"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="1358" y="1073"/>
         </scene>
@@ -405,11 +387,11 @@
                         <viewControllerLayoutGuide type="bottom" id="QWA-eU-pc1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lFM-xj-JkJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="K1g-dV-mrh">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="dwb-mj-o2U" id="N0l-zt-5hG"/>
@@ -2026,11 +2008,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Yyl-qz-01K"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ni8-1R-GaE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="650"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GPG-t0-dca">
-                                <rect key="frame" x="0.0" y="64" width="320" height="586"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -2110,7 +2092,8 @@ Use distance slider to set proper distance when app should notify about the even
             <objects>
                 <navigationController id="F4J-5t-9Q7" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="lcf-b0-Zdx"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kIC-Wn-qS4">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="kIC-Wn-qS4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2280,14 +2263,12 @@ Use distance slider to set proper distance when app should notify about the even
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="OMl-SI-DSb"/>
         <segue reference="zJ1-y0-1y8"/>
-        <segue reference="tuW-bm-KQy"/>
         <segue reference="P9f-vh-bDu"/>
-        <segue reference="nvQ-Ui-egl"/>
-        <segue reference="Ewy-IN-EZr"/>
-        <segue reference="pka-w5-r5o"/>
-        <segue reference="eUV-df-Dag"/>
+        <segue reference="7vb-2m-T27"/>
+        <segue reference="tuW-bm-KQy"/>
         <segue reference="jz3-em-BDf"/>
+        <segue reference="Uti-Iq-nKf"/>
+        <segue reference="eUV-df-Dag"/>
     </inferredMetricsTieBreakers>
 </document>

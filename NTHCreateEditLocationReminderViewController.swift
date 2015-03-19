@@ -12,11 +12,10 @@ import CoreData
 class NTHCreateEditLocationReminderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 
-    @IBOutlet private weak var doneButton: UIBarButtonItem!
-    @IBOutlet private weak var cancelButton: UIBarButtonItem!
+    @IBOutlet private var saveButton: UIBarButtonItem!
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var useOpenHoursSwitch: UISwitch!
-    
     
     private enum SegueIdentifier: String {
         case SelectPlace = "SelectPlace"
@@ -27,13 +26,25 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
         case Place = 0
         case Region
     }
+    
+    enum Mode: Int {
+        case Create, Edit
+    }
 
+    var mode = Mode.Create
     var context: NSManagedObjectContext!
     var completionBlock: ((newReminder: LocationReminder) -> Void)?
     var reminder: LocationReminder!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        switch self.mode {
+        case .Create:
+            self.navigationItem.rightBarButtonItem = self.saveButton
+        case .Edit:
+            break
+        }
         
         self.tableView.registerNib("NTHTwoLineLeftLabelCell")
         self.tableView.separatorColor = UIColor.NTHTableViewSeparatorColor()
@@ -52,17 +63,12 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
         self.useOpenHoursSwitch.setOn(self.reminder.useOpenHours.boolValue, animated: false)
         self._validateDoneButton()
     }
-    
-    @IBAction func cancelPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func donePressed(sender: AnyObject) {
+        
+    @IBAction func savePressed(sender: AnyObject) {
         self.reminder.useOpenHours = self.useOpenHoursSwitch.on
         self.context.save(nil) /// save temporary context and pass object from this context along
         self.completionBlock?(newReminder: reminder)
-    
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func openHoursSwitchChanged(sender: UISwitch) {
@@ -70,7 +76,7 @@ class NTHCreateEditLocationReminderViewController: UIViewController, UITableView
     }
     
     private func _validateDoneButton() {
-        self.doneButton.enabled = self.reminder.place != nil
+        self.saveButton.enabled = self.reminder.place != nil
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

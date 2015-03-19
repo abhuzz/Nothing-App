@@ -13,10 +13,14 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
     
 
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var doneButton: UIBarButtonItem!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet private weak var saveButton: UIBarButtonItem!
     
+
+    enum Mode: Int {
+        case Create, Edit
+    }
     
+    var mode = Mode.Create
     var context: NSManagedObjectContext!
     var reminder: DateReminder!
     var completionBlock: ((reminder: DateReminder) -> Void)!
@@ -37,6 +41,10 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
         
         self.tableView.registerNib("NTHTwoLineLeftLabelCell")
         
+        if self.mode == .Create {
+            self.navigationItem.rightBarButtonItem = self.saveButton
+        }
+        
         /// create reminder if not exists
         if self.reminder == nil {
             self.reminder = DateReminder.create(self.context) as DateReminder
@@ -49,14 +57,10 @@ class NTHCreateEditDateReminderViewController: UIViewController, UITableViewDele
         self.tableView.reloadData()
     }
     
-    @IBAction func cancelPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func donePressed(sender: AnyObject) {
+    @IBAction func savePressed(sender: AnyObject) {
         self.context.save(nil)
         self.completionBlock(reminder: self.reminder)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
