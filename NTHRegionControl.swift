@@ -26,6 +26,10 @@ class NTHRegionControl: UIView {
     
     
     
+    var valueChangedBlock: ((value: Float) -> Void)?
+    var onArriveChangedBlock: ((onArrive: Bool) -> Void)?
+    
+    
     override func awakeAfterUsingCoder(aDecoder: NSCoder) -> AnyObject? {
         return self.NTHAwakeAfterUsingCoder(aDecoder, nibName: "NTHRegionControl")
     }
@@ -55,6 +59,7 @@ class NTHRegionControl: UIView {
     @IBAction private func sliderValueChanged(sender: UISlider) {
         self.curRegionLabel.text = sender.value.metersOrKilometers()
         self.info.distance = sender.value
+        self.valueChangedBlock?(value: sender.value)
     }
     
     @IBAction private func sliderEnded(sender: UISlider) {
@@ -63,6 +68,7 @@ class NTHRegionControl: UIView {
     
     @IBAction private func arriveOrLeavePressed(sender: UISegmentedControl) {
         self.info.onArrive = (sender.selectedSegmentIndex == 0)
+        self.onArriveChangedBlock?(onArrive: self.info.onArrive)
     }
     
     private func processValue(value: Float) {

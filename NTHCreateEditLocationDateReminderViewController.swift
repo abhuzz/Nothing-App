@@ -88,13 +88,9 @@ class NTHCreateEditLocationDateReminderViewController: UIViewController, UITable
             }
             
         case .EditRegion:
-            let vc = segue.destinationViewController as! NTHSelectRegionViewController
-            vc.settings = RegionAndDistance(onArrive: self.reminder.onArrive.boolValue, distance: self.reminder.distance.floatValue)
-            vc.completionBlock = { settings in
-                self.reminder.onArrive = settings.onArrive
-                self.reminder.distance = settings.distance
-                self.placeTableView.reloadData()
-            }
+            break
+//            let vc = segue.destinationViewController as! NTHSelectRegionViewController
+//            vc.reminder = self.reminder
             
         case .SelectPlace:
             let vc = segue.destinationViewController as! NTHSimpleSelectLinkViewController

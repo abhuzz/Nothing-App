@@ -17,19 +17,19 @@ class NTHSelectRegionViewController: UIViewController {
    
     @IBOutlet private weak var regionControl: NTHRegionControl!
 
-    var settings: RegionAndDistance!
-    var completionBlock: ((settings: RegionAndDistance) -> Void)?
+    var reminder: LocationReminder!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.regionControl.configure(self.settings.distance, onArrive: self.settings.onArrive)
+
+        self.regionControl.configure(self.reminder.distance.floatValue, onArrive: self.reminder.onArrive.boolValue)
         self.regionControl.prepareBeforePresenting()
-    }
-    
-    @IBAction func donePressed(sender: AnyObject) {
-        self.settings.onArrive = (self.regionControl.regionSegmentedControl.selectedSegmentIndex == 0)
-        self.settings.distance = self.regionControl.regionSlider.value
-        self.completionBlock?(settings: self.settings)
-        self.navigationController?.popViewControllerAnimated(true)
+        self.regionControl.valueChangedBlock = { value in
+            self.reminder.distance = value
+        }
+        
+        self.regionControl.onArriveChangedBlock = { onArrive in
+            self.reminder.onArrive = onArrive
+        }
     }
 }
