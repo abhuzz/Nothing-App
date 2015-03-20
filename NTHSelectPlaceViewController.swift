@@ -71,10 +71,8 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
         }
         
         if segue.identifier == SegueIdentifier.AddNewPlace.rawValue {
-            let navVC = segue.destinationViewController as! UINavigationController
-            let vc = navVC.topViewController as! NTHCreateEditPlaceViewController
+            let vc = segue.destinationViewController as! NTHCreateEditPlaceViewController
             vc.context = CDHelper.temporaryContextWithParent(self.context)
-            vc.presentedModally = true
             vc.completionBlock = completionBlock
         } else if segue.identifier == SegueIdentifier.ShowPlace.rawValue {
             let vc = segue.destinationViewController as! NTHPlaceDetailsViewController

@@ -23,8 +23,12 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     var completionBlock: ((context: NSManagedObjectContext!) -> Void)!
     var context: NSManagedObjectContext!
     var place: Place!
-    var editingPlace: Bool = false
-    var presentedModally: Bool = false
+    
+    enum Mode {
+        case Create, Edit
+    }
+    
+    var mode = Mode.Create
     
     private var coordinateSet: Bool = false
     
@@ -36,11 +40,11 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.backBarButtonItem?.title = "Back"
         self._configureUIColors()
         
-        if !self.presentedModally {
-            /// Remove "Cancel" button if presented via push.
-            self.navigationController?.navigationItem.leftBarButtonItems = nil
+        if self.mode == .Create {
+            self.navigationItem.rightBarButtonItem = self.doneButton
         }
         
         self.menuTableView.registerNib("NTHLeftLabelCell")
@@ -48,8 +52,8 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         self.mapView.tintColor = UIColor.NTHNavigationBarColor()
         
         /// prepare editing place / view
-        if self.editingPlace {
-            self.nameTextField.text = place.name
+        if self.place != nil {
+            self.nameTextField.text = self.place.name
             self._updateWithCoordinate(self.place.coordinate)
         } else {
             var aPlace: Place = Place.create(self.context)
@@ -80,6 +84,13 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         super.viewWillDisappear(animated)
         self._removeObservers()
         self.nameTextField.resignFirstResponder()
+        
+        if self.mode == .Edit {
+            self.place.name = self.nameTextField.text
+            self.context.save(nil)
+            /// Notify TSRegionManager that place changed
+            NSNotificationCenter.defaultCenter().postNotificationName(AppDelegate.ApplicationDidUpdatePlaceSettingsNotification, object: nil)
+        }
     }
     
     private func _addObservers() {
@@ -116,11 +127,7 @@ class NTHCreateEditPlaceViewController: UIViewController, MKMapViewDelegate, UIT
         self.context.save(nil)
         self.completionBlock(context: self.context)
         
-        if !self.presentedModally {
-            self.navigationController?.popViewControllerAnimated(true)
-        } else {
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func handleTapOnMap(sender: UITapGestureRecognizer) {

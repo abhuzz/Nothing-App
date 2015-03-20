@@ -55,6 +55,11 @@ class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITabl
         self.assignedTasksTableView.reloadData()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = "Place"
+    }
+    
     private func _updateMapWithCoordinate(coordinate: CLLocationCoordinate2D) {
         self.mapView.removeAllAnnotations()
         self.mapView.addAnnotation(NTHAnnotation(coordinate: coordinate, title: "", subtitle: ""))
@@ -67,21 +72,15 @@ class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITabl
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch SegueIdentifier(rawValue: segue.identifier!)! {
         case .EditPlace:
-            let vc = segue.topOfNavigationController as! NTHCreateEditPlaceViewController
-            vc.context = CDHelper.temporaryContextWithParent(self.context)
-            
-            /// Get `place` object but in new contextś
-            let placeInTemporaryContext = vc.context.objectWithID(self.place.objectID) as! Place
-            vc.place = placeInTemporaryContext
-            vc.presentedModally = true
-            vc.editingPlace = true
-            vc.completionBlock = { context in
-                self.context.save(nil)
-                self.openHoursTableView.reloadData()
-                self._updateMapWithCoordinate(self.place.coordinate)
-                /// Notify TSRegionManager that place changed
-                NSNotificationCenter.defaultCenter().postNotificationName(AppDelegate.ApplicationDidUpdatePlaceSettingsNotification, object: nil)
-            }
+            let vc = segue.destinationViewController as! NTHCreateEditPlaceViewController
+            vc.context = self.context
+            vc.place = self.place
+            vc.mode = NTHCreateEditPlaceViewController.Mode.Edit
+//            vc.completionBlock = { context in
+//                self.context.save(nil)
+//                self.openHoursTableView.reloadData()
+//                self._updateMapWithCoordinate(self.place.coordinate)
+//            }
 
         case .ShowTasks:
             let vc = segue.destinationViewController as! NTHTaskListViewController
@@ -107,6 +106,10 @@ class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITabl
         
         self.presentViewController(alert, animated: true, completion: nil)
 
+    }
+    
+    @IBAction func editPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier(SegueIdentifier.EditPlace.rawValue, sender: nil)
     }
     
     func _sortedOpenHours() -> [OpenTimeRange] {
