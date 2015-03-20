@@ -37,7 +37,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     private func _createResultsController() {
         let request = NSFetchRequest(entityName: "Task")
         request.predicate = NSPredicate(format: "trashed == 0", argumentArray: nil)
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
         self.resultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CDHelper.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         self.resultsController.performFetch(nil)
     }
