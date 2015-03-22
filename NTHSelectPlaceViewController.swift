@@ -54,6 +54,8 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     
+    
+    
     @IBAction func donePressed(sender: AnyObject) {
         self.completionBlock?(selectedPlace: self.places[selectedIndexPath!.row])
         self.navigationController?.popViewControllerAnimated(true)

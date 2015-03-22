@@ -13,8 +13,9 @@ import CoreLocation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, TSRegionManagerDelegate {
 
-    
     static let ApplicationDidUpdatePlaceSettingsNotification = "ApplicationDidUpdatePlaceSettingsNotification"
+    
+    var w: UIWindow?
     
     var window: UIWindow?
     private var locationManager: CLLocationManager!
@@ -45,13 +46,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         if let task = ModelController().findTask(notification.userInfo!["uniqueIdentifier"] as! String) {
-            /*
-            let alert = UIAlertController(title: notification.alertTitle, message: notification.alertBody, preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction.cancelAction(String.okString(), handler: nil))
-            
-            self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
-            */
+
             println("Received notification about [\(task.title)]")
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("NTHTaskNotificationViewController") as! NTHTaskNotificationViewController
+            vc.task = task
+            
+            self.w = UIWindow(frame: self.window!.frame)
+            self.w!.windowLevel = UIWindowLevelAlert
+            self.w!.rootViewController = vc
+            
+            self.w!.makeKeyAndVisible()
         }
     }
 }
