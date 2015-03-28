@@ -38,9 +38,11 @@ class TSRegionManager {
     }
     
     func refresh() {
-        self._refreshRegions()
-        let regionsToNotify = self._checkRules(self.lastLocation!)
-        self.delegate.regionManager(self, didNotify: regionsToNotify)
+        if let location = self.lastLocation {
+            self._refreshRegions()
+            let regionsToNotify = self._checkRules(location)
+            self.delegate.regionManager(self, didNotify: regionsToNotify)
+        }
     }
     
     private func _refreshRegions() {

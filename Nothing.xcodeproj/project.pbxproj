@@ -144,6 +144,7 @@
 		1244B90E1ABF0D60003872CB /* NTHNotificationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHNotificationPresenter.swift; sourceTree = "<group>"; };
 		124A8F151A4F017800BE5EAB /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		124E5EB71A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHLeftLabelRemoveCell.xib; sourceTree = "<group>"; };
+		125016311AC6B053006F4A43 /* Nothing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Nothing.entitlements; sourceTree = "<group>"; };
 		1250A3B61A868420005B4D69 /* UIAlertAction_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertAction_TS.swift; sourceTree = "<group>"; };
 		1259B7721A8F7AFA0059525F /* TSRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSRegion.swift; sourceTree = "<group>"; };
 		1259B7741A8F93380059525F /* CLLocationCoordinate2D_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationCoordinate2D_TS.swift; sourceTree = "<group>"; };
@@ -389,6 +390,7 @@
 		1279B5D619FED4E700A7828C /* Nothing */ = {
 			isa = PBXGroup;
 			children = (
+				125016311AC6B053006F4A43 /* Nothing.entitlements */,
 				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
 				1246F0911A8641070001F4BE /* Controllers */,
 				1279A4AA1A76A1F700A03FF4 /* Components */,
@@ -559,8 +561,12 @@
 				TargetAttributes = {
 					1279B5D319FED4E700A7828C = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 7HTJY423B9;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -830,9 +836,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Nothing/Nothing.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Nothing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -843,9 +853,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Nothing/Nothing.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Nothing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
