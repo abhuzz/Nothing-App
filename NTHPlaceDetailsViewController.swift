@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreData
 
-class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate {
+class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate, NTHCoreDataCloudSyncProtocol {
 
     @IBOutlet weak var nameTextField: NTHTextField!
     @IBOutlet private weak var mapView: MKMapView!
@@ -44,7 +44,18 @@ class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITabl
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        NTHCoreDataCloudSync.sharedInstance.addObserver(self)
         self.navigationItem.title = ""
+        self._configureView(self.place)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = "Place"
+        NTHCoreDataCloudSync.sharedInstance.removeObserver(self)
+    }
+    
+    private func _configureView(place: Place) {
         self.nameTextField.text = self.place.name
         
         /// update map
@@ -53,11 +64,6 @@ class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITabl
         /// refresh tables
         self.openHoursTableView.refreshTableView(self.openHoursTableViewHeight, height: self._openHoursTableViewHeight())
         self.assignedTasksTableView.reloadData()
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationItem.title = "Place"
     }
     
     private func _updateMapWithCoordinate(coordinate: CLLocationCoordinate2D) {
@@ -204,5 +210,15 @@ class NTHPlaceDetailsViewController: UIViewController, MKMapViewDelegate, UITabl
         }
         
         return (annotation as! NTHAnnotation).viewForAnnotation()
+    }
+    
+    
+    /// MARK: NTHCoreDataCloudSyncProtocol
+    func persistentStoreDidReceiveChanges() {
+        if self.place.deleted {
+            self.navigationController?.popViewControllerAnimated(true)
+        } else {
+            self._configureView(self.place)
+        }
     }
 }
