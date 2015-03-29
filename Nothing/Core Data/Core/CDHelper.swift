@@ -40,7 +40,6 @@ class CDHelper: NSObject {
     }
     
     func contextDidSaveContext(notification: NSNotification) {
-        /// for future use with background context
         println("contextDidSaveContext:")
     }
     

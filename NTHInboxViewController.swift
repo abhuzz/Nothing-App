@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHCoreDataCloudSyncProtocol {
 
     
     @IBOutlet private weak var tableView: UITableView!
@@ -34,36 +34,6 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.tableFooterView = UIView()
     }
     
-    func _persistentStoreWillChange(notification: NSNotification) {
-        println("_persistentStoreWillChange:")
-        CDHelper.mainContext.performBlock { () -> Void in
-            if CDHelper.mainContext.hasChanges {
-                var error: NSError?
-                CDHelper.mainContext.save(&error)
-                if let err = error {
-                    println("save error: \(err)")
-                } else {
-                    CDHelper.mainContext.reset()
-                }
-            }
-        }
-    }
-    
-    func _persistentStoreDidChange() {
-        println("_persistentStoreDidChange")
-        self.resultsController.performFetch(nil)
-        self.tableView.reloadData()
-    }
-    
-    func _receiveICloudChanges(notification: NSNotification) {
-        println("_receiveICloudChanges:")
-        CDHelper.mainContext.performBlock { () -> Void in
-            CDHelper.mainContext.mergeChangesFromContextDidSaveNotification(notification)
-            self.resultsController.performFetch(nil)
-            self.tableView.reloadData()
-        }
-    }
-    
     private func _createResultsController() {
         let request = NSFetchRequest(entityName: "Task")
         request.predicate = NSPredicate(format: "trashed == 0", argumentArray: nil)
@@ -75,10 +45,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "_persistentStoreWillChange:", name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: CDHelper.mainContext.persistentStoreCoordinator)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "_persistentStoreDidChange", name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "_receiveICloudChanges:", name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: CDHelper.mainContext.persistentStoreCoordinator)
+        NTHCoreDataCloudSync.sharedInstance.addObserver(self)
         
         self.resultsController.performFetch(nil)
         self.tableView.reloadData()
@@ -86,7 +53,7 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NTHCoreDataCloudSync.sharedInstance.removeObserver(self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -167,5 +134,22 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 72
+    }
+    
+    
+    /// MARK: NTHCoreDataCloudSyncProtocol
+    /*
+    func persistentStoreWillChange() {
+        
+    }
+    
+    func persistentStoreDidChange() {
+        self.resultsController.performFetch(nil)
+        self.tableView.reloadData()
+    }
+    */
+    func persistentStoreDidReceiveChanges() {
+        self.resultsController.performFetch(nil)
+        self.tableView.reloadData()
     }
 }
