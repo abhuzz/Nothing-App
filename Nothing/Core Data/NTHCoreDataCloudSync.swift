@@ -75,6 +75,7 @@ class NTHCoreDataCloudSync: NSObject {
     */
     func _didReceiveICloudChanges(notification: NSNotification) {
         println("_didReceiveICloudChanges:")
+        println("*** iCloud Sync ***")
         CDHelper.mainContext.performBlock { () -> Void in
             CDHelper.mainContext.mergeChangesFromContextDidSaveNotification(notification)
             NSNotificationCenter.defaultCenter().postNotificationName(NTHCoreDataCloudSyncDidImportContentChangesNotification, object: nil)

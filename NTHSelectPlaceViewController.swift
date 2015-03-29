@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHCoreDataCloudSyncProtocol {
 
     
     @IBOutlet private weak var placesTableView: UITableView!
@@ -47,6 +47,12 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
         super.viewWillAppear(animated)
         self.places = ModelController().allPlaces(self.context)
         self.placesTableView.reloadData()
+        NTHCoreDataCloudSync.sharedInstance.addObserver(self)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NTHCoreDataCloudSync.sharedInstance.removeObserver(self)
     }
     
     private func _validateDoneButton() {
@@ -166,4 +172,10 @@ class NTHSelectPlaceViewController: UIViewController, UITableViewDelegate, UITab
         return 60
     }
 
+    /// MARK: NTHCoreDataCloudSyncProtocol
+    
+    func persistentStoreDidReceiveChanges() {
+        self.places = ModelController().allPlaces(self.context)
+        self.placesTableView.reloadData()
+    }
 }
