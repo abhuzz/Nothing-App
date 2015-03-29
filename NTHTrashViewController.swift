@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NTHTrashViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHTrashCellDelegate {
+class NTHTrashViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHTrashCellDelegate, NTHCoreDataCloudSyncProtocol {
 
     @IBOutlet private weak var tableView: UITableView!
     
@@ -22,6 +22,16 @@ class NTHTrashViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.tableFooterView = UIView()
         self.tableView.registerNib("NTHTrashCell")
         self.tableView.registerNib("NTHCenterLabelCell")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NTHCoreDataCloudSync.sharedInstance.addObserver(self)
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NTHCoreDataCloudSync.sharedInstance.removeObserver(self)
     }
     
     private func _createResultsController() {
@@ -98,6 +108,13 @@ class NTHTrashViewController: UIViewController, UITableViewDelegate, UITableView
         task.trashed = false.toNSNumber()
         CDHelper.mainContext.save(nil)
         
+        self.resultsController.performFetch(nil)
+        self.tableView.reloadData()
+    }
+    
+    
+    /// MARK: NTHCoreDataCloudSyncProtocol
+    func persistentStoreDidReceiveChanges() {
         self.resultsController.performFetch(nil)
         self.tableView.reloadData()
     }
