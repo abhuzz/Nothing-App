@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NTHTaskSearchViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+class NTHTaskSearchViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, NTHCoreDataCloudSyncProtocol {
 
     @IBOutlet private weak var navigationBarContainer: UIView!
     @IBOutlet private weak var navigationBarContainerTop: NSLayoutConstraint!
@@ -30,8 +30,14 @@ class NTHTaskSearchViewController: UIViewController, UISearchBarDelegate, UITabl
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        NTHCoreDataCloudSync.sharedInstance.addObserver(self)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self._searchPhrase(self.searchBar.text)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NTHCoreDataCloudSync.sharedInstance.removeObserver(self)
     }
 
     /// Mark: UITableView
@@ -105,5 +111,10 @@ class NTHTaskSearchViewController: UIViewController, UISearchBarDelegate, UITabl
         
         self.results = tasks
         self.tableView.reloadData()
+    }
+    
+    /// MARK: NTHCoreDataCloudSyncProtocol
+    func persistentStoreDidReceiveChanges() {
+        self._searchPhrase(self.searchBar.text)
     }
 }
