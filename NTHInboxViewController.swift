@@ -136,18 +136,6 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
         return 72
     }
     
-    
-    /// MARK: NTHCoreDataCloudSyncProtocol
-    /*
-    func persistentStoreWillChange() {
-        
-    }
-    
-    func persistentStoreDidChange() {
-        self.resultsController.performFetch(nil)
-        self.tableView.reloadData()
-    }
-    */
     func persistentStoreDidReceiveChanges() {
         self.resultsController.performFetch(nil)
         self.tableView.reloadData()
