@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NTHSelectContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NTHSelectContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHCoreDataCloudSyncProtocol {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
@@ -41,6 +41,16 @@ class NTHSelectContactViewController: UIViewController, UITableViewDelegate, UIT
         if !self.showDoneButton {
             self.navigationItem.rightBarButtonItems = nil
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NTHCoreDataCloudSync.sharedInstance.addObserver(self)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NTHCoreDataCloudSync.sharedInstance.removeObserver(self)
     }
     
     private func _validateDoneButton() {
@@ -144,5 +154,12 @@ class NTHSelectContactViewController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60
+    }
+    
+    
+    /// MARK: NTHCoreDataCloudSyncProtocol
+    func persistentStoreDidReceiveChanges() {
+        self.contacts = ModelController().allContacts(self.context)
+        self.tableView.reloadData()
     }
 }
