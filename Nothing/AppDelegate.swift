@@ -48,16 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         if let uniqueIdentifier = notification.userInfo?["uniqueIdentifier"] as! String? {
             if let task = ModelController().findTask(uniqueIdentifier) {
                 println("Received notification about task: [\(task.title)]")
-                
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("NTHTaskNotificationViewController") as! NTHTaskNotificationViewController
-                vc.task = task
-                
-                self.w = UIWindow(frame: self.window!.frame)
-                self.w!.windowLevel = UIWindowLevelAlert
-                self.w!.rootViewController = vc
-                
-                self.w!.makeKeyAndVisible()
+                NotificationPresenter.sharedInstance.enqueue(task)
             }
         }
     }

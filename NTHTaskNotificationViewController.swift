@@ -26,6 +26,9 @@ class NTHTaskNotificationViewController: UIViewController, UITableViewDelegate, 
     @IBOutlet var snoozeButton: UIBarButtonItem!
     @IBOutlet weak var taskStatusView: NTHTaskStatusView!
     
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var containerView: UIView!
+    
     private enum TableViewType: Int {
         case Locations, Dates, Links
     }
@@ -72,10 +75,7 @@ class NTHTaskNotificationViewController: UIViewController, UITableViewDelegate, 
     /// MARK: Actions
     
     @IBAction func closePressed(sender: AnyObject) {
-        var window: UIWindow! = UIApplication.sharedApplication().keyWindow!
-        window.hidden = true
-        window.resignKeyWindow()
-        window = nil
+        NotificationPresenter.sharedInstance.dequeue()
     }
 
     @IBAction func snoozePressed(sender: AnyObject) {

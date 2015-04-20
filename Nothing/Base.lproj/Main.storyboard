@@ -1760,6 +1760,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="650"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s02-0s-weQ" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="650"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.5" colorSpace="calibratedRGB"/>
+                            </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5I-11-O6O" userLabel="Container">
                                 <rect key="frame" x="15" y="30" width="290" height="590"/>
                                 <subviews>
@@ -1959,9 +1963,12 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="0.5" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="s02-0s-weQ" firstAttribute="top" secondItem="b7u-sh-HAp" secondAttribute="bottom" id="0wp-6e-r1V"/>
+                            <constraint firstAttribute="trailing" secondItem="s02-0s-weQ" secondAttribute="trailing" id="53m-KT-9ZM"/>
                             <constraint firstItem="zBV-G7-iK6" firstAttribute="top" secondItem="U5I-11-O6O" secondAttribute="bottom" constant="30" id="8Jl-MP-0YG"/>
+                            <constraint firstItem="zBV-G7-iK6" firstAttribute="top" secondItem="s02-0s-weQ" secondAttribute="bottom" id="MBS-e3-Zlp"/>
+                            <constraint firstItem="s02-0s-weQ" firstAttribute="leading" secondItem="Sj9-vf-Ued" secondAttribute="leading" id="NId-ur-pAH"/>
                             <constraint firstItem="U5I-11-O6O" firstAttribute="top" secondItem="Sj9-vf-Ued" secondAttribute="top" constant="30" id="YK6-Qi-O36"/>
                             <constraint firstAttribute="trailing" secondItem="U5I-11-O6O" secondAttribute="trailing" constant="15" id="ggb-nG-rXh"/>
                             <constraint firstItem="U5I-11-O6O" firstAttribute="leading" secondItem="Sj9-vf-Ued" secondAttribute="leading" constant="15" id="klK-oc-G88"/>
@@ -1973,7 +1980,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="650"/>
                     <connections>
+                        <outlet property="backgroundView" destination="s02-0s-weQ" id="TMP-v3-2Lo"/>
                         <outlet property="closeButton" destination="kOU-oI-l0m" id="a2Z-c9-WLq"/>
+                        <outlet property="containerView" destination="U5I-11-O6O" id="QjU-5R-kr0"/>
                         <outlet property="dateRemindersTableView" destination="XEW-gR-Pcl" id="Nhw-E3-gaG"/>
                         <outlet property="dateRemindersTableViewHeight" destination="zl5-ww-Kba" id="oiH-Jd-Xeu"/>
                         <outlet property="linkRemindersTableView" destination="kaY-we-hJa" id="Rxc-tO-9yq"/>

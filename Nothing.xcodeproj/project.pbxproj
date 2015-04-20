@@ -28,7 +28,6 @@
 		123181BD1AB590CB00776105 /* NTHTaskSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123181BC1AB590CB00776105 /* NTHTaskSearchViewController.swift */; };
 		123A54921A952A4D00B4C5D4 /* NTHInboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 123A54911A952A4D00B4C5D4 /* NTHInboxCell.xib */; };
 		1244B90D1ABEF2CA003872CB /* NTHTaskNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244B90C1ABEF2CA003872CB /* NTHTaskNotificationViewController.swift */; };
-		1244B90F1ABF0D60003872CB /* NTHNotificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244B90E1ABF0D60003872CB /* NTHNotificationPresenter.swift */; };
 		124A8F161A4F017800BE5EAB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124A8F151A4F017800BE5EAB /* UIView+Extension.swift */; };
 		124E5EB81A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 124E5EB71A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib */; };
 		1250A3B71A868420005B4D69 /* UIAlertAction_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1250A3B61A868420005B4D69 /* UIAlertAction_TS.swift */; };
@@ -63,6 +62,7 @@
 		128732441AA62A63000B3694 /* LocationDateReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128732431AA62A63000B3694 /* LocationDateReminder.swift */; };
 		128732461AA6379D000B3694 /* NSSet_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128732451AA6379D000B3694 /* NSSet_TS.swift */; };
 		128732481AA637FE000B3694 /* NSMutableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128732471AA637FE000B3694 /* NSMutableSet.swift */; };
+		128BDD901AE5543400D4239C /* NotificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BDD8F1AE5543400D4239C /* NotificationPresenter.swift */; };
 		128EE7BE1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128EE7BD1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift */; };
 		128F91621A92844900C21DE3 /* NTHRegionControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128F91611A92844900C21DE3 /* NTHRegionControl.xib */; };
 		128F91641A92855D00C21DE3 /* NTHRegionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128F91631A92855D00C21DE3 /* NTHRegionControl.swift */; };
@@ -142,7 +142,6 @@
 		123181BC1AB590CB00776105 /* NTHTaskSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskSearchViewController.swift; sourceTree = "<group>"; };
 		123A54911A952A4D00B4C5D4 /* NTHInboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHInboxCell.xib; sourceTree = "<group>"; };
 		1244B90C1ABEF2CA003872CB /* NTHTaskNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskNotificationViewController.swift; sourceTree = "<group>"; };
-		1244B90E1ABF0D60003872CB /* NTHNotificationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHNotificationPresenter.swift; sourceTree = "<group>"; };
 		124A8F151A4F017800BE5EAB /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		124E5EB71A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHLeftLabelRemoveCell.xib; sourceTree = "<group>"; };
 		125016311AC6B053006F4A43 /* Nothing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Nothing.entitlements; sourceTree = "<group>"; };
@@ -185,6 +184,7 @@
 		128732431AA62A63000B3694 /* LocationDateReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationDateReminder.swift; path = ../../../LocationDateReminder.swift; sourceTree = "<group>"; };
 		128732451AA6379D000B3694 /* NSSet_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSSet_TS.swift; sourceTree = "<group>"; };
 		128732471AA637FE000B3694 /* NSMutableSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableSet.swift; sourceTree = "<group>"; };
+		128BDD8F1AE5543400D4239C /* NotificationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationPresenter.swift; sourceTree = "<group>"; };
 		128EE7BD1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditLocationReminderViewController.swift; sourceTree = "<group>"; };
 		128F91611A92844900C21DE3 /* NTHRegionControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHRegionControl.xib; sourceTree = "<group>"; };
 		128F91631A92855D00C21DE3 /* NTHRegionControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHRegionControl.swift; sourceTree = "<group>"; };
@@ -272,7 +272,7 @@
 				12981F0A1A86223000CDFA1D /* RepeatInterval.swift */,
 				1230A08C1A8BBE6F0064447B /* LocalNotificationScheduler.swift */,
 				1202052A1AA1F3780043CEE9 /* NTHTime.swift */,
-				1244B90E1ABF0D60003872CB /* NTHNotificationPresenter.swift */,
+				128BDD8F1AE5543400D4239C /* NotificationPresenter.swift */,
 			);
 			name = Helpers;
 			path = ..;
@@ -653,7 +653,6 @@
 				12D2E8891A9BE76B001539CD /* OpenTimeRange.swift in Sources */,
 				12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */,
 				12D2E8851A9BB537001539CD /* NTHMapViewController.swift in Sources */,
-				1244B90F1ABF0D60003872CB /* NTHNotificationPresenter.swift in Sources */,
 				12D2E87D1A9B92D8001539CD /* NTHTrashViewController.swift in Sources */,
 				12CB97661AA372F70075C0E4 /* TSRegionTimeRange.swift in Sources */,
 				1259B7751A8F93380059525F /* CLLocationCoordinate2D_TS.swift in Sources */,
@@ -681,6 +680,7 @@
 				128732461AA6379D000B3694 /* NSSet_TS.swift in Sources */,
 				12A7C0B71A9A080D00BB6B94 /* UIAlertController_TS.swift in Sources */,
 				126904861A9E6DA0008FDD84 /* NTHOpenHoursCell.swift in Sources */,
+				128BDD901AE5543400D4239C /* NotificationPresenter.swift in Sources */,
 				1279B60A19FED64D00A7828C /* NSManagedObject+Extension.swift in Sources */,
 				12FC2D2C1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift in Sources */,
 				126904821A9E6B69008FDD84 /* NTHOpenHoursViewController.swift in Sources */,
