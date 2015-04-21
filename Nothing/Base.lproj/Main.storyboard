@@ -1964,7 +1964,7 @@
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="s02-0s-weQ" firstAttribute="top" secondItem="b7u-sh-HAp" secondAttribute="bottom" id="0wp-6e-r1V"/>
+                            <constraint firstItem="s02-0s-weQ" firstAttribute="top" secondItem="b7u-sh-HAp" secondAttribute="top" constant="-20" id="0wp-6e-r1V"/>
                             <constraint firstAttribute="trailing" secondItem="s02-0s-weQ" secondAttribute="trailing" id="53m-KT-9ZM"/>
                             <constraint firstItem="zBV-G7-iK6" firstAttribute="top" secondItem="U5I-11-O6O" secondAttribute="bottom" constant="30" id="8Jl-MP-0YG"/>
                             <constraint firstItem="zBV-G7-iK6" firstAttribute="top" secondItem="s02-0s-weQ" secondAttribute="bottom" id="MBS-e3-Zlp"/>
@@ -1975,7 +1975,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="650"/>
