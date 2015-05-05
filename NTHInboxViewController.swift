@@ -32,6 +32,13 @@ class NTHInboxViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.registerNib("NTHInboxCell")
         self.tableView.registerNib("NTHCenterLabelCell")
         self.tableView.tableFooterView = UIView()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "_refresh", name: AppDelegate.ApplicationDidUpdatePlaceSettingsNotification, object: nil)
+    }
+    
+    func _refresh() {
+        self.resultsController.performFetch(nil)
+        self.tableView.reloadData()
     }
     
     private func _createResultsController() {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="o8N-Fw-5uC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="o8N-Fw-5uC">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--Task-->
@@ -2019,7 +2019,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="changeStatusPressed:" destination="50M-XF-HCh" eventType="touchUpInside" id="lS1-Wk-4UD"/>
+                                    <action selector="statusPressed:" destination="M0M-Kb-ojH" eventType="touchUpInside" id="Gjf-MT-FCb"/>
                                 </connections>
                             </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1x-ET-qJP" customClass="NTHTaskStatusView" customModule="Nothing" customModuleProvider="target">
@@ -2041,9 +2041,6 @@
                             <constraint firstItem="n1x-ET-qJP" firstAttribute="centerX" secondItem="CKZ-2E-BJr" secondAttribute="centerX" id="wwB-mJ-iNT"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <action selector="statusPressed:" destination="M0M-Kb-ojH" id="Orn-We-fZe"/>
-                    </connections>
                 </barButtonItem>
             </objects>
             <point key="canvasLocation" x="-1959" y="1713"/>

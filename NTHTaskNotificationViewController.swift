@@ -75,11 +75,40 @@ class NTHTaskNotificationViewController: UIViewController, UITableViewDelegate, 
     /// MARK: Actions
     
     @IBAction func closePressed(sender: AnyObject) {
+        self.close()
+    }
+    
+    private func close() {
         NotificationPresenter.sharedInstance.dequeue()
     }
 
     @IBAction func snoozePressed(sender: AnyObject) {
+        let sheet = UIAlertController.actionSheet("Snooze", message: nil)
+        sheet.addAction(UIAlertAction.normalAction("+1 hour", handler: { (action) -> Void in
+            self.task.snooze(60 * 60)
+            self.close()
+        }))
         
+        sheet.addAction(UIAlertAction.normalAction("+1 day", handler: { (action) -> Void in
+            self.task.snooze(60 * 60 * 24)
+            self.close()
+        }))
+        
+        sheet.addAction(UIAlertAction.normalAction("+2 days", handler: { (action) -> Void in
+            self.task.snooze(60 * 60 * 24 * 2)
+            self.close()
+        }))
+        
+        sheet.addAction(UIAlertAction.normalAction("+ 1 week", handler: { (action) -> Void in
+            self.task.snooze(60 * 60 * 24 * 7)
+            self.close()
+        }))
+        
+        sheet.addAction(UIAlertAction.cancelAction("Cancel", handler: { (action) -> Void in
+            /// Do nothing
+        }))
+        
+        self.presentViewController(sheet, animated: true, completion: nil)
     }
     
     @IBAction func statusPressed(sender: AnyObject) {
@@ -90,6 +119,8 @@ class NTHTaskNotificationViewController: UIViewController, UITableViewDelegate, 
         
         /// Notify TSRegionManager that place changed
         NSNotificationCenter.defaultCenter().postNotificationName(AppDelegate.ApplicationDidUpdatePlaceSettingsNotification, object: nil)
+        
+        self.close()
     }
     
     /// MARK: TableView

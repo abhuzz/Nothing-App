@@ -130,4 +130,15 @@ extension Task {
         LocalNotificationScheduler.cancelScheduledNotifications(self)
         LocalNotificationScheduler.scheduleNotification(self)
     }
+    
+    
+    func snooze(seconds: NSTimeInterval) {
+        
+        for reminder in self.dateReminders {
+            reminder.fireDate = reminder.fireDate.dateByAddingTimeInterval(seconds)
+        }
+        
+        self.managedObjectContext?.save(nil)
+        self.schedule()
+    }
 }
