@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NTHTemplateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHTrashCellDelegate, NTHCoreDataCloudSyncProtocol {
+class NTHTemplateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NTHCoreDataCloudSyncProtocol, NTHTemplateCellDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
     
@@ -20,7 +20,7 @@ class NTHTemplateViewController: UIViewController, UITableViewDelegate, UITableV
         self._createResultsController()
         
         self.tableView.tableFooterView = UIView()
-        self.tableView.registerNib("NTHLeftLabelRemoveCell")
+        self.tableView.registerNib("NTHTemplateCell")
         self.tableView.registerNib("NTHCenterLabelCell")
     }
     
@@ -63,20 +63,63 @@ class NTHTemplateViewController: UIViewController, UITableViewDelegate, UITableV
             return cell
         } else {
             let template = (self.resultsController.fetchedObjects as! [Task])[indexPath.row]
-            let cell = NTHLeftLabelRemoveCell.create(self.tableView, title: template.title)
-            cell.selectedBackgroundView = UIView()
-            cell.leadingConstraint.constant = 15.0
-            cell.clearPressedBlock = { c in
-                if let ip = self.tableView.indexPathForCell(c) {
-                    CDHelper.mainContext.deleteObject((self.resultsController.fetchedObjects as! [Task])[ip.row])
-                    CDHelper.mainContext.save(nil)
-                    self.resultsController.performFetch(nil)
-                    self.tableView.reloadData()
-                }
-            }
             
+            let cell = tableView.dequeueReusableCellWithIdentifier("NTHTemplateCell") as! NTHTemplateCell
+            cell.update(self.resultsController.fetchedObjects![indexPath.row] as! Task)
+            cell.delegate = self
+            cell.selectedBackgroundView = UIView()
             return cell
         }
+    }
+    
+    func cellDidPressUse(cell: NTHInboxCell) {
+        let indexPath = self.tableView.indexPathForCell(cell)!
+        let template = self.resultsController.fetchedObjects![indexPath.row] as! Task
+        
+        self.createTaskFromTemplate(template)
+
+        self.resultsController.performFetch(nil)
+        self.tableView.reloadData()
+    }
+    
+    
+    func createTaskFromTemplate(template: Task) {
+        let task: Task = Task.create(CDHelper.mainContext)
+        task.createdAt = NSDate()
+        task.links = template.links
+        task.longDescription = template.longDescription
+        task.uniqueIdentifier = NSUUID().UUIDString
+        task.title = template.title
+        
+        var copiedReminders = Set<Reminder>()
+        for reminder in template.reminders {
+            if reminder is DateReminder {
+                let reminder = reminder as! DateReminder
+                var r: DateReminder = DateReminder.create(CDHelper.mainContext)
+                r.fireDate = reminder.fireDate
+                r.repeatInterval = reminder.repeatInterval
+                task.addReminder(r)
+            } else if reminder is LocationReminder {
+                let reminder = reminder as! LocationReminder
+                var r: LocationReminder = LocationReminder.create(CDHelper.mainContext)
+                r.distance = reminder.distance
+                r.onArrive = reminder.onArrive
+                r.place = reminder.place
+                r.useOpenHours = reminder.useOpenHours
+                task.addReminder(r)
+            }
+        }
+        
+        task.isTemplate = false
+        
+        CDHelper.mainContext.save(nil)
+        
+        let alert = UIAlertController.alert("Success", message: "Task created.")
+        alert.addAction(UIAlertAction.cancelAction("OK", handler: { (action) -> Void in
+            /// Do nothing
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -88,7 +131,7 @@ class NTHTemplateViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     
-    /// Mark: Trash Cell
+    /// Mark: Template Cell
 
     func cellDidPressDelete(cell: NTHInboxCell) {
         let indexPath = self.tableView.indexPathForCell(cell)!
@@ -98,17 +141,6 @@ class NTHTemplateViewController: UIViewController, UITableViewDelegate, UITableV
         self.resultsController.performFetch(nil)
         self.tableView.reloadData()
     }
-    
-    func cellDidPressRestore(cell: NTHInboxCell) {
-        let indexPath = self.tableView.indexPathForCell(cell)!
-        let task = self.resultsController.fetchedObjects![indexPath.row] as! Task
-        task.trashed = false.toNSNumber()
-        CDHelper.mainContext.save(nil)
-        
-        self.resultsController.performFetch(nil)
-        self.tableView.reloadData()
-    }
-    
     
     /// MARK: NTHCoreDataCloudSyncProtocol
     func persistentStoreDidReceiveChanges() {

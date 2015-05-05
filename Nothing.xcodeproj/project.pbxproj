@@ -86,7 +86,7 @@
 		12CC222B1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC222A1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift */; };
 		12D2E87D1A9B92D8001539CD /* NTHTrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */; };
 		12D2E87F1A9B9459001539CD /* Bool_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E87E1A9B9459001539CD /* Bool_TS.swift */; };
-		12D2E8811A9B9CDD001539CD /* NTHTrashCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D2E8801A9B9CDD001539CD /* NTHTrashCell.xib */; };
+		12D2E8811A9B9CDD001539CD /* NTHTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D2E8801A9B9CDD001539CD /* NTHTemplateCell.xib */; };
 		12D2E8831A9B9CF1001539CD /* NTHTrashCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E8821A9B9CF1001539CD /* NTHTrashCell.swift */; };
 		12D2E8851A9BB537001539CD /* NTHMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E8841A9BB537001539CD /* NTHMapViewController.swift */; };
 		12D2E8891A9BE76B001539CD /* OpenTimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E8881A9BE76B001539CD /* OpenTimeRange.swift */; };
@@ -98,6 +98,8 @@
 		12F0B3241A9CF0F1006229AD /* NTHSheetSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F0B3231A9CF0F1006229AD /* NTHSheetSegue.swift */; };
 		12F0B3261A9CF128006229AD /* NTHSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */; };
 		12F50A5A1AF92BBA0043F63F /* NTHTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F50A591AF92BBA0043F63F /* NTHTemplateViewController.swift */; };
+		12F50A5C1AF93EAD0043F63F /* NTHTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F50A5B1AF93EAD0043F63F /* NTHTemplateCell.swift */; };
+		12F50A5E1AF93EC70043F63F /* NTHTrashCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12F50A5D1AF93EC70043F63F /* NTHTrashCell.xib */; };
 		12FC2D2C1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC2D2B1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift */; };
 		12FE1D711A913A8600F03601 /* NTHCreateEditPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE1D701A913A8600F03601 /* NTHCreateEditPlaceViewController.swift */; };
 		12FE1D731A913C6100F03601 /* MKMapView_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE1D721A913C6100F03601 /* MKMapView_TS.swift */; };
@@ -211,7 +213,7 @@
 		12D2E87B1A9B91D6001539CD /* Nothing 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 6.xcdatamodel"; sourceTree = "<group>"; };
 		12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTrashViewController.swift; sourceTree = "<group>"; };
 		12D2E87E1A9B9459001539CD /* Bool_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bool_TS.swift; sourceTree = "<group>"; };
-		12D2E8801A9B9CDD001539CD /* NTHTrashCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHTrashCell.xib; sourceTree = "<group>"; };
+		12D2E8801A9B9CDD001539CD /* NTHTemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHTemplateCell.xib; sourceTree = "<group>"; };
 		12D2E8821A9B9CF1001539CD /* NTHTrashCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTrashCell.swift; sourceTree = "<group>"; };
 		12D2E8841A9BB537001539CD /* NTHMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHMapViewController.swift; sourceTree = "<group>"; };
 		12D2E8861A9BE65D001539CD /* Nothing 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 7.xcdatamodel"; sourceTree = "<group>"; };
@@ -227,6 +229,8 @@
 		12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSheetViewController.swift; sourceTree = "<group>"; };
 		12F50A581AF929D90043F63F /* Nothing 18.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 18.xcdatamodel"; sourceTree = "<group>"; };
 		12F50A591AF92BBA0043F63F /* NTHTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTemplateViewController.swift; sourceTree = "<group>"; };
+		12F50A5B1AF93EAD0043F63F /* NTHTemplateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTemplateCell.swift; sourceTree = "<group>"; };
+		12F50A5D1AF93EC70043F63F /* NTHTrashCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHTrashCell.xib; sourceTree = "<group>"; };
 		12FBB4C31AA33B3D00C2B32A /* Nothing 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 12.xcdatamodel"; sourceTree = "<group>"; };
 		12FBB4C41AA33D5400C2B32A /* Nothing 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 13.xcdatamodel"; sourceTree = "<group>"; };
 		12FC2D2B1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectRegionViewController.swift; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 				12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */,
 				12AC63C81A90AB3700883650 /* NTHTextField.swift */,
 				12D2E8821A9B9CF1001539CD /* NTHTrashCell.swift */,
+				12F50A5B1AF93EAD0043F63F /* NTHTemplateCell.swift */,
 				12A7B33E1A9681FB00A4EACB /* NTHTwoLineLeftLabelCell.swift */,
 				12F0B3221A9CF0C5006229AD /* UIStoryboardSegue */,
 			);
@@ -485,7 +490,8 @@
 				12981F0C1A8627D300CDFA1D /* NTHLeftLabelCell.xib */,
 				124E5EB71A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib */,
 				128F91611A92844900C21DE3 /* NTHRegionControl.xib */,
-				12D2E8801A9B9CDD001539CD /* NTHTrashCell.xib */,
+				12D2E8801A9B9CDD001539CD /* NTHTemplateCell.xib */,
+				12F50A5D1AF93EC70043F63F /* NTHTrashCell.xib */,
 				12A7B3401A96820E00A4EACB /* NTHTwoLineLeftLabelCell.xib */,
 				126904831A9E6D84008FDD84 /* NTHOpenHoursCell.xib */,
 			);
@@ -613,11 +619,12 @@
 				124E5EB81A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib in Resources */,
 				12981F0D1A8627D300CDFA1D /* NTHLeftLabelCell.xib in Resources */,
 				1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */,
-				12D2E8811A9B9CDD001539CD /* NTHTrashCell.xib in Resources */,
+				12D2E8811A9B9CDD001539CD /* NTHTemplateCell.xib in Resources */,
 				128F91621A92844900C21DE3 /* NTHRegionControl.xib in Resources */,
 				1279B5E419FED4E700A7828C /* LaunchScreen.xib in Resources */,
 				1279B5E119FED4E700A7828C /* Images.xcassets in Resources */,
 				12A7B3411A96820E00A4EACB /* NTHTwoLineLeftLabelCell.xib in Resources */,
+				12F50A5E1AF93EC70043F63F /* NTHTrashCell.xib in Resources */,
 				126904841A9E6D84008FDD84 /* NTHOpenHoursCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -712,6 +719,7 @@
 				1230A0911A8BE5250064447B /* CLLocation_TS.swift in Sources */,
 				1260AC001A7819BB0015CA4E /* NTHAnnotation.swift in Sources */,
 				1279B60C19FED64D00A7828C /* Contact.swift in Sources */,
+				12F50A5C1AF93EAD0043F63F /* NTHTemplateCell.swift in Sources */,
 				12A7B33D1A9679E800A4EACB /* NTHTaskDetailsViewController.swift in Sources */,
 				1230A08D1A8BBE6F0064447B /* LocalNotificationScheduler.swift in Sources */,
 				123181BD1AB590CB00776105 /* NTHTaskSearchViewController.swift in Sources */,

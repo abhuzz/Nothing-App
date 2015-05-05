@@ -20,7 +20,10 @@ class NTHInboxCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initialCenterYConstant = self.titleCenterYConstraint.constant
+        
+        if (self is NTHTemplateCell) == false {
+            self.initialCenterYConstant = self.titleCenterYConstraint.constant
+        }
         self.setupUI()
     }
     
@@ -32,22 +35,28 @@ class NTHInboxCell: UITableViewCell {
     private func setupUI() {
         self.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         self.titleLabel.textColor = UIColor.blackColor()
-        self.descriptionLabel.textColor = UIColor.NTHSubtitleTextColor()
-        self.stateIndicatorView.backgroundColor = UIColor.clearColor()
-        self.stateIndicatorView.state = .Active
+        
+        if (self is NTHTemplateCell) == false {
+            self.descriptionLabel.textColor = UIColor.NTHSubtitleTextColor()
+            self.stateIndicatorView.backgroundColor = UIColor.clearColor()
+            self.stateIndicatorView.state = .Active
+        }
     }
     
     func update(task: Task) {
         self.titleLabel.text = task.title
-        self.descriptionLabel.text = task.longDescription ?? ""
         
-        if task.longDescription == ""  {
-            self.titleCenterYConstraint.constant = 0
-            self.titleLabel.updateConstraintsIfNeeded()
-        } else {
-            self.titleCenterYConstraint.constant = self.initialCenterYConstant
+        if (self is NTHTemplateCell) == false {
+            self.descriptionLabel.text = task.longDescription ?? ""
+            
+            if task.longDescription == ""  {
+                self.titleCenterYConstraint.constant = 0
+                self.titleLabel.updateConstraintsIfNeeded()
+            } else {
+                self.titleCenterYConstraint.constant = self.initialCenterYConstant
+            }
+            
+            stateIndicatorView.state = task.state
         }
-        
-        stateIndicatorView.state = task.state
     }
 }
