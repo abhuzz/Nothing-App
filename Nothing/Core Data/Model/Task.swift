@@ -22,6 +22,7 @@ class Task: NSManagedObject {
     @NSManaged var title: String!
     @NSManaged var trashed: NSNumber
     @NSManaged var reminders: NSSet
+    @NSManaged var isTemplate: Bool
 }
 
 extension Task {

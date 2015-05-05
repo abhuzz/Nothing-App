@@ -16,12 +16,14 @@ class NTHMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     private enum MenuOption: String {
         case Places = "Places"
         case Contacts = "Contacts"
+        case Templates = "Templates"
         case Trash = "Trash"
     }
     
     private enum SegueIdentifier: String {
         case ShowPlaces = "ShowPlaces"
         case ShowContacts = "ShowContacts"
+        case ShowTemplates = "ShowTemplates"
         case ShowTrash = "ShowTrash"
     }
     
@@ -61,7 +63,7 @@ class NTHMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     /// Mark: Table View
     
     private func _options() -> [MenuOption] {
-        return [.Places, .Contacts, .Trash]
+        return [.Places, .Contacts, .Templates, .Trash]
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,6 +97,9 @@ class NTHMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         case .Trash:
             self.performSegueWithIdentifier(SegueIdentifier.ShowTrash.rawValue, sender: nil)
+            
+        case .Templates:
+            self.performSegueWithIdentifier(SegueIdentifier.ShowTemplates.rawValue, sender: nil)
         }
     }
     

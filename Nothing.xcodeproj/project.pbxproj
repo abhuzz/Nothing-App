@@ -97,6 +97,7 @@
 		12E2929F1A9527300079D257 /* NTHInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929E1A9527300079D257 /* NTHInboxViewController.swift */; };
 		12F0B3241A9CF0F1006229AD /* NTHSheetSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F0B3231A9CF0F1006229AD /* NTHSheetSegue.swift */; };
 		12F0B3261A9CF128006229AD /* NTHSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */; };
+		12F50A5A1AF92BBA0043F63F /* NTHTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F50A591AF92BBA0043F63F /* NTHTemplateViewController.swift */; };
 		12FC2D2C1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC2D2B1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift */; };
 		12FE1D711A913A8600F03601 /* NTHCreateEditPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE1D701A913A8600F03601 /* NTHCreateEditPlaceViewController.swift */; };
 		12FE1D731A913C6100F03601 /* MKMapView_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE1D721A913C6100F03601 /* MKMapView_TS.swift */; };
@@ -224,6 +225,8 @@
 		12EAC6691AB3859F000C904F /* Nothing 15.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 15.xcdatamodel"; sourceTree = "<group>"; };
 		12F0B3231A9CF0F1006229AD /* NTHSheetSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSheetSegue.swift; sourceTree = "<group>"; };
 		12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSheetViewController.swift; sourceTree = "<group>"; };
+		12F50A581AF929D90043F63F /* Nothing 18.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 18.xcdatamodel"; sourceTree = "<group>"; };
+		12F50A591AF92BBA0043F63F /* NTHTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTemplateViewController.swift; sourceTree = "<group>"; };
 		12FBB4C31AA33B3D00C2B32A /* Nothing 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 12.xcdatamodel"; sourceTree = "<group>"; };
 		12FBB4C41AA33D5400C2B32A /* Nothing 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 13.xcdatamodel"; sourceTree = "<group>"; };
 		12FC2D2B1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectRegionViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +303,7 @@
 				123181B81AB4DFC600776105 /* NTHTaskListViewController.swift */,
 				1244B90C1ABEF2CA003872CB /* NTHTaskNotificationViewController.swift */,
 				123181BC1AB590CB00776105 /* NTHTaskSearchViewController.swift */,
+				12F50A591AF92BBA0043F63F /* NTHTemplateViewController.swift */,
 				12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */,
 				126904811A9E6B69008FDD84 /* NTHOpenHoursViewController.swift */,
 				12FBB4C21AA338A600C2B32A /* Sheets */,
@@ -679,6 +683,7 @@
 				12981F0B1A86223000CDFA1D /* RepeatInterval.swift in Sources */,
 				128732461AA6379D000B3694 /* NSSet_TS.swift in Sources */,
 				12A7C0B71A9A080D00BB6B94 /* UIAlertController_TS.swift in Sources */,
+				12F50A5A1AF92BBA0043F63F /* NTHTemplateViewController.swift in Sources */,
 				126904861A9E6DA0008FDD84 /* NTHOpenHoursCell.swift in Sources */,
 				128BDD901AE5543400D4239C /* NotificationPresenter.swift in Sources */,
 				1279B60A19FED64D00A7828C /* NSManagedObject+Extension.swift in Sources */,
@@ -938,6 +943,7 @@
 		1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				12F50A581AF929D90043F63F /* Nothing 18.xcdatamodel */,
 				123181BB1AB57C0300776105 /* Nothing 17.xcdatamodel */,
 				123181BA1AB4EA8D00776105 /* Nothing 16.xcdatamodel */,
 				12EAC6691AB3859F000C904F /* Nothing 15.xcdatamodel */,
@@ -956,7 +962,7 @@
 				1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */,
 				1279B60219FED64D00A7828C /* Nothing.xcdatamodel */,
 			);
-			currentVersion = 123181BB1AB57C0300776105 /* Nothing 17.xcdatamodel */;
+			currentVersion = 12F50A581AF929D90043F63F /* Nothing 18.xcdatamodel */;
 			name = Nothing.xcdatamodeld;
 			path = Model/Nothing.xcdatamodeld;
 			sourceTree = "<group>";

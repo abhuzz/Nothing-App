@@ -122,6 +122,45 @@ class NTHTaskDetailsViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
+    @IBAction func tamplatePressed(sender: AnyObject) {
+        let template: Task = Task.create(self.context)
+        template.createdAt = NSDate()
+        template.links = self.task.links
+        template.longDescription = self.task.longDescription
+        template.uniqueIdentifier = NSUUID().UUIDString
+        template.title = self.task.title
+        
+        var copiedReminders = Set<Reminder>()
+        for reminder in self.task.reminders {
+            if reminder is DateReminder {
+                let reminder = reminder as! DateReminder
+                var r: DateReminder = DateReminder.create(self.context)
+                r.fireDate = reminder.fireDate
+                r.repeatInterval = reminder.repeatInterval
+                template.addReminder(r)
+            } else if reminder is LocationReminder {
+                let reminder = reminder as! LocationReminder
+                var r: LocationReminder = LocationReminder.create(self.context)
+                r.distance = reminder.distance
+                r.onArrive = reminder.onArrive
+                r.place = reminder.place
+                r.useOpenHours = reminder.useOpenHours
+                template.addReminder(r)
+            }
+        }
+        
+        template.isTemplate = true
+        
+        self.context.save(nil)
+        
+        let alert = UIAlertController.alert("Success", message: "Saved as template.")
+        alert.addAction(UIAlertAction.cancelAction("OK", handler: { (action) -> Void in
+            /// Do nothing
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func changeStatusPressed(sender: AnyObject) {
         self.task.changeState()
         self.taskStatusView.state = self.task.state

@@ -18,7 +18,7 @@ class ModelController {
     
     func allTasksNotDoneAndNotTrashed() -> [Task] {
         let request = NSFetchRequest(entityName: NSStringFromClass(Task.self))
-        request.predicate = NSPredicate(format: "trashed == 0 && stateNumber == 0", argumentArray: nil)
+        request.predicate = NSPredicate(format: "trashed == 0 && stateNumber == 0 && isTemplate == 0", argumentArray: nil)
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: false)]
         return (CDHelper.mainContext.executeFetchRequest(request, error: nil) as! [Task]) ?? [Task]()
     }
