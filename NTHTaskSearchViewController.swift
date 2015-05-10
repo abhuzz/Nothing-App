@@ -87,6 +87,10 @@ class NTHTaskSearchViewController: UIViewController, UISearchBarDelegate, UITabl
         let regexp = NSRegularExpression(pattern: searchText, options: NSRegularExpressionOptions.CaseInsensitive, error: nil)
         
         for task in allTasks {
+            if (task.trashed.boolValue == true ||
+                task.isTemplate.boolValue == true) {
+                continue
+            }
             
             /// Create string to search
             var source = task.title
