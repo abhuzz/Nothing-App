@@ -7,51 +7,104 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12059DCA1A34FDA2007F5E7C /* NTHColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DC91A34FDA2007F5E7C /* NTHColors.swift */; };
-		12059DCD1A34FF5C007F5E7C /* NTHFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */; };
-		12059DCF1A350153007F5E7C /* NTHInboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12059DCE1A350153007F5E7C /* NTHInboxCell.xib */; };
+		120205291AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120205281AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift */; };
+		1202052B1AA1F3780043CEE9 /* NTHTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1202052A1AA1F3780043CEE9 /* NTHTime.swift */; };
+		1202EB731A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */; };
+		12059DCA1A34FDA2007F5E7C /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DC91A34FDA2007F5E7C /* UIColor+Extensions.swift */; };
+		12059DCD1A34FF5C007F5E7C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DCC1A34FF5C007F5E7C /* UIFont+Extension.swift */; };
 		12059DD11A350476007F5E7C /* NTHInboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DD01A350476007F5E7C /* NTHInboxCell.swift */; };
 		12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */; };
-		123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2119FF86C4008E22DB /* HashtagDetector.swift */; };
-		123B6E2419FF909F008E22DB /* UILabel_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123B6E2319FF909F008E22DB /* UILabel_Extension.swift */; };
-		123F11C51A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123F11C41A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift */; };
-		124ADC991A19467600750816 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124ADC981A19467600750816 /* DetailViewController.swift */; };
-		124ADC9B1A19493C00750816 /* DetailModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124ADC9A1A19493C00750816 /* DetailModelView.swift */; };
-		125593EC19FEE10A001EC477 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125593EB19FEE10A001EC477 /* UIColor_Extension.swift */; };
+		120B3CE81A86074700FB38DD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B3CE71A86074700FB38DD /* String+Extensions.swift */; };
+		120B99581A9A3DB100518FF0 /* NTHMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120B99571A9A3DB100518FF0 /* NTHMenuViewController.swift */; };
+		121AA83B1AAB060100F3C7F6 /* NTHCreateEditLocationDateReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AA83A1AAB060100F3C7F6 /* NTHCreateEditLocationDateReminderViewController.swift */; };
+		121CF5C61A8FD0440032ED36 /* NTHPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121CF5C51A8FD0440032ED36 /* NTHPlaceholderTextView.swift */; };
+		121CF5C81A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121CF5C71A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift */; };
+		1230A08D1A8BBE6F0064447B /* LocalNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230A08C1A8BBE6F0064447B /* LocalNotificationScheduler.swift */; };
+		1230A08F1A8BCDB20064447B /* TSRegionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230A08E1A8BCDB20064447B /* TSRegionManager.swift */; };
+		1230A0911A8BE5250064447B /* CLLocation_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230A0901A8BE5250064447B /* CLLocation_TS.swift */; };
+		123181B51AB4226200776105 /* NTHMultiNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123181B41AB4226200776105 /* NTHMultiNavigationItem.swift */; };
+		123181B71AB43B4400776105 /* NTHPlaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123181B61AB43B4400776105 /* NTHPlaceDetailsViewController.swift */; };
+		123181B91AB4DFC600776105 /* NTHTaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123181B81AB4DFC600776105 /* NTHTaskListViewController.swift */; };
+		123181BD1AB590CB00776105 /* NTHTaskSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123181BC1AB590CB00776105 /* NTHTaskSearchViewController.swift */; };
+		123A54921A952A4D00B4C5D4 /* NTHInboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 123A54911A952A4D00B4C5D4 /* NTHInboxCell.xib */; };
+		1244B90D1ABEF2CA003872CB /* NTHTaskNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244B90C1ABEF2CA003872CB /* NTHTaskNotificationViewController.swift */; };
+		124A8F161A4F017800BE5EAB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124A8F151A4F017800BE5EAB /* UIView+Extension.swift */; };
+		124E5EB81A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 124E5EB71A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib */; };
+		1250A3B71A868420005B4D69 /* UIAlertAction_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1250A3B61A868420005B4D69 /* UIAlertAction_TS.swift */; };
+		1259B7731A8F7AFA0059525F /* TSRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1259B7721A8F7AFA0059525F /* TSRegion.swift */; };
+		1259B7751A8F93380059525F /* CLLocationCoordinate2D_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1259B7741A8F93380059525F /* CLLocationCoordinate2D_TS.swift */; };
+		1260AC001A7819BB0015CA4E /* NTHAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1260ABFF1A7819BB0015CA4E /* NTHAnnotation.swift */; };
+		126904821A9E6B69008FDD84 /* NTHOpenHoursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126904811A9E6B69008FDD84 /* NTHOpenHoursViewController.swift */; };
+		126904841A9E6D84008FDD84 /* NTHOpenHoursCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 126904831A9E6D84008FDD84 /* NTHOpenHoursCell.xib */; };
+		126904861A9E6DA0008FDD84 /* NTHOpenHoursCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126904851A9E6DA0008FDD84 /* NTHOpenHoursCell.swift */; };
+		1270B00F1A91369C0058DE82 /* UITableView_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1270B00E1A91369C0058DE82 /* UITableView_TS.swift */; };
 		1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5D919FED4E700A7828C /* AppDelegate.swift */; };
-		1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5DB19FED4E700A7828C /* InboxViewController.swift */; };
 		1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1279B5DD19FED4E700A7828C /* Main.storyboard */; };
 		1279B5E119FED4E700A7828C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1279B5E019FED4E700A7828C /* Images.xcassets */; };
 		1279B5E419FED4E700A7828C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1279B5E219FED4E700A7828C /* LaunchScreen.xib */; };
 		1279B5F019FED4E800A7828C /* NothingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5EF19FED4E800A7828C /* NothingTests.swift */; };
 		1279B60819FED64D00A7828C /* CDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5FB19FED64D00A7828C /* CDHelper.swift */; };
 		1279B60919FED64D00A7828C /* CDStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5FC19FED64D00A7828C /* CDStore.swift */; };
-		1279B60A19FED64D00A7828C /* NSManagedObject_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5FD19FED64D00A7828C /* NSManagedObject_Extension.swift */; };
-		1279B60B19FED64D00A7828C /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5FF19FED64D00A7828C /* Connection.swift */; };
+		1279B60A19FED64D00A7828C /* NSManagedObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5FD19FED64D00A7828C /* NSManagedObject+Extension.swift */; };
+		1279B60B19FED64D00A7828C /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B5FF19FED64D00A7828C /* Link.swift */; };
 		1279B60C19FED64D00A7828C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60019FED64D00A7828C /* Contact.swift */; };
 		1279B60D19FED64D00A7828C /* Nothing.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */; };
-		1279B60E19FED64D00A7828C /* DateReminderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60319FED64D00A7828C /* DateReminderInfo.swift */; };
-		1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60419FED64D00A7828C /* LocationReminderInfo.swift */; };
 		1279B61019FED64D00A7828C /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60519FED64D00A7828C /* Place.swift */; };
 		1279B61119FED64D00A7828C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60619FED64D00A7828C /* Task.swift */; };
 		1279B61219FED64D00A7828C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B60719FED64D00A7828C /* FileManager.swift */; };
 		1279B61519FEDBD200A7828C /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279B61419FEDBD200A7828C /* FileCache.swift */; };
-		128B298A1A1EA842005C93DF /* SeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128B29891A1EA842005C93DF /* SeparatorCell.xib */; };
-		128B298C1A1EA862005C93DF /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128B298B1A1EA862005C93DF /* SeparatorCell.swift */; };
-		129A555A1A1E69F100ED249D /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 129A55591A1E69F100ED249D /* TextViewCell.xib */; };
-		129A555C1A1E6A0800ED249D /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129A555B1A1E6A0800ED249D /* TextViewCell.swift */; };
-		129A555E1A1E825500ED249D /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129A555D1A1E825500ED249D /* MapCell.swift */; };
-		129A55601A1E826A00ED249D /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 129A555F1A1E826A00ED249D /* MapCell.xib */; };
+		127A800E1AA2666700B49666 /* NSManagedObjectContext_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127A800D1AA2666700B49666 /* NSManagedObjectContext_TS.swift */; };
+		127A80131AA301D300B49666 /* UIStoryboardSegue_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127A80121AA301D300B49666 /* UIStoryboardSegue_TS.swift */; };
+		127A80151AA30F5600B49666 /* NTHSimpleSelectLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127A80141AA30F5600B49666 /* NTHSimpleSelectLinkViewController.swift */; };
+		1287323E1AA62597000B3694 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1287323D1AA62597000B3694 /* Reminder.swift */; };
+		128732401AA626DD000B3694 /* DateReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1287323F1AA626DD000B3694 /* DateReminder.swift */; };
+		128732421AA6298D000B3694 /* LocationReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128732411AA6298D000B3694 /* LocationReminder.swift */; };
+		128732441AA62A63000B3694 /* LocationDateReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128732431AA62A63000B3694 /* LocationDateReminder.swift */; };
+		128732461AA6379D000B3694 /* NSSet_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128732451AA6379D000B3694 /* NSSet_TS.swift */; };
+		128732481AA637FE000B3694 /* NSMutableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128732471AA637FE000B3694 /* NSMutableSet.swift */; };
+		128BDD901AE5543400D4239C /* NotificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BDD8F1AE5543400D4239C /* NotificationPresenter.swift */; };
+		128EE7BE1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128EE7BD1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift */; };
+		128F91621A92844900C21DE3 /* NTHRegionControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128F91611A92844900C21DE3 /* NTHRegionControl.xib */; };
+		128F91641A92855D00C21DE3 /* NTHRegionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128F91631A92855D00C21DE3 /* NTHRegionControl.swift */; };
+		128F91661A92873B00C21DE3 /* Float_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128F91651A92873B00C21DE3 /* Float_TS.swift */; };
+		128F91681A93FED000C21DE3 /* NTHSelectPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128F91671A93FED000C21DE3 /* NTHSelectPlaceViewController.swift */; };
+		12981F0B1A86223000CDFA1D /* RepeatInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12981F0A1A86223000CDFA1D /* RepeatInterval.swift */; };
+		12981F0D1A8627D300CDFA1D /* NTHLeftLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12981F0C1A8627D300CDFA1D /* NTHLeftLabelCell.xib */; };
+		12981F0F1A86280800CDFA1D /* NTHCenterLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12981F0E1A86280800CDFA1D /* NTHCenterLabelCell.swift */; };
+		12A703521AA7B9F2009538E2 /* NTHSelectRepeatIntervalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A703511AA7B9F2009538E2 /* NTHSelectRepeatIntervalViewController.swift */; };
+		12A70BE11AC7F7EF00FCDC97 /* NTHCoreDataCloudSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A70BE01AC7F7EF00FCDC97 /* NTHCoreDataCloudSync.swift */; };
+		12A7B33D1A9679E800A4EACB /* NTHTaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A7B33C1A9679E800A4EACB /* NTHTaskDetailsViewController.swift */; };
+		12A7B33F1A9681FB00A4EACB /* NTHTwoLineLeftLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A7B33E1A9681FB00A4EACB /* NTHTwoLineLeftLabelCell.swift */; };
+		12A7B3411A96820E00A4EACB /* NTHTwoLineLeftLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12A7B3401A96820E00A4EACB /* NTHTwoLineLeftLabelCell.xib */; };
+		12A7C0B51A9893DA00BB6B94 /* NTHButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A7C0B41A9893DA00BB6B94 /* NTHButton.swift */; };
+		12A7C0B71A9A080D00BB6B94 /* UIAlertController_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A7C0B61A9A080D00BB6B94 /* UIAlertController_TS.swift */; };
+		12AC63C91A90AB3700883650 /* NTHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AC63C81A90AB3700883650 /* NTHTextField.swift */; };
+		12BB65311A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB65301A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift */; };
 		12BEB0F41A06DC9300643860 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BEB0F31A06DC9300643860 /* ModelController.swift */; };
-		12CC22271A12207300DF8EE0 /* InboxCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC22261A12207300DF8EE0 /* InboxCellViewModel.swift */; };
-		12CC222B1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */; };
-		12CEF17F1A083832004DE156 /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CEF17E1A083832004DE156 /* UIView_Extension.swift */; };
+		12CAEA2C1A9D16100084A67C /* NTHUnwindSheetSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CAEA2B1A9D16100084A67C /* NTHUnwindSheetSegue.swift */; };
+		12CB97661AA372F70075C0E4 /* TSRegionTimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CB97651AA372F70075C0E4 /* TSRegionTimeRange.swift */; };
+		12CC222B1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC222A1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift */; };
+		12D2E87D1A9B92D8001539CD /* NTHTrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */; };
+		12D2E87F1A9B9459001539CD /* Bool_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E87E1A9B9459001539CD /* Bool_TS.swift */; };
+		12D2E8811A9B9CDD001539CD /* NTHTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D2E8801A9B9CDD001539CD /* NTHTemplateCell.xib */; };
+		12D2E8831A9B9CF1001539CD /* NTHTrashCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E8821A9B9CF1001539CD /* NTHTrashCell.swift */; };
+		12D2E8851A9BB537001539CD /* NTHMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E8841A9BB537001539CD /* NTHMapViewController.swift */; };
+		12D2E8891A9BE76B001539CD /* OpenTimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E8881A9BE76B001539CD /* OpenTimeRange.swift */; };
+		12D2E88B1A9CE25A001539CD /* NTHDateTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2E88A1A9CE25A001539CD /* NTHDateTimePickerViewController.swift */; };
 		12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E215991A03A9840038AD45 /* ThumbnailCache.swift */; };
-		12EDE7871A1FBD1E0020D549 /* CreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */; };
-		12EDE7891A1FBDC20020D549 /* NTHTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */; };
-		12EDE78D1A1FC6770020D549 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EDE78C1A1FC6770020D549 /* TextEditorViewController.swift */; };
-		12FE325F1A10D75F00FAB243 /* QuickInsertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */; };
-		12FE32611A10D76900FAB243 /* QuickInsertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12FE32601A10D76900FAB243 /* QuickInsertView.xib */; };
+		12E2929B1A951DEF0079D257 /* NTHSelectContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */; };
+		12E2929D1A9522D90079D257 /* NTHCreateEditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */; };
+		12E2929F1A9527300079D257 /* NTHInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2929E1A9527300079D257 /* NTHInboxViewController.swift */; };
+		12F0B3241A9CF0F1006229AD /* NTHSheetSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F0B3231A9CF0F1006229AD /* NTHSheetSegue.swift */; };
+		12F0B3261A9CF128006229AD /* NTHSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */; };
+		12F50A5A1AF92BBA0043F63F /* NTHTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F50A591AF92BBA0043F63F /* NTHTemplateViewController.swift */; };
+		12F50A5C1AF93EAD0043F63F /* NTHTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F50A5B1AF93EAD0043F63F /* NTHTemplateCell.swift */; };
+		12F50A5E1AF93EC70043F63F /* NTHTrashCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12F50A5D1AF93EC70043F63F /* NTHTrashCell.xib */; };
+		12FC2D2C1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC2D2B1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift */; };
+		12FE1D711A913A8600F03601 /* NTHCreateEditPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE1D701A913A8600F03601 /* NTHCreateEditPlaceViewController.swift */; };
+		12FE1D731A913C6100F03601 /* MKMapView_TS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE1D721A913C6100F03601 /* MKMapView_TS.swift */; };
+		12FE1D751A9146E100F03601 /* NTHCenterLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12FE1D741A9146E100F03601 /* NTHCenterLabelCell.xib */; };
+		12FE1D771A9146F600F03601 /* NTHLeftLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE1D761A9146F600F03601 /* NTHLeftLabelCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,55 +118,126 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		12059DC91A34FDA2007F5E7C /* NTHColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHColors.swift; sourceTree = "<group>"; };
-		12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHFonts.swift; sourceTree = "<group>"; };
-		12059DCE1A350153007F5E7C /* NTHInboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NTHInboxCell.xib; path = Nothing/NTHInboxCell.xib; sourceTree = "<group>"; };
+		120205281AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHOpenHoursPickerViewController.swift; sourceTree = "<group>"; };
+		1202052A1AA1F3780043CEE9 /* NTHTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTime.swift; sourceTree = "<group>"; };
+		1202052C1AA25D170043CEE9 /* Nothing 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 10.xcdatamodel"; sourceTree = "<group>"; };
+		1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditDateReminderViewController.swift; sourceTree = "<group>"; };
+		12059DC91A34FDA2007F5E7C /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		12059DCC1A34FF5C007F5E7C /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		12059DD01A350476007F5E7C /* NTHInboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHInboxCell.swift; sourceTree = "<group>"; };
 		12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskStatusView.swift; sourceTree = "<group>"; };
-		123B6E2119FF86C4008E22DB /* HashtagDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagDetector.swift; sourceTree = "<group>"; };
-		123B6E2319FF909F008E22DB /* UILabel_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel_Extension.swift; sourceTree = "<group>"; };
-		123F11C41A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem_Extension.swift; sourceTree = "<group>"; };
-		124ADC981A19467600750816 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		124ADC9A1A19493C00750816 /* DetailModelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailModelView.swift; sourceTree = "<group>"; };
-		125593EB19FEE10A001EC477 /* UIColor_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
+		120B3CE71A86074700FB38DD /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		120B99571A9A3DB100518FF0 /* NTHMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHMenuViewController.swift; sourceTree = "<group>"; };
+		120E72BC1A9A20D7007F5E80 /* Nothing 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 5.xcdatamodel"; sourceTree = "<group>"; };
+		1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 2.xcdatamodel"; sourceTree = "<group>"; };
+		121AA83A1AAB060100F3C7F6 /* NTHCreateEditLocationDateReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditLocationDateReminderViewController.swift; sourceTree = "<group>"; };
+		121CF5C51A8FD0440032ED36 /* NTHPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHPlaceholderTextView.swift; sourceTree = "<group>"; };
+		121CF5C71A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditTaskViewController.swift; sourceTree = "<group>"; };
+		1230A08C1A8BBE6F0064447B /* LocalNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalNotificationScheduler.swift; path = "Nothing/Core Data/Model/LocalNotificationScheduler.swift"; sourceTree = "<group>"; };
+		1230A08E1A8BCDB20064447B /* TSRegionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSRegionManager.swift; sourceTree = "<group>"; };
+		1230A0901A8BE5250064447B /* CLLocation_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocation_TS.swift; sourceTree = "<group>"; };
+		1230A0921A8BF10D0064447B /* Nothing 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 3.xcdatamodel"; sourceTree = "<group>"; };
+		123181B41AB4226200776105 /* NTHMultiNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHMultiNavigationItem.swift; sourceTree = "<group>"; };
+		123181B61AB43B4400776105 /* NTHPlaceDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHPlaceDetailsViewController.swift; sourceTree = "<group>"; };
+		123181B81AB4DFC600776105 /* NTHTaskListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskListViewController.swift; sourceTree = "<group>"; };
+		123181BA1AB4EA8D00776105 /* Nothing 16.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 16.xcdatamodel"; sourceTree = "<group>"; };
+		123181BB1AB57C0300776105 /* Nothing 17.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 17.xcdatamodel"; sourceTree = "<group>"; };
+		123181BC1AB590CB00776105 /* NTHTaskSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskSearchViewController.swift; sourceTree = "<group>"; };
+		123A54911A952A4D00B4C5D4 /* NTHInboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHInboxCell.xib; sourceTree = "<group>"; };
+		1244B90C1ABEF2CA003872CB /* NTHTaskNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskNotificationViewController.swift; sourceTree = "<group>"; };
+		124A8F151A4F017800BE5EAB /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		124E5EB71A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHLeftLabelRemoveCell.xib; sourceTree = "<group>"; };
+		125016311AC6B053006F4A43 /* Nothing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Nothing.entitlements; sourceTree = "<group>"; };
+		1250A3B61A868420005B4D69 /* UIAlertAction_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertAction_TS.swift; sourceTree = "<group>"; };
+		1259B7721A8F7AFA0059525F /* TSRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSRegion.swift; sourceTree = "<group>"; };
+		1259B7741A8F93380059525F /* CLLocationCoordinate2D_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationCoordinate2D_TS.swift; sourceTree = "<group>"; };
+		1260ABFF1A7819BB0015CA4E /* NTHAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHAnnotation.swift; sourceTree = "<group>"; };
+		126904811A9E6B69008FDD84 /* NTHOpenHoursViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHOpenHoursViewController.swift; sourceTree = "<group>"; };
+		126904831A9E6D84008FDD84 /* NTHOpenHoursCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHOpenHoursCell.xib; sourceTree = "<group>"; };
+		126904851A9E6DA0008FDD84 /* NTHOpenHoursCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHOpenHoursCell.swift; sourceTree = "<group>"; };
+		1270B00E1A91369C0058DE82 /* UITableView_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView_TS.swift; sourceTree = "<group>"; };
 		1279B5D419FED4E700A7828C /* Nothing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nothing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1279B5D819FED4E700A7828C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1279B5D919FED4E700A7828C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1279B5DB19FED4E700A7828C /* InboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InboxViewController.swift; path = Nothing/InboxViewController.swift; sourceTree = "<group>"; };
 		1279B5DE19FED4E700A7828C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1279B5E019FED4E700A7828C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1279B5E319FED4E700A7828C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1279B5E919FED4E700A7828C /* NothingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NothingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1279B5EE19FED4E800A7828C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1279B5EF19FED4E800A7828C /* NothingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NothingTests.swift; sourceTree = "<group>"; };
-		1279B5FB19FED64D00A7828C /* CDHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDHelper.swift; sourceTree = "<group>"; };
-		1279B5FC19FED64D00A7828C /* CDStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDStore.swift; sourceTree = "<group>"; };
-		1279B5FD19FED64D00A7828C /* NSManagedObject_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSManagedObject_Extension.swift; path = "Core Data/Core/NSManagedObject_Extension.swift"; sourceTree = "<group>"; };
-		1279B5FF19FED64D00A7828C /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		1279B5FB19FED64D00A7828C /* CDHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDHelper.swift; path = Core/CDHelper.swift; sourceTree = "<group>"; };
+		1279B5FC19FED64D00A7828C /* CDStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDStore.swift; path = Core/CDStore.swift; sourceTree = "<group>"; };
+		1279B5FD19FED64D00A7828C /* NSManagedObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Extension.swift"; path = "Nothing/Core Data/Core/NSManagedObject+Extension.swift"; sourceTree = "<group>"; };
+		1279B5FF19FED64D00A7828C /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		1279B60019FED64D00A7828C /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		1279B60219FED64D00A7828C /* Nothing.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nothing.xcdatamodel; sourceTree = "<group>"; };
-		1279B60319FED64D00A7828C /* DateReminderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateReminderInfo.swift; sourceTree = "<group>"; };
-		1279B60419FED64D00A7828C /* LocationReminderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationReminderInfo.swift; sourceTree = "<group>"; };
 		1279B60519FED64D00A7828C /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		1279B60619FED64D00A7828C /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		1279B60719FED64D00A7828C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1279B61419FEDBD200A7828C /* FileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
-		128B29891A1EA842005C93DF /* SeparatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorCell.xib; sourceTree = "<group>"; };
-		128B298B1A1EA862005C93DF /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
-		129A55591A1E69F100ED249D /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
-		129A555B1A1E6A0800ED249D /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
-		129A555D1A1E825500ED249D /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
-		129A555F1A1E826A00ED249D /* MapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
+		127A800D1AA2666700B49666 /* NSManagedObjectContext_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSManagedObjectContext_TS.swift; path = ../NSManagedObjectContext_TS.swift; sourceTree = "<group>"; };
+		127A800F1AA27A8000B49666 /* Nothing 11.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 11.xcdatamodel"; sourceTree = "<group>"; };
+		127A80121AA301D300B49666 /* UIStoryboardSegue_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardSegue_TS.swift; sourceTree = "<group>"; };
+		127A80141AA30F5600B49666 /* NTHSimpleSelectLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSimpleSelectLinkViewController.swift; sourceTree = "<group>"; };
+		127C4AE11A9E787B00699F37 /* Nothing 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 9.xcdatamodel"; sourceTree = "<group>"; };
+		1287323C1AA62541000B3694 /* Nothing 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 14.xcdatamodel"; sourceTree = "<group>"; };
+		1287323D1AA62597000B3694 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reminder.swift; path = ../../../Reminder.swift; sourceTree = "<group>"; };
+		1287323F1AA626DD000B3694 /* DateReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateReminder.swift; path = ../../../DateReminder.swift; sourceTree = "<group>"; };
+		128732411AA6298D000B3694 /* LocationReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationReminder.swift; path = ../../../LocationReminder.swift; sourceTree = "<group>"; };
+		128732431AA62A63000B3694 /* LocationDateReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationDateReminder.swift; path = ../../../LocationDateReminder.swift; sourceTree = "<group>"; };
+		128732451AA6379D000B3694 /* NSSet_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSSet_TS.swift; sourceTree = "<group>"; };
+		128732471AA637FE000B3694 /* NSMutableSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableSet.swift; sourceTree = "<group>"; };
+		128BDD8F1AE5543400D4239C /* NotificationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationPresenter.swift; sourceTree = "<group>"; };
+		128EE7BD1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditLocationReminderViewController.swift; sourceTree = "<group>"; };
+		128F91611A92844900C21DE3 /* NTHRegionControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHRegionControl.xib; sourceTree = "<group>"; };
+		128F91631A92855D00C21DE3 /* NTHRegionControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHRegionControl.swift; sourceTree = "<group>"; };
+		128F91651A92873B00C21DE3 /* Float_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float_TS.swift; sourceTree = "<group>"; };
+		128F91671A93FED000C21DE3 /* NTHSelectPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectPlaceViewController.swift; sourceTree = "<group>"; };
+		12981F0A1A86223000CDFA1D /* RepeatInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatInterval.swift; sourceTree = "<group>"; };
+		12981F0C1A8627D300CDFA1D /* NTHLeftLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHLeftLabelCell.xib; sourceTree = "<group>"; };
+		12981F0E1A86280800CDFA1D /* NTHCenterLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCenterLabelCell.swift; sourceTree = "<group>"; };
+		12A703511AA7B9F2009538E2 /* NTHSelectRepeatIntervalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectRepeatIntervalViewController.swift; sourceTree = "<group>"; };
+		12A70BE01AC7F7EF00FCDC97 /* NTHCoreDataCloudSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCoreDataCloudSync.swift; sourceTree = "<group>"; };
+		12A7B33C1A9679E800A4EACB /* NTHTaskDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTaskDetailsViewController.swift; sourceTree = "<group>"; };
+		12A7B33E1A9681FB00A4EACB /* NTHTwoLineLeftLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTwoLineLeftLabelCell.swift; sourceTree = "<group>"; };
+		12A7B3401A96820E00A4EACB /* NTHTwoLineLeftLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHTwoLineLeftLabelCell.xib; sourceTree = "<group>"; };
+		12A7C0B41A9893DA00BB6B94 /* NTHButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHButton.swift; sourceTree = "<group>"; };
+		12A7C0B61A9A080D00BB6B94 /* UIAlertController_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController_TS.swift; sourceTree = "<group>"; };
+		12A7C0B81A9A1B7700BB6B94 /* Nothing 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 4.xcdatamodel"; sourceTree = "<group>"; };
+		12AC63C81A90AB3700883650 /* NTHTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTextField.swift; sourceTree = "<group>"; };
+		12BB65301A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHLeftLabelRemoveCell.swift; sourceTree = "<group>"; };
 		12BEB0F31A06DC9300643860 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
-		12CC22261A12207300DF8EE0 /* InboxCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxCellViewModel.swift; sourceTree = "<group>"; };
-		12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateFormatter_Extension.swift; sourceTree = "<group>"; };
-		12CEF17E1A083832004DE156 /* UIView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
+		12CAEA2B1A9D16100084A67C /* NTHUnwindSheetSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHUnwindSheetSegue.swift; sourceTree = "<group>"; };
+		12CB97651AA372F70075C0E4 /* TSRegionTimeRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSRegionTimeRange.swift; sourceTree = "<group>"; };
+		12CC222A1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDateFormatter+Extension.swift"; path = "Nothing/NSDateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		12D2E87B1A9B91D6001539CD /* Nothing 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 6.xcdatamodel"; sourceTree = "<group>"; };
+		12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTrashViewController.swift; sourceTree = "<group>"; };
+		12D2E87E1A9B9459001539CD /* Bool_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bool_TS.swift; sourceTree = "<group>"; };
+		12D2E8801A9B9CDD001539CD /* NTHTemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHTemplateCell.xib; sourceTree = "<group>"; };
+		12D2E8821A9B9CF1001539CD /* NTHTrashCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTrashCell.swift; sourceTree = "<group>"; };
+		12D2E8841A9BB537001539CD /* NTHMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHMapViewController.swift; sourceTree = "<group>"; };
+		12D2E8861A9BE65D001539CD /* Nothing 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 7.xcdatamodel"; sourceTree = "<group>"; };
+		12D2E8871A9BE720001539CD /* Nothing 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 8.xcdatamodel"; sourceTree = "<group>"; };
+		12D2E8881A9BE76B001539CD /* OpenTimeRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenTimeRange.swift; sourceTree = "<group>"; };
+		12D2E88A1A9CE25A001539CD /* NTHDateTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHDateTimePickerViewController.swift; sourceTree = "<group>"; };
 		12E215991A03A9840038AD45 /* ThumbnailCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCache.swift; sourceTree = "<group>"; };
-		12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditViewController.swift; sourceTree = "<group>"; };
-		12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTableViewController.swift; sourceTree = "<group>"; };
-		12EDE78C1A1FC6770020D549 /* TextEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
-		12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuickInsertView.swift; path = Nothing/QuickInsertView.swift; sourceTree = "<group>"; };
-		12FE32601A10D76900FAB243 /* QuickInsertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuickInsertView.xib; path = Nothing/QuickInsertView.xib; sourceTree = "<group>"; };
+		12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectContactViewController.swift; sourceTree = "<group>"; };
+		12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditContactViewController.swift; sourceTree = "<group>"; };
+		12E2929E1A9527300079D257 /* NTHInboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHInboxViewController.swift; sourceTree = "<group>"; };
+		12EAC6691AB3859F000C904F /* Nothing 15.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 15.xcdatamodel"; sourceTree = "<group>"; };
+		12F0B3231A9CF0F1006229AD /* NTHSheetSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSheetSegue.swift; sourceTree = "<group>"; };
+		12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSheetViewController.swift; sourceTree = "<group>"; };
+		12F50A581AF929D90043F63F /* Nothing 18.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 18.xcdatamodel"; sourceTree = "<group>"; };
+		12F50A591AF92BBA0043F63F /* NTHTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTemplateViewController.swift; sourceTree = "<group>"; };
+		12F50A5B1AF93EAD0043F63F /* NTHTemplateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHTemplateCell.swift; sourceTree = "<group>"; };
+		12F50A5D1AF93EC70043F63F /* NTHTrashCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHTrashCell.xib; sourceTree = "<group>"; };
+		12FBB4C31AA33B3D00C2B32A /* Nothing 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 12.xcdatamodel"; sourceTree = "<group>"; };
+		12FBB4C41AA33D5400C2B32A /* Nothing 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Nothing 13.xcdatamodel"; sourceTree = "<group>"; };
+		12FC2D2B1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHSelectRegionViewController.swift; sourceTree = "<group>"; };
+		12FE1D701A913A8600F03601 /* NTHCreateEditPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHCreateEditPlaceViewController.swift; sourceTree = "<group>"; };
+		12FE1D721A913C6100F03601 /* MKMapView_TS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView_TS.swift; sourceTree = "<group>"; };
+		12FE1D741A9146E100F03601 /* NTHCenterLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTHCenterLabelCell.xib; sourceTree = "<group>"; };
+		12FE1D761A9146F600F03601 /* NTHLeftLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTHLeftLabelCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,51 +258,130 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		12059DCB1A34FDAC007F5E7C /* Nothing2 */ = {
+		120B3CE61A86072B00FB38DD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				12059DC91A34FDA2007F5E7C /* NTHColors.swift */,
-				12059DCC1A34FF5C007F5E7C /* NTHFonts.swift */,
-				127400371A365A13004D96D3 /* Inbox */,
-				127400361A36593F004D96D3 /* QuickInsertView */,
+				12CC222A1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift */,
+				1279B5FD19FED64D00A7828C /* NSManagedObject+Extension.swift */,
+				120B3CE71A86074700FB38DD /* String+Extensions.swift */,
+				12059DC91A34FDA2007F5E7C /* UIColor+Extensions.swift */,
+				12059DCC1A34FF5C007F5E7C /* UIFont+Extension.swift */,
+				124A8F151A4F017800BE5EAB /* UIView+Extension.swift */,
 			);
-			name = Nothing2;
+			name = Extensions;
+			path = ..;
 			sourceTree = "<group>";
 		};
-		125593ED19FEE133001EC477 /* Resources */ = {
+		1246F0901A8640E70001F4BE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1259B7711A8F7AD30059525F /* TSRegionManager */,
+				12981F0A1A86223000CDFA1D /* RepeatInterval.swift */,
+				1230A08C1A8BBE6F0064447B /* LocalNotificationScheduler.swift */,
+				1202052A1AA1F3780043CEE9 /* NTHTime.swift */,
+				128BDD8F1AE5543400D4239C /* NotificationPresenter.swift */,
+			);
+			name = Helpers;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		1246F0911A8641070001F4BE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				12E2929C1A9522D90079D257 /* NTHCreateEditContactViewController.swift */,
+				1202EB721A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift */,
+				128EE7BD1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift */,
+				121AA83A1AAB060100F3C7F6 /* NTHCreateEditLocationDateReminderViewController.swift */,
+				12FE1D701A913A8600F03601 /* NTHCreateEditPlaceViewController.swift */,
+				121CF5C71A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift */,
+				12E2929E1A9527300079D257 /* NTHInboxViewController.swift */,
+				12D2E8841A9BB537001539CD /* NTHMapViewController.swift */,
+				120B99571A9A3DB100518FF0 /* NTHMenuViewController.swift */,
+				123181B61AB43B4400776105 /* NTHPlaceDetailsViewController.swift */,
+				12E2929A1A951DEF0079D257 /* NTHSelectContactViewController.swift */,
+				128F91671A93FED000C21DE3 /* NTHSelectPlaceViewController.swift */,
+				12FC2D2B1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift */,
+				12A703511AA7B9F2009538E2 /* NTHSelectRepeatIntervalViewController.swift */,
+				127A80141AA30F5600B49666 /* NTHSimpleSelectLinkViewController.swift */,
+				12A7B33C1A9679E800A4EACB /* NTHTaskDetailsViewController.swift */,
+				123181B81AB4DFC600776105 /* NTHTaskListViewController.swift */,
+				1244B90C1ABEF2CA003872CB /* NTHTaskNotificationViewController.swift */,
+				123181BC1AB590CB00776105 /* NTHTaskSearchViewController.swift */,
+				12F50A591AF92BBA0043F63F /* NTHTemplateViewController.swift */,
+				12D2E87C1A9B92D8001539CD /* NTHTrashViewController.swift */,
+				126904811A9E6B69008FDD84 /* NTHOpenHoursViewController.swift */,
+				12FBB4C21AA338A600C2B32A /* Sheets */,
+			);
+			name = Controllers;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		1250A3B51A8683E0005B4D69 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				12D2E87E1A9B9459001539CD /* Bool_TS.swift */,
+				1230A0901A8BE5250064447B /* CLLocation_TS.swift */,
+				1259B7741A8F93380059525F /* CLLocationCoordinate2D_TS.swift */,
+				128F91651A92873B00C21DE3 /* Float_TS.swift */,
+				12FE1D721A913C6100F03601 /* MKMapView_TS.swift */,
+				127A800D1AA2666700B49666 /* NSManagedObjectContext_TS.swift */,
+				128732451AA6379D000B3694 /* NSSet_TS.swift */,
+				1250A3B61A868420005B4D69 /* UIAlertAction_TS.swift */,
+				12A7C0B61A9A080D00BB6B94 /* UIAlertController_TS.swift */,
+				127A80121AA301D300B49666 /* UIStoryboardSegue_TS.swift */,
+				1270B00E1A91369C0058DE82 /* UITableView_TS.swift */,
+				128732471AA637FE000B3694 /* NSMutableSet.swift */,
+			);
+			name = Swift;
+			sourceTree = "<group>";
+		};
+		1259B7711A8F7AD30059525F /* TSRegionManager */ = {
+			isa = PBXGroup;
+			children = (
+				1230A08E1A8BCDB20064447B /* TSRegionManager.swift */,
+				1259B7721A8F7AFA0059525F /* TSRegion.swift */,
+				12CB97651AA372F70075C0E4 /* TSRegionTimeRange.swift */,
+			);
+			name = TSRegionManager;
+			sourceTree = "<group>";
+		};
+		1279A4AA1A76A1F700A03FF4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1260ABFF1A7819BB0015CA4E /* NTHAnnotation.swift */,
+				12A7C0B41A9893DA00BB6B94 /* NTHButton.swift */,
+				12981F0E1A86280800CDFA1D /* NTHCenterLabelCell.swift */,
+				12059DD01A350476007F5E7C /* NTHInboxCell.swift */,
+				12FE1D761A9146F600F03601 /* NTHLeftLabelCell.swift */,
+				12BB65301A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift */,
+				123181B41AB4226200776105 /* NTHMultiNavigationItem.swift */,
+				126904851A9E6DA0008FDD84 /* NTHOpenHoursCell.swift */,
+				121CF5C51A8FD0440032ED36 /* NTHPlaceholderTextView.swift */,
+				128F91631A92855D00C21DE3 /* NTHRegionControl.swift */,
+				12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */,
+				12AC63C81A90AB3700883650 /* NTHTextField.swift */,
+				12D2E8821A9B9CF1001539CD /* NTHTrashCell.swift */,
+				12F50A5B1AF93EAD0043F63F /* NTHTemplateCell.swift */,
+				12A7B33E1A9681FB00A4EACB /* NTHTwoLineLeftLabelCell.swift */,
+				12F0B3221A9CF0C5006229AD /* UIStoryboardSegue */,
+			);
+			name = Components;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		1279A4AD1A76A2D100A03FF4 /* Storyboards & XIBs */ = {
 			isa = PBXGroup;
 			children = (
 				1279B5DD19FED4E700A7828C /* Main.storyboard */,
-				1279B5E019FED4E700A7828C /* Images.xcassets */,
-				1279B5E219FED4E700A7828C /* LaunchScreen.xib */,
+				12BB65361A7E598A00CC4448 /* XIBs */,
 			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		127400361A36593F004D96D3 /* QuickInsertView */ = {
-			isa = PBXGroup;
-			children = (
-				12FE325E1A10D75F00FAB243 /* QuickInsertView.swift */,
-				12FE32601A10D76900FAB243 /* QuickInsertView.xib */,
-			);
-			name = QuickInsertView;
-			sourceTree = "<group>";
-		};
-		127400371A365A13004D96D3 /* Inbox */ = {
-			isa = PBXGroup;
-			children = (
-				12059DD01A350476007F5E7C /* NTHInboxCell.swift */,
-				12059DCE1A350153007F5E7C /* NTHInboxCell.xib */,
-				1279B5DB19FED4E700A7828C /* InboxViewController.swift */,
-				12059DD41A36273D007F5E7C /* NTHTaskStatusView.swift */,
-			);
-			name = Inbox;
+			name = "Storyboards & XIBs";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		1279B5CB19FED4E700A7828C = {
 			isa = PBXGroup;
 			children = (
-				12059DCB1A34FDAC007F5E7C /* Nothing2 */,
 				1279B5D619FED4E700A7828C /* Nothing */,
 				12E2158B1A037C9C0038AD45 /* External */,
 				1279B5EC19FED4E700A7828C /* NothingTests */,
@@ -198,20 +401,17 @@
 		1279B5D619FED4E700A7828C /* Nothing */ = {
 			isa = PBXGroup;
 			children = (
+				125016311AC6B053006F4A43 /* Nothing.entitlements */,
 				1279B5D919FED4E700A7828C /* AppDelegate.swift */,
-				12CC22211A12109400DF8EE0 /* Inbox */,
-				12EDE78B1A1FC65B0020D549 /* Dialogs */,
-				128B298D1A1FB060005C93DF /* Create / Edit / Browse */,
-				1279B5F919FED64D00A7828C /* Core Data */,
+				1246F0911A8641070001F4BE /* Controllers */,
+				1279A4AA1A76A1F700A03FF4 /* Components */,
+				120B3CE61A86072B00FB38DD /* Extensions */,
+				1246F0901A8640E70001F4BE /* Helpers */,
 				1279B61319FED65300A7828C /* Cache */,
-				123B6E2119FF86C4008E22DB /* HashtagDetector.swift */,
-				125593EB19FEE10A001EC477 /* UIColor_Extension.swift */,
-				123B6E2319FF909F008E22DB /* UILabel_Extension.swift */,
-				12CEF17E1A083832004DE156 /* UIView_Extension.swift */,
-				1279B5FD19FED64D00A7828C /* NSManagedObject_Extension.swift */,
-				12CC222A1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift */,
-				123F11C41A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift */,
-				125593ED19FEE133001EC477 /* Resources */,
+				1279B5F919FED64D00A7828C /* Core Data */,
+				1279A4AD1A76A2D100A03FF4 /* Storyboards & XIBs */,
+				1250A3B51A8683E0005B4D69 /* Swift */,
+				1279B5E019FED4E700A7828C /* Images.xcassets */,
 				1279B5D719FED4E700A7828C /* Supporting Files */,
 			);
 			path = Nothing;
@@ -245,32 +445,28 @@
 		1279B5F919FED64D00A7828C /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				1279B5FB19FED64D00A7828C /* CDHelper.swift */,
+				1279B5FC19FED64D00A7828C /* CDStore.swift */,
+				12A70BE01AC7F7EF00FCDC97 /* NTHCoreDataCloudSync.swift */,
 				1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */,
-				1279B5FA19FED64D00A7828C /* Core */,
 				1279B5FE19FED64D00A7828C /* Model */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
 		};
-		1279B5FA19FED64D00A7828C /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				1279B5FB19FED64D00A7828C /* CDHelper.swift */,
-				1279B5FC19FED64D00A7828C /* CDStore.swift */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
 		1279B5FE19FED64D00A7828C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1279B5FF19FED64D00A7828C /* Connection.swift */,
 				1279B60019FED64D00A7828C /* Contact.swift */,
-				1279B60319FED64D00A7828C /* DateReminderInfo.swift */,
-				1279B60419FED64D00A7828C /* LocationReminderInfo.swift */,
-				1279B60519FED64D00A7828C /* Place.swift */,
-				1279B60619FED64D00A7828C /* Task.swift */,
+				1287323F1AA626DD000B3694 /* DateReminder.swift */,
+				1279B5FF19FED64D00A7828C /* Link.swift */,
+				128732431AA62A63000B3694 /* LocationDateReminder.swift */,
+				128732411AA6298D000B3694 /* LocationReminder.swift */,
 				12BEB0F31A06DC9300643860 /* ModelController.swift */,
+				12D2E8881A9BE76B001539CD /* OpenTimeRange.swift */,
+				1279B60519FED64D00A7828C /* Place.swift */,
+				1287323D1AA62597000B3694 /* Reminder.swift */,
+				1279B60619FED64D00A7828C /* Task.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -278,44 +474,28 @@
 		1279B61319FED65300A7828C /* Cache */ = {
 			isa = PBXGroup;
 			children = (
-				12E215991A03A9840038AD45 /* ThumbnailCache.swift */,
 				1279B61419FEDBD200A7828C /* FileCache.swift */,
 				1279B60719FED64D00A7828C /* FileManager.swift */,
+				12E215991A03A9840038AD45 /* ThumbnailCache.swift */,
 			);
 			name = Cache;
 			sourceTree = "<group>";
 		};
-		128B29881A1E96AD005C93DF /* Details */ = {
+		12BB65361A7E598A00CC4448 /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
-				124ADC981A19467600750816 /* DetailViewController.swift */,
-				124ADC9A1A19493C00750816 /* DetailModelView.swift */,
-				129A555F1A1E826A00ED249D /* MapCell.xib */,
-				129A555D1A1E825500ED249D /* MapCell.swift */,
-				129A55591A1E69F100ED249D /* TextViewCell.xib */,
-				129A555B1A1E6A0800ED249D /* TextViewCell.swift */,
-				128B29891A1EA842005C93DF /* SeparatorCell.xib */,
-				128B298B1A1EA862005C93DF /* SeparatorCell.swift */,
+				1279B5E219FED4E700A7828C /* LaunchScreen.xib */,
+				12FE1D741A9146E100F03601 /* NTHCenterLabelCell.xib */,
+				123A54911A952A4D00B4C5D4 /* NTHInboxCell.xib */,
+				12981F0C1A8627D300CDFA1D /* NTHLeftLabelCell.xib */,
+				124E5EB71A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib */,
+				128F91611A92844900C21DE3 /* NTHRegionControl.xib */,
+				12D2E8801A9B9CDD001539CD /* NTHTemplateCell.xib */,
+				12F50A5D1AF93EC70043F63F /* NTHTrashCell.xib */,
+				12A7B3401A96820E00A4EACB /* NTHTwoLineLeftLabelCell.xib */,
+				126904831A9E6D84008FDD84 /* NTHOpenHoursCell.xib */,
 			);
-			name = Details;
-			sourceTree = "<group>";
-		};
-		128B298D1A1FB060005C93DF /* Create / Edit / Browse */ = {
-			isa = PBXGroup;
-			children = (
-				12EDE7881A1FBDC20020D549 /* NTHTableViewController.swift */,
-				12EDE78A1A1FC2BB0020D549 /* Create */,
-				128B29881A1E96AD005C93DF /* Details */,
-			);
-			name = "Create / Edit / Browse";
-			sourceTree = "<group>";
-		};
-		12CC22211A12109400DF8EE0 /* Inbox */ = {
-			isa = PBXGroup;
-			children = (
-				12CC22261A12207300DF8EE0 /* InboxCellViewModel.swift */,
-			);
-			name = Inbox;
+			name = XIBs;
 			sourceTree = "<group>";
 		};
 		12E2158B1A037C9C0038AD45 /* External */ = {
@@ -325,20 +505,23 @@
 			name = External;
 			sourceTree = "<group>";
 		};
-		12EDE78A1A1FC2BB0020D549 /* Create */ = {
+		12F0B3221A9CF0C5006229AD /* UIStoryboardSegue */ = {
 			isa = PBXGroup;
 			children = (
-				12EDE7861A1FBD1E0020D549 /* CreateEditViewController.swift */,
+				12F0B3231A9CF0F1006229AD /* NTHSheetSegue.swift */,
+				12CAEA2B1A9D16100084A67C /* NTHUnwindSheetSegue.swift */,
 			);
-			name = Create;
+			name = UIStoryboardSegue;
 			sourceTree = "<group>";
 		};
-		12EDE78B1A1FC65B0020D549 /* Dialogs */ = {
+		12FBB4C21AA338A600C2B32A /* Sheets */ = {
 			isa = PBXGroup;
 			children = (
-				12EDE78C1A1FC6770020D549 /* TextEditorViewController.swift */,
+				12D2E88A1A9CE25A001539CD /* NTHDateTimePickerViewController.swift */,
+				120205281AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift */,
+				12F0B3251A9CF128006229AD /* NTHSheetViewController.swift */,
 			);
-			name = Dialogs;
+			name = Sheets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,6 +574,15 @@
 				TargetAttributes = {
 					1279B5D319FED4E700A7828C = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 7HTJY423B9;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					1279B5E819FED4E700A7828C = {
 						CreatedOnToolsVersion = 6.1;
@@ -422,14 +614,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12FE32611A10D76900FAB243 /* QuickInsertView.xib in Resources */,
+				12FE1D751A9146E100F03601 /* NTHCenterLabelCell.xib in Resources */,
+				123A54921A952A4D00B4C5D4 /* NTHInboxCell.xib in Resources */,
+				124E5EB81A841F9E00CB3076 /* NTHLeftLabelRemoveCell.xib in Resources */,
+				12981F0D1A8627D300CDFA1D /* NTHLeftLabelCell.xib in Resources */,
 				1279B5DF19FED4E700A7828C /* Main.storyboard in Resources */,
+				12D2E8811A9B9CDD001539CD /* NTHTemplateCell.xib in Resources */,
+				128F91621A92844900C21DE3 /* NTHRegionControl.xib in Resources */,
 				1279B5E419FED4E700A7828C /* LaunchScreen.xib in Resources */,
-				128B298A1A1EA842005C93DF /* SeparatorCell.xib in Resources */,
 				1279B5E119FED4E700A7828C /* Images.xcassets in Resources */,
-				12059DCF1A350153007F5E7C /* NTHInboxCell.xib in Resources */,
-				129A55601A1E826A00ED249D /* MapCell.xib in Resources */,
-				129A555A1A1E69F100ED249D /* TextViewCell.xib in Resources */,
+				12A7B3411A96820E00A4EACB /* NTHTwoLineLeftLabelCell.xib in Resources */,
+				12F50A5E1AF93EC70043F63F /* NTHTrashCell.xib in Resources */,
+				126904841A9E6D84008FDD84 /* NTHOpenHoursCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,42 +643,91 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12CEF17F1A083832004DE156 /* UIView_Extension.swift in Sources */,
+				12FE1D771A9146F600F03601 /* NTHLeftLabelCell.swift in Sources */,
+				12E2929D1A9522D90079D257 /* NTHCreateEditContactViewController.swift in Sources */,
+				123181B51AB4226200776105 /* NTHMultiNavigationItem.swift in Sources */,
+				1270B00F1A91369C0058DE82 /* UITableView_TS.swift in Sources */,
+				12A703521AA7B9F2009538E2 /* NTHSelectRepeatIntervalViewController.swift in Sources */,
+				12F0B3241A9CF0F1006229AD /* NTHSheetSegue.swift in Sources */,
+				12A70BE11AC7F7EF00FCDC97 /* NTHCoreDataCloudSync.swift in Sources */,
+				128EE7BE1A90EA0300D729F6 /* NTHCreateEditLocationReminderViewController.swift in Sources */,
+				120B3CE81A86074700FB38DD /* String+Extensions.swift in Sources */,
 				1279B60919FED64D00A7828C /* CDStore.swift in Sources */,
-				125593EC19FEE10A001EC477 /* UIColor_Extension.swift in Sources */,
+				12AC63C91A90AB3700883650 /* NTHTextField.swift in Sources */,
 				1279B60D19FED64D00A7828C /* Nothing.xcdatamodeld in Sources */,
-				123B6E2419FF909F008E22DB /* UILabel_Extension.swift in Sources */,
+				127A80131AA301D300B49666 /* UIStoryboardSegue_TS.swift in Sources */,
+				124A8F161A4F017800BE5EAB /* UIView+Extension.swift in Sources */,
 				1279B61519FEDBD200A7828C /* FileCache.swift in Sources */,
+				128732481AA637FE000B3694 /* NSMutableSet.swift in Sources */,
+				12E2929F1A9527300079D257 /* NTHInboxViewController.swift in Sources */,
+				127A80151AA30F5600B49666 /* NTHSimpleSelectLinkViewController.swift in Sources */,
+				12D2E8891A9BE76B001539CD /* OpenTimeRange.swift in Sources */,
 				12059DD51A36273D007F5E7C /* NTHTaskStatusView.swift in Sources */,
-				1279B60F19FED64D00A7828C /* LocationReminderInfo.swift in Sources */,
-				1279B60B19FED64D00A7828C /* Connection.swift in Sources */,
-				12EDE78D1A1FC6770020D549 /* TextEditorViewController.swift in Sources */,
-				12EDE7891A1FBDC20020D549 /* NTHTableViewController.swift in Sources */,
+				12D2E8851A9BB537001539CD /* NTHMapViewController.swift in Sources */,
+				12D2E87D1A9B92D8001539CD /* NTHTrashViewController.swift in Sources */,
+				12CB97661AA372F70075C0E4 /* TSRegionTimeRange.swift in Sources */,
+				1259B7751A8F93380059525F /* CLLocationCoordinate2D_TS.swift in Sources */,
+				1279B60B19FED64D00A7828C /* Link.swift in Sources */,
 				1279B61119FED64D00A7828C /* Task.swift in Sources */,
-				12CC22271A12207300DF8EE0 /* InboxCellViewModel.swift in Sources */,
-				1279B5DC19FED4E700A7828C /* InboxViewController.swift in Sources */,
-				12059DCD1A34FF5C007F5E7C /* NTHFonts.swift in Sources */,
+				12A7C0B51A9893DA00BB6B94 /* NTHButton.swift in Sources */,
+				12E2929B1A951DEF0079D257 /* NTHSelectContactViewController.swift in Sources */,
+				12D2E87F1A9B9459001539CD /* Bool_TS.swift in Sources */,
+				12D2E88B1A9CE25A001539CD /* NTHDateTimePickerViewController.swift in Sources */,
+				1202052B1AA1F3780043CEE9 /* NTHTime.swift in Sources */,
+				1230A08F1A8BCDB20064447B /* TSRegionManager.swift in Sources */,
+				1287323E1AA62597000B3694 /* Reminder.swift in Sources */,
+				12BB65311A7E27DA00CC4448 /* NTHLeftLabelRemoveCell.swift in Sources */,
+				128F91681A93FED000C21DE3 /* NTHSelectPlaceViewController.swift in Sources */,
+				128732421AA6298D000B3694 /* LocationReminder.swift in Sources */,
+				12059DCD1A34FF5C007F5E7C /* UIFont+Extension.swift in Sources */,
+				12FE1D731A913C6100F03601 /* MKMapView_TS.swift in Sources */,
 				1279B5DA19FED4E700A7828C /* AppDelegate.swift in Sources */,
-				123B6E2219FF86C4008E22DB /* HashtagDetector.swift in Sources */,
+				1250A3B71A868420005B4D69 /* UIAlertAction_TS.swift in Sources */,
 				12059DD11A350476007F5E7C /* NTHInboxCell.swift in Sources */,
-				12059DCA1A34FDA2007F5E7C /* NTHColors.swift in Sources */,
-				12EDE7871A1FBD1E0020D549 /* CreateEditViewController.swift in Sources */,
-				129A555C1A1E6A0800ED249D /* TextViewCell.swift in Sources */,
-				124ADC991A19467600750816 /* DetailViewController.swift in Sources */,
-				128B298C1A1EA862005C93DF /* SeparatorCell.swift in Sources */,
-				1279B60A19FED64D00A7828C /* NSManagedObject_Extension.swift in Sources */,
-				129A555E1A1E825500ED249D /* MapCell.swift in Sources */,
-				12FE325F1A10D75F00FAB243 /* QuickInsertView.swift in Sources */,
+				12059DCA1A34FDA2007F5E7C /* UIColor+Extensions.swift in Sources */,
+				127A800E1AA2666700B49666 /* NSManagedObjectContext_TS.swift in Sources */,
+				128732441AA62A63000B3694 /* LocationDateReminder.swift in Sources */,
+				12981F0B1A86223000CDFA1D /* RepeatInterval.swift in Sources */,
+				128732461AA6379D000B3694 /* NSSet_TS.swift in Sources */,
+				12A7C0B71A9A080D00BB6B94 /* UIAlertController_TS.swift in Sources */,
+				12F50A5A1AF92BBA0043F63F /* NTHTemplateViewController.swift in Sources */,
+				126904861A9E6DA0008FDD84 /* NTHOpenHoursCell.swift in Sources */,
+				128BDD901AE5543400D4239C /* NotificationPresenter.swift in Sources */,
+				1279B60A19FED64D00A7828C /* NSManagedObject+Extension.swift in Sources */,
+				12FC2D2C1AAB3CDC00F5A1A3 /* NTHSelectRegionViewController.swift in Sources */,
+				126904821A9E6B69008FDD84 /* NTHOpenHoursViewController.swift in Sources */,
+				121CF5C81A908B0B0032ED36 /* NTHCreateEditTaskViewController.swift in Sources */,
 				1279B61219FED64D00A7828C /* FileManager.swift in Sources */,
-				12CC222B1A122FC700DF8EE0 /* NSDateFormatter_Extension.swift in Sources */,
+				12CC222B1A122FC700DF8EE0 /* NSDateFormatter+Extension.swift in Sources */,
+				1259B7731A8F7AFA0059525F /* TSRegion.swift in Sources */,
+				128F91641A92855D00C21DE3 /* NTHRegionControl.swift in Sources */,
+				120205291AA1027C0043CEE9 /* NTHOpenHoursPickerViewController.swift in Sources */,
+				121CF5C61A8FD0440032ED36 /* NTHPlaceholderTextView.swift in Sources */,
 				1279B60819FED64D00A7828C /* CDHelper.swift in Sources */,
+				128F91661A92873B00C21DE3 /* Float_TS.swift in Sources */,
+				121AA83B1AAB060100F3C7F6 /* NTHCreateEditLocationDateReminderViewController.swift in Sources */,
 				12BEB0F41A06DC9300643860 /* ModelController.swift in Sources */,
 				12E2159A1A03A9840038AD45 /* ThumbnailCache.swift in Sources */,
-				124ADC9B1A19493C00750816 /* DetailModelView.swift in Sources */,
-				123F11C51A2653FF00B0FC08 /* UIBarButtonItem_Extension.swift in Sources */,
+				120B99581A9A3DB100518FF0 /* NTHMenuViewController.swift in Sources */,
+				12FE1D711A913A8600F03601 /* NTHCreateEditPlaceViewController.swift in Sources */,
+				123181B71AB43B4400776105 /* NTHPlaceDetailsViewController.swift in Sources */,
+				1244B90D1ABEF2CA003872CB /* NTHTaskNotificationViewController.swift in Sources */,
+				123181B91AB4DFC600776105 /* NTHTaskListViewController.swift in Sources */,
+				12D2E8831A9B9CF1001539CD /* NTHTrashCell.swift in Sources */,
+				128732401AA626DD000B3694 /* DateReminder.swift in Sources */,
+				12981F0F1A86280800CDFA1D /* NTHCenterLabelCell.swift in Sources */,
+				1230A0911A8BE5250064447B /* CLLocation_TS.swift in Sources */,
+				1260AC001A7819BB0015CA4E /* NTHAnnotation.swift in Sources */,
 				1279B60C19FED64D00A7828C /* Contact.swift in Sources */,
+				12F50A5C1AF93EAD0043F63F /* NTHTemplateCell.swift in Sources */,
+				12A7B33D1A9679E800A4EACB /* NTHTaskDetailsViewController.swift in Sources */,
+				1230A08D1A8BBE6F0064447B /* LocalNotificationScheduler.swift in Sources */,
+				123181BD1AB590CB00776105 /* NTHTaskSearchViewController.swift in Sources */,
+				12A7B33F1A9681FB00A4EACB /* NTHTwoLineLeftLabelCell.swift in Sources */,
+				1202EB731A79579900B67F45 /* NTHCreateEditDateReminderViewController.swift in Sources */,
+				12CAEA2C1A9D16100084A67C /* NTHUnwindSheetSegue.swift in Sources */,
+				12F0B3261A9CF128006229AD /* NTHSheetViewController.swift in Sources */,
 				1279B61019FED64D00A7828C /* Place.swift in Sources */,
-				1279B60E19FED64D00A7828C /* DateReminderInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +756,7 @@
 				1279B5DE19FED4E700A7828C /* Base */,
 			);
 			name = Main.storyboard;
+			path = Nothing;
 			sourceTree = "<group>";
 		};
 		1279B5E219FED4E700A7828C /* LaunchScreen.xib */ = {
@@ -519,6 +765,7 @@
 				1279B5E319FED4E700A7828C /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = Nothing;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -605,9 +852,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Nothing/Nothing.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Nothing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -615,9 +869,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Nothing/Nothing.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Nothing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
@@ -691,9 +951,26 @@
 		1279B60119FED64D00A7828C /* Nothing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				12F50A581AF929D90043F63F /* Nothing 18.xcdatamodel */,
+				123181BB1AB57C0300776105 /* Nothing 17.xcdatamodel */,
+				123181BA1AB4EA8D00776105 /* Nothing 16.xcdatamodel */,
+				12EAC6691AB3859F000C904F /* Nothing 15.xcdatamodel */,
+				1287323C1AA62541000B3694 /* Nothing 14.xcdatamodel */,
+				12FBB4C41AA33D5400C2B32A /* Nothing 13.xcdatamodel */,
+				12FBB4C31AA33B3D00C2B32A /* Nothing 12.xcdatamodel */,
+				127A800F1AA27A8000B49666 /* Nothing 11.xcdatamodel */,
+				1202052C1AA25D170043CEE9 /* Nothing 10.xcdatamodel */,
+				127C4AE11A9E787B00699F37 /* Nothing 9.xcdatamodel */,
+				12D2E8861A9BE65D001539CD /* Nothing 7.xcdatamodel */,
+				12D2E87B1A9B91D6001539CD /* Nothing 6.xcdatamodel */,
+				12D2E8871A9BE720001539CD /* Nothing 8.xcdatamodel */,
+				120E72BC1A9A20D7007F5E80 /* Nothing 5.xcdatamodel */,
+				12A7C0B81A9A1B7700BB6B94 /* Nothing 4.xcdatamodel */,
+				1230A0921A8BF10D0064447B /* Nothing 3.xcdatamodel */,
+				1218B1471A87DEDD0087E04B /* Nothing 2.xcdatamodel */,
 				1279B60219FED64D00A7828C /* Nothing.xcdatamodel */,
 			);
-			currentVersion = 1279B60219FED64D00A7828C /* Nothing.xcdatamodel */;
+			currentVersion = 12F50A581AF929D90043F63F /* Nothing 18.xcdatamodel */;
 			name = Nothing.xcdatamodeld;
 			path = Model/Nothing.xcdatamodeld;
 			sourceTree = "<group>";

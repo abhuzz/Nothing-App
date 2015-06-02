@@ -32,10 +32,10 @@ class NTHTaskStatusView: UIView {
         circleLayer.path = path.CGPath
         
         if self.state == .Done {
-            circleLayer.fillColor = UIColor.NTHYellowGreenColor().CGColor
+            circleLayer.fillColor = UIColor.NTHStatusDoneColor().CGColor
         } else {
             circleLayer.fillColor = UIColor.clearColor().CGColor
-            circleLayer.strokeColor = UIColor.NTHWhiteLilacColor().CGColor
+            circleLayer.strokeColor = UIColor.NTHStatusActiveColor().CGColor
             circleLayer.borderWidth = 1.0
         }
 

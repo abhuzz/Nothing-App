@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7527" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Contact" representedClassName="Contact" parentEntity="Link" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="DateReminderInfo" representedClassName="DateReminderInfo" syncable="YES">
+        <attribute name="fireDate" attributeType="Date" syncable="YES"/>
+        <attribute name="repeatIntervalNumber" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="dateReminderInfo" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="Link" representedClassName="Link" isAbstract="YES" syncable="YES">
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="links" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="LocationReminderInfo" representedClassName="LocationReminderInfo" syncable="YES">
+        <attribute name="distanceNumber" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="onArriveBool" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="locationReminderInfos" inverseEntity="Place" syncable="YES"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="locationReminderInfos" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="OpenHour" representedClassName="OpenHour" syncable="YES">
+        <attribute name="closed" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="closeHourTimeInterval" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dayNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="enabled" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="openHourTimeInterval" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="openHours" inverseEntity="Place" syncable="YES"/>
+    </entity>
+    <entity name="Place" representedClassName="Place" parentEntity="Link" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="useOpenHours" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <relationship name="locationReminderInfos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocationReminderInfo" inverseName="place" inverseEntity="LocationReminderInfo" syncable="YES"/>
+        <relationship name="openHours" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="OpenHour" inverseName="place" inverseEntity="OpenHour" syncable="YES"/>
+    </entity>
+    <entity name="Task" representedClassName="Task" syncable="YES">
+        <attribute name="longDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stateNumber" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="trashed" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="uniqueIdentifier" attributeType="String" syncable="YES"/>
+        <relationship name="dateReminderInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DateReminderInfo" inverseName="task" inverseEntity="DateReminderInfo" syncable="YES"/>
+        <relationship name="links" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Link" inverseName="tasks" inverseEntity="Link" syncable="YES"/>
+        <relationship name="locationReminderInfos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocationReminderInfo" inverseName="task" inverseEntity="LocationReminderInfo" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Contact" positionX="25" positionY="207" width="128" height="88"/>
+        <element name="DateReminderInfo" positionX="-515" positionY="245" width="128" height="90"/>
+        <element name="Link" positionX="252" positionY="315" width="128" height="58"/>
+        <element name="LocationReminderInfo" positionX="-182" positionY="236" width="128" height="105"/>
+        <element name="OpenHour" positionX="-306" positionY="171" width="128" height="135"/>
+        <element name="Place" positionX="27" positionY="369" width="128" height="135"/>
+        <element name="Task" positionX="-342" positionY="18" width="128" height="165"/>
+    </elements>
+</model>

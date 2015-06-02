@@ -13,6 +13,7 @@ class FileManager {
     
     init(path: String) {
         self.path = path
+        println("File manager created with path: \(path)")
         self.prepare()
     }
     

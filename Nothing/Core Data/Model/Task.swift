@@ -8,16 +8,21 @@
 
 import Foundation
 import CoreData
+import UIKit
+import CoreLocation
 
 @objc(Task)
 class Task: NSManagedObject {
     
-    @NSManaged var title: String
+    @NSManaged var createdAt: NSDate
+    @NSManaged var links: NSSet
     @NSManaged var longDescription: String?
+    @NSManaged var uniqueIdentifier: String
     @NSManaged private var stateNumber: NSNumber
-    @NSManaged private var dateReminderInfo: DateReminderInfo?
-    @NSManaged private var locationReminderInfo: LocationReminderInfo?
-    @NSManaged private var connections: NSSet
+    @NSManaged var title: String!
+    @NSManaged var trashed: NSNumber
+    @NSManaged var reminders: NSSet
+    @NSManaged var isTemplate: Bool
 }
 
 extension Task {
@@ -32,64 +37,109 @@ extension Task {
         set { self.stateNumber = NSNumber(integer: newValue.rawValue) }
     }
     
-    var dateReminder: DateReminderInfo? {
-        set { self.dateReminderInfo = newValue }
-        get { return self.dateReminderInfo }
-    }
-    
-    var locationReminder: LocationReminderInfo? {
-        set {
-            self.removeConnection(self.locationReminderInfo?.place)
-            self.locationReminderInfo = newValue
-            
-            if self.locationReminderInfo != nil {
-                self.addConnection(self.locationReminderInfo!.place)
-            }
-        }
-        
-        get {
-            return self.locationReminderInfo
-        }
-    }
-    
-    func addConnection(connection: Connection) {
-        var add = true
-        for c in self.allConnections {
-            if c as Connection == connection {
-                add = false
-                break
-            }
-        }
-        
-        if add {
-            var connections = self.mutableSetValueForKey("connections")
-            connections.addObject(connection)
-        }
-    }
-    
-    private func removeConnection(connection: Connection?) {
-        if connection == nil {
-            return
-        }
-        
-        for c in self.allConnections {
-            if c as Connection == connection! {
-                var connections = self.mutableSetValueForKey("connections")
-                connections.removeObject(c)
-                return
-            }
-        }
-    }
-    
-    var allConnections: NSSet {        
-        return NSSet(set: self.connections)
-    }
-    
     func changeState() {
         if self.state == .Active {
             self.state = .Done
         } else {
             self.state = .Active
         }
+    }
+    
+
+    /// Reminders
+    func addReminder(reminder: Reminder) {
+        let mutableSet = self.reminders.mutableSet()
+        mutableSet.addObject(reminder)
+        self.reminders = mutableSet.immutableSet()
+    }
+    
+    func removeReminder(reminder: Reminder) {
+        let mutableSet = self.reminders.mutableSet()
+        mutableSet.removeObject(reminder)
+        self.reminders = mutableSet.immutableSet()
+    }
+    
+    var dateReminders: [DateReminder] {
+        return filter(self.reminders.allObjects) { $0 is DateReminder } as! [DateReminder]
+    }
+    
+    var locationReminders: [LocationReminder] {
+        return filter(self.reminders.allObjects) { $0 is LocationReminder } as! [LocationReminder]
+    }
+    
+    /// Link
+    func addLink(link: Link) {
+        let mutableSet = NSMutableSet(set: self.links)
+        mutableSet.addObject(link)
+        self.links = NSSet(set: mutableSet)
+    }
+    
+    func removeLink(link: Link) {
+        let mutableSet = NSMutableSet(set: self.links)
+        mutableSet.removeObject(link)
+        self.links = NSSet(set: mutableSet)
+    }
+    
+    var placeLinks: [Place] {
+        get {
+            return filter(self.links.allObjects) { $0 is Place } as! [Place]
+        }
+        
+        set {
+            var updatedLinks = [Link]()
+            
+            for place in newValue {
+                updatedLinks.append(place)
+            }
+            
+            let links = self.links.allObjects as! [Link]
+            for link in links {
+                if !(link is Place) {
+                    updatedLinks.append(link)
+                }
+            }
+            
+            self.links = NSSet(array: updatedLinks)
+        }
+    }
+    
+    var contactLinks: [Contact] {
+        get {
+            return filter(self.links.allObjects) { $0 is Contact } as! [Contact]
+        }
+        
+        set {
+            var updatedLinks = [Link]()
+            
+            for contact in newValue {
+                updatedLinks.append(contact)
+            }
+            
+            let links = self.links.allObjects as! [Link]
+            for link in links {
+                if !(link is Contact) {
+                    updatedLinks.append(link)
+                }
+            }
+            
+            self.links = NSSet(array: updatedLinks)
+        }
+    }
+    
+    /// Schedule
+    func schedule() {
+        LocalNotificationScheduler.cancelScheduledNotifications(self)
+        LocalNotificationScheduler.scheduleNotification(self)
+    }
+    
+    
+    func snooze(seconds: NSTimeInterval) {
+        
+        for reminder in self.dateReminders {
+            reminder.fireDate = reminder.fireDate.dateByAddingTimeInterval(seconds)
+        }
+        
+        self.managedObjectContext?.save(nil)
+        self.schedule()
     }
 }

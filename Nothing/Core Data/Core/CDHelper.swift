@@ -40,7 +40,6 @@ class CDHelper: NSObject {
     }
     
     func contextDidSaveContext(notification: NSNotification) {
-        /// for future use with background context
         println("contextDidSaveContext:")
     }
     
@@ -52,8 +51,14 @@ class CDHelper: NSObject {
         return context
     }()
     
+    class func temporaryContextWithParent(parent: NSManagedObjectContext!) -> NSManagedObjectContext {
+        var context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        context.parentContext = parent
+        return context
+    }
+    
     private func createTemporaryContext() -> NSManagedObjectContext {
-        var context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.ConfinementConcurrencyType)
+        var context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
         context.parentContext = self.mainContext
         return context
     }

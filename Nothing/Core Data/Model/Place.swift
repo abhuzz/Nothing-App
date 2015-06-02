@@ -8,26 +8,22 @@
 
 import Foundation
 import CoreLocation
+import CoreData
 
 @objc(Place)
-class Place: Connection {
-    @NSManaged var originalName: String
-    @NSManaged private var customNameString: String?
+class Place: Link {
+    @NSManaged var name: String!
     @NSManaged private var latitude: NSNumber
     @NSManaged private var longitude: NSNumber
-    @NSManaged var locationReminderInfos: NSSet
+    @NSManaged var openHours: NSOrderedSet
+    @NSManaged var useOpenHours: NSNumber
+    @NSManaged var locationReminders: NSSet
 }
 
 extension Place {
     
     override func awakeFromInsert() {
         super.awakeFromInsert()
-        self.locationReminderInfos = NSSet()
-    }
-    
-    var customName: String {
-        get { return self.customNameString ?? self.originalName }
-        set { self.customNameString = newValue }
     }
     
     var coordinate: CLLocationCoordinate2D {
@@ -36,5 +32,25 @@ extension Place {
             self.latitude = NSNumber(double: newValue.latitude)
             self.longitude = NSNumber(double: newValue.longitude)
         }
+    }
+    
+    func removeAllAssociatedObjects(context: NSManagedObjectContext!) {
+        for info in self.locationReminders.allObjects as! [LocationReminder] {
+            context.deleteObject(info)
+        }
+    }
+    
+    var associatedTasks: [Task] {
+        var tasks = [Task]()
+        
+        for reminder in self.locationReminders.allObjects as! [LocationReminder] {
+            if let task = reminder.task {
+                if !task.trashed.boolValue && task.state == .Active {
+                    tasks.append(task)
+                }
+            }
+        }
+        
+        return tasks
     }
 }
