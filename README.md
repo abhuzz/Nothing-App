@@ -8,3 +8,5 @@ I decided to wrote app in Swift because I wanted to learn the language and learn
 Some part of code might need improvements.
 
 Feel free to use this code where you want.
+
+![App screenshots](https://raw.githubusercontent.com/tomkowz/Nothing-App/master/screenshot.png)
